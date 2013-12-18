@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 /*  -*- C++ -*-
 *  Copyright (C) 1998 <developer@mozilla.org>
 *
@@ -11,7 +10,7 @@
 *  permit persons to whom the Software is furnished to do so, subject to
 *  the following conditions:
 *
-*  The above copyright notice and this permission notice shall be included 
+*  The above copyright notice and this permission notice shall be included
 *  in all copies or substantial portions of the Software.
 *
 *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -23,35 +22,39 @@
 *  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-
 #ifndef CHINESEGROUPPROBER_H
 #define CHINESEGROUPPROBER_H
 
 #include "nsCharSetProber.h"
 
 #define CN_NUM_OF_PROBERS    3
-namespace kencodingprober {
-class KCODECS_NO_EXPORT ChineseGroupProber: public nsCharSetProber {
+namespace kencodingprober
+{
+class KCODECS_NO_EXPORT ChineseGroupProber: public nsCharSetProber
+{
 public:
-  ChineseGroupProber();
-  virtual ~ChineseGroupProber();
-  nsProbingState HandleData(const char* aBuf, unsigned int aLen);
-  const char* GetCharSetName();
-  nsProbingState GetState(void) {return mState;};
-  void      Reset(void);
-  float     GetConfidence(void);
-  void      SetOpion() {};
+    ChineseGroupProber();
+    virtual ~ChineseGroupProber();
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen);
+    const char *GetCharSetName();
+    nsProbingState GetState(void)
+    {
+        return mState;
+    };
+    void      Reset(void);
+    float     GetConfidence(void);
+    void      SetOpion() {};
 
 #ifdef DEBUG_PROBE
-  void  DumpStatus();
+    void  DumpStatus();
 #endif
 
 protected:
-  nsProbingState mState;
-  nsCharSetProber* mProbers[CN_NUM_OF_PROBERS];
-  bool          mIsActive[CN_NUM_OF_PROBERS];
-  int mBestGuess;
-  unsigned int mActiveNum;
+    nsProbingState mState;
+    nsCharSetProber *mProbers[CN_NUM_OF_PROBERS];
+    bool          mIsActive[CN_NUM_OF_PROBERS];
+    int mBestGuess;
+    unsigned int mActiveNum;
 };
 }
 #endif /* CHINESEGROUPPROBER_H */

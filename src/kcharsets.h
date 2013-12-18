@@ -32,7 +32,6 @@ class QString;
 class QStringList;
 class QTextCodec;
 
-
 /**
  * Charset font and encoder/decoder handling.
  *
@@ -120,7 +119,7 @@ public:
      * @param text the string containing the entities
      * @return the clean string
      */
-    static QString resolveEntities( const QString &text );
+    static QString resolveEntities(const QString &text);
 
     /**
      * Lists all available encodings as names.
@@ -148,7 +147,7 @@ public:
      * This function will be removed before KDE4 is released.
      */
 #ifndef KDE_NO_DEPRECATED
-    KCODECS_DEPRECATED QString languageForEncoding( const QString &encoding ) const;
+    KCODECS_DEPRECATED QString languageForEncoding(const QString &encoding) const;
 #endif
 
     /**
@@ -156,17 +155,17 @@ public:
      * @param encoding the encoding for the language
      * @return the long description for the encoding
      */
-    QString descriptionForEncoding( const QString& encoding ) const;
+    QString descriptionForEncoding(const QString &encoding) const;
 
     /**
      * Returns the encoding for a string obtained with descriptiveEncodingNames().
      * @param descriptiveName the descriptive name for the encoding
      * @return the name of the encoding
      */
-    QString encodingForName( const QString &descriptiveName ) const;
+    QString encodingForName(const QString &descriptiveName) const;
 
 private:
-    KCharsetsPrivate* const d;
+    KCharsetsPrivate *const d;
     friend struct KCharsetsSingletonPrivate;
 
     /**
@@ -179,7 +178,7 @@ private:
      * @return pointer to the QTextCodec or NULL
      * @todo Make this function public when it is clear what API is needed.
      */
-    QTextCodec *codecForNameOrNull( const QByteArray& n ) const;
+    QTextCodec *codecForNameOrNull(const QByteArray &n) const;
 };
 
 #endif

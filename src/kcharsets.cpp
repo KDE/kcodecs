@@ -227,18 +227,18 @@ static const char language_for_encoding_string[] =
     "\0";
 
 static const int language_for_encoding_indices[] = {
-       0,   11,   28,   11,   40,   11,   52,   11,
-      60,   11,   67,   78,   95,   78,  106,  117,
-     124,  117,  136,  148,  169,   78,  177,  185,
-     193,  117,  201,  208,  217,  208,  228,  208,
-     236,  208,  243,  208,  250,  255,  275,  255,
-     286,  294,  313,  294,  317,  294,  324,  331,
-     338,  343,  352,  343,  357,  343,  364,  375,
-     381,  375,  389,  400,  407,  400,  415,  426,
-     433,  426,  446,  426,  454,  185,  465,  472,
-     477,  472,  489,  495,  503,  495,  510,  495,
-     515,  495,  520,  495,  536,  545,  560,  573,
-     579,  573,  586,  573,   -1
+    0,   11,   28,   11,   40,   11,   52,   11,
+    60,   11,   67,   78,   95,   78,  106,  117,
+    124,  117,  136,  148,  169,   78,  177,  185,
+    193,  117,  201,  208,  217,  208,  228,  208,
+    236,  208,  243,  208,  250,  255,  275,  255,
+    286,  294,  313,  294,  317,  294,  324,  331,
+    338,  343,  352,  343,  357,  343,  364,  375,
+    381,  375,  389,  400,  407,  400,  415,  426,
+    433,  426,  446,  426,  454,  185,  465,  472,
+    477,  472,  489,  495,  503,  495,  510,  495,
+    515,  495,  520,  495,  536,  545,  560,  573,
+    579,  573,  586,  573,   -1
 };
 
 /*
@@ -412,17 +412,17 @@ static const char builtin_string[] =
     "\0";
 
 static const int builtin_indices[] = {
-       0,   11,   18,   11,   30,   39,   50,   39,
-      58,   39,   64,   82,   88,   93,  109,   93,
-     120,  135,  143,  135,  158,  164,  168,  164,
-     175,  164,  189,  196,  201,  208,  214,  221,
-     227,  221,  243,  221,  259,  221,  275,  221,
-     291,  221,  307,  221,  323,  221,  339,  349,
-     354,  349,  349,  349,  364,  376,  381,  392,
-     399,  410,  417,  392,  429,  410,  441,  450,
-     462,  474,  486,  498,  505,  498,  516,  498,
-     523,  208,  538,  208,  553,  450,  563,  450,
-     573,  450,  577,  364,   -1
+    0,   11,   18,   11,   30,   39,   50,   39,
+    58,   39,   64,   82,   88,   93,  109,   93,
+    120,  135,  143,  135,  158,  164,  168,  164,
+    175,  164,  189,  196,  201,  208,  214,  221,
+    227,  221,  243,  221,  259,  221,  275,  221,
+    291,  221,  307,  221,  323,  221,  339,  349,
+    354,  349,  349,  349,  364,  376,  381,  392,
+    399,  410,  417,  392,  429,  410,  441,  450,
+    462,  474,  486,  498,  505,  498,  516,  498,
+    523,  208,  538,  208,  553,  450,  563,  450,
+    573,  450,  577,  364,   -1
 };
 
 /*
@@ -472,17 +472,16 @@ static const char conversion_hints_string[] =
     "\0";
 
 static const int conversion_hints_indices[] = {
-       0,    7,   18,   25,   36,   18,   43,   50,
-      63,   50,   76,   50,   -1
+    0,    7,   18,   25,   36,   18,   43,   50,
+    63,   50,   76,   50,   -1
 };
 
 /*
  * GENERATED CODE ENDS HERE
  */
 
-struct KCharsetsSingletonPrivate
-{
-     KCharsets instance;
+struct KCharsetsSingletonPrivate {
+    KCharsets instance;
 };
 
 Q_GLOBAL_STATIC(KCharsetsSingletonPrivate, globalCharsets)
@@ -493,23 +492,23 @@ static inline
 const char *kcharsets_array_search(const char *start, const int *indices, const char *entry)
 {
     for (int i = 0; indices[i] != -1; i += 2)
-        if (qstrcmp(start + indices[i], entry) == 0)
+        if (qstrcmp(start + indices[i], entry) == 0) {
             return start + indices[i + 1];
+        }
     return 0;
 }
-
 
 class KCharsetsPrivate
 {
 public:
-    KCharsetsPrivate(KCharsets* _kc)
+    KCharsetsPrivate(KCharsets *_kc)
     {
         kc = _kc;
-        codecForNameDict.reserve( 43 );
+        codecForNameDict.reserve(43);
     }
     // Hash for the encoding names (sensitive case)
-    QHash<QByteArray,QTextCodec*> codecForNameDict;
-    KCharsets* kc;
+    QHash<QByteArray, QTextCodec *> codecForNameDict;
+    KCharsets *kc;
 
     //Cache list so QStrings can be implicitly shared
     QList<QStringList> encodingsByScript;
@@ -518,7 +517,7 @@ public:
 // --------------------------------------------------------------------------
 
 KCharsets::KCharsets()
-	:d(new KCharsetsPrivate(this))
+    : d(new KCharsetsPrivate(this))
 {
 }
 
@@ -531,37 +530,40 @@ QChar KCharsets::fromEntity(const QString &str)
 {
     QChar res = QChar::Null;
 
-    if ( str.isEmpty() )
+    if (str.isEmpty()) {
         return QChar::Null;
+    }
 
     int pos = 0;
-    if(str[pos] == QLatin1Char('&')) pos++;
+    if (str[pos] == QLatin1Char('&')) {
+        pos++;
+    }
 
     // Check for '&#000' or '&#x0000' sequence
-    if (str[pos] == QLatin1Char('#') && str.length()-pos > 1) {
+    if (str[pos] == QLatin1Char('#') && str.length() - pos > 1) {
         bool ok;
         pos++;
         if (str[pos] == QLatin1Char('x') || str[pos] == QLatin1Char('X')) {
             pos++;
             // '&#x0000', hexadecimal character reference
-            const QString tmp( str.mid( pos ) );
+            const QString tmp(str.mid(pos));
             res = tmp.toInt(&ok, 16);
         } else {
             //  '&#0000', decimal character reference
-            const QString tmp( str.mid( pos ) );
+            const QString tmp(str.mid(pos));
             res = tmp.toInt(&ok, 10);
         }
-        if ( ok )
+        if (ok) {
             return res;
-        else
+        } else {
             return QChar::Null;
+        }
     }
 
-    const QByteArray raw ( str.toLatin1() );
-    const entity *e = kde_findEntity( raw.data(), raw.length() );
+    const QByteArray raw(str.toLatin1());
+    const entity *e = kde_findEntity(raw.data(), raw.length());
 
-    if(!e)
-    {
+    if (!e) {
         //qDebug() << "unknown entity " << str <<", len = " << str.length();
         return QChar::Null;
     }
@@ -575,16 +577,16 @@ QChar KCharsets::fromEntity(const QString &str, int &len)
     // entities are never longer than 8 chars... we start from
     // that length and work backwards...
     len = 8;
-    while(len > 0)
-    {
+    while (len > 0) {
         QString tmp = str.left(len);
         QChar res = fromEntity(tmp);
-        if( res != QChar::Null ) return res;
+        if (res != QChar::Null) {
+            return res;
+        }
         len--;
     }
     return QChar::Null;
 }
-
 
 QString KCharsets::toEntity(const QChar &ch)
 {
@@ -593,7 +595,7 @@ QString KCharsets::toEntity(const QChar &ch)
     return ent;
 }
 
-QString KCharsets::resolveEntities( const QString &input )
+QString KCharsets::resolveEntities(const QString &input)
 {
     QString text = input;
     const QChar *p = text.unicode();
@@ -601,36 +603,39 @@ QString KCharsets::resolveEntities( const QString &input )
     const QChar *ampersand = 0;
     bool scanForSemicolon = false;
 
-    for ( ; p < end; ++p ) {
+    for (; p < end; ++p) {
         const QChar ch = *p;
 
-        if ( ch == QLatin1Char('&') ) {
+        if (ch == QLatin1Char('&')) {
             ampersand = p;
             scanForSemicolon = true;
             continue;
         }
 
-        if ( ch != QLatin1Char(';') || scanForSemicolon == false )
+        if (ch != QLatin1Char(';') || scanForSemicolon == false) {
             continue;
+        }
 
-        assert( ampersand );
+        assert(ampersand);
 
         scanForSemicolon = false;
 
         const QChar *entityBegin = ampersand + 1;
 
         const uint entityLength = p - entityBegin;
-        if ( entityLength == 0 )
+        if (entityLength == 0) {
             continue;
+        }
 
-        const QChar entityValue = KCharsets::fromEntity( QString( entityBegin, entityLength ) );
-        if ( entityValue.isNull() )
+        const QChar entityValue = KCharsets::fromEntity(QString(entityBegin, entityLength));
+        if (entityValue.isNull()) {
             continue;
+        }
 
         const uint ampersandPos = ampersand - text.unicode();
 
-        text[ (int)ampersandPos ] = entityValue;
-        text.remove( ampersandPos + 1, entityLength + 1 );
+        text[(int)ampersandPos ] = entityValue;
+        text.remove(ampersandPos + 1, entityLength + 1);
         p = text.unicode() + ampersandPos;
         end = text.unicode() + text.length();
         ampersand = 0;
@@ -642,50 +647,55 @@ QString KCharsets::resolveEntities( const QString &input )
 QStringList KCharsets::availableEncodingNames() const
 {
     QStringList available;
-    for ( const int *p = language_for_encoding_indices; *p != -1; p += 2)
-        available.append( QString::fromUtf8( language_for_encoding_string + *p ) );
+    for (const int *p = language_for_encoding_indices; *p != -1; p += 2) {
+        available.append(QString::fromUtf8(language_for_encoding_string + *p));
+    }
     available.sort();
     return available;
 }
 
 #ifndef KDE_NO_DEPRECATED
-QString KCharsets::languageForEncoding( const QString &encoding ) const
+QString KCharsets::languageForEncoding(const QString &encoding) const
 {
-    const char* lang = kcharsets_array_search( (const char*)language_for_encoding_string,
-                                               language_for_encoding_indices,
-                                               encoding.toUtf8().constData() );
-    if ( lang )
-        return tr(lang, "@item Text character set" );
-    else
-        return tr("Other", "@item Text character set" );
+    const char *lang = kcharsets_array_search((const char *)language_for_encoding_string,
+                       language_for_encoding_indices,
+                       encoding.toUtf8().constData());
+    if (lang) {
+        return tr(lang, "@item Text character set");
+    } else {
+        return tr("Other", "@item Text character set");
+    }
 }
 #endif
 
-QString KCharsets::descriptionForEncoding( const QString& encoding ) const
+QString KCharsets::descriptionForEncoding(const QString &encoding) const
 {
-    const char* lang = kcharsets_array_search( language_for_encoding_string,
-                                               language_for_encoding_indices,
-                                               encoding.toUtf8().data() );
-    if ( lang )
+    const char *lang = kcharsets_array_search(language_for_encoding_string,
+                       language_for_encoding_indices,
+                       encoding.toUtf8().data());
+    if (lang)
         return tr("%1 ( %2 )", "@item %1 character set, %2 encoding")
-            .arg(tr(lang, "@item Text character set"), encoding);
-    else
+               .arg(tr(lang, "@item Text character set"), encoding);
+    else {
         return tr("Other encoding (%1)", "@item").arg(encoding);
+    }
 }
 
-QString KCharsets::encodingForName( const QString &descriptiveName ) const
+QString KCharsets::encodingForName(const QString &descriptiveName) const
 {
-    const int left = descriptiveName.lastIndexOf( QLatin1Char('(') );
+    const int left = descriptiveName.lastIndexOf(QLatin1Char('('));
 
-    if (left<0) // No parenthesis, so assume it is a normal encoding name
-	return descriptiveName.trimmed();
+    if (left < 0) { // No parenthesis, so assume it is a normal encoding name
+        return descriptiveName.trimmed();
+    }
 
-    QString name(descriptiveName.mid(left+1));
+    QString name(descriptiveName.mid(left + 1));
 
-    const int right = name.lastIndexOf( QLatin1Char(')') );
+    const int right = name.lastIndexOf(QLatin1Char(')'));
 
-    if (right<0)
+    if (right < 0) {
         return name;
+    }
 
     return name.left(right).trimmed();
 }
@@ -693,9 +703,9 @@ QString KCharsets::encodingForName( const QString &descriptiveName ) const
 QStringList KCharsets::descriptiveEncodingNames() const
 {
     QStringList encodings;
-    for ( const int *p = language_for_encoding_indices; *p != -1; p += 2) {
-        const QString name = QString::fromUtf8( language_for_encoding_string + p[0] );
-        const QString description = tr(language_for_encoding_string + p[1], "@item Text character set"  );
+    for (const int *p = language_for_encoding_indices; *p != -1; p += 2) {
+        const QString name = QString::fromUtf8(language_for_encoding_string + p[0]);
+        const QString description = tr(language_for_encoding_string + p[1], "@item Text character set");
         encodings.append(tr("%1 ( %2 )", "@item Text encoding: %1 character set, %2 encoding").arg(description, name));
     }
     encodings.sort();
@@ -704,21 +714,22 @@ QStringList KCharsets::descriptiveEncodingNames() const
 
 QList<QStringList> KCharsets::encodingsByScript() const
 {
-    if (!d->encodingsByScript.isEmpty())
+    if (!d->encodingsByScript.isEmpty()) {
         return d->encodingsByScript;
+    }
     int i;
-    for ( const int *p = language_for_encoding_indices; *p != -1; p += 2) {
-        const QString name = QString::fromUtf8( language_for_encoding_string + p[0] );
+    for (const int *p = language_for_encoding_indices; *p != -1; p += 2) {
+        const QString name = QString::fromUtf8(language_for_encoding_string + p[0]);
         const QString description = tr(language_for_encoding_string + p[1], "@item Text character set");
 
-        for (i=0; i<d->encodingsByScript.size(); ++i) {
+        for (i = 0; i < d->encodingsByScript.size(); ++i) {
             if (d->encodingsByScript.at(i).at(0) == description) {
                 d->encodingsByScript[i].append(name);
                 break;
             }
         }
 
-        if (i==d->encodingsByScript.size()) {
+        if (i == d->encodingsByScript.size()) {
             d->encodingsByScript.append(QStringList() << description << name);
         }
 
@@ -726,62 +737,62 @@ QList<QStringList> KCharsets::encodingsByScript() const
     return d->encodingsByScript;
 }
 
-QTextCodec* KCharsets::codecForName(const QString &n) const
+QTextCodec *KCharsets::codecForName(const QString &n) const
 {
-    if ( n == QLatin1String("gb2312") || n == QLatin1String("gbk") )
-        return QTextCodec::codecForName( "gb18030" );
-    const QByteArray name( n.toLatin1() );
-    QTextCodec* codec = codecForNameOrNull( name );
-    if ( codec )
+    if (n == QLatin1String("gb2312") || n == QLatin1String("gbk")) {
+        return QTextCodec::codecForName("gb18030");
+    }
+    const QByteArray name(n.toLatin1());
+    QTextCodec *codec = codecForNameOrNull(name);
+    if (codec) {
         return codec;
-    else
-        return QTextCodec::codecForName( "iso-8859-1" );
+    } else {
+        return QTextCodec::codecForName("iso-8859-1");
+    }
 }
 
-QTextCodec* KCharsets::codecForName(const QString &n, bool &ok) const
+QTextCodec *KCharsets::codecForName(const QString &n, bool &ok) const
 {
     if (n == QLatin1String("gb2312") || n == QLatin1String("gbk")) {
         ok = true;
-        return QTextCodec::codecForName( "gb18030" );
+        return QTextCodec::codecForName("gb18030");
     }
-    const QByteArray name( n.toLatin1() );
-    QTextCodec* codec = codecForNameOrNull( name );
-    if ( codec )
-    {
+    const QByteArray name(n.toLatin1());
+    QTextCodec *codec = codecForNameOrNull(name);
+    if (codec) {
         ok = true;
         return codec;
-    }
-    else
-    {
+    } else {
         ok = false;
-        return QTextCodec::codecForName( "iso-8859-1" );
+        return QTextCodec::codecForName("iso-8859-1");
     }
 }
 
-QTextCodec *KCharsets::codecForNameOrNull( const QByteArray& n ) const
+QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
 {
-    QTextCodec* codec = 0;
+    QTextCodec *codec = 0;
 
     if (n.isEmpty()) {
 #pragma message("KDE5 TODO: Any better ideas ?")
         // No name, assume system locale
         const QByteArray locale = "->locale<-";
-        if ( d->codecForNameDict.contains( locale ) )
-            return d->codecForNameDict.value( locale );
+        if (d->codecForNameDict.contains(locale)) {
+            return d->codecForNameDict.value(locale);
+        }
         codec = QTextCodec::codecForLocale();
         d->codecForNameDict.insert("->locale<-", codec);
         return codec;
     }
     // For a non-empty name, lookup the "dictionnary", in a case-sensitive way.
-    else if ( d->codecForNameDict.contains( n ) ) {
-        return d->codecForNameDict.value( n );
+    else if (d->codecForNameDict.contains(n)) {
+        return d->codecForNameDict.value(n);
     }
 
     // If the name is not in the hash table, call directly QTextCoded::codecForName.
     // We assume that QTextCodec is smarter and more maintained than this code.
-    codec = QTextCodec::codecForName( n );
-    if ( codec ) {
-        d->codecForNameDict.insert( n, codec );
+    codec = QTextCodec::codecForName(n);
+    if (codec) {
+        d->codecForNameDict.insert(n, codec);
         return codec;
     }
 
@@ -790,24 +801,24 @@ QTextCodec *KCharsets::codecForNameOrNull( const QByteArray& n ) const
     QByteArray name = n.toLower();
     bool changed = false;
     if (name.endsWith("_charset")) { // krazy:exclude=strings
-       name.chop( 8 );
-       changed = true;
+        name.chop(8);
+        changed = true;
     }
-    if ( name.startsWith( "x-" ) ) { // krazy:exclude=strings
-       name.remove( 0, 2 ); // remove x- at start
-       changed = true;
+    if (name.startsWith("x-")) {     // krazy:exclude=strings
+        name.remove(0, 2);   // remove x- at start
+        changed = true;
     }
 
     if (name.isEmpty()) {
-      // We have no name anymore, therefore the name is invalid.
-      return 0;
+        // We have no name anymore, therefore the name is invalid.
+        return 0;
     }
 
     // We only need to check changed names.
-    if ( changed ) {
+    if (changed) {
         codec = QTextCodec::codecForName(name);
         if (codec) {
-            d->codecForNameDict.insert( n, codec );
+            d->codecForNameDict.insert(n, codec);
             return codec;
         }
         changed = false;
@@ -815,25 +826,25 @@ QTextCodec *KCharsets::codecForNameOrNull( const QByteArray& n ) const
 
     // these codecs are built into Qt, but the name given for the codec is different,
     // so QTextCodec did not recognize it.
-    QByteArray cname = kcharsets_array_search( builtin_string, builtin_indices, name.data());
+    QByteArray cname = kcharsets_array_search(builtin_string, builtin_indices, name.data());
 
-    if(!cname.isEmpty())
+    if (!cname.isEmpty()) {
         codec = QTextCodec::codecForName(cname);
+    }
 
-    if (codec)
-    {
-        d->codecForNameDict.insert( n, codec );
+    if (codec) {
+        d->codecForNameDict.insert(n, codec);
         return codec;
     }
 
     // this also failed, the last resort is now to take some compatibility charmap
     // ### TODO: while emergency conversions might be useful at read, it is not sure if they should be done if the application plans to write.
-    cname = kcharsets_array_search( conversion_hints_string, conversion_hints_indices, name.data() );
+    cname = kcharsets_array_search(conversion_hints_string, conversion_hints_indices, name.data());
 
     if (!cname.isEmpty()) {
         codec = QTextCodec::codecForName(cname);
         if (codec) {
-            d->codecForNameDict.insert( n, codec );
+            d->codecForNameDict.insert(n, codec);
             return codec;
         }
     }

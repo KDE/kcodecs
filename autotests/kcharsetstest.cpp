@@ -24,9 +24,10 @@
 
 static bool encodingNameHasADescription(const QString &encodingName, const QStringList &descriptions)
 {
-    Q_FOREACH(QString description, descriptions)
-        if (description.contains(encodingName))
+    Q_FOREACH (QString description, descriptions)
+        if (description.contains(encodingName)) {
             return true;
+        }
     return false;
 }
 
@@ -103,18 +104,18 @@ void KCharsetsTest::testCodecForName()
     QFETCH(QString, expectedCodecFromKDE);
     QFETCH(QString, expectedCodecFromQt);
 
-    if (QTextCodec::codecForName(codec.toLocal8Bit()) == NULL ) {
+    if (QTextCodec::codecForName(codec.toLocal8Bit()) == NULL) {
         qWarning() << "codec " << codec << "is not supported by QTextCodec !";
-	return;
+        return;
     }
 
-    QVERIFY( QTextCodec::codecForName(expectedCodecFromKDE.toLocal8Bit()) != NULL);
+    QVERIFY(QTextCodec::codecForName(expectedCodecFromKDE.toLocal8Bit()) != NULL);
     QCOMPARE(singleton->codecForName(codec)->name(),
-        QTextCodec::codecForName(expectedCodecFromKDE.toLocal8Bit())->name());
+             QTextCodec::codecForName(expectedCodecFromKDE.toLocal8Bit())->name());
 
-    QVERIFY( QTextCodec::codecForName(expectedCodecFromQt.toLocal8Bit()) != NULL);
+    QVERIFY(QTextCodec::codecForName(expectedCodecFromQt.toLocal8Bit()) != NULL);
     QCOMPARE(QTextCodec::codecForName(codec.toLocal8Bit())->name(),
-        QTextCodec::codecForName(expectedCodecFromQt.toLocal8Bit())->name());
+             QTextCodec::codecForName(expectedCodecFromQt.toLocal8Bit())->name());
 }
 
 void KCharsetsTest::testFromEntity()
@@ -132,7 +133,7 @@ void KCharsetsTest::testFromEntity()
 
 void KCharsetsTest::testToEntity()
 {
-  QSKIP("KCharsets::toEntity test not implemented.");
+    QSKIP("KCharsets::toEntity test not implemented.");
 }
 
 void KCharsetsTest::testResolveEntities()
@@ -140,7 +141,7 @@ void KCharsetsTest::testResolveEntities()
     KCharsets *singleton = KCharsets::charsets();
 
     QCOMPARE(singleton->resolveEntities(QString::fromLatin1("&quot;&apos;&lt;Hello &amp;World&gt;&apos;&quot;")),
-        QString::fromLatin1("\"\'<Hello &World>\'\"")); 
+             QString::fromLatin1("\"\'<Hello &World>\'\""));
 }
 
 void KCharsetsTest::testEncodingNames()
@@ -149,35 +150,35 @@ void KCharsetsTest::testEncodingNames()
 
     QCOMPARE(singleton->availableEncodingNames().count(), singleton->descriptiveEncodingNames().count());
 
-    Q_FOREACH(QString encodingName, singleton->availableEncodingNames()) {
+    Q_FOREACH (QString encodingName, singleton->availableEncodingNames()) {
         bool ok = false;
 
 #if QT_VERSION <= QT_VERSION_CHECK(5, 2, 0)
         if (encodingName == QString::fromLatin1("ISO 8859-16")
-         || encodingName == QString::fromLatin1("jis7")
-         || encodingName == QString::fromLatin1("winsami2")) {
+                || encodingName == QString::fromLatin1("jis7")
+                || encodingName == QString::fromLatin1("winsami2")) {
             qWarning() << "Pending fix in Qt, for now" << encodingName << "is missing";
-	    qWarning() << "availability of " << encodingName << "depends on if Qt is built with icu support. So skip it";
+            qWarning() << "availability of " << encodingName << "depends on if Qt is built with icu support. So skip it";
             continue;
         }
 #endif
 
-        if (encodingName == QString::fromLatin1("ucs2") || encodingName == QString::fromLatin1("ISO 10646-UCS-2"))
+        if (encodingName == QString::fromLatin1("ucs2") || encodingName == QString::fromLatin1("ISO 10646-UCS-2")) {
             singleton->codecForName(QString::fromLatin1("UTF-16"), ok);
-        else if (encodingName == QString::fromLatin1("utf7"))
+        } else if (encodingName == QString::fromLatin1("utf7")) {
             continue;
-        else
+        } else {
             singleton->codecForName(encodingName, ok);
+        }
 
         if (!ok) {
             qDebug() << "Error:" << encodingName << "not found";
             QVERIFY(NULL);
-	}
-        QVERIFY( encodingNameHasADescription(encodingName, singleton->descriptiveEncodingNames()) );
-        QVERIFY( !singleton->descriptionForEncoding(encodingName).isEmpty() );
-        QCOMPARE( singleton->encodingForName( singleton->descriptionForEncoding(encodingName) ), encodingName );
+        }
+        QVERIFY(encodingNameHasADescription(encodingName, singleton->descriptiveEncodingNames()));
+        QVERIFY(!singleton->descriptionForEncoding(encodingName).isEmpty());
+        QCOMPARE(singleton->encodingForName(singleton->descriptionForEncoding(encodingName)), encodingName);
     }
 }
-
 
 QTEST_MAIN(KCharsetsTest)

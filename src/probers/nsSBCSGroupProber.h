@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 /* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 1.1/GPL 2.0/LGPL 2.1
  *
@@ -43,28 +42,33 @@
 
 #define NUM_OF_SBCS_PROBERS    14
 
-namespace kencodingprober {
-class KCODECS_NO_EXPORT nsSBCSGroupProber: public nsCharSetProber {
+namespace kencodingprober
+{
+class KCODECS_NO_EXPORT nsSBCSGroupProber: public nsCharSetProber
+{
 public:
-  nsSBCSGroupProber();
-  virtual ~nsSBCSGroupProber();
-  nsProbingState HandleData(const char* aBuf, unsigned int aLen);
-  const char* GetCharSetName();
-  nsProbingState GetState(void) {return mState;};
-  void      Reset(void);
-  float     GetConfidence(void);
-  void      SetOpion() {};
+    nsSBCSGroupProber();
+    virtual ~nsSBCSGroupProber();
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen);
+    const char *GetCharSetName();
+    nsProbingState GetState(void)
+    {
+        return mState;
+    };
+    void      Reset(void);
+    float     GetConfidence(void);
+    void      SetOpion() {};
 
 #ifdef DEBUG_PROBE
-  void  DumpStatus();
+    void  DumpStatus();
 #endif
 
 protected:
-  nsProbingState mState;
-  nsCharSetProber* mProbers[NUM_OF_SBCS_PROBERS];
-  bool          mIsActive[NUM_OF_SBCS_PROBERS];
-  int mBestGuess;
-  unsigned int mActiveNum;
+    nsProbingState mState;
+    nsCharSetProber *mProbers[NUM_OF_SBCS_PROBERS];
+    bool          mIsActive[NUM_OF_SBCS_PROBERS];
+    int mBestGuess;
+    unsigned int mActiveNum;
 };
 }
 

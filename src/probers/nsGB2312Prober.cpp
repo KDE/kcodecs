@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 /*  -*- C++ -*-
 *  Copyright (C) 1998 <developer@mozilla.org>
 *
@@ -11,7 +10,7 @@
 *  permit persons to whom the Software is furnished to do so, subject to
 *  the following conditions:
 *
-*  The above copyright notice and this permission notice shall be included 
+*  The above copyright notice and this permission notice shall be included
 *  in all copies or substantial portions of the Software.
 *
 *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -28,67 +27,61 @@
 // 2, kana character often exist in group
 // 3, certain combination of kana is never used in japanese language
 
-
-
 #include "nsGB2312Prober.h"
 
-namespace kencodingprober {
+namespace kencodingprober
+{
 void  nsGB18030Prober::Reset(void)
 {
-  mCodingSM->Reset(); 
-  mState = eDetecting;
-  mDistributionAnalyser.Reset();
-  //mContextAnalyser.Reset();
+    mCodingSM->Reset();
+    mState = eDetecting;
+    mDistributionAnalyser.Reset();
+    //mContextAnalyser.Reset();
 }
 
-nsProbingState nsGB18030Prober::HandleData(const char* aBuf, unsigned int aLen)
+nsProbingState nsGB18030Prober::HandleData(const char *aBuf, unsigned int aLen)
 {
-  nsSMState codingState;
+    nsSMState codingState;
 
-  for (unsigned int i = 0; i < aLen; i++)
-  {
-    codingState = mCodingSM->NextState(aBuf[i]);
-    if (codingState == eError)
-    {
-      mState = eNotMe;
-      break;
+    for (unsigned int i = 0; i < aLen; i++) {
+        codingState = mCodingSM->NextState(aBuf[i]);
+        if (codingState == eError) {
+            mState = eNotMe;
+            break;
+        }
+        if (codingState == eItsMe) {
+            mState = eFoundIt;
+            break;
+        }
+        if (codingState == eStart) {
+            unsigned int charLen = mCodingSM->GetCurrentCharLen();
+
+            if (i == 0) {
+                mLastChar[1] = aBuf[0];
+                mDistributionAnalyser.HandleOneChar(mLastChar, charLen);
+            } else {
+                mDistributionAnalyser.HandleOneChar(aBuf + i - 1, charLen);
+            }
+        }
     }
-    if (codingState == eItsMe)
-    {
-      mState = eFoundIt;
-      break;
-    }
-    if (codingState == eStart)
-    {
-      unsigned int charLen = mCodingSM->GetCurrentCharLen();
 
-      if (i == 0)
-      {
-        mLastChar[1] = aBuf[0];
-        mDistributionAnalyser.HandleOneChar(mLastChar, charLen);
-      }
-      else
-        mDistributionAnalyser.HandleOneChar(aBuf+i-1, charLen);
-    }
-  }
+    mLastChar[0] = aBuf[aLen - 1];
 
-  mLastChar[0] = aBuf[aLen-1];
-
-  if (mState == eDetecting)
-    if (mDistributionAnalyser.GotEnoughData() && GetConfidence() > SHORTCUT_THRESHOLD)
-      mState = eFoundIt;
+    if (mState == eDetecting)
+        if (mDistributionAnalyser.GotEnoughData() && GetConfidence() > SHORTCUT_THRESHOLD) {
+            mState = eFoundIt;
+        }
 //    else
 //      mDistributionAnalyser.HandleData(aBuf, aLen);
 
-  return mState;
+    return mState;
 }
 
 float nsGB18030Prober::GetConfidence(void)
 {
-  float distribCf = mDistributionAnalyser.GetConfidence();
+    float distribCf = mDistributionAnalyser.GetConfidence();
 
-  return (float)distribCf;
+    return (float)distribCf;
 }
 }
-
 

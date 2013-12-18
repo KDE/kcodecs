@@ -104,7 +104,7 @@ public:
     /**
      * Default ProberType is Universal(detect all possibe encodings)
      */
-    KEncodingProber(ProberType proberType=Universal);
+    KEncodingProber(ProberType proberType = Universal);
 
     ~KEncodingProber();
 
@@ -121,7 +121,7 @@ public:
      * @returns the ProberState after probing the fed data.
      */
     ProberState feed(const QByteArray &data);
-    ProberState feed(const char* data, int len);
+    ProberState feed(const char *data, int len);
 
     /**
      * @returns the prober's current ProberState
@@ -150,7 +150,7 @@ public:
     /**
      * @return the ProberType for lang (eg. proberTypeForName("Chinese Simplified") will return KEncodingProber::ChineseSimplified
      */
-    static ProberType proberTypeForName(const QString& lang);
+    static ProberType proberTypeForName(const QString &lang);
 
     /**
      * map ProberType to language string
@@ -158,7 +158,7 @@ public:
     static QString nameForProberType(ProberType proberType);
 
 private:
-    KEncodingProberPrivate* const d;
+    KEncodingProberPrivate *const d;
 };
 
 #endif

@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 /*  -*- C++ -*-
 *  Copyright (C) 1998 <developer@mozilla.org>
 *
@@ -11,7 +10,7 @@
 *  permit persons to whom the Software is furnished to do so, subject to
 *  the following conditions:
 *
-*  The above copyright notice and this permission notice shall be included 
+*  The above copyright notice and this permission notice shall be included
 *  in all copies or substantial portions of the Software.
 *
 *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -30,25 +29,36 @@
 #include "nsCodingStateMachine.h"
 
 #define NUM_OF_ESC_CHARSETS   4
-namespace kencodingprober {
-class KCODECS_NO_EXPORT nsEscCharSetProber: public nsCharSetProber {
+namespace kencodingprober
+{
+class KCODECS_NO_EXPORT nsEscCharSetProber: public nsCharSetProber
+{
 public:
-  nsEscCharSetProber(void);
-  virtual ~nsEscCharSetProber(void);
-  nsProbingState HandleData(const char* aBuf, unsigned int aLen);
-  const char* GetCharSetName() {return mDetectedCharset;};
-  nsProbingState GetState(void) {return mState;};
-  void      Reset(void);
-  float     GetConfidence(void){return (float)0.99;};
-  void      SetOpion() {};
+    nsEscCharSetProber(void);
+    virtual ~nsEscCharSetProber(void);
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen);
+    const char *GetCharSetName()
+    {
+        return mDetectedCharset;
+    };
+    nsProbingState GetState(void)
+    {
+        return mState;
+    };
+    void      Reset(void);
+    float     GetConfidence(void)
+    {
+        return (float)0.99;
+    };
+    void      SetOpion() {};
 
 protected:
-  void      GetDistribution(unsigned int aCharLen, const char* aStr);
-  
-  nsCodingStateMachine* mCodingSM[NUM_OF_ESC_CHARSETS] ;
-  unsigned int    mActiveSM;
-  nsProbingState mState;
-  const char *  mDetectedCharset;
+    void      GetDistribution(unsigned int aCharLen, const char *aStr);
+
+    nsCodingStateMachine *mCodingSM[NUM_OF_ESC_CHARSETS];
+    unsigned int    mActiveSM;
+    nsProbingState mState;
+    const char   *mDetectedCharset;
 };
 }
 #endif /* nsEscCharSetProber_h__ */

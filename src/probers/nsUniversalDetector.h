@@ -1,4 +1,3 @@
-/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 /*  -*- C++ -*-
 *  Copyright (C) 1998 <developer@mozilla.org>
 *  Copyright (C) 2008 <zealot.kai@gmail.com>
@@ -11,7 +10,7 @@
 *  permit persons to whom the Software is furnished to do so, subject to
 *  the following conditions:
 *
-*  The above copyright notice and this permission notice shall be included 
+*  The above copyright notice and this permission notice shall be included
 *  in all copies or substantial portions of the Software.
 *
 *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -30,36 +29,38 @@
 
 #define NUM_OF_CHARSET_PROBERS  3
 
-namespace kencodingprober {
+namespace kencodingprober
+{
 typedef enum {
-  ePureAscii = 0,
-  eEscAscii  = 1,
-  eHighbyte  = 2
+    ePureAscii = 0,
+    eEscAscii  = 1,
+    eHighbyte  = 2
 } nsInputState;
 
-class KCODECS_NO_EXPORT nsUniversalDetector: public nsCharSetProber {
+class KCODECS_NO_EXPORT nsUniversalDetector: public nsCharSetProber
+{
 public:
     nsUniversalDetector();
     virtual ~nsUniversalDetector();
-    nsProbingState HandleData(const char* aBuf, unsigned int aLen);
-    const char* GetCharSetName();
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen);
+    const char *GetCharSetName();
     void      Reset(void);
     float     GetConfidence(void);
     nsProbingState GetState();
-    void      SetOpion() {};   
+    void      SetOpion() {};
 
 protected:
-   nsInputState  mInputState;
-   bool  mDone;
-   bool  mInTag;
-   bool  mStart;
-   bool  mGotData;
-   char    mLastChar;
-   const char *  mDetectedCharset;
-   int mBestGuess;
+    nsInputState  mInputState;
+    bool  mDone;
+    bool  mInTag;
+    bool  mStart;
+    bool  mGotData;
+    char    mLastChar;
+    const char   *mDetectedCharset;
+    int mBestGuess;
 
-   nsCharSetProber  *mCharSetProbers[NUM_OF_CHARSET_PROBERS];
-   nsCharSetProber  *mEscCharSetProber;
+    nsCharSetProber  *mCharSetProbers[NUM_OF_CHARSET_PROBERS];
+    nsCharSetProber  *mEscCharSetProber;
 };
 }
 

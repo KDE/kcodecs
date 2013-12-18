@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 /* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 1.1/GPL 2.0/LGPL 2.1
  *
@@ -48,27 +47,41 @@
 #include "JpCntx.h"
 #include "CharDistribution.h"
 
-namespace kencodingprober {
-class KCODECS_NO_EXPORT nsSJISProber: public nsCharSetProber {
+namespace kencodingprober
+{
+class KCODECS_NO_EXPORT nsSJISProber: public nsCharSetProber
+{
 public:
-  nsSJISProber(void){mCodingSM = new nsCodingStateMachine(&SJISSMModel);
-                      Reset();};
-  virtual ~nsSJISProber(void){delete mCodingSM;};
-  nsProbingState HandleData(const char* aBuf, unsigned int aLen);
-  const char* GetCharSetName() {return "Shift_JIS";};
-  nsProbingState GetState(void) {return mState;};
-  void      Reset(void);
-  float     GetConfidence(void);
-  void      SetOpion() {};
+    nsSJISProber(void)
+    {
+        mCodingSM = new nsCodingStateMachine(&SJISSMModel);
+        Reset();
+    };
+    virtual ~nsSJISProber(void)
+    {
+        delete mCodingSM;
+    };
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen);
+    const char *GetCharSetName()
+    {
+        return "Shift_JIS";
+    };
+    nsProbingState GetState(void)
+    {
+        return mState;
+    };
+    void      Reset(void);
+    float     GetConfidence(void);
+    void      SetOpion() {};
 
 protected:
-  nsCodingStateMachine* mCodingSM;
-  nsProbingState mState;
+    nsCodingStateMachine *mCodingSM;
+    nsProbingState mState;
 
-  SJISContextAnalysis mContextAnalyser;
-  SJISDistributionAnalysis mDistributionAnalyser;
+    SJISContextAnalysis mContextAnalyser;
+    SJISDistributionAnalysis mDistributionAnalyser;
 
-  char mLastChar[2];
+    char mLastChar[2];
 
 };
 }

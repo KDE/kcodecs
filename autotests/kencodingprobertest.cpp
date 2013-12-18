@@ -20,7 +20,7 @@
 #include <QTest>
 #include <kencodingprober.h>
 
-static KEncodingProber* ep = 0;
+static KEncodingProber *ep = 0;
 
 void KEncodingProberTest::initTestCase()
 {

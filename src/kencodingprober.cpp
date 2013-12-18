@@ -52,81 +52,90 @@ public:
         delete prober;
 
         switch (proberType) {
-            case KEncodingProber::None:
-                prober = NULL;
-                break;
-            case KEncodingProber::Arabic:
-            case KEncodingProber::Baltic:
-            case KEncodingProber::CentralEuropean:
-            case KEncodingProber::Cyrillic:
-            case KEncodingProber::Greek:
-            case KEncodingProber::Hebrew:
-            case KEncodingProber::NorthernSaami:
-            case KEncodingProber::Other:
-            case KEncodingProber::SouthEasternEurope:
-            case KEncodingProber::Thai:
-            case KEncodingProber::Turkish:
-            case KEncodingProber::WesternEuropean:
-                prober = new kencodingprober::nsSBCSGroupProber();
-                break;
-            case KEncodingProber::ChineseSimplified:
-            case KEncodingProber::ChineseTraditional:
-                prober = new kencodingprober::ChineseGroupProber();
-                break;
-            case KEncodingProber::Japanese:
-                prober = new kencodingprober::JapaneseGroupProber();
-                break;
-            case KEncodingProber::Korean:
-                prober = new kencodingprober::nsMBCSGroupProber();
-                break;
-            case KEncodingProber::Unicode:
-                prober = new kencodingprober::UnicodeGroupProber();
-                break;
-            case KEncodingProber::Universal:
-                prober = new kencodingprober::nsUniversalDetector();
-                break;
-            default:
-                prober = NULL;
+        case KEncodingProber::None:
+            prober = NULL;
+            break;
+        case KEncodingProber::Arabic:
+        case KEncodingProber::Baltic:
+        case KEncodingProber::CentralEuropean:
+        case KEncodingProber::Cyrillic:
+        case KEncodingProber::Greek:
+        case KEncodingProber::Hebrew:
+        case KEncodingProber::NorthernSaami:
+        case KEncodingProber::Other:
+        case KEncodingProber::SouthEasternEurope:
+        case KEncodingProber::Thai:
+        case KEncodingProber::Turkish:
+        case KEncodingProber::WesternEuropean:
+            prober = new kencodingprober::nsSBCSGroupProber();
+            break;
+        case KEncodingProber::ChineseSimplified:
+        case KEncodingProber::ChineseTraditional:
+            prober = new kencodingprober::ChineseGroupProber();
+            break;
+        case KEncodingProber::Japanese:
+            prober = new kencodingprober::JapaneseGroupProber();
+            break;
+        case KEncodingProber::Korean:
+            prober = new kencodingprober::nsMBCSGroupProber();
+            break;
+        case KEncodingProber::Unicode:
+            prober = new kencodingprober::UnicodeGroupProber();
+            break;
+        case KEncodingProber::Universal:
+            prober = new kencodingprober::nsUniversalDetector();
+            break;
+        default:
+            prober = NULL;
         }
     }
     void unicodeTest(const char *aBuf, int aLen)
     {
-        if (mStart)
-        {
+        if (mStart) {
             mStart = false;
             if (aLen > 3)
-            switch (aBuf[0])
-            {
+                switch (aBuf[0]) {
                 case '\xEF':
                     if (('\xBB' == aBuf[1]) && ('\xBF' == aBuf[2]))
-                    // EF BB BF  UTF-8 encoded BOM
-                    proberState = KEncodingProber::FoundIt;
+                        // EF BB BF  UTF-8 encoded BOM
+                    {
+                        proberState = KEncodingProber::FoundIt;
+                    }
                     break;
                 case '\xFE':
                     if (('\xFF' == aBuf[1]) && ('\x00' == aBuf[2]) && ('\x00' == aBuf[3]))
                         // FE FF 00 00  UCS-4, unusual octet order BOM (3412)
+                    {
                         proberState = KEncodingProber::FoundIt;
-                    else if ('\xFF' == aBuf[1])
+                    } else if ('\xFF' == aBuf[1])
                         // FE FF  UTF-16, big endian BOM
+                    {
                         proberState = KEncodingProber::FoundIt;
-                        break;
+                    }
+                    break;
                 case '\x00':
                     if (('\x00' == aBuf[1]) && ('\xFE' == aBuf[2]) && ('\xFF' == aBuf[3]))
                         // 00 00 FE FF  UTF-32, big-endian BOM
+                    {
                         proberState = KEncodingProber::FoundIt;
-                    else if (('\x00' == aBuf[1]) && ('\xFF' == aBuf[2]) && ('\xFE' == aBuf[3]))
+                    } else if (('\x00' == aBuf[1]) && ('\xFF' == aBuf[2]) && ('\xFE' == aBuf[3]))
                         // 00 00 FF FE  UCS-4, unusual octet order BOM (2143)
+                    {
                         proberState = KEncodingProber::FoundIt;
-                        break;
+                    }
+                    break;
                 case '\xFF':
                     if (('\xFE' == aBuf[1]) && ('\x00' == aBuf[2]) && ('\x00' == aBuf[3]))
                         // FF FE 00 00  UTF-32, little-endian BOM
+                    {
                         proberState = KEncodingProber::FoundIt;
-                    else if ('\xFE' == aBuf[1])
+                    } else if ('\xFE' == aBuf[1])
                         // FF FE  UTF-16, little endian BOM
+                    {
                         proberState = KEncodingProber::FoundIt;
-                        break;
-            }  // switch
+                    }
+                    break;
+                }  // switch
 
         }
     }
@@ -157,28 +166,29 @@ KEncodingProber::ProberState KEncodingProber::feed(const QByteArray &data)
     return feed(data.data(), data.size());
 }
 
-KEncodingProber::ProberState KEncodingProber::feed(const char* data, int len)
+KEncodingProber::ProberState KEncodingProber::feed(const char *data, int len)
 {
-    if (!d->prober)
+    if (!d->prober) {
         return d->proberState;
+    }
     if (d->proberState == Probing) {
         if (d->mStart) {
             d->unicodeTest(data, len);
-            if (d->proberState == FoundIt)
+            if (d->proberState == FoundIt) {
                 return d->proberState;
+            }
         }
         d->prober->HandleData(data, len);
-        switch (d->prober->GetState())
-        {
-            case kencodingprober::eNotMe:
-                d->proberState = NotMe;
-                break;
-            case kencodingprober::eFoundIt:
-                d->proberState = FoundIt;
-                break;
-            default:
-                d->proberState = Probing;
-                break;
+        switch (d->prober->GetState()) {
+        case kencodingprober::eNotMe:
+            d->proberState = NotMe;
+            break;
+        case kencodingprober::eFoundIt:
+            d->proberState = FoundIt;
+            break;
+        default:
+            d->proberState = Probing;
+            break;
         }
     }
 #ifdef DEBUG_PROBE
@@ -194,16 +204,18 @@ KEncodingProber::ProberState KEncodingProber::state() const
 
 QByteArray KEncodingProber::encoding() const
 {
-    if (!d->prober)
+    if (!d->prober) {
         return QByteArray("UTF-8");
+    }
 
     return QByteArray(d->prober->GetCharSetName());
 }
 
 float KEncodingProber::confidence() const
 {
-    if (!d->prober)
+    if (!d->prober) {
         return 0.0;
+    }
 
     return d->prober->GetConfidence();
 }
@@ -219,7 +231,7 @@ void KEncodingProber::setProberType(KEncodingProber::ProberType proberType)
     reset();
 }
 
-KEncodingProber::ProberType KEncodingProber::proberTypeForName(const QString& lang)
+KEncodingProber::ProberType KEncodingProber::proberTypeForName(const QString &lang)
 {
     if (lang.isEmpty()) {
         return KEncodingProber::Universal;
@@ -262,57 +274,56 @@ KEncodingProber::ProberType KEncodingProber::proberTypeForName(const QString& la
 
 QString KEncodingProber::nameForProberType(KEncodingProber::ProberType proberType)
 {
-    switch (proberType)
-    {
-        case KEncodingProber::None:
-            return tr("Disabled", "@item Text character set");
-            break;
-        case KEncodingProber::Universal:
-            return tr("Universal", "@item Text character set");
-            break;
-        case KEncodingProber::Arabic:
-            return tr("Arabic", "@item Text character set");
-            break;
-        case KEncodingProber::Baltic:
-            return tr("Baltic", "@item Text character set");
-            break;
-        case KEncodingProber::CentralEuropean:
-            return tr("Central European", "@item Text character set");
-            break;
-        case KEncodingProber::Cyrillic:
-            return tr("Cyrillic", "@item Text character set");
-            break;
-        case KEncodingProber::Greek:
-            return tr("Greek", "@item Text character set");
-            break;
-        case KEncodingProber::Hebrew:
-            return tr("Hebrew", "@item Text character set");
-            break;
-        case KEncodingProber::Japanese:
-            return tr("Japanese", "@item Text character set");
-            break;
-        case KEncodingProber::Turkish:
-            return tr("Turkish", "@item Text character set");
-            break;
-        case KEncodingProber::WesternEuropean:
-            return tr("Western European", "@item Text character set");
-            break;
-        case KEncodingProber::ChineseTraditional:
-            return tr("Chinese Traditional", "@item Text character set");
-            break;
-        case KEncodingProber::ChineseSimplified:
-            return tr("Chinese Simplified", "@item Text character set");
-            break;
-        case KEncodingProber::Korean:
-            return tr("Korean", "@item Text character set");
-            break;
-        case KEncodingProber::Thai:
-            return tr("Thai", "@item Text character set");
-            break;
-        case KEncodingProber::Unicode:
-            return tr("Unicode", "@item Text character set");
-            break;
-        default:
-            return QString();
-        }
+    switch (proberType) {
+    case KEncodingProber::None:
+        return tr("Disabled", "@item Text character set");
+        break;
+    case KEncodingProber::Universal:
+        return tr("Universal", "@item Text character set");
+        break;
+    case KEncodingProber::Arabic:
+        return tr("Arabic", "@item Text character set");
+        break;
+    case KEncodingProber::Baltic:
+        return tr("Baltic", "@item Text character set");
+        break;
+    case KEncodingProber::CentralEuropean:
+        return tr("Central European", "@item Text character set");
+        break;
+    case KEncodingProber::Cyrillic:
+        return tr("Cyrillic", "@item Text character set");
+        break;
+    case KEncodingProber::Greek:
+        return tr("Greek", "@item Text character set");
+        break;
+    case KEncodingProber::Hebrew:
+        return tr("Hebrew", "@item Text character set");
+        break;
+    case KEncodingProber::Japanese:
+        return tr("Japanese", "@item Text character set");
+        break;
+    case KEncodingProber::Turkish:
+        return tr("Turkish", "@item Text character set");
+        break;
+    case KEncodingProber::WesternEuropean:
+        return tr("Western European", "@item Text character set");
+        break;
+    case KEncodingProber::ChineseTraditional:
+        return tr("Chinese Traditional", "@item Text character set");
+        break;
+    case KEncodingProber::ChineseSimplified:
+        return tr("Chinese Simplified", "@item Text character set");
+        break;
+    case KEncodingProber::Korean:
+        return tr("Korean", "@item Text character set");
+        break;
+    case KEncodingProber::Thai:
+        return tr("Thai", "@item Text character set");
+        break;
+    case KEncodingProber::Unicode:
+        return tr("Unicode", "@item Text character set");
+        break;
+    default:
+        return QString();
+    }
 }

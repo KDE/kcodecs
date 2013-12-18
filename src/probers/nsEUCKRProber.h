@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 /*  -*- C++ -*-
 *  Copyright (C) 1998 <developer@mozilla.org>
 *
@@ -11,7 +10,7 @@
 *  permit persons to whom the Software is furnished to do so, subject to
 *  the following conditions:
 *
-*  The above copyright notice and this permission notice shall be included 
+*  The above copyright notice and this permission notice shall be included
 *  in all copies or substantial portions of the Software.
 *
 *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -29,28 +28,42 @@
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
 #include "CharDistribution.h"
-namespace kencodingprober {
-class KCODECS_NO_EXPORT nsEUCKRProber: public nsCharSetProber {
+namespace kencodingprober
+{
+class KCODECS_NO_EXPORT nsEUCKRProber: public nsCharSetProber
+{
 public:
-  nsEUCKRProber(void){mCodingSM = new nsCodingStateMachine(&EUCKRSMModel);
-                      Reset();};
-  virtual ~nsEUCKRProber(void){delete mCodingSM;};
-  nsProbingState HandleData(const char* aBuf, unsigned int aLen);
-  const char* GetCharSetName() {return "EUC-KR";};
-  nsProbingState GetState(void) {return mState;};
-  void      Reset(void);
-  float     GetConfidence(void);
-  void      SetOpion() {};
+    nsEUCKRProber(void)
+    {
+        mCodingSM = new nsCodingStateMachine(&EUCKRSMModel);
+        Reset();
+    };
+    virtual ~nsEUCKRProber(void)
+    {
+        delete mCodingSM;
+    };
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen);
+    const char *GetCharSetName()
+    {
+        return "EUC-KR";
+    };
+    nsProbingState GetState(void)
+    {
+        return mState;
+    };
+    void      Reset(void);
+    float     GetConfidence(void);
+    void      SetOpion() {};
 
 protected:
-  void      GetDistribution(unsigned int aCharLen, const char* aStr);
-  
-  nsCodingStateMachine* mCodingSM;
-  nsProbingState mState;
+    void      GetDistribution(unsigned int aCharLen, const char *aStr);
 
-  //EUCKRContextAnalysis mContextAnalyser;
-  EUCKRDistributionAnalysis mDistributionAnalyser;
-  char mLastChar[2];
+    nsCodingStateMachine *mCodingSM;
+    nsProbingState mState;
+
+    //EUCKRContextAnalysis mContextAnalyser;
+    EUCKRDistributionAnalysis mDistributionAnalyser;
+    char mLastChar[2];
 
 };
 }
