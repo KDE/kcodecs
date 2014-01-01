@@ -36,6 +36,8 @@ add_library(KF5Codecs ${kcodecs_SRCS})
 generate_export_header(KF5Codecs BASE_NAME KCodecs)
 add_library(KF5::Codecs ALIAS KF5Codecs)
 
+target_include_directories(KF5Codecs INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/kcodecs>" "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/KCodecs>")
+
 target_link_libraries(KF5Codecs PUBLIC Qt5::Core)
 
 set_target_properties(KF5Codecs PROPERTIES VERSION   ${KCODECS_VERSION_STRING}
@@ -43,12 +45,20 @@ set_target_properties(KF5Codecs PROPERTIES VERSION   ${KCODECS_VERSION_STRING}
                                            EXPORT_NAME Codecs
 )
 
+ecm_generate_headers(
+  KCharsets
+  KCodecs
+  KEncodingProber
+
+  MODULE_NAME KCodecs
+  REQUIRED_HEADERS KCodecs_HEADERS
+)
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/KCodecs DESTINATION ${INCLUDE_INSTALL_DIR} COMPONENT Devel)
+
 install(TARGETS KF5Codecs EXPORT KF5CodecsTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
-    kcharsets.h
-    kcodecs.h
-    kencodingprober.h
-    ${CMAKE_CURRENT_BINARY_DIR}/kcodecs_export.h
-    DESTINATION ${INCLUDE_INSTALL_DIR} COMPONENT Devel
+  ${CMAKE_CURRENT_BINARY_DIR}/kcodecs_export.h
+  ${KCodecs_HEADERS}
+  DESTINATION ${INCLUDE_INSTALL_DIR}/kcodecs COMPONENT Devel
 )
