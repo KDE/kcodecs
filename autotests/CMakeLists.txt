@@ -2,7 +2,12 @@ remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 
 include(ECMMarkAsTest)
 
-find_package(Qt5Test 5.2.0 REQUIRED NO_MODULE)
+find_package(Qt5Test ${REQUIRED_QT_VERSION} CONFIG QUIET)
+
+if(NOT Qt5Test_FOUND)
+    message(STATUS "Qt5Test not found, autotests will not be built.")
+    return()
+endif()
 
 macro(KCODECS_EXECUTABLE_TESTS)
     foreach(_testname ${ARGN})
