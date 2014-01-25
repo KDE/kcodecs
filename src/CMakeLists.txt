@@ -62,3 +62,7 @@ install(FILES
   ${KCodecs_HEADERS}
   DESTINATION ${INCLUDE_INSTALL_DIR}/KCodecs COMPONENT Devel
 )
+
+include(ECMGeneratePriFile)
+ecm_generate_pri_file(BASE_NAME KCodecs LIB_NAME KF5Codecs DEPS "core" FILENAME_VAR PRI_FILENAME)
+install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
