@@ -173,7 +173,7 @@ void KCharsetsTest::testEncodingNames()
 
         if (!ok) {
             qDebug() << "Error:" << encodingName << "not found";
-            QVERIFY(NULL);
+            QVERIFY(false);
         }
         QVERIFY(encodingNameHasADescription(encodingName, singleton->descriptiveEncodingNames()));
         QVERIFY(!singleton->descriptionForEncoding(encodingName).isEmpty());
