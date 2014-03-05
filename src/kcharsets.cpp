@@ -654,20 +654,6 @@ QStringList KCharsets::availableEncodingNames() const
     return available;
 }
 
-#ifndef KDE_NO_DEPRECATED
-QString KCharsets::languageForEncoding(const QString &encoding) const
-{
-    const char *lang = kcharsets_array_search((const char *)language_for_encoding_string,
-                       language_for_encoding_indices,
-                       encoding.toUtf8().constData());
-    if (lang) {
-        return tr(lang, "@item Text character set");
-    } else {
-        return tr("Other", "@item Text character set");
-    }
-}
-#endif
-
 QString KCharsets::descriptionForEncoding(const QString &encoding) const
 {
     const char *lang = kcharsets_array_search(language_for_encoding_string,
