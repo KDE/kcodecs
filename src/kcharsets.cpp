@@ -34,7 +34,7 @@
 /*
  * ### FIXME KDE4: the name of the encodings should mostly be uppercase
  * The names of this list are user-visible
- * Generate with generate_string_table.pl (located in kdesdk/scripts),
+ * Generate with generate_string_table.pl (located in kde-dev-scripts),
  * input data:
 ISO 8859-1
 i18n:Western European
@@ -147,11 +147,6 @@ i18n:Cyrillic              // ### TODO "PT 154" seems to have been removed from 
  */
 
 /*
- * THE FOLLOWING CODE IS GENERATED. PLEASE DO NOT EDIT BY HAND.
- * The script used was generate_string_table.pl which can be found in kdesdk/scripts.
- */
-
-/*
  * This redefines the QT_TRANSLATE_NOOP3 macro provided by Qt to indicate that
  * statically initialised text should be translated so that it expands to just
  * the string that should be translated, making it possible to use it in the
@@ -159,6 +154,12 @@ i18n:Cyrillic              // ### TODO "PT 154" seems to have been removed from 
  */
 #undef QT_TRANSLATE_NOOP3
 #define QT_TRANSLATE_NOOP3(a, b, c) b
+
+/*
+ * THE FOLLOWING CODE IS GENERATED. PLEASE DO NOT EDIT BY HAND.
+ * The script used was generate_string_table.pl which can be found in kde-dev-scripts.
+ * It was then edited to use QT_TRANSLATE_NOOP3 instead of I18N_NOOP.
+ */
 
 static const char language_for_encoding_string[] =
     "ISO 8859-1\0"
@@ -348,7 +349,7 @@ iso-2022-jp
 
 /*
  * THE FOLLOWING CODE IS GENERATED. PLEASE DO NOT EDIT BY HAND.
- * The script used was generate_string_table.pl which can be found in kdesdk/scripts.
+ * The script used was generate_string_table.pl which can be found in kde-dev-scripts.
  */
 
 static const char builtin_string[] =
@@ -456,7 +457,7 @@ windows-1251
 
 /*
  * THE FOLLOWING CODE IS GENERATED. PLEASE DO NOT EDIT BY HAND.
- * The script used was generate_string_table.pl which can be found in kdesdk/scripts.
+ * The script used was generate_string_table.pl which can be found in kde-dev-scripts.
  */
 
 static const char conversion_hints_string[] =
