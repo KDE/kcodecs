@@ -32,8 +32,8 @@
 #include <QHash>
 
 /*
- * ### FIXME KDE4: the name of the encodings should mostly be uppercase
- * The names of this list are user-visible
+ * The encoding names (like "ISO 8859-1") in this list are user-visible,
+ * and should be mostly uppercase.
  * Generate with generate_string_table.pl (located in kde-dev-scripts),
  * input data:
 ISO 8859-1
