@@ -30,6 +30,7 @@ set(kcodecs_SRCS
     probers/nsSBCharSetProber.cpp
     probers/nsSJISProber.cpp
     probers/nsUniversalDetector.cpp
+  ${kcodecs_QM_LOADER}
 )
 
 add_library(KF5Codecs ${kcodecs_SRCS})
