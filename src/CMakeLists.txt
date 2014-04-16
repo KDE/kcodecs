@@ -1,4 +1,6 @@
 
+ecm_create_qm_loader(kcodecs_QM_LOADER kcodecs5)
+
 set(kcodecs_SRCS
     kcharsets.cpp
     kcodecs.cpp
