@@ -39,7 +39,7 @@ add_library(KF5Codecs ${kcodecs_SRCS})
 generate_export_header(KF5Codecs BASE_NAME KCodecs)
 add_library(KF5::Codecs ALIAS KF5Codecs)
 
-target_include_directories(KF5Codecs INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/KCodecs>")
+target_include_directories(KF5Codecs INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/KCodecs>")
 
 target_link_libraries(KF5Codecs PUBLIC Qt5::Core)
 
@@ -57,12 +57,12 @@ ecm_generate_headers(KCodecs_HEADERS
   REQUIRED_HEADERS KCodecs_HEADERS
 )
 
-install(TARGETS KF5Codecs EXPORT KF5CodecsTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF5Codecs EXPORT KF5CodecsTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/kcodecs_export.h
   ${KCodecs_HEADERS}
-  DESTINATION ${INCLUDE_INSTALL_DIR}/KCodecs COMPONENT Devel
+  DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/KCodecs COMPONENT Devel
 )
 
 include(ECMGeneratePriFile)
