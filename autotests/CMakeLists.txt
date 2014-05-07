@@ -1,6 +1,6 @@
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 
-include(ECMMarkAsTest)
+include(ECMAddTests)
 
 find_package(Qt5Test ${REQUIRED_QT_VERSION} CONFIG QUIET)
 
@@ -9,23 +9,9 @@ if(NOT Qt5Test_FOUND)
     return()
 endif()
 
-macro(KCODECS_EXECUTABLE_TESTS)
-    foreach(_testname ${ARGN})
-        add_executable(${_testname} ${_testname}.cpp)
-        target_link_libraries(${_testname} KF5::Codecs)
-    endforeach()
-endmacro()
-
-macro(KCODECS_UNIT_TESTS)
-    foreach(_testname ${ARGN})
-        kcodecs_executable_tests(${_testname})
-        target_link_libraries(${_testname} Qt5::Test)
-        add_test(kcodecs-${_testname} ${_testname})
-        ecm_mark_as_test(${_testname})
-    endforeach()
-endmacro()
-
-kcodecs_unit_tests(
-    kcharsetstest
-    kencodingprobertest
+ecm_add_tests(
+    kcharsetstest.cpp
+    kencodingprobertest.cpp
+    NAME_PREFIX "kcodecs-"
+    LINK_LIBRARIES KF5::Codecs Qt5::Test
 )
