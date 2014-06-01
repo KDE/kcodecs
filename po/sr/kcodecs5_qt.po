@@ -1,0 +1,222 @@
+# Translation of kdelibs4.po into Serbian.
+# Marko Rosic <roske@kde.org.yu>, 2003.
+# Toplica Tanaskovic <toptan@kde.org.yu>, 2003, 2004, 2005.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
+# Dalibor Djuric <daliborddjuric@gmail.com>, 2009, 2010, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2014-03-30 20:24+0200\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: qtrich\n"
+"X-Environment: kde\n"
+"X-Wrapping: fine\n"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:166
+msgctxt "@item Text character set"
+msgid "Western European"
+msgstr "западноевропски"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:172
+msgctxt "@item Text character set"
+msgid "Central European"
+msgstr "средњеевропски"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:175
+msgctxt "@item Text character set"
+msgid "Baltic"
+msgstr "балтички"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:178
+msgctxt "@item Text character set"
+msgid "South-Eastern Europe"
+msgstr "југоисточноевропски"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:181
+msgctxt "@item Text character set"
+msgid "Turkish"
+msgstr "турски"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:184
+msgctxt "@item Text character set"
+msgid "Cyrillic"
+msgstr "ћирилички"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:190
+msgctxt "@item Text character set"
+msgid "Chinese Traditional"
+msgstr "кинески традиционални"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:193
+msgctxt "@item Text character set"
+msgid "Chinese Simplified"
+msgstr "кинески поједностављени"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:197
+msgctxt "@item Text character set"
+msgid "Korean"
+msgstr "корејски"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:199
+msgctxt "@item Text character set"
+msgid "Japanese"
+msgstr "јапански"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:203
+msgctxt "@item Text character set"
+msgid "Greek"
+msgstr "грчки"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:206
+msgctxt "@item Text character set"
+msgid "Arabic"
+msgstr "арапски"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:209
+msgctxt "@item Text character set"
+msgid "Hebrew"
+msgstr "хебрејски"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:214
+msgctxt "@item Text character set"
+msgid "Thai"
+msgstr "тајландски"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:217
+msgctxt "@item Text character set"
+msgid "Unicode"
+msgstr "уникод"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:223
+msgctxt "@item Text character set"
+msgid "Northern Saami"
+msgstr "северни сами"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:225
+msgctxt "@item Text character set"
+msgid "Other"
+msgstr "други"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:664
+#, qt-format
+msgctxt "KCharsets|@item %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 (%2)"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:667
+#, qt-format
+msgctxt "KCharsets|@item"
+msgid "Other encoding (%1)"
+msgstr "друго кодирање (%1)"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kcharsets.cpp:696
+#, qt-format
+msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 (%2)"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:238
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:279
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Disabled"
+msgstr "искључено"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:240
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:282
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Universal"
+msgstr "универзално"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:242
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:324
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Unicode"
+msgstr "уникод"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:244
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:294
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Cyrillic"
+msgstr "ћирилички"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:246
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:309
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Western European"
+msgstr "западноевропски"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:248
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:291
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Central European"
+msgstr "средњеевропски"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:250
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:297
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Greek"
+msgstr "грчки"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:252
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:300
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Hebrew"
+msgstr "хебрејски"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:254
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:306
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Turkish"
+msgstr "турски"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:256
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:303
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Japanese"
+msgstr "јапански"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:258
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:288
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Baltic"
+msgstr "балтички"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:260
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:312
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "кинески традиционални"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:262
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:315
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "кинески поједностављени"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:264
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:318
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Korean"
+msgstr "корејски"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:266
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:321
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Thai"
+msgstr "тајландски"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:268
+#: ../../home/scripty/prod/git-unstable/frameworks_kcodecs/src/kencodingprober.cpp:285
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Arabic"
+msgstr "арапски"
