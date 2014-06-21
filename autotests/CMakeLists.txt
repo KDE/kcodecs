@@ -12,6 +12,5 @@ endif()
 ecm_add_tests(
     kcharsetstest.cpp
     kencodingprobertest.cpp
-    NAME_PREFIX "kcodecs-"
     LINK_LIBRARIES KF5::Codecs Qt5::Test
 )
