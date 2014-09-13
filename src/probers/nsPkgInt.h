@@ -56,7 +56,7 @@ typedef struct nsPkgInt {
     nsSftMsk  sftmsk;
     nsBitSft  bitsft;
     nsUnitMsk unitmsk;
-    unsigned int  *data;
+    const unsigned int  *data;
 } nsPkgInt;
 }
 

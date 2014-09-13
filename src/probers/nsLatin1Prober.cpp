@@ -38,7 +38,7 @@
 
 namespace kencodingprober
 {
-static unsigned char Latin1_CharToClass[] = {
+static const unsigned char Latin1_CharToClass[] = {
     OTH, OTH, OTH, OTH, OTH, OTH, OTH, OTH,   // 00 - 07
     OTH, OTH, OTH, OTH, OTH, OTH, OTH, OTH,   // 08 - 0F
     OTH, OTH, OTH, OTH, OTH, OTH, OTH, OTH,   // 10 - 17
@@ -78,7 +78,7 @@ static unsigned char Latin1_CharToClass[] = {
    2 : normal
    3 : very likely
 */
-static unsigned char Latin1ClassModel[] = {
+static const unsigned char Latin1ClassModel[] = {
     /*      UDF OTH ASC ASS ACV ACO ASV ASO  */
     /*UDF*/  0,  0,  0,  0,  0,  0,  0,  0,
     /*OTH*/  0,  3,  3,  3,  3,  3,  3,  3,

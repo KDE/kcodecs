@@ -52,7 +52,7 @@ typedef struct {
 class KCODECS_NO_EXPORT nsCodingStateMachine
 {
 public:
-    nsCodingStateMachine(SMModel *sm)
+    nsCodingStateMachine(const SMModel *sm)
     {
         mCurrentState = eStart;
         mModel = sm;
@@ -104,23 +104,23 @@ protected:
     unsigned int mCurrentCharLen;
     unsigned int mCurrentBytePos;
 
-    SMModel *mModel;
+    const SMModel *mModel;
 };
 
-extern KCODECS_NO_EXPORT SMModel UTF8SMModel;
-extern KCODECS_NO_EXPORT SMModel Big5SMModel;
-extern KCODECS_NO_EXPORT SMModel EUCJPSMModel;
-extern KCODECS_NO_EXPORT SMModel EUCKRSMModel;
-extern KCODECS_NO_EXPORT SMModel EUCTWSMModel;
-extern KCODECS_NO_EXPORT SMModel GB18030SMModel;
-extern KCODECS_NO_EXPORT SMModel SJISSMModel;
-extern KCODECS_NO_EXPORT SMModel UCS2LESMModel;
-extern KCODECS_NO_EXPORT SMModel UCS2BESMModel;
+extern KCODECS_NO_EXPORT const SMModel UTF8SMModel;
+extern KCODECS_NO_EXPORT const SMModel Big5SMModel;
+extern KCODECS_NO_EXPORT const SMModel EUCJPSMModel;
+extern KCODECS_NO_EXPORT const SMModel EUCKRSMModel;
+extern KCODECS_NO_EXPORT const SMModel EUCTWSMModel;
+extern KCODECS_NO_EXPORT const SMModel GB18030SMModel;
+extern KCODECS_NO_EXPORT const SMModel SJISSMModel;
+extern KCODECS_NO_EXPORT const SMModel UCS2LESMModel;
+extern KCODECS_NO_EXPORT const SMModel UCS2BESMModel;
 
-extern KCODECS_NO_EXPORT SMModel HZSMModel;
-extern KCODECS_NO_EXPORT SMModel ISO2022CNSMModel;
-extern KCODECS_NO_EXPORT SMModel ISO2022JPSMModel;
-extern KCODECS_NO_EXPORT SMModel ISO2022KRSMModel;
+extern KCODECS_NO_EXPORT const SMModel HZSMModel;
+extern KCODECS_NO_EXPORT const SMModel ISO2022CNSMModel;
+extern KCODECS_NO_EXPORT const SMModel ISO2022JPSMModel;
+extern KCODECS_NO_EXPORT const SMModel ISO2022KRSMModel;
 }
 #endif /* nsCodingStateMachine_h__ */
 

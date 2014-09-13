@@ -212,7 +212,7 @@ const char BulgarianLangModel[] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
 };
 
-SequenceModel KCODECS_NO_EXPORT Latin5BulgarianModel = {
+const SequenceModel KCODECS_NO_EXPORT Latin5BulgarianModel = {
     Latin5_BulgarianCharToOrderMap,
     BulgarianLangModel,
     (float)0.969392,
@@ -220,7 +220,7 @@ SequenceModel KCODECS_NO_EXPORT Latin5BulgarianModel = {
     "ISO-8859-5"
 };
 
-SequenceModel KCODECS_NO_EXPORT Win1251BulgarianModel = {
+const SequenceModel KCODECS_NO_EXPORT Win1251BulgarianModel = {
     win1251BulgarianCharToOrderMap,
     BulgarianLangModel,
     (float)0.969392,

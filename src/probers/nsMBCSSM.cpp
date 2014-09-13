@@ -34,7 +34,7 @@ Modification from frank tang's original work:
 
 namespace kencodingprober
 {
-static unsigned int BIG5_cls [ 256 / 8 ] = {
+static const unsigned int BIG5_cls [ 256 / 8 ] = {
 //PCK4BITS(0,1,1,1,1,1,1,1),  // 00 - 07
     PCK4BITS(1, 1, 1, 1, 1, 1, 1, 1), // 00 - 07    //allow 0x00 as legal value
     PCK4BITS(1, 1, 1, 1, 1, 1, 0, 0), // 08 - 0f
@@ -70,7 +70,7 @@ static unsigned int BIG5_cls [ 256 / 8 ] = {
     PCK4BITS(3, 3, 3, 3, 3, 3, 3, 0) // f8 - ff
 };
 
-static unsigned int BIG5_st [ 3] = {
+static const unsigned int BIG5_st [ 3] = {
     PCK4BITS(eError, eStart, eStart,     3, eError, eError, eError, eError), //00-07
     PCK4BITS(eError, eError, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eError), //08-0f
     PCK4BITS(eError, eStart, eStart, eStart, eStart, eStart, eStart, eStart) //10-17
@@ -78,7 +78,7 @@ static unsigned int BIG5_st [ 3] = {
 
 static const unsigned int Big5CharLenTable[] = {0, 1, 1, 2, 0};
 
-SMModel Big5SMModel = {
+const SMModel Big5SMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, BIG5_cls },
     5,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, BIG5_st },
@@ -86,7 +86,7 @@ SMModel Big5SMModel = {
     "Big5",
 };
 
-static unsigned int EUCJP_cls [ 256 / 8 ] = {
+static const unsigned int EUCJP_cls [ 256 / 8 ] = {
 //PCK4BITS(5,4,4,4,4,4,4,4),  // 00 - 07
     PCK4BITS(4, 4, 4, 4, 4, 4, 4, 4), // 00 - 07
     PCK4BITS(4, 4, 4, 4, 4, 4, 5, 5), // 08 - 0f
@@ -122,7 +122,7 @@ static unsigned int EUCJP_cls [ 256 / 8 ] = {
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 5) // f8 - ff
 };
 
-static unsigned int EUCJP_st [ 5] = {
+static const unsigned int EUCJP_st [ 5] = {
     PCK4BITS(3,     4,     3,     5, eStart, eError, eError, eError), //00-07
     PCK4BITS(eError, eError, eError, eError, eItsMe, eItsMe, eItsMe, eItsMe), //08-0f
     PCK4BITS(eItsMe, eItsMe, eStart, eError, eStart, eError, eError, eError), //10-17
@@ -132,7 +132,7 @@ static unsigned int EUCJP_st [ 5] = {
 
 static const unsigned int EUCJPCharLenTable[] = {2, 2, 2, 3, 1, 0};
 
-SMModel EUCJPSMModel = {
+const SMModel EUCJPSMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, EUCJP_cls },
     6,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, EUCJP_st },
@@ -140,7 +140,7 @@ SMModel EUCJPSMModel = {
     "EUC-JP",
 };
 
-static unsigned int EUCKR_cls [ 256 / 8 ] = {
+static const unsigned int EUCKR_cls [ 256 / 8 ] = {
 //PCK4BITS(0,1,1,1,1,1,1,1),  // 00 - 07
     PCK4BITS(1, 1, 1, 1, 1, 1, 1, 1), // 00 - 07
     PCK4BITS(1, 1, 1, 1, 1, 1, 0, 0), // 08 - 0f
@@ -176,14 +176,14 @@ static unsigned int EUCKR_cls [ 256 / 8 ] = {
     PCK4BITS(2, 2, 2, 2, 2, 2, 2, 0) // f8 - ff
 };
 
-static unsigned int EUCKR_st [ 2] = {
+static const unsigned int EUCKR_st [ 2] = {
     PCK4BITS(eError, eStart,     3, eError, eError, eError, eError, eError), //00-07
     PCK4BITS(eItsMe, eItsMe, eItsMe, eItsMe, eError, eError, eStart, eStart) //08-0f
 };
 
 static const unsigned int EUCKRCharLenTable[] = {0, 1, 2, 0};
 
-SMModel EUCKRSMModel = {
+const SMModel EUCKRSMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, EUCKR_cls },
     4,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, EUCKR_st },
@@ -191,7 +191,7 @@ SMModel EUCKRSMModel = {
     "EUC-KR",
 };
 
-static unsigned int EUCTW_cls [ 256 / 8 ] = {
+static const unsigned int EUCTW_cls [ 256 / 8 ] = {
 //PCK4BITS(0,2,2,2,2,2,2,2),  // 00 - 07
     PCK4BITS(2, 2, 2, 2, 2, 2, 2, 2), // 00 - 07
     PCK4BITS(2, 2, 2, 2, 2, 2, 0, 0), // 08 - 0f
@@ -227,7 +227,7 @@ static unsigned int EUCTW_cls [ 256 / 8 ] = {
     PCK4BITS(3, 3, 3, 3, 3, 3, 3, 0) // f8 - ff
 };
 
-static unsigned int EUCTW_st [ 6] = {
+static const unsigned int EUCTW_st [ 6] = {
     PCK4BITS(eError, eError, eStart,     3,     3,     3,     4, eError), //00-07
     PCK4BITS(eError, eError, eError, eError, eError, eError, eItsMe, eItsMe), //08-0f
     PCK4BITS(eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eError, eStart, eError), //10-17
@@ -238,7 +238,7 @@ static unsigned int EUCTW_st [ 6] = {
 
 static const unsigned int EUCTWCharLenTable[] = {0, 0, 1, 2, 2, 2, 3};
 
-SMModel EUCTWSMModel = {
+const SMModel EUCTWSMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, EUCTW_cls },
     7,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, EUCTW_st },
@@ -301,7 +301,7 @@ SMModel GB2312SMModel = {
 
 // the following state machine data was created by perl script in
 // intl/chardet/tools. It should be the same as in PSM detector.
-static unsigned int GB18030_cls [ 256 / 8 ] = {
+static const unsigned int GB18030_cls [ 256 / 8 ] = {
     PCK4BITS(1, 1, 1, 1, 1, 1, 1, 1), // 00 - 07
     PCK4BITS(1, 1, 1, 1, 1, 1, 0, 0), // 08 - 0f
     PCK4BITS(1, 1, 1, 1, 1, 1, 1, 1), // 10 - 17
@@ -336,7 +336,7 @@ static unsigned int GB18030_cls [ 256 / 8 ] = {
     PCK4BITS(6, 6, 6, 6, 6, 6, 6, 0) // f8 - ff
 };
 
-static unsigned int GB18030_st [ 6] = {
+static const unsigned int GB18030_st [ 6] = {
     PCK4BITS(eError, eStart, eStart, eStart, eStart, eStart,     3, eError), //00-07
     PCK4BITS(eError, eError, eError, eError, eError, eError, eItsMe, eItsMe), //08-0f
     PCK4BITS(eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eError, eError, eStart), //10-17
@@ -352,7 +352,7 @@ static unsigned int GB18030_st [ 6] = {
 // 2 here.
 static const unsigned int GB18030CharLenTable[] = {0, 1, 1, 1, 1, 1, 2};
 
-SMModel GB18030SMModel = {
+const SMModel GB18030SMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, GB18030_cls },
     7,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, GB18030_st },
@@ -362,7 +362,7 @@ SMModel GB18030SMModel = {
 
 // sjis
 
-static unsigned int SJIS_cls [ 256 / 8 ] = {
+static const unsigned int SJIS_cls [ 256 / 8 ] = {
 //PCK4BITS(0,1,1,1,1,1,1,1),  // 00 - 07
     PCK4BITS(1, 1, 1, 1, 1, 1, 1, 1), // 00 - 07
     PCK4BITS(1, 1, 1, 1, 1, 1, 0, 0), // 08 - 0f
@@ -400,7 +400,7 @@ static unsigned int SJIS_cls [ 256 / 8 ] = {
     PCK4BITS(4, 4, 4, 4, 4, 0, 0, 0) // f8 - ff
 };
 
-static unsigned int SJIS_st [ 3] = {
+static const unsigned int SJIS_st [ 3] = {
     PCK4BITS(eError, eStart, eStart,     3, eError, eError, eError, eError), //00-07
     PCK4BITS(eError, eError, eError, eError, eItsMe, eItsMe, eItsMe, eItsMe), //08-0f
     PCK4BITS(eItsMe, eItsMe, eError, eError, eStart, eStart, eStart, eStart) //10-17
@@ -408,7 +408,7 @@ static unsigned int SJIS_st [ 3] = {
 
 static const unsigned int SJISCharLenTable[] = {0, 1, 1, 2, 0, 0};
 
-SMModel SJISSMModel = {
+const SMModel SJISSMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, SJIS_cls },
     6,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, SJIS_st },
@@ -416,7 +416,7 @@ SMModel SJISSMModel = {
     "Shift_JIS",
 };
 
-static unsigned int UCS2BE_cls [ 256 / 8 ] = {
+static const unsigned int UCS2BE_cls [ 256 / 8 ] = {
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // 00 - 07
     PCK4BITS(0, 0, 1, 0, 0, 2, 0, 0), // 08 - 0f
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // 10 - 17
@@ -451,7 +451,7 @@ static unsigned int UCS2BE_cls [ 256 / 8 ] = {
     PCK4BITS(0, 0, 0, 0, 0, 0, 4, 5) // f8 - ff
 };
 
-static unsigned int UCS2BE_st [ 7] = {
+static const unsigned int UCS2BE_st [ 7] = {
     PCK4BITS(5,     7,     7, eError,     4,     3, eError, eError),  //00-07
     PCK4BITS(eError, eError, eError, eError, eItsMe, eItsMe, eItsMe, eItsMe), //08-0f
     PCK4BITS(eItsMe, eItsMe,     6,     6,     6,     6, eError, eError), //10-17
@@ -463,7 +463,7 @@ static unsigned int UCS2BE_st [ 7] = {
 
 static const unsigned int UCS2BECharLenTable[] = {2, 2, 2, 0, 2, 2};
 
-SMModel UCS2BESMModel = {
+const SMModel UCS2BESMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2BE_cls },
     6,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2BE_st },
@@ -471,7 +471,7 @@ SMModel UCS2BESMModel = {
     "UTF-16BE",
 };
 
-static unsigned int UCS2LE_cls [ 256 / 8 ] = {
+static const unsigned int UCS2LE_cls [ 256 / 8 ] = {
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // 00 - 07
     PCK4BITS(0, 0, 1, 0, 0, 2, 0, 0), // 08 - 0f
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // 10 - 17
@@ -506,7 +506,7 @@ static unsigned int UCS2LE_cls [ 256 / 8 ] = {
     PCK4BITS(0, 0, 0, 0, 0, 0, 4, 5) // f8 - ff
 };
 
-static unsigned int UCS2LE_st [ 7] = {
+static const unsigned int UCS2LE_st [ 7] = {
     PCK4BITS(6,     6,     7,     6,     4,     3, eError, eError),   //00-07
     PCK4BITS(eError, eError, eError, eError, eItsMe, eItsMe, eItsMe, eItsMe), //08-0f
     PCK4BITS(eItsMe, eItsMe,     5,     5,     5, eError, eItsMe, eError), //10-17
@@ -518,7 +518,7 @@ static unsigned int UCS2LE_st [ 7] = {
 
 static const unsigned int UCS2LECharLenTable[] = {2, 2, 2, 2, 2, 2};
 
-SMModel UCS2LESMModel = {
+const SMModel UCS2LESMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2LE_cls },
     6,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2LE_st },
@@ -526,7 +526,7 @@ SMModel UCS2LESMModel = {
     "UTF-16LE",
 };
 
-static unsigned int UTF8_cls [ 256 / 8 ] = {
+static const unsigned int UTF8_cls [ 256 / 8 ] = {
 //PCK4BITS(0,1,1,1,1,1,1,1),  // 00 - 07
     PCK4BITS(1, 1, 1, 1, 1, 1, 1, 1), // 00 - 07  //allow 0x00 as a legal value
     PCK4BITS(1, 1, 1, 1, 1, 1, 0, 0), // 08 - 0f
@@ -562,7 +562,7 @@ static unsigned int UTF8_cls [ 256 / 8 ] = {
     PCK4BITS(12, 13, 13, 13, 14, 15, 0, 0) // f8 - ff
 };
 
-static unsigned int UTF8_st [ 26] = {
+static const unsigned int UTF8_st [ 26] = {
     PCK4BITS(eError, eStart, eError, eError, eError, eError,     12,     10), //00-07
     PCK4BITS(9,     11,     8,     7,     6,     5,     4,     3),     //08-0f
     PCK4BITS(eError, eError, eError, eError, eError, eError, eError, eError), //10-17
@@ -595,7 +595,7 @@ static const unsigned int UTF8CharLenTable[] = {0, 1, 0, 0, 0, 0, 2, 3,
                                                 3, 3, 4, 4, 5, 5, 6, 6
                                                };
 
-SMModel UTF8SMModel = {
+const SMModel UTF8SMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UTF8_cls },
     16,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UTF8_st },

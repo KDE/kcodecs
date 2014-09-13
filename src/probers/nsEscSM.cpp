@@ -26,7 +26,7 @@
 
 namespace kencodingprober
 {
-static unsigned int HZ_cls[ 256 / 8 ] = {
+static const unsigned int HZ_cls[ 256 / 8 ] = {
     PCK4BITS(1, 0, 0, 0, 0, 0, 0, 0), // 00 - 07
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // 08 - 0f
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // 10 - 17
@@ -61,7 +61,7 @@ static unsigned int HZ_cls[ 256 / 8 ] = {
     PCK4BITS(1, 1, 1, 1, 1, 1, 1, 1) // f8 - ff
 };
 
-static unsigned int HZ_st [ 6] = {
+static const unsigned int HZ_st [ 6] = {
     PCK4BITS(eStart, eError,     3, eStart, eStart, eStart, eError, eError), //00-07
     PCK4BITS(eError, eError, eError, eError, eItsMe, eItsMe, eItsMe, eItsMe), //08-0f
     PCK4BITS(eItsMe, eItsMe, eError, eError, eStart, eStart,     4, eError), //10-17
@@ -72,7 +72,7 @@ static unsigned int HZ_st [ 6] = {
 
 static const unsigned int HZCharLenTable[] = {0, 0, 0, 0, 0, 0};
 
-SMModel HZSMModel = {
+const SMModel HZSMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, HZ_cls },
     6,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, HZ_st },
@@ -80,7 +80,7 @@ SMModel HZSMModel = {
     "HZ-GB-2312",
 };
 
-static unsigned int ISO2022CN_cls [ 256 / 8 ] = {
+static const unsigned int ISO2022CN_cls [ 256 / 8 ] = {
     PCK4BITS(2, 0, 0, 0, 0, 0, 0, 0), // 00 - 07
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // 08 - 0f
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // 10 - 17
@@ -115,7 +115,7 @@ static unsigned int ISO2022CN_cls [ 256 / 8 ] = {
     PCK4BITS(2, 2, 2, 2, 2, 2, 2, 2) // f8 - ff
 };
 
-static unsigned int ISO2022CN_st [ 8] = {
+static const unsigned int ISO2022CN_st [ 8] = {
     PCK4BITS(eStart,     3, eError, eStart, eStart, eStart, eStart, eStart), //00-07
     PCK4BITS(eStart, eError, eError, eError, eError, eError, eError, eError), //08-0f
     PCK4BITS(eError, eError, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe), //10-17
@@ -128,7 +128,7 @@ static unsigned int ISO2022CN_st [ 8] = {
 
 static const unsigned int ISO2022CNCharLenTable[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-SMModel ISO2022CNSMModel = {
+const SMModel ISO2022CNSMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, ISO2022CN_cls },
     9,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, ISO2022CN_st },
@@ -136,7 +136,7 @@ SMModel ISO2022CNSMModel = {
     "ISO-2022-CN",
 };
 
-static unsigned int ISO2022JP_cls [ 256 / 8 ] = {
+static const unsigned int ISO2022JP_cls [ 256 / 8 ] = {
     PCK4BITS(2, 0, 0, 0, 0, 0, 0, 0), // 00 - 07
     PCK4BITS(0, 0, 0, 0, 0, 0, 2, 2), // 08 - 0f
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // 10 - 17
@@ -171,7 +171,7 @@ static unsigned int ISO2022JP_cls [ 256 / 8 ] = {
     PCK4BITS(2, 2, 2, 2, 2, 2, 2, 2) // f8 - ff
 };
 
-static unsigned int ISO2022JP_st [ 9] = {
+static const unsigned int ISO2022JP_st [ 9] = {
     PCK4BITS(eStart,     3, eError, eStart, eStart, eStart, eStart, eStart), //00-07
     PCK4BITS(eStart, eStart, eError, eError, eError, eError, eError, eError), //08-0f
     PCK4BITS(eError, eError, eError, eError, eItsMe, eItsMe, eItsMe, eItsMe), //10-17
@@ -185,7 +185,7 @@ static unsigned int ISO2022JP_st [ 9] = {
 
 static const unsigned int ISO2022JPCharLenTable[] = {0, 0, 0, 0, 0, 0, 0, 0};
 
-SMModel ISO2022JPSMModel = {
+const SMModel ISO2022JPSMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, ISO2022JP_cls },
     10,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, ISO2022JP_st },
@@ -193,7 +193,7 @@ SMModel ISO2022JPSMModel = {
     "ISO-2022-JP",
 };
 
-static unsigned int ISO2022KR_cls [ 256 / 8 ] = {
+static const unsigned int ISO2022KR_cls [ 256 / 8 ] = {
     PCK4BITS(2, 0, 0, 0, 0, 0, 0, 0), // 00 - 07
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // 08 - 0f
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // 10 - 17
@@ -228,7 +228,7 @@ static unsigned int ISO2022KR_cls [ 256 / 8 ] = {
     PCK4BITS(2, 2, 2, 2, 2, 2, 2, 2) // f8 - ff
 };
 
-static unsigned int ISO2022KR_st [ 5] = {
+static const unsigned int ISO2022KR_st [ 5] = {
     PCK4BITS(eStart,     3, eError, eStart, eStart, eStart, eError, eError), //00-07
     PCK4BITS(eError, eError, eError, eError, eItsMe, eItsMe, eItsMe, eItsMe), //08-0f
     PCK4BITS(eItsMe, eItsMe, eError, eError, eError,     4, eError, eError), //10-17
@@ -238,7 +238,7 @@ static unsigned int ISO2022KR_st [ 5] = {
 
 static const unsigned int ISO2022KRCharLenTable[] = {0, 0, 0, 0, 0, 0};
 
-SMModel ISO2022KRSMModel = {
+const SMModel ISO2022KRSMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, ISO2022KR_cls },
     6,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, ISO2022KR_st },

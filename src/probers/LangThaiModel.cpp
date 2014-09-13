@@ -193,7 +193,7 @@ const char ThaiLangModel[] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
 
-SequenceModel TIS620ThaiModel = {
+const SequenceModel TIS620ThaiModel = {
     TIS620CharToOrderMap,
     ThaiLangModel,
     (float)0.926386,

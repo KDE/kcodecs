@@ -209,7 +209,7 @@ const char GreekLangModel[] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
 
-SequenceModel Latin7Model = {
+const SequenceModel Latin7Model = {
     Latin7_CharToOrderMap,
     GreekLangModel,
     (float)0.982851,
@@ -217,7 +217,7 @@ SequenceModel Latin7Model = {
     "ISO-8859-7"
 };
 
-SequenceModel Win1253Model = {
+const SequenceModel Win1253Model = {
     win1253_CharToOrderMap,
     GreekLangModel,
     (float)0.982851,

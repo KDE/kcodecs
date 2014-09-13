@@ -49,12 +49,12 @@ typedef struct {
 class KCODECS_NO_EXPORT nsSingleByteCharSetProber : public nsCharSetProber
 {
 public:
-    nsSingleByteCharSetProber(SequenceModel *model)
+    nsSingleByteCharSetProber(const SequenceModel *model)
         : mModel(model), mReversed(false), mNameProber(0)
     {
         Reset();
     }
-    nsSingleByteCharSetProber(SequenceModel *model, bool reversed, nsCharSetProber *nameProber)
+    nsSingleByteCharSetProber(const SequenceModel *model, bool reversed, nsCharSetProber *nameProber)
         : mModel(model), mReversed(reversed), mNameProber(nameProber)
     {
         Reset();
@@ -105,19 +105,19 @@ protected:
 
 };
 
-extern SequenceModel Koi8rModel;
-extern SequenceModel Win1251Model;
-extern SequenceModel Latin5Model;
-extern SequenceModel MacCyrillicModel;
-extern SequenceModel Ibm866Model;
-extern SequenceModel Ibm855Model;
-extern SequenceModel Latin7Model;
-extern SequenceModel Win1253Model;
-extern SequenceModel Latin5BulgarianModel;
-extern SequenceModel Win1251BulgarianModel;
-extern SequenceModel Latin2HungarianModel;
-extern SequenceModel Win1250HungarianModel;
-extern SequenceModel Win1255Model;
+extern const SequenceModel Koi8rModel;
+extern const SequenceModel Win1251Model;
+extern const SequenceModel Latin5Model;
+extern const SequenceModel MacCyrillicModel;
+extern const SequenceModel Ibm866Model;
+extern const SequenceModel Ibm855Model;
+extern const SequenceModel Latin7Model;
+extern const SequenceModel Win1253Model;
+extern const SequenceModel Latin5BulgarianModel;
+extern const SequenceModel Win1251BulgarianModel;
+extern const SequenceModel Latin2HungarianModel;
+extern const SequenceModel Win1250HungarianModel;
+extern const SequenceModel Win1255Model;
 }
 #endif /* NSSBCHARSETPROBER_H */
 

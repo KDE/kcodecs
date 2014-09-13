@@ -279,7 +279,7 @@ const char RussianLangModel[] = {
     0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
 };
 
-SequenceModel Koi8rModel = {
+const SequenceModel Koi8rModel = {
     KOI8R_CharToOrderMap,
     RussianLangModel,
     (float)0.976601,
@@ -287,7 +287,7 @@ SequenceModel Koi8rModel = {
     "KOI8-R"
 };
 
-SequenceModel Win1251Model = {
+const SequenceModel Win1251Model = {
     win1251_CharToOrderMap,
     RussianLangModel,
     (float)0.976601,
@@ -295,7 +295,7 @@ SequenceModel Win1251Model = {
     "windows-1251"
 };
 
-SequenceModel Latin5Model = {
+const SequenceModel Latin5Model = {
     latin5_CharToOrderMap,
     RussianLangModel,
     (float)0.976601,
@@ -303,7 +303,7 @@ SequenceModel Latin5Model = {
     "ISO-8859-5"
 };
 
-SequenceModel MacCyrillicModel = {
+const SequenceModel MacCyrillicModel = {
     macCyrillic_CharToOrderMap,
     RussianLangModel,
     (float)0.976601,
@@ -311,7 +311,7 @@ SequenceModel MacCyrillicModel = {
     "x-mac-cyrillic"
 };
 
-SequenceModel Ibm866Model = {
+const SequenceModel Ibm866Model = {
     IBM866_CharToOrderMap,
     RussianLangModel,
     (float)0.976601,
@@ -319,7 +319,7 @@ SequenceModel Ibm866Model = {
     "IBM866"
 };
 
-SequenceModel Ibm855Model = {
+const SequenceModel Ibm855Model = {
     IBM855_CharToOrderMap,
     RussianLangModel,
     (float)0.976601,
