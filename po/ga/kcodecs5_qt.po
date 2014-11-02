@@ -1,0 +1,259 @@
+# translation of kdelibs4.po to Irish
+# Translation of kdelibs4.po to Irish
+# Copyright (C) 1999,2003,2004 Free Software Foundation, Inc.
+# Sean V. Kelley <s_oceallaigh@yahoo.com>, 1999
+# Séamus Ó Ciardhuáin <seoc at iolfree.ie>, 2003,2004
+# Kevin Scannell <kscanne@gmail.com>, 2004-2009
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2004-12-14 09:11-0600\n"
+"Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
+"Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
+"Language: ga\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n < 11 ? "
+"3 : 4\n"
+"X-Qt-Contexts: true\n"
+
+#: kcharsets.cpp:166
+msgctxt "@item Text character set"
+msgid "Western European"
+msgstr "Iarthar na hEorpa"
+
+#: kcharsets.cpp:172
+msgctxt "@item Text character set"
+msgid "Central European"
+msgstr "Lár na hEorpa"
+
+#: kcharsets.cpp:175
+msgctxt "@item Text character set"
+msgid "Baltic"
+msgstr "Baltach"
+
+#: kcharsets.cpp:178
+msgctxt "@item Text character set"
+msgid "South-Eastern Europe"
+msgstr "Eorpa Thoir Theas"
+
+#: kcharsets.cpp:181
+msgctxt "@item Text character set"
+msgid "Turkish"
+msgstr "Turcach"
+
+#: kcharsets.cpp:184
+msgctxt "@item Text character set"
+msgid "Cyrillic"
+msgstr "Coireallach"
+
+#: kcharsets.cpp:190
+msgctxt "@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Sínis Thraidisiúnta"
+
+#: kcharsets.cpp:193
+msgctxt "@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Sínis Shimplithe"
+
+#: kcharsets.cpp:197
+msgctxt "@item Text character set"
+msgid "Korean"
+msgstr "Cóiréach"
+
+#: kcharsets.cpp:199
+msgctxt "@item Text character set"
+msgid "Japanese"
+msgstr "Seapánach"
+
+#: kcharsets.cpp:203
+msgctxt "@item Text character set"
+msgid "Greek"
+msgstr "Gréagach"
+
+#: kcharsets.cpp:206
+msgctxt "@item Text character set"
+msgid "Arabic"
+msgstr "Arabach"
+
+#: kcharsets.cpp:209
+msgctxt "@item Text character set"
+msgid "Hebrew"
+msgstr "Eabhrach"
+
+#: kcharsets.cpp:214
+msgctxt "@item Text character set"
+msgid "Thai"
+msgstr "Téalannach"
+
+#: kcharsets.cpp:217
+msgctxt "@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kcharsets.cpp:223
+msgctxt "@item Text character set"
+msgid "Northern Saami"
+msgstr "Sáimis Thuaidh"
+
+#: kcharsets.cpp:225
+msgctxt "@item Text character set"
+msgid "Other"
+msgstr "Eile"
+
+#: kcharsets.cpp:664
+#, fuzzy, qt-format
+#| msgctxt "@item %1 character set, %2 encoding"
+#| msgid "%1 ( %2 )"
+msgctxt "KCharsets|@item %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kcharsets.cpp:667
+#, fuzzy, qt-format
+#| msgctxt "@item"
+#| msgid "Other encoding (%1)"
+msgctxt "KCharsets|@item"
+msgid "Other encoding (%1)"
+msgstr "Ionchódú eile (%1)"
+
+#: kcharsets.cpp:696
+#, fuzzy, qt-format
+#| msgctxt "@item %1 character set, %2 encoding"
+#| msgid "%1 ( %2 )"
+msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kencodingprober.cpp:238 kencodingprober.cpp:279
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Disabled"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Disabled"
+msgstr "Díchumasaithe"
+
+#: kencodingprober.cpp:240 kencodingprober.cpp:282
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Universal"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Universal"
+msgstr "Uilíoch"
+
+#: kencodingprober.cpp:242 kencodingprober.cpp:324
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Unicode"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kencodingprober.cpp:244 kencodingprober.cpp:294
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Cyrillic"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Cyrillic"
+msgstr "Coireallach"
+
+#: kencodingprober.cpp:246 kencodingprober.cpp:309
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Western European"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Western European"
+msgstr "Iarthar na hEorpa"
+
+#: kencodingprober.cpp:248 kencodingprober.cpp:291
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Central European"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Central European"
+msgstr "Lár na hEorpa"
+
+#: kencodingprober.cpp:250 kencodingprober.cpp:297
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Greek"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Greek"
+msgstr "Gréagach"
+
+#: kencodingprober.cpp:252 kencodingprober.cpp:300
+#, fuzzy
+#| msgctxt "@item Spelling dictionary"
+#| msgid "Hebrew"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Hebrew"
+msgstr "Eabhrais"
+
+#: kencodingprober.cpp:254 kencodingprober.cpp:306
+#, fuzzy
+#| msgctxt "@item Spelling dictionary"
+#| msgid "Turkish"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Turkish"
+msgstr "Tuircis"
+
+#: kencodingprober.cpp:256 kencodingprober.cpp:303
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Japanese"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Japanese"
+msgstr "Seapánach"
+
+#: kencodingprober.cpp:258 kencodingprober.cpp:288
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Baltic"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Baltic"
+msgstr "Baltach"
+
+#: kencodingprober.cpp:260 kencodingprober.cpp:312
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Chinese Traditional"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Sínis Thraidisiúnta"
+
+#: kencodingprober.cpp:262 kencodingprober.cpp:315
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Chinese Simplified"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Sínis Shimplithe"
+
+#: kencodingprober.cpp:264 kencodingprober.cpp:318
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Korean"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Korean"
+msgstr "Cóiréach"
+
+#: kencodingprober.cpp:266 kencodingprober.cpp:321
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Thai"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Thai"
+msgstr "Téalannach"
+
+#: kencodingprober.cpp:268 kencodingprober.cpp:285
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Arabic"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Arabic"
+msgstr "Arabach"

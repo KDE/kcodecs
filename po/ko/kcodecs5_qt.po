@@ -1,0 +1,204 @@
+# Korean messages for kdelibs.
+# Copyright (C) Free Software Foundation, Inc.
+#
+# Cho Sung Jae <cho.sungjae@gmail.com>, 2007.
+# Park Shinjo <peremen@gmail.com>, 2007, 2008, 2009, 2010, 2011.
+# Park Shinjo <peremen@gmail.com>, 2011, 2012, 2013, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2014-04-05 21:10+0900\n"
+"Last-Translator: Park Shinjo <kde@peremen.name>\n"
+"Language-Team: Korean <kde@peremen.name>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.5\n"
+"X-Qt-Contexts: true\n"
+
+#: kcharsets.cpp:166
+msgctxt "@item Text character set"
+msgid "Western European"
+msgstr "서부 유럽 문자"
+
+#: kcharsets.cpp:172
+msgctxt "@item Text character set"
+msgid "Central European"
+msgstr "중부 유럽 문자"
+
+#: kcharsets.cpp:175
+msgctxt "@item Text character set"
+msgid "Baltic"
+msgstr "발트 문자"
+
+#: kcharsets.cpp:178
+msgctxt "@item Text character set"
+msgid "South-Eastern Europe"
+msgstr "서부 유럽 문자집합"
+
+#: kcharsets.cpp:181
+msgctxt "@item Text character set"
+msgid "Turkish"
+msgstr "터키 문자"
+
+#: kcharsets.cpp:184
+msgctxt "@item Text character set"
+msgid "Cyrillic"
+msgstr "키릴 문자"
+
+#: kcharsets.cpp:190
+msgctxt "@item Text character set"
+msgid "Chinese Traditional"
+msgstr "중국 번자체"
+
+#: kcharsets.cpp:193
+msgctxt "@item Text character set"
+msgid "Chinese Simplified"
+msgstr "중국 간자체"
+
+#: kcharsets.cpp:197
+msgctxt "@item Text character set"
+msgid "Korean"
+msgstr "한글"
+
+#: kcharsets.cpp:199
+msgctxt "@item Text character set"
+msgid "Japanese"
+msgstr "가나"
+
+#: kcharsets.cpp:203
+msgctxt "@item Text character set"
+msgid "Greek"
+msgstr "그리스 문자"
+
+#: kcharsets.cpp:206
+msgctxt "@item Text character set"
+msgid "Arabic"
+msgstr "아라비아 문자"
+
+#: kcharsets.cpp:209
+msgctxt "@item Text character set"
+msgid "Hebrew"
+msgstr "히브리 문자"
+
+#: kcharsets.cpp:214
+msgctxt "@item Text character set"
+msgid "Thai"
+msgstr "타이 문자"
+
+#: kcharsets.cpp:217
+msgctxt "@item Text character set"
+msgid "Unicode"
+msgstr "유니코드"
+
+#: kcharsets.cpp:223
+msgctxt "@item Text character set"
+msgid "Northern Saami"
+msgstr "북부 사미어 문자집합"
+
+#: kcharsets.cpp:225
+msgctxt "@item Text character set"
+msgid "Other"
+msgstr "기타"
+
+#: kcharsets.cpp:664
+#, qt-format
+msgctxt "KCharsets|@item %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kcharsets.cpp:667
+#, qt-format
+msgctxt "KCharsets|@item"
+msgid "Other encoding (%1)"
+msgstr "기타 인코딩 (%1)"
+
+#: kcharsets.cpp:696
+#, qt-format
+msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kencodingprober.cpp:238 kencodingprober.cpp:279
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Disabled"
+msgstr "사용 안 함"
+
+#: kencodingprober.cpp:240 kencodingprober.cpp:282
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Universal"
+msgstr "다중"
+
+#: kencodingprober.cpp:242 kencodingprober.cpp:324
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Unicode"
+msgstr "유니코드"
+
+#: kencodingprober.cpp:244 kencodingprober.cpp:294
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Cyrillic"
+msgstr "키릴 문자"
+
+#: kencodingprober.cpp:246 kencodingprober.cpp:309
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Western European"
+msgstr "서부 유럽 문자"
+
+#: kencodingprober.cpp:248 kencodingprober.cpp:291
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Central European"
+msgstr "중부 유럽 문자"
+
+#: kencodingprober.cpp:250 kencodingprober.cpp:297
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Greek"
+msgstr "그리스 문자"
+
+#: kencodingprober.cpp:252 kencodingprober.cpp:300
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Hebrew"
+msgstr "히브리 문자"
+
+#: kencodingprober.cpp:254 kencodingprober.cpp:306
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Turkish"
+msgstr "터키 문자"
+
+#: kencodingprober.cpp:256 kencodingprober.cpp:303
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Japanese"
+msgstr "가나"
+
+#: kencodingprober.cpp:258 kencodingprober.cpp:288
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Baltic"
+msgstr "발트 문자"
+
+#: kencodingprober.cpp:260 kencodingprober.cpp:312
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "중국어 번체"
+
+#: kencodingprober.cpp:262 kencodingprober.cpp:315
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "중국어 간체"
+
+#: kencodingprober.cpp:264 kencodingprober.cpp:318
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Korean"
+msgstr "한글"
+
+#: kencodingprober.cpp:266 kencodingprober.cpp:321
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Thai"
+msgstr "타이 문자"
+
+#: kencodingprober.cpp:268 kencodingprober.cpp:285
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Arabic"
+msgstr "아랍 문자"

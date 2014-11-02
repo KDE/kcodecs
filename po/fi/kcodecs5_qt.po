@@ -1,0 +1,223 @@
+# Finnish messages for kdelibs4.
+# Copyright © 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012 This_file_is_part_of_KDE
+# This file is distributed under the same license as the kdelibs package.
+# Kim Enkovaara <kim.enkovaara@iki.fi>, 2002,2003, 2005, 2006, 2007.
+# Tapio Kautto <eleknader@phnet.fi>, 2003, 2004.
+# Mikko Ikola <kola@netikka.fi>, 2003.
+# Teemu Rytilahti <teemu.rytilahti@d5k.net>, 2003, 2008.
+# Mikko Ikola <ikola@iki.fi>, 2003.
+# Teemu Rytilahti <teemu.rytilahti@kde-fi.org>, 2003, 2004, 2008.
+# Niklas Laxström <niklas.laxstrom+kdetrans@gmail.com>, 2006, 2007.
+# Joonas Niilola <juippis@roskakori.org>, 2006.
+# Mikko Piippo <piippo@cc.helsinki.fi>, 2007.
+# Teemu Rytilahti <tpr@d5k.net>, 2008.
+# Tommi Nieminen <translator@legisign.org>, 2009, 2010, 2011.
+# Tommi Nieminen <tommi.nieminen@legisign.org>, 2009.
+# Jorma Karvonen <karvonen.jorma@gmail.com>, 2010.
+# Lasse Liehu <lasse.liehu@gmail.com>, 2006, 2010, 2011, 2012, 2013, 2014.
+#
+# KDE Finnish translation sprint participants:
+# Author: Artnay
+# Author: Jl
+# Author: Lliehu
+# Author: Niklas Laxström
+# Author: Suhviksi
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2014-03-30 00:13+0200\n"
+"Last-Translator: Lasse Liehu <lasse.liehu@gmail.com>\n"
+"Language-Team: Finnish <lokalisointi@lists.coss.fi>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.5\n"
+"X-POT-Import-Date: 2013-01-13 20:43:21+0000\n"
+"X-Qt-Contexts: true\n"
+
+#: kcharsets.cpp:166
+msgctxt "@item Text character set"
+msgid "Western European"
+msgstr "Länsieurooppalainen"
+
+#: kcharsets.cpp:172
+msgctxt "@item Text character set"
+msgid "Central European"
+msgstr "Keskieurooppalainen"
+
+#: kcharsets.cpp:175
+msgctxt "@item Text character set"
+msgid "Baltic"
+msgstr "Baltialainen"
+
+#: kcharsets.cpp:178
+msgctxt "@item Text character set"
+msgid "South-Eastern Europe"
+msgstr "Kaakkoiseurooppalainen"
+
+#: kcharsets.cpp:181
+msgctxt "@item Text character set"
+msgid "Turkish"
+msgstr "Turkkilainen"
+
+#: kcharsets.cpp:184
+msgctxt "@item Text character set"
+msgid "Cyrillic"
+msgstr "Kyrillinen"
+
+#: kcharsets.cpp:190
+msgctxt "@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Kiina (perinteinen)"
+
+#: kcharsets.cpp:193
+msgctxt "@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Kiina (yksinkertaistetut kirjoitusmerkit)"
+
+#: kcharsets.cpp:197
+msgctxt "@item Text character set"
+msgid "Korean"
+msgstr "Korealainen"
+
+#: kcharsets.cpp:199
+msgctxt "@item Text character set"
+msgid "Japanese"
+msgstr "Japanilainen"
+
+#: kcharsets.cpp:203
+msgctxt "@item Text character set"
+msgid "Greek"
+msgstr "Kreikkalainen"
+
+#: kcharsets.cpp:206
+msgctxt "@item Text character set"
+msgid "Arabic"
+msgstr "Arabialainen"
+
+#: kcharsets.cpp:209
+msgctxt "@item Text character set"
+msgid "Hebrew"
+msgstr "Heprealainen"
+
+#: kcharsets.cpp:214
+msgctxt "@item Text character set"
+msgid "Thai"
+msgstr "Thai"
+
+#: kcharsets.cpp:217
+msgctxt "@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kcharsets.cpp:223
+msgctxt "@item Text character set"
+msgid "Northern Saami"
+msgstr "Pohjoissaame"
+
+#: kcharsets.cpp:225
+msgctxt "@item Text character set"
+msgid "Other"
+msgstr "Muu"
+
+#: kcharsets.cpp:664
+#, qt-format
+msgctxt "KCharsets|@item %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kcharsets.cpp:667
+#, qt-format
+msgctxt "KCharsets|@item"
+msgid "Other encoding (%1)"
+msgstr "Muu merkistökoodaus (%1)"
+
+#: kcharsets.cpp:696
+#, qt-format
+msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kencodingprober.cpp:238 kencodingprober.cpp:279
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Disabled"
+msgstr "Ei käytössä"
+
+#: kencodingprober.cpp:240 kencodingprober.cpp:282
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Universal"
+msgstr "Yleinen"
+
+#: kencodingprober.cpp:242 kencodingprober.cpp:324
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kencodingprober.cpp:244 kencodingprober.cpp:294
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Cyrillic"
+msgstr "Kyrillinen"
+
+#: kencodingprober.cpp:246 kencodingprober.cpp:309
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Western European"
+msgstr "Länsieurooppalainen"
+
+#: kencodingprober.cpp:248 kencodingprober.cpp:291
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Central European"
+msgstr "Keskieurooppalainen"
+
+#: kencodingprober.cpp:250 kencodingprober.cpp:297
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Greek"
+msgstr "Kreikkalainen"
+
+#: kencodingprober.cpp:252 kencodingprober.cpp:300
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Hebrew"
+msgstr "Heprealainen"
+
+#: kencodingprober.cpp:254 kencodingprober.cpp:306
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Turkish"
+msgstr "Turkkilainen"
+
+#: kencodingprober.cpp:256 kencodingprober.cpp:303
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Japanese"
+msgstr "Japanilainen"
+
+#: kencodingprober.cpp:258 kencodingprober.cpp:288
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Baltic"
+msgstr "Baltialainen"
+
+#: kencodingprober.cpp:260 kencodingprober.cpp:312
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Kiina (perinteinen)"
+
+#: kencodingprober.cpp:262 kencodingprober.cpp:315
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Kiina (yksinkertaistetut kirjoitusmerkit)"
+
+#: kencodingprober.cpp:264 kencodingprober.cpp:318
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Korean"
+msgstr "Korealainen"
+
+#: kencodingprober.cpp:266 kencodingprober.cpp:321
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Thai"
+msgstr "Thai"
+
+#: kencodingprober.cpp:268 kencodingprober.cpp:285
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Arabic"
+msgstr "Arabialainen"

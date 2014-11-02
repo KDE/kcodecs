@@ -1,0 +1,220 @@
+# KDE - kdelibs/kdelibs4.po Russian translation.
+# Copyright (C) 2005, KDE Russian translation team.
+#
+# Denis Perchine <dyp@perchine.com>, 2000.
+# Gregory Mokhin <mok@kde.ru>, 2000, 2004, 2005.
+# Albert R. Valiev <darkstar@altlinux.ru>, 2002, 2008.
+# Leonid Kanter <leon@asplinux.ru>, 2002-2004, 2005, 2008.
+# Andrey Cherepanov <skull@kde.ru>, 2005-2007, 2008, 2009, 2011.
+# Nick Shaforostoff <shaforostoff@kde.ru>, 2004, 2006, 2007, 2008, 2009.
+# Nick Shaforostoff <shafff@ukr.net>, 2009.
+# Alexander Potashev <aspotashev@gmail.com>, 2009, 2010, 2011, 2014.
+# Yury G. Kudryashov <urkud.urkud@gmail.com>, 2011.
+# Yuri Efremov <yur.arh@gmail.com>, 2012.
+# Inga Barinova <ingabarinova@gmail.com>, 2012.
+# Julia Dronova <juliette.tux@gmail.com>, 2012.
+# Alexander Lakhin <exclusion@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2014-05-19 12:58+0400\n"
+"Last-Translator: Alexander Potashev <aspotashev@gmail.com>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+"X-Qt-Contexts: true\n"
+
+#: kcharsets.cpp:166
+msgctxt "@item Text character set"
+msgid "Western European"
+msgstr "Западная Европа"
+
+#: kcharsets.cpp:172
+msgctxt "@item Text character set"
+msgid "Central European"
+msgstr "Центральная Европа"
+
+#: kcharsets.cpp:175
+msgctxt "@item Text character set"
+msgid "Baltic"
+msgstr "Прибалтийское письмо"
+
+#: kcharsets.cpp:178
+msgctxt "@item Text character set"
+msgid "South-Eastern Europe"
+msgstr "Юго-восточная Европа"
+
+#: kcharsets.cpp:181
+msgctxt "@item Text character set"
+msgid "Turkish"
+msgstr "Турецкое письмо"
+
+#: kcharsets.cpp:184
+msgctxt "@item Text character set"
+msgid "Cyrillic"
+msgstr "Кириллица"
+
+# Здесь речь идёт не о локали, а о наборе символов. В случае локали перевод "Китайский (Тайвань)", т.к. локаль zh_TW.
+#: kcharsets.cpp:190
+msgctxt "@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Китайское письмо (традиционное)"
+
+#: kcharsets.cpp:193
+msgctxt "@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Китайское письмо (упрощённое)"
+
+#: kcharsets.cpp:197
+msgctxt "@item Text character set"
+msgid "Korean"
+msgstr "Корейское письмо"
+
+#: kcharsets.cpp:199
+msgctxt "@item Text character set"
+msgid "Japanese"
+msgstr "Японское письмо"
+
+#: kcharsets.cpp:203
+msgctxt "@item Text character set"
+msgid "Greek"
+msgstr "Греческое письмо"
+
+#: kcharsets.cpp:206
+msgctxt "@item Text character set"
+msgid "Arabic"
+msgstr "Арабское письмо"
+
+#: kcharsets.cpp:209
+msgctxt "@item Text character set"
+msgid "Hebrew"
+msgstr "Иврит"
+
+#: kcharsets.cpp:214
+msgctxt "@item Text character set"
+msgid "Thai"
+msgstr "Тайское письмо"
+
+#: kcharsets.cpp:217
+msgctxt "@item Text character set"
+msgid "Unicode"
+msgstr "Юникод"
+
+#: kcharsets.cpp:223
+msgctxt "@item Text character set"
+msgid "Northern Saami"
+msgstr "Северносаамский"
+
+#: kcharsets.cpp:225
+msgctxt "@item Text character set"
+msgid "Other"
+msgstr "Другие"
+
+#: kcharsets.cpp:664
+#, qt-format
+msgctxt "KCharsets|@item %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 (%2)"
+
+#: kcharsets.cpp:667
+#, qt-format
+msgctxt "KCharsets|@item"
+msgid "Other encoding (%1)"
+msgstr "Другая кодировка (%1)"
+
+#: kcharsets.cpp:696
+#, qt-format
+msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 (%2)"
+
+#: kencodingprober.cpp:238 kencodingprober.cpp:279
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Disabled"
+msgstr "Отключена"
+
+#: kencodingprober.cpp:240 kencodingprober.cpp:282
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Universal"
+msgstr "Универсальная"
+
+#: kencodingprober.cpp:242 kencodingprober.cpp:324
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Unicode"
+msgstr "Юникод"
+
+#: kencodingprober.cpp:244 kencodingprober.cpp:294
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Cyrillic"
+msgstr "Кириллица"
+
+#: kencodingprober.cpp:246 kencodingprober.cpp:309
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Western European"
+msgstr "Западная Европа"
+
+#: kencodingprober.cpp:248 kencodingprober.cpp:291
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Central European"
+msgstr "Центральная Европа"
+
+#: kencodingprober.cpp:250 kencodingprober.cpp:297
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Greek"
+msgstr "Греческое письмо"
+
+#: kencodingprober.cpp:252 kencodingprober.cpp:300
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Hebrew"
+msgstr "Иврит"
+
+#: kencodingprober.cpp:254 kencodingprober.cpp:306
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Turkish"
+msgstr "Турецкое письмо"
+
+#: kencodingprober.cpp:256 kencodingprober.cpp:303
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Japanese"
+msgstr "Японское письмо"
+
+#: kencodingprober.cpp:258 kencodingprober.cpp:288
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Baltic"
+msgstr "Прибалтийское письмо"
+
+# Здесь речь идёт не о локали, а о наборе символов. В случае локали перевод "Китайский (Тайвань)", т.к. локаль zh_TW.
+#: kencodingprober.cpp:260 kencodingprober.cpp:312
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Китайское письмо (традиционное)"
+
+#: kencodingprober.cpp:262 kencodingprober.cpp:315
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Китайское письмо (упрощённое)"
+
+#: kencodingprober.cpp:264 kencodingprober.cpp:318
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Korean"
+msgstr "Корейское письмо"
+
+#: kencodingprober.cpp:266 kencodingprober.cpp:321
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Thai"
+msgstr "Тайское письмо"
+
+#: kencodingprober.cpp:268 kencodingprober.cpp:285
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Arabic"
+msgstr "Арабское письмо"
