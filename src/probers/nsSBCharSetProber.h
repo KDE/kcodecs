@@ -60,15 +60,15 @@ public:
         Reset();
     }
 
-    virtual const char *GetCharSetName();
-    virtual nsProbingState HandleData(const char *aBuf, unsigned int aLen);
-    virtual nsProbingState GetState(void)
+    const char *GetCharSetName() Q_DECL_OVERRIDE;
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen) Q_DECL_OVERRIDE;
+    nsProbingState GetState(void) Q_DECL_OVERRIDE
     {
         return mState;
     };
-    virtual void      Reset(void);
-    virtual float     GetConfidence(void);
-    virtual void      SetOpion() {};
+    void      Reset(void) Q_DECL_OVERRIDE;
+    float     GetConfidence(void) Q_DECL_OVERRIDE;
+    void      SetOpion() Q_DECL_OVERRIDE {};
 
     // This feature is not implemented yet. any current language model
     // contain this parameter as false. No one is looking at this
@@ -82,7 +82,7 @@ public:
     }; // (not implemented)
 
 #ifdef DEBUG_PROBE
-    virtual void  DumpStatus();
+    void  DumpStatus() Q_DECL_OVERRIDE;
 #endif
 
 protected:

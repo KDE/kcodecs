@@ -38,18 +38,18 @@ class KCODECS_NO_EXPORT JapaneseGroupProber: public nsCharSetProber
 public:
     JapaneseGroupProber();
     virtual ~JapaneseGroupProber();
-    nsProbingState HandleData(const char *aBuf, unsigned int aLen);
-    const char *GetCharSetName();
-    nsProbingState GetState(void)
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen) Q_DECL_OVERRIDE;
+    const char *GetCharSetName() Q_DECL_OVERRIDE;
+    nsProbingState GetState(void) Q_DECL_OVERRIDE
     {
         return mState;
     };
-    void      Reset(void);
-    float     GetConfidence(void);
-    void      SetOpion() {};
+    void      Reset(void) Q_DECL_OVERRIDE;
+    float     GetConfidence(void) Q_DECL_OVERRIDE;
+    void      SetOpion() Q_DECL_OVERRIDE {};
 
 #ifdef DEBUG_PROBE
-    void  DumpStatus();
+    void  DumpStatus() Q_DECL_OVERRIDE;
 #endif
 
 protected:

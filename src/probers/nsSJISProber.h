@@ -61,18 +61,18 @@ public:
     {
         delete mCodingSM;
     };
-    nsProbingState HandleData(const char *aBuf, unsigned int aLen);
-    const char *GetCharSetName()
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen) Q_DECL_OVERRIDE;
+    const char *GetCharSetName() Q_DECL_OVERRIDE
     {
         return "Shift_JIS";
     };
-    nsProbingState GetState(void)
+    nsProbingState GetState(void) Q_DECL_OVERRIDE
     {
         return mState;
     };
-    void      Reset(void);
-    float     GetConfidence(void);
-    void      SetOpion() {};
+    void      Reset(void) Q_DECL_OVERRIDE;
+    float     GetConfidence(void) Q_DECL_OVERRIDE;
+    void      SetOpion() Q_DECL_OVERRIDE {};
 
 protected:
     nsCodingStateMachine *mCodingSM;

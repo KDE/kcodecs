@@ -39,17 +39,17 @@ public:
     }
 
     virtual ~nsHebrewProber(void) {}
-    virtual nsProbingState HandleData(const char *aBuf, unsigned int aLen);
-    virtual const char *GetCharSetName();
-    virtual void Reset(void);
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen) Q_DECL_OVERRIDE;
+    const char *GetCharSetName() Q_DECL_OVERRIDE;
+    void Reset(void) Q_DECL_OVERRIDE;
 
-    virtual nsProbingState GetState(void);
+    nsProbingState GetState(void) Q_DECL_OVERRIDE;
 
-    virtual float     GetConfidence(void)
+    float     GetConfidence(void) Q_DECL_OVERRIDE
     {
         return (float)0.0;
     }
-    virtual void      SetOpion() {};
+    void      SetOpion() Q_DECL_OVERRIDE {};
 
     void SetModelProbers(nsCharSetProber *logicalPrb, nsCharSetProber *visualPrb)
     {
@@ -58,7 +58,7 @@ public:
     }
 
 #ifdef DEBUG_PROBE
-    virtual void  DumpStatus();
+    void  DumpStatus() Q_DECL_OVERRIDE;
 #endif
 
 protected:

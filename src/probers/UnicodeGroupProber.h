@@ -36,20 +36,20 @@ class KCODECS_NO_EXPORT UnicodeGroupProber: public nsCharSetProber
 public:
     UnicodeGroupProber(void);
     virtual ~UnicodeGroupProber(void);
-    nsProbingState HandleData(const char *aBuf, unsigned int aLen);
-    const char *GetCharSetName()
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen) Q_DECL_OVERRIDE;
+    const char *GetCharSetName() Q_DECL_OVERRIDE
     {
         return mDetectedCharset;
     };
-    nsProbingState GetState(void)
+    nsProbingState GetState(void) Q_DECL_OVERRIDE
     {
         return mState;
     };
-    void      Reset(void);
-    float     GetConfidence();
-    void      SetOpion() {};
+    void      Reset(void) Q_DECL_OVERRIDE;
+    float     GetConfidence() Q_DECL_OVERRIDE;
+    void      SetOpion() Q_DECL_OVERRIDE {};
 #ifdef DEBUG_PROBE
-    void DumpStatus();
+    void DumpStatus() Q_DECL_OVERRIDE;
 #endif
 
 protected:
