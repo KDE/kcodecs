@@ -108,11 +108,15 @@ void KCodecs::quotedPrintableDecode(const QByteArray &in, QByteArray &out)
     out = quotedPrintableDecode(in);
 }
 
+QByteArray KCodecs::base64Encode(const QByteArray &in)
+{
+    Codec *codec = Codec::codecForName("base64");
+    return codec->encode(in);
+
 QByteArray KCodecs::base64Encode(const QByteArray &in, bool insertLFs)
 {
     Q_UNUSED(insertLFs);
-    Codec *codec = Codec::codecForName("base64");
-    return codec->encode(in);
+    return base64Encode(in);
 }
 
 void KCodecs::base64Encode(const QByteArray &in, QByteArray &out,
