@@ -112,6 +112,7 @@ QByteArray KCodecs::base64Encode(const QByteArray &in)
 {
     Codec *codec = Codec::codecForName("base64");
     return codec->encode(in);
+}
 
 QByteArray KCodecs::base64Encode(const QByteArray &in, bool insertLFs)
 {
