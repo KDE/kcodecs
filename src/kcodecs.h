@@ -213,7 +213,7 @@ KCODECS_EXPORT QByteArray base64Encode(const QByteArray &in);
  * KCodecs::base64Encode(QByteArray)
  * @deprecated Use KCodecs::base64Encode(QByteArray) instead.
  */
-KCODECS_DEPRECATED_EXPORT QByteArray base64Encode(const QByteArray &in, bool insertLFs = false);
+KCODECS_DEPRECATED_EXPORT QByteArray base64Encode(const QByteArray &in, bool insertLFs);
 
 /**
  * Encodes the given data using the base64 algorithm.
