@@ -9,6 +9,7 @@ set(kcodecs_SRCS
     kcodecsqp.cpp
     kcodecsuuencode.cpp
     kencodingprober.cpp
+    kemailaddress.cpp
     probers/CharDistribution.cpp
     probers/ChineseGroupProber.cpp
     probers/JapaneseGroupProber.cpp
@@ -57,7 +58,7 @@ ecm_generate_headers(KCodecs_HEADERS
   KCharsets
   KCodecs
   KEncodingProber
-
+  KEmailAddress
   REQUIRED_HEADERS KCodecs_HEADERS
 )
 
