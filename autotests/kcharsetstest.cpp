@@ -52,6 +52,8 @@ void KCharsetsTest::testCodecForName_data()
     QTest::newRow("Big5-HKSCS") << "Big5-HKSCS" << "Big5-HKSCS" << "Big5-HKSCS";
     QTest::newRow("EUC-JP") << "EUC-JP" << "EUC-JP" << "EUC-JP";
     QTest::newRow("EUC-KR") << "EUC-KR" << "EUC-KR" << "EUC-KR";
+    QTest::newRow("CP949") << "CP949" << "CP949" << "CP949";
+    QTest::newRow("CP 949") << "CP 949" << "CP 949" << "CP 949";
     QTest::newRow("GB18030") << "GB18030" << "GB18030" << "GB18030";
     QTest::newRow("GB2312") << "GB2312" << "GB2312" << "GB2312";
     QTest::newRow("GBK") << "GBK" << "GBK" << "GBK";
