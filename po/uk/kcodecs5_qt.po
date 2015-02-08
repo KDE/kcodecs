@@ -1,0 +1,351 @@
+# Translation of kcodecs5_qt.po to Ukrainian
+# Copyright (C) 2014 This_file_is_part_of_KDE
+# This file is distributed under the license LGPL version 2.1 or
+# version 3 or later versions approved by the membership of KDE e.V.
+#
+# Eugene Onischenko <oneugene@ukr.net>, 2002, 2003, 2004, 2005, 2006.
+# Andriy Rysin <arysin@bcsii.com>, 2002, 2003, 2006, 2007.
+# Ivan Petrouchtchak <fr.ivan@ukrainian-orthodox.org>, 2005, 2006, 2007, 2008.
+# Yuri Chornoivan <yurchor@ukr.net>, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcodecs5_qt\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2014-12-02 19:10+0200\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Qt-Contexts: true\n"
+
+#: kcharsets.cpp:168
+msgctxt "@item Text character set"
+msgid "Western European"
+msgstr "Західноєвропейське"
+
+#: kcharsets.cpp:174
+msgctxt "@item Text character set"
+msgid "Central European"
+msgstr "Центральноєвропейське"
+
+#: kcharsets.cpp:177
+msgctxt "@item Text character set"
+msgid "Baltic"
+msgstr "Балтійське"
+
+#: kcharsets.cpp:180
+msgctxt "@item Text character set"
+msgid "South-Eastern Europe"
+msgstr "Південно-східноєвропейське"
+
+#: kcharsets.cpp:183
+msgctxt "@item Text character set"
+msgid "Turkish"
+msgstr "Турецьке"
+
+#: kcharsets.cpp:186
+msgctxt "@item Text character set"
+msgid "Cyrillic"
+msgstr "Кирилиця"
+
+#: kcharsets.cpp:192
+msgctxt "@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Китайське (традиційне)"
+
+#: kcharsets.cpp:195
+msgctxt "@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Китайське (спрощене)"
+
+#: kcharsets.cpp:199
+msgctxt "@item Text character set"
+msgid "Korean"
+msgstr "Корейське"
+
+#: kcharsets.cpp:202
+msgctxt "@item Text character set"
+msgid "Japanese"
+msgstr "Японське"
+
+#: kcharsets.cpp:206
+msgctxt "@item Text character set"
+msgid "Greek"
+msgstr "Грецьке"
+
+#: kcharsets.cpp:209
+msgctxt "@item Text character set"
+msgid "Arabic"
+msgstr "Арабське"
+
+#: kcharsets.cpp:212
+msgctxt "@item Text character set"
+msgid "Hebrew"
+msgstr "Єврейське"
+
+#: kcharsets.cpp:217
+msgctxt "@item Text character set"
+msgid "Thai"
+msgstr "Таїландське"
+
+#: kcharsets.cpp:220
+msgctxt "@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kcharsets.cpp:226
+msgctxt "@item Text character set"
+msgid "Northern Saami"
+msgstr "Північне Саамі"
+
+#: kcharsets.cpp:228
+msgctxt "@item Text character set"
+msgid "Other"
+msgstr "Інше"
+
+#: kcharsets.cpp:671
+#, qt-format
+msgctxt "KCharsets|@item %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 (%2)"
+
+#: kcharsets.cpp:674
+#, qt-format
+msgctxt "KCharsets|@item"
+msgid "Other encoding (%1)"
+msgstr "Інше кодування (%1)"
+
+#: kcharsets.cpp:703
+#, qt-format
+msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kemailaddress.cpp:530
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains more than one "
+"@. You will not create valid messages if you do not change your address."
+msgstr ""
+"Введено некоректну адресу електронної пошти, оскільки вона містить більше, "
+"ніж один символ @. Ви не зможете створювати повідомлення, якщо ви не зміните "
+"вашу адресу."
+
+#: kemailaddress.cpp:535
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a @. "
+"You will not create valid messages if you do not change your address."
+msgstr ""
+"Введено некоректну адресу електронної пошти, оскільки вона не містить @. Ви "
+"не зможете створювати повідомлення, якщо ви не зміните вашу адресу."
+
+#: kemailaddress.cpp:540
+msgctxt "QObject|"
+msgid "You have to enter something in the email address field."
+msgstr "Потрібно щось ввести в поле адреси ел. пошти."
+
+#: kemailaddress.cpp:542
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"local part."
+msgstr ""
+"Введено некоректну адресу електронної пошти, оскільки вона не містить "
+"локальну частину."
+
+#: kemailaddress.cpp:545
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"domain part."
+msgstr ""
+"Введено некоректну адресу електронної пошти, оскільки вона не містить назви "
+"домену."
+
+#: kemailaddress.cpp:548
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains unclosed "
+"comments/brackets."
+msgstr ""
+"Введено некоректну адресу електронної пошти, оскільки вона містить незакриті "
+"коментарі/квадратні дужки."
+
+#: kemailaddress.cpp:551
+msgctxt "QObject|"
+msgid "The email address you entered is valid."
+msgstr "Ви ввели чинну адресу ел. пошти."
+
+#: kemailaddress.cpp:553
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an unclosed "
+"angle bracket."
+msgstr ""
+"Введено некоректну адресу електронної пошти, оскільки вона містить незакриту "
+"кутову дужку."
+
+#: kemailaddress.cpp:556
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains too many "
+"closing angle brackets."
+msgstr ""
+"Введено некоректну адресу електронної пошти, оскільки вона містить забагато "
+"закритих кутових дужок."
+
+#: kemailaddress.cpp:559
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"unexpected comma."
+msgstr ""
+"Введено некоректну адресу електронної пошти, оскільки вона містить кому."
+
+#: kemailaddress.cpp:562
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it ended unexpectedly. "
+"This probably means you have used an escaping type character like a '\\' as "
+"the last character in your email address."
+msgstr ""
+"Введено некоректну адресу електронної пошти, оскільки вона не закінчена. "
+"Ймовірно, ви використали символ «\\» як останній символ вашої адреси "
+"електронної пошти."
+
+#: kemailaddress.cpp:567
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains quoted text "
+"which does not end."
+msgstr ""
+"Введено некоректну адресу електронної пошти, оскільки вона містить текст, "
+"який не має кінцевих лапок."
+
+#: kemailaddress.cpp:570 kemailaddress.cpp:649
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not seem to "
+"contain an actual email address, i.e. something of the form joe@example.org."
+msgstr ""
+"Ви ввели некоректну адресу електронної пошти, тому що вона не містить самої "
+"адреси, тобто не є в формі fr.ivan@ukrainian-orthodox.org."
+
+#: kemailaddress.cpp:574
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an illegal "
+"character."
+msgstr ""
+"Введено некоректну адресу електронної пошти, оскільки вона містить "
+"некоректний символ."
+
+#: kemailaddress.cpp:577
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"invalid display name."
+msgstr ""
+"Введено некоректну адресу електронної пошти, оскільки вона містить "
+"некоректне екранне ім'я."
+
+#: kemailaddress.cpp:580
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"'.'. You will not create valid messages if you do not change your address."
+msgstr ""
+"Введено некоректну адресу електронної пошти, оскільки вона не містить «.». "
+"Ви не зможете створювати повідомлення, якщо ви не зміните вашу адресу."
+
+#: kemailaddress.cpp:586
+msgctxt "QObject|"
+msgid "Unknown problem with email address"
+msgstr "Невідома проблема з адресою ел. пошти"
+
+#: kencodingprober.cpp:238 kencodingprober.cpp:279
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Disabled"
+msgstr "Вимкнено"
+
+#: kencodingprober.cpp:240 kencodingprober.cpp:282
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Universal"
+msgstr "універсальне"
+
+#: kencodingprober.cpp:242 kencodingprober.cpp:324
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kencodingprober.cpp:244 kencodingprober.cpp:294
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Cyrillic"
+msgstr "кирилиця"
+
+#: kencodingprober.cpp:246 kencodingprober.cpp:309
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Western European"
+msgstr "західноєвропейське"
+
+#: kencodingprober.cpp:248 kencodingprober.cpp:291
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Central European"
+msgstr "центральноєвропейське"
+
+#: kencodingprober.cpp:250 kencodingprober.cpp:297
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Greek"
+msgstr "грецьке"
+
+#: kencodingprober.cpp:252 kencodingprober.cpp:300
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Hebrew"
+msgstr "іврит"
+
+#: kencodingprober.cpp:254 kencodingprober.cpp:306
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Turkish"
+msgstr "Турецький"
+
+#: kencodingprober.cpp:256 kencodingprober.cpp:303
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Japanese"
+msgstr "японське"
+
+#: kencodingprober.cpp:258 kencodingprober.cpp:288
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Baltic"
+msgstr "балтійське"
+
+#: kencodingprober.cpp:260 kencodingprober.cpp:312
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "китайське (традиційне)"
+
+#: kencodingprober.cpp:262 kencodingprober.cpp:315
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "китайське (спрощене)"
+
+#: kencodingprober.cpp:264 kencodingprober.cpp:318
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Korean"
+msgstr "корейське"
+
+#: kencodingprober.cpp:266 kencodingprober.cpp:321
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Thai"
+msgstr "тайське"
+
+#: kencodingprober.cpp:268 kencodingprober.cpp:285
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Arabic"
+msgstr "арабське"
