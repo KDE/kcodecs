@@ -71,9 +71,9 @@ public:
     virtual ~UUDecoder() {}
 
     bool decode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend);
+                char *&dcursor, const char *const dend) Q_DECL_OVERRIDE;
     // ### really needs no finishing???
-    bool finish(char *&dcursor, const char *const dend)
+    bool finish(char *&dcursor, const char *const dend) Q_DECL_OVERRIDE
     {
         Q_UNUSED(dcursor);
         Q_UNUSED(dend);

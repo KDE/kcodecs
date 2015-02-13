@@ -42,12 +42,12 @@ class KCODECS_NO_EXPORT nsUniversalDetector: public nsCharSetProber
 public:
     nsUniversalDetector();
     virtual ~nsUniversalDetector();
-    nsProbingState HandleData(const char *aBuf, unsigned int aLen);
-    const char *GetCharSetName();
-    void      Reset(void);
-    float     GetConfidence(void);
-    nsProbingState GetState();
-    void      SetOpion() {};
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen) Q_DECL_OVERRIDE;
+    const char *GetCharSetName() Q_DECL_OVERRIDE;
+    void      Reset(void) Q_DECL_OVERRIDE;
+    float     GetConfidence(void) Q_DECL_OVERRIDE;
+    nsProbingState GetState() Q_DECL_OVERRIDE;
+    void      SetOpion() Q_DECL_OVERRIDE {};
 
 protected:
     nsInputState  mInputState;

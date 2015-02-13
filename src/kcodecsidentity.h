@@ -65,19 +65,19 @@ public:
       @copydoc
       QByteArray Codec::encode()
     */
-    QByteArray encode(const QByteArray &src, Codec::NewlineType newline = Codec::NewlineLF) const;
+    QByteArray encode(const QByteArray &src, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 
     /**
       @copydoc
       QByteArray Codec::decode()
     */
-    QByteArray decode(const QByteArray &src, Codec::NewlineType newline = Codec::NewlineLF) const;
+    QByteArray decode(const QByteArray &src, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 
     /**
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const
+    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
     {
         if (newline == Codec::NewlineCRLF) {
             return 2 * insize;
@@ -90,7 +90,7 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, Codec::NewlineType newline) const
+    int maxDecodedSizeFor(int insize, Codec::NewlineType newline) const Q_DECL_OVERRIDE
     {
         if (newline == Codec::NewlineCRLF) {
             return 2 * insize;
@@ -103,13 +103,13 @@ public:
       @copydoc
       Codec::makeEncoder()
     */
-    Encoder *makeEncoder(Codec::NewlineType newline = Codec::NewlineCRLF) const;
+    Encoder *makeEncoder(Codec::NewlineType newline = Codec::NewlineCRLF) const Q_DECL_OVERRIDE;
 
     /**
       @copydoc
       Codec::makeDecoder()
     */
-    Decoder *makeDecoder(Codec::NewlineType newline = Codec::NewlineCRLF) const;
+    Decoder *makeDecoder(Codec::NewlineType newline = Codec::NewlineCRLF) const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -135,7 +135,7 @@ public:
       @copydoc
       Codec::name()
     */
-    const char *name() const
+    const char *name() const Q_DECL_OVERRIDE
     {
         return "7bit";
     }
@@ -164,7 +164,7 @@ public:
       @copydoc
       Codec::name()
     */
-    const char *name() const
+    const char *name() const Q_DECL_OVERRIDE
     {
         return "8bit";
     }
@@ -193,7 +193,7 @@ public:
       @copydoc
       Codec::name()
     */
-    const char *name() const
+    const char *name() const Q_DECL_OVERRIDE
     {
         return "binary";
     }
@@ -202,7 +202,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const
+    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
     {
         Q_UNUSED(newline);
         return insize;
@@ -212,7 +212,7 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const
+    int maxDecodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
     {
         Q_UNUSED(newline);
         return insize;

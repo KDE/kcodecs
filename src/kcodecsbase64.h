@@ -78,7 +78,7 @@ public:
       @copydoc
       Codec::name()
     */
-    const char *name() const
+    const char *name() const Q_DECL_OVERRIDE
     {
         return "base64";
     }
@@ -87,7 +87,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, NewlineType newline) const
+    int maxEncodedSizeFor(int insize, NewlineType newline) const Q_DECL_OVERRIDE
     {
         // first, the total number of 4-char packets will be:
         int totalNumPackets = (insize + 2) / 3;
@@ -103,7 +103,7 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const
+    int maxDecodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
     {
         // assuming all characters are part of the base64 stream (which
         // does almost never hold due to required linebreaking; but
@@ -123,13 +123,13 @@ public:
       @copydoc
       Codec::makeEncoder()
     */
-    Encoder *makeEncoder(NewlineType newline = Codec::NewlineLF) const;
+    Encoder *makeEncoder(NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 
     /**
       @copydoc
       Codec::makeDecoder()
     */
-    Decoder *makeDecoder(NewlineType newline = Codec::NewlineLF) const;
+    Decoder *makeDecoder(NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -156,7 +156,7 @@ public:
       @copydoc
       Codec::name()
     */
-    const char *name() const
+    const char *name() const Q_DECL_OVERRIDE
     {
         return "b";
     }
@@ -165,7 +165,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const
+    int maxEncodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
     {
         Q_UNUSED(newline);
         // Each (begun) 3-octet triple becomes a 4 char quartet, so:
@@ -176,7 +176,7 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const
+    int maxDecodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
     {
         Q_UNUSED(newline);
         // Each 4-char quartet becomes a 3-octet triple, the last one
@@ -188,7 +188,7 @@ public:
       @copydoc
       Codec::makeEncoder()
     */
-    Encoder *makeEncoder(NewlineType newline = Codec::NewlineLF) const;
+    Encoder *makeEncoder(NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 };
 
 } // namespace KCodecs

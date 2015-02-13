@@ -96,9 +96,9 @@ public:
     virtual ~Base64Decoder() {}
 
     bool decode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend);
+                char *&dcursor, const char *const dend) Q_DECL_OVERRIDE;
     // ### really needs no finishing???
-    bool finish(char *&dcursor, const char *const dend)
+    bool finish(char *&dcursor, const char *const dend) Q_DECL_OVERRIDE
     {
         Q_UNUSED(dcursor);
         Q_UNUSED(dend);
@@ -134,9 +134,9 @@ public:
     virtual ~Base64Encoder() {}
 
     bool encode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend);
+                char *&dcursor, const char *const dend) Q_DECL_OVERRIDE;
 
-    bool finish(char *&dcursor, const char *const dend);
+    bool finish(char *&dcursor, const char *const dend) Q_DECL_OVERRIDE;
 
 protected:
     bool writeBase64(uchar ch, char *&dcursor, const char *const dend)
@@ -156,8 +156,8 @@ protected:
 
 public:
     bool encode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend);
-    bool finish(char *&dcursor, const char *const dend);
+                char *&dcursor, const char *const dend) Q_DECL_OVERRIDE;
+    bool finish(char *&dcursor, const char *const dend) Q_DECL_OVERRIDE;
 };
 
 Encoder *Base64Codec::makeEncoder(Codec::NewlineType newline) const

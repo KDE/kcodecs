@@ -27,6 +27,8 @@
 
 #include "kcodecs_export.h"
 
+#include <qglobal.h>
+
 #define NUM_OF_CATEGORY 6
 
 #define ENOUGH_REL_THRESHOLD  100
@@ -102,9 +104,9 @@ class KCODECS_NO_EXPORT SJISContextAnalysis : public JapaneseContextAnalysis
 {
     //SJISContextAnalysis(){};
 protected:
-    int GetOrder(const char *str, unsigned int *charLen);
+    int GetOrder(const char *str, unsigned int *charLen) Q_DECL_OVERRIDE;
 
-    int GetOrder(const char *str)
+    int GetOrder(const char *str) Q_DECL_OVERRIDE
     {
         //We only interested in Hiragana, so first byte is '\202'
         if (*str == '\202' &&
@@ -119,8 +121,8 @@ protected:
 class KCODECS_NO_EXPORT EUCJPContextAnalysis : public JapaneseContextAnalysis
 {
 protected:
-    int GetOrder(const char *str, unsigned int *charLen);
-    int GetOrder(const char *str)
+    int GetOrder(const char *str, unsigned int *charLen) Q_DECL_OVERRIDE;
+    int GetOrder(const char *str) Q_DECL_OVERRIDE
     //We only interested in Hiragana, so first byte is '\244'
     {
         if (*str == '\244' &&

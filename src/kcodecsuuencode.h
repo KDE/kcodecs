@@ -62,7 +62,7 @@ public:
       @copydoc
       Codec::name()
     */
-    const char *name() const
+    const char *name() const Q_DECL_OVERRIDE
     {
         return "x-uuencode";
     }
@@ -71,7 +71,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const
+    int maxEncodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
     {
         Q_UNUSED(newline);
         return insize; // we have no encoder!
@@ -81,7 +81,7 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const
+    int maxDecodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
     {
         // assuming all characters are part of the uuencode stream (which
         // does almost never hold due to required linebreaking; but
@@ -100,13 +100,13 @@ public:
       @copydoc
       Codec::makeEncoder()
     */
-    Encoder *makeEncoder(NewlineType newline = Codec::NewlineLF) const;
+    Encoder *makeEncoder(NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 
     /**
       @copydoc
       Codec::makeEncoder()
     */
-    Decoder *makeDecoder(NewlineType newline = Codec::NewlineLF) const;
+    Decoder *makeDecoder(NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 };
 
 } // namespace KCodecs

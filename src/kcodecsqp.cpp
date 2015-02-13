@@ -148,9 +148,9 @@ public:
     virtual ~QuotedPrintableEncoder() {}
 
     bool encode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend);
+                char *&dcursor, const char *const dend) Q_DECL_OVERRIDE;
 
-    bool finish(char *&dcursor, const char *const dend);
+    bool finish(char *&dcursor, const char *const dend) Q_DECL_OVERRIDE;
 };
 
 class QuotedPrintableDecoder : public Decoder
@@ -198,8 +198,8 @@ public:
     virtual ~QuotedPrintableDecoder() {}
 
     bool decode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend);
-    bool finish(char *&dcursor, const char *const dend);
+                char *&dcursor, const char *const dend) Q_DECL_OVERRIDE;
+    bool finish(char *&dcursor, const char *const dend) Q_DECL_OVERRIDE;
 };
 
 class Rfc2047QEncodingEncoder : public Encoder
@@ -248,8 +248,8 @@ public:
     virtual ~Rfc2047QEncodingEncoder() {}
 
     bool encode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend);
-    bool finish(char *&dcursor, const char *const dend);
+                char *&dcursor, const char *const dend) Q_DECL_OVERRIDE;
+    bool finish(char *&dcursor, const char *const dend) Q_DECL_OVERRIDE;
 };
 
 // this doesn't access any member variables, so it can be defined static

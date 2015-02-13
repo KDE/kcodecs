@@ -72,7 +72,7 @@ public:
       @copydoc
       Codec::name()
     */
-    const char *name() const
+    const char *name() const Q_DECL_OVERRIDE
     {
         return "quoted-printable";
     }
@@ -81,7 +81,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const
+    int maxEncodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
     {
         // all chars encoded:
         int result = 3 * insize;
@@ -95,19 +95,19 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const;
+    int maxDecodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 
     /**
       @copydoc
       Codec::makeEncoder()
     */
-    Encoder *makeEncoder(NewlineType newline = Codec::NewlineLF) const;
+    Encoder *makeEncoder(NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 
     /**
       @copydoc
       Codec::makeDecoder()
     */
-    Decoder *makeDecoder(NewlineType newline = Codec::NewlineLF) const;
+    Decoder *makeDecoder(NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -134,7 +134,7 @@ public:
       @copydoc
       Codec::name()
     */
-    const char *name() const
+    const char *name() const Q_DECL_OVERRIDE
     {
         return "q";
     }
@@ -143,7 +143,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const
+    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
     {
         Q_UNUSED(newline);
         // this one is simple: We don't do linebreaking, so all that can
@@ -155,19 +155,19 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const;
+    int maxDecodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 
     /**
       @copydoc
       Codec::makeEncoder()
     */
-    Encoder *makeEncoder(Codec::NewlineType newline = Codec::NewlineLF) const;
+    Encoder *makeEncoder(Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 
     /**
       @copydoc
       Codec::makeDecoder()
     */
-    Decoder *makeDecoder(Codec::NewlineType newline = Codec::NewlineLF) const;
+    Decoder *makeDecoder(Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -193,7 +193,7 @@ public:
       @copydoc
       Codec::name()
     */
-    const char *name() const
+    const char *name() const Q_DECL_OVERRIDE
     {
         return "x-kmime-rfc2231";
     }
@@ -202,7 +202,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const
+    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
     {
         Q_UNUSED(newline);
         // same as for "q" encoding:
@@ -213,19 +213,19 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const;
+    int maxDecodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 
     /**
       @copydoc
       Codec::makeEncoder()
     */
-    Encoder *makeEncoder(Codec::NewlineType newline = Codec::NewlineLF) const;
+    Encoder *makeEncoder(Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 
     /**
       @copydoc
       Codec::makeDecoder()
     */
-    Decoder *makeDecoder(Codec::NewlineType newline = Codec::NewlineLF) const;
+    Decoder *makeDecoder(Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
 };
 
 } // namespace KCodecs
