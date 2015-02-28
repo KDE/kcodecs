@@ -123,7 +123,8 @@ QByteArray KCodecs::base64Encode(const QByteArray &in, bool insertLFs)
 void KCodecs::base64Encode(const QByteArray &in, QByteArray &out,
                            bool insertLFs)
 {
-    out = base64Encode(in, insertLFs);
+    Q_UNUSED(insertLFs);
+    out = base64Encode(in);
 }
 
 QByteArray KCodecs::base64Decode(const QByteArray &in)
