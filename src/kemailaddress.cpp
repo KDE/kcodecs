@@ -654,16 +654,25 @@ QString KEmailAddress::simpleEmailAddressErrorMsg()
 //-----------------------------------------------------------------------------
 QByteArray KEmailAddress::extractEmailAddress(const QByteArray &address)
 {
+    QString errorMessage;
+    return extractEmailAddress(address, errorMessage);
+}
+
+QByteArray KEmailAddress::extractEmailAddress(const QByteArray &address, QString &errorMessage)
+{
     QByteArray dummy1, dummy2, addrSpec;
-    EmailParseResult result =
+    const EmailParseResult result =
         splitAddressInternal(address, dummy1, addrSpec, dummy2,
                              false/* don't allow multiple addresses */);
     if (result != AddressOk) {
         addrSpec = QByteArray();
         if (result != AddressEmpty) {
+            errorMessage = emailParseResultToString(result);
             qDebug() << "Input:" << address << "\nError:"
-                     << emailParseResultToString(result);
+                     << errorMessage;
         }
+    } else {
+        errorMessage.clear();
     }
 
     return addrSpec;
@@ -678,16 +687,26 @@ QString KEmailAddress::extractEmailAddress(const QString &address)
 //-----------------------------------------------------------------------------
 QByteArray KEmailAddress::firstEmailAddress(const QByteArray &addresses)
 {
+    QString errorMessage;
+    return firstEmailAddress(addresses, errorMessage);
+}
+
+QByteArray KEmailAddress::firstEmailAddress(const QByteArray &addresses, QString &errorMessage)
+{
     QByteArray dummy1, dummy2, addrSpec;
-    EmailParseResult result =
+    const EmailParseResult result =
         splitAddressInternal(addresses, dummy1, addrSpec, dummy2,
                              true/* allow multiple addresses */);
     if (result != AddressOk) {
         addrSpec = QByteArray();
         if (result != AddressEmpty) {
+
+            errorMessage = emailParseResultToString(result);
             qDebug() << "Input: aStr\nError:"
-                     << emailParseResultToString(result);
+                     << errorMessage;
         }
+    } else {
+        errorMessage.clear();
     }
 
     return addrSpec;
