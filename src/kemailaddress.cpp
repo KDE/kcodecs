@@ -681,7 +681,13 @@ QByteArray KEmailAddress::extractEmailAddress(const QByteArray &address, QString
 //-----------------------------------------------------------------------------
 QString KEmailAddress::extractEmailAddress(const QString &address)
 {
-    return QString::fromUtf8(extractEmailAddress(address.toUtf8()));
+    QString errorMessage;
+    return extractEmailAddress(address, errorMessage);
+}
+
+QString KEmailAddress::extractEmailAddress(const QString &address, QString &errorMessage)
+{
+    return QString::fromUtf8(extractEmailAddress(address.toUtf8(), errorMessage));
 }
 
 //-----------------------------------------------------------------------------
@@ -715,7 +721,13 @@ QByteArray KEmailAddress::firstEmailAddress(const QByteArray &addresses, QString
 //-----------------------------------------------------------------------------
 QString KEmailAddress::firstEmailAddress(const QString &addresses)
 {
-    return QString::fromUtf8(firstEmailAddress(addresses.toUtf8()));
+    QString errorMessage;
+    return firstEmailAddress(addresses, errorMessage);
+}
+
+QString KEmailAddress::firstEmailAddress(const QString &addresses, QString &errorMessage)
+{
+    return QString::fromUtf8(firstEmailAddress(addresses.toUtf8(), errorMessage));
 }
 
 //-----------------------------------------------------------------------------

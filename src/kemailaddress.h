@@ -267,9 +267,24 @@ QString extractEmailAddress(const QString &address);
   email address of a list of addresses.
 
   @param addresses an email address, e.g. "Joe User <joe.user@example.org>"
+  @param errorMessage return error message when we can't parse email
+  @return          the addr-spec of @a addresses, i.e. joe.user@example.org
+  in the example
+  @since 5.11
+*/
+
+KCODECS_EXPORT
+QString extractEmailAddress(const QString &address, QString &errorMessage);
+
+/**
+  Returns the pure email address (addr-spec in RFC2822) of the first
+  email address of a list of addresses.
+
+  @param addresses an email address, e.g. "Joe User <joe.user@example.org>"
   @return          the addr-spec of @a addresses, i.e. joe.user@example.org
   in the example
 */
+
 /*KF6 merge with above*/
 KCODECS_EXPORT
 QByteArray firstEmailAddress(const QByteArray &addresses);
@@ -301,6 +316,23 @@ QByteArray firstEmailAddress(const QByteArray &addresses, QString &errorMessage)
 */
 KCODECS_EXPORT
 QString firstEmailAddress(const QString &addresses);
+
+/**
+  This is an overloaded member function, provided for convenience.
+  It behaves essentially like the above function.
+
+  Returns the pure email address (addr-spec in RFC2822) of the first
+  email address of a list of addresses.
+
+  @param addresses an email address, e.g. "Joe User <joe.user@example.org>"
+  @param errorMessage return error message when we can't parse email
+  @return          the addr-spec of @a addresses, i.e. joe.user@example.org
+  in the example
+  @since 5.11.0
+*/
+KCODECS_EXPORT
+QString firstEmailAddress(const QString &addresses, QString &errorMessage);
+
 
 /**
   Return email address and name from string.
