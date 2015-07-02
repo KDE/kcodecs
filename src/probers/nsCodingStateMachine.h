@@ -111,7 +111,6 @@ extern KCODECS_NO_EXPORT const SMModel UTF8SMModel;
 extern KCODECS_NO_EXPORT const SMModel Big5SMModel;
 extern KCODECS_NO_EXPORT const SMModel EUCJPSMModel;
 extern KCODECS_NO_EXPORT const SMModel EUCKRSMModel;
-extern KCODECS_NO_EXPORT const SMModel EUCTWSMModel;
 extern KCODECS_NO_EXPORT const SMModel GB18030SMModel;
 extern KCODECS_NO_EXPORT const SMModel SJISSMModel;
 extern KCODECS_NO_EXPORT const SMModel UCS2LESMModel;

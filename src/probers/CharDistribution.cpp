@@ -27,7 +27,6 @@
 #include "tables/JISFreq.tab"
 #include "tables/Big5Freq.tab"
 #include "tables/EUCKRFreq.tab"
-#include "tables/EUCTWFreq.tab"
 #include "tables/GB2312Freq.tab"
 
 #define SURE_YES 0.99f
@@ -52,13 +51,6 @@ float CharDistributionAnalysis::GetConfidence()
     }
     //normalize confidence, (we don't want to be 100% sure)
     return SURE_YES;
-}
-
-EUCTWDistributionAnalysis::EUCTWDistributionAnalysis()
-{
-    mCharToFreqOrder = EUCTWCharToFreqOrder;
-    mTableSize = EUCTW_TABLE_SIZE;
-    mTypicalDistributionRatio = EUCTW_TYPICAL_DISTRIBUTION_RATIO;
 }
 
 EUCKRDistributionAnalysis::EUCKRDistributionAnalysis()

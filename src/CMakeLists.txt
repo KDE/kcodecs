@@ -25,7 +25,6 @@ set(kcodecs_SRCS
     probers/nsCharSetProber.cpp
     probers/nsEUCJPProber.cpp
     probers/nsEUCKRProber.cpp
-    probers/nsEUCTWProber.cpp
     probers/nsEscCharsetProber.cpp
     probers/nsEscSM.cpp
     probers/nsGB2312Prober.cpp
