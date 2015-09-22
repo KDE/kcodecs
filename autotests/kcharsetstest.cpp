@@ -154,16 +154,6 @@ void KCharsetsTest::testEncodingNames()
     Q_FOREACH (QString encodingName, singleton->availableEncodingNames()) {
         bool ok = false;
 
-#if QT_VERSION <= QT_VERSION_CHECK(5, 5, 0)
-        if (encodingName == QString::fromLatin1("ISO 8859-16") // ICU bug?
-                || encodingName == QString::fromLatin1("jis7")
-                || encodingName == QString::fromLatin1("winsami2")) {
-            qWarning() << "Pending fix in Qt, for now" << encodingName << "is missing";
-            qWarning() << "availability of " << encodingName << "depends on if Qt is built with icu support. So skip it";
-            continue;
-        }
-#endif
-
         if (encodingName == QString::fromLatin1("ucs2") || encodingName == QString::fromLatin1("ISO 10646-UCS-2")) {
             singleton->codecForName(QString::fromLatin1("UTF-16"), ok);
         } else if (encodingName == QString::fromLatin1("utf7")) {
@@ -171,6 +161,19 @@ void KCharsetsTest::testEncodingNames()
         } else {
             singleton->codecForName(encodingName, ok);
         }
+        // The availability of some of the charsets below depends on whether Qt was built with ICU...
+        if (!ok) {
+            if (encodingName == QString::fromLatin1("jis7")) {
+                QEXPECT_FAIL("", "jis7 is missing in Qt", Continue);
+            }
+            if (encodingName == QString::fromLatin1("winsami2")) {
+                QEXPECT_FAIL("", "winsami2 is missing in Qt", Continue);
+            }
+            if (encodingName == QString::fromLatin1("ISO 8859-16")) { // ICU bug?
+                QEXPECT_FAIL("", "ISO 8859-16 is missing in Qt", Continue);
+            }
+        }
+
 
         if (!ok) {
             qDebug() << "Error:" << encodingName << "not found";
