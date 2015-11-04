@@ -1041,7 +1041,7 @@ QString KEmailAddress::normalizeAddressesAndDecodeIdn(const QString &str)
                << normalizedAddressList.join( ", " )
                << "\"";
     */
-    return normalizedAddressList.join(QLatin1String(", "));
+    return normalizedAddressList.join(QStringLiteral(", "));
 }
 
 //-----------------------------------------------------------------------------
@@ -1076,7 +1076,7 @@ QString KEmailAddress::normalizeAddressesAndEncodeIdn(const QString &str)
                << normalizedAddressList.join( ", " )
                << "\"";
     */
-    return normalizedAddressList.join(QLatin1String(", "));
+    return normalizedAddressList.join(QStringLiteral(", "));
 }
 
 //-----------------------------------------------------------------------------
@@ -1129,7 +1129,7 @@ QUrl KEmailAddress::encodeMailtoUrl(const QString &mailbox)
 {
     const QByteArray encodedPath = KCodecs::encodeRFC2047String(mailbox, "utf-8");
     QUrl mailtoUrl;
-    mailtoUrl.setScheme(QLatin1String("mailto"));
+    mailtoUrl.setScheme(QStringLiteral("mailto"));
     mailtoUrl.setPath(QLatin1String(encodedPath));
     return mailtoUrl;
 }

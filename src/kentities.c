@@ -101,7 +101,7 @@ hash_Entity(register const char *str, register unsigned int len)
         932, 932, 932, 932, 932, 932, 932, 932, 932, 932,
         932, 932, 932, 932, 932, 932, 932
     };
-    register int hval = len;
+    int hval = len;
 
     switch (hval) {
     default:
@@ -807,13 +807,13 @@ kde_findEntity(register const char *str, register unsigned int len)
     };
 
     if (len <= MAX_WORD_LENGTH && len >= MIN_WORD_LENGTH) {
-        register int key = hash_Entity(str, len);
+        int key = hash_Entity(str, len);
 
         if (key <= MAX_HASH_VALUE && key >= 0) {
-            register int index = lookup[key];
+            int index = lookup[key];
 
             if (index >= 0) {
-                register const char *s = wordlist_Entity[index].name;
+                const char *s = wordlist_Entity[index].name;
 
                 if (*str == *s && !strncmp(str + 1, s + 1, len - 1) && s[len] == '\0') {
                     return &wordlist_Entity[index];

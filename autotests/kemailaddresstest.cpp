@@ -353,9 +353,9 @@ void KEmailAddressTest::testIsValidSimpleEmailAddress_data()
 
     // checks for "pure" email addresses in the form of xxx@yyy.tld
     QTest::newRow("") << "matt@fruitsalad.org" << true;
-    QTest::newRow("") << QString::fromUtf8("test@täst.invalid") << true;
+    QTest::newRow("") << QStringLiteral("test@täst.invalid") << true;
     // non-ASCII char as first char of IDN
-    QTest::newRow("") << QString::fromUtf8("i_want@øl.invalid") << true;
+    QTest::newRow("") << QStringLiteral("i_want@øl.invalid") << true;
     QTest::newRow("") << "matt@[123.123.123.123]" << true;
     QTest::newRow("") << "matt@[3.3.3.3]" << true;
     QTest::newRow("") << "matt@[4.4.4.4]" << true;
@@ -467,18 +467,18 @@ void KEmailAddressTest::testCheckSplitEmailAddrList_data()
     QTest::addColumn<QStringList>("expResult");
 
     QTest::newRow("") << "kloecker@kde.org (Kloecker, Ingo)"
-                      << (QStringList() << QLatin1String("kloecker@kde.org (Kloecker, Ingo)"));
+                      << (QStringList() << QStringLiteral("kloecker@kde.org (Kloecker, Ingo)"));
     QTest::newRow("") << "Matt Douhan <matt@fruitsalad.org>, Foo Bar <foo@bar.com>"
                       << (QStringList()
-                          << QLatin1String("Matt Douhan <matt@fruitsalad.org>")
-                          << QLatin1String("Foo Bar <foo@bar.com>"));
+                          << QStringLiteral("Matt Douhan <matt@fruitsalad.org>")
+                          << QStringLiteral("Foo Bar <foo@bar.com>"));
     QTest::newRow("") << "\"Matt, Douhan\" <matt@fruitsalad.org>, Foo Bar <foo@bar.com>"
                       << (QStringList()
-                          << QLatin1String("\"Matt, Douhan\" <matt@fruitsalad.org>")
-                          << QLatin1String("Foo Bar <foo@bar.com>"));
+                          << QStringLiteral("\"Matt, Douhan\" <matt@fruitsalad.org>")
+                          << QStringLiteral("Foo Bar <foo@bar.com>"));
     QTest::newRow("") << "\"Lastname\\, Firstname\" <firstname.lastname@example.com>"
                       << (QStringList()
-                          << QLatin1String("\"Lastname\\, Firstname\" <firstname.lastname@example.com>"));
+                          << QStringLiteral("\"Lastname\\, Firstname\" <firstname.lastname@example.com>"));
 }
 
 void KEmailAddressTest::testNormalizeAddressesAndEncodeIDNs()
@@ -526,15 +526,15 @@ void KEmailAddressTest::testNormalizeAddressesAndDecodeIDNs_data()
 
     QTest::newRow("")
             << "=?iso-8859-1?B?5Hf8b2xmLPZBbmRyZWFz?= <nobody@example.org>"
-            << QString::fromUtf8("\"äwüolf,öAndreas\" <nobody@example.org>");
+            << QStringLiteral("\"äwüolf,öAndreas\" <nobody@example.org>");
 
     QTest::newRow("")
-            << QString::fromUtf8("\"Andreas Straß\" <nobody@example.org>")
-            << QString::fromUtf8("\"Andreas Straß\" <nobody@example.org>");
+            << QStringLiteral("\"Andreas Straß\" <nobody@example.org>")
+            << QStringLiteral("\"Andreas Straß\" <nobody@example.org>");
 
     QTest::newRow("")
-            << QString::fromUtf8("\"András\" \"Manţia\" <amantia@kde.org>")
-            << QString::fromUtf8("\"András\" \"Manţia\" <amantia@kde.org>");
+            << QStringLiteral("\"András\" \"Manţia\" <amantia@kde.org>")
+            << QStringLiteral("\"András\" \"Manţia\" <amantia@kde.org>");
 }
 
 void KEmailAddressTest::testQuoteIfNecessary()
@@ -578,8 +578,8 @@ void KEmailAddressTest::testMailtoUrls_data()
     QTest::addColumn<QString>("input");
 
     QTest::newRow("") << "tokoe@domain.com";
-    QTest::newRow("") << QString::fromUtf8("\"Tobias König\" <tokoe@domain.com>");
-    QTest::newRow("") << QString::fromUtf8("\"Alberto Simões\" <alberto@example.com");
-    QTest::newRow("") << QString::fromUtf8("Alberto Simões <alberto@example.com");
+    QTest::newRow("") << QStringLiteral("\"Tobias König\" <tokoe@domain.com>");
+    QTest::newRow("") << QStringLiteral("\"Alberto Simões\" <alberto@example.com");
+    QTest::newRow("") << QStringLiteral("Alberto Simões <alberto@example.com");
 }
 
