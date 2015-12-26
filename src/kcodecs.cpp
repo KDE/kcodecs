@@ -718,8 +718,9 @@ bool KCodecs::Encoder::write(char ch, char*& dcursor, const char*const dend)
         if (d->outputBufferCursor >= maxBufferedChars) {
             qCritical()
                     << "KCodecs::Encoder: internal buffer overflow!";
+        } else {
+            d->outputBuffer[ d->outputBufferCursor++ ] = ch;
         }
-        d->outputBuffer[ d->outputBufferCursor++ ] = ch;
         return false;
     }
 }
