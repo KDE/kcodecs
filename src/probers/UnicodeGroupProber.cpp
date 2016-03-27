@@ -61,8 +61,6 @@ void UnicodeGroupProber::Reset(void)
 nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLen)
 {
     nsSMState codingState;
-    int j;
-    uint i, weight_BOM, counts[5];
     static bool disableUTF16LE = false;
     static bool disableUTF16BE = false;
     double weight_zero;
@@ -77,7 +75,8 @@ nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLe
             disableUTF16LE = true;
             disableUTF16BE = true;
         }
-        weight_BOM = (uint)(sqrt((double)aLen) + aLen / 10.0);
+        const uint weight_BOM = sqrt((double)aLen) + aLen / 10.0;
+        uint counts[5] = {0, 0, 0, 0, 0};
         for (uint i = 0; i < 5; i++) {
             qCount(aBuf, aBuf + aLen, char(i), counts[i]);
         }
@@ -103,8 +102,8 @@ nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLe
         }
     }
 
-    for (i = 0; i < aLen; ++i) {
-        for (j = mActiveSM - 1; j >= 0; --j) {
+    for (uint i = 0; i < aLen; ++i) {
+        for (int j = mActiveSM - 1; j >= 0; --j) {
             //byte is feed to all active state machine
             codingState = mCodingSM[j]->NextState(aBuf[i]);
             if (codingState == eError) {
