@@ -71,6 +71,17 @@ void KEncodingProberTest::testProbe()
     ep->feed(QByteArray::fromHex("aefcafc7a6caa474a141a6b3ae65a444a46a"));
     QCOMPARE(ep->encoding().toLower(), QByteArray("big5"));
     ep->reset();
+
+    // binary data, just make sure we do not crash (cf. crash in bug #357341)
+    const QDir dataDir(QFINDTESTDATA("data"));
+    const QString binaryFile = dataDir.filePath(QStringLiteral("binary_data"));
+    QFile file(binaryFile);
+    QVERIFY(file.open(QIODevice::ReadOnly));
+    QByteArray binaryData(file.readAll());
+    ep->setProberType(KEncodingProber::Universal);
+    ep->feed(binaryData);
+    QCOMPARE(ep->encoding().toLower(), QByteArray("utf-8"));
+    ep->reset();
 }
 
 QTEST_MAIN(KEncodingProberTest)

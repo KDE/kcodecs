@@ -85,7 +85,9 @@ nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLe
             disableUTF16LE = true;
             disableUTF16BE = true;
         }
-        if (4 >= aBuf[1] && aBuf[1] >= 0 && isprint(aBuf[0])) {
+        const int firstChar = static_cast<int>(aBuf[0]);
+        const bool isPrintable = firstChar >= 0 && isprint(firstChar);
+        if (4 >= aBuf[1] && aBuf[1] >= 0 && isPrintable) {
             disableUTF16BE = true;
         } else {
             disableUTF16LE = true;
