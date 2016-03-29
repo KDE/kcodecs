@@ -24,9 +24,7 @@
 
 #include "UnicodeGroupProber.h"
 
-#include "ctype_test_p.h"
-
-#include <QtAlgorithms>
+#include <QChar>
 #include <math.h>
 
 namespace kencodingprober
@@ -78,16 +76,14 @@ nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLe
         const uint weight_BOM = sqrt((double)aLen) + aLen / 10.0;
         uint counts[5] = {0, 0, 0, 0, 0};
         for (uint i = 0; i < 5; i++) {
-            qCount(aBuf, aBuf + aLen, char(i), counts[i]);
+            counts[i] = std::count(aBuf, aBuf + aLen, char(i));
         }
         weight_zero = (2.0 * (counts[0] + counts[1] + counts[2] + counts[3] + counts[4]) + weight_BOM) / aLen;
         if (weight_zero < log(1.4142)) {
             disableUTF16LE = true;
             disableUTF16BE = true;
         }
-        const int firstChar = static_cast<int>(aBuf[0]);
-        const bool isPrintable = firstChar >= 0 && isprint(firstChar);
-        if (4 >= aBuf[1] && aBuf[1] >= 0 && isPrintable) {
+        if (4 >= aBuf[1] && aBuf[1] >= 0 && QChar::isPrint(static_cast<uint>(aBuf[0]))) {
             disableUTF16BE = true;
         } else {
             disableUTF16LE = true;
