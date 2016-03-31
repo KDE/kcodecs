@@ -17,6 +17,7 @@
 
 #include "kencodingprobertest.h"
 
+#include <QDir>
 #include <QTest>
 #include <kencodingprober.h>
 
