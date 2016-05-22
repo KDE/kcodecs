@@ -11,3 +11,7 @@ libraries:
  - qmake: KCodecs
    cmake: "KF5::Codecs"
 cmakename: KF5Codecs
+
+public_lib: true
+group: Frameworks
+subgroup: Tier 1
