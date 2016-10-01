@@ -625,7 +625,7 @@ protected:
 
   @since 5.5
 */
-class Decoder
+class KCODECS_EXPORT Decoder
 {
 protected:
     friend class Codec;
@@ -680,7 +680,7 @@ protected:
 
   @since 5.5
 */
-class Encoder
+class KCODECS_EXPORT Encoder
 {
 
 protected:
