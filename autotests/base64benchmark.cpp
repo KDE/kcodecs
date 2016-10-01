@@ -101,6 +101,7 @@ private Q_SLOTS:
             QByteArray::iterator resultIt = result.begin();
             decoder->decode(inputIt, input.constEnd(), resultIt, result.end());
             result.truncate(resultIt - result.begin());
+            delete decoder;
         }
         QCOMPARE(result, output);
     }
