@@ -20,7 +20,7 @@
 */
 #include "kcharsets.h"
 
-#include "kentities.c"
+#include "kentities.h"
 
 #include <QtCore/QDir>
 #include <QtCore/QRegExp>
@@ -569,7 +569,7 @@ QChar KCharsets::fromEntity(const QString &str)
     }
 
     const QByteArray raw(str.toLatin1());
-    const entity *e = kde_findEntity(raw.data(), raw.length());
+    const entity *e = KCodecsEntities::kde_findEntity(raw.data(), raw.length());
 
     if (!e) {
         //qDebug() << "unknown entity " << str <<", len = " << str.length();
