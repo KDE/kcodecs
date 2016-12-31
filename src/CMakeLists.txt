@@ -38,6 +38,8 @@ set(kcodecs_SRCS
     probers/nsUniversalDetector.cpp
   ${kcodecs_QM_LOADER}
 )
+ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h kcodecs_SRCS
+                   GENERATION_FLAGS "-k * -D -s 2")
 
 add_library(KF5Codecs ${kcodecs_SRCS})
 generate_export_header(KF5Codecs BASE_NAME KCodecs)

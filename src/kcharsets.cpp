@@ -20,7 +20,7 @@
 */
 #include "kcharsets.h"
 
-#include "kentities.h"
+#include <kentities.h>
 
 #include <QtCore/QDir>
 #include <QtCore/QRegExp>

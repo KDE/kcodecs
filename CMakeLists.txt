@@ -18,6 +18,8 @@ include(KDECMakeSettings)
 set(REQUIRED_QT_VERSION 5.6.0)
 find_package(Qt5Core ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
 
+find_package(Gperf REQUIRED)
+
 
 include(GenerateExportHeader)
 include(CMakePackageConfigHelpers)
