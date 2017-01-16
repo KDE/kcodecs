@@ -35,7 +35,7 @@
 class KEncodingProberPrivate
 {
 public:
-    KEncodingProberPrivate(): prober(NULL), mStart(true) {};
+    KEncodingProberPrivate(): prober(nullptr), mStart(true) {};
     ~KEncodingProberPrivate()
     {
         delete prober;
@@ -53,7 +53,7 @@ public:
 
         switch (proberType) {
         case KEncodingProber::None:
-            prober = NULL;
+            prober = nullptr;
             break;
         case KEncodingProber::Arabic:
         case KEncodingProber::Baltic:
@@ -86,7 +86,7 @@ public:
             prober = new kencodingprober::nsUniversalDetector();
             break;
         default:
-            prober = NULL;
+            prober = nullptr;
         }
     }
     void unicodeTest(const char *aBuf, int aLen)

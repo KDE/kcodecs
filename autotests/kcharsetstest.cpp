@@ -33,7 +33,7 @@ static bool encodingNameHasADescription(const QString &encodingName, const QStri
 
 void KCharsetsTest::testSingleton()
 {
-    QVERIFY(KCharsets::charsets() != NULL);
+    QVERIFY(KCharsets::charsets() != nullptr);
     QCOMPARE(KCharsets::charsets(), KCharsets::charsets());
 }
 
@@ -105,16 +105,16 @@ void KCharsetsTest::testCodecForName()
     QFETCH(QString, expectedCodecFromKDE);
     QFETCH(QString, expectedCodecFromQt);
 
-    if (QTextCodec::codecForName(codec.toLocal8Bit()) == NULL) {
+    if (QTextCodec::codecForName(codec.toLocal8Bit()) == nullptr) {
         qWarning() << "codec " << codec << "is not supported by QTextCodec !";
         return;
     }
 
-    QVERIFY(QTextCodec::codecForName(expectedCodecFromKDE.toLocal8Bit()) != NULL);
+    QVERIFY(QTextCodec::codecForName(expectedCodecFromKDE.toLocal8Bit()) != nullptr);
     QCOMPARE(singleton->codecForName(codec)->name(),
              QTextCodec::codecForName(expectedCodecFromKDE.toLocal8Bit())->name());
 
-    QVERIFY(QTextCodec::codecForName(expectedCodecFromQt.toLocal8Bit()) != NULL);
+    QVERIFY(QTextCodec::codecForName(expectedCodecFromQt.toLocal8Bit()) != nullptr);
     QCOMPARE(QTextCodec::codecForName(codec.toLocal8Bit())->name(),
              QTextCodec::codecForName(expectedCodecFromQt.toLocal8Bit())->name());
 }

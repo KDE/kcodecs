@@ -36,17 +36,17 @@ nsUniversalDetector::nsUniversalDetector()
     mDone = false;
     mBestGuess = -1;   //illegal value as signal
     mInTag = false;
-    mEscCharSetProber = 0;
+    mEscCharSetProber = nullptr;
 
     mStart = true;
-    mDetectedCharset = 0;
+    mDetectedCharset = nullptr;
     mGotData = false;
     mInputState = ePureAscii;
     mLastChar = '\0';
 
     unsigned int i;
     for (i = 0; i < NUM_OF_CHARSET_PROBERS; i++) {
-        mCharSetProbers[i] = 0;
+        mCharSetProbers[i] = nullptr;
     }
 }
 
@@ -66,7 +66,7 @@ nsUniversalDetector::Reset()
     mInTag = false;
 
     mStart = true;
-    mDetectedCharset = 0;
+    mDetectedCharset = nullptr;
     mGotData = false;
     mInputState = ePureAscii;
     mLastChar = '\0';
@@ -107,16 +107,16 @@ nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aL
 
                 //kill mEscCharSetProber if it is active
                 delete mEscCharSetProber;
-                mEscCharSetProber = 0;
+                mEscCharSetProber = nullptr;
 
                 //start multibyte and singlebyte charset prober
-                if (0 == mCharSetProbers[0]) {
+                if (nullptr == mCharSetProbers[0]) {
                     mCharSetProbers[0] = new nsMBCSGroupProber;
                 }
-                if (0 == mCharSetProbers[1]) {
+                if (nullptr == mCharSetProbers[1]) {
                     mCharSetProbers[1] = new nsSBCSGroupProber;
                 }
-                if (0 == mCharSetProbers[2]) {
+                if (nullptr == mCharSetProbers[2]) {
                     mCharSetProbers[2] = new nsLatin1Prober;
                 }
             }
@@ -135,7 +135,7 @@ nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aL
     nsProbingState st = eDetecting;
     switch (mInputState) {
     case eEscAscii:
-        if (0 == mEscCharSetProber) {
+        if (nullptr == mEscCharSetProber) {
             mEscCharSetProber = new nsEscCharSetProber;
         }
         st = mEscCharSetProber->HandleData(aBuf, aLen);

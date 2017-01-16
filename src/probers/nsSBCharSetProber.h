@@ -50,7 +50,7 @@ class KCODECS_NO_EXPORT nsSingleByteCharSetProber : public nsCharSetProber
 {
 public:
     nsSingleByteCharSetProber(const SequenceModel *model)
-        : mModel(model), mReversed(false), mNameProber(0)
+        : mModel(model), mReversed(false), mNameProber(nullptr)
     {
         Reset();
     }

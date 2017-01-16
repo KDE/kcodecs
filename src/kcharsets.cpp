@@ -503,7 +503,7 @@ const char *kcharsets_array_search(const char *start, const int *indices, const 
         if (qstrcmp(start + indices[i], entry) == 0) {
             return start + indices[i + 1];
         }
-    return 0;
+    return nullptr;
 }
 
 class KCharsetsPrivate
@@ -608,7 +608,7 @@ QString KCharsets::resolveEntities(const QString &input)
     QString text = input;
     const QChar *p = text.unicode();
     const QChar *end = p + text.length();
-    const QChar *ampersand = 0;
+    const QChar *ampersand = nullptr;
     bool scanForSemicolon = false;
 
     for (; p < end; ++p) {
@@ -646,7 +646,7 @@ QString KCharsets::resolveEntities(const QString &input)
         text.remove(ampersandPos + 1, entityLength + 1);
         p = text.unicode() + ampersandPos;
         end = text.unicode() + text.length();
-        ampersand = 0;
+        ampersand = nullptr;
     }
 
     return text;
@@ -764,7 +764,7 @@ QTextCodec *KCharsets::codecForName(const QString &n, bool &ok) const
 
 QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
 {
-    QTextCodec *codec = 0;
+    QTextCodec *codec = nullptr;
 
     if (n.isEmpty()) {
 #pragma message("KDE5 TODO: Any better ideas ?")
@@ -805,7 +805,7 @@ QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
 
     if (name.isEmpty()) {
         // We have no name anymore, therefore the name is invalid.
-        return 0;
+        return nullptr;
     }
 
     // We only need to check changed names.
@@ -844,7 +844,7 @@ QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
     }
 
     // we could not assign a codec, therefore return NULL
-    return 0;
+    return nullptr;
 }
 
 KCharsets *KCharsets::charsets()

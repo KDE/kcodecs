@@ -21,7 +21,7 @@
 #include <QTest>
 #include <kencodingprober.h>
 
-static KEncodingProber *ep = 0;
+static KEncodingProber *ep = nullptr;
 
 void KEncodingProberTest::initTestCase()
 {
@@ -31,7 +31,7 @@ void KEncodingProberTest::initTestCase()
 void KEncodingProberTest::cleanupTestCase()
 {
     delete ep;
-    ep = 0;
+    ep = nullptr;
 }
 
 void KEncodingProberTest::cleanup()

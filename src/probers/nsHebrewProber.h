@@ -33,7 +33,7 @@ namespace kencodingprober
 class KCODECS_NO_EXPORT nsHebrewProber: public nsCharSetProber
 {
 public:
-    nsHebrewProber(void) : mLogicalProb(0), mVisualProb(0)
+    nsHebrewProber(void) : mLogicalProb(nullptr), mVisualProb(nullptr)
     {
         Reset();
     }

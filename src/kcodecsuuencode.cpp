@@ -84,7 +84,7 @@ public:
 Encoder *UUCodec::makeEncoder(NewlineType newline) const
 {
     Q_UNUSED(newline)
-    return 0; // encoding not supported
+    return nullptr; // encoding not supported
 }
 
 Decoder *UUCodec::makeDecoder(NewlineType newline) const

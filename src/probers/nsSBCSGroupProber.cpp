@@ -60,7 +60,7 @@ nsSBCSGroupProber::nsSBCSGroupProber()
     } else { // One or more is null. avoid any Hebrew probing, null them all
         for (unsigned int i = 10; i <= 12; ++i) {
             delete mProbers[i];
-            mProbers[i] = 0;
+            mProbers[i] = nullptr;
         }
     }
 
@@ -114,7 +114,7 @@ nsProbingState nsSBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
 {
     nsProbingState st;
     unsigned int i;
-    char *newBuf1 = 0;
+    char *newBuf1 = nullptr;
     unsigned int newLen1 = 0;
 
     //apply filter to original buffer, and we got new buffer back

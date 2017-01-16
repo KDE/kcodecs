@@ -849,7 +849,7 @@ KCodecsEntities::kde_findEntity (register const char *str, register unsigned int
             }
         }
     }
-  return 0;
+  return nullptr;
 }
 #line 324 "kentities.gperf"
 

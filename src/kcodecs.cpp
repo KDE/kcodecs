@@ -192,14 +192,14 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
     // remember start of charset (ie. just after the initial "=?") and
     // language (just after the first '*') fields:
     const char *charsetStart = scursor;
-    const char *languageStart = 0;
+    const char *languageStart = nullptr;
 
     // find delimiting '?' (and the '*' separating charset and language
     // tags, if any):
     for (; scursor != send ; scursor++) {
         if (*scursor == '?') {
             break;
-        } else if (*scursor == '*' && languageStart == 0) {
+        } else if (*scursor == '*' && languageStart == nullptr) {
             languageStart = scursor + 1;
         }
     }
@@ -303,7 +303,7 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
     // try if there's a (text)codec for the charset found:
     bool matchOK = false;
     QByteArray cs;
-    QTextCodec *textCodec = 0;
+    QTextCodec *textCodec = nullptr;
     if (charsetOption == KCodecs::ForceDefaultCharset || maybeCharset.isEmpty()) {
         textCodec = KCharsets::charsets()->codecForName(QLatin1String(defaultCS), matchOK);
         cs = cachedCharset(defaultCS);
@@ -539,7 +539,7 @@ QByteArray KCodecs::encodeRFC2047String(const QString &src, const QByteArray &ch
 //@cond PRIVATE
 namespace
 {
-static QHash<QByteArray, KCodecs::Codec*> *allCodecs = 0;
+static QHash<QByteArray, KCodecs::Codec*> *allCodecs = nullptr;
 Q_GLOBAL_STATIC(QMutex, dictLock)
 
 static void createCodecs()
@@ -561,7 +561,7 @@ static void cleanupCodecs()
         delete (*iter);
     }
     delete allCodecs;
-    allCodecs = 0;
+    allCodecs = nullptr;
 }
 
 }
