@@ -326,6 +326,8 @@ class Decoder;
 class DecoderPrivate;
 
 /**
+  @class KCodecs::Codec kcodecs.h KCodecs
+
   @glossary @anchor MIME @anchor mime @b MIME:
   <b>Multipurpose Internet Mail Extensions</b> or @acronym MIME is an
   Internet Standard that extends the format of e-mail to support text in
@@ -546,6 +548,8 @@ protected:
 };
 
 /**
+  @class KCodecs::Decoder kcodecs.h KCodecs
+
   @brief Stateful CTE decoder class
 
   Stateful decoder class, modelled after QTextDecoder.
@@ -674,6 +678,8 @@ protected:
 };
 
 /**
+  @class KCodecs::Encoder kcodecs.h KCodecs
+
   @brief Stateful encoder class.
 
   Stateful encoder class, modeled after QTextEncoder.

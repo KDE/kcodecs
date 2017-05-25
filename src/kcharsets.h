@@ -33,6 +33,8 @@ class QStringList;
 class QTextCodec;
 
 /**
+ * @class KCharsets kcharsets.h KCharsets
+ *
  * Charset font and encoder/decoder handling.
  *
  * This is needed, because Qt's encoding name matching in

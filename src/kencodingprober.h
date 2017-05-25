@@ -37,6 +37,8 @@
 class KEncodingProberPrivate;
 
 /**
+ * @class KEncodingProber kencodingprober.h KEncodingProber
+ *
  * @short Provides encoding detection(probe) capabilities.
  *
  * Probe the encoding of raw data only.
