@@ -413,9 +413,15 @@ bool Base64Encoder::generic_finish(char *&dcursor, const char *const dend,
     switch (mStepNo) {
     case 1:
         write('=', dcursor, dend);
+#if QT_VERSION >= QT_VERSION_CHECK(5,8,0)
+        Q_FALLTHROUGH();
+#endif
     // fall through:
     case 2:
         write('=', dcursor, dend);
+#if QT_VERSION >= QT_VERSION_CHECK(5,8,0)
+        Q_FALLTHROUGH();
+#endif
     // fall through:
     case 0: // completed an quartet - add CRLF
         if (withLFatEnd) {
