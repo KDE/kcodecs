@@ -101,7 +101,7 @@ QStringList KEmailAddress::splitAddressList(const QString &aStr)
 
 //-----------------------------------------------------------------------------
 // Used by KEmailAddress::splitAddress(...) and KEmailAddress::firstEmailAddress(...).
-KEmailAddress::EmailParseResult splitAddressInternal(const QByteArray  address,
+KEmailAddress::EmailParseResult splitAddressInternal(const QByteArray &address,
                                                      QByteArray &displayName,
                                                      QByteArray &addrSpec,
                                                      QByteArray &comment,
