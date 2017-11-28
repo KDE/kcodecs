@@ -19,6 +19,7 @@
     Boston, MA 02110-1301, USA.
 */
 #include "kcharsets.h"
+#include "kcodecs_debug.h"
 
 #include <kentities.h>
 
@@ -572,10 +573,10 @@ QChar KCharsets::fromEntity(const QString &str)
     const entity *e = KCodecsEntities::kde_findEntity(raw.data(), raw.length());
 
     if (!e) {
-        //qDebug() << "unknown entity " << str <<", len = " << str.length();
+        //qCDebug(KCODECS_LOG) << "unknown entity " << str <<", len = " << str.length();
         return QChar::Null;
     }
-    //qDebug() << "got entity " << str << " = " << e->code;
+    //qCDebug(KCODECS_LOG) << "got entity " << str << " = " << e->code;
 
     return QChar(e->code);
 }

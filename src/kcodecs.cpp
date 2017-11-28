@@ -39,6 +39,7 @@
 #include "kcodecsqp.h"
 #include "kcodecsuuencode.h"
 #include "kcharsets.h"
+#include "kcodecs_debug.h"
 
 #include <QtCore/QCoreApplication>
 #include <QtCore/QMutex>
@@ -184,8 +185,8 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
     char ch = *scursor++;
 
     if (ch != '?') {
-        // qDebug() << "first";
-        // qDebug() << "Premature end of encoded word";
+        // qCDebug(KCODECS_LOG) << "first";
+        // qCDebug(KCODECS_LOG) << "Premature end of encoded word";
         return false;
     }
 
@@ -206,8 +207,8 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
 
     // not found? can't be an encoded-word!
     if (scursor == send || *scursor != '?') {
-        // qDebug() << "second";
-        // qDebug() << "Premature end of encoded word";
+        // qCDebug(KCODECS_LOG) << "second";
+        // qCDebug(KCODECS_LOG) << "Premature end of encoded word";
         return false;
     }
 
@@ -237,15 +238,15 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
 
     // not found? Can't be an encoded-word!
     if (scursor == send || *scursor != '?') {
-        // qDebug() << "third";
-        // qDebug() << "Premature end of encoded word";
+        // qCDebug(KCODECS_LOG) << "third";
+        // qCDebug(KCODECS_LOG) << "Premature end of encoded word";
         return false;
     }
 
     // extract the encoding information:
     QByteArray maybeEncoding(encodingStart, scursor - encodingStart);
 
-    // qDebug() << "parseEncodedWord: found charset == \"" << maybeCharset
+    // qCDebug(KCODECS_LOG) << "parseEncodedWord: found charset == \"" << maybeCharset
     //         << "\"; language == \"" << maybeLanguage
     //         << "\"; encoding == \"" << maybeEncoding << "\"";
 
@@ -263,21 +264,21 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
         if (*scursor == '?') {
             if (scursor + 1 != send) {
                 if (*(scursor + 1) != '=') {     // We expect a '=' after the '?', but we got something else; ignore
-                    // qDebug() << "Stray '?' in q-encoded word, ignoring this.";
+                    // qCDebug(KCODECS_LOG) << "Stray '?' in q-encoded word, ignoring this.";
                     continue;
                 } else { // yep, found a '?=' sequence
                     scursor += 2;
                     break;
                 }
             } else { // The '?' is the last char, but we need a '=' after it!
-                // qDebug() << "Premature end of encoded word";
+                // qCDebug(KCODECS_LOG) << "Premature end of encoded word";
                 return false;
             }
         }
     }
 
     if (*(scursor - 2) != '?' || *(scursor - 1) != '=' || scursor < encodedTextStart + 2) {
-        // qDebug() << "Premature end of encoded word";
+        // qCDebug(KCODECS_LOG) << "Premature end of encoded word";
         return false;
     }
 
@@ -292,7 +293,7 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
     // try if there's a codec for the encoding found:
     Codec *codec = Codec::codecForName(maybeEncoding);
     if (!codec) {
-        // qDebug() << "Unknown encoding" << maybeEncoding;
+        // qCDebug(KCODECS_LOG) << "Unknown encoding" << maybeEncoding;
         return false;
     }
 
@@ -321,12 +322,12 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
     }
 
     if (!matchOK || !textCodec) {
-        // qDebug() << "Unknown charset" << maybeCharset;
+        // qCDebug(KCODECS_LOG) << "Unknown charset" << maybeCharset;
         delete dec;
         return false;
     };
 
-    // qDebug() << "mimeName(): \"" << textCodec->name() << "\"";
+    // qCDebug(KCODECS_LOG) << "mimeName(): \"" << textCodec->name() << "\"";
 
     // allocate a temporary buffer to store the 8bit text:
     int encodedTextLength = encodedTextEnd - encodedTextStart;
@@ -347,7 +348,7 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
 
     *result = textCodec->toUnicode(buffer.data(), bbegin - buffer.data());
 
-    // qDebug() << "result now: \"" << result << "\"";
+    // qCDebug(KCODECS_LOG) << "result now: \"" << result << "\"";
     // cleanup:
     delete dec;
     *language = maybeLanguage;

@@ -19,8 +19,8 @@
 
 #include "kemailaddress.h"
 #include "kcodecs.h"
+#include "kcodecs_debug.h"
 
-#include <QDebug>
 #include <QUrl>
 
 #include <QtCore/QRegExp>
@@ -107,7 +107,7 @@ KEmailAddress::EmailParseResult splitAddressInternal(const QByteArray &address,
                                                      QByteArray &comment,
                                                      bool allowMultipleAddresses)
 {
-    //  qDebug() << "address";
+    //  qCDebug(KCODECS_LOG) << "address";
     displayName = "";
     addrSpec = "";
     comment = "";
@@ -259,9 +259,9 @@ KEmailAddress::EmailParseResult splitAddressInternal(const QByteArray &address,
         }
     }
     /*
-      qDebug() << "display-name : \"" << displayName << "\"";
-      qDebug() << "comment      : \"" << comment << "\"";
-      qDebug() << "addr-spec    : \"" << addrSpec << "\"";
+      qCDebug(KCODECS_LOG) << "display-name : \"" << displayName << "\"";
+      qCDebug(KCODECS_LOG) << "comment      : \"" << comment << "\"";
+      qCDebug(KCODECS_LOG) << "addr-spec    : \"" << addrSpec << "\"";
     */
     return AddressOk;
 }
@@ -512,7 +512,7 @@ KEmailAddress::EmailParseResult KEmailAddress::isValidAddressList(const QString 
     QStringList::const_iterator it = list.begin();
     EmailParseResult errorCode = AddressOk;
     for (it = list.begin(); it != list.end(); ++it) {
-        qDebug() << " *it" << (*it);
+        qCDebug(KCODECS_LOG) << " *it" << (*it);
         errorCode = isValidAddress(*it);
         if (errorCode != AddressOk) {
             badAddr = (*it);
@@ -668,7 +668,7 @@ QByteArray KEmailAddress::extractEmailAddress(const QByteArray &address, QString
         addrSpec = QByteArray();
         if (result != AddressEmpty) {
             errorMessage = emailParseResultToString(result);
-            qDebug() << "Input:" << address << "\nError:"
+            qCDebug(KCODECS_LOG) << "Input:" << address << "\nError:"
                      << errorMessage;
         }
     } else {
@@ -708,7 +708,7 @@ QByteArray KEmailAddress::firstEmailAddress(const QByteArray &addresses, QString
         if (result != AddressEmpty) {
 
             errorMessage = emailParseResultToString(result);
-            qDebug() << "Input: aStr\nError:"
+            qCDebug(KCODECS_LOG) << "Input: aStr\nError:"
                      << errorMessage;
         }
     } else {
@@ -1009,7 +1009,7 @@ QString KEmailAddress::toIdn(const QString &addrSpec)
 //-----------------------------------------------------------------------------
 QString KEmailAddress::normalizeAddressesAndDecodeIdn(const QString &str)
 {
-    //  qDebug() << str;
+    //  qCDebug(KCODECS_LOG) << str;
     if (str.isEmpty()) {
         return str;
     }
@@ -1037,7 +1037,7 @@ QString KEmailAddress::normalizeAddressesAndDecodeIdn(const QString &str)
         }
     }
     /*
-      qDebug() << "normalizedAddressList: \""
+      qCDebug(KCODECS_LOG) << "normalizedAddressList: \""
                << normalizedAddressList.join( ", " )
                << "\"";
     */
@@ -1047,7 +1047,7 @@ QString KEmailAddress::normalizeAddressesAndDecodeIdn(const QString &str)
 //-----------------------------------------------------------------------------
 QString KEmailAddress::normalizeAddressesAndEncodeIdn(const QString &str)
 {
-    //qDebug() << str;
+    //qCDebug(KCODECS_LOG) << str;
     if (str.isEmpty()) {
         return str;
     }
@@ -1072,7 +1072,7 @@ QString KEmailAddress::normalizeAddressesAndEncodeIdn(const QString &str)
     }
 
     /*
-      qDebug() << "normalizedAddressList: \""
+      qCDebug(KCODECS_LOG) << "normalizedAddressList: \""
                << normalizedAddressList.join( ", " )
                << "\"";
     */

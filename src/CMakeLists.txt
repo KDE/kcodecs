@@ -41,6 +41,8 @@ set(kcodecs_SRCS
 ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h kcodecs_SRCS
                    GENERATION_FLAGS "--key-positions=* -D -s 2")
 
+ecm_qt_declare_logging_category(kcodecs_SRCS HEADER kcodecs_debug.h IDENTIFIER KCODECS_LOG CATEGORY_NAME kf5.kcodecs)
+
 add_library(KF5Codecs ${kcodecs_SRCS})
 generate_export_header(KF5Codecs BASE_NAME KCodecs)
 add_library(KF5::Codecs ALIAS KF5Codecs)
