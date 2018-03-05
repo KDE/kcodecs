@@ -97,6 +97,13 @@ void CodecTest::testCodecs()
         result = codec->encode(input, Codec::NewlineLF);
     }
 
+    // More usable version of QCOMPARE(result, expResult), in case the difference is at the end...
+    if (result != expResult) {
+        const QList<QByteArray> lines = result.split('\n');
+        const QList<QByteArray> expLines = expResult.split('\n');
+        if (lines.count() == expLines.count())
+            QCOMPARE(result.split('\n'), expResult.split('\n'));
+    }
     QCOMPARE(result, expResult);
 }
 
