@@ -41,8 +41,8 @@
 #include "kcharsets.h"
 #include "kcodecs_debug.h"
 
-#include <QtCore/QCoreApplication>
-#include <QtCore/QMutex>
+#include <QCoreApplication>
+#include <QMutex>
 
 #include <cassert>
 #include <cstring>
@@ -50,10 +50,10 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include <QtCore/QDebug>
-#include <QtCore/QIODevice>
-#include <QtCore/QTextCodec>
-#include <QtCore/QHash>
+#include <QDebug>
+#include <QIODevice>
+#include <QTextCodec>
+#include <QHash>
 
 #if defined(Q_OS_WIN)
 #define strncasecmp _strnicmp

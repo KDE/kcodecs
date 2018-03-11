@@ -18,7 +18,7 @@
 #ifndef KCHARSETSTEST_H
 #define KCHARSETSTEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class KCharsetsTest: public QObject
 {

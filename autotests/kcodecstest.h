@@ -19,7 +19,7 @@
 #ifndef KCODECSTEST_H
 #define KCODECSTEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class KCodecsTest : public QObject
 {

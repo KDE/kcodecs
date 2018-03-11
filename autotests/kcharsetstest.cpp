@@ -18,9 +18,9 @@
 #include "kcharsetstest.h"
 
 #include <kcharsets.h>
-#include <QtCore/QString>
-#include <QtCore/QDebug>
-#include <QtTest/QtTest>
+#include <QString>
+#include <QDebug>
+#include <QtTest>
 
 static bool encodingNameHasADescription(const QString &encodingName, const QStringList &descriptions)
 {

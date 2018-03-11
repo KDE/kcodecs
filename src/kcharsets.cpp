@@ -23,11 +23,11 @@
 
 #include <kentities.h>
 
-#include <QtCore/QDir>
-#include <QtCore/QRegExp>
-#include <QtCore/QCharRef>
-#include <QtCore/QMutableStringListIterator>
-#include <QtCore/QTextCodec>
+#include <QDir>
+#include <QRegExp>
+#include <QCharRef>
+#include <QMutableStringListIterator>
+#include <QTextCodec>
 
 #include <assert.h>
 #include <QHash>

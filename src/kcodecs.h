@@ -26,7 +26,7 @@
 #define KBase64 KCodecs
 
 #include <kcodecs_export.h>
-#include <QtCore/QString>
+#include <QString>
 
 template<typename T, typename U> class QHash;
 

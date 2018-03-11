@@ -18,7 +18,7 @@
 #ifndef KENCODINGPROBERTEST_H
 #define KENCODINGPROBERTEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class KEncodingProberTest: public QObject
 {

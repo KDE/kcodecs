@@ -20,7 +20,7 @@
 #ifndef TESTEMAIL_H
 #define TESTEMAIL_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class KEmailAddressTest : public QObject
 {

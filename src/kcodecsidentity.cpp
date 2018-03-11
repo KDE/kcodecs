@@ -33,7 +33,7 @@
 
 #include <qdebug.h>
 
-#include <QtCore/QByteArray>
+#include <QByteArray>
 
 #include <cstring>
 

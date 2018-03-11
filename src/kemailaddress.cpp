@@ -23,8 +23,8 @@
 
 #include <QUrl>
 
-#include <QtCore/QRegExp>
-#include <QtCore/QByteArray>
+#include <QRegExp>
+#include <QByteArray>
 
 using namespace KEmailAddress;
 

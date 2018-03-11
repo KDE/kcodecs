@@ -21,8 +21,8 @@
 
 #include <kcodecs_export.h>
 
-#include <QtCore/QCoreApplication>
-#include <QtCore/QList>
+#include <QCoreApplication>
+#include <QList>
 
 class KCharsets;
 class KCharsetsPrivate;

@@ -19,7 +19,7 @@
 #ifndef RFC2047TEST_H
 #define RFC2047TEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class RFC2047Test : public QObject
 {

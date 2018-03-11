@@ -28,11 +28,11 @@
 #include <kcodecs_export.h>
 
 #ifdef DEBUG_PROBE
-#include <QtCore/QDebug>
+#include <QDebug>
 #endif
 
-#include <QtCore/QCoreApplication>
-#include <QtCore/QString>
+#include <QCoreApplication>
+#include <QString>
 
 class KEncodingProberPrivate;
 
