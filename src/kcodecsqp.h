@@ -66,13 +66,13 @@ public:
     /**
       Destroys the codec.
     */
-    virtual ~QuotedPrintableCodec() {}
+    ~QuotedPrintableCodec() override {}
 
     /**
       @copydoc
       Codec::name()
     */
-    const char *name() const Q_DECL_OVERRIDE
+    const char *name() const override
     {
         return "quoted-printable";
     }
@@ -81,7 +81,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
+    int maxEncodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const override
     {
         // all chars encoded:
         int result = 3 * insize;
@@ -95,19 +95,19 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
+    int maxDecodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const override;
 
     /**
       @copydoc
       Codec::makeEncoder()
     */
-    Encoder *makeEncoder(NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
+    Encoder *makeEncoder(NewlineType newline = Codec::NewlineLF) const override;
 
     /**
       @copydoc
       Codec::makeDecoder()
     */
-    Decoder *makeDecoder(NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
+    Decoder *makeDecoder(NewlineType newline = Codec::NewlineLF) const override;
 };
 
 /**
@@ -128,13 +128,13 @@ public:
     /**
       Destroys the codec.
     */
-    virtual ~Rfc2047QEncodingCodec() {}
+    ~Rfc2047QEncodingCodec() override {}
 
     /**
       @copydoc
       Codec::name()
     */
-    const char *name() const Q_DECL_OVERRIDE
+    const char *name() const override
     {
         return "q";
     }
@@ -143,7 +143,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
+    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const override
     {
         Q_UNUSED(newline);
         // this one is simple: We don't do linebreaking, so all that can
@@ -155,19 +155,19 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
+    int maxDecodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const override;
 
     /**
       @copydoc
       Codec::makeEncoder()
     */
-    Encoder *makeEncoder(Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
+    Encoder *makeEncoder(Codec::NewlineType newline = Codec::NewlineLF) const override;
 
     /**
       @copydoc
       Codec::makeDecoder()
     */
-    Decoder *makeDecoder(Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
+    Decoder *makeDecoder(Codec::NewlineType newline = Codec::NewlineLF) const override;
 };
 
 /**
@@ -187,13 +187,13 @@ public:
     /**
       Destroys the codec.
     */
-    virtual ~Rfc2231EncodingCodec() {}
+    ~Rfc2231EncodingCodec() override {}
 
     /**
       @copydoc
       Codec::name()
     */
-    const char *name() const Q_DECL_OVERRIDE
+    const char *name() const override
     {
         return "x-kmime-rfc2231";
     }
@@ -202,7 +202,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
+    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const override
     {
         Q_UNUSED(newline);
         // same as for "q" encoding:
@@ -213,19 +213,19 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
+    int maxDecodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const override;
 
     /**
       @copydoc
       Codec::makeEncoder()
     */
-    Encoder *makeEncoder(Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
+    Encoder *makeEncoder(Codec::NewlineType newline = Codec::NewlineLF) const override;
 
     /**
       @copydoc
       Codec::makeDecoder()
     */
-    Decoder *makeDecoder(Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
+    Decoder *makeDecoder(Codec::NewlineType newline = Codec::NewlineLF) const override;
 };
 
 } // namespace KCodecs

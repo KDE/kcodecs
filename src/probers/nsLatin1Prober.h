@@ -36,23 +36,23 @@ public:
     nsLatin1Prober(void)
     {
         Reset();
-    };
-    virtual ~nsLatin1Prober(void) {};
-    nsProbingState HandleData(const char *aBuf, unsigned int aLen) Q_DECL_OVERRIDE;
-    const char *GetCharSetName() Q_DECL_OVERRIDE
+    }
+    ~nsLatin1Prober(void) override {}
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
+    const char *GetCharSetName() override
     {
         return "windows-1252";
-    };
-    nsProbingState GetState(void) Q_DECL_OVERRIDE
+    }
+    nsProbingState GetState(void) override
     {
         return mState;
-    };
-    void      Reset(void) Q_DECL_OVERRIDE;
-    float     GetConfidence(void) Q_DECL_OVERRIDE;
-    void      SetOpion() Q_DECL_OVERRIDE {};
+    }
+    void      Reset(void) override;
+    float     GetConfidence(void) override;
+    void      SetOpion() override {}
 
 #ifdef DEBUG_PROBE
-    void  DumpStatus() Q_DECL_OVERRIDE;
+    void  DumpStatus() override;
 #endif
 
 protected:

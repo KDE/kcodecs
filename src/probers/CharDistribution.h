@@ -39,11 +39,11 @@ public:
     CharDistributionAnalysis()
     {
         Reset();
-    };
-    virtual ~CharDistributionAnalysis() {};
+    }
+    virtual ~CharDistributionAnalysis() {}
 
     //feed a block of data and do distribution analysis
-    void HandleData(const char * /* aBuf */, unsigned int /* aLen */) {};
+    void HandleData(const char * /* aBuf */, unsigned int /* aLen */) {}
 
     //Feed a character with known length
     void HandleOneChar(const char *aStr, unsigned int aCharLen)
@@ -62,7 +62,7 @@ public:
                 }
             }
         }
-    };
+    }
 
     //return confidence base on existing data
     float GetConfidence();
@@ -73,18 +73,18 @@ public:
         mDone = false;
         mTotalChars = 0;
         mFreqChars = 0;
-    };
+    }
 
     //This function is for future extension. Caller can use this function to control
     //analyser's behavior
-    void      SetOpion() {};
+    void      SetOpion() {}
 
     //It is not necessary to receive all data to draw conclusion. For charset detection,
     // certain amount of data is enough
     bool GotEnoughData()
     {
         return mTotalChars > ENOUGH_DATA_THRESHOLD;
-    };
+    }
 
 protected:
     //we do not handle character base on its original encoding string, but
@@ -93,7 +93,7 @@ protected:
     virtual int GetOrder(const char * /* str */)
     {
         return -1;
-    };
+    }
 
     //If this flag is set to true, detection is done and conclusion has been made
     bool   mDone;
@@ -124,14 +124,14 @@ protected:
     //  first  byte range: 0xb0 -- 0xfe
     //  second byte range: 0xa1 -- 0xfe
     //no validation needed here. State machine has done that
-    int GetOrder(const char *str) Q_DECL_OVERRIDE
+    int GetOrder(const char *str) override
     {
         if ((unsigned char)*str >= (unsigned char)0xb0) {
             return 94 * ((unsigned char)str[0] - (unsigned char)0xb0) + (unsigned char)str[1] - (unsigned char)0xa1;
         } else {
             return -1;
         }
-    };
+    }
 };
 
 class KCODECS_NO_EXPORT  GB2312DistributionAnalysis : public CharDistributionAnalysis
@@ -143,14 +143,14 @@ protected:
     //  first  byte range: 0xb0 -- 0xfe
     //  second byte range: 0xa1 -- 0xfe
     //no validation needed here. State machine has done that
-    int GetOrder(const char *str) Q_DECL_OVERRIDE
+    int GetOrder(const char *str) override
     {
         if ((unsigned char)*str >= (unsigned char)0xb0 && (unsigned char)str[1] >= (unsigned char)0xa1) {
             return 94 * ((unsigned char)str[0] - (unsigned char)0xb0) + (unsigned char)str[1] - (unsigned char)0xa1;
         } else {
             return -1;
         }
-    };
+    }
 };
 
 class KCODECS_NO_EXPORT  Big5DistributionAnalysis : public CharDistributionAnalysis
@@ -162,7 +162,7 @@ protected:
     //  first  byte range: 0xa4 -- 0xfe
     //  second byte range: 0x40 -- 0x7e , 0xa1 -- 0xfe
     //no validation needed here. State machine has done that
-    int GetOrder(const char *str) Q_DECL_OVERRIDE
+    int GetOrder(const char *str) override
     {
         if ((unsigned char)*str >= (unsigned char)0xa4)
             if ((unsigned char)str[1] >= (unsigned char)0xa1) {
@@ -173,7 +173,7 @@ protected:
         else {
             return -1;
         }
-    };
+    }
 };
 
 class KCODECS_NO_EXPORT  SJISDistributionAnalysis : public CharDistributionAnalysis
@@ -185,7 +185,7 @@ protected:
     //  first  byte range: 0x81 -- 0x9f , 0xe0 -- 0xfe
     //  second byte range: 0x40 -- 0x7e,  0x81 -- oxfe
     //no validation needed here. State machine has done that
-    int GetOrder(const char *str) Q_DECL_OVERRIDE
+    int GetOrder(const char *str) override
     {
         int order;
         if ((unsigned char)*str >= (unsigned char)0x81 && (unsigned char)*str <= (unsigned char)0x9f) {
@@ -200,7 +200,7 @@ protected:
             order--;
         }
         return order;
-    };
+    }
 };
 
 class KCODECS_NO_EXPORT  EUCJPDistributionAnalysis : public CharDistributionAnalysis
@@ -212,14 +212,14 @@ protected:
     //  first  byte range: 0xa0 -- 0xfe
     //  second byte range: 0xa1 -- 0xfe
     //no validation needed here. State machine has done that
-    int GetOrder(const char *str) Q_DECL_OVERRIDE
+    int GetOrder(const char *str) override
     {
         if ((unsigned char)*str >= (unsigned char)0xa0) {
             return 94 * ((unsigned char)str[0] - (unsigned char)0xa1) + (unsigned char)str[1] - (unsigned char)0xa1;
         } else {
             return -1;
         }
-    };
+    }
 };
 }
 #endif //CharDistribution_h__

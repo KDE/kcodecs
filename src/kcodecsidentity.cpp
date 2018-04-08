@@ -55,15 +55,15 @@ public:
     ~IdentityEnDecoder() {}
 
     bool encode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend) Q_DECL_OVERRIDE
+                char *&dcursor, const char *const dend) override
     {
         return decode(scursor, send, dcursor, dend);
     }
 
     bool decode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend) Q_DECL_OVERRIDE;
+                char *&dcursor, const char *const dend) override;
 
-    bool finish(char *&dcursor, const char *const dend) Q_DECL_OVERRIDE
+    bool finish(char *&dcursor, const char *const dend) override
     {
         Q_UNUSED(dcursor);
         Q_UNUSED(dend);

@@ -56,7 +56,7 @@ public:
     /**
       Destroys the codec.
     */
-    ~IdentityCodec() {}
+    ~IdentityCodec() override {}
 
     using Codec::encode;
     using Codec::decode;
@@ -65,19 +65,19 @@ public:
       @copydoc
       QByteArray Codec::encode()
     */
-    QByteArray encode(const QByteArray &src, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
+    QByteArray encode(const QByteArray &src, Codec::NewlineType newline = Codec::NewlineLF) const override;
 
     /**
       @copydoc
       QByteArray Codec::decode()
     */
-    QByteArray decode(const QByteArray &src, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE;
+    QByteArray decode(const QByteArray &src, Codec::NewlineType newline = Codec::NewlineLF) const override;
 
     /**
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
+    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const override
     {
         if (newline == Codec::NewlineCRLF) {
             return 2 * insize;
@@ -90,7 +90,7 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, Codec::NewlineType newline) const Q_DECL_OVERRIDE
+    int maxDecodedSizeFor(int insize, Codec::NewlineType newline) const override
     {
         if (newline == Codec::NewlineCRLF) {
             return 2 * insize;
@@ -103,13 +103,13 @@ public:
       @copydoc
       Codec::makeEncoder()
     */
-    Encoder *makeEncoder(Codec::NewlineType newline = Codec::NewlineCRLF) const Q_DECL_OVERRIDE;
+    Encoder *makeEncoder(Codec::NewlineType newline = Codec::NewlineCRLF) const override;
 
     /**
       @copydoc
       Codec::makeDecoder()
     */
-    Decoder *makeDecoder(Codec::NewlineType newline = Codec::NewlineCRLF) const Q_DECL_OVERRIDE;
+    Decoder *makeDecoder(Codec::NewlineType newline = Codec::NewlineCRLF) const override;
 };
 
 /**
@@ -129,13 +129,13 @@ public:
     /**
       Destroys the codec.
     */
-    ~SevenBitCodec() {}
+    ~SevenBitCodec() override {}
 
     /**
       @copydoc
       Codec::name()
     */
-    const char *name() const Q_DECL_OVERRIDE
+    const char *name() const override
     {
         return "7bit";
     }
@@ -158,13 +158,13 @@ public:
     /**
       Destroys the codec.
     */
-    ~EightBitCodec() {}
+    ~EightBitCodec() override {}
 
     /**
       @copydoc
       Codec::name()
     */
-    const char *name() const Q_DECL_OVERRIDE
+    const char *name() const override
     {
         return "8bit";
     }
@@ -187,13 +187,13 @@ public:
     /**
       Destroys the codec.
     */
-    ~BinaryCodec() {}
+    ~BinaryCodec() override {}
 
     /**
       @copydoc
       Codec::name()
     */
-    const char *name() const Q_DECL_OVERRIDE
+    const char *name() const override
     {
         return "binary";
     }
@@ -202,7 +202,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
+    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const override
     {
         Q_UNUSED(newline);
         return insize;
@@ -212,7 +212,7 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const Q_DECL_OVERRIDE
+    int maxDecodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const override
     {
         Q_UNUSED(newline);
         return insize;

@@ -44,8 +44,8 @@ public:
     JapaneseContextAnalysis()
     {
         Reset();
-    };
-    virtual ~JapaneseContextAnalysis() {};
+    }
+    virtual ~JapaneseContextAnalysis() {}
 
     void HandleData(const char *aBuf, unsigned int aLen);
 
@@ -69,15 +69,15 @@ public:
             mRelSample[(int)jp2CharContext[mLastCharOrder][order]]++;
         }
         mLastCharOrder = order;
-    };
+    }
 
     float GetConfidence();
     void      Reset(void);
-    void      SetOpion() {};
+    void      SetOpion() {}
     bool GotEnoughData()
     {
         return mTotalRel > ENOUGH_REL_THRESHOLD;
-    };
+    }
 
 protected:
     virtual int GetOrder(const char *str, unsigned int *charLen) = 0;
@@ -104,9 +104,9 @@ class KCODECS_NO_EXPORT SJISContextAnalysis : public JapaneseContextAnalysis
 {
     //SJISContextAnalysis(){};
 protected:
-    int GetOrder(const char *str, unsigned int *charLen) Q_DECL_OVERRIDE;
+    int GetOrder(const char *str, unsigned int *charLen) override;
 
-    int GetOrder(const char *str) Q_DECL_OVERRIDE
+    int GetOrder(const char *str) override
     {
         //We only interested in Hiragana, so first byte is '\202'
         if (*str == '\202' &&
@@ -115,14 +115,14 @@ protected:
             return (unsigned char) * (str + 1) - (unsigned char)0x9f;
         }
         return -1;
-    };
+    }
 };
 
 class KCODECS_NO_EXPORT EUCJPContextAnalysis : public JapaneseContextAnalysis
 {
 protected:
-    int GetOrder(const char *str, unsigned int *charLen) Q_DECL_OVERRIDE;
-    int GetOrder(const char *str) Q_DECL_OVERRIDE
+    int GetOrder(const char *str, unsigned int *charLen) override;
+    int GetOrder(const char *str) override
     //We only interested in Hiragana, so first byte is '\244'
     {
         if (*str == '\244' &&
@@ -131,7 +131,7 @@ protected:
             return (unsigned char) * (str + 1) - (unsigned char)0xa1;
         }
         return -1;
-    };
+    }
 };
 }
 #endif /* __JPCNTX_H__ */

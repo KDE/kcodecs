@@ -37,23 +37,23 @@ public:
     {
         mCodingSM = new nsCodingStateMachine(&Big5SMModel);
         Reset();
-    };
+    }
     virtual ~nsBig5Prober(void)
     {
         delete mCodingSM;
-    };
-    nsProbingState HandleData(const char *aBuf, unsigned int aLen) Q_DECL_OVERRIDE;
-    const char *GetCharSetName() Q_DECL_OVERRIDE
+    }
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
+    const char *GetCharSetName() override
     {
         return "Big5";
-    };
-    nsProbingState GetState(void) Q_DECL_OVERRIDE
+    }
+    nsProbingState GetState(void) override
     {
         return mState;
-    };
-    void      Reset(void) Q_DECL_OVERRIDE;
-    float     GetConfidence(void) Q_DECL_OVERRIDE;
-    void      SetOpion() Q_DECL_OVERRIDE {};
+    }
+    void      Reset(void) override;
+    float     GetConfidence(void) override;
+    void      SetOpion() override {};
 
 protected:
     void      GetDistribution(unsigned int aCharLen, const char *aStr);

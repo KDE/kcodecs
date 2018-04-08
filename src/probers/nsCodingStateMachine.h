@@ -56,7 +56,7 @@ public:
     {
         mCurrentState = eStart;
         mModel = sm;
-    };
+    }
     nsSMState NextState(char c)
     {
         //for each byte we get its class KCODECS_NO_EXPORT , if it is first byte, we also get byte length
@@ -70,19 +70,19 @@ public:
                                               mModel->stateTable);
         mCurrentBytePos++;
         return mCurrentState;
-    };
+    }
     unsigned int  GetCurrentCharLen(void)
     {
         return mCurrentCharLen;
-    };
+    }
     void      Reset(void)
     {
         mCurrentState = eStart;
-    };
+    }
     const char *GetCodingStateMachine()
     {
         return mModel->name;
-    };
+    }
 #ifdef DEBUG_PROBE
     const char *DumpCurrentState()
     {

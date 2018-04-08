@@ -39,23 +39,23 @@ public:
     {
         mCodingSM = new nsCodingStateMachine(&GB18030SMModel);
         Reset();
-    };
-    virtual ~nsGB18030Prober(void)
+    }
+    ~nsGB18030Prober(void) override
     {
         delete mCodingSM;
-    };
-    nsProbingState HandleData(const char *aBuf, unsigned int aLen) Q_DECL_OVERRIDE;
-    const char *GetCharSetName() Q_DECL_OVERRIDE
+    }
+    nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
+    const char *GetCharSetName() override
     {
         return "gb18030";
-    };
-    nsProbingState GetState(void) Q_DECL_OVERRIDE
+    }
+    nsProbingState GetState(void) override
     {
         return mState;
-    };
-    void      Reset(void) Q_DECL_OVERRIDE;
-    float     GetConfidence(void) Q_DECL_OVERRIDE;
-    void      SetOpion() Q_DECL_OVERRIDE {};
+    }
+    void      Reset(void) override;
+    float     GetConfidence(void) override;
+    void      SetOpion() override {}
 
 protected:
     void      GetDistribution(unsigned int aCharLen, const char *aStr);

@@ -40,7 +40,7 @@ typedef enum {
 class KCODECS_NO_EXPORT nsCharSetProber
 {
 public:
-    virtual ~nsCharSetProber() {};
+    virtual ~nsCharSetProber() {}
     virtual const char *GetCharSetName() = 0;
     virtual nsProbingState HandleData(const char *aBuf, unsigned int aLen) = 0;
     virtual nsProbingState GetState(void) = 0;
@@ -49,7 +49,7 @@ public:
     virtual void      SetOpion() = 0;
 
 #ifdef DEBUG_PROBE
-    void  DumpStatus() Q_DECL_OVERRIDE {};
+    void  DumpStatus() override {};
 #endif
 
     // Helper functions used in the Latin1 and Group probers.
