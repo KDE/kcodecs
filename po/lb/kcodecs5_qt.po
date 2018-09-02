@@ -1,0 +1,386 @@
+# translation of kdelibs4.po to Luxembourgish
+# kevin claude everard <kevin@math.uni-sb.de>, 2005.
+# Michel Ludwig <michel.ludwig@kdemail.net>, 2005, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2006-06-22 16:29+0200\n"
+"Last-Translator: Michel Ludwig <michel.ludwig@kdemail.net>\n"
+"Language-Team: Luxembourgish <kde-i18n-lb@kde.org>\n"
+"Language: lb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Qt-Contexts: true\n"
+
+#: kcharsets.cpp:169
+#, fuzzy
+#| msgid "Western European"
+msgctxt "KCharsets|@item Text character set"
+msgid "Western European"
+msgstr "Westeuropäësch"
+
+#: kcharsets.cpp:175
+#, fuzzy
+#| msgid "Central European"
+msgctxt "KCharsets|@item Text character set"
+msgid "Central European"
+msgstr "Mëtteleuropäësch"
+
+#: kcharsets.cpp:178
+#, fuzzy
+#| msgid "Baltic"
+msgctxt "KCharsets|@item Text character set"
+msgid "Baltic"
+msgstr "Baltësch"
+
+#: kcharsets.cpp:181
+#, fuzzy
+#| msgid "South-Eastern Europe"
+msgctxt "KCharsets|@item Text character set"
+msgid "South-Eastern Europe"
+msgstr "Südosteuropäësch"
+
+#: kcharsets.cpp:184
+#, fuzzy
+#| msgid "Turkish"
+msgctxt "KCharsets|@item Text character set"
+msgid "Turkish"
+msgstr "Türkësch"
+
+#: kcharsets.cpp:187
+#, fuzzy
+#| msgid "Cyrillic"
+msgctxt "KCharsets|@item Text character set"
+msgid "Cyrillic"
+msgstr "Kyrillësch"
+
+#: kcharsets.cpp:193
+#, fuzzy
+#| msgid "Chinese Traditional"
+msgctxt "KCharsets|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Chinesësch traditionell"
+
+#: kcharsets.cpp:196
+#, fuzzy
+#| msgid "Chinese Simplified"
+msgctxt "KCharsets|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Chinesësch einfach"
+
+#: kcharsets.cpp:200
+#, fuzzy
+#| msgid "Korean"
+msgctxt "KCharsets|@item Text character set"
+msgid "Korean"
+msgstr "Koreanësch"
+
+#: kcharsets.cpp:203
+#, fuzzy
+#| msgid "Japanese"
+msgctxt "KCharsets|@item Text character set"
+msgid "Japanese"
+msgstr "Japanësch"
+
+#: kcharsets.cpp:207
+#, fuzzy
+#| msgid "Greek"
+msgctxt "KCharsets|@item Text character set"
+msgid "Greek"
+msgstr "Griichësch"
+
+#: kcharsets.cpp:210
+#, fuzzy
+#| msgid "Arabic"
+msgctxt "KCharsets|@item Text character set"
+msgid "Arabic"
+msgstr "Arabësch"
+
+#: kcharsets.cpp:213
+#, fuzzy
+#| msgid "Hebrew"
+msgctxt "KCharsets|@item Text character set"
+msgid "Hebrew"
+msgstr "Hebräësch"
+
+#: kcharsets.cpp:218
+#, fuzzy
+#| msgid "Thai"
+msgctxt "KCharsets|@item Text character set"
+msgid "Thai"
+msgstr "Thailännësch"
+
+#: kcharsets.cpp:221
+#, fuzzy
+#| msgid "Unicode"
+msgctxt "KCharsets|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kcharsets.cpp:227
+#, fuzzy
+#| msgid "Northern Saami"
+msgctxt "KCharsets|@item Text character set"
+msgid "Northern Saami"
+msgstr "Nördlëscht Sami"
+
+#: kcharsets.cpp:229
+#, fuzzy
+#| msgid "Other"
+msgctxt "KCharsets|@item Text character set"
+msgid "Other"
+msgstr "Aner"
+
+#: kcharsets.cpp:672
+#, fuzzy, qt-format
+#| msgctxt "Descriptive Encoding Name"
+#| msgid "%1 ( %2 )"
+msgctxt "KCharsets|@item %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 (%2)"
+
+#: kcharsets.cpp:675
+#, fuzzy, qt-format
+msgctxt "KCharsets|@item"
+msgid "Other encoding (%1)"
+msgstr "&Verschlësselung festléen"
+
+#: kcharsets.cpp:704
+#, fuzzy, qt-format
+#| msgctxt "Descriptive Encoding Name"
+#| msgid "%1 ( %2 )"
+msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 (%2)"
+
+#: kemailaddress.cpp:530
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains more than one "
+"@. You will not create valid messages if you do not change your address."
+msgstr ""
+
+#: kemailaddress.cpp:535
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a @. "
+"You will not create valid messages if you do not change your address."
+msgstr ""
+
+#: kemailaddress.cpp:540
+msgctxt "QObject|"
+msgid "You have to enter something in the email address field."
+msgstr ""
+
+#: kemailaddress.cpp:542
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"local part."
+msgstr ""
+
+#: kemailaddress.cpp:545
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"domain part."
+msgstr ""
+
+#: kemailaddress.cpp:548
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains unclosed "
+"comments/brackets."
+msgstr ""
+
+#: kemailaddress.cpp:551
+#, fuzzy
+#| msgid "The email address this bug report is sent to."
+msgctxt "QObject|"
+msgid "The email address you entered is valid."
+msgstr "D'E-Mail-Adress, wou de Käfer gemellt gëtt."
+
+#: kemailaddress.cpp:553
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an unclosed "
+"angle bracket."
+msgstr ""
+
+#: kemailaddress.cpp:556
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains too many "
+"closing angle brackets."
+msgstr ""
+
+#: kemailaddress.cpp:559
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"unexpected comma."
+msgstr ""
+
+#: kemailaddress.cpp:562
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it ended unexpectedly. "
+"This probably means you have used an escaping type character like a '\\' as "
+"the last character in your email address."
+msgstr ""
+
+#: kemailaddress.cpp:567
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains quoted text "
+"which does not end."
+msgstr ""
+
+#: kemailaddress.cpp:570 kemailaddress.cpp:649
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not seem to "
+"contain an actual email address, i.e. something of the form joe@example.org."
+msgstr ""
+
+#: kemailaddress.cpp:574
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an illegal "
+"character."
+msgstr ""
+
+#: kemailaddress.cpp:577
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"invalid display name."
+msgstr ""
+
+#: kemailaddress.cpp:580
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"'.'. You will not create valid messages if you do not change your address."
+msgstr ""
+
+#: kemailaddress.cpp:586
+msgctxt "QObject|"
+msgid "Unknown problem with email address"
+msgstr ""
+
+#: kencodingprober.cpp:238 kencodingprober.cpp:279
+#, fuzzy
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Disabled"
+msgstr "Veränneren aktivéiert"
+
+#: kencodingprober.cpp:240 kencodingprober.cpp:282
+#, fuzzy
+#| msgid "Install"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Universal"
+msgstr "Installéieren"
+
+#: kencodingprober.cpp:242 kencodingprober.cpp:324
+#, fuzzy
+#| msgid "Unicode"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kencodingprober.cpp:244 kencodingprober.cpp:294
+#, fuzzy
+#| msgid "Cyrillic"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Cyrillic"
+msgstr "Kyrillësch"
+
+#: kencodingprober.cpp:246 kencodingprober.cpp:309
+#, fuzzy
+#| msgid "Western European"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Western European"
+msgstr "Westeuropäësch"
+
+#: kencodingprober.cpp:248 kencodingprober.cpp:291
+#, fuzzy
+#| msgid "Central European"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Central European"
+msgstr "Mëtteleuropäësch"
+
+#: kencodingprober.cpp:250 kencodingprober.cpp:297
+#, fuzzy
+#| msgid "Greek"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Greek"
+msgstr "Griichësch"
+
+#: kencodingprober.cpp:252 kencodingprober.cpp:300
+#, fuzzy
+#| msgid "Hebrew"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Hebrew"
+msgstr "Hebräësch"
+
+#: kencodingprober.cpp:254 kencodingprober.cpp:306
+#, fuzzy
+#| msgid "Turkish"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Turkish"
+msgstr "Türkësch"
+
+#: kencodingprober.cpp:256 kencodingprober.cpp:303
+#, fuzzy
+#| msgid "Japanese"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Japanese"
+msgstr "Japanësch"
+
+#: kencodingprober.cpp:258 kencodingprober.cpp:288
+#, fuzzy
+#| msgid "Baltic"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Baltic"
+msgstr "Baltësch"
+
+#: kencodingprober.cpp:260 kencodingprober.cpp:312
+#, fuzzy
+#| msgid "Chinese Traditional"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Chinesësch traditionell"
+
+#: kencodingprober.cpp:262 kencodingprober.cpp:315
+#, fuzzy
+#| msgid "Chinese Simplified"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Chinesësch einfach"
+
+#: kencodingprober.cpp:264 kencodingprober.cpp:318
+#, fuzzy
+#| msgid "Korean"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Korean"
+msgstr "Koreanësch"
+
+#: kencodingprober.cpp:266 kencodingprober.cpp:321
+#, fuzzy
+#| msgid "Thai"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Thai"
+msgstr "Thailännësch"
+
+#: kencodingprober.cpp:268 kencodingprober.cpp:285
+#, fuzzy
+#| msgid "Arabic"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Arabic"
+msgstr "Arabësch"
