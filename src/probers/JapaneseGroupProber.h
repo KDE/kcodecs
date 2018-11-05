@@ -37,7 +37,7 @@ class KCODECS_NO_EXPORT JapaneseGroupProber: public nsCharSetProber
 {
 public:
     JapaneseGroupProber();
-    virtual ~JapaneseGroupProber();
+    ~JapaneseGroupProber() override;
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
     nsProbingState GetState(void) override

@@ -72,7 +72,7 @@ public:
     /**
       Destroys the codec.
     */
-    virtual ~Base64Codec() override {}
+    ~Base64Codec() override {}
 
     /**
       @copydoc

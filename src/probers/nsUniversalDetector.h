@@ -41,7 +41,7 @@ class KCODECS_NO_EXPORT nsUniversalDetector: public nsCharSetProber
 {
 public:
     nsUniversalDetector();
-    virtual ~nsUniversalDetector();
+    ~nsUniversalDetector() override;
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
     void      Reset(void) override;

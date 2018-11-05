@@ -34,7 +34,7 @@ class KCODECS_NO_EXPORT ChineseGroupProber: public nsCharSetProber
 {
 public:
     ChineseGroupProber();
-    virtual ~ChineseGroupProber();
+    ~ChineseGroupProber() override;
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
     nsProbingState GetState(void) override

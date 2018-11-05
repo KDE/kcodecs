@@ -53,7 +53,7 @@ public:
     }
     void      Reset(void) override;
     float     GetConfidence(void) override;
-    void      SetOpion() override {};
+    void      SetOpion() override {}
 
 protected:
     void      GetDistribution(unsigned int aCharLen, const char *aStr);

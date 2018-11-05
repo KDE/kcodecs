@@ -48,7 +48,7 @@ class KCODECS_NO_EXPORT nsSBCSGroupProber: public nsCharSetProber
 {
 public:
     nsSBCSGroupProber();
-    virtual ~nsSBCSGroupProber();
+    ~nsSBCSGroupProber() override;
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
     nsProbingState GetState(void) override

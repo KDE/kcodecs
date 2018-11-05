@@ -35,7 +35,7 @@ class KCODECS_NO_EXPORT nsEscCharSetProber: public nsCharSetProber
 {
 public:
     nsEscCharSetProber(void);
-    virtual ~nsEscCharSetProber(void);
+    ~nsEscCharSetProber(void) override;
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override
     {

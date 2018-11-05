@@ -38,7 +38,7 @@ public:
         mCodingSM = new nsCodingStateMachine(&Big5SMModel);
         Reset();
     }
-    virtual ~nsBig5Prober(void)
+    ~nsBig5Prober() override
     {
         delete mCodingSM;
     }

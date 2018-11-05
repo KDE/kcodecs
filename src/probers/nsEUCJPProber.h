@@ -44,7 +44,7 @@ public:
         mCodingSM = new nsCodingStateMachine(&EUCJPSMModel);
         Reset();
     }
-    virtual ~nsEUCJPProber(void)
+    ~nsEUCJPProber(void) override
     {
         delete mCodingSM;
     }
