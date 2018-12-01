@@ -1,0 +1,349 @@
+# Translation of kcodecs5_qt.po to Euskara/Basque (eu)
+# Copyright (C) 1999-2017, Free Software Foundation, Inc.
+# This file is distributed under the same license as the frameworks package.
+# KDE Euskaratzeko proiektuaren arduraduna <xalba@euskalnet.net>.
+#
+# Translators:
+# Marcos <marcos@euskalgnu.org>, 2002,2003, 2004, 2005.
+# Ion Gaztañaga <igaztanaga@gmail.com>, 2005.
+# marcos <marcos@euskalgnu.org>, 2006, 2007, 2008, 2009, 2010.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2009.
+# Iñigo Salvador Azurmendi <xalba@euskalnet.net>, 2010, 2011, 2012, 2013, 2014, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: kcodecs5_qt\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2017-08-16 13:48+0100\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@euskalnet.net>\n"
+"Language-Team: Basque <kde-i18n-doc@kde.org>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 2.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Qt-Contexts: true\n"
+
+#: kcharsets.cpp:169
+msgctxt "KCharsets|@item Text character set"
+msgid "Western European"
+msgstr "Europako Mendebaldekoa"
+
+#: kcharsets.cpp:175
+msgctxt "KCharsets|@item Text character set"
+msgid "Central European"
+msgstr "Europako Erdialdekoa"
+
+#: kcharsets.cpp:178
+msgctxt "KCharsets|@item Text character set"
+msgid "Baltic"
+msgstr "Baltikoa"
+
+#: kcharsets.cpp:181
+msgctxt "KCharsets|@item Text character set"
+msgid "South-Eastern Europe"
+msgstr "Europako Hego-mendebaldekoa"
+
+#: kcharsets.cpp:184
+msgctxt "KCharsets|@item Text character set"
+msgid "Turkish"
+msgstr "Turkiera"
+
+#: kcharsets.cpp:187
+msgctxt "KCharsets|@item Text character set"
+msgid "Cyrillic"
+msgstr "Zirilikoa"
+
+#: kcharsets.cpp:193
+msgctxt "KCharsets|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Txinera tradizionala"
+
+#: kcharsets.cpp:196
+msgctxt "KCharsets|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Txinera erraztua"
+
+#: kcharsets.cpp:200
+msgctxt "KCharsets|@item Text character set"
+msgid "Korean"
+msgstr "Koreera"
+
+#: kcharsets.cpp:203
+msgctxt "KCharsets|@item Text character set"
+msgid "Japanese"
+msgstr "Japoniera"
+
+#: kcharsets.cpp:207
+msgctxt "KCharsets|@item Text character set"
+msgid "Greek"
+msgstr "Grekoa"
+
+#: kcharsets.cpp:210
+msgctxt "KCharsets|@item Text character set"
+msgid "Arabic"
+msgstr "Arabiera"
+
+#: kcharsets.cpp:213
+msgctxt "KCharsets|@item Text character set"
+msgid "Hebrew"
+msgstr "Hebreera"
+
+#: kcharsets.cpp:218
+msgctxt "KCharsets|@item Text character set"
+msgid "Thai"
+msgstr "Thailandiera"
+
+#: kcharsets.cpp:221
+msgctxt "KCharsets|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kcharsets.cpp:227
+msgctxt "KCharsets|@item Text character set"
+msgid "Northern Saami"
+msgstr "Iparraldeko Saami"
+
+#: kcharsets.cpp:229
+msgctxt "KCharsets|@item Text character set"
+msgid "Other"
+msgstr "Bestelakoak"
+
+#: kcharsets.cpp:672
+#, qt-format
+msgctxt "KCharsets|@item %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kcharsets.cpp:675
+#, qt-format
+msgctxt "KCharsets|@item"
+msgid "Other encoding (%1)"
+msgstr "Beste kodeketa batzuk (%1)"
+
+#: kcharsets.cpp:704
+#, qt-format
+msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kemailaddress.cpp:530
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains more than one "
+"@. You will not create valid messages if you do not change your address."
+msgstr ""
+"Sartu duzun e-posta helbidea ez da erabilgarria @ bat baino gehiago duelako. "
+"Ez dituzu mezu erabilgarriak sortuko zure helbidea aldatu ezean."
+
+#: kemailaddress.cpp:535
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a @. "
+"You will not create valid messages if you do not change your address."
+msgstr ""
+"Sartu duzun e-posta helbidea ez da erabilgarria @ falta zaiolako. Ez dituzu "
+"mezu erabilgarriak sortuko zure helbidea aldatu ezean."
+
+#: kemailaddress.cpp:540
+msgctxt "QObject|"
+msgid "You have to enter something in the email address field."
+msgstr "Zerbait sartu behar duzu e-posta helbide eremuan."
+
+#: kemailaddress.cpp:542
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"local part."
+msgstr ""
+"Sartu duzun e-posta helbidea ez da baliagarria lokal zatia falta zaiolako."
+
+#: kemailaddress.cpp:545
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"domain part."
+msgstr ""
+"Sartu duzun e-posta helbidea ez da erabilgarria domeinu zatia falta zaiolako."
+
+#: kemailaddress.cpp:548
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains unclosed "
+"comments/brackets."
+msgstr ""
+"Sartu duzun e-posta helbidea ez da erabilgarria itxi gabeko iruzkinak/"
+"kortxeteak dituelako."
+
+#: kemailaddress.cpp:551
+msgctxt "QObject|"
+msgid "The email address you entered is valid."
+msgstr "Sartu duzun e-posta helbidea erabilgarria da"
+
+#: kemailaddress.cpp:553
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an unclosed "
+"angle bracket."
+msgstr ""
+"Sartu duzun e-posta helbidea ez da erabilgarria itxi gabeko parentesi "
+"angeluduna daukalako."
+
+#: kemailaddress.cpp:556
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains too many "
+"closing angle brackets."
+msgstr ""
+"Sartu duzun e-posta helbidea ez da erabilgarria ixteko parentesi angeluar "
+"gehiegi dituelako."
+
+#: kemailaddress.cpp:559
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"unexpected comma."
+msgstr ""
+"Sartu duzun e-posta helbidea ez da erabilgarria ustekabeko koma bat duelako."
+
+#: kemailaddress.cpp:562
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it ended unexpectedly. "
+"This probably means you have used an escaping type character like a '\\' as "
+"the last character in your email address."
+msgstr ""
+"Sartu duzun e-posta helbidea ez da baliogarria ustekabean amaitzen delako. "
+"Honen arrazoia izan daiteke ihes karaktere bat erabili izana, '\\' "
+"esaterako, zure e-posta helbideko azken karaktere gisa."
+
+#: kemailaddress.cpp:567
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains quoted text "
+"which does not end."
+msgstr ""
+"Sartu duzun e-posta helbidea baliogabea da itxi gabeko iruzkin testua "
+"daukalako."
+
+#: kemailaddress.cpp:570 kemailaddress.cpp:649
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not seem to "
+"contain an actual email address, i.e. something of the form joe@example.org."
+msgstr ""
+"Sartu duzun e-posta helbidea ez da erabilgarria ez dirudielako e-posta "
+"helbiderik duenik, adibidez mari@adibidea.eus."
+
+#: kemailaddress.cpp:574
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an illegal "
+"character."
+msgstr ""
+"Sartu duzun e-posta helbidea ez da erabilgarria legez kanpoko karaktere bat "
+"erabiltzen duelako."
+
+#: kemailaddress.cpp:577
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"invalid display name."
+msgstr ""
+"Sartu duzun e-posta helbidea ez da erabilgarria erakusteko izen baliogabe "
+"bat duelako."
+
+#: kemailaddress.cpp:580
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"'.'. You will not create valid messages if you do not change your address."
+msgstr ""
+"Sartu duzun e-posta helbidea ez da erabilgarria ez daukalako '.' bat. Ezingo "
+"dituzu mezu erabilgarriak sortu zure helbidea aldatu ezean."
+
+#: kemailaddress.cpp:586
+msgctxt "QObject|"
+msgid "Unknown problem with email address"
+msgstr "Arazo ezezaguna e-posta helbidearekin"
+
+#: kencodingprober.cpp:238 kencodingprober.cpp:279
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Disabled"
+msgstr "Desgaituta"
+
+#: kencodingprober.cpp:240 kencodingprober.cpp:282
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Universal"
+msgstr "Unibertsala"
+
+#: kencodingprober.cpp:242 kencodingprober.cpp:324
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kencodingprober.cpp:244 kencodingprober.cpp:294
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Cyrillic"
+msgstr "Zirilikoa"
+
+#: kencodingprober.cpp:246 kencodingprober.cpp:309
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Western European"
+msgstr "Europako Mendebaldekoa"
+
+#: kencodingprober.cpp:248 kencodingprober.cpp:291
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Central European"
+msgstr "Europako Erdialdekoa"
+
+#: kencodingprober.cpp:250 kencodingprober.cpp:297
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Greek"
+msgstr "Grekoa"
+
+#: kencodingprober.cpp:252 kencodingprober.cpp:300
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Hebrew"
+msgstr "Hebreera"
+
+#: kencodingprober.cpp:254 kencodingprober.cpp:306
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Turkish"
+msgstr "Turkiera"
+
+#: kencodingprober.cpp:256 kencodingprober.cpp:303
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Japanese"
+msgstr "Japoniera"
+
+#: kencodingprober.cpp:258 kencodingprober.cpp:288
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Baltic"
+msgstr "Baltikoa"
+
+#: kencodingprober.cpp:260 kencodingprober.cpp:312
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Txinera tradizionala"
+
+#: kencodingprober.cpp:262 kencodingprober.cpp:315
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Txinera erraztua"
+
+#: kencodingprober.cpp:264 kencodingprober.cpp:318
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Korean"
+msgstr "Koreera"
+
+#: kencodingprober.cpp:266 kencodingprober.cpp:321
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Thai"
+msgstr "Thailandiera"
+
+#: kencodingprober.cpp:268 kencodingprober.cpp:285
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Arabic"
+msgstr "Arabiera"
