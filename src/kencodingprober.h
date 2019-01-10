@@ -110,6 +110,9 @@ public:
 
     ~KEncodingProber();
 
+    KEncodingProber(const KEncodingProber &) = delete;
+    KEncodingProber& operator=(const KEncodingProber &) = delete;
+
     /**
      * reset the prober's internal state and data.
      */
