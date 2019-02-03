@@ -598,7 +598,10 @@ bool KCodecs::Codec::encode(const char *&scursor, const char *const send,
 {
     // get an encoder:
     QScopedPointer<Encoder> enc(makeEncoder(newline));
-    assert(!enc.isNull());
+    if (enc.isNull()) {
+        qWarning() << "makeEncoder failed for" << name();
+        return false;
+    }
 
     // encode and check for output buffer overflow:
     while (!enc->encode(scursor, send, dcursor, dend)) {
