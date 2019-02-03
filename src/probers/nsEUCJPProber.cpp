@@ -41,6 +41,9 @@ void  nsEUCJPProber::Reset(void)
 
 nsProbingState nsEUCJPProber::HandleData(const char *aBuf, unsigned int aLen)
 {
+    if (aLen == 0)
+        return mState;
+
     nsSMState codingState;
 
     for (unsigned int i = 0; i < aLen; i++) {
