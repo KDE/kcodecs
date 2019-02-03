@@ -35,6 +35,9 @@ void  nsBig5Prober::Reset(void)
 
 nsProbingState nsBig5Prober::HandleData(const char *aBuf, unsigned int aLen)
 {
+    if (aLen == 0)
+        return mState;
+
     nsSMState codingState;
 
     for (unsigned int i = 0; i < aLen; i++) {
