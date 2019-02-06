@@ -183,7 +183,7 @@ static const unsigned int ISO2022JP_st [ 9] = {
     PCK4BITS(eError, eError, eError, eError, eItsMe, eError, eStart, eStart) //40-47
 };
 
-static const unsigned int ISO2022JPCharLenTable[] = {0, 0, 0, 0, 0, 0, 0, 0};
+static const unsigned int ISO2022JPCharLenTable[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 const SMModel ISO2022JPSMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, ISO2022JP_cls },
