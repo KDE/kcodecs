@@ -139,8 +139,10 @@ KCODECS_EXPORT void quotedPrintableDecode(const QByteArray &in, QByteArray &out)
  *
  * @param in   data to be uuencoded
  * @return     uuencoded string.
+ * @deprecated Always returns an empty bytearray.
  */
-KCODECS_EXPORT QByteArray uuencode(const QByteArray &in);
+// TODO KF6 Remove? Or Make uuencode work?
+KCODECS_DEPRECATED_EXPORT QByteArray uuencode(const QByteArray &in);
 
 /**
  * Encodes the given data using the uuencode algorithm.
@@ -155,9 +157,10 @@ KCODECS_EXPORT QByteArray uuencode(const QByteArray &in);
  * output array will be lost.
  *
  * @param in   data to be uuencoded.
- * @param out  uudecoded data.
+ * @param out  an empty byte array
  */
-KCODECS_EXPORT void uuencode(const QByteArray &in, QByteArray &out);
+// TODO KF6 Remove? Or Make uuencode work?
+KCODECS_DEPRECATED_EXPORT void uuencode(const QByteArray &in, QByteArray &out);
 
 /**
  * Decodes the given data using the uudecode algorithm.
