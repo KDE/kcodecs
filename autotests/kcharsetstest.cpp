@@ -24,7 +24,7 @@
 
 static bool encodingNameHasADescription(const QString &encodingName, const QStringList &descriptions)
 {
-    Q_FOREACH (QString description, descriptions)
+    for (const QString &description : descriptions)
         if (description.contains(encodingName)) {
             return true;
         }
@@ -151,7 +151,7 @@ void KCharsetsTest::testEncodingNames()
 
     QCOMPARE(singleton->availableEncodingNames().count(), singleton->descriptiveEncodingNames().count());
 
-    Q_FOREACH (QString encodingName, singleton->availableEncodingNames()) {
+    for (const QString &encodingName : singleton->availableEncodingNames()) {
         bool ok = false;
 
         if (encodingName == QLatin1String("ucs2") || encodingName == QLatin1String("ISO 10646-UCS-2")) {

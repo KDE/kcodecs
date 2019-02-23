@@ -67,7 +67,7 @@ static QList<QByteArray> charsetCache;
 
 QByteArray cachedCharset(const QByteArray &name)
 {
-    foreach (const QByteArray &charset, charsetCache) {
+    for (const QByteArray &charset : qAsConst(charsetCache)) {
         if (qstricmp(name.data(), charset.data()) == 0) {
             return charset;
         }

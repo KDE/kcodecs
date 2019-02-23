@@ -40,12 +40,13 @@ void CodecTest::testCodecs_data()
     QTest::addColumn<Mode>("mode");
 
     QDir codecBaseDir(QFINDTESTDATA("data"));
-    foreach (const QString &dir, codecBaseDir.entryList(QStringList(), QDir::Dirs | QDir::NoDotAndDotDot,
-             QDir::NoSort)) {
+    const QStringList lst = codecBaseDir.entryList(QStringList(), QDir::Dirs | QDir::NoDotAndDotDot, QDir::NoSort);
+    for (const QString &dir :  lst) {
         if (dir.toLower().startsWith(QLatin1String("codec_"))) {
             const QString codecName = dir.right(dir.size() - 6);
             QDir codecDir(codecBaseDir.path() + QLatin1String("/") + dir);
-            foreach (const QString &file, codecDir.entryList(QStringList(), QDir::Files, QDir::NoSort)) {
+            const QStringList lst2 = codecDir.entryList(QStringList(), QDir::Files, QDir::NoSort);
+            for (const QString &file : lst2) {
                 if (file.toLower().endsWith(QLatin1String(".expected"))) {
                     const QString dataFileNameBase = file.left(file.size() - 9);
                     QFile dataFile(codecDir.path() + QLatin1Char('/') + dataFileNameBase);
