@@ -99,7 +99,7 @@ private Q_SLOTS:
             KCodecs::Decoder *decoder = codec->makeDecoder();
             QByteArray::const_iterator inputIt = input.constBegin();
             QByteArray::iterator resultIt = result.begin();
-            decoder->decode(inputIt, input.constEnd(), resultIt, result.end());
+            decoder->decode(inputIt, input.constEnd(), resultIt, result.constEnd());
             result.truncate(resultIt - result.begin());
             delete decoder;
         }
