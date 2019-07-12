@@ -23,10 +23,7 @@
 
 #include <kentities.h>
 
-#include <QDir>
-#include <QRegExp>
 #include <QCharRef>
-#include <QMutableStringListIterator>
 #include <QTextCodec>
 
 #include <assert.h>

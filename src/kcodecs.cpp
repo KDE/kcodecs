@@ -41,7 +41,6 @@
 #include "kcharsets.h"
 #include "kcodecs_debug.h"
 
-#include <QCoreApplication>
 #include <QMutex>
 
 #include <cassert>
@@ -51,7 +50,6 @@
 #include <stdlib.h>
 
 #include <QDebug>
-#include <QIODevice>
 #include <QTextCodec>
 #include <QHash>
 
