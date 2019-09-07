@@ -1,0 +1,355 @@
+# translation of kdelibs4.po to Italian
+# Andrea Rizzi <rizzi@kde.org>, 2003, 2004, 2005.
+# Federico Cozzi <federicocozzi@federicocozzi.it>, 2004.
+# Federico Zenith <federico.zenith@member.fsf.org>, 2004, 2008, 2009, 2010, 2011.
+# Andrea Rizzi <Andrea.Rizzi@sns.it>, 2004.
+# Nicola Ruggero <nixprog.adsl@tiscali.it>, 2005, 2006.
+# Nicola Ruggero <nicola@nxnt.org>, 2006, 2007, 2010.
+# Luciano Montanaro <mikelima@cirulla.net>, 2007.
+# Dario Panico <Dareus_Persarumrex@fastwebnet.it>, 2008.
+# Pino Toscano <toscano.pino@tiscali.it>, 2008.
+# Federico Zenith <federico.zenith@member.fsf.org>, 2008, 2012, 2013, 2014, 2015.
+# Innocenzo Ventre <innocenzo.ventre@gmail.com>, 2012.
+# Vincenzo Reale <smart2128@baslug.org>, 2014, 2015.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2015-03-28 16:00+0100\n"
+"Last-Translator: Vincenzo Reale <smart2128@baslug.org>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.5\n"
+"X-Qt-Contexts: true\n"
+
+#: kcharsets.cpp:166
+msgctxt "KCharsets|@item Text character set"
+msgid "Western European"
+msgstr "Europeo occidentale"
+
+#: kcharsets.cpp:172
+msgctxt "KCharsets|@item Text character set"
+msgid "Central European"
+msgstr "Europeo centrale"
+
+#: kcharsets.cpp:175
+msgctxt "KCharsets|@item Text character set"
+msgid "Baltic"
+msgstr "Baltico"
+
+#: kcharsets.cpp:178
+msgctxt "KCharsets|@item Text character set"
+msgid "South-Eastern Europe"
+msgstr "Europeo sud-orientale"
+
+#: kcharsets.cpp:181
+msgctxt "KCharsets|@item Text character set"
+msgid "Turkish"
+msgstr "Turco"
+
+#: kcharsets.cpp:184
+msgctxt "KCharsets|@item Text character set"
+msgid "Cyrillic"
+msgstr "Cirillico"
+
+#: kcharsets.cpp:190
+msgctxt "KCharsets|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Cinese tradizionale"
+
+#: kcharsets.cpp:193
+msgctxt "KCharsets|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Cinese semplificato"
+
+#: kcharsets.cpp:197
+msgctxt "KCharsets|@item Text character set"
+msgid "Korean"
+msgstr "Coreano"
+
+#: kcharsets.cpp:200
+msgctxt "KCharsets|@item Text character set"
+msgid "Japanese"
+msgstr "Giapponese"
+
+#: kcharsets.cpp:204
+msgctxt "KCharsets|@item Text character set"
+msgid "Greek"
+msgstr "Greco"
+
+#: kcharsets.cpp:207
+msgctxt "KCharsets|@item Text character set"
+msgid "Arabic"
+msgstr "Arabo"
+
+#: kcharsets.cpp:210
+msgctxt "KCharsets|@item Text character set"
+msgid "Hebrew"
+msgstr "Ebraico"
+
+#: kcharsets.cpp:215
+msgctxt "KCharsets|@item Text character set"
+msgid "Thai"
+msgstr "Tailandese"
+
+#: kcharsets.cpp:218
+msgctxt "KCharsets|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kcharsets.cpp:224
+msgctxt "KCharsets|@item Text character set"
+msgid "Northern Saami"
+msgstr "Saami settentrionale"
+
+#: kcharsets.cpp:226
+msgctxt "KCharsets|@item Text character set"
+msgid "Other"
+msgstr "Altro"
+
+#: kcharsets.cpp:669
+#, qt-format
+msgctxt "KCharsets|@item %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kcharsets.cpp:672
+#, qt-format
+msgctxt "KCharsets|@item"
+msgid "Other encoding (%1)"
+msgstr "Altra codifica (%1)"
+
+#: kcharsets.cpp:701
+#, qt-format
+msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kemailaddress.cpp:530
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains more than one "
+"@. You will not create valid messages if you do not change your address."
+msgstr ""
+"L'indirizzo di posta che hai inserito non è valido perché contiene più di un "
+"carattere @. Non potrai creare messaggi validi se non cambi l'indirizzo."
+
+#: kemailaddress.cpp:535
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a @. "
+"You will not create valid messages if you do not change your address."
+msgstr ""
+"L'indirizzo di posta che hai inserito non è valido perché non contiene un "
+"carattere @. Non potrai creare messaggi validi se non cambi l'indirizzo."
+
+#: kemailaddress.cpp:540
+msgctxt "QObject|"
+msgid "You have to enter something in the email address field."
+msgstr "Devi scrivere qualcosa nel campo dell'indirizzo di posta."
+
+#: kemailaddress.cpp:542
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"local part."
+msgstr ""
+"L'indirizzo di posta che hai inserito non è valido perché non contiene una "
+"parte locale."
+
+#: kemailaddress.cpp:545
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"domain part."
+msgstr ""
+"L'indirizzo di posta che hai inserito non è valido perché non contiene una "
+"parte del dominio."
+
+#: kemailaddress.cpp:548
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains unclosed "
+"comments/brackets."
+msgstr ""
+"L'indirizzo di posta che hai inserito non è valido perché contiene commenti "
+"o parentesi non chiuse."
+
+#: kemailaddress.cpp:551
+msgctxt "QObject|"
+msgid "The email address you entered is valid."
+msgstr "L'indirizzo di posta che hai inserito è valido."
+
+#: kemailaddress.cpp:553
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an unclosed "
+"angle bracket."
+msgstr ""
+"L'indirizzo di posta che hai inserito non è valido perché contiene una "
+"parentesi uncinata non chiusa."
+
+#: kemailaddress.cpp:556
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains too many "
+"closing angle brackets."
+msgstr ""
+"L'indirizzo di posta che hai inserito non è valido perché contiene troppe "
+"parentesi uncinate di chiusura."
+
+#: kemailaddress.cpp:559
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"unexpected comma."
+msgstr ""
+"L'indirizzo di posta che hai inserito non è valido perché contiene una "
+"virgola inattesa."
+
+#: kemailaddress.cpp:562
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it ended unexpectedly. "
+"This probably means you have used an escaping type character like a '\\' as "
+"the last character in your email address."
+msgstr ""
+"L'indirizzo di posta che hai inserito non è valido perché si è concluso "
+"inaspettatamente. Probabilmente vuol dire che hai usato un carattere di "
+"escape come «\\» come ultimo carattere dell'indirizzo."
+
+#: kemailaddress.cpp:567
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains quoted text "
+"which does not end."
+msgstr ""
+"L'indirizzo di posta che hai inserito non è valido perché contiene del testo "
+"virgolettato che non si conclude."
+
+#: kemailaddress.cpp:570 kemailaddress.cpp:649
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not seem to "
+"contain an actual email address, i.e. something of the form joe@example.org."
+msgstr ""
+"L'indirizzo di posta che hai inserito non è valido perché non sembra "
+"contenere un indirizzo vero e proprio, cioè qualcosa nella forma "
+"pippo@esempio.org."
+
+#: kemailaddress.cpp:574
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an illegal "
+"character."
+msgstr ""
+"L'indirizzo di posta che hai inserito non è valido perché contiene un "
+"carattere illegale."
+
+#: kemailaddress.cpp:577
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"invalid display name."
+msgstr ""
+"L'indirizzo di posta che hai inserito non è valido perché contiene un nome "
+"visualizzabile non valido."
+
+#: kemailaddress.cpp:580
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"'.'. You will not create valid messages if you do not change your address."
+msgstr ""
+"L'indirizzo di posta che hai inserito non è valido perché non contiene un "
+"carattere «.». Non potrai creare messaggi validi se non cambi l'indirizzo."
+
+#: kemailaddress.cpp:586
+msgctxt "QObject|"
+msgid "Unknown problem with email address"
+msgstr "Problema sconosciuto con l'indirizzo di posta"
+
+#: kencodingprober.cpp:238 kencodingprober.cpp:279
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Disabled"
+msgstr "Disabilitato"
+
+#: kencodingprober.cpp:240 kencodingprober.cpp:282
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Universal"
+msgstr "Universale"
+
+#: kencodingprober.cpp:242 kencodingprober.cpp:324
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kencodingprober.cpp:244 kencodingprober.cpp:294
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Cyrillic"
+msgstr "Cirillico"
+
+#: kencodingprober.cpp:246 kencodingprober.cpp:309
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Western European"
+msgstr "Europeo occidentale"
+
+#: kencodingprober.cpp:248 kencodingprober.cpp:291
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Central European"
+msgstr "Europeo centrale"
+
+#: kencodingprober.cpp:250 kencodingprober.cpp:297
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Greek"
+msgstr "Greco"
+
+#: kencodingprober.cpp:252 kencodingprober.cpp:300
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Hebrew"
+msgstr "Ebraico"
+
+#: kencodingprober.cpp:254 kencodingprober.cpp:306
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Turkish"
+msgstr "Turco"
+
+#: kencodingprober.cpp:256 kencodingprober.cpp:303
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Japanese"
+msgstr "Giapponese"
+
+#: kencodingprober.cpp:258 kencodingprober.cpp:288
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Baltic"
+msgstr "Baltico"
+
+#: kencodingprober.cpp:260 kencodingprober.cpp:312
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Cinese tradizionale"
+
+#: kencodingprober.cpp:262 kencodingprober.cpp:315
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Cinese semplificato"
+
+#: kencodingprober.cpp:264 kencodingprober.cpp:318
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Korean"
+msgstr "Coreano"
+
+#: kencodingprober.cpp:266 kencodingprober.cpp:321
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Thai"
+msgstr "Tailandese"
+
+#: kencodingprober.cpp:268 kencodingprober.cpp:285
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Arabic"
+msgstr "Arabo"
