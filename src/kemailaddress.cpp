@@ -967,8 +967,7 @@ QString KEmailAddress::normalizedAddress(const QString &displayName,
             return realDisplayName + QLatin1String(" <") + addrSpec + QLatin1Char('>');
         }
     } else if (realDisplayName.isEmpty()) {
-        QString commentStr = comment;
-        return quoteNameIfNecessary(commentStr) + QLatin1String(" <") + addrSpec + QLatin1Char('>');
+        return quoteNameIfNecessary(comment) + QLatin1String(" <") + addrSpec + QLatin1Char('>');
     } else {
         return realDisplayName + QLatin1String(" (") + comment + QLatin1String(") <") + addrSpec + QLatin1Char('>');
     }
