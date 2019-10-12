@@ -45,9 +45,9 @@ private:
         QTest::addColumn<QByteArray>("output");
         QTest::addColumn<QByteArray>("input");
         QTest::newRow("empty") << QByteArray() << QByteArray();
-        QTest::newRow("128") << fillByteArray(128) << KCodecs::base64Encode(fillByteArray(128), true);
-        QTest::newRow("1k") << fillByteArray(1 << 10) << KCodecs::base64Encode(fillByteArray(1 << 10), true);
-        QTest::newRow("1M") << fillByteArray(1 << 20) << KCodecs::base64Encode(fillByteArray(1 << 20), true);
+        QTest::newRow("128") << fillByteArray(128) << KCodecs::base64Encode(fillByteArray(128));
+        QTest::newRow("1k") << fillByteArray(1 << 10) << KCodecs::base64Encode(fillByteArray(1 << 10));
+        QTest::newRow("1M") << fillByteArray(1 << 20) << KCodecs::base64Encode(fillByteArray(1 << 20));
     }
 private Q_SLOTS:
     void benchmarkKCodecDecode_data()
