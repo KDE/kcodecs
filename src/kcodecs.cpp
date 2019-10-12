@@ -108,11 +108,13 @@ QByteArray KCodecs::base64Encode(const QByteArray &in)
     return codec->encode(in);
 }
 
+#if KCODECS_BUILD_DEPRECATED_SINCE(5, 5)
 QByteArray KCodecs::base64Encode(const QByteArray &in, bool insertLFs)
 {
     Q_UNUSED(insertLFs);
     return base64Encode(in);
 }
+#endif
 
 void KCodecs::base64Encode(const QByteArray &in, QByteArray &out,
                            bool insertLFs)
@@ -132,16 +134,20 @@ void KCodecs::base64Decode(const QByteArray &in, QByteArray &out)
     out = base64Decode(in);
 }
 
+#if KCODECS_BUILD_DEPRECATED_SINCE(5, 56)
 QByteArray KCodecs::uuencode(const QByteArray &in)
 {
     Codec *codec = Codec::codecForName("x-uuencode");
     return codec->encode(in);
 }
+#endif
 
+#if KCODECS_BUILD_DEPRECATED_SINCE(5, 56)
 void KCodecs::uuencode(const QByteArray &in, QByteArray &out)
 {
     out = uuencode(in);
 }
+#endif
 
 QByteArray KCodecs::uudecode(const QByteArray &in)
 {

@@ -129,6 +129,7 @@ KCODECS_EXPORT QByteArray quotedPrintableDecode(const QByteArray &in);
  */
 KCODECS_EXPORT void quotedPrintableDecode(const QByteArray &in, QByteArray &out);
 
+#if KCODECS_ENABLE_DEPRECATED_SINCE(5, 56)
 /**
  * Encodes the given data using the uuencode algorithm.
  *
@@ -139,11 +140,13 @@ KCODECS_EXPORT void quotedPrintableDecode(const QByteArray &in, QByteArray &out)
  *
  * @param in   data to be uuencoded
  * @return     uuencoded string.
- * @deprecated Always returns an empty bytearray.
+ * @deprecated Not implemented, always returns an empty bytearray.
  */
-// TODO KF6 Remove? Or Make uuencode work?
-KCODECS_DEPRECATED_EXPORT QByteArray uuencode(const QByteArray &in);
+KCODECS_DEPRECATED_VERSION(5, 56, "Not implemented")
+KCODECS_EXPORT QByteArray uuencode(const QByteArray &in);
+#endif
 
+#if KCODECS_ENABLE_DEPRECATED_SINCE(5, 56)
 /**
  * Encodes the given data using the uuencode algorithm.
  *
@@ -158,9 +161,11 @@ KCODECS_DEPRECATED_EXPORT QByteArray uuencode(const QByteArray &in);
  *
  * @param in   data to be uuencoded.
  * @param out  an empty byte array
+ * @deprecated Not implemented, always set @p out to an empty bytearray.
  */
-// TODO KF6 Remove? Or Make uuencode work?
-KCODECS_DEPRECATED_EXPORT void uuencode(const QByteArray &in, QByteArray &out);
+KCODECS_DEPRECATED_VERSION(5, 56, "Not implemented")
+KCODECS_EXPORT void uuencode(const QByteArray &in, QByteArray &out);
+#endif
 
 /**
  * Decodes the given data using the uudecode algorithm.
@@ -211,12 +216,15 @@ KCODECS_EXPORT void uudecode(const QByteArray &in, QByteArray &out);
  */
 KCODECS_EXPORT QByteArray base64Encode(const QByteArray &in);
 
+#if KCODECS_ENABLE_DEPRECATED_SINCE(5, 5)
 /**
  * @copydoc
  * KCodecs::base64Encode(QByteArray)
- * @deprecated Use KCodecs::base64Encode(QByteArray) instead.
+ * @deprecated Since 5.5, use KCodecs::base64Encode(QByteArray) instead.
  */
-KCODECS_DEPRECATED_EXPORT QByteArray base64Encode(const QByteArray &in, bool insertLFs);
+KCODECS_DEPRECATED_VERSION(5, 5, "Use QByteArray base64Encode(const QByteArray &)")
+KCODECS_EXPORT QByteArray base64Encode(const QByteArray &in, bool insertLFs);
+#endif
 
 /**
  * Encodes the given data using the base64 algorithm.

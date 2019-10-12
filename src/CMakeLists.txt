@@ -47,8 +47,15 @@ set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/kentities.h PROPERTIES S
 ecm_qt_declare_logging_category(kcodecs_SRCS HEADER kcodecs_debug.h IDENTIFIER KCODECS_LOG CATEGORY_NAME kf5.kcodecs)
 
 add_library(KF5Codecs ${kcodecs_SRCS})
-generate_export_header(KF5Codecs BASE_NAME KCodecs)
 add_library(KF5::Codecs ALIAS KF5Codecs)
+ecm_generate_export_header(KF5Codecs
+    BASE_NAME KCodecs
+    # GROUP_BASE_NAME KF <- enable once all of KF modules use ecm_generate_export_header
+    VERSION ${KF5_VERSION}
+    DEPRECATED_BASE_VERSION 0
+    DEPRECATION_VERSIONS 5.5 5.56
+    EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
+)
 
 target_include_directories(KF5Codecs INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/KCodecs>")
 

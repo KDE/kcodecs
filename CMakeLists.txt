@@ -21,14 +21,15 @@ find_package(Qt5Core ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
 
 find_package(Gperf REQUIRED)
 
-
-include(GenerateExportHeader)
+include(ECMGenerateExportHeader)
 include(CMakePackageConfigHelpers)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 
 include(ECMPoQmTools)
 include(ECMAddQch)
+
+set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
 add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
