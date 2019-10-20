@@ -50,7 +50,7 @@ add_library(KF5Codecs ${kcodecs_SRCS})
 add_library(KF5::Codecs ALIAS KF5Codecs)
 ecm_generate_export_header(KF5Codecs
     BASE_NAME KCodecs
-    # GROUP_BASE_NAME KF <- enable once all of KF modules use ecm_generate_export_header
+    GROUP_BASE_NAME KF
     VERSION ${KF5_VERSION}
     DEPRECATED_BASE_VERSION 0
     DEPRECATION_VERSIONS 5.5 5.56
