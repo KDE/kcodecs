@@ -18,7 +18,7 @@
 */
 
 #include <QObject>
-#include <QtTest>
+#include <QTest>
 #include <KCodecs>
 #include <QByteArray>
 #include <qtest.h>

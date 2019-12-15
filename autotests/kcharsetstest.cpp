@@ -20,7 +20,8 @@
 #include <kcharsets.h>
 #include <QString>
 #include <QDebug>
-#include <QtTest>
+#include <QTest>
+#include <QTextCodec>
 
 static bool encodingNameHasADescription(const QString &encodingName, const QStringList &descriptions)
 {
