@@ -21,10 +21,9 @@
 #include "kcodecs.h"
 #include "kcodecs_debug.h"
 
-#include <QUrl>
-
-#include <QRegExp>
 #include <QByteArray>
+#include <QRegularExpression>
+#include <QUrl>
 
 using namespace KEmailAddress;
 
@@ -635,12 +634,14 @@ bool KEmailAddress::isValidSimpleAddress(const QString &aStr)
         addrRx = QStringLiteral("[a-zA-Z]*[~|{}`\\^?=/+*'&%$#!_\\w.-]*[~|{}`\\^?=/+*'&%$#!_a-zA-Z0-9-]@");
     }
     if (domainPart[ 0 ] == QLatin1Char('[') || domainPart[ domainPart.length() - 1 ] == QLatin1Char(']')) {
-        addrRx += QStringLiteral("\\[[0-9]{,3}(\\.[0-9]{,3}){3}\\]");
+        addrRx += QStringLiteral("\\[[0-9]{1,3}(\\.[0-9]{1,3}){3}\\]");
     } else {
-        addrRx += QStringLiteral("[\\w-#]+(\\.[\\w-#]+)*");
+        addrRx += QStringLiteral("[\\w#-]+(\\.[\\w#-]+)*");
     }
-    QRegExp rx(addrRx);
-    return  rx.exactMatch(aStr) && !tooManyAtsFlag;
+
+    const QRegularExpression rx(QRegularExpression::anchoredPattern(addrRx),
+                                QRegularExpression::UseUnicodePropertiesOption);
+    return  rx.match(aStr).hasMatch() && !tooManyAtsFlag;
 }
 
 //-----------------------------------------------------------------------------
@@ -1113,7 +1114,7 @@ QString KEmailAddress::quoteNameIfNecessary(const QString &str)
 {
     QString quoted = str;
 
-    QRegExp needQuotes(QStringLiteral("[^ 0-9A-Za-z\\x0080-\\xFFFF]"));
+    const QRegularExpression needQuotes(QStringLiteral("[^ 0-9A-Za-z\\x{0080}-\\x{FFFF}]"));
     // avoid double quoting
     if ((quoted[0] == QLatin1Char('"')) && (quoted[quoted.length() - 1] == QLatin1Char('"'))) {
         quoted = QLatin1String("\"") + escapeQuotes(quoted.mid(1, quoted.length() - 2)) + QLatin1String("\"");

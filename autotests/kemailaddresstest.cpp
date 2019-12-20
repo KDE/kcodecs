@@ -399,6 +399,8 @@ void KEmailAddressTest::testIsValidSimpleEmailAddress_data()
     QTest::newRow("") << "mattfruitsalad.org" << false;
     QTest::newRow("") << "matt@[123.123.123.123" << false;
     QTest::newRow("") << "matt@123.123.123.123]" << false;
+    QTest::newRow("") << "matt@[.123.123.123]"   << false;
+    QTest::newRow("") << "matt@[123.123.123]"    << false;
     QTest::newRow("") << "\"matt@fruitsalad.org" << false;
     QTest::newRow("") << "matt\"@fruitsalad.org" << false;
     QTest::newRow("") << QString() << false;
