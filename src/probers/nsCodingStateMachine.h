@@ -66,13 +66,8 @@ public:
             mCurrentCharLen = mModel->charLenTable[byteCls];
         }
         //from byte's class KCODECS_NO_EXPORT and stateTable, we get its next state
-        auto nextCurrentState = GETFROMPCK(mCurrentState * (mModel->classFactor) + byteCls,
-                                                      mModel->stateTable);
-        if (nextCurrentState < eStart || nextCurrentState > eItsMe) {
-            mCurrentState = eError;
-        } else {
-            mCurrentState = static_cast<nsSMState>(nextCurrentState);
-        }
+        mCurrentState = (nsSMState)GETFROMPCK(mCurrentState * (mModel->classFactor) + byteCls,
+                                              mModel->stateTable);
         mCurrentBytePos++;
         return mCurrentState;
     }
