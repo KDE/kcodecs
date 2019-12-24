@@ -32,11 +32,12 @@
 #include "nsPkgInt.h"
 namespace kencodingprober
 {
-typedef enum {
+enum {
     eStart = 0,
     eError = 1,
     eItsMe = 2
-} nsSMState;
+};
+using nsSMState = int;
 
 #define GETCLASS(c) GETFROMPCK(((unsigned char)(c)), mModel->classTable)
 
@@ -66,7 +67,7 @@ public:
             mCurrentCharLen = mModel->charLenTable[byteCls];
         }
         //from byte's class KCODECS_NO_EXPORT and stateTable, we get its next state
-        mCurrentState = (nsSMState)GETFROMPCK(mCurrentState * (mModel->classFactor) + byteCls,
+        mCurrentState = GETFROMPCK(mCurrentState * (mModel->classFactor) + byteCls,
                                               mModel->stateTable);
         mCurrentBytePos++;
         return mCurrentState;
@@ -100,7 +101,7 @@ public:
 #endif
 
 protected:
-    nsSMState mCurrentState;
+    int mCurrentState;
     unsigned int mCurrentCharLen;
     unsigned int mCurrentBytePos;
 
