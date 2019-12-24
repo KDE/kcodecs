@@ -605,7 +605,6 @@ bool KEmailAddress::isValidSimpleAddress(const QString &aStr)
         return false;
     }
 
-    bool tooManyAtsFlag = false;
     bool inQuotedString = false;
     int atCount = localPart.count(QLatin1Char('@'));
 
@@ -618,9 +617,6 @@ bool KEmailAddress::isValidSimpleAddress(const QString &aStr)
         case '@' :
             if (inQuotedString) {
                 --atCount;
-                if (atCount == 0) {
-                    tooManyAtsFlag = false;
-                }
             }
             break;
         }
@@ -641,7 +637,7 @@ bool KEmailAddress::isValidSimpleAddress(const QString &aStr)
 
     const QRegularExpression rx(QRegularExpression::anchoredPattern(addrRx),
                                 QRegularExpression::UseUnicodePropertiesOption);
-    return  rx.match(aStr).hasMatch() && !tooManyAtsFlag;
+    return  rx.match(aStr).hasMatch();
 }
 
 //-----------------------------------------------------------------------------
