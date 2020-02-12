@@ -43,8 +43,13 @@ ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h kcode
 
 set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/kentities.h PROPERTIES SKIP_AUTOMOC ON)
 
-
-ecm_qt_declare_logging_category(kcodecs_SRCS HEADER kcodecs_debug.h IDENTIFIER KCODECS_LOG CATEGORY_NAME kf5.kcodecs)
+ecm_qt_declare_logging_category(kcodecs_SRCS
+    HEADER kcodecs_debug.h
+    IDENTIFIER KCODECS_LOG
+    CATEGORY_NAME kf5.kcodecs
+    DESCRIPTION "KCodecs"
+    EXPORT KCODECS
+)
 
 add_library(KF5Codecs ${kcodecs_SRCS})
 add_library(KF5::Codecs ALIAS KF5Codecs)
@@ -99,6 +104,12 @@ install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/kcodecs_export.h
   ${KCodecs_HEADERS}
   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/KCodecs COMPONENT Devel
+)
+
+ecm_qt_install_logging_categories(
+    EXPORT KCODECS
+    FILE kcodecs.categories
+    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
 )
 
 if(BUILD_QCH)
