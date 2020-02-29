@@ -1,26 +1,8 @@
 /* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 /*  -*- C++ -*-
-*  Copyright (C) 1998 <developer@mozilla.org>
-*
-*
-*  Permission is hereby granted, free of charge, to any person obtaining
-*  a copy of this software and associated documentation files (the
-*  "Software"), to deal in the Software without restriction, including
-*  without limitation the rights to use, copy, modify, merge, publish,
-*  distribute, sublicense, and/or sell copies of the Software, and to
-*  permit persons to whom the Software is furnished to do so, subject to
-*  the following conditions:
-*
-*  The above copyright notice and this permission notice shall be included 
-*  in all copies or substantial portions of the Software.
-*
-*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-*  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-*  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-*  OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-*  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+    SPDX-FileCopyrightText: 1998 <developer@mozilla.org>
+
+    SPDX-License-Identifier: MIT
 */
 
 //Sampling from about 20M text materials include literature and computer technology
@@ -34,15 +16,15 @@
  *
  * Idea Distribution Ratio = 0.98653 / (1-0.98653) = 73.24
  * Random Distribution Ration = 512 / (2350-512) = 0.279.
- * 
- * Typical Distribution Ratio  
+ *
+ * Typical Distribution Ratio
  *****************************************************************************/
 
 #define EUCKR_TYPICAL_DISTRIBUTION_RATIO (float) 6.0
 
 #define EUCKR_TABLE_SIZE  2352
 
-//Char to FreqOrder table , 
+//Char to FreqOrder table ,
 static const short EUCKRCharToFreqOrder[] =
 {
   13, 130, 120,1396, 481,1719,1720, 328, 609, 212,1721, 707, 400, 299,1722,  87,
@@ -193,7 +175,7 @@ static const short EUCKRCharToFreqOrder[] =
 2629,2630,2631, 924, 648, 863, 603,2632,2633, 934,1540, 864, 865,2634, 642,1042,
  670,1190,2635,2636,2637,2638, 168,2639, 652, 873, 542,1054,1541,2640,2641,2642,  //512, 256
 
-/*************************************************************************************** 
+/***************************************************************************************
  *Everything below is of no interest for detection purpose							   *
  ***************************************************************************************
 
