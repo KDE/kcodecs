@@ -514,12 +514,12 @@ QString KEmailAddress::emailParseResultToString(EmailParseResult errorCode)
     switch (errorCode) {
     case TooManyAts :
         return QObject::tr("The email address you entered is not valid because it "
-                           "contains more than one @. "
+                           "contains more than one @.\n"
                            "You will not create valid messages if you do not "
                            "change your address.");
     case TooFewAts :
         return QObject::tr("The email address you entered is not valid because it "
-                           "does not contain a @. "
+                           "does not contain a @.\n"
                            "You will not create valid messages if you do not "
                            "change your address.");
     case AddressEmpty :
@@ -546,7 +546,7 @@ QString KEmailAddress::emailParseResultToString(EmailParseResult errorCode)
                            "contains an unexpected comma.");
     case UnexpectedEnd :
         return QObject::tr("The email address you entered is not valid because it ended "
-                           "unexpectedly. This probably means you have used an escaping "
+                           "unexpectedly.\nThis probably means you have used an escaping "
                            "type character like a '\\' as the last character in your "
                            "email address.");
     case UnbalancedQuote :
@@ -564,7 +564,7 @@ QString KEmailAddress::emailParseResultToString(EmailParseResult errorCode)
                            "contains an invalid display name.");
     case TooFewDots :
         return QObject::tr("The email address you entered is not valid because it "
-                           "does not contain a \'.\'. "
+                           "does not contain a \'.\'.\n"
                            "You will not create valid messages if you do not "
                            "change your address.");
 
@@ -630,7 +630,7 @@ bool KEmailAddress::isValidSimpleAddress(const QString &aStr)
 //-----------------------------------------------------------------------------
 QString KEmailAddress::simpleEmailAddressErrorMsg()
 {
-    return QObject::tr("The email address you entered is not valid because it "
+    return QObject::tr("The email address you entered is not valid.\nIt "
                        "does not seem to contain an actual email address, i.e. "
                        "something of the form joe@example.org.");
 }
