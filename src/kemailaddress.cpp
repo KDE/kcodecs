@@ -1074,11 +1074,12 @@ static QString escapeQuotes(const QString &str)
     // reserve enough memory for the worst case ( """..."" -> \"\"\"...\"\" )
     escaped.reserve(2 * str.length());
     unsigned int len = 0;
-    for (int i = 0; i < str.length(); ++i, ++len) {
-        if (str[i] == QLatin1Char('"')) {   // unescaped doublequote
+    for (int i = 0, total = str.length(); i < total; ++i, ++len) {
+        const QChar &c = str[i];
+        if (c == QLatin1Char('"')) {   // unescaped doublequote
             escaped.append(QLatin1Char('\\'));
             ++len;
-        } else if (str[i] == QLatin1Char('\\')) {   // escaped character
+        } else if (c == QLatin1Char('\\')) {   // escaped character
             escaped.append(QLatin1Char('\\'));
             ++len;
             ++i;
@@ -1086,6 +1087,7 @@ static QString escapeQuotes(const QString &str)
                 break;
             }
         }
+        //Keep str[i] as we increase i previously
         escaped.append(str[i]);
     }
     escaped.truncate(len);
