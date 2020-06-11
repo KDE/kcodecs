@@ -1095,6 +1095,9 @@ static QString escapeQuotes(const QString &str)
 //-----------------------------------------------------------------------------
 QString KEmailAddress::quoteNameIfNecessary(const QString &str)
 {
+    if (str.isEmpty()) {
+        return str;
+    }
     QString quoted = str;
 
     const QRegularExpression needQuotes(QStringLiteral("[^ 0-9A-Za-z\\x{0080}-\\x{FFFF}]"));
