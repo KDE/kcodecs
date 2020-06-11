@@ -1100,7 +1100,7 @@ QString KEmailAddress::quoteNameIfNecessary(const QString &str)
     }
     QString quoted = str;
 
-    const QRegularExpression needQuotes(QStringLiteral("[^ 0-9A-Za-z\\x{0080}-\\x{FFFF}]"));
+    static const QRegularExpression needQuotes(QStringLiteral("[^ 0-9A-Za-z\\x{0080}-\\x{FFFF}]"));
     // avoid double quoting
     if ((quoted[0] == QLatin1Char('"')) && (quoted[quoted.length() - 1] == QLatin1Char('"'))) {
         quoted = QLatin1String("\"") + escapeQuotes(quoted.mid(1, quoted.length() - 2)) + QLatin1String("\"");

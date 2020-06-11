@@ -532,8 +532,9 @@ void KEmailAddressTest::testQuoteIfNecessary()
 {
     QFETCH(QString, input);
     QFETCH(QString, expResult);
-
-    QCOMPARE(quoteNameIfNecessary(input), expResult);
+    QBENCHMARK {
+        QCOMPARE(quoteNameIfNecessary(input), expResult);
+    }
 }
 
 void KEmailAddressTest::testQuoteIfNecessary_data()
@@ -552,6 +553,26 @@ void KEmailAddressTest::testQuoteIfNecessary_data()
     QTest::newRow("") << "\"don't quote again\"" << "\"don't quote again\"";
     QTest::newRow("") << "\"leading double quote" << "\"\\\"leading double quote\"";
     QTest::newRow("") << "trailing double quote\"" << "\"trailing double quote\\\"\"";
+#if 0
+    BEFORE: static QRegularExpression
+      RESULT : KEmailAddressTest::testQuoteIfNecessary():
+      0.015 msecs per iteration (total: 64, iterations: 4096)
+      0.019 msecs per iteration (total: 80, iterations: 4096)
+      0.019 msecs per iteration (total: 81, iterations: 4096)
+      0.0244 msecs per iteration (total: 100, iterations: 4096)
+      0.0079 msecs per iteration (total: 65, iterations: 8192)
+      0.020 msecs per iteration (total: 82, iterations: 4096)
+      0.020 msecs per iteration (total: 82, iterations: 4096)
+
+      AFTER:
+      RESULT : KEmailAddressTest::testQuoteIfNecessary():
+      0.0097 msecs per iteration (total: 80, iterations: 8192)
+      0.010 msecs per iteration (total: 82, iterations: 8192)
+      0.015 msecs per iteration (total: 63, iterations: 4096)
+      0.0076 msecs per iteration (total: 63, iterations: 8192)
+      0.0098 msecs per iteration (total: 81, iterations: 8192)
+      0.010 msecs per iteration (total: 87, iterations: 8192)
+#endif
 }
 
 void KEmailAddressTest::testMailtoUrls()
