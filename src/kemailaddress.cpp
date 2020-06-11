@@ -1076,17 +1076,17 @@ static QString escapeQuotes(const QString &str)
     unsigned int len = 0;
     for (int i = 0; i < str.length(); ++i, ++len) {
         if (str[i] == QLatin1Char('"')) {   // unescaped doublequote
-            escaped[len] = QLatin1Char('\\');
+            escaped.append(QLatin1Char('\\'));
             ++len;
         } else if (str[i] == QLatin1Char('\\')) {   // escaped character
-            escaped[len] = QLatin1Char('\\');
+            escaped.append(QLatin1Char('\\'));
             ++len;
             ++i;
             if (i >= str.length()) {   // handle trailing '\' gracefully
                 break;
             }
         }
-        escaped[len] = str[i];
+        escaped.append(str[i]);
     }
     escaped.truncate(len);
     return escaped;
