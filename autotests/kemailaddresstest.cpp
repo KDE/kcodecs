@@ -13,9 +13,9 @@
 #include "../src/kemailaddress.h"
 
 #include <QUrl>
-#include <qdebug.h>
+#include <QDebug>
 
-#include <qtest.h>
+#include <QTest>
 
 QTEST_MAIN(KEmailAddressTest)
 

@@ -4,7 +4,7 @@
     SPDX-License-Identifier: LGPL-2.0-only
 */
 
-#include <qtest.h>
+#include <QTest>
 
 #include "rfc2047test.h"
 

@@ -17,7 +17,7 @@
 #include "kcodecsbase64.h"
 #include "kcodecs_p.h"
 
-#include <qdebug.h>
+#include <QDebug>
 
 #include <cassert>
 

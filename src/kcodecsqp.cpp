@@ -19,7 +19,7 @@
 #include "kcodecsqp.h"
 #include "kcodecs_p.h"
 
-#include <qdebug.h>
+#include <QDebug>
 
 #include <cassert>
 

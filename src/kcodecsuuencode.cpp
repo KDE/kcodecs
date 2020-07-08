@@ -16,7 +16,7 @@
 
 #include "kcodecsuuencode.h"
 
-#include <qdebug.h>
+#include <QDebug>
 
 #include <cassert>
 

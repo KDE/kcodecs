@@ -8,7 +8,7 @@
 #include <QTest>
 #include <KCodecs>
 #include <QByteArray>
-#include <qtest.h>
+#include <QTest>
 
 #include "../src/kcodecsbase64.h"
 

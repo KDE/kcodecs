@@ -18,7 +18,7 @@
 
 #include "kcodecsidentity.h"
 
-#include <qdebug.h>
+#include <QDebug>
 
 #include <QByteArray>
 

@@ -5,7 +5,7 @@
 */
 #include "codectest.h"
 
-#include <qtest.h>
+#include <QTest>
 
 #include <QDir>
 
