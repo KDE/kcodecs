@@ -46,7 +46,8 @@ set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/kentities.h PROPERTIES S
 ecm_qt_declare_logging_category(kcodecs_SRCS
     HEADER kcodecs_debug.h
     IDENTIFIER KCODECS_LOG
-    CATEGORY_NAME kf5.kcodecs
+    CATEGORY_NAME kf.codecs
+    OLD_CATEGORY_NAMES kf5.kcodecs
     DESCRIPTION "KCodecs"
     EXPORT KCODECS
 )
