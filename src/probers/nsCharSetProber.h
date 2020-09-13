@@ -31,7 +31,7 @@ public:
     virtual void      SetOpion() = 0;
 
 #ifdef DEBUG_PROBE
-    void  DumpStatus() override {};
+    void  DumpStatus() override {}
 #endif
 
     // Helper functions used in the Latin1 and Group probers.

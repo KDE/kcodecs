@@ -21,7 +21,7 @@
 class KEncodingProberPrivate
 {
 public:
-    KEncodingProberPrivate(): prober(nullptr), mStart(true) {};
+    KEncodingProberPrivate(): prober(nullptr), mStart(true) {}
     ~KEncodingProberPrivate()
     {
         delete prober;
