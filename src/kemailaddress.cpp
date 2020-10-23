@@ -8,9 +8,7 @@
 #include "kcodecs.h"
 #include "kcodecs_debug.h"
 
-#include <QByteArray>
 #include <QRegularExpression>
-#include <QUrl>
 
 using namespace KEmailAddress;
 

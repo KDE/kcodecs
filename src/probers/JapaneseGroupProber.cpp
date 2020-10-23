@@ -6,9 +6,6 @@
 
 #include "JapaneseGroupProber.h"
 
-#include "UnicodeGroupProber.h"
-#include "nsSJISProber.h"
-#include "nsEUCJPProber.h"
 
 #include <stdio.h>
 #include <stdlib.h>
