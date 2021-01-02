@@ -1,0 +1,441 @@
+# translation of kdelibs4.po to Telugu
+#
+#
+# Purushottam Boyanapalli <boyanapalli@gmail.com>, 2005.
+# విజయ్ కిరణ్ కముజు <infyquest@gmail.com>, 2007.
+# pavithran <pavithran.s@gmail.com>, 2007.
+# Krishna Babu K <kkrothap@redhat.com>, 2008, 2009.
+# sreekalyanbapatla <sreekalyan3@gmail.com>, 2013.
+# GVS.Giri <gvs.giri@swecha.net>, 2013.
+# Bhuvan Krishna <bhuvan@swecha.org>,2013.
+# Naveen Kandimalla <naveen@swecha.net>,2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2013-11-04 23:55+0630\n"
+"Last-Translator: Bhuvan Krishna <bhuvan@swecha.org>\n"
+"Language-Team: Telugu <kde-i18n-doc@kde.org>\n"
+"Language: te\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Qt-Contexts: true\n"
+
+#: kcharsets.cpp:155
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Western European"
+msgctxt "KCharsets|@item Text character set"
+msgid "Western European"
+msgstr "పడమటి ఐరోపా"
+
+#: kcharsets.cpp:161
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Central European"
+msgctxt "KCharsets|@item Text character set"
+msgid "Central European"
+msgstr "మధ్య ఐరోపా"
+
+#: kcharsets.cpp:164
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Baltic"
+msgctxt "KCharsets|@item Text character set"
+msgid "Baltic"
+msgstr "బాల్టిక్"
+
+#: kcharsets.cpp:167
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "South-Eastern Europe"
+msgctxt "KCharsets|@item Text character set"
+msgid "South-Eastern Europe"
+msgstr "ఆగ్నేయ ఐరోపా"
+
+#: kcharsets.cpp:170
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Turkish"
+msgctxt "KCharsets|@item Text character set"
+msgid "Turkish"
+msgstr "టర్కిష్"
+
+#: kcharsets.cpp:173
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Cyrillic"
+msgctxt "KCharsets|@item Text character set"
+msgid "Cyrillic"
+msgstr "సిరిల్లిక్"
+
+#: kcharsets.cpp:179
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Chinese Traditional"
+msgctxt "KCharsets|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "సాంప్రదాయక చైనీస్"
+
+#: kcharsets.cpp:182
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Chinese Simplified"
+msgctxt "KCharsets|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "సరళమైన చైనీస్"
+
+#: kcharsets.cpp:186
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Korean"
+msgctxt "KCharsets|@item Text character set"
+msgid "Korean"
+msgstr "కొరియన్"
+
+#: kcharsets.cpp:189
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Japanese"
+msgctxt "KCharsets|@item Text character set"
+msgid "Japanese"
+msgstr "జాపనీస్"
+
+#: kcharsets.cpp:193
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Greek"
+msgctxt "KCharsets|@item Text character set"
+msgid "Greek"
+msgstr "గ్రీకు"
+
+#: kcharsets.cpp:196
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Arabic"
+msgctxt "KCharsets|@item Text character set"
+msgid "Arabic"
+msgstr "అరబిక్"
+
+#: kcharsets.cpp:199
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Hebrew"
+msgctxt "KCharsets|@item Text character set"
+msgid "Hebrew"
+msgstr "హిబ్రూ"
+
+#: kcharsets.cpp:204
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Thai"
+msgctxt "KCharsets|@item Text character set"
+msgid "Thai"
+msgstr "థాయ్"
+
+#: kcharsets.cpp:207
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Unicode"
+msgctxt "KCharsets|@item Text character set"
+msgid "Unicode"
+msgstr "యూనికోడ్"
+
+#: kcharsets.cpp:213
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Northern Saami"
+msgctxt "KCharsets|@item Text character set"
+msgid "Northern Saami"
+msgstr "ఉత్తర సామి"
+
+#: kcharsets.cpp:215
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Other"
+msgctxt "KCharsets|@item Text character set"
+msgid "Other"
+msgstr "ఇతర"
+
+#: kcharsets.cpp:656
+#, fuzzy, qt-format
+#| msgctxt "@item %1 character set, %2 encoding"
+#| msgid "%1 ( %2 )"
+msgctxt "KCharsets|@item %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kcharsets.cpp:659
+#, fuzzy, qt-format
+#| msgctxt "@item"
+#| msgid "Other encoding (%1)"
+msgctxt "KCharsets|@item"
+msgid "Other encoding (%1)"
+msgstr "ఇతర సంకేతీకరణం (%1)"
+
+#: kcharsets.cpp:688
+#, fuzzy, qt-format
+#| msgctxt "@item %1 character set, %2 encoding"
+#| msgid "%1 ( %2 )"
+msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kemailaddress.cpp:514
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains more than one "
+"@.\n"
+"You will not create valid messages if you do not change your address."
+msgstr ""
+
+#: kemailaddress.cpp:519
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a @.\n"
+"You will not create valid messages if you do not change your address."
+msgstr ""
+
+#: kemailaddress.cpp:524
+msgctxt "QObject|"
+msgid "You have to enter something in the email address field."
+msgstr ""
+
+#: kemailaddress.cpp:526
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"local part."
+msgstr ""
+
+#: kemailaddress.cpp:529
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"domain part."
+msgstr ""
+
+#: kemailaddress.cpp:532
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains unclosed "
+"comments/brackets."
+msgstr ""
+
+#: kemailaddress.cpp:535
+#, fuzzy
+#| msgctxt "@info"
+#| msgid "The date you entered is invalid"
+msgctxt "QObject|"
+msgid "The email address you entered is valid."
+msgstr "మీరు ఇచ్చిన తేది సరి అయినది కాదు"
+
+#: kemailaddress.cpp:537
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an unclosed "
+"angle bracket."
+msgstr ""
+
+#: kemailaddress.cpp:540
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains too many "
+"closing angle brackets."
+msgstr ""
+
+#: kemailaddress.cpp:543
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"unexpected comma."
+msgstr ""
+
+#: kemailaddress.cpp:546
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it ended unexpectedly.\n"
+"This probably means you have used an escaping type character like a '\\' as "
+"the last character in your email address."
+msgstr ""
+
+#: kemailaddress.cpp:551
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains quoted text "
+"which does not end."
+msgstr ""
+
+#: kemailaddress.cpp:554
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not seem to "
+"contain an actual email address, i.e. something of the form joe@example.org."
+msgstr ""
+
+#: kemailaddress.cpp:558
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an illegal "
+"character."
+msgstr ""
+
+#: kemailaddress.cpp:561
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"invalid display name."
+msgstr ""
+
+#: kemailaddress.cpp:564
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"'.'.\n"
+"You will not create valid messages if you do not change your address."
+msgstr ""
+
+#: kemailaddress.cpp:570
+msgctxt "QObject|"
+msgid "Unknown problem with email address"
+msgstr ""
+
+#: kemailaddress.cpp:631
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid.\n"
+"It does not seem to contain an actual email address, i.e. something of the "
+"form joe@example.org."
+msgstr ""
+
+#: kencodingprober.cpp:224 kencodingprober.cpp:265
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Disabled"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Disabled"
+msgstr "అచేతనమైన"
+
+#: kencodingprober.cpp:226 kencodingprober.cpp:268
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Universal"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Universal"
+msgstr "సముదాయమైన"
+
+#: kencodingprober.cpp:228 kencodingprober.cpp:310
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Unicode"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Unicode"
+msgstr "యూనికోడ్"
+
+#: kencodingprober.cpp:230 kencodingprober.cpp:280
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Cyrillic"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Cyrillic"
+msgstr "సిరిల్లిక్"
+
+#: kencodingprober.cpp:232 kencodingprober.cpp:295
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Western European"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Western European"
+msgstr "పడమటి ఐరోపా"
+
+#: kencodingprober.cpp:234 kencodingprober.cpp:277
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Central European"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Central European"
+msgstr "మధ్య ఐరోపా"
+
+#: kencodingprober.cpp:236 kencodingprober.cpp:283
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Greek"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Greek"
+msgstr "గ్రీకు"
+
+#: kencodingprober.cpp:238 kencodingprober.cpp:286
+#, fuzzy
+#| msgctxt "@item Spelling dictionary"
+#| msgid "Hebrew"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Hebrew"
+msgstr "హిబ్రూ"
+
+#: kencodingprober.cpp:240 kencodingprober.cpp:292
+#, fuzzy
+#| msgctxt "@item Spelling dictionary"
+#| msgid "Turkish"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Turkish"
+msgstr "టర్కిష్"
+
+#: kencodingprober.cpp:242 kencodingprober.cpp:289
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Japanese"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Japanese"
+msgstr "జాపనీస్"
+
+#: kencodingprober.cpp:244 kencodingprober.cpp:274
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Baltic"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Baltic"
+msgstr "బాల్టిక్"
+
+#: kencodingprober.cpp:246 kencodingprober.cpp:298
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Chinese Traditional"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "సాంప్రదాయక చైనీస్"
+
+#: kencodingprober.cpp:248 kencodingprober.cpp:301
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Chinese Simplified"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "సరళమైన చైనీస్"
+
+#: kencodingprober.cpp:250 kencodingprober.cpp:304
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Korean"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Korean"
+msgstr "కొరియన్"
+
+#: kencodingprober.cpp:252 kencodingprober.cpp:307
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Thai"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Thai"
+msgstr "థాయ్"
+
+#: kencodingprober.cpp:254 kencodingprober.cpp:271
+#, fuzzy
+#| msgctxt "@item Text character set"
+#| msgid "Arabic"
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Arabic"
+msgstr "అరబిక్"
