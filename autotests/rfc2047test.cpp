@@ -82,9 +82,11 @@ void RFC2047Test::testRFC2047decode_data()
     QTest::newRow("illegal characters") << QByteArray("Subject: =?utf-8?Q?пиѿилл,=20=D0=B4=D0=BE=D0=B1=D1=80=D1=8B=D0=B9=20=D0=B4=D0=B5=D0=BD=D1=8C?=")
                                         << QByteArray("UTF-8") << QByteArray("utf-8") << false
                                         << QString::fromUtf8("Subject: пиѿилл, добрый день");
-    QTest::newRow("illegal characters") << QByteArray("Subject: =?iso-8859-1?Q?������?=")
+    const auto iso88591Encoded = QByteArray::fromHex("D6C4DCF6E4FC"); // "ÖÄÜöäü" in ISO-8859-1 encoding - this is not valid UTF-8 though and thus rejected by MSVC in string literals
+    QTest::newRow("illegal characters") << QByteArray("Subject: =?iso-8859-1?Q?") + iso88591Encoded + "?="
                                         << QByteArray("ISO-8859-1") << QByteArray("utf-8") << false
-                                        << QString::fromLatin1("Subject: ������");
+                                        << QString::fromLatin1("Subject: " + iso88591Encoded);
+
 
     QTest::newRow("small data") << QByteArray("=?iso-8859-1?Q?c?=")
                                 << QByteArray("ISO-8859-1") << QByteArray("utf-8") << false
