@@ -10,9 +10,12 @@ endif()
 ecm_add_tests(
     kcharsetstest.cpp
     kencodingprobertest.cpp
-    base64benchmark.cpp
     rfc2047test
     codectest.cpp
     kemailaddresstest.cpp
     LINK_LIBRARIES KF5::Codecs Qt5::Test
 )
+
+# Benchmark, compiled, but not run automatically with ctest
+add_executable(base64benchmark base64benchmark.cpp)
+target_link_libraries(base64benchmark KF5::Codecs Qt5::Test)
