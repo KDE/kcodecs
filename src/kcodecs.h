@@ -12,11 +12,16 @@
 #ifndef KCODECS_H
 #define KCODECS_H
 
-#define KBase64 KCodecs
-
 #include <kcodecs_export.h>
 #include <QString>
 #include <memory>
+
+#if KCODECS_ENABLE_DEPRECATED_SINCE(5, 79)
+// KBase64 methods were moved to KCodecs for kdelibs 3.1
+#define KBase64 KCodecs
+#else
+#define KBase64 KBase64_is_deprecated_use_KCodecs
+#endif
 
 template<typename T, typename U> class QHash;
 
