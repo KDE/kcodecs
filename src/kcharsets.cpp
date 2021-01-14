@@ -516,10 +516,7 @@ KCharsets::KCharsets()
 {
 }
 
-KCharsets::~KCharsets()
-{
-    delete d;
-}
+KCharsets::~KCharsets() = default;
 
 QChar KCharsets::fromEntity(const QString &str)
 {

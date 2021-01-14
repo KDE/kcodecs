@@ -19,6 +19,7 @@
 
 #include <QCoreApplication>
 #include <QString>
+#include <memory>
 
 class KEncodingProberPrivate;
 
@@ -149,7 +150,7 @@ public:
     static QString nameForProberType(ProberType proberType);
 
 private:
-    KEncodingProberPrivate *const d;
+    std::unique_ptr<KEncodingProberPrivate> const d;
 };
 
 #endif

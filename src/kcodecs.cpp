@@ -694,10 +694,7 @@ KCodecs::Encoder::Encoder(Codec::NewlineType newline)
 {
 }
 
-KCodecs::Encoder::~Encoder()
-{
-    delete d;
-}
+KCodecs::Encoder::~Encoder() = default;
 
 bool KCodecs::Encoder::write(char ch, char*& dcursor, const char*const dend)
 {
@@ -762,8 +759,4 @@ KCodecs::Decoder::Decoder(Codec::NewlineType newline)
 {
 }
 
-KCodecs::Decoder::~Decoder()
-{
-    delete d;
-}
-
+KCodecs::Decoder::~Decoder() = default;

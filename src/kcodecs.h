@@ -16,6 +16,7 @@
 
 #include <kcodecs_export.h>
 #include <QString>
+#include <memory>
 
 template<typename T, typename U> class QHash;
 
@@ -673,7 +674,7 @@ public:
 
 protected:
     //@cond PRIVATE
-    DecoderPrivate * const d;
+    std::unique_ptr<DecoderPrivate> const d;
     //@endcond
 };
 
@@ -770,7 +771,7 @@ protected:
 
 protected:
     //@cond PRIVATE
-    EncoderPrivate * const d;
+    std::unique_ptr<EncoderPrivate> const d;
     //@endcond
 };
 

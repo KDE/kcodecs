@@ -11,6 +11,7 @@
 
 #include <QCoreApplication>
 #include <QList>
+#include <memory>
 
 class KCharsets;
 class KCharsetsPrivate;
@@ -144,9 +145,6 @@ public:
     QString encodingForName(const QString &descriptiveName) const;
 
 private:
-    KCharsetsPrivate *const d;
-    friend struct KCharsetsSingletonPrivate;
-
     /**
      * @brief Get the QTextCodec for the name or return NULL
      *
@@ -158,6 +156,10 @@ private:
      * @todo Make this function public when it is clear what API is needed.
      */
     QTextCodec *codecForNameOrNull(const QByteArray &n) const;
+
+private:
+    std::unique_ptr<KCharsetsPrivate> const d;
+    friend struct KCharsetsSingletonPrivate;
 };
 
 #endif
