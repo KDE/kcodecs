@@ -1,0 +1,377 @@
+# Finnish messages for kdelibs4.
+# Copyright © 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012 This_file_is_part_of_KDE
+# This file is distributed under the same license as the kdelibs package.
+# Kim Enkovaara <kim.enkovaara@iki.fi>, 2002,2003, 2005, 2006, 2007.
+# Tapio Kautto <eleknader@phnet.fi>, 2003, 2004.
+# Mikko Ikola <kola@netikka.fi>, 2003.
+# Teemu Rytilahti <teemu.rytilahti@d5k.net>, 2003, 2008.
+# Mikko Ikola <ikola@iki.fi>, 2003.
+# Teemu Rytilahti <teemu.rytilahti@kde-fi.org>, 2003, 2004, 2008.
+# Niklas Laxström <niklas.laxstrom+kdetrans@gmail.com>, 2006, 2007.
+# Joonas Niilola <juippis@roskakori.org>, 2006.
+# Mikko Piippo <piippo@cc.helsinki.fi>, 2007.
+# Teemu Rytilahti <tpr@d5k.net>, 2008.
+# Tommi Nieminen <translator@legisign.org>, 2009, 2010, 2011, 2020.
+# Jorma Karvonen <karvonen.jorma@gmail.com>, 2010.
+# Lasse Liehu <lasse.liehu@gmail.com>, 2006, 2010, 2011, 2012, 2013, 2014, 2015.
+#
+# KDE Finnish translation sprint participants:
+# Author: Artnay
+# Author: Jl
+# Author: Lliehu
+# Author: Niklas Laxström
+# Author: Suhviksi
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2020-06-23 13:27+0300\n"
+"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 20.04.2\n"
+"X-POT-Import-Date: 2013-01-13 20:43:21+0000\n"
+"X-Qt-Contexts: true\n"
+
+#: kcharsets.cpp:155
+msgctxt "KCharsets|@item Text character set"
+msgid "Western European"
+msgstr "Länsieurooppalainen"
+
+#: kcharsets.cpp:161
+msgctxt "KCharsets|@item Text character set"
+msgid "Central European"
+msgstr "Keskieurooppalainen"
+
+#: kcharsets.cpp:164
+msgctxt "KCharsets|@item Text character set"
+msgid "Baltic"
+msgstr "Baltialainen"
+
+#: kcharsets.cpp:167
+msgctxt "KCharsets|@item Text character set"
+msgid "South-Eastern Europe"
+msgstr "Kaakkoiseurooppalainen"
+
+#: kcharsets.cpp:170
+msgctxt "KCharsets|@item Text character set"
+msgid "Turkish"
+msgstr "Turkkilainen"
+
+#: kcharsets.cpp:173
+msgctxt "KCharsets|@item Text character set"
+msgid "Cyrillic"
+msgstr "Kyrillinen"
+
+#: kcharsets.cpp:179
+msgctxt "KCharsets|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Kiina (perinteinen)"
+
+#: kcharsets.cpp:182
+msgctxt "KCharsets|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Kiina (yksinkertaistettu)"
+
+#: kcharsets.cpp:186
+msgctxt "KCharsets|@item Text character set"
+msgid "Korean"
+msgstr "Korealainen"
+
+#: kcharsets.cpp:189
+msgctxt "KCharsets|@item Text character set"
+msgid "Japanese"
+msgstr "Japanilainen"
+
+#: kcharsets.cpp:193
+msgctxt "KCharsets|@item Text character set"
+msgid "Greek"
+msgstr "Kreikkalainen"
+
+#: kcharsets.cpp:196
+msgctxt "KCharsets|@item Text character set"
+msgid "Arabic"
+msgstr "Arabialainen"
+
+#: kcharsets.cpp:199
+msgctxt "KCharsets|@item Text character set"
+msgid "Hebrew"
+msgstr "Heprealainen"
+
+#: kcharsets.cpp:204
+msgctxt "KCharsets|@item Text character set"
+msgid "Thai"
+msgstr "Thai"
+
+#: kcharsets.cpp:207
+msgctxt "KCharsets|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kcharsets.cpp:213
+msgctxt "KCharsets|@item Text character set"
+msgid "Northern Saami"
+msgstr "Pohjoissaame"
+
+#: kcharsets.cpp:215
+msgctxt "KCharsets|@item Text character set"
+msgid "Other"
+msgstr "Muu"
+
+#: kcharsets.cpp:653
+#, qt-format
+msgctxt "KCharsets|@item %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kcharsets.cpp:656
+#, qt-format
+msgctxt "KCharsets|@item"
+msgid "Other encoding (%1)"
+msgstr "Muu merkistökoodaus (%1)"
+
+#: kcharsets.cpp:685
+#, qt-format
+msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kemailaddress.cpp:514
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains more than one "
+"@.\n"
+"You will not create valid messages if you do not change your address."
+msgstr ""
+"Antamasi sähköpostiosoite ei kelpaa, sillä se sisältää useita @-merkkejä.\n"
+"Kelvollisia viestejä ei voi kirjoittaa, ellei osoitetta muuteta."
+
+#: kemailaddress.cpp:519
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a @.\n"
+"You will not create valid messages if you do not change your address."
+msgstr ""
+"Antamasi sähköpostiosoite ei kelpaa, koska se ei sisällä @-merkkiä.\n"
+"Et voi kirjoittaa viestejä, ellei osoitetta muuteta."
+
+#: kemailaddress.cpp:524
+msgctxt "QObject|"
+msgid "You have to enter something in the email address field."
+msgstr "Täytä sähköpostiosoite sille varattuun kenttään."
+
+#: kemailaddress.cpp:526
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"local part."
+msgstr ""
+"Antamasi sähköpostiosoite ei ole kelvollinen, sillä se ei sisällä "
+"paikallista osaa (ennen @-merkkiä)."
+
+#: kemailaddress.cpp:529
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"domain part."
+msgstr ""
+"Antamasi sähköpostiosoite ei ole kelvollinen, sillä se ei sisällä "
+"verkkoalueen nimeä (@-merkin jälkeen)."
+
+#: kemailaddress.cpp:532
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains unclosed "
+"comments/brackets."
+msgstr ""
+"Antamasi sähköpostiosoite ei ole kelvollinen, sillä siinä on pariton määrä "
+"sulkuja."
+
+#: kemailaddress.cpp:535
+msgctxt "QObject|"
+msgid "The email address you entered is valid."
+msgstr "Antamasi sähköpostiosoite on kelvollinen."
+
+#: kemailaddress.cpp:537
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an unclosed "
+"angle bracket."
+msgstr ""
+"Antamasi sähköpostiosoite ei ole kelvollinen, sillä siitä puuttuu sulkeva "
+"hakasulje."
+
+#: kemailaddress.cpp:540
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains too many "
+"closing angle brackets."
+msgstr ""
+"Antamasi sähköpostiosoite ei ole kelvollinen, sillä siinä on liikaa "
+"hakasulkeita."
+
+#: kemailaddress.cpp:543
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"unexpected comma."
+msgstr ""
+"Antamasi sähköpostiosoite ei ole kelvollinen, sillä se sisältää pilkun."
+
+#: kemailaddress.cpp:546
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it ended unexpectedly.\n"
+"This probably means you have used an escaping type character like a '\\' as "
+"the last character in your email address."
+msgstr ""
+"Antamasi sähköpostiosoite ei kelpaa, sillä se päättyy kesken.\n"
+"Tämä johtuu todennäköisesti siitä, että olet käyttänyt osoitteessa "
+"lopetusmerkkiä (esimerkiksi ”\\”)."
+
+#: kemailaddress.cpp:551
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains quoted text "
+"which does not end."
+msgstr ""
+"Antamasi sähköpostiosoite ei ole kelvollinen, sillä se sisältää "
+"päättymättömän lainauksen."
+
+#: kemailaddress.cpp:554
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not seem to "
+"contain an actual email address, i.e. something of the form joe@example.org."
+msgstr ""
+"Antamasi sähköpostiosoite ei ole kelvollinen, sillä se ei näytä sisältävän "
+"varsinaista sähköpostiosoitetta (muotoa matti@esimerkki.net)."
+
+#: kemailaddress.cpp:558
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an illegal "
+"character."
+msgstr ""
+"Antamasi sähköpostiosoite ei ole kelvollinen, sillä se sisältää virheellisen "
+"merkin."
+
+#: kemailaddress.cpp:561
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"invalid display name."
+msgstr ""
+"Antamasi sähköpostiosoite ei ole kelvollinen, sillä sen sisältämä näyttönimi "
+"ei ole kelvollinen."
+
+#: kemailaddress.cpp:564
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"'.'.\n"
+"You will not create valid messages if you do not change your address."
+msgstr ""
+"Antamasi sähköpostiosoite ei kelpaa, koska se ei sisällä pistettä.\n"
+"Kelvollisia viestejä ei voi kirjoittaa, ellei osoitetta muuteta."
+
+#: kemailaddress.cpp:570
+msgctxt "QObject|"
+msgid "Unknown problem with email address"
+msgstr "Tuntematon sähköpostiosoiteongelma."
+
+#: kemailaddress.cpp:631
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid.\n"
+"It does not seem to contain an actual email address, i.e. something of the "
+"form joe@example.org."
+msgstr ""
+"Antamasi sähköpostiosoite ei kelpaa.\n"
+"Se ei vaikuta sisältävän varsinaista sähköpostiosoitetta (esim. "
+"matti@esimerkki.fi)."
+
+#: kencodingprober.cpp:221 kencodingprober.cpp:262
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Disabled"
+msgstr "Ei käytössä"
+
+#: kencodingprober.cpp:223 kencodingprober.cpp:265
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Universal"
+msgstr "Yleinen"
+
+#: kencodingprober.cpp:225 kencodingprober.cpp:307
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kencodingprober.cpp:227 kencodingprober.cpp:277
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Cyrillic"
+msgstr "Kyrillinen"
+
+#: kencodingprober.cpp:229 kencodingprober.cpp:292
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Western European"
+msgstr "Länsieurooppalainen"
+
+#: kencodingprober.cpp:231 kencodingprober.cpp:274
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Central European"
+msgstr "Keskieurooppalainen"
+
+#: kencodingprober.cpp:233 kencodingprober.cpp:280
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Greek"
+msgstr "Kreikkalainen"
+
+#: kencodingprober.cpp:235 kencodingprober.cpp:283
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Hebrew"
+msgstr "Heprealainen"
+
+#: kencodingprober.cpp:237 kencodingprober.cpp:289
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Turkish"
+msgstr "Turkkilainen"
+
+#: kencodingprober.cpp:239 kencodingprober.cpp:286
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Japanese"
+msgstr "Japanilainen"
+
+#: kencodingprober.cpp:241 kencodingprober.cpp:271
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Baltic"
+msgstr "Baltialainen"
+
+#: kencodingprober.cpp:243 kencodingprober.cpp:295
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Kiina (perinteinen)"
+
+#: kencodingprober.cpp:245 kencodingprober.cpp:298
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Kiina (yksinkertaistettu)"
+
+#: kencodingprober.cpp:247 kencodingprober.cpp:301
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Korean"
+msgstr "Korealainen"
+
+#: kencodingprober.cpp:249 kencodingprober.cpp:304
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Thai"
+msgstr "Thai"
+
+#: kencodingprober.cpp:251 kencodingprober.cpp:268
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Arabic"
+msgstr "Arabialainen"
