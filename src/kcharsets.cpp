@@ -764,7 +764,7 @@ QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
         return d->codecForNameDict.value(n);
     }
 
-    // If the name is not in the hash table, call directly QTextCoded::codecForName.
+    // If the name is not in the hash table, call directly QTextCodec::codecForName.
     // We assume that QTextCodec is smarter and more maintained than this code.
     codec = QTextCodec::codecForName(n);
     if (codec) {
