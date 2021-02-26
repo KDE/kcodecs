@@ -61,11 +61,10 @@ class KCODECS_EXPORT KEncodingProber
     Q_DECLARE_TR_FUNCTIONS(KEncodingProber)
 
 public:
-
     enum ProberState {
-        FoundIt,  /**< Sure find the encoding */
-        NotMe,    /**< Sure not included in current ProberType's all supported encodings  */
-        Probing,   /**< Need more data to make a decision */
+        FoundIt, /**< Sure find the encoding */
+        NotMe, /**< Sure not included in current ProberType's all supported encodings  */
+        Probing, /**< Need more data to make a decision */
     };
 
     enum ProberType {
@@ -98,7 +97,7 @@ public:
     ~KEncodingProber();
 
     KEncodingProber(const KEncodingProber &) = delete;
-    KEncodingProber& operator=(const KEncodingProber &) = delete;
+    KEncodingProber &operator=(const KEncodingProber &) = delete;
 
     /**
      * reset the prober's internal state and data.

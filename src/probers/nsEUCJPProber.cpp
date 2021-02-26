@@ -13,7 +13,7 @@
 
 namespace kencodingprober
 {
-void  nsEUCJPProber::Reset(void)
+void nsEUCJPProber::Reset(void)
 {
     mCodingSM->Reset();
     mState = eDetecting;
@@ -70,4 +70,3 @@ float nsEUCJPProber::GetConfidence(void)
     return (contxtCf > distribCf ? contxtCf : distribCf);
 }
 }
-

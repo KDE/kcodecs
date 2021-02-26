@@ -25,7 +25,6 @@
 
 namespace KCodecs
 {
-
 /**
   @brief
   A class representing the @ref UUEncode @ref codec.
@@ -38,12 +37,15 @@ public:
     */
     UUCodec()
         : Codec()
-    {}
+    {
+    }
 
     /**
       Destroys the codec.
     */
-    ~UUCodec() override {}
+    ~UUCodec() override
+    {
+    }
 
     /**
       @copydoc

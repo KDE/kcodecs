@@ -14,14 +14,14 @@
 #ifndef nsSJISProber_h__
 #define nsSJISProber_h__
 
+#include "CharDistribution.h"
+#include "JpCntx.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
-#include "JpCntx.h"
-#include "CharDistribution.h"
 
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsSJISProber: public nsCharSetProber
+class KCODECS_NO_EXPORT nsSJISProber : public nsCharSetProber
 {
 public:
     nsSJISProber(void)
@@ -42,9 +42,11 @@ public:
     {
         return mState;
     }
-    void      Reset(void) override;
-    float     GetConfidence(void) override;
-    void      SetOpion() override {}
+    void Reset(void) override;
+    float GetConfidence(void) override;
+    void SetOpion() override
+    {
+    }
 
 protected:
     nsCodingStateMachine *mCodingSM;
@@ -54,9 +56,7 @@ protected:
     SJISDistributionAnalysis mDistributionAnalyser;
 
     char mLastChar[2];
-
 };
 }
 
 #endif /* nsSJISProber_h__ */
-

@@ -8,7 +8,7 @@
 
 namespace kencodingprober
 {
-void  nsBig5Prober::Reset(void)
+void nsBig5Prober::Reset(void)
 {
     mCodingSM->Reset();
     mState = eDetecting;
@@ -61,4 +61,3 @@ float nsBig5Prober::GetConfidence(void)
     return (float)distribCf;
 }
 }
-

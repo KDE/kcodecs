@@ -4,10 +4,9 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-#include <QObject>
-#include <QTest>
 #include <KCodecs>
 #include <QByteArray>
+#include <QObject>
 #include <QTest>
 
 #include "../src/kcodecsbase64.h"

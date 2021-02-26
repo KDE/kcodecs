@@ -23,7 +23,7 @@ using nsSMState = int;
 
 #define GETCLASS(c) GETFROMPCK(((unsigned char)(c)), mModel->classTable)
 
-//state machine model
+// state machine model
 typedef struct {
     nsPkgInt classTable;
     unsigned int classFactor;
@@ -42,23 +42,22 @@ public:
     }
     nsSMState NextState(char c)
     {
-        //for each byte we get its class KCODECS_NO_EXPORT , if it is first byte, we also get byte length
+        // for each byte we get its class KCODECS_NO_EXPORT , if it is first byte, we also get byte length
         unsigned int byteCls = GETCLASS(c);
         if (mCurrentState == eStart) {
             mCurrentBytePos = 0;
             mCurrentCharLen = mModel->charLenTable[byteCls];
         }
-        //from byte's class KCODECS_NO_EXPORT and stateTable, we get its next state
-        mCurrentState = GETFROMPCK(mCurrentState * (mModel->classFactor) + byteCls,
-                                              mModel->stateTable);
+        // from byte's class KCODECS_NO_EXPORT and stateTable, we get its next state
+        mCurrentState = GETFROMPCK(mCurrentState * (mModel->classFactor) + byteCls, mModel->stateTable);
         mCurrentBytePos++;
         return mCurrentState;
     }
-    unsigned int  GetCurrentCharLen(void)
+    unsigned int GetCurrentCharLen(void)
     {
         return mCurrentCharLen;
     }
-    void      Reset(void)
+    void Reset(void)
     {
         mCurrentState = eStart;
     }
@@ -105,4 +104,3 @@ extern KCODECS_NO_EXPORT const SMModel ISO2022JPSMModel;
 extern KCODECS_NO_EXPORT const SMModel ISO2022KRSMModel;
 }
 #endif /* nsCodingStateMachine_h__ */
-

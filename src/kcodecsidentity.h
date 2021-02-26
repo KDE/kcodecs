@@ -25,7 +25,6 @@ class QByteArray;
 
 namespace KCodecs
 {
-
 /**
   @brief
   A class representing the Identify @ref codec.
@@ -38,15 +37,18 @@ public:
     */
     IdentityCodec()
         : Codec()
-    {}
+    {
+    }
 
     /**
       Destroys the codec.
     */
-    ~IdentityCodec() override {}
+    ~IdentityCodec() override
+    {
+    }
 
-    using Codec::encode;
     using Codec::decode;
+    using Codec::encode;
 
     /**
       @copydoc
@@ -111,12 +113,15 @@ public:
     */
     SevenBitCodec()
         : IdentityCodec()
-    {}
+    {
+    }
 
     /**
       Destroys the codec.
     */
-    ~SevenBitCodec() override {}
+    ~SevenBitCodec() override
+    {
+    }
 
     /**
       @copydoc
@@ -140,12 +145,15 @@ public:
     */
     EightBitCodec()
         : IdentityCodec()
-    {}
+    {
+    }
 
     /**
       Destroys the codec.
     */
-    ~EightBitCodec() override {}
+    ~EightBitCodec() override
+    {
+    }
 
     /**
       @copydoc
@@ -169,12 +177,15 @@ public:
     */
     BinaryCodec()
         : IdentityCodec()
-    {}
+    {
+    }
 
     /**
       Destroys the codec.
     */
-    ~BinaryCodec() override {}
+    ~BinaryCodec() override
+    {
+    }
 
     /**
       @copydoc

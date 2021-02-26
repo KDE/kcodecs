@@ -25,42 +25,29 @@ using namespace KCodecs;
 
 namespace KCodecs
 {
-
 // codec for base64 as specified in RFC 2045
-//class Base64Codec;
-//class Base64Decoder;
-//class Base64Encoder;
+// class Base64Codec;
+// class Base64Decoder;
+// class Base64Encoder;
 
 // codec for the B encoding as specified in RFC 2047
-//class Rfc2047BEncodingCodec;
-//class Rfc2047BEncodingEncoder;
-//class Rfc2047BEncodingDecoder;
+// class Rfc2047BEncodingCodec;
+// class Rfc2047BEncodingEncoder;
+// class Rfc2047BEncodingDecoder;
 
 //@cond PRIVATE
 static const uchar base64DecodeMap[128] = {
-    64, 64, 64, 64, 64, 64, 64, 64,  64, 64, 64, 64, 64, 64, 64, 64,
-    64, 64, 64, 64, 64, 64, 64, 64,  64, 64, 64, 64, 64, 64, 64, 64,
+    64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64,
 
-    64, 64, 64, 64, 64, 64, 64, 64,  64, 64, 64, 62, 64, 64, 64, 63,
-    52, 53, 54, 55, 56, 57, 58, 59,  60, 61, 64, 64, 64, 64, 64, 64,
+    64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 62, 64, 64, 64, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 64, 64, 64, 64, 64, 64,
 
-    64,  0,  1,  2,  3,  4,  5,  6,   7,  8,  9, 10, 11, 12, 13, 14,
-    15, 16, 17, 18, 19, 20, 21, 22,  23, 24, 25, 64, 64, 64, 64, 64,
+    64, 0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 64, 64, 64, 64, 64,
 
-    64, 26, 27, 28, 29, 30, 31, 32,  33, 34, 35, 36, 37, 38, 39, 40,
-    41, 42, 43, 44, 45, 46, 47, 48,  49, 50, 51, 64, 64, 64, 64, 64
-};
+    64, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 64, 64, 64, 64, 64};
 
-static const char base64EncodeMap[64] = {
-    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-    'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-    'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-    'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
-    'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
-    'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-    'w', 'x', 'y', 'z', '0', '1', '2', '3',
-    '4', '5', '6', '7', '8', '9', '+', '/'
-};
+static const char base64EncodeMap[64] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+                                         'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+                                         's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'};
 //@endcond
 
 class Base64Decoder : public Decoder
@@ -80,10 +67,11 @@ protected:
     }
 
 public:
-    virtual ~Base64Decoder() {}
+    virtual ~Base64Decoder()
+    {
+    }
 
-    bool decode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend) override;
+    bool decode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend) override;
     // ### really needs no finishing???
     bool finish(char *&dcursor, const char *const dend) override
     {
@@ -114,21 +102,21 @@ protected:
     {
     }
 
-    bool generic_finish(char *&dcursor, const char *const dend,
-                        bool withLFatEnd);
+    bool generic_finish(char *&dcursor, const char *const dend, bool withLFatEnd);
 
 public:
-    virtual ~Base64Encoder() {}
+    virtual ~Base64Encoder()
+    {
+    }
 
-    bool encode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend) override;
+    bool encode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend) override;
 
     bool finish(char *&dcursor, const char *const dend) override;
 
 protected:
     bool writeBase64(uchar ch, char *&dcursor, const char *const dend)
     {
-        return write(base64EncodeMap[ ch ], dcursor, dend);
+        return write(base64EncodeMap[ch], dcursor, dend);
     }
 };
 
@@ -142,8 +130,7 @@ protected:
     }
 
 public:
-    bool encode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend) override;
+    bool encode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend) override;
     bool finish(char *&dcursor, const char *const dend) override;
 };
 
@@ -166,8 +153,7 @@ Encoder *Rfc2047BEncodingCodec::makeEncoder(Codec::NewlineType newline) const
 /********************************************************/
 /********************************************************/
 
-bool Base64Decoder::decode(const char *&scursor, const char *const send,
-                           char *&dcursor, const char *const dend)
+bool Base64Decoder::decode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend)
 {
     while (dcursor != dend && scursor != send) {
         uchar ch = *scursor++;
@@ -175,7 +161,7 @@ bool Base64Decoder::decode(const char *&scursor, const char *const send,
 
         // try converting ch to a 6-bit value:
         if (ch < 128) {
-            value = base64DecodeMap[ ch ];
+            value = base64DecodeMap[ch];
         } else {
             value = 64;
         }
@@ -187,7 +173,7 @@ bool Base64Decoder::decode(const char *&scursor, const char *const send,
                 if (mStepNo == 0 || mStepNo == 1) {
                     if (!mSawPadding) {
                         // malformed
-                        //qWarning() << "Base64Decoder: unexpected padding"
+                        // qWarning() << "Base64Decoder: unexpected padding"
                         //              "character in input stream";
                     }
                     mSawPadding = true;
@@ -209,7 +195,7 @@ bool Base64Decoder::decode(const char *&scursor, const char *const send,
         }
 
         if (mSawPadding) {
-            //qWarning() << "Base64Decoder: Embedded padding character"
+            // qWarning() << "Base64Decoder: Embedded padding character"
             //              "encountered!";
             return true;
         }
@@ -241,8 +227,7 @@ bool Base64Decoder::decode(const char *&scursor, const char *const send,
     return scursor == send;
 } // Base64Decoder::decode()
 
-bool Base64Encoder::encode(const char *&scursor, const char *const send,
-                           char *&dcursor, const char *const dend)
+bool Base64Encoder::encode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend)
 {
     const uint maxPacketsPerLine = 76 / 4;
 
@@ -273,18 +258,18 @@ bool Base64Encoder::encode(const char *&scursor, const char *const send,
         switch (mStepNo) {
         case 0:
             assert(mNextbits == 0);
-            writeBase64(ch >> 2, dcursor, dend);   // top-most 6 bits -> output
-            mNextbits = (ch & 0x3) << 4;   // 0..1 bits -> 4..5 in mNextbits
+            writeBase64(ch >> 2, dcursor, dend); // top-most 6 bits -> output
+            mNextbits = (ch & 0x3) << 4; // 0..1 bits -> 4..5 in mNextbits
             break;
         case 1:
             assert((mNextbits & ~0x30) == 0);
-            writeBase64(mNextbits | ch >> 4, dcursor, dend);   // 4..7 bits -> 0..3 in value
-            mNextbits = (ch & 0xf) << 2;   // 0..3 bits -> 2..5 in mNextbits
+            writeBase64(mNextbits | ch >> 4, dcursor, dend); // 4..7 bits -> 0..3 in value
+            mNextbits = (ch & 0xf) << 2; // 0..3 bits -> 2..5 in mNextbits
             break;
         case 2:
             assert((mNextbits & ~0x3C) == 0);
-            writeBase64(mNextbits | ch >> 6, dcursor, dend);   // 6..7 bits -> 0..1 in value
-            writeBase64(ch & 0x3F, dcursor, dend);   // 0..5 bits -> output
+            writeBase64(mNextbits | ch >> 6, dcursor, dend); // 6..7 bits -> 0..1 in value
+            writeBase64(ch & 0x3F, dcursor, dend); // 0..5 bits -> output
             mNextbits = 0;
             mWrittenPacketsOnThisLine++;
             break;
@@ -301,10 +286,7 @@ bool Base64Encoder::encode(const char *&scursor, const char *const send,
     return scursor == send;
 }
 
-bool Rfc2047BEncodingEncoder::encode(const char *&scursor,
-                                     const char *const send,
-                                     char *&dcursor,
-                                     const char *const dend)
+bool Rfc2047BEncodingEncoder::encode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend)
 {
     // detect when the caller doesn't adhere to our rules:
     if (mInsideFinishing) {
@@ -327,18 +309,18 @@ bool Rfc2047BEncodingEncoder::encode(const char *&scursor,
         switch (mStepNo) {
         case 0:
             assert(mNextbits == 0);
-            writeBase64(ch >> 2, dcursor, dend);   // top-most 6 bits -> output
-            mNextbits = (ch & 0x3) << 4;   // 0..1 bits -> 4..5 in mNextbits
+            writeBase64(ch >> 2, dcursor, dend); // top-most 6 bits -> output
+            mNextbits = (ch & 0x3) << 4; // 0..1 bits -> 4..5 in mNextbits
             break;
         case 1:
             assert((mNextbits & ~0x30) == 0);
-            writeBase64(mNextbits | ch >> 4, dcursor, dend);   // 4..7 bits -> 0..3 in value
-            mNextbits = (ch & 0xf) << 2;   // 0..3 bits -> 2..5 in mNextbits
+            writeBase64(mNextbits | ch >> 4, dcursor, dend); // 4..7 bits -> 0..3 in value
+            mNextbits = (ch & 0xf) << 2; // 0..3 bits -> 2..5 in mNextbits
             break;
         case 2:
             assert((mNextbits & ~0x3C) == 0);
-            writeBase64(mNextbits | ch >> 6, dcursor, dend);   // 6..7 bits -> 0..1 in value
-            writeBase64(ch & 0x3F, dcursor, dend);   // 0..5 bits -> output
+            writeBase64(mNextbits | ch >> 6, dcursor, dend); // 6..7 bits -> 0..1 in value
+            writeBase64(ch & 0x3F, dcursor, dend); // 0..5 bits -> output
             mNextbits = 0;
             break;
         default:
@@ -359,14 +341,12 @@ bool Base64Encoder::finish(char *&dcursor, const char *const dend)
     return generic_finish(dcursor, dend, true);
 }
 
-bool Rfc2047BEncodingEncoder::finish(char *&dcursor,
-                                     const char *const dend)
+bool Rfc2047BEncodingEncoder::finish(char *&dcursor, const char *const dend)
 {
     return generic_finish(dcursor, dend, false);
 }
 
-bool Base64Encoder::generic_finish(char *&dcursor, const char *const dend,
-                                   bool withLFatEnd)
+bool Base64Encoder::generic_finish(char *&dcursor, const char *const dend, bool withLFatEnd)
 {
     if (mInsideFinishing) {
         return flushOutputBuffer(dcursor, dend);

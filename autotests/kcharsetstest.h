@@ -9,7 +9,7 @@
 
 #include <QObject>
 
-class KCharsetsTest: public QObject
+class KCharsetsTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:

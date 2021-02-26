@@ -8,20 +8,24 @@
 
 #include "kencodingprober.h"
 
-#include "probers/nsCharSetProber.h"
-#include "probers/nsUniversalDetector.h"
 #include "probers/ChineseGroupProber.h"
 #include "probers/JapaneseGroupProber.h"
 #include "probers/UnicodeGroupProber.h"
-#include "probers/nsSBCSGroupProber.h"
+#include "probers/nsCharSetProber.h"
 #include "probers/nsMBCSGroupProber.h"
+#include "probers/nsSBCSGroupProber.h"
+#include "probers/nsUniversalDetector.h"
 
 #include <string.h>
 
 class KEncodingProberPrivate
 {
 public:
-    KEncodingProberPrivate(): prober(nullptr), mStart(true) {}
+    KEncodingProberPrivate()
+        : prober(nullptr)
+        , mStart(true)
+    {
+    }
     ~KEncodingProberPrivate()
     {
         delete prober;
@@ -30,10 +34,10 @@ public:
     {
         proberType = pType;
         /* handle multi-byte encodings carefully , because they're hard to detect,
-        *   and have to use some Stastics methods.
-        * for single-byte encodings (most western encodings), nsSBCSGroupProber is ok,
-        *   because encoding state machine can detect many such encodings.
-        */
+         *   and have to use some Stastics methods.
+         * for single-byte encodings (most western encodings), nsSBCSGroupProber is ok,
+         *   because encoding state machine can detect many such encodings.
+         */
 
         delete prober;
 
@@ -83,46 +87,45 @@ public:
                 switch (aBuf[0]) {
                 case '\xEF':
                     if (('\xBB' == aBuf[1]) && ('\xBF' == aBuf[2]))
-                        // EF BB BF  UTF-8 encoded BOM
+                    // EF BB BF  UTF-8 encoded BOM
                     {
                         proberState = KEncodingProber::FoundIt;
                     }
                     break;
                 case '\xFE':
                     if (('\xFF' == aBuf[1]) && ('\x00' == aBuf[2]) && ('\x00' == aBuf[3]))
-                        // FE FF 00 00  UCS-4, unusual octet order BOM (3412)
+                    // FE FF 00 00  UCS-4, unusual octet order BOM (3412)
                     {
                         proberState = KEncodingProber::FoundIt;
                     } else if ('\xFF' == aBuf[1])
-                        // FE FF  UTF-16, big endian BOM
+                    // FE FF  UTF-16, big endian BOM
                     {
                         proberState = KEncodingProber::FoundIt;
                     }
                     break;
                 case '\x00':
                     if (('\x00' == aBuf[1]) && ('\xFE' == aBuf[2]) && ('\xFF' == aBuf[3]))
-                        // 00 00 FE FF  UTF-32, big-endian BOM
+                    // 00 00 FE FF  UTF-32, big-endian BOM
                     {
                         proberState = KEncodingProber::FoundIt;
                     } else if (('\x00' == aBuf[1]) && ('\xFF' == aBuf[2]) && ('\xFE' == aBuf[3]))
-                        // 00 00 FF FE  UCS-4, unusual octet order BOM (2143)
+                    // 00 00 FF FE  UCS-4, unusual octet order BOM (2143)
                     {
                         proberState = KEncodingProber::FoundIt;
                     }
                     break;
                 case '\xFF':
                     if (('\xFE' == aBuf[1]) && ('\x00' == aBuf[2]) && ('\x00' == aBuf[3]))
-                        // FF FE 00 00  UTF-32, little-endian BOM
+                    // FF FE 00 00  UTF-32, little-endian BOM
                     {
                         proberState = KEncodingProber::FoundIt;
                     } else if ('\xFE' == aBuf[1])
-                        // FF FE  UTF-16, little endian BOM
+                    // FF FE  UTF-16, little endian BOM
                     {
                         proberState = KEncodingProber::FoundIt;
                     }
                     break;
-                }  // switch
-
+                } // switch
         }
     }
     KEncodingProber::ProberType proberType;
@@ -131,7 +134,8 @@ public:
     bool mStart;
 };
 
-KEncodingProber::KEncodingProber(KEncodingProber::ProberType proberType): d(new KEncodingProberPrivate())
+KEncodingProber::KEncodingProber(KEncodingProber::ProberType proberType)
+    : d(new KEncodingProberPrivate())
 {
     setProberType(proberType);
 }

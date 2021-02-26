@@ -24,4 +24,3 @@ private Q_SLOTS:
 };
 
 #endif
-

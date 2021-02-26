@@ -12,8 +12,8 @@
 #ifndef KCODECS_H
 #define KCODECS_H
 
-#include <kcodecs_export.h>
 #include <QString>
+#include <kcodecs_export.h>
 #include <memory>
 
 #if KCODECS_ENABLE_DEPRECATED_SINCE(5, 79)
@@ -23,7 +23,8 @@
 #define KBase64 KBase64_is_deprecated_use_KCodecs
 #endif
 
-template<typename T, typename U> class QHash;
+template<typename T, typename U>
+class QHash;
 
 class QByteArray;
 class QIODevice;
@@ -60,7 +61,6 @@ class QIODevice;
  */
 namespace KCodecs
 {
-
 /**
  * Encodes the given data using the quoted-printable algorithm.
  *
@@ -70,8 +70,7 @@ namespace KCodecs
  *                breaks, too.
  * @return        quoted-printable encoded string.
  */
-KCODECS_EXPORT QByteArray quotedPrintableEncode(const QByteArray &in,
-        bool useCRLF = true);
+KCODECS_EXPORT QByteArray quotedPrintableEncode(const QByteArray &in, bool useCRLF = true);
 
 /**
  * Encodes the given data using the quoted-printable algorithm.
@@ -91,8 +90,7 @@ KCODECS_EXPORT QByteArray quotedPrintableEncode(const QByteArray &in,
  *                CRLF line breaks and the output will have CRLF line
  *                breaks, too.
  */
-KCODECS_EXPORT void quotedPrintableEncode(const QByteArray &in, QByteArray &out,
-        bool useCRLF);
+KCODECS_EXPORT void quotedPrintableEncode(const QByteArray &in, QByteArray &out, bool useCRLF);
 
 /**
  * Decodes a quoted-printable encoded data.
@@ -242,8 +240,7 @@ KCODECS_EXPORT QByteArray base64Encode(const QByteArray &in, bool insertLFs);
  * @param out       encoded data.
  * @param insertLFs limit the number of characters per line.
  */
-KCODECS_EXPORT void base64Encode(const QByteArray &in, QByteArray &out,
-                                 bool insertLFs = false);
+KCODECS_EXPORT void base64Encode(const QByteArray &in, QByteArray &out, bool insertLFs = false);
 
 /**
  * Decodes the given data that was encoded using the
@@ -286,10 +283,9 @@ KCODECS_EXPORT QString decodeRFC2047String(const QString &text);
  * Charset options for RFC2047 encoder
  * @since 5.5
  */
-enum CharsetOption
-{
-    NoOption = 0,              /// No special option
-    ForceDefaultCharset = 1,    /// Force use of the default charset
+enum CharsetOption {
+    NoOption = 0, /// No special option
+    ForceDefaultCharset = 1, /// Force use of the default charset
 };
 
 /**
@@ -305,7 +301,8 @@ enum CharsetOption
  * @return the decoded string.
  * @since 5.5
  */
-KCODECS_EXPORT QString decodeRFC2047String(const QByteArray &src, QByteArray *usedCS,
+KCODECS_EXPORT QString decodeRFC2047String(const QByteArray &src,
+                                           QByteArray *usedCS,
                                            const QByteArray &defaultCS = QByteArray(),
                                            CharsetOption option = NoOption);
 
@@ -324,7 +321,6 @@ KCODECS_EXPORT QString decodeRFC2047String(const QByteArray &src, QByteArray *us
  * @since 5.5
  */
 KCODECS_EXPORT QByteArray encodeRFC2047String(const QString &src, const QByteArray &charset);
-
 
 class Encoder;
 class EncoderPrivate;
@@ -466,9 +462,7 @@ public:
       @return false if the encoded data didn't fit into the output buffer;
       true otherwise.
     */
-    virtual bool encode(const char *&scursor, const char *const send,
-                        char *&dcursor, const char *const dend,
-                        NewlineType newline = NewlineLF) const;
+    virtual bool encode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend, NewlineType newline = NewlineLF) const;
 
     /**
       Convenience wrapper that can be used for small chunks of data
@@ -506,9 +500,7 @@ public:
       @return false if the decoded data didn't fit into the output buffer;
       true otherwise.
     */
-    virtual bool decode(const char *&scursor, const char *const send,
-                        char *&dcursor, const char *const dend,
-                        NewlineType newline = NewlineLF) const;
+    virtual bool decode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend, NewlineType newline = NewlineLF) const;
 
     /**
       Even more convenient, but also a bit slower and more memory
@@ -520,8 +512,7 @@ public:
       @param src is a QByteArray containing the data to encode.
       @param newline whether make new lines using @ref CRLF, or @ref LF (default is @ref LF).
     */
-    virtual QByteArray encode(const QByteArray &src,
-                              NewlineType newline = NewlineLF) const;
+    virtual QByteArray encode(const QByteArray &src, NewlineType newline = NewlineLF) const;
 
     /**
       Even more convenient, but also a bit slower and more memory
@@ -533,8 +524,7 @@ public:
       @param src is a QByteArray containing the data to decode.
       @param newline whether make new lines using @ref CRLF, or @ref LF (default is @ref LF).
     */
-    virtual QByteArray decode(const QByteArray &src,
-                              NewlineType newline = NewlineLF) const;
+    virtual QByteArray decode(const QByteArray &src, NewlineType newline = NewlineLF) const;
 
     /**
       Returns the name of the encoding. Guaranteed to be lowercase.
@@ -544,13 +534,17 @@ public:
     /**
       Destroys the codec.
     */
-    virtual ~Codec() {}
+    virtual ~Codec()
+    {
+    }
 
 protected:
     /**
       Constructs the codec.
     */
-    Codec() {}
+    Codec()
+    {
+    }
 };
 
 /**
@@ -664,8 +658,7 @@ public:
       @param dcursor is a pointer to the start of the output buffer.
       @param dend is a pointer to the end of the output buffer.
     */
-    virtual bool decode(const char *&scursor, const char *const send,
-                        char *&dcursor, const char *const dend) = 0;
+    virtual bool decode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend) = 0;
 
     /**
       Call this method to finalize the output stream. Writes all
@@ -694,7 +687,6 @@ protected:
 */
 class KCODECS_EXPORT Encoder
 {
-
 protected:
     friend class Codec;
     friend class EncoderPrivate;
@@ -721,8 +713,7 @@ public:
       @param dcursor is a pointer to the start of the output buffer.
       @param dend is a pointer to the end of the output buffer.
     */
-    virtual bool encode(const char *&scursor, const char *const send,
-                        char *&dcursor, const char *const dend) = 0;
+    virtual bool encode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend) = 0;
 
     /**
       Call this method to finalize the output stream. Writes all remaining
@@ -738,7 +729,7 @@ protected:
       The maximum number of characters permitted in the output buffer.
     */
     enum {
-        maxBufferedChars = 8,  /**< Eight */
+        maxBufferedChars = 8, /**< Eight */
     };
 
     /**

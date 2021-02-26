@@ -9,10 +9,10 @@
 
 #include "nsCharSetProber.h"
 
-#define CN_NUM_OF_PROBERS    3
+#define CN_NUM_OF_PROBERS 3
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT ChineseGroupProber: public nsCharSetProber
+class KCODECS_NO_EXPORT ChineseGroupProber : public nsCharSetProber
 {
 public:
     ChineseGroupProber();
@@ -23,21 +23,22 @@ public:
     {
         return mState;
     }
-    void      Reset(void) override;
-    float     GetConfidence(void) override;
-    void      SetOpion() override {}
+    void Reset(void) override;
+    float GetConfidence(void) override;
+    void SetOpion() override
+    {
+    }
 
 #ifdef DEBUG_PROBE
-    void  DumpStatus() override;
+    void DumpStatus() override;
 #endif
 
 protected:
     nsProbingState mState;
     nsCharSetProber *mProbers[CN_NUM_OF_PROBERS];
-    bool          mIsActive[CN_NUM_OF_PROBERS];
+    bool mIsActive[CN_NUM_OF_PROBERS];
     int mBestGuess;
     unsigned int mActiveNum;
 };
 }
 #endif /* CHINESEGROUPPROBER_H */
-

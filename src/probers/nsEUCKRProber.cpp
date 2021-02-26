@@ -8,12 +8,12 @@
 
 namespace kencodingprober
 {
-void  nsEUCKRProber::Reset(void)
+void nsEUCKRProber::Reset(void)
 {
     mCodingSM->Reset();
     mState = eDetecting;
     mDistributionAnalyser.Reset();
-    //mContextAnalyser.Reset();
+    // mContextAnalyser.Reset();
 }
 
 nsProbingState nsEUCKRProber::HandleData(const char *aBuf, unsigned int aLen)
@@ -51,8 +51,8 @@ nsProbingState nsEUCKRProber::HandleData(const char *aBuf, unsigned int aLen)
         if (mDistributionAnalyser.GotEnoughData() && GetConfidence() > SHORTCUT_THRESHOLD) {
             mState = eFoundIt;
         }
-//    else
-//      mDistributionAnalyser.HandleData(aBuf, aLen);
+    //    else
+    //      mDistributionAnalyser.HandleData(aBuf, aLen);
 
     return mState;
 }
@@ -64,4 +64,3 @@ float nsEUCKRProber::GetConfidence(void)
     return (float)distribCf;
 }
 }
-

@@ -24,7 +24,6 @@ using namespace KCodecs;
 
 namespace KCodecs
 {
-
 class UUDecoder : public Decoder
 {
     uint mStepNo;
@@ -32,10 +31,10 @@ class UUDecoder : public Decoder
     uchar mCurrentOctetCount; // (on current line)
     uchar mOutbits;
     bool mLastWasCRLF : 1;
-    bool mSawBegin : 1;      // whether we already saw ^begin...
+    bool mSawBegin : 1; // whether we already saw ^begin...
     uint mIntoBeginLine : 3; // count #chars we compared against "begin" 0..5
-    bool mSawEnd : 1;        // whether we already saw ^end...
-    uint mIntoEndLine : 2;   // count #chars we compared against "end" 0..3
+    bool mSawEnd : 1; // whether we already saw ^end...
+    uint mIntoEndLine : 2; // count #chars we compared against "end" 0..3
 
     void searchForBegin(const char *&scursor, const char *const send);
 
@@ -52,13 +51,15 @@ protected:
         , mIntoBeginLine(0)
         , mSawEnd(false)
         , mIntoEndLine(0)
-    {}
+    {
+    }
 
 public:
-    virtual ~UUDecoder() {}
+    virtual ~UUDecoder()
+    {
+    }
 
-    bool decode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend) override;
+    bool decode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend) override;
     // ### really needs no finishing???
     bool finish(char *&dcursor, const char *const dend) override
     {
@@ -108,23 +109,21 @@ void UUDecoder::searchForBegin(const char *&scursor, const char *const send)
         } else if (mSawBegin) {
             // OK, skip stuff until the next \n
         } else {
-            //qWarning() << "UUDecoder: garbage before \"begin\", resetting parser";
+            // qWarning() << "UUDecoder: garbage before \"begin\", resetting parser";
             mIntoBeginLine = 0;
         }
     }
-
 }
 
 // uuencoding just shifts all 6-bit octets by 32 (SP/' '), except NUL,
 // which gets mapped to 0x60
 static inline uchar uuDecode(uchar c)
 {
-    return (c - ' ')   // undo shift and
-           & 0x3F;     // map 0x40 (0x60-' ') to 0...
+    return (c - ' ') // undo shift and
+        & 0x3F; // map 0x40 (0x60-' ') to 0...
 }
 
-bool UUDecoder::decode(const char *&scursor, const char *const send,
-                       char *&dcursor, const char *const dend)
+bool UUDecoder::decode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend)
 {
     // First, check whether we still need to find the "begin" line:
     if (!mSawBegin || mIntoBeginLine != 0) {
@@ -153,7 +152,7 @@ bool UUDecoder::decode(const char *&scursor, const char *const send,
                 }
                 continue;
             } else {
-                //qWarning() << "UUDecoder: invalid line octet count looks like \"end\" (mIntoEndLine ="
+                // qWarning() << "UUDecoder: invalid line octet count looks like \"end\" (mIntoEndLine ="
                 //           << mIntoEndLine << ")!";
                 mIntoEndLine = 0;
                 // fall through...
@@ -170,7 +169,7 @@ bool UUDecoder::decode(const char *&scursor, const char *const send,
             mCurrentOctetCount = 0;
 
             // try to decode the chars-on-this-line announcement:
-            if (ch == 'e') {   // maybe the beginning of the "end"? ;-)
+            if (ch == 'e') { // maybe the beginning of the "end"? ;-)
                 mIntoEndLine = 1;
             } else if (ch > 0x60) {
                 // ### invalid line length char: what shall we do??
@@ -188,7 +187,7 @@ bool UUDecoder::decode(const char *&scursor, const char *const send,
             continue; // invalid char
         } else if (ch > ' ') {
             value = uuDecode(ch);
-        } else if (ch == '\n') {   // line end
+        } else if (ch == '\n') { // line end
             mLastWasCRLF = true;
             continue;
         } else {
@@ -232,7 +231,6 @@ bool UUDecoder::decode(const char *&scursor, const char *const send,
             //         << "UUDecoder: mismatch between announced ("
             //         << mAnnouncedOctetCount << ") and actual line octet count!";
         }
-
     }
 
     // return false when caller should call us again:

@@ -7,15 +7,15 @@
 #ifndef JAPANESEGROUPPROBER_H
 #define JAPANESEGROUPPROBER_H
 
-#include "nsCharSetProber.h"
 #include "UnicodeGroupProber.h"
-#include "nsSJISProber.h"
+#include "nsCharSetProber.h"
 #include "nsEUCJPProber.h"
+#include "nsSJISProber.h"
 
-#define JP_NUM_OF_PROBERS    3
+#define JP_NUM_OF_PROBERS 3
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT JapaneseGroupProber: public nsCharSetProber
+class KCODECS_NO_EXPORT JapaneseGroupProber : public nsCharSetProber
 {
 public:
     JapaneseGroupProber();
@@ -26,21 +26,22 @@ public:
     {
         return mState;
     }
-    void      Reset(void) override;
-    float     GetConfidence(void) override;
-    void      SetOpion() override {}
+    void Reset(void) override;
+    float GetConfidence(void) override;
+    void SetOpion() override
+    {
+    }
 
 #ifdef DEBUG_PROBE
-    void  DumpStatus() override;
+    void DumpStatus() override;
 #endif
 
 protected:
     nsProbingState mState;
     nsCharSetProber *mProbers[JP_NUM_OF_PROBERS];
-    bool          mIsActive[JP_NUM_OF_PROBERS];
+    bool mIsActive[JP_NUM_OF_PROBERS];
     int mBestGuess;
     unsigned int mActiveNum;
 };
 }
 #endif /* JAPANESEGROUPPROBER_H */
-

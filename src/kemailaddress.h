@@ -18,8 +18,8 @@
 
 #include <QUrl>
 
-#include <QStringList>
 #include <QByteArray>
+#include <QStringList>
 
 #include <kcodecs_export.h>
 
@@ -28,7 +28,6 @@
  */
 namespace KEmailAddress
 {
-
 /**
   @defgroup emailvalidation Email Validation Functions
 
@@ -49,21 +48,21 @@ namespace KEmailAddress
   and isValidSimpleAddress().
 */
 enum EmailParseResult {
-    AddressOk,          /**< Email is valid */
-    AddressEmpty,       /**< The address is empty */
-    UnexpectedEnd,      /**< Something is unbalanced */
-    UnbalancedParens,   /**< Unbalanced ( ) */
-    MissingDomainPart,  /**< No domain in address */
-    UnclosedAngleAddr,  /**< \< with no matching \> */
-    UnopenedAngleAddr,  /**< \> with no preceding \< */
-    TooManyAts,         /**< More than one \@ in address */
-    UnexpectedComma,    /**< Comma not allowed here */
-    TooFewAts,          /**< Missing \@ in address */
-    MissingLocalPart,   /**< No address specified, only domain */
-    UnbalancedQuote,    /**< Quotes (single or double) not matched */
+    AddressOk, /**< Email is valid */
+    AddressEmpty, /**< The address is empty */
+    UnexpectedEnd, /**< Something is unbalanced */
+    UnbalancedParens, /**< Unbalanced ( ) */
+    MissingDomainPart, /**< No domain in address */
+    UnclosedAngleAddr, /**< \< with no matching \> */
+    UnopenedAngleAddr, /**< \> with no preceding \< */
+    TooManyAts, /**< More than one \@ in address */
+    UnexpectedComma, /**< Comma not allowed here */
+    TooFewAts, /**< Missing \@ in address */
+    MissingLocalPart, /**< No address specified, only domain */
+    UnbalancedQuote, /**< Quotes (single or double) not matched */
     NoAddressSpec,
-    DisallowedChar,     /**< An invalid character detected in address */
-    InvalidDisplayName,  /**< An invalid displayname detected in address */
+    DisallowedChar, /**< An invalid character detected in address */
+    InvalidDisplayName, /**< An invalid displayname detected in address */
     TooFewDots, /**< Missing \. in address */
 };
 
@@ -97,10 +96,7 @@ QStringList splitAddressList(const QString &aStr);
   appropriate error code is returned.
 */
 KCODECS_EXPORT
-EmailParseResult splitAddress(const QByteArray &address,
-                              QByteArray &displayName,
-                              QByteArray &addrSpec,
-                              QByteArray &comment);
+EmailParseResult splitAddress(const QByteArray &address, QByteArray &displayName, QByteArray &addrSpec, QByteArray &comment);
 
 /**
   This is an overloaded member function, provided for convenience.
@@ -126,10 +122,7 @@ EmailParseResult splitAddress(const QByteArray &address,
   appropriate error code is returned.
 */
 KCODECS_EXPORT
-EmailParseResult splitAddress(const QString &address,
-                              QString &displayName,
-                              QString &addrSpec,
-                              QString &comment);
+EmailParseResult splitAddress(const QString &address, QString &displayName, QString &addrSpec, QString &comment);
 
 /**
   Validates an email address in the form of "Joe User" <joe@example.org>.
@@ -155,8 +148,7 @@ EmailParseResult isValidAddress(const QString &aStr);
   appropriate error code is returned.
 */
 KCODECS_EXPORT
-EmailParseResult isValidAddressList(const QString &aStr,
-                                    QString &badAddr);
+EmailParseResult isValidAddressList(const QString &aStr, QString &badAddr);
 
 /**
   Translate the enum errorcodes from emailParseResult
@@ -320,7 +312,6 @@ QString firstEmailAddress(const QString &addresses);
 KCODECS_EXPORT
 QString firstEmailAddress(const QString &addresses, QString &errorMessage);
 
-
 /**
   Return email address and name from string.
   Examples:
@@ -340,8 +331,7 @@ QString firstEmailAddress(const QString &addresses, QString &errorMessage);
   @return true if both name and email address are not empty
 */
 KCODECS_EXPORT
-bool extractEmailAddressAndName(const QString &aStr, QString &mail,
-                                QString &name);
+bool extractEmailAddressAndName(const QString &aStr, QString &mail, QString &name);
 
 /**
   Compare two email addresses. If matchName is false, it just checks
@@ -355,8 +345,7 @@ bool extractEmailAddressAndName(const QString &aStr, QString &mail,
   @return true if the comparison matches true in all other cases
 */
 KCODECS_EXPORT
-bool compareEmail(const QString &email1, const QString &email2,
-                  bool matchName);
+bool compareEmail(const QString &email1, const QString &email2, bool matchName);
 
 /**
   Returns a normalized address built from the given parts. The normalized
@@ -373,9 +362,7 @@ bool compareEmail(const QString &email1, const QString &email2,
   @return             a normalized address built from the given parts
 */
 KCODECS_EXPORT
-QString normalizedAddress(const QString &displayName,
-                          const QString &addrSpec,
-                          const QString &comment = QString());
+QString normalizedAddress(const QString &displayName, const QString &addrSpec, const QString &comment = QString());
 
 /** @} */
 
@@ -434,19 +421,19 @@ KCODECS_EXPORT
 QString quoteNameIfNecessary(const QString &str);
 
 /**
-  * Creates a valid mailto: URL from the given mailbox.
-  * @param mailbox The mailbox, which means the display name and the address specification, for
-  *                example "Thomas McGuire" <thomas@domain.com>. The display name is optional.
-  * @return a valid mailto: URL for the given mailbox.
-  */
+ * Creates a valid mailto: URL from the given mailbox.
+ * @param mailbox The mailbox, which means the display name and the address specification, for
+ *                example "Thomas McGuire" <thomas@domain.com>. The display name is optional.
+ * @return a valid mailto: URL for the given mailbox.
+ */
 KCODECS_EXPORT
 QUrl encodeMailtoUrl(const QString &mailbox);
 
 /**
-  * Extracts the mailbox out of the mailto: URL.
-  * @param mailtoUrl the URL with the mailto protocol, which contains the mailbox to be extracted
-  * @return the mailbox, which means the display name and the address specification.
-  */
+ * Extracts the mailbox out of the mailto: URL.
+ * @param mailtoUrl the URL with the mailto protocol, which contains the mailbox to be extracted
+ * @return the mailbox, which means the display name and the address specification.
+ */
 KCODECS_EXPORT
 QString decodeMailtoUrl(const QUrl &mailtoUrl);
 

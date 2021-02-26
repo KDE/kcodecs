@@ -6,20 +6,20 @@
 
 #include "CharDistribution.h"
 
-#include "tables/JISFreq.tab"
 #include "tables/Big5Freq.tab"
 #include "tables/EUCKRFreq.tab"
 #include "tables/GB2312Freq.tab"
+#include "tables/JISFreq.tab"
 
 #define SURE_YES 0.99f
-#define SURE_NO  0.01f
+#define SURE_NO 0.01f
 
 namespace kencodingprober
 {
-//return confidence base on received data
+// return confidence base on received data
 float CharDistributionAnalysis::GetConfidence()
 {
-    //if we didn't receive any character in our consideration range, return negative answer
+    // if we didn't receive any character in our consideration range, return negative answer
     if (mTotalChars <= 0) {
         return SURE_NO;
     }
@@ -31,7 +31,7 @@ float CharDistributionAnalysis::GetConfidence()
             return r;
         }
     }
-    //normalize confidence, (we don't want to be 100% sure)
+    // normalize confidence, (we don't want to be 100% sure)
     return SURE_YES;
 }
 
@@ -70,4 +70,3 @@ EUCJPDistributionAnalysis::EUCJPDistributionAnalysis()
     mTypicalDistributionRatio = JIS_TYPICAL_DISTRIBUTION_RATIO;
 }
 }
-

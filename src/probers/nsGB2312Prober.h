@@ -7,14 +7,14 @@
 #ifndef nsGB2312Prober_h__
 #define nsGB2312Prober_h__
 
+#include "CharDistribution.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
-#include "CharDistribution.h"
 
 // We use gb18030 to replace gb2312, because 18030 is a superset.
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsGB18030Prober: public nsCharSetProber
+class KCODECS_NO_EXPORT nsGB18030Prober : public nsCharSetProber
 {
 public:
     nsGB18030Prober(void)
@@ -35,22 +35,22 @@ public:
     {
         return mState;
     }
-    void      Reset(void) override;
-    float     GetConfidence(void) override;
-    void      SetOpion() override {}
+    void Reset(void) override;
+    float GetConfidence(void) override;
+    void SetOpion() override
+    {
+    }
 
 protected:
-    void      GetDistribution(unsigned int aCharLen, const char *aStr);
+    void GetDistribution(unsigned int aCharLen, const char *aStr);
 
     nsCodingStateMachine *mCodingSM;
     nsProbingState mState;
 
-    //GB2312ContextAnalysis mContextAnalyser;
+    // GB2312ContextAnalysis mContextAnalyser;
     GB2312DistributionAnalysis mDistributionAnalyser;
     char mLastChar[2];
-
 };
 }
 
 #endif /* nsGB2312Prober_h__ */
-

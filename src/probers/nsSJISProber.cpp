@@ -13,7 +13,7 @@
 
 namespace kencodingprober
 {
-void  nsSJISProber::Reset(void)
+void nsSJISProber::Reset(void)
 {
     mCodingSM->Reset();
     mState = eDetecting;
@@ -69,4 +69,3 @@ float nsSJISProber::GetConfidence(void)
     return (contxtCf > distribCf ? contxtCf : distribCf);
 }
 }
-

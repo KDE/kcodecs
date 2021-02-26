@@ -12,26 +12,32 @@ namespace kencodingprober
 {
 // This prober doesn't actually recognize a language or a charset.
 // It is a helper prober for the use of the Hebrew model probers
-class KCODECS_NO_EXPORT nsHebrewProber: public nsCharSetProber
+class KCODECS_NO_EXPORT nsHebrewProber : public nsCharSetProber
 {
 public:
-    nsHebrewProber(void) : mLogicalProb(nullptr), mVisualProb(nullptr)
+    nsHebrewProber(void)
+        : mLogicalProb(nullptr)
+        , mVisualProb(nullptr)
     {
         Reset();
     }
 
-    ~nsHebrewProber(void) override {}
+    ~nsHebrewProber(void) override
+    {
+    }
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
     void Reset(void) override;
 
     nsProbingState GetState(void) override;
 
-    float     GetConfidence(void) override
+    float GetConfidence(void) override
     {
         return (float)0.0;
     }
-    void      SetOpion() override {}
+    void SetOpion() override
+    {
+    }
 
     void SetModelProbers(nsCharSetProber *logicalPrb, nsCharSetProber *visualPrb)
     {
@@ -40,7 +46,7 @@ public:
     }
 
 #ifdef DEBUG_PROBE
-    void  DumpStatus() override;
+    void DumpStatus() override;
 #endif
 
 protected:

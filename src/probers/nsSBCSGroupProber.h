@@ -12,11 +12,11 @@
 
 #include "nsCharSetProber.h"
 
-#define NUM_OF_SBCS_PROBERS    14
+#define NUM_OF_SBCS_PROBERS 14
 
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsSBCSGroupProber: public nsCharSetProber
+class KCODECS_NO_EXPORT nsSBCSGroupProber : public nsCharSetProber
 {
 public:
     nsSBCSGroupProber();
@@ -27,22 +27,23 @@ public:
     {
         return mState;
     }
-    void      Reset(void) override;
-    float     GetConfidence(void) override;
-    void      SetOpion() override {}
+    void Reset(void) override;
+    float GetConfidence(void) override;
+    void SetOpion() override
+    {
+    }
 
 #ifdef DEBUG_PROBE
-    void  DumpStatus() override;
+    void DumpStatus() override;
 #endif
 
 protected:
     nsProbingState mState;
     nsCharSetProber *mProbers[NUM_OF_SBCS_PROBERS];
-    bool          mIsActive[NUM_OF_SBCS_PROBERS];
+    bool mIsActive[NUM_OF_SBCS_PROBERS];
     int mBestGuess;
     unsigned int mActiveNum;
 };
 }
 
 #endif /* nsSBCSGroupProber_h__ */
-

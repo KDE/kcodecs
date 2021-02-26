@@ -52,7 +52,7 @@ const char *nsMBCSGroupProber::GetCharSetName()
     return mProbers[mBestGuess]->GetCharSetName();
 }
 
-void  nsMBCSGroupProber::Reset(void)
+void nsMBCSGroupProber::Reset(void)
 {
     mActiveNum = 0;
     for (unsigned int i = 0; i < NUM_OF_PROBERS; i++) {
@@ -73,10 +73,10 @@ nsProbingState nsMBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
     nsProbingState st;
     unsigned int i;
 
-    //do filtering to reduce load to probers
+    // do filtering to reduce load to probers
     char *highbyteBuf;
     char *hptr;
-    bool keepNext = true;   //assume previous is not ascii, it will do no harm except add some noise
+    bool keepNext = true; // assume previous is not ascii, it will do no harm except add some noise
     hptr = highbyteBuf = (char *)malloc(aLen);
     if (!hptr) {
         return mState;
@@ -86,7 +86,7 @@ nsProbingState nsMBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
             *hptr++ = aBuf[i];
             keepNext = true;
         } else {
-            //if previous is highbyte, keep this even it is a ASCII
+            // if previous is highbyte, keep this even it is a ASCII
             if (keepNext) {
                 *hptr++ = aBuf[i];
                 keepNext = false;
@@ -161,4 +161,3 @@ void nsMBCSGroupProber::DumpStatus()
 }
 #endif
 }
-

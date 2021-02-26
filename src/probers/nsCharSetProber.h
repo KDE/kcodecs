@@ -12,26 +12,30 @@
 namespace kencodingprober
 {
 typedef enum {
-    eDetecting = 0,   //We are still detecting, no sure answer yet, but caller can ask for confidence.
-    eFoundIt = 1,     //That's a positive answer
-    eNotMe = 2,        //Negative answer
+    eDetecting = 0, // We are still detecting, no sure answer yet, but caller can ask for confidence.
+    eFoundIt = 1, // That's a positive answer
+    eNotMe = 2, // Negative answer
 } nsProbingState;
 
-#define SHORTCUT_THRESHOLD      (float)0.95
+#define SHORTCUT_THRESHOLD (float)0.95
 
 class KCODECS_NO_EXPORT nsCharSetProber
 {
 public:
-    virtual ~nsCharSetProber() {}
+    virtual ~nsCharSetProber()
+    {
+    }
     virtual const char *GetCharSetName() = 0;
     virtual nsProbingState HandleData(const char *aBuf, unsigned int aLen) = 0;
     virtual nsProbingState GetState(void) = 0;
-    virtual void      Reset(void)  = 0;
-    virtual float     GetConfidence(void) = 0;
-    virtual void      SetOpion() = 0;
+    virtual void Reset(void) = 0;
+    virtual float GetConfidence(void) = 0;
+    virtual void SetOpion() = 0;
 
 #ifdef DEBUG_PROBE
-    void  DumpStatus() override {}
+    void DumpStatus() override
+    {
+    }
 #endif
 
     // Helper functions used in the Latin1 and Group probers.
@@ -40,7 +44,6 @@ public:
     // Both functions return false in case of memory allocation failure.
     static bool FilterWithoutEnglishLetters(const char *aBuf, unsigned int aLen, char **newBuf, unsigned int &newLen);
     static bool FilterWithEnglishLetters(const char *aBuf, unsigned int aLen, char **newBuf, unsigned int &newLen);
-
 };
 }
 #endif /* nsCharSetProber_h__ */

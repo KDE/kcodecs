@@ -22,25 +22,25 @@
 */
 
 #include "kcodecs.h"
+#include "kcharsets.h"
+#include "kcodecs_debug.h"
 #include "kcodecs_p.h"
 #include "kcodecsbase64.h"
 #include "kcodecsidentity.h"
 #include "kcodecsqp.h"
 #include "kcodecsuuencode.h"
-#include "kcharsets.h"
-#include "kcodecs_debug.h"
 
 #include <QMutex>
 
 #include <cassert>
 #include <cstring>
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <QDebug>
-#include <QTextCodec>
 #include <QHash>
+#include <QTextCodec>
 
 #if defined(Q_OS_WIN)
 #define strncasecmp _strnicmp
@@ -48,9 +48,7 @@
 
 namespace KCodecs
 {
-
 static QList<QByteArray> charsetCache;
-
 
 QByteArray cachedCharset(const QByteArray &name)
 {
@@ -63,7 +61,6 @@ QByteArray cachedCharset(const QByteArray &name)
     charsetCache.append(name.toUpper());
     return charsetCache.last();
 }
-
 
 } // namespace KCodecs
 
@@ -105,8 +102,7 @@ QByteArray KCodecs::base64Encode(const QByteArray &in, bool insertLFs)
 }
 #endif
 
-void KCodecs::base64Encode(const QByteArray &in, QByteArray &out,
-                           bool insertLFs)
+void KCodecs::base64Encode(const QByteArray &in, QByteArray &out, bool insertLFs)
 {
     Q_UNUSED(insertLFs);
     out = base64Encode(in);
@@ -154,9 +150,12 @@ void KCodecs::uudecode(const QByteArray &in, QByteArray &out)
 namespace KCodecs
 {
 // parse the encoded-word (scursor points to after the initial '=')
-bool parseEncodedWord(const char *&scursor, const char *const send,
-                      QString *result, QByteArray *language,
-                      QByteArray *usedCS, const QByteArray &defaultCS,
+bool parseEncodedWord(const char *&scursor,
+                      const char *const send,
+                      QString *result,
+                      QByteArray *language,
+                      QByteArray *usedCS,
+                      const QByteArray &defaultCS,
                       CharsetOption charsetOption)
 {
     assert(result);
@@ -185,7 +184,7 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
 
     // find delimiting '?' (and the '*' separating charset and language
     // tags, if any):
-    for (; scursor != send ; scursor++) {
+    for (; scursor != send; scursor++) {
         if (*scursor == '?') {
             break;
         } else if (*scursor == '*' && languageStart == nullptr) {
@@ -205,8 +204,7 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
     QByteArray maybeLanguage(languageStart, scursor - languageStart);
     // extract charset information (keep in mind: the size given to the
     // ctor is one off due to the \0 terminator):
-    QByteArray maybeCharset(charsetStart,
-                            (languageStart ? languageStart - 1 : scursor) - charsetStart);
+    QByteArray maybeCharset(charsetStart, (languageStart ? languageStart - 1 : scursor) - charsetStart);
 
     //
     // STEP 2:
@@ -218,7 +216,7 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
     const char *encodingStart = scursor;
 
     // find next '?' (ending the encoding tag):
-    for (; scursor != send ; scursor++) {
+    for (; scursor != send; scursor++) {
         if (*scursor == '?') {
             break;
         }
@@ -248,10 +246,10 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
     const char *encodedTextStart = scursor;
 
     // find the '?=' sequence (ending the encoded-text):
-    for (; scursor != send ; scursor++) {
+    for (; scursor != send; scursor++) {
         if (*scursor == '?') {
             if (scursor + 1 != send) {
-                if (*(scursor + 1) != '=') {     // We expect a '=' after the '?', but we got something else; ignore
+                if (*(scursor + 1) != '=') { // We expect a '=' after the '?', but we got something else; ignore
                     // qCDebug(KCODECS_LOG) << "Stray '?' in q-encoded word, ignoring this.";
                     continue;
                 } else { // yep, found a '?=' sequence
@@ -298,7 +296,7 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
         cs = cachedCharset(defaultCS);
     } else {
         textCodec = KCharsets::charsets()->codecForName(QLatin1String(maybeCharset), matchOK);
-        if (!matchOK) {    //no suitable codec found => use default charset
+        if (!matchOK) { // no suitable codec found => use default charset
             textCodec = KCharsets::charsets()->codecForName(QLatin1String(defaultCS), matchOK);
             cs = cachedCharset(defaultCS);
         } else {
@@ -330,8 +328,7 @@ bool parseEncodedWord(const char *&scursor, const char *const send,
     //
 
     if (!dec->decode(encodedTextStart, encodedTextEnd, bbegin, bend)) {
-        qWarning() << codec->name() << "codec lies about its maxDecodedSizeFor("
-                   << encodedTextLength << ")\nresult may be truncated";
+        qWarning() << codec->name() << "codec lies about its maxDecodedSizeFor(" << encodedTextLength << ")\nresult may be truncated";
     }
 
     *result = textCodec->toUnicode(buffer.data(), bbegin - buffer.data());
@@ -354,9 +351,7 @@ QString KCodecs::decodeRFC2047String(const QString &msg)
     return decodeRFC2047String(msg.toUtf8(), &usedCS, "utf-8", NoOption);
 }
 
-QString KCodecs::decodeRFC2047String(const QByteArray &src, QByteArray *usedCS,
-                                     const QByteArray &defaultCS,
-                                     CharsetOption charsetOption)
+QString KCodecs::decodeRFC2047String(const QByteArray &src, QByteArray *usedCS, const QByteArray &defaultCS, CharsetOption charsetOption)
 {
     QByteArray result;
     QByteArray spaceBuffer;
@@ -411,7 +406,6 @@ QString KCodecs::decodeRFC2047String(const QByteArray &src, QByteArray *usedCS,
     }
 }
 
-
 QByteArray KCodecs::encodeRFC2047String(const QString &src, const QByteArray &charset)
 {
     QByteArray result;
@@ -423,7 +417,7 @@ QByteArray KCodecs::encodeRFC2047String(const QString &src, const QByteArray &ch
 
     QByteArray usedCS;
     if (!ok) {
-        //no codec available => try local8Bit and hope the best ;-)
+        // no codec available => try local8Bit and hope the best ;-)
         codec = QTextCodec::codecForLocale();
         usedCS = codec->name();
     } else {
@@ -443,19 +437,19 @@ QByteArray KCodecs::encodeRFC2047String(const QString &src, const QByteArray &ch
         encoded8Bit = codec->fromUnicode(src);
     }
 
-    if (usedCS.contains("8859-")) {     // use "B"-Encoding for non iso-8859-x charsets
+    if (usedCS.contains("8859-")) { // use "B"-Encoding for non iso-8859-x charsets
         useQEncoding = true;
     }
 
     uint encoded8BitLength = encoded8Bit.length();
     for (unsigned int i = 0; i < encoded8BitLength; i++) {
-        if (encoded8Bit[i] == ' ') {   // encoding starts at word boundaries
+        if (encoded8Bit[i] == ' ') { // encoding starts at word boundaries
             start = i + 1;
         }
 
         // encode escape character, for japanese encodings...
         if (((signed char)encoded8Bit[i] < 0) || (encoded8Bit[i] == '\033')) {
-            end = start;   // non us-ascii char found, now we determine where to stop encoding
+            end = start; // non us-ascii char found, now we determine where to stop encoding
             nonAscii = true;
             break;
         }
@@ -469,7 +463,7 @@ QByteArray KCodecs::encodeRFC2047String(const QString &src, const QByteArray &ch
 
         for (int x = end; x < encoded8Bit.length(); x++) {
             if (((signed char)encoded8Bit[x] < 0) || (encoded8Bit[x] == '\033')) {
-                end = x;     // we found another non-ascii word
+                end = x; // we found another non-ascii word
 
                 while ((end < encoded8Bit.length()) && (encoded8Bit[end] != ' ')) {
                     // we encode complete words
@@ -483,18 +477,18 @@ QByteArray KCodecs::encodeRFC2047String(const QString &src, const QByteArray &ch
         if (useQEncoding) {
             result += "?Q?";
 
-            char c, hexcode;// "Q"-encoding implementation described in RFC 2047
+            char c, hexcode; // "Q"-encoding implementation described in RFC 2047
             for (int i = start; i < end; i++) {
                 c = encoded8Bit[i];
-                if (c == ' ') {   // make the result readable with not MIME-capable readers
+                if (c == ' ') { // make the result readable with not MIME-capable readers
                     result += '_';
                 } else {
-                    if (((c >= 'a') && (c <= 'z')) ||        // paranoid mode, encode *all* special chars to avoid problems
-                            ((c >= 'A') && (c <= 'Z')) ||        // with "From" & "To" headers
-                            ((c >= '0') && (c <= '9'))) {
+                    if (((c >= 'a') && (c <= 'z')) || // paranoid mode, encode *all* special chars to avoid problems
+                        ((c >= 'A') && (c <= 'Z')) || // with "From" & "To" headers
+                        ((c >= '0') && (c <= '9'))) {
                         result += c;
                     } else {
-                        result += '=';                 // "stolen" from KMail ;-)
+                        result += '='; // "stolen" from KMail ;-)
                         hexcode = ((c & 0xF0) >> 4) + 48;
                         if (hexcode >= 58) {
                             hexcode += 7;
@@ -528,20 +522,20 @@ QByteArray KCodecs::encodeRFC2047String(const QString &src, const QByteArray &ch
 //@cond PRIVATE
 namespace
 {
-static QHash<QByteArray, KCodecs::Codec*> *allCodecs = nullptr;
+static QHash<QByteArray, KCodecs::Codec *> *allCodecs = nullptr;
 Q_GLOBAL_STATIC(QMutex, dictLock)
 
 static void createCodecs()
 {
-    //all->insert( "7bit", new KCodecs::SevenBitCodec() );
-    //all->insert( "8bit", new KCodecs::EightBitCodec() );
+    // all->insert( "7bit", new KCodecs::SevenBitCodec() );
+    // all->insert( "8bit", new KCodecs::EightBitCodec() );
     allCodecs->insert("base64", new KCodecs::Base64Codec());
     allCodecs->insert("quoted-printable", new KCodecs::QuotedPrintableCodec());
     allCodecs->insert("b", new KCodecs::Rfc2047BEncodingCodec());
     allCodecs->insert("q", new KCodecs::Rfc2047QEncodingCodec());
     allCodecs->insert("x-kmime-rfc2231", new KCodecs::Rfc2231EncodingCodec());
     allCodecs->insert("x-uuencode", new KCodecs::UUCodec());
-    //all->insert( "binary", new KCodecs::BinaryCodec() );
+    // all->insert( "binary", new KCodecs::BinaryCodec() );
 }
 
 static void cleanupCodecs()
@@ -566,7 +560,7 @@ KCodecs::Codec *KCodecs::Codec::codecForName(const QByteArray &name)
 {
     QMutexLocker locker(dictLock); // protect "allCodecs"
     if (!allCodecs) {
-        allCodecs = new QHash<QByteArray, Codec*>();
+        allCodecs = new QHash<QByteArray, Codec *>();
         qAddPostRoutine(cleanupCodecs);
         createCodecs();
     }
@@ -580,9 +574,7 @@ KCodecs::Codec *KCodecs::Codec::codecForName(const QByteArray &name)
     return codec;
 }
 
-bool KCodecs::Codec::encode(const char *&scursor, const char *const send,
-                            char *&dcursor, const char *const dend,
-                            NewlineType newline) const
+bool KCodecs::Codec::encode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend, NewlineType newline) const
 {
     // get an encoder:
     QScopedPointer<Encoder> enc(makeEncoder(newline));
@@ -654,9 +646,7 @@ QByteArray KCodecs::Codec::decode(const QByteArray &src, NewlineType newline) co
     return result;
 }
 
-bool KCodecs::Codec::decode(const char *&scursor, const char *const send,
-                            char *&dcursor, const char *const dend,
-                            NewlineType newline) const
+bool KCodecs::Codec::decode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend, NewlineType newline) const
 {
     // get a decoder:
     QScopedPointer<Decoder> dec(makeDecoder(newline));
@@ -679,7 +669,6 @@ bool KCodecs::Codec::decode(const char *&scursor, const char *const send,
     return true; // successfully encoded.
 }
 
-
 /******************************************************************************/
 /*                          KCodecs::Encoder                                  */
 
@@ -696,7 +685,7 @@ KCodecs::Encoder::Encoder(Codec::NewlineType newline)
 
 KCodecs::Encoder::~Encoder() = default;
 
-bool KCodecs::Encoder::write(char ch, char*& dcursor, const char*const dend)
+bool KCodecs::Encoder::write(char ch, char *&dcursor, const char *const dend)
 {
     if (dcursor != dend) {
         // if there's space in the output stream, write there:
@@ -705,10 +694,9 @@ bool KCodecs::Encoder::write(char ch, char*& dcursor, const char*const dend)
     } else {
         // else buffer the output:
         if (d->outputBufferCursor >= maxBufferedChars) {
-            qCritical()
-                    << "KCodecs::Encoder: internal buffer overflow!";
+            qCritical() << "KCodecs::Encoder: internal buffer overflow!";
         } else {
-            d->outputBuffer[ d->outputBufferCursor++ ] = ch;
+            d->outputBuffer[d->outputBufferCursor++] = ch;
         }
         return false;
     }
@@ -720,7 +708,7 @@ bool KCodecs::Encoder::flushOutputBuffer(char *&dcursor, const char *const dend)
 {
     int i;
     // copy output buffer to output stream:
-    for (i = 0 ; dcursor != dend && i < d->outputBufferCursor ; ++i) {
+    for (i = 0; dcursor != dend && i < d->outputBufferCursor; ++i) {
         *dcursor++ = d->outputBuffer[i];
     }
 
@@ -736,15 +724,13 @@ bool KCodecs::Encoder::flushOutputBuffer(char *&dcursor, const char *const dend)
     return !numCharsLeft;
 }
 
-bool KCodecs::Encoder::writeCRLF(char*& dcursor, const char*const dend)
+bool KCodecs::Encoder::writeCRLF(char *&dcursor, const char *const dend)
 {
     if (d->newline == Codec::NewlineCRLF) {
         write('\r', dcursor, dend);
     }
     return write('\n', dcursor, dend);
 }
-
-
 
 /******************************************************************************/
 /*                           KCodecs::Decoder                                 */

@@ -7,8 +7,8 @@
 #include "ChineseGroupProber.h"
 
 #include "UnicodeGroupProber.h"
-#include "nsGB2312Prober.h"
 #include "nsBig5Prober.h"
+#include "nsGB2312Prober.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -44,13 +44,13 @@ const char *ChineseGroupProber::GetCharSetName()
     if (mBestGuess == -1) {
         GetConfidence();
         if (mBestGuess == -1) {
-            mBestGuess = 1;    // assume it's GB18030
+            mBestGuess = 1; // assume it's GB18030
         }
     }
     return mProbers[mBestGuess]->GetCharSetName();
 }
 
-void  ChineseGroupProber::Reset(void)
+void ChineseGroupProber::Reset(void)
 {
     mActiveNum = 0;
     for (unsigned int i = 0; i < CN_NUM_OF_PROBERS; i++) {
@@ -71,10 +71,10 @@ nsProbingState ChineseGroupProber::HandleData(const char *aBuf, unsigned int aLe
     nsProbingState st;
     unsigned int i;
 
-    //do filtering to reduce load to probers
+    // do filtering to reduce load to probers
     char *highbyteBuf;
     char *hptr;
-    bool keepNext = true;   //assume previous is not ascii, it will do no harm except add some noise
+    bool keepNext = true; // assume previous is not ascii, it will do no harm except add some noise
     hptr = highbyteBuf = (char *)malloc(aLen);
     if (!hptr) {
         return mState;
@@ -84,7 +84,7 @@ nsProbingState ChineseGroupProber::HandleData(const char *aBuf, unsigned int aLe
             *hptr++ = aBuf[i];
             keepNext = true;
         } else {
-            //if previous is highbyte, keep this even it is a ASCII
+            // if previous is highbyte, keep this even it is a ASCII
             if (keepNext) {
                 *hptr++ = aBuf[i];
                 keepNext = false;

@@ -84,10 +84,10 @@ nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLe
 
     for (uint i = 0; i < aLen; ++i) {
         for (int j = mActiveSM - 1; j >= 0; --j) {
-            //byte is feed to all active state machine
+            // byte is feed to all active state machine
             codingState = mCodingSM[j]->NextState(aBuf[i]);
             if (codingState == eError) {
-                //got negative answer for this state machine, make it inactive
+                // got negative answer for this state machine, make it inactive
                 mActiveSM--;
                 if (mActiveSM == 0) {
                     mState = eNotMe;
@@ -130,4 +130,3 @@ void UnicodeGroupProber::DumpStatus()
 #endif
 
 }
-

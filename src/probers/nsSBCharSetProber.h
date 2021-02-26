@@ -10,21 +10,21 @@
 #include "nsCharSetProber.h"
 
 #define SAMPLE_SIZE 64
-#define SB_ENOUGH_REL_THRESHOLD  1024
-#define POSITIVE_SHORTCUT_THRESHOLD  (float)0.95
-#define NEGATIVE_SHORTCUT_THRESHOLD  (float)0.05
-#define SYMBOL_CAT_ORDER  250
+#define SB_ENOUGH_REL_THRESHOLD 1024
+#define POSITIVE_SHORTCUT_THRESHOLD (float)0.95
+#define NEGATIVE_SHORTCUT_THRESHOLD (float)0.05
+#define SYMBOL_CAT_ORDER 250
 #define NUMBER_OF_SEQ_CAT 4
-#define POSITIVE_CAT   (NUMBER_OF_SEQ_CAT-1)
-#define NEGATIVE_CAT   0
+#define POSITIVE_CAT (NUMBER_OF_SEQ_CAT - 1)
+#define NEGATIVE_CAT 0
 
 namespace kencodingprober
 {
 typedef struct {
-    const unsigned char *charToOrderMap;    // [256] table use to find a char's order
-    const char *precedenceMatrix;           // [SAMPLE_SIZE][SAMPLE_SIZE]; table to find a 2-char sequence's frequency
-    float  mTypicalPositiveRatio;     // = freqSeqs / totalSeqs
-    bool keepEnglishLetter;         // says if this script contains English characters (not implemented)
+    const unsigned char *charToOrderMap; // [256] table use to find a char's order
+    const char *precedenceMatrix; // [SAMPLE_SIZE][SAMPLE_SIZE]; table to find a 2-char sequence's frequency
+    float mTypicalPositiveRatio; // = freqSeqs / totalSeqs
+    bool keepEnglishLetter; // says if this script contains English characters (not implemented)
     const char *charsetName;
 } SequenceModel;
 
@@ -32,12 +32,16 @@ class KCODECS_NO_EXPORT nsSingleByteCharSetProber : public nsCharSetProber
 {
 public:
     nsSingleByteCharSetProber(const SequenceModel *model)
-        : mModel(model), mReversed(false), mNameProber(nullptr)
+        : mModel(model)
+        , mReversed(false)
+        , mNameProber(nullptr)
     {
         Reset();
     }
     nsSingleByteCharSetProber(const SequenceModel *model, bool reversed, nsCharSetProber *nameProber)
-        : mModel(model), mReversed(reversed), mNameProber(nameProber)
+        : mModel(model)
+        , mReversed(reversed)
+        , mNameProber(nameProber)
     {
         Reset();
     }
@@ -48,9 +52,11 @@ public:
     {
         return mState;
     }
-    void      Reset(void) override;
-    float     GetConfidence(void) override;
-    void      SetOpion() override {}
+    void Reset(void) override;
+    float GetConfidence(void) override;
+    void SetOpion() override
+    {
+    }
 
     // This feature is not implemented yet. any current language model
     // contain this parameter as false. No one is looking at this
@@ -64,7 +70,7 @@ public:
     } // (not implemented)
 
 #ifdef DEBUG_PROBE
-    void  DumpStatus() override;
+    void DumpStatus() override;
 #endif
 
 protected:
@@ -72,19 +78,18 @@ protected:
     const SequenceModel *mModel;
     const bool mReversed; // true if we need to reverse every pair in the model lookup
 
-    //char order of last character
+    // char order of last character
     unsigned char mLastOrder;
 
     unsigned int mTotalSeqs;
     unsigned int mSeqCounters[NUMBER_OF_SEQ_CAT];
 
     unsigned int mTotalChar;
-    //characters that fall in our sampling range
+    // characters that fall in our sampling range
     unsigned int mFreqChar;
 
     // Optional auxiliary prober for name decision. created and destroyed by the GroupProber
     nsCharSetProber *mNameProber;
-
 };
 
 extern const SequenceModel Koi8rModel;
@@ -102,4 +107,3 @@ extern const SequenceModel Win1250HungarianModel;
 extern const SequenceModel Win1255Model;
 }
 #endif /* NSSBCHARSETPROBER_H */
-

@@ -12,13 +12,13 @@
 #ifndef nsEUCJPProber_h__
 #define nsEUCJPProber_h__
 
+#include "CharDistribution.h"
+#include "JpCntx.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
-#include "JpCntx.h"
-#include "CharDistribution.h"
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsEUCJPProber: public nsCharSetProber
+class KCODECS_NO_EXPORT nsEUCJPProber : public nsCharSetProber
 {
 public:
     nsEUCJPProber(void)
@@ -39,9 +39,11 @@ public:
     {
         return mState;
     }
-    void      Reset(void) override;
-    float     GetConfidence(void) override;
-    void      SetOpion() override {}
+    void Reset(void) override;
+    float GetConfidence(void) override;
+    void SetOpion() override
+    {
+    }
 
 protected:
     nsCodingStateMachine *mCodingSM;
@@ -55,4 +57,3 @@ protected:
 }
 
 #endif /* nsEUCJPProber_h__ */
-

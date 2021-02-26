@@ -9,17 +9,19 @@
 
 #include "nsCharSetProber.h"
 
-#define FREQ_CAT_NUM    4
+#define FREQ_CAT_NUM 4
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsLatin1Prober: public nsCharSetProber
+class KCODECS_NO_EXPORT nsLatin1Prober : public nsCharSetProber
 {
 public:
     nsLatin1Prober(void)
     {
         Reset();
     }
-    ~nsLatin1Prober(void) override {}
+    ~nsLatin1Prober(void) override
+    {
+    }
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override
     {
@@ -29,16 +31,17 @@ public:
     {
         return mState;
     }
-    void      Reset(void) override;
-    float     GetConfidence(void) override;
-    void      SetOpion() override {}
+    void Reset(void) override;
+    float GetConfidence(void) override;
+    void SetOpion() override
+    {
+    }
 
 #ifdef DEBUG_PROBE
-    void  DumpStatus() override;
+    void DumpStatus() override;
 #endif
 
 protected:
-
     nsProbingState mState;
     char mLastCharClass;
     unsigned int mFreqCounter[FREQ_CAT_NUM];
@@ -46,4 +49,3 @@ protected:
 }
 
 #endif /* nsLatin1Prober_h__ */
-

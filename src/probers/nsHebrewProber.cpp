@@ -161,10 +161,9 @@ nsProbingState nsHebrewProber::GetState(void)
 }
 
 #ifdef DEBUG_PROBE
-void  nsHebrewProber::DumpStatus()
+void nsHebrewProber::DumpStatus()
 {
     printf("  HEB: %d - %d [Logical-Visual score]\r\n", mFinalCharLogicalScore, mFinalCharVisualScore);
 }
 #endif
 }
-

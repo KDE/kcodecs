@@ -15,8 +15,8 @@
 #include <QCharRef>
 #include <QTextCodec>
 
-#include <assert.h>
 #include <QHash>
+#include <assert.h>
 
 /*
  * The encoding names (like "ISO 8859-1") in this list are user-visible,
@@ -217,20 +217,11 @@ static const char language_for_encoding_string[] =
     "TSCII\0"
     "\0";
 
-static const int language_for_encoding_indices[] = {
-    0,   11,   28,   11,   40,   11,   52,   11,
-    60,   11,   67,   78,   95,   78,  106,  117,
-    124,  117,  136,  148,  169,   78,  177,  185,
-    193,  117,  201,  208,  217,  208,  228,  208,
-    236,  208,  243,  208,  250,  255,  275,  255,
-    286,  294,  313,  294,  317,  294,  324,  331,
-    338,  331,  345,  350,  359,  350,  364,  350,
-    371,  382,  388,  382,  396,  407,  414,  407,
-    422,  433,  440,  433,  453,  433,  461,  185,
-    472,  479,  484,  479,  496,  502,  510,  502,
-    517,  502,  522,  502,  527,  502,  543,  552,
-    567,  580,  586,  580,  593,  580,   -1
-};
+static const int language_for_encoding_indices[] = {0,   11,  28,  11,  40,  11,  52,  11,  60,  11,  67,  78,  95,  78,  106, 117, 124, 117, 136,
+                                                    148, 169, 78,  177, 185, 193, 117, 201, 208, 217, 208, 228, 208, 236, 208, 243, 208, 250, 255,
+                                                    275, 255, 286, 294, 313, 294, 317, 294, 324, 331, 338, 331, 345, 350, 359, 350, 364, 350, 371,
+                                                    382, 388, 382, 396, 407, 414, 407, 422, 433, 440, 433, 453, 433, 461, 185, 472, 479, 484, 479,
+                                                    496, 502, 510, 502, 517, 502, 522, 502, 527, 502, 543, 552, 567, 580, 586, 580, 593, 580, -1};
 
 /*
  * GENERATED CODE ENDS HERE
@@ -406,19 +397,10 @@ static const char builtin_string[] =
     "csiso2022jp\0"
     "\0";
 
-static const int builtin_indices[] = {
-    0,   11,   18,   11,   30,   39,   50,   39,
-    58,   39,   64,   82,   88,   93,  109,   93,
-    120,  135,  143,  135,  158,  164,  168,  164,
-    175,  164,  189,  196,  201,  208,  214,  221,
-    233,  240,  246,  240,  262,  240,  278,  240,
-    294,  240,  310,  240,  326,  240,  342,  240,
-    358,  368,  373,  368,  368,  368,  383,  395,
-    400,  411,  418,  429,  436,  411,  448,  429,
-    460,  469,  481,  493,  505,  517,  524,  517,
-    535,  517,  542,  208,  557,  208,  572,  469,
-    582,  469,  592,  469,  596,  383,   -1
-};
+static const int builtin_indices[] = {0,   11,  18,  11,  30,  39,  50,  39,  58,  39,  64,  82,  88,  93,  109, 93,  120, 135, 143, 135, 158, 164,
+                                      168, 164, 175, 164, 189, 196, 201, 208, 214, 221, 233, 240, 246, 240, 262, 240, 278, 240, 294, 240, 310, 240,
+                                      326, 240, 342, 240, 358, 368, 373, 368, 368, 368, 383, 395, 400, 411, 418, 429, 436, 411, 448, 429, 460, 469,
+                                      481, 493, 505, 517, 524, 517, 535, 517, 542, 208, 557, 208, 572, 469, 582, 469, 592, 469, 596, 383, -1};
 
 /*
  * GENERATED CODE ENDS HERE
@@ -466,10 +448,7 @@ static const char conversion_hints_string[] =
     "pt-154\0"
     "\0";
 
-static const int conversion_hints_indices[] = {
-    0,    7,   18,   25,   36,   18,   43,   50,
-    63,   50,   76,   50,   -1
-};
+static const int conversion_hints_indices[] = {0, 7, 18, 25, 36, 18, 43, 50, 63, 50, 76, 50, -1};
 
 /*
  * GENERATED CODE ENDS HERE
@@ -483,8 +462,7 @@ Q_GLOBAL_STATIC(KCharsetsSingletonPrivate, globalCharsets)
 
 // search an array of items index/data, find first matching index
 // and return data, or return 0
-static inline
-const char *kcharsets_array_search(const char *start, const int *indices, const char *entry)
+static inline const char *kcharsets_array_search(const char *start, const int *indices, const char *entry)
 {
     for (int i = 0; indices[i] != -1; i += 2)
         if (qstrcmp(start + indices[i], entry) == 0) {
@@ -505,7 +483,7 @@ public:
     QHash<QByteArray, QTextCodec *> codecForNameDict;
     KCharsets *kc;
 
-    //Cache list so QStrings can be implicitly shared
+    // Cache list so QStrings can be implicitly shared
     QList<QStringList> encodingsByScript;
 };
 
@@ -556,10 +534,10 @@ QChar KCharsets::fromEntity(const QString &str)
     const entity *e = KCodecsEntities::kde_findEntity(raw.data(), raw.length());
 
     if (!e) {
-        //qCDebug(KCODECS_LOG) << "unknown entity " << str <<", len = " << str.length();
+        // qCDebug(KCODECS_LOG) << "unknown entity " << str <<", len = " << str.length();
         return QChar::Null;
     }
-    //qCDebug(KCODECS_LOG) << "got entity " << str << " = " << e->code;
+    // qCDebug(KCODECS_LOG) << "got entity " << str << " = " << e->code;
 
     return QChar(e->code);
 }
@@ -624,7 +602,7 @@ QString KCharsets::resolveEntities(const QString &input)
 
         const uint ampersandPos = ampersand - text.unicode();
 
-        text[(int)ampersandPos ] = entityValue;
+        text[(int)ampersandPos] = entityValue;
         text.remove(ampersandPos + 1, entityLength + 1);
         p = text.unicode() + ampersandPos;
         end = text.unicode() + text.length();
@@ -646,12 +624,9 @@ QStringList KCharsets::availableEncodingNames() const
 
 QString KCharsets::descriptionForEncoding(const QString &encoding) const
 {
-    const char *lang = kcharsets_array_search(language_for_encoding_string,
-                       language_for_encoding_indices,
-                       encoding.toUtf8().data());
+    const char *lang = kcharsets_array_search(language_for_encoding_string, language_for_encoding_indices, encoding.toUtf8().data());
     if (lang)
-        return tr("%1 ( %2 )", "@item %1 character set, %2 encoding")
-               .arg(tr(lang, "@item Text character set"), encoding);
+        return tr("%1 ( %2 )", "@item %1 character set, %2 encoding").arg(tr(lang, "@item Text character set"), encoding);
     else {
         return tr("Other encoding (%1)", "@item").arg(encoding);
     }
@@ -708,7 +683,6 @@ QList<QStringList> KCharsets::encodingsByScript() const
         if (i == d->encodingsByScript.size()) {
             d->encodingsByScript.append(QStringList() << description << name);
         }
-
     }
     return d->encodingsByScript;
 }
@@ -780,8 +754,8 @@ QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
         name.chop(8);
         changed = true;
     }
-    if (name.startsWith("x-")) {     // krazy:exclude=strings
-        name.remove(0, 2);   // remove x- at start
+    if (name.startsWith("x-")) { // krazy:exclude=strings
+        name.remove(0, 2); // remove x- at start
         changed = true;
     }
 

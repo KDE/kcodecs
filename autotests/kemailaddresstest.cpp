@@ -6,14 +6,14 @@
 
     SPDX-License-Identifier: LGPL-2.0-only
 */
-//krazy:excludeall=contractions
+// krazy:excludeall=contractions
 
 #include "kemailaddresstest.h"
 
 #include "../src/kemailaddress.h"
 
-#include <QUrl>
 #include <QDebug>
+#include <QUrl>
 
 #include <QTest>
 
@@ -46,58 +46,81 @@ void KEmailAddressTest::testGetNameAndEmail_data()
 
     QTest::newRow("Empty input") << QString() << QString() << QString() << false;
     QTest::newRow("Email only") << "faure@kde.org" << QString() << "faure@kde.org" << false;
-    QTest::newRow("Normal case") << "David Faure <faure@kde.org>" << "David Faure"
+    QTest::newRow("Normal case") << "David Faure <faure@kde.org>"
+                                 << "David Faure"
                                  << "faure@kde.org" << true;
-    QTest::newRow("Double-quotes 1") << "\"Faure, David\" <faure@kde.org>" << "Faure, David"
+    QTest::newRow("Double-quotes 1") << "\"Faure, David\" <faure@kde.org>"
+                                     << "Faure, David"
                                      << "faure@kde.org" << true;
-    QTest::newRow("Double-quotes 2") << "<faure@kde.org> \"David Faure\"" << "David Faure"
+    QTest::newRow("Double-quotes 2") << "<faure@kde.org> \"David Faure\""
+                                     << "David Faure"
                                      << "faure@kde.org" << true;
     QTest::newRow("Parenthesis 1") << "faure@kde.org (David Faure)"
-                                   << "David Faure" << "faure@kde.org" << true;
+                                   << "David Faure"
+                                   << "faure@kde.org" << true;
     QTest::newRow("Parenthesis 2") << "(David Faure) faure@kde.org"
-                                   << "David Faure" << "faure@kde.org" << true;
-    QTest::newRow("Parenthesis 3") << "My Name (me) <me@home.net>" << "My Name (me)"
+                                   << "David Faure"
+                                   << "faure@kde.org" << true;
+    QTest::newRow("Parenthesis 3") << "My Name (me) <me@home.net>"
+                                   << "My Name (me)"
                                    << "me@home.net" << true; // #93513
 
     // As per https://intevation.de/roundup/kolab/issue858
     QTest::newRow("Nested parenthesis") << "faure@kde.org (David (The Man) Faure)"
-                                        << "David (The Man) Faure" << "faure@kde.org" << true;
+                                        << "David (The Man) Faure"
+                                        << "faure@kde.org" << true;
     QTest::newRow("Double-quotes inside parenthesis 1") << "faure@kde.org (David \"Crazy\" Faure)"
-            << "David \"Crazy\" Faure"
-            << "faure@kde.org" << true;
+                                                        << "David \"Crazy\" Faure"
+                                                        << "faure@kde.org" << true;
     QTest::newRow("Double-quotes inside parenthesis 2") << "(David \"Crazy\" Faure) faure@kde.org"
-            << "David \"Crazy\" Faure"
-            << "faure@kde.org" << true;
+                                                        << "David \"Crazy\" Faure"
+                                                        << "faure@kde.org" << true;
     QTest::newRow("Parenthesis inside double-quotes 1") << "\"Faure (David)\" <faure@kde.org>"
-            << "Faure (David)" << "faure@kde.org"
-            << true;
+                                                        << "Faure (David)"
+                                                        << "faure@kde.org" << true;
     QTest::newRow("Parenthesis inside double-quotes 2") << "<faure@kde.org> \"Faure (David)\""
-            << "Faure (David)" << "faure@kde.org"
-            << true;
-    QTest::newRow("Space in email") << "David Faure < faure@kde.org >" << "David Faure"
+                                                        << "Faure (David)"
+                                                        << "faure@kde.org" << true;
+    QTest::newRow("Space in email") << "David Faure < faure@kde.org >"
+                                    << "David Faure"
                                     << "faure@kde.org" << true;
-    QTest::newRow("'@' in name 1") << "faure@kde.org (a@b)" << "a@b" << "faure@kde.org" << true;
-    QTest::newRow("'@' in name 2") << "\"a@b\" <faure@kde.org>" << "a@b" << "faure@kde.org" << true;
+    QTest::newRow("'@' in name 1") << "faure@kde.org (a@b)"
+                                   << "a@b"
+                                   << "faure@kde.org" << true;
+    QTest::newRow("'@' in name 2") << "\"a@b\" <faure@kde.org>"
+                                   << "a@b"
+                                   << "faure@kde.org" << true;
 
     // While typing, when there's no '@' yet
-    QTest::newRow("while typing 1") << "foo" << "foo" << QString() << false;
-    QTest::newRow("while typing 2") << "foo <" << "foo" << QString() << false;
-    QTest::newRow("while typing 3") << "foo <b" << "foo" << "b" << true;
+    QTest::newRow("while typing 1") << "foo"
+                                    << "foo" << QString() << false;
+    QTest::newRow("while typing 2") << "foo <"
+                                    << "foo" << QString() << false;
+    QTest::newRow("while typing 3") << "foo <b"
+                                    << "foo"
+                                    << "b" << true;
 
     // If multiple emails are there, only return the first one
     QTest::newRow("multiple emails") << "\"Faure, David\" <faure@kde.org>, KHZ <khz@khz.khz>"
-                                     << "Faure, David" << "faure@kde.org" << true;
+                                     << "Faure, David"
+                                     << "faure@kde.org" << true;
 
     QTest::newRow("domain literals") << "Matt Douhan <matt@[123.123.123.123]>"
-                                     << "Matt Douhan" << "matt@[123.123.123.123]" << true;
+                                     << "Matt Douhan"
+                                     << "matt@[123.123.123.123]" << true;
     QTest::newRow("@ inside the comment") << "\"Matt@Douhan\" <matt@fruitsalad.org>"
-                                          << "Matt@Douhan" << "matt@fruitsalad.org" << true;
-    QTest::newRow("No '@'") << "foo <distlist>" << "foo" << "distlist" << true;
+                                          << "Matt@Douhan"
+                                          << "matt@fruitsalad.org" << true;
+    QTest::newRow("No '@'") << "foo <distlist>"
+                            << "foo"
+                            << "distlist" << true;
     QTest::newRow("Backslash in display name") << "\"Lastname\\, Firstname\""
-            " <firstname@lastname.com>"
-            << "Lastname, Firstname" << "firstname@lastname.com"
-            << true;
-    QTest::newRow("# in domain") << "Matt Douhan <dm3tt@db0zdf.#rpl.deu.eu>" << "Matt Douhan" << "dm3tt@db0zdf.#rpl.deu.eu" << true;
+                                                  " <firstname@lastname.com>"
+                                               << "Lastname, Firstname"
+                                               << "firstname@lastname.com" << true;
+    QTest::newRow("# in domain") << "Matt Douhan <dm3tt@db0zdf.#rpl.deu.eu>"
+                                 << "Matt Douhan"
+                                 << "dm3tt@db0zdf.#rpl.deu.eu" << true;
 }
 
 void KEmailAddressTest::testIsValidEmailAddress()
@@ -203,43 +226,35 @@ void KEmailAddressTest::testIsValidEmailAddress_data()
     // correct error msg when a comma is inside <>
     QTest::newRow("29") << "Matt Douhan <matt@fruitsalad,org>" << UnexpectedComma;
 
-    //several commentlevels
+    // several commentlevels
     QTest::newRow("30") << "Matt Douhan (hey(jongel)fibbel) <matt@fruitsalad.org>" << AddressOk;
 
     // several comment levels and one (the outer) being unbalanced
-    QTest::newRow("31") << "Matt Douhan (hey(jongel)fibbel <matt@fruitsalad.org>"
-                        << UnbalancedParens;
+    QTest::newRow("31") << "Matt Douhan (hey(jongel)fibbel <matt@fruitsalad.org>" << UnbalancedParens;
 
     // several comment levels and one (the inner) being unbalanced
-    QTest::newRow("32") << "Matt Douhan (hey(jongelfibbel) <matt@fruitsalad.org>"
-                        << UnbalancedParens;
+    QTest::newRow("32") << "Matt Douhan (hey(jongelfibbel) <matt@fruitsalad.org>" << UnbalancedParens;
 
     // an error inside a double quote is no error
-    QTest::newRow("33") << "Matt Douhan \"(jongel\" <matt@fruitsalad.org>"
-                        << AddressOk;
+    QTest::newRow("33") << "Matt Douhan \"(jongel\" <matt@fruitsalad.org>" << AddressOk;
 
     // inside a quoted string double quotes are only allowed in pairs as per rfc2822
-    QTest::newRow("34") << "Matt Douhan \"jongel\"fibbel\" <matt@fruitsalad.org>"
-                        << UnbalancedQuote;
+    QTest::newRow("34") << "Matt Douhan \"jongel\"fibbel\" <matt@fruitsalad.org>" << UnbalancedQuote;
 
     // a questionmark is valid in an atom
     QTest::newRow("35") << "Matt? <matt@fruitsalad.org>" << AddressOk;
 
     // weird but OK
-    QTest::newRow("36") << "\"testing, \\\"testing\" <matt@fruitsalad.org>"
-                        << AddressOk;
+    QTest::newRow("36") << "\"testing, \\\"testing\" <matt@fruitsalad.org>" << AddressOk;
 
     // escape a quote to many to see if it makes it invalid
-    QTest::newRow("37") << "\"testing, \\\"testing\\\" <matt@fruitsalad.org>"
-                        << UnbalancedQuote;
+    QTest::newRow("37") << "\"testing, \\\"testing\\\" <matt@fruitsalad.org>" << UnbalancedQuote;
 
     // escape a parens and thus make a comma appear
-    QTest::newRow("38") << "Matt (jongel, fibbel\\) <matt@fruitsalad.org>"
-                        << UnbalancedParens;
+    QTest::newRow("38") << "Matt (jongel, fibbel\\) <matt@fruitsalad.org>" << UnbalancedParens;
 
     // several errors inside doublequotes
-    QTest::newRow("39") << "Matt \"(jongel,\\\" < fibbel\\)\" <matt@fruitsalad.org>"
-                        << AddressOk;
+    QTest::newRow("39") << "Matt \"(jongel,\\\" < fibbel\\)\" <matt@fruitsalad.org>" << AddressOk;
 
     // BUG 105705
     QTest::newRow("40") << "matt-@fruitsalad.org" << AddressOk;
@@ -251,8 +266,7 @@ void KEmailAddressTest::testIsValidEmailAddress_data()
     QTest::newRow("42") << "matt_@(this is a cool host)fruitsalad.org" << AddressOk;
 
     // To quote rfc2822 the test below is aesthetically displeasing, but perfectly legal.
-    QTest::newRow("43") << "Pete(A wonderful \\) chap) <pete(his account)@silly.test(his host)>"
-                        << AddressOk;
+    QTest::newRow("43") << "Pete(A wonderful \\) chap) <pete(his account)@silly.test(his host)>" << AddressOk;
 
     // quoted pair or not quoted pair
     QTest::newRow("44") << "\"jongel '\\\" fibbel\" <matt@fruitsalad.org>" << AddressOk;
@@ -280,7 +294,7 @@ void KEmailAddressTest::testIsValidEmailAddress_data()
     QTest::newRow("64") << "~matt@fruitsalad.org" << AddressOk;
     QTest::newRow("65") << "matt%matt@fruitsalad.org" << AddressOk;
 
-    //bug 105405
+    // bug 105405
     QTest::newRow("66") << "[foobar] <matt@fruitsalad.org>" << InvalidDisplayName;
     QTest::newRow("67") << "matt \"[foobar]\" Douhan <matt@fruitsalad.org>" << AddressOk;
 
@@ -290,7 +304,7 @@ void KEmailAddressTest::testIsValidEmailAddress_data()
     QTest::newRow("dot at the end") << "msadmin@guug.de." << AddressOk;
     QTest::newRow("dot at the end with brackets") << "Martin Schulte <martin.schulte@guug.de.>" << AddressOk;
 
-    //TODO this should be a valid email address, but the checking for missing dots broke it.
+    // TODO this should be a valid email address, but the checking for missing dots broke it.
     // QTest::newRow( "valid email address without dots" ) << "user@localhost" << AddressOk;
 }
 
@@ -308,23 +322,25 @@ void KEmailAddressTest::testIsValidAddressList_data()
     QTest::addColumn<QString>("list");
     QTest::addColumn<EmailParseResult>("expErrorCode");
 
-    //bug  139477
+    // bug  139477
     QTest::newRow("1") << "martin.schulte@guug.de, msadmin@guug.de,"
-                       " msnewsletter@guug.de" << AddressOk;
+                          " msnewsletter@guug.de"
+                       << AddressOk;
     QTest::newRow("2") << "martin.schulte@guug.de; msadmin@guug.de;"
-                       " msnewsletter@guug.de" << AddressOk;
+                          " msnewsletter@guug.de"
+                       << AddressOk;
     QTest::newRow("3") << "martin.schulte@guug.de, msadmin@guug.de.,"
-                       " msnewsletter@guug.de" << AddressOk;
+                          " msnewsletter@guug.de"
+                       << AddressOk;
     QTest::newRow("4") << "Martin Schulte <martin.schulte@guug.de>,"
-                       " MS Admin <msadmin@guug.de>, MS News <msnewsletter@guug.de>"
+                          " MS Admin <msadmin@guug.de>, MS News <msnewsletter@guug.de>"
                        << AddressOk;
     QTest::newRow("5") << "Martin Schulte <martin.schulte@guug.de>;"
-                       " MS Admin <msadmin@guug.de>; MS News <msnewsletter@guug.de>"
+                          " MS Admin <msadmin@guug.de>; MS News <msnewsletter@guug.de>"
                        << AddressOk;
     QTest::newRow("6") << "Martin Schulte <martin.schulte@guug.de.>,"
-                       " MS Admin <msadmin@guug.de>, MS News <msnewsletter@guug.de>"
+                          " MS Admin <msadmin@guug.de>, MS News <msnewsletter@guug.de>"
                        << AddressOk;
-
 }
 
 void KEmailAddressTest::testIsValidSimpleEmailAddress()
@@ -388,8 +404,8 @@ void KEmailAddressTest::testIsValidSimpleEmailAddress_data()
     QTest::newRow("") << "mattfruitsalad.org" << false;
     QTest::newRow("") << "matt@[123.123.123.123" << false;
     QTest::newRow("") << "matt@123.123.123.123]" << false;
-    QTest::newRow("") << "matt@[.123.123.123]"   << false;
-    QTest::newRow("") << "matt@[123.123.123]"    << false;
+    QTest::newRow("") << "matt@[.123.123.123]" << false;
+    QTest::newRow("") << "matt@[123.123.123]" << false;
     QTest::newRow("") << "\"matt@fruitsalad.org" << false;
     QTest::newRow("") << "matt\"@fruitsalad.org" << false;
     QTest::newRow("") << QString() << false;
@@ -422,26 +438,26 @@ void KEmailAddressTest::testGetEmailAddress_data()
     QTest::addColumn<QString>("input");
     QTest::addColumn<QString>("expResult");
 
-    QTest::newRow("1") << "matt@fruitsalad.org" << "matt@fruitsalad.org";
-    QTest::newRow("2") << "Matt Douhan <matt@fruitsalad.org>" << "matt@fruitsalad.org";
+    QTest::newRow("1") << "matt@fruitsalad.org"
+                       << "matt@fruitsalad.org";
+    QTest::newRow("2") << "Matt Douhan <matt@fruitsalad.org>"
+                       << "matt@fruitsalad.org";
     QTest::newRow("3") << "\"Matt Douhan <blah blah>\" <matt@fruitsalad.org>"
                        << "matt@fruitsalad.org";
     QTest::newRow("4") << "\"Matt <blah blah>\" <matt@fruitsalad.org>"
                        << "matt@fruitsalad.org";
-    QTest::newRow("5") << "Matt Douhan (jongel) <matt@fruitsalad.org"
-                       << QString();
+    QTest::newRow("5") << "Matt Douhan (jongel) <matt@fruitsalad.org" << QString();
     QTest::newRow("6") << "Matt Douhan (m@tt) <matt@fruitsalad.org>"
                        << "matt@fruitsalad.org";
     QTest::newRow("7") << "\"Douhan, Matt\" <matt@fruitsalad.org>"
                        << "matt@fruitsalad.org";
     QTest::newRow("8") << "\"Matt Douhan (m@tt)\" <matt@fruitsalad.org>"
                        << "matt@fruitsalad.org";
-    QTest::newRow("9") << "\"Matt Douhan\" (matt <matt@fruitsalad.org>"
-                       << QString();
+    QTest::newRow("9") << "\"Matt Douhan\" (matt <matt@fruitsalad.org>" << QString();
     QTest::newRow("10") << "Matt Douhan <matt@[123.123.123.123]>"
                         << "matt@[123.123.123.123]";
-    QTest::newRow("11") << "dm3tt@db0zdf.#rpl.deu.eu" << "dm3tt@db0zdf.#rpl.deu.eu";
-
+    QTest::newRow("11") << "dm3tt@db0zdf.#rpl.deu.eu"
+                        << "dm3tt@db0zdf.#rpl.deu.eu";
 }
 
 void KEmailAddressTest::testCheckSplitEmailAddrList()
@@ -457,19 +473,13 @@ void KEmailAddressTest::testCheckSplitEmailAddrList_data()
     QTest::addColumn<QString>("input");
     QTest::addColumn<QStringList>("expResult");
 
-    QTest::newRow("") << "kloecker@kde.org (Kloecker, Ingo)"
-                      << (QStringList() << QStringLiteral("kloecker@kde.org (Kloecker, Ingo)"));
+    QTest::newRow("") << "kloecker@kde.org (Kloecker, Ingo)" << (QStringList() << QStringLiteral("kloecker@kde.org (Kloecker, Ingo)"));
     QTest::newRow("") << "Matt Douhan <matt@fruitsalad.org>, Foo Bar <foo@bar.com>"
-                      << (QStringList()
-                          << QStringLiteral("Matt Douhan <matt@fruitsalad.org>")
-                          << QStringLiteral("Foo Bar <foo@bar.com>"));
+                      << (QStringList() << QStringLiteral("Matt Douhan <matt@fruitsalad.org>") << QStringLiteral("Foo Bar <foo@bar.com>"));
     QTest::newRow("") << "\"Matt, Douhan\" <matt@fruitsalad.org>, Foo Bar <foo@bar.com>"
-                      << (QStringList()
-                          << QStringLiteral("\"Matt, Douhan\" <matt@fruitsalad.org>")
-                          << QStringLiteral("Foo Bar <foo@bar.com>"));
+                      << (QStringList() << QStringLiteral("\"Matt, Douhan\" <matt@fruitsalad.org>") << QStringLiteral("Foo Bar <foo@bar.com>"));
     QTest::newRow("") << "\"Lastname\\, Firstname\" <firstname.lastname@example.com>"
-                      << (QStringList()
-                          << QStringLiteral("\"Lastname\\, Firstname\" <firstname.lastname@example.com>"));
+                      << (QStringList() << QStringLiteral("\"Lastname\\, Firstname\" <firstname.lastname@example.com>"));
 }
 
 void KEmailAddressTest::testNormalizeAddressesAndEncodeIDNs()
@@ -485,7 +495,8 @@ void KEmailAddressTest::testNormalizeAddressesAndEncodeIDNs_data()
     QTest::addColumn<QString>("input");
     QTest::addColumn<QString>("expResult");
 
-    QTest::newRow("") << "matt@fruitsalad.org" << "matt@fruitsalad.org";
+    QTest::newRow("") << "matt@fruitsalad.org"
+                      << "matt@fruitsalad.org";
     QTest::newRow("") << "Matt Douhan <matt@fruitsalad.org>"
                       << "Matt Douhan <matt@fruitsalad.org>";
     QTest::newRow("") << "Matt Douhan (jongel) <matt@fruitsalad.org>"
@@ -511,21 +522,14 @@ void KEmailAddressTest::testNormalizeAddressesAndDecodeIDNs_data()
     QTest::addColumn<QString>("input");
     QTest::addColumn<QString>("expResult");
 
-    QTest::newRow("")
-            << "=?us-ascii?Q?Surname=2C=20Name?= <nobody@example.org>"
-            << "\"Surname, Name\" <nobody@example.org>";
+    QTest::newRow("") << "=?us-ascii?Q?Surname=2C=20Name?= <nobody@example.org>"
+                      << "\"Surname, Name\" <nobody@example.org>";
 
-    QTest::newRow("")
-            << "=?iso-8859-1?B?5Hf8b2xmLPZBbmRyZWFz?= <nobody@example.org>"
-            << QStringLiteral("\"äwüolf,öAndreas\" <nobody@example.org>");
+    QTest::newRow("") << "=?iso-8859-1?B?5Hf8b2xmLPZBbmRyZWFz?= <nobody@example.org>" << QStringLiteral("\"äwüolf,öAndreas\" <nobody@example.org>");
 
-    QTest::newRow("")
-            << QStringLiteral("\"Andreas Straß\" <nobody@example.org>")
-            << QStringLiteral("\"Andreas Straß\" <nobody@example.org>");
+    QTest::newRow("") << QStringLiteral("\"Andreas Straß\" <nobody@example.org>") << QStringLiteral("\"Andreas Straß\" <nobody@example.org>");
 
-    QTest::newRow("")
-            << QStringLiteral("\"András\" \"Manţia\" <amantia@kde.org>")
-            << QStringLiteral("\"András\" \"Manţia\" <amantia@kde.org>");
+    QTest::newRow("") << QStringLiteral("\"András\" \"Manţia\" <amantia@kde.org>") << QStringLiteral("\"András\" \"Manţia\" <amantia@kde.org>");
 }
 
 void KEmailAddressTest::testQuoteIfNecessary()
@@ -542,17 +546,22 @@ void KEmailAddressTest::testQuoteIfNecessary_data()
     QTest::addColumn<QString>("input");
     QTest::addColumn<QString>("expResult");
 
-    QTest::newRow("") << "Matt Douhan" << "Matt Douhan";
-    QTest::newRow("") << "Douhan, Matt" << "\"Douhan, Matt\"";
+    QTest::newRow("") << "Matt Douhan"
+                      << "Matt Douhan";
+    QTest::newRow("") << "Douhan, Matt"
+                      << "\"Douhan, Matt\"";
     QTest::newRow("") << "Matt \"jongel\" Douhan"
                       << "\"Matt \\\"jongel\\\" Douhan\"";
     QTest::newRow("") << "Matt \\\"jongel\\\" Douhan"
                       << "\"Matt \\\"jongel\\\" Douhan\"";
     QTest::newRow("") << "trailing '\\\\' should never occur \\"
                       << "\"trailing '\\\\' should never occur \\\"";
-    QTest::newRow("") << "\"don't quote again\"" << "\"don't quote again\"";
-    QTest::newRow("") << "\"leading double quote" << "\"\\\"leading double quote\"";
-    QTest::newRow("") << "trailing double quote\"" << "\"trailing double quote\\\"\"";
+    QTest::newRow("") << "\"don't quote again\""
+                      << "\"don't quote again\"";
+    QTest::newRow("") << "\"leading double quote"
+                      << "\"\\\"leading double quote\"";
+    QTest::newRow("") << "trailing double quote\""
+                      << "\"trailing double quote\\\"\"";
 #if 0
     BEFORE: static QRegularExpression
       RESULT : KEmailAddressTest::testQuoteIfNecessary():
@@ -594,4 +603,3 @@ void KEmailAddressTest::testMailtoUrls_data()
     QTest::newRow("") << QStringLiteral("\"Alberto Simões\" <alberto@example.com");
     QTest::newRow("") << QStringLiteral("Alberto Simões <alberto@example.com");
 }
-

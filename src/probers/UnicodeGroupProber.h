@@ -10,10 +10,10 @@
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
 
-#define NUM_OF_UNICODE_CHARSETS   3
+#define NUM_OF_UNICODE_CHARSETS 3
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT UnicodeGroupProber: public nsCharSetProber
+class KCODECS_NO_EXPORT UnicodeGroupProber : public nsCharSetProber
 {
 public:
     UnicodeGroupProber(void);
@@ -27,21 +27,22 @@ public:
     {
         return mState;
     }
-    void      Reset(void) override;
-    float     GetConfidence() override;
-    void      SetOpion() override {}
+    void Reset(void) override;
+    float GetConfidence() override;
+    void SetOpion() override
+    {
+    }
 #ifdef DEBUG_PROBE
     void DumpStatus() override;
 #endif
 
 protected:
-    void      GetDistribution(unsigned int aCharLen, const char *aStr);
+    void GetDistribution(unsigned int aCharLen, const char *aStr);
 
     nsCodingStateMachine *mCodingSM[NUM_OF_UNICODE_CHARSETS];
-    unsigned int    mActiveSM;
+    unsigned int mActiveSM;
     nsProbingState mState;
-    const char   *mDetectedCharset;
+    const char *mDetectedCharset;
 };
 }
 #endif /* UNICODEGROUPPROBER_H */
-

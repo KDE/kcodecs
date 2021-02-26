@@ -48,7 +48,7 @@ nsProbingState nsSingleByteCharSetProber::HandleData(const char *aBuf, unsigned 
     return mState;
 }
 
-void  nsSingleByteCharSetProber::Reset(void)
+void nsSingleByteCharSetProber::Reset(void)
 {
     mState = eDetecting;
     mLastOrder = 255;
@@ -70,7 +70,7 @@ float nsSingleByteCharSetProber::GetConfidence(void)
             return ((float)(mTotalSeqs - mSeqCounters[NEGATIVE_CAT] * 10)) / mTotalSeqs * mFreqChar / mTotalChar;
         }
     return (float)0.01;
-#else  //POSITIVE_APPROACH
+#else // POSITIVE_APPROACH
     float r;
 
     if (mTotalSeqs > 0) {
@@ -100,4 +100,3 @@ void nsSingleByteCharSetProber::DumpStatus()
 }
 #endif
 }
-

@@ -9,7 +9,7 @@
 
 #include <QObject>
 
-class KEncodingProberTest: public QObject
+class KEncodingProberTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:

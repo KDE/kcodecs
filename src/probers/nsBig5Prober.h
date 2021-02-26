@@ -7,12 +7,12 @@
 #ifndef nsBig5Prober_h__
 #define nsBig5Prober_h__
 
+#include "CharDistribution.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
-#include "CharDistribution.h"
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsBig5Prober: public nsCharSetProber
+class KCODECS_NO_EXPORT nsBig5Prober : public nsCharSetProber
 {
 public:
     nsBig5Prober(void)
@@ -33,22 +33,22 @@ public:
     {
         return mState;
     }
-    void      Reset(void) override;
-    float     GetConfidence(void) override;
-    void      SetOpion() override {}
+    void Reset(void) override;
+    float GetConfidence(void) override;
+    void SetOpion() override
+    {
+    }
 
 protected:
-    void      GetDistribution(unsigned int aCharLen, const char *aStr);
+    void GetDistribution(unsigned int aCharLen, const char *aStr);
 
     nsCodingStateMachine *mCodingSM;
     nsProbingState mState;
 
-    //Big5ContextAnalysis mContextAnalyser;
+    // Big5ContextAnalysis mContextAnalyser;
     Big5DistributionAnalysis mDistributionAnalyser;
     char mLastChar[2];
-
 };
 }
 
 #endif /* nsBig5Prober_h__ */
-

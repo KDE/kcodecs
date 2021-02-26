@@ -11,7 +11,6 @@
 
 namespace KCodecs
 {
-
 class EncoderPrivate
 {
 public:
@@ -21,12 +20,11 @@ public:
       An output buffer to simplify some codecs.
       Used with write() and flushOutputBuffer().
     */
-    char outputBuffer[ Encoder::maxBufferedChars ];
+    char outputBuffer[Encoder::maxBufferedChars];
 
     uchar outputBufferCursor;
     const Codec::NewlineType newline;
 };
-
 
 class DecoderPrivate
 {

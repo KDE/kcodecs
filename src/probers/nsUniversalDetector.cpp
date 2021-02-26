@@ -7,17 +7,17 @@
 
 #include "nsUniversalDetector.h"
 
-#include "nsMBCSGroupProber.h"
-#include "nsSBCSGroupProber.h"
 #include "nsEscCharsetProber.h"
 #include "nsLatin1Prober.h"
+#include "nsMBCSGroupProber.h"
+#include "nsSBCSGroupProber.h"
 
 namespace kencodingprober
 {
 nsUniversalDetector::nsUniversalDetector()
 {
     mDone = false;
-    mBestGuess = -1;   //illegal value as signal
+    mBestGuess = -1; // illegal value as signal
     mInTag = false;
     mEscCharSetProber = nullptr;
 
@@ -41,11 +41,10 @@ nsUniversalDetector::~nsUniversalDetector()
     delete mEscCharSetProber;
 }
 
-void
-nsUniversalDetector::Reset()
+void nsUniversalDetector::Reset()
 {
     mDone = false;
-    mBestGuess = -1;   //illegal value as signal
+    mBestGuess = -1; // illegal value as signal
     mInTag = false;
 
     mStart = true;
@@ -66,8 +65,8 @@ nsUniversalDetector::Reset()
 }
 
 //---------------------------------------------------------------------
-#define SHORTCUT_THRESHOLD      (float)0.95
-#define MINIMUM_THRESHOLD      (float)0.20
+#define SHORTCUT_THRESHOLD (float)0.95
+#define MINIMUM_THRESHOLD (float)0.20
 
 nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aLen)
 {
@@ -81,18 +80,18 @@ nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aL
 
     unsigned int i;
     for (i = 0; i < aLen; i++) {
-        //other than 0xa0, if every othe character is ascii, the page is ascii
-        if (aBuf[i] & '\x80' && aBuf[i] != '\xA0') { //Since many Ascii only page contains NBSP
-            //we got a non-ascii byte (high-byte)
+        // other than 0xa0, if every othe character is ascii, the page is ascii
+        if (aBuf[i] & '\x80' && aBuf[i] != '\xA0') { // Since many Ascii only page contains NBSP
+            // we got a non-ascii byte (high-byte)
             if (mInputState != eHighbyte) {
-                //adjust state
+                // adjust state
                 mInputState = eHighbyte;
 
-                //kill mEscCharSetProber if it is active
+                // kill mEscCharSetProber if it is active
                 delete mEscCharSetProber;
                 mEscCharSetProber = nullptr;
 
-                //start multibyte and singlebyte charset prober
+                // start multibyte and singlebyte charset prober
                 if (nullptr == mCharSetProbers[0]) {
                     mCharSetProbers[0] = new nsMBCSGroupProber;
                 }
@@ -104,10 +103,9 @@ nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aL
                 }
             }
         } else {
-            //ok, just pure ascii so far
-            if (ePureAscii == mInputState &&
-                    (aBuf[i] == '\033' || (aBuf[i] == '{' && mLastChar == '~'))) {
-                //found escape character or HZ "~{"
+            // ok, just pure ascii so far
+            if (ePureAscii == mInputState && (aBuf[i] == '\033' || (aBuf[i] == '{' && mLastChar == '~'))) {
+                // found escape character or HZ "~{"
                 mInputState = eEscAscii;
             }
 
@@ -137,7 +135,7 @@ nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aL
         }
         break;
 
-    default:  //pure ascii
+    default: // pure ascii
         mDetectedCharset = "UTF-8";
     }
     return st;
@@ -162,18 +160,17 @@ const char *nsUniversalDetector::GetCharSetName()
                 maxProber = i;
             }
         }
-        //do not report anything because we are not confident of it, that's in fact a negative answer
+        // do not report anything because we are not confident of it, that's in fact a negative answer
         if (maxProberConfidence > MINIMUM_THRESHOLD) {
             return mCharSetProbers[maxProber]->GetCharSetName();
         }
     }
     case eEscAscii:
         break;
-    default:           // pure ascii
-        ;
+    default: // pure ascii
+             ;
     }
     return "UTF-8";
-
 }
 
 //---------------------------------------------------------------------
@@ -200,15 +197,15 @@ float nsUniversalDetector::GetConfidence()
                 maxProber = i;
             }
         }
-        //do not report anything because we are not confident of it, that's in fact a negative answer
+        // do not report anything because we are not confident of it, that's in fact a negative answer
         if (maxProberConfidence > MINIMUM_THRESHOLD) {
             return mCharSetProbers[maxProber]->GetConfidence();
         }
     }
     case eEscAscii:
         break;
-    default:           // pure ascii
-        ;
+    default: // pure ascii
+             ;
     }
     return MINIMUM_THRESHOLD;
 }
@@ -222,4 +219,3 @@ nsProbingState nsUniversalDetector::GetState()
     }
 }
 }
-

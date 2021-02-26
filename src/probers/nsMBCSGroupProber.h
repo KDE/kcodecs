@@ -7,17 +7,17 @@
 #ifndef nsMBCSGroupProber_h__
 #define nsMBCSGroupProber_h__
 
-#include "nsSJISProber.h"
 #include "UnicodeGroupProber.h"
-#include "nsEUCJPProber.h"
-#include "nsGB2312Prober.h"
-#include "nsEUCKRProber.h"
 #include "nsBig5Prober.h"
+#include "nsEUCJPProber.h"
+#include "nsEUCKRProber.h"
+#include "nsGB2312Prober.h"
+#include "nsSJISProber.h"
 
-#define NUM_OF_PROBERS    6
+#define NUM_OF_PROBERS 6
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsMBCSGroupProber: public nsCharSetProber
+class KCODECS_NO_EXPORT nsMBCSGroupProber : public nsCharSetProber
 {
 public:
     nsMBCSGroupProber();
@@ -28,22 +28,23 @@ public:
     {
         return mState;
     }
-    void      Reset(void) override;
-    float     GetConfidence(void) override;
-    void      SetOpion() override {}
+    void Reset(void) override;
+    float GetConfidence(void) override;
+    void SetOpion() override
+    {
+    }
 
 #ifdef DEBUG_PROBE
-    void  DumpStatus() override;
+    void DumpStatus() override;
 #endif
 
 protected:
     nsProbingState mState;
     nsCharSetProber *mProbers[NUM_OF_PROBERS];
-    bool          mIsActive[NUM_OF_PROBERS];
+    bool mIsActive[NUM_OF_PROBERS];
     int mBestGuess;
     unsigned int mActiveNum;
 };
 }
 
 #endif /* nsMBCSGroupProber_h__ */
-

@@ -39,16 +39,16 @@ protected:
     }
 
 public:
-    ~IdentityEnDecoder() {}
+    ~IdentityEnDecoder()
+    {
+    }
 
-    bool encode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend) override
+    bool encode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend) override
     {
         return decode(scursor, send, dcursor, dend);
     }
 
-    bool decode(const char *&scursor, const char *const send,
-                char *&dcursor, const char *const dend) override;
+    bool decode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend) override;
 
     bool finish(char *&dcursor, const char *const dend) override
     {
@@ -72,8 +72,7 @@ Decoder *IdentityCodec::makeDecoder(Codec::NewlineType newline) const
 /********************************************************/
 /********************************************************/
 
-bool IdentityEnDecoder::decode(const char *&scursor, const char *const send,
-                               char *&dcursor, const char *const dend)
+bool IdentityEnDecoder::decode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend)
 {
     const int size = qMin(send - scursor, dcursor - dend);
     if (size > 0) {

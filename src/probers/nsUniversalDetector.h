@@ -10,42 +10,43 @@
 
 #include "nsCharSetProber.h"
 
-#define NUM_OF_CHARSET_PROBERS  3
+#define NUM_OF_CHARSET_PROBERS 3
 
 namespace kencodingprober
 {
 typedef enum {
     ePureAscii = 0,
-    eEscAscii  = 1,
-    eHighbyte  = 2,
+    eEscAscii = 1,
+    eHighbyte = 2,
 } nsInputState;
 
-class KCODECS_NO_EXPORT nsUniversalDetector: public nsCharSetProber
+class KCODECS_NO_EXPORT nsUniversalDetector : public nsCharSetProber
 {
 public:
     nsUniversalDetector();
     ~nsUniversalDetector() override;
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
-    void      Reset(void) override;
-    float     GetConfidence(void) override;
+    void Reset(void) override;
+    float GetConfidence(void) override;
     nsProbingState GetState() override;
-    void      SetOpion() override {}
+    void SetOpion() override
+    {
+    }
 
 protected:
-    nsInputState  mInputState;
-    bool  mDone;
-    bool  mInTag;
-    bool  mStart;
-    bool  mGotData;
-    char    mLastChar;
-    const char   *mDetectedCharset;
+    nsInputState mInputState;
+    bool mDone;
+    bool mInTag;
+    bool mStart;
+    bool mGotData;
+    char mLastChar;
+    const char *mDetectedCharset;
     int mBestGuess;
 
-    nsCharSetProber  *mCharSetProbers[NUM_OF_CHARSET_PROBERS];
-    nsCharSetProber  *mEscCharSetProber;
+    nsCharSetProber *mCharSetProbers[NUM_OF_CHARSET_PROBERS];
+    nsCharSetProber *mEscCharSetProber;
 };
 }
 
 #endif
-

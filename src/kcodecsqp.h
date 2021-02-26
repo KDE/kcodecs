@@ -34,7 +34,6 @@
 
 namespace KCodecs
 {
-
 /**
   @brief
   A class representing the @ref codec for @ref QuotedPrintable as specified in
@@ -48,12 +47,15 @@ public:
     */
     QuotedPrintableCodec()
         : Codec()
-    {}
+    {
+    }
 
     /**
       Destroys the codec.
     */
-    ~QuotedPrintableCodec() override {}
+    ~QuotedPrintableCodec() override
+    {
+    }
 
     /**
       @copydoc
@@ -110,12 +112,15 @@ public:
     */
     Rfc2047QEncodingCodec()
         : Codec()
-    {}
+    {
+    }
 
     /**
       Destroys the codec.
     */
-    ~Rfc2047QEncodingCodec() override {}
+    ~Rfc2047QEncodingCodec() override
+    {
+    }
 
     /**
       @copydoc
@@ -169,12 +174,15 @@ public:
     */
     Rfc2231EncodingCodec()
         : Codec()
-    {}
+    {
+    }
 
     /**
       Destroys the codec.
     */
-    ~Rfc2231EncodingCodec() override {}
+    ~Rfc2231EncodingCodec() override
+    {
+    }
 
     /**
       @copydoc

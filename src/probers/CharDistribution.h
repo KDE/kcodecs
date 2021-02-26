@@ -15,29 +15,33 @@
 
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT  CharDistributionAnalysis
+class KCODECS_NO_EXPORT CharDistributionAnalysis
 {
 public:
     CharDistributionAnalysis()
     {
         Reset();
     }
-    virtual ~CharDistributionAnalysis() {}
+    virtual ~CharDistributionAnalysis()
+    {
+    }
 
-    //feed a block of data and do distribution analysis
-    void HandleData(const char * /* aBuf */, unsigned int /* aLen */) {}
+    // feed a block of data and do distribution analysis
+    void HandleData(const char * /* aBuf */, unsigned int /* aLen */)
+    {
+    }
 
-    //Feed a character with known length
+    // Feed a character with known length
     void HandleOneChar(const char *aStr, unsigned int aCharLen)
     {
         int order;
 
-        //we only care about 2-bytes character in our distribution analysis
+        // we only care about 2-bytes character in our distribution analysis
         order = (aCharLen == 2) ? GetOrder(aStr) : -1;
 
         if (order >= 0) {
             mTotalChars++;
-            //order is valid
+            // order is valid
             if ((unsigned int)order < mTableSize) {
                 if (512 > mCharToFreqOrder[order]) {
                     mFreqChars++;
@@ -46,22 +50,24 @@ public:
         }
     }
 
-    //return confidence base on existing data
+    // return confidence base on existing data
     float GetConfidence();
 
-    //Reset analyser, clear any state
-    void      Reset(void)
+    // Reset analyser, clear any state
+    void Reset(void)
     {
         mDone = false;
         mTotalChars = 0;
         mFreqChars = 0;
     }
 
-    //This function is for future extension. Caller can use this function to control
-    //analyser's behavior
-    void      SetOpion() {}
+    // This function is for future extension. Caller can use this function to control
+    // analyser's behavior
+    void SetOpion()
+    {
+    }
 
-    //It is not necessary to receive all data to draw conclusion. For charset detection,
+    // It is not necessary to receive all data to draw conclusion. For charset detection,
     // certain amount of data is enough
     bool GotEnoughData()
     {
@@ -69,43 +75,44 @@ public:
     }
 
 protected:
-    //we do not handle character base on its original encoding string, but
-    //convert this encoding string to a number, here called order.
-    //This allow multiple encoding of a language to share one frequency table
+    // we do not handle character base on its original encoding string, but
+    // convert this encoding string to a number, here called order.
+    // This allow multiple encoding of a language to share one frequency table
     virtual int GetOrder(const char * /* str */)
     {
         return -1;
     }
 
-    //If this flag is set to true, detection is done and conclusion has been made
-    bool   mDone;
+    // If this flag is set to true, detection is done and conclusion has been made
+    bool mDone;
 
-    //The number of characters whose frequency order is less than 512
+    // The number of characters whose frequency order is less than 512
     unsigned int mFreqChars;
 
-    //Total character encounted.
+    // Total character encounted.
     unsigned int mTotalChars;
 
-    //Mapping table to get frequency order from char order (get from GetOrder())
-    const short  *mCharToFreqOrder;
+    // Mapping table to get frequency order from char order (get from GetOrder())
+    const short *mCharToFreqOrder;
 
-    //Size of above table
+    // Size of above table
     unsigned int mTableSize;
 
-    //This is a constant value varies from language to language, it is used in
-    //calculating confidence. See my paper for further detail.
-    float    mTypicalDistributionRatio;
+    // This is a constant value varies from language to language, it is used in
+    // calculating confidence. See my paper for further detail.
+    float mTypicalDistributionRatio;
 };
 
-class KCODECS_NO_EXPORT  EUCKRDistributionAnalysis : public CharDistributionAnalysis
+class KCODECS_NO_EXPORT EUCKRDistributionAnalysis : public CharDistributionAnalysis
 {
 public:
     EUCKRDistributionAnalysis();
+
 protected:
-    //for euc-KR encoding, we are interested
+    // for euc-KR encoding, we are interested
     //  first  byte range: 0xb0 -- 0xfe
     //  second byte range: 0xa1 -- 0xfe
-    //no validation needed here. State machine has done that
+    // no validation needed here. State machine has done that
     int GetOrder(const char *str) override
     {
         if ((unsigned char)*str >= (unsigned char)0xb0) {
@@ -116,15 +123,16 @@ protected:
     }
 };
 
-class KCODECS_NO_EXPORT  GB2312DistributionAnalysis : public CharDistributionAnalysis
+class KCODECS_NO_EXPORT GB2312DistributionAnalysis : public CharDistributionAnalysis
 {
 public:
     GB2312DistributionAnalysis();
+
 protected:
-    //for GB2312 encoding, we are interested
+    // for GB2312 encoding, we are interested
     //  first  byte range: 0xb0 -- 0xfe
     //  second byte range: 0xa1 -- 0xfe
-    //no validation needed here. State machine has done that
+    // no validation needed here. State machine has done that
     int GetOrder(const char *str) override
     {
         if ((unsigned char)*str >= (unsigned char)0xb0 && (unsigned char)str[1] >= (unsigned char)0xa1) {
@@ -135,15 +143,16 @@ protected:
     }
 };
 
-class KCODECS_NO_EXPORT  Big5DistributionAnalysis : public CharDistributionAnalysis
+class KCODECS_NO_EXPORT Big5DistributionAnalysis : public CharDistributionAnalysis
 {
 public:
     Big5DistributionAnalysis();
+
 protected:
-    //for big5 encoding, we are interested
+    // for big5 encoding, we are interested
     //  first  byte range: 0xa4 -- 0xfe
     //  second byte range: 0x40 -- 0x7e , 0xa1 -- 0xfe
-    //no validation needed here. State machine has done that
+    // no validation needed here. State machine has done that
     int GetOrder(const char *str) override
     {
         if ((unsigned char)*str >= (unsigned char)0xa4)
@@ -158,15 +167,16 @@ protected:
     }
 };
 
-class KCODECS_NO_EXPORT  SJISDistributionAnalysis : public CharDistributionAnalysis
+class KCODECS_NO_EXPORT SJISDistributionAnalysis : public CharDistributionAnalysis
 {
 public:
     SJISDistributionAnalysis();
+
 protected:
-    //for sjis encoding, we are interested
+    // for sjis encoding, we are interested
     //  first  byte range: 0x81 -- 0x9f , 0xe0 -- 0xfe
     //  second byte range: 0x40 -- 0x7e,  0x81 -- oxfe
-    //no validation needed here. State machine has done that
+    // no validation needed here. State machine has done that
     int GetOrder(const char *str) override
     {
         int order;
@@ -177,7 +187,7 @@ protected:
         } else {
             return -1;
         }
-        order += (unsigned char) * (str + 1) - 0x40;
+        order += (unsigned char)*(str + 1) - 0x40;
         if ((unsigned char)str[1] > (unsigned char)0x7f) {
             order--;
         }
@@ -185,15 +195,16 @@ protected:
     }
 };
 
-class KCODECS_NO_EXPORT  EUCJPDistributionAnalysis : public CharDistributionAnalysis
+class KCODECS_NO_EXPORT EUCJPDistributionAnalysis : public CharDistributionAnalysis
 {
 public:
     EUCJPDistributionAnalysis();
+
 protected:
-    //for euc-JP encoding, we are interested
+    // for euc-JP encoding, we are interested
     //  first  byte range: 0xa0 -- 0xfe
     //  second byte range: 0xa1 -- 0xfe
-    //no validation needed here. State machine has done that
+    // no validation needed here. State machine has done that
     int GetOrder(const char *str) override
     {
         if ((unsigned char)*str >= (unsigned char)0xa0) {
@@ -204,5 +215,4 @@ protected:
     }
 };
 }
-#endif //CharDistribution_h__
-
+#endif // CharDistribution_h__

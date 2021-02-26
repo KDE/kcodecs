@@ -40,7 +40,6 @@
 
 namespace KCodecs
 {
-
 /**
   @brief
   A class representing the @ref codec for @ref Base64 as specified in
@@ -54,12 +53,15 @@ public:
     */
     Base64Codec()
         : Codec()
-    {}
+    {
+    }
 
     /**
       Destroys the codec.
     */
-    ~Base64Codec() override {}
+    ~Base64Codec() override
+    {
+    }
 
     /**
       @copydoc
@@ -132,12 +134,15 @@ public:
     */
     Rfc2047BEncodingCodec()
         : Base64Codec()
-    {}
+    {
+    }
 
     /**
       Destroys the codec.
     */
-    virtual ~Rfc2047BEncodingCodec() {}
+    virtual ~Rfc2047BEncodingCodec()
+    {
+    }
 
     /**
       @copydoc

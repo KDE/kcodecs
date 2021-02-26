@@ -15,7 +15,10 @@ using namespace KCodecs;
 
 QTEST_MAIN(CodecTest)
 
-enum Mode { Decode, Encode, };
+enum Mode {
+    Decode,
+    Encode,
+};
 Q_DECLARE_METATYPE(Mode)
 
 void CodecTest::testCodecs_data()
@@ -28,7 +31,7 @@ void CodecTest::testCodecs_data()
 
     QDir codecBaseDir(QFINDTESTDATA("data"));
     const QStringList lst = codecBaseDir.entryList(QStringList(), QDir::Dirs | QDir::NoDotAndDotDot, QDir::NoSort);
-    for (const QString &dir :  lst) {
+    for (const QString &dir : lst) {
         if (dir.toLower().startsWith(QLatin1String("codec_"))) {
             const QString codecName = dir.right(dir.size() - 6);
             QDir codecDir(codecBaseDir.path() + QLatin1String("/") + dir);
@@ -52,7 +55,7 @@ void CodecTest::testCodecs_data()
                     const QByteArray expected = expectedFile.readAll();
 
                     const QString tag = codecName + QLatin1Char('/') + dataFileNameBase;
-                    QTest::newRow(tag.toLatin1().constData()) << data << expected << codecName.toLatin1() << tag  << mode;
+                    QTest::newRow(tag.toLatin1().constData()) << data << expected << codecName.toLatin1() << tag << mode;
 
                     dataFile.close();
                     expectedFile.close();
@@ -94,4 +97,3 @@ void CodecTest::testCodecs()
     }
     QCOMPARE(result, expResult);
 }
-

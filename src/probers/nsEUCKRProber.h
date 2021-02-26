@@ -7,12 +7,12 @@
 #ifndef nsEUCKRProber_h__
 #define nsEUCKRProber_h__
 
+#include "CharDistribution.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
-#include "CharDistribution.h"
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsEUCKRProber: public nsCharSetProber
+class KCODECS_NO_EXPORT nsEUCKRProber : public nsCharSetProber
 {
 public:
     nsEUCKRProber(void)
@@ -33,22 +33,22 @@ public:
     {
         return mState;
     }
-    void      Reset(void) override;
-    float     GetConfidence(void) override;
-    void      SetOpion() override {}
+    void Reset(void) override;
+    float GetConfidence(void) override;
+    void SetOpion() override
+    {
+    }
 
 protected:
-    void      GetDistribution(unsigned int aCharLen, const char *aStr);
+    void GetDistribution(unsigned int aCharLen, const char *aStr);
 
     nsCodingStateMachine *mCodingSM;
     nsProbingState mState;
 
-    //EUCKRContextAnalysis mContextAnalyser;
+    // EUCKRContextAnalysis mContextAnalyser;
     EUCKRDistributionAnalysis mDistributionAnalyser;
     char mLastChar[2];
-
 };
 }
 
 #endif /* nsEUCKRProber_h__ */
-

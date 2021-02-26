@@ -41,7 +41,6 @@ protected:
     KCharsets();
 
 public:
-
     /**
      * Destructor.
      */
@@ -126,7 +125,8 @@ public:
 
     /**
      * Lists the available encoding names grouped by script (or language that uses them).
-     * @returns the list of lists consisting of description followed by encoding names (i.e. encodingsByScript().at(i).at(0) is a description for encodingsByScript().at(i).at(k), k>0)
+     * @returns the list of lists consisting of description followed by encoding names (i.e. encodingsByScript().at(i).at(0) is a description for
+     * encodingsByScript().at(i).at(k), k>0)
      */
     QList<QStringList> encodingsByScript() const;
 

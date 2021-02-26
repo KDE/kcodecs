@@ -10,7 +10,7 @@
 
 namespace kencodingprober
 {
-//This filter applies to all scripts which do not use English characters
+// This filter applies to all scripts which do not use English characters
 bool nsCharSetProber::FilterWithoutEnglishLetters(const char *aBuf, unsigned int aLen, char **newBuf, unsigned int &newLen)
 {
     char *newptr;
@@ -26,9 +26,9 @@ bool nsCharSetProber::FilterWithoutEnglishLetters(const char *aBuf, unsigned int
         if (*curPtr & 0x80) {
             meetMSB = true;
         } else if (*curPtr < 'A' || (*curPtr > 'Z' && *curPtr < 'a') || *curPtr > 'z') {
-            //current char is a symbol, most likely a punctuation. we treat it as segment delimiter
+            // current char is a symbol, most likely a punctuation. we treat it as segment delimiter
             if (meetMSB && curPtr > prevPtr)
-                //this segment contains more than single symbol, and it has upper ASCII, we need to keep it
+            // this segment contains more than single symbol, and it has upper ASCII, we need to keep it
             {
                 while (prevPtr < curPtr) {
                     *newptr++ = *prevPtr++;
@@ -36,7 +36,7 @@ bool nsCharSetProber::FilterWithoutEnglishLetters(const char *aBuf, unsigned int
                 prevPtr++;
                 *newptr++ = ' ';
                 meetMSB = false;
-            } else { //ignore current segment. (either because it is just a symbol or just an English word)
+            } else { // ignore current segment. (either because it is just a symbol or just an English word)
                 prevPtr = curPtr + 1;
             }
         }
@@ -51,10 +51,10 @@ bool nsCharSetProber::FilterWithoutEnglishLetters(const char *aBuf, unsigned int
     return true;
 }
 
-//This filter applies to all scripts which contain both English characters and upper ASCII characters.
+// This filter applies to all scripts which contain both English characters and upper ASCII characters.
 bool nsCharSetProber::FilterWithEnglishLetters(const char *aBuf, unsigned int aLen, char **newBuf, unsigned int &newLen)
 {
-    //do filtering to reduce load to probers
+    // do filtering to reduce load to probers
     char *newptr;
     char *prevPtr, *curPtr;
     bool isInTag = false;
@@ -71,10 +71,9 @@ bool nsCharSetProber::FilterWithEnglishLetters(const char *aBuf, unsigned int aL
             isInTag = true;
         }
 
-        if (!(*curPtr & 0x80) &&
-                (*curPtr < 'A' || (*curPtr > 'Z' && *curPtr < 'a') || *curPtr > 'z')) {
+        if (!(*curPtr & 0x80) && (*curPtr < 'A' || (*curPtr > 'Z' && *curPtr < 'a') || *curPtr > 'z')) {
             if (curPtr > prevPtr && !isInTag) // Current segment contains more than just a symbol
-                // and it is not inside a tag, keep it.
+                                              // and it is not inside a tag, keep it.
             {
                 while (prevPtr < curPtr) {
                     *newptr++ = *prevPtr++;
@@ -99,4 +98,3 @@ bool nsCharSetProber::FilterWithEnglishLetters(const char *aBuf, unsigned int aL
     return true;
 }
 }
-
