@@ -4,12 +4,13 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
+#include "../src/kcodecsbase64.h"
+
 #include <KCodecs>
+
 #include <QByteArray>
 #include <QObject>
 #include <QTest>
-
-#include "../src/kcodecsbase64.h"
 
 class Base64Benchmark : public QObject
 {

@@ -12,8 +12,10 @@
 #ifndef KCODECS_H
 #define KCODECS_H
 
-#include <QString>
 #include <kcodecs_export.h>
+
+#include <QString>
+
 #include <memory>
 
 #if KCODECS_ENABLE_DEPRECATED_SINCE(5, 79)

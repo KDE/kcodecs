@@ -524,7 +524,9 @@ bool QuotedPrintableEncoder::processNextChar()
 
     assert(bufferFill >= 0 && bufferFill <= 15);
 
-    if (!mFinishing && !mSawLineEnd && bufferFill < minBufferFillWithoutLineEnd) {
+    if (!mFinishing //
+        && !mSawLineEnd //
+        && bufferFill < minBufferFillWithoutLineEnd) {
         return false;
     }
 
@@ -537,9 +539,9 @@ bool QuotedPrintableEncoder::processNextChar()
     mAccu = mInputBuffer[mInputBufferReadCursor++];
     if (needsEncoding(mAccu)) { // always needs encoding or
         mAccuNeedsEncoding = Definitely;
-    } else if ((mSawLineEnd || mFinishing) && // needs encoding at end of line
-               bufferFill == 1 && // or end of buffer
-               needsEncodingAtEOL(mAccu)) {
+    } else if ((mSawLineEnd || mFinishing) // needs encoding at end of line
+               && bufferFill == 1 // or end of buffer
+               && needsEncodingAtEOL(mAccu)) {
         mAccuNeedsEncoding = Definitely;
     } else if (needsEncodingAtBOL(mAccu)) {
         mAccuNeedsEncoding = AtBOL;
@@ -561,7 +563,10 @@ void QuotedPrintableEncoder::createOutputBuffer(char *&dcursor, const char *cons
 
     assert(d->outputBufferCursor == 0);
 
-    bool lastOneOnThisLine = mSawLineEnd && mInputBufferReadCursor == mInputBufferWriteCursor;
+    /* clang-format off */
+    bool lastOneOnThisLine = mSawLineEnd
+                             && mInputBufferReadCursor == mInputBufferWriteCursor;
+    /* clang-format on */
 
     int neededSpace = 1;
     if (mAccuNeedsEncoding == Definitely) {
@@ -580,7 +585,8 @@ void QuotedPrintableEncoder::createOutputBuffer(char *&dcursor, const char *cons
         mCurrentLineLength = 0;
     }
 
-    if (Never == mAccuNeedsEncoding || (AtBOL == mAccuNeedsEncoding && mCurrentLineLength != 0)) {
+    if (Never == mAccuNeedsEncoding //
+        || (AtBOL == mAccuNeedsEncoding && mCurrentLineLength != 0)) {
         write(mAccu, dcursor, dend);
         mCurrentLineLength++;
     } else {

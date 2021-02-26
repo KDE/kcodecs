@@ -417,7 +417,9 @@ int SJISContextAnalysis::GetOrder(const char *str, unsigned int *charLen)
     }
 
     // return its order if it is hiragana
-    if (*str == '\202' && (unsigned char)*(str + 1) >= (unsigned char)0x9f && (unsigned char)*(str + 1) <= (unsigned char)0xf1) {
+    if (*str == '\202' //
+        && (unsigned char)*(str + 1) >= (unsigned char)0x9f //
+        && (unsigned char)*(str + 1) <= (unsigned char)0xf1) {
         return (unsigned char)*(str + 1) - (unsigned char)0x9f;
     }
     return -1;
@@ -426,7 +428,9 @@ int SJISContextAnalysis::GetOrder(const char *str, unsigned int *charLen)
 int EUCJPContextAnalysis::GetOrder(const char *str, unsigned int *charLen)
 {
     // find out current char's byte length
-    if ((unsigned char)*str == (unsigned char)0x8e || ((unsigned char)*str >= (unsigned char)0xa1 && (unsigned char)*str <= (unsigned char)0xfe)) {
+    if ((unsigned char)*str == (unsigned char)0x8e //
+        || ((unsigned char)*str >= (unsigned char)0xa1 //
+            && (unsigned char)*str <= (unsigned char)0xfe)) {
         *charLen = 2;
     } else if ((unsigned char)*str == (unsigned char)0x8f) {
         *charLen = 3;
@@ -435,7 +439,9 @@ int EUCJPContextAnalysis::GetOrder(const char *str, unsigned int *charLen)
     }
 
     // return its order if it is hiragana
-    if ((unsigned char)*str == (unsigned char)0xa4 && (unsigned char)*(str + 1) >= (unsigned char)0xa1 && (unsigned char)*(str + 1) <= (unsigned char)0xf3) {
+    if ((unsigned char)*str == (unsigned char)0xa4 //
+        && (unsigned char)*(str + 1) >= (unsigned char)0xa1 //
+        && (unsigned char)*(str + 1) <= (unsigned char)0xf3) {
         return (unsigned char)*(str + 1) - (unsigned char)0xa1;
     }
     return -1;

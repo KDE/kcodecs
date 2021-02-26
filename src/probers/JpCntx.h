@@ -109,7 +109,9 @@ protected:
     int GetOrder(const char *str) override
     // We only interested in Hiragana, so first byte is '\244'
     {
-        if (*str == '\244' && (unsigned char)*(str + 1) >= (unsigned char)0xa1 && (unsigned char)*(str + 1) <= (unsigned char)0xf3) {
+        if (*str == '\244' //
+            && (unsigned char)*(str + 1) >= (unsigned char)0xa1 //
+            && (unsigned char)*(str + 1) <= (unsigned char)0xf3) {
             return (unsigned char)*(str + 1) - (unsigned char)0xa1;
         }
         return -1;
