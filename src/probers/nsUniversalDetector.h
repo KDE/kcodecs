@@ -17,7 +17,7 @@ namespace kencodingprober
 typedef enum {
     ePureAscii = 0,
     eEscAscii  = 1,
-    eHighbyte  = 2
+    eHighbyte  = 2,
 } nsInputState;
 
 class KCODECS_NO_EXPORT nsUniversalDetector: public nsCharSetProber

@@ -289,7 +289,7 @@ KCODECS_EXPORT QString decodeRFC2047String(const QString &text);
 enum CharsetOption
 {
     NoOption = 0,              /// No special option
-    ForceDefaultCharset = 1    /// Force use of the default charset
+    ForceDefaultCharset = 1,    /// Force use of the default charset
 };
 
 /**
@@ -375,7 +375,7 @@ class KCODECS_EXPORT Codec
 public:
     enum NewlineType {
         NewlineLF,
-        NewlineCRLF
+        NewlineCRLF,
     };
 
     /**
@@ -738,7 +738,7 @@ protected:
       The maximum number of characters permitted in the output buffer.
     */
     enum {
-        maxBufferedChars = 8  /**< Eight */
+        maxBufferedChars = 8,  /**< Eight */
     };
 
     /**

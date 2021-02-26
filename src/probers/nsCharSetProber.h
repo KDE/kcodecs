@@ -14,7 +14,7 @@ namespace kencodingprober
 typedef enum {
     eDetecting = 0,   //We are still detecting, no sure answer yet, but caller can ask for confidence.
     eFoundIt = 1,     //That's a positive answer
-    eNotMe = 2        //Negative answer
+    eNotMe = 2,        //Negative answer
 } nsProbingState;
 
 #define SHORTCUT_THRESHOLD      (float)0.95

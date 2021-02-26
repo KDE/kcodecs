@@ -17,7 +17,7 @@ namespace kencodingprober
 enum {
     eStart = 0,
     eError = 1,
-    eItsMe = 2
+    eItsMe = 2,
 };
 using nsSMState = int;
 

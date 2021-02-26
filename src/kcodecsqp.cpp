@@ -94,7 +94,7 @@ class QuotedPrintableEncoder : public Encoder
     uint mInputBufferReadCursor  : 4; // 0..15
     uint mInputBufferWriteCursor : 4; // 0..15
     enum {
-        Never, AtBOL, Definitely
+        Never, AtBOL, Definitely,
     } mAccuNeedsEncoding    : 2;
     bool mSawLineEnd        : 1;
     bool mSawCR             : 1;

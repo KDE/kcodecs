@@ -65,7 +65,7 @@ public:
     enum ProberState {
         FoundIt,  /**< Sure find the encoding */
         NotMe,    /**< Sure not included in current ProberType's all supported encodings  */
-        Probing   /**< Need more data to make a decision */
+        Probing,   /**< Need more data to make a decision */
     };
 
     enum ProberType {
@@ -87,7 +87,7 @@ public:
         Thai,
         Turkish,
         Unicode,
-        WesternEuropean
+        WesternEuropean,
     };
 
     /**

@@ -15,7 +15,7 @@ using namespace KCodecs;
 
 QTEST_MAIN(CodecTest)
 
-enum Mode { Decode, Encode };
+enum Mode { Decode, Encode, };
 Q_DECLARE_METATYPE(Mode)
 
 void CodecTest::testCodecs_data()

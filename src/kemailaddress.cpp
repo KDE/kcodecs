@@ -107,7 +107,7 @@ KEmailAddress::EmailParseResult splitAddressInternal(const QByteArray &address,
     enum {
         TopLevel,
         InComment,
-        InAngleAddress
+        InAngleAddress,
     } context = TopLevel;
     bool inQuotedString = false;
     int commentLevel = 0;
@@ -311,7 +311,7 @@ EmailParseResult KEmailAddress::isValidAddress(const QString &aStr)
     enum {
         TopLevel,
         InComment,
-        InAngleAddress
+        InAngleAddress,
     } context = TopLevel;
     bool inQuotedString = false;
     int commentLevel = 0;
