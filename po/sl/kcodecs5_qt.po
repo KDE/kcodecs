@@ -1,0 +1,369 @@
+# translation of kdelibs4.po to Slovenian
+# Translation of kdelibs4.po to Slovenian
+# KDELIBS translation to Slovenian language
+# $Id: kdelibs4.po 685926 2007-07-10 04:25:11Z scripty $
+# $Source$
+#
+# Copyright (C) 2002,2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+# Roman Maurer <roman.maurer@amis.net>, 2002.
+# Gregor Rakar <gregor.rakar@kiss.uni-lj.si>, 2002,2003.
+# Gregor Rakar <gregor.rakar@kiss.si>, 2003, 2004, 2005.
+# Andrej Vernekar <andrej.vernekar@moj.net>, 2005, 2007, 2008, 2009, 2010.
+# Jure Repinc <jlp@holodeck1.com>, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013.
+# Andrej Vernekar <andrej.vernerkar@moj.net>, 2008, 2011, 2012.
+# Andrej Mernik <andrejm@ubuntu.si>, 2012, 2013, 2014, 2015.
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2020-06-18 07:35+0200\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 19.12.2\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
+"%100<=4 ? 2 : 3);\n"
+"X-Qt-Contexts: true\n"
+
+#: kcharsets.cpp:155
+msgctxt "KCharsets|@item Text character set"
+msgid "Western European"
+msgstr "Zahodnoevropski"
+
+#: kcharsets.cpp:161
+msgctxt "KCharsets|@item Text character set"
+msgid "Central European"
+msgstr "Srednjeevropski"
+
+#: kcharsets.cpp:164
+msgctxt "KCharsets|@item Text character set"
+msgid "Baltic"
+msgstr "Baltski"
+
+#: kcharsets.cpp:167
+msgctxt "KCharsets|@item Text character set"
+msgid "South-Eastern Europe"
+msgstr "Jugovzhodnoevropski"
+
+#: kcharsets.cpp:170
+msgctxt "KCharsets|@item Text character set"
+msgid "Turkish"
+msgstr "Turški"
+
+#: kcharsets.cpp:173
+msgctxt "KCharsets|@item Text character set"
+msgid "Cyrillic"
+msgstr "Cirilica"
+
+#: kcharsets.cpp:179
+msgctxt "KCharsets|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Tradicionalni kitajski"
+
+#: kcharsets.cpp:182
+msgctxt "KCharsets|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Poenostavljeni kitajski"
+
+#: kcharsets.cpp:186
+msgctxt "KCharsets|@item Text character set"
+msgid "Korean"
+msgstr "Korejski"
+
+#: kcharsets.cpp:189
+msgctxt "KCharsets|@item Text character set"
+msgid "Japanese"
+msgstr "Japonski"
+
+#: kcharsets.cpp:193
+msgctxt "KCharsets|@item Text character set"
+msgid "Greek"
+msgstr "Grški"
+
+#: kcharsets.cpp:196
+msgctxt "KCharsets|@item Text character set"
+msgid "Arabic"
+msgstr "Arabski"
+
+#: kcharsets.cpp:199
+msgctxt "KCharsets|@item Text character set"
+msgid "Hebrew"
+msgstr "Hebrejski"
+
+#: kcharsets.cpp:204
+msgctxt "KCharsets|@item Text character set"
+msgid "Thai"
+msgstr "Tajski"
+
+#: kcharsets.cpp:207
+msgctxt "KCharsets|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kcharsets.cpp:213
+msgctxt "KCharsets|@item Text character set"
+msgid "Northern Saami"
+msgstr "Severni saami"
+
+#: kcharsets.cpp:215
+msgctxt "KCharsets|@item Text character set"
+msgid "Other"
+msgstr "Drugi"
+
+#: kcharsets.cpp:629
+#, qt-format
+msgctxt "KCharsets|@item %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kcharsets.cpp:631
+#, qt-format
+msgctxt "KCharsets|@item"
+msgid "Other encoding (%1)"
+msgstr "Drugo kodiranje (%1)"
+
+#: kcharsets.cpp:660
+#, qt-format
+msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kemailaddress.cpp:503
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains more than one "
+"@.\n"
+"You will not create valid messages if you do not change your address."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven, ker vsebuje več kot en @.\n"
+"Če ne spremenite naslova, ne boste mogli ustvariti veljavnih sporočil."
+
+#: kemailaddress.cpp:509
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a @.\n"
+"You will not create valid messages if you do not change your address."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven, ker vsebuje več kot en @.\n"
+"Če ne spremenite naslova, ne boste mogli ustvariti veljavnih sporočil."
+
+#: kemailaddress.cpp:515
+msgctxt "QObject|"
+msgid "You have to enter something in the email address field."
+msgstr "Polje za e-poštni naslov morate izpolniti."
+
+#: kemailaddress.cpp:517
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"local part."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven, ker ne vsebuje krajevnega "
+"dela."
+
+#: kemailaddress.cpp:521
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"domain part."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven, ker ne vsebuje domenskega "
+"dela."
+
+#: kemailaddress.cpp:525
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains unclosed "
+"comments/brackets."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven, ker vsebuje nezaprte opombe/"
+"oklepaje."
+
+#: kemailaddress.cpp:529
+msgctxt "QObject|"
+msgid "The email address you entered is valid."
+msgstr "E-poštni naslov, ki ste ga vnesli, je veljaven."
+
+#: kemailaddress.cpp:531
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an unclosed "
+"angle bracket."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven, ker vsebuje nezaprt lomljeni "
+"oklepaj."
+
+#: kemailaddress.cpp:535
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains too many "
+"closing angle brackets."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven, ker vsebuje preveč lomljenih "
+"zaklepajev."
+
+#: kemailaddress.cpp:539
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"unexpected comma."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven, ker vsebuje nepričakovano "
+"vejico."
+
+#: kemailaddress.cpp:543
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it ended unexpectedly.\n"
+"This probably means you have used an escaping type character like a '\\' as "
+"the last character in your email address."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven, ker se nepričakovano konča.\n"
+"To verjetno pomeni, da ste za zadnji znak svojega e-poštnega naslova "
+"uporabili ubežni znak, kot je na primer '\\'."
+
+#: kemailaddress.cpp:549
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains quoted text "
+"which does not end."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven, ker vsebuje navedeno "
+"besedilo, ki se ne konča."
+
+#: kemailaddress.cpp:553
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not seem to "
+"contain an actual email address, i.e. something of the form joe@example.org."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven, ker je videti, da ne vsebuje "
+"dejanskega e-poštnega naslova, to je nekaj v obliki janez@example.org."
+
+#: kemailaddress.cpp:558
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an illegal "
+"character."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven, ker vsebuje nedovoljen znak."
+
+#: kemailaddress.cpp:562
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"invalid display name."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven, ker vsebuje neveljavno ime "
+"za prikaz."
+
+#: kemailaddress.cpp:566
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"'.'.\n"
+"You will not create valid messages if you do not change your address."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven, ker ne vsebuje '.'.\n"
+"Če ne spremenite naslova, ne boste mogli ustvariti veljavnih sporočil."
+
+#: kemailaddress.cpp:572
+msgctxt "QObject|"
+msgid "Unknown problem with email address"
+msgstr "Neznana težava z e-poštnim naslovom"
+
+#: kemailaddress.cpp:632
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid.\n"
+"It does not seem to contain an actual email address, i.e. something of the "
+"form joe@example.org."
+msgstr ""
+"E-poštni naslov, ki ste ga vnesli, ni veljaven.\n"
+"Videti je, da ne vsebuje dejanskega e-poštnega naslova, to je nekaj v obliki "
+"janez@karnekje.org."
+
+#: kencodingprober.cpp:225 kencodingprober.cpp:266
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Disabled"
+msgstr "Onemogočeno"
+
+#: kencodingprober.cpp:227 kencodingprober.cpp:269
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Universal"
+msgstr "Univerzalni"
+
+#: kencodingprober.cpp:229 kencodingprober.cpp:311
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kencodingprober.cpp:231 kencodingprober.cpp:281
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Cyrillic"
+msgstr "Cirilica"
+
+#: kencodingprober.cpp:233 kencodingprober.cpp:296
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Western European"
+msgstr "Zahodnoevropski"
+
+#: kencodingprober.cpp:235 kencodingprober.cpp:278
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Central European"
+msgstr "Srednjeevropski"
+
+#: kencodingprober.cpp:237 kencodingprober.cpp:284
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Greek"
+msgstr "Grški"
+
+#: kencodingprober.cpp:239 kencodingprober.cpp:287
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Hebrew"
+msgstr "Hebrejski"
+
+#: kencodingprober.cpp:241 kencodingprober.cpp:293
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Turkish"
+msgstr "Turški"
+
+#: kencodingprober.cpp:243 kencodingprober.cpp:290
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Japanese"
+msgstr "Japonski"
+
+#: kencodingprober.cpp:245 kencodingprober.cpp:275
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Baltic"
+msgstr "Baltski"
+
+#: kencodingprober.cpp:247 kencodingprober.cpp:299
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Tradicionalni kitajski"
+
+#: kencodingprober.cpp:249 kencodingprober.cpp:302
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Poenostavljeni kitajski"
+
+#: kencodingprober.cpp:251 kencodingprober.cpp:305
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Korean"
+msgstr "Korejski"
+
+#: kencodingprober.cpp:253 kencodingprober.cpp:308
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Thai"
+msgstr "Tajski"
+
+#: kencodingprober.cpp:255 kencodingprober.cpp:272
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Arabic"
+msgstr "Arabski"
