@@ -67,7 +67,7 @@ target_include_directories(KF5Codecs INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTAL
 
 target_link_libraries(KF5Codecs PUBLIC Qt5::Core)
 
-set_target_properties(KF5Codecs PROPERTIES VERSION   ${KCODECS_VERSION_STRING}
+set_target_properties(KF5Codecs PROPERTIES VERSION   ${KCODECS_VERSION}
                                            SOVERSION ${KCODECS_SOVERSION}
                                            EXPORT_NAME Codecs
 )
