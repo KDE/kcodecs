@@ -137,8 +137,9 @@ KCODECS_EXPORT void quotedPrintableDecode(const QByteArray &in, QByteArray &out)
  * @return     uuencoded string.
  * @deprecated Not implemented, always returns an empty bytearray.
  */
+KCODECS_EXPORT
 KCODECS_DEPRECATED_VERSION(5, 56, "Not implemented")
-KCODECS_EXPORT QByteArray uuencode(const QByteArray &in);
+QByteArray uuencode(const QByteArray &in);
 #endif
 
 #if KCODECS_ENABLE_DEPRECATED_SINCE(5, 56)
@@ -158,8 +159,9 @@ KCODECS_EXPORT QByteArray uuencode(const QByteArray &in);
  * @param out  an empty byte array
  * @deprecated Not implemented, always set @p out to an empty bytearray.
  */
+KCODECS_EXPORT
 KCODECS_DEPRECATED_VERSION(5, 56, "Not implemented")
-KCODECS_EXPORT void uuencode(const QByteArray &in, QByteArray &out);
+void uuencode(const QByteArray &in, QByteArray &out);
 #endif
 
 /**
@@ -217,8 +219,9 @@ KCODECS_EXPORT QByteArray base64Encode(const QByteArray &in);
  * KCodecs::base64Encode(QByteArray)
  * @deprecated Since 5.5, use KCodecs::base64Encode(QByteArray) instead.
  */
+KCODECS_EXPORT
 KCODECS_DEPRECATED_VERSION(5, 5, "Use QByteArray base64Encode(const QByteArray &)")
-KCODECS_EXPORT QByteArray base64Encode(const QByteArray &in, bool insertLFs);
+QByteArray base64Encode(const QByteArray &in, bool insertLFs);
 #endif
 
 /**
