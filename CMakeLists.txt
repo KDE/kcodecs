@@ -42,7 +42,6 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KCODECS
 
 ecm_install_po_files_as_qm(po)
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
-add_definitions(-DQT_NO_FOREACH)
 
 add_subdirectory(src)
 
