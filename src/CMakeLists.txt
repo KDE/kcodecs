@@ -3,8 +3,7 @@ add_library(KF5::Codecs ALIAS KF5Codecs)
 
 ecm_create_qm_loader(KF5Codecs kcodecs5_qt)
 
-set(kcodecs_gperf_SRCS)
-ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h kcodecs_gperf_SRCS
+ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h KF5Codecs
                    GENERATION_FLAGS "--key-positions=* -D -s 2")
 
 set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/kentities.h PROPERTIES SKIP_AUTOMOC ON)
@@ -44,7 +43,6 @@ target_sources(KF5Codecs PRIVATE
     probers/nsSBCharSetProber.cpp
     probers/nsSJISProber.cpp
     probers/nsUniversalDetector.cpp
-    ${kcodecs_gperf_SRCS}
 )
 
 ecm_qt_declare_logging_category(KF5Codecs
