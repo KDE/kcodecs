@@ -6,8 +6,6 @@ ecm_create_qm_loader(KF5Codecs kcodecs5_qt)
 ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h KF5Codecs
                    GENERATION_FLAGS "--key-positions=* -D -s 2")
 
-set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/kentities.h PROPERTIES SKIP_AUTOMOC ON)
-
 target_sources(KF5Codecs PRIVATE
     kcharsets.cpp
     kcodecs.cpp
