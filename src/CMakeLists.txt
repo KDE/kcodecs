@@ -9,6 +9,7 @@ ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h KF5Co
 target_sources(KF5Codecs PRIVATE
     kcharsets.cpp
     kcodecs.cpp
+    kcodecsbase45.cpp
     kcodecsbase64.cpp
     kcodecsidentity.cpp
     kcodecsqp.cpp

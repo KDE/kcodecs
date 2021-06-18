@@ -11,6 +11,7 @@ ecm_add_tests(
     kcharsetstest.cpp
     kencodingprobertest.cpp
     rfc2047test.cpp
+    base45test.cpp
     codectest.cpp
     kemailaddresstest.cpp
     LINK_LIBRARIES KF5::Codecs Qt5::Test

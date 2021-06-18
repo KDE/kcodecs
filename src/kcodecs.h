@@ -327,6 +327,17 @@ KCODECS_EXPORT QString decodeRFC2047String(const QByteArray &src,
  */
 KCODECS_EXPORT QByteArray encodeRFC2047String(const QString &src, const QByteArray &charset);
 
+/**
+ * Decodes the given data that was encoded using the
+ * base45 codec.
+ *
+ * @param in   data to be decoded.
+ * @return     decoded string.
+ * @since 5.84
+ * @see https://datatracker.ietf.org/doc/draft-faltstrom-base45/
+ */
+KCODECS_EXPORT QByteArray base45Decode(const QByteArray &in);
+
 class Encoder;
 class EncoderPrivate;
 class Decoder;
