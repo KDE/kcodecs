@@ -281,7 +281,7 @@ EmailParseResult KEmailAddress::isValidAddress(const QString &aStr)
     // count how many @'s are in the string that is passed to us
     // if 0 or > 1 take action
     // at this point to many @'s cannot bail out right away since
-    // @ is allowed in qoutes, so we use a bool to keep track
+    // @ is allowed in quotes, so we use a bool to keep track
     // and then make a judgment further down in the parser
 
     bool tooManyAtsFlag = false;

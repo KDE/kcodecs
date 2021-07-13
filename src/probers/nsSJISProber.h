@@ -6,8 +6,8 @@
     SPDX-License-Identifier: MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later
 */
 
-// for S-JIS encoding, obeserve characteristic:
-// 1, kana character (or hankaku?) often have hight frequency of appereance
+// for S-JIS encoding, observe characteristic:
+// 1, kana character (or hankaku?) often have high frequency of appearance
 // 2, kana character often exist in group
 // 3, certain combination of kana is never used in japanese language
 

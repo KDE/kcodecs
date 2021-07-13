@@ -177,7 +177,7 @@ void KEmailAddressTest::testIsValidEmailAddress_data()
     // instead of local part
     QTest::newRow("13") << "matt douhan matt@<fruitsalad.org" << UnclosedAngleAddr;
 
-    // check that a properly formated anglebrackets situation is OK
+    // check that a properly formatted anglebrackets situation is OK
     QTest::newRow("14") << "matt douhan<matt@fruitsalad.org>" << AddressOk;
 
     // a full email address with comments angle brackets and the works should be valid too

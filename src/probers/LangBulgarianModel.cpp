@@ -16,7 +16,7 @@
 namespace kencodingprober
 {
 // Character Mapping Table:
-// this talbe is modified base on win1251BulgarianCharToOrderMap, so
+// this table is modified base on win1251BulgarianCharToOrderMap, so
 // only number <64 is sure valid
 
 const unsigned char Latin5_BulgarianCharToOrderMap[] = {

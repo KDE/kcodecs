@@ -69,7 +69,7 @@ protected:
     virtual int GetOrder(const char *str, unsigned int *charLen) = 0;
     virtual int GetOrder(const char *str) = 0;
 
-    // category counters, each interger counts sequence in its category
+    // category counters, each integer counts sequence in its category
     unsigned int mRelSample[NUM_OF_CATEGORY];
 
     // total sequence received

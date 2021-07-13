@@ -90,7 +90,7 @@ public:
     };
 
     /**
-     * Default ProberType is Universal(detect all possibe encodings)
+     * Default ProberType is Universal(detect all possible encodings)
      */
     KEncodingProber(ProberType proberType = Universal);
 

@@ -733,7 +733,7 @@ QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
         d->codecForNameDict.insert("->locale<-", codec);
         return codec;
     }
-    // For a non-empty name, lookup the "dictionnary", in a case-sensitive way.
+    // For a non-empty name, lookup the "dictionary", in a case-sensitive way.
     else if (d->codecForNameDict.contains(n)) {
         return d->codecForNameDict.value(n);
     }

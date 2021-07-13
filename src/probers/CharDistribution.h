@@ -89,7 +89,7 @@ protected:
     // The number of characters whose frequency order is less than 512
     unsigned int mFreqChars;
 
-    // Total character encounted.
+    // Total character encountered.
     unsigned int mTotalChars;
 
     // Mapping table to get frequency order from char order (get from GetOrder())

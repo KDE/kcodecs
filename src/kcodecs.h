@@ -149,7 +149,7 @@ QByteArray uuencode(const QByteArray &in);
  * Use this function if you want the result of the encoding
  * to be placed in another array and cut down the number of
  * copy operation that have to be performed in the process.
- * This is the preffered method for encoding binary data.
+ * This is the preferred method for encoding binary data.
  *
  * NOTE: the output array is first reset and then resized
  * appropriately before use, hence, all data stored in the
