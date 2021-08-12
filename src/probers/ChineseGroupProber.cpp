@@ -119,7 +119,8 @@ nsProbingState ChineseGroupProber::HandleData(const char *aBuf, unsigned int aLe
 float ChineseGroupProber::GetConfidence(void)
 {
     unsigned int i;
-    float bestConf = 0.0, cf;
+    float bestConf = 0.0;
+    float cf;
 
     switch (mState) {
     case eFoundIt:

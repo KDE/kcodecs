@@ -115,7 +115,8 @@ nsProbingState JapaneseGroupProber::HandleData(const char *aBuf, unsigned int aL
 float JapaneseGroupProber::GetConfidence(void)
 {
     unsigned int i;
-    float bestConf = 0.0, cf;
+    float bestConf = 0.0;
+    float cf;
 
     switch (mState) {
     case eFoundIt:

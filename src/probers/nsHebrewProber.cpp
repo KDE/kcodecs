@@ -84,7 +84,8 @@ nsProbingState nsHebrewProber::HandleData(const char *aBuf, unsigned int aLen)
         return eNotMe;
     }
 
-    const char *curPtr, *endPtr = aBuf + aLen;
+    const char *curPtr;
+    const char *endPtr = aBuf + aLen;
     char cur;
 
     for (curPtr = (char *)aBuf; curPtr < endPtr; ++curPtr) {

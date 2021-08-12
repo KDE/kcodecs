@@ -83,7 +83,7 @@ public:
     {
         if (mStart) {
             mStart = false;
-            if (aLen > 3)
+            if (aLen > 3) {
                 switch (aBuf[0]) {
                 case '\xEF':
                     if (('\xBB' == aBuf[1]) && ('\xBF' == aBuf[2]))
@@ -126,6 +126,7 @@ public:
                     }
                     break;
                 } // switch
+            }
         }
     }
     KEncodingProber::ProberType proberType;

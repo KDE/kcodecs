@@ -14,10 +14,11 @@
 
 static bool encodingNameHasADescription(const QString &encodingName, const QStringList &descriptions)
 {
-    for (const QString &description : descriptions)
+    for (const QString &description : descriptions) {
         if (description.contains(encodingName)) {
             return true;
         }
+    }
     return false;
 }
 

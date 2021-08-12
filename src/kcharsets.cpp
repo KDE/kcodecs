@@ -464,10 +464,11 @@ Q_GLOBAL_STATIC(KCharsetsSingletonPrivate, globalCharsets)
 // and return data, or return 0
 static inline const char *kcharsets_array_search(const char *start, const int *indices, const char *entry)
 {
-    for (int i = 0; indices[i] != -1; i += 2)
+    for (int i = 0; indices[i] != -1; i += 2) {
         if (qstrcmp(start + indices[i], entry) == 0) {
             return start + indices[i + 1];
         }
+    }
     return nullptr;
 }
 
@@ -625,9 +626,9 @@ QStringList KCharsets::availableEncodingNames() const
 QString KCharsets::descriptionForEncoding(const QString &encoding) const
 {
     const char *lang = kcharsets_array_search(language_for_encoding_string, language_for_encoding_indices, encoding.toUtf8().data());
-    if (lang)
+    if (lang) {
         return tr("%1 ( %2 )", "@item %1 character set, %2 encoding").arg(tr(lang, "@item Text character set"), encoding);
-    else {
+    } else {
         return tr("Other encoding (%1)", "@item").arg(encoding);
     }
 }

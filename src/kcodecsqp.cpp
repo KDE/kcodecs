@@ -357,8 +357,9 @@ bool QuotedPrintableDecoder::decode(const char *&scursor, const char *const send
             //              "illegally formed soft linebreak or lonely CR!";
             mInsideHexChar = false;
             mExpectLF = false;
-            if (mAccu != 0)
+            if (mAccu != 0) {
                 return false;
+            }
         }
 
         if (mInsideHexChar) {

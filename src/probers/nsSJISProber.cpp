@@ -23,8 +23,9 @@ void nsSJISProber::Reset(void)
 
 nsProbingState nsSJISProber::HandleData(const char *aBuf, unsigned int aLen)
 {
-    if (aLen == 0)
+    if (aLen == 0) {
         return mState;
+    }
 
     nsSMState codingState;
 
@@ -53,10 +54,11 @@ nsProbingState nsSJISProber::HandleData(const char *aBuf, unsigned int aLen)
 
     mLastChar[0] = aBuf[aLen - 1];
 
-    if (mState == eDetecting)
+    if (mState == eDetecting) {
         if (mContextAnalyser.GotEnoughData() && GetConfidence() > SHORTCUT_THRESHOLD) {
             mState = eFoundIt;
         }
+    }
 
     return mState;
 }

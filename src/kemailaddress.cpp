@@ -256,7 +256,9 @@ EmailParseResult KEmailAddress::splitAddress(const QByteArray &address, QByteArr
 //-----------------------------------------------------------------------------
 EmailParseResult KEmailAddress::splitAddress(const QString &address, QString &displayName, QString &addrSpec, QString &comment)
 {
-    QByteArray d, a, c;
+    QByteArray d;
+    QByteArray a;
+    QByteArray c;
     // FIXME: toUtf8() is probably not safe here, what if the second byte of a multi-byte character
     //        has the same code as one of the ASCII characters that splitAddress uses as delimiters?
     EmailParseResult result = splitAddress(address.toUtf8(), d, a, c);
@@ -644,7 +646,9 @@ QByteArray KEmailAddress::extractEmailAddress(const QByteArray &address)
 
 QByteArray KEmailAddress::extractEmailAddress(const QByteArray &address, QString &errorMessage)
 {
-    QByteArray dummy1, dummy2, addrSpec;
+    QByteArray dummy1;
+    QByteArray dummy2;
+    QByteArray addrSpec;
     const EmailParseResult result = splitAddressInternal(address, dummy1, addrSpec, dummy2, false /* don't allow multiple addresses */);
     if (result != AddressOk) {
         addrSpec = QByteArray();
@@ -680,7 +684,9 @@ QByteArray KEmailAddress::firstEmailAddress(const QByteArray &addresses)
 
 QByteArray KEmailAddress::firstEmailAddress(const QByteArray &addresses, QString &errorMessage)
 {
-    QByteArray dummy1, dummy2, addrSpec;
+    QByteArray dummy1;
+    QByteArray dummy2;
+    QByteArray addrSpec;
     const EmailParseResult result = splitAddressInternal(addresses, dummy1, addrSpec, dummy2, true /* allow multiple addresses */);
     if (result != AddressOk) {
         addrSpec = QByteArray();
@@ -718,7 +724,10 @@ bool KEmailAddress::extractEmailAddressAndName(const QString &aStr, QString &mai
 
     bool bInComment = false;
     bool bInQuotesOutsideOfEmail = false;
-    int i = 0, iAd = 0, iMailStart = 0, iMailEnd = 0;
+    int i = 0;
+    int iAd = 0;
+    int iMailStart = 0;
+    int iMailEnd = 0;
     QChar c;
     unsigned int commentstack = 0;
 
@@ -903,7 +912,10 @@ bool KEmailAddress::extractEmailAddressAndName(const QString &aStr, QString &mai
 //-----------------------------------------------------------------------------
 bool KEmailAddress::compareEmail(const QString &email1, const QString &email2, bool matchName)
 {
-    QString e1Name, e1Email, e2Name, e2Email;
+    QString e1Name;
+    QString e1Email;
+    QString e2Name;
+    QString e2Email;
 
     extractEmailAddressAndName(email1, e1Email, e1Name);
     extractEmailAddressAndName(email2, e2Email, e2Name);
@@ -988,7 +1000,9 @@ QString KEmailAddress::normalizeAddressesAndDecodeIdn(const QString &str)
     const QStringList addressList = splitAddressList(str);
     QStringList normalizedAddressList;
 
-    QByteArray displayName, addrSpec, comment;
+    QByteArray displayName;
+    QByteArray addrSpec;
+    QByteArray comment;
 
     for (QStringList::ConstIterator it = addressList.begin(); (it != addressList.end()); ++it) {
         if (!(*it).isEmpty()) {
@@ -1020,7 +1034,9 @@ QString KEmailAddress::normalizeAddressesAndEncodeIdn(const QString &str)
     const QStringList addressList = splitAddressList(str);
     QStringList normalizedAddressList;
 
-    QByteArray displayName, addrSpec, comment;
+    QByteArray displayName;
+    QByteArray addrSpec;
+    QByteArray comment;
 
     for (QStringList::ConstIterator it = addressList.begin(); (it != addressList.end()); ++it) {
         if (!(*it).isEmpty()) {

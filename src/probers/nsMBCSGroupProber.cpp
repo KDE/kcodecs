@@ -121,7 +121,8 @@ nsProbingState nsMBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
 float nsMBCSGroupProber::GetConfidence(void)
 {
     unsigned int i;
-    float bestConf = 0.0, cf;
+    float bestConf = 0.0;
+    float cf;
 
     switch (mState) {
     case eFoundIt:

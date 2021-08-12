@@ -35,7 +35,7 @@ nsProbingState nsSingleByteCharSetProber::HandleData(const char *aBuf, unsigned 
         mLastOrder = order;
     }
 
-    if (mState == eDetecting)
+    if (mState == eDetecting) {
         if (mTotalSeqs > SB_ENOUGH_REL_THRESHOLD) {
             float cf = GetConfidence();
             if (cf > POSITIVE_SHORTCUT_THRESHOLD) {
@@ -44,6 +44,7 @@ nsProbingState nsSingleByteCharSetProber::HandleData(const char *aBuf, unsigned 
                 mState = eNotMe;
             }
         }
+    }
 
     return mState;
 }

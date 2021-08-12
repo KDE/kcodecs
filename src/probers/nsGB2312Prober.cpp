@@ -23,8 +23,9 @@ void nsGB18030Prober::Reset(void)
 
 nsProbingState nsGB18030Prober::HandleData(const char *aBuf, unsigned int aLen)
 {
-    if (aLen == 0)
+    if (aLen == 0) {
         return mState;
+    }
 
     nsSMState codingState;
 
@@ -52,10 +53,11 @@ nsProbingState nsGB18030Prober::HandleData(const char *aBuf, unsigned int aLen)
 
     mLastChar[0] = aBuf[aLen - 1];
 
-    if (mState == eDetecting)
+    if (mState == eDetecting) {
         if (mDistributionAnalyser.GotEnoughData() && GetConfidence() > SHORTCUT_THRESHOLD) {
             mState = eFoundIt;
         }
+    }
     //    else
     //      mDistributionAnalyser.HandleData(aBuf, aLen);
 

@@ -14,7 +14,8 @@ namespace kencodingprober
 bool nsCharSetProber::FilterWithoutEnglishLetters(const char *aBuf, unsigned int aLen, char **newBuf, unsigned int &newLen)
 {
     char *newptr;
-    char *prevPtr, *curPtr;
+    char *prevPtr;
+    char *curPtr;
 
     bool meetMSB = false;
     newptr = *newBuf = (char *)malloc(aLen);
@@ -41,10 +42,11 @@ bool nsCharSetProber::FilterWithoutEnglishLetters(const char *aBuf, unsigned int
             }
         }
     }
-    if (meetMSB && curPtr > prevPtr)
+    if (meetMSB && curPtr > prevPtr) {
         while (prevPtr < curPtr) {
             *newptr++ = *prevPtr++;
         }
+    }
 
     newLen = newptr - *newBuf;
 
@@ -56,7 +58,8 @@ bool nsCharSetProber::FilterWithEnglishLetters(const char *aBuf, unsigned int aL
 {
     // do filtering to reduce load to probers
     char *newptr;
-    char *prevPtr, *curPtr;
+    char *prevPtr;
+    char *curPtr;
     bool isInTag = false;
 
     newptr = *newBuf = (char *)malloc(aLen);
@@ -89,10 +92,11 @@ bool nsCharSetProber::FilterWithEnglishLetters(const char *aBuf, unsigned int aL
 
     // If the current segment contains more than just a symbol
     // and it is not inside a tag then keep it.
-    if (!isInTag)
+    if (!isInTag) {
         while (prevPtr < curPtr) {
             *newptr++ = *prevPtr++;
         }
+    }
 
     newLen = newptr - *newBuf;
 

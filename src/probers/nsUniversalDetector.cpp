@@ -58,10 +58,11 @@ void nsUniversalDetector::Reset()
     }
 
     unsigned int i;
-    for (i = 0; i < NUM_OF_CHARSET_PROBERS; i++)
+    for (i = 0; i < NUM_OF_CHARSET_PROBERS; i++) {
         if (mCharSetProbers[i]) {
             mCharSetProbers[i]->Reset();
         }
+    }
 }
 
 //---------------------------------------------------------------------

@@ -30,7 +30,8 @@ void KEmailAddressTest::testGetNameAndEmail()
     QFETCH(QString, expEmail);
     QFETCH(bool, expRetVal);
 
-    QString name, email;
+    QString name;
+    QString email;
     bool retVal = extractEmailAddressAndName(input, email, name);
     QCOMPARE(retVal, expRetVal);
     QCOMPARE(name, expName);
