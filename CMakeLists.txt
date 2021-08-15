@@ -17,7 +17,7 @@ include(KDECMakeSettings)
 include(KDEGitCommitHooks)
 include(ECMQtDeclareLoggingCategory)
 
-set(REQUIRED_QT_VERSION 5.15.0)
+set(REQUIRED_QT_VERSION 5.15.2)
 find_package(Qt5Core ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
 
 find_package(Gperf REQUIRED)
@@ -41,7 +41,7 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KCODECS
                         SOVERSION 5)
 
 ecm_install_po_files_as_qm(po)
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02)
 
 add_subdirectory(src)
 
