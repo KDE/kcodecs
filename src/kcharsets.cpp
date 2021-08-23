@@ -10,11 +10,13 @@
 #include "kcharsets.h"
 #include "kcodecs_debug.h"
 
+#include "kusasciitextcodec.h"
 #include <kentities.h>
 
 #include <QHash>
 #include <QTextCodec>
 
+#include <algorithm>
 #include <assert.h>
 
 /*
@@ -475,17 +477,37 @@ class KCharsetsPrivate
 {
 public:
     KCharsetsPrivate(KCharsets *_kc)
+        : usAsciiTextCodec{new KUsAsciiTextCodec}
     {
         kc = _kc;
         codecForNameDict.reserve(43);
     }
+
+    bool isUsAsciiTextCodecRequest(const QByteArray &name) const;
+
     // Hash for the encoding names (sensitive case)
     QHash<QByteArray, QTextCodec *> codecForNameDict;
     KCharsets *kc;
+    // Using own variant due to broken ICU-based Qt codec, see QTBUG-83081.
+    // US-ASCII being an important one, but perhaps others also need their variant here?
+    // The life-time management is handled by Qt itself by
+    // auto-registration inside the QTextCodec constructor.
+    QTextCodec *const usAsciiTextCodec;
 
     // Cache list so QStrings can be implicitly shared
     QList<QStringList> encodingsByScript;
 };
+
+bool KCharsetsPrivate::isUsAsciiTextCodecRequest(const QByteArray &name) const
+{
+    if (usAsciiTextCodec->name().compare(name, Qt::CaseInsensitive) == 0) {
+        return true;
+    }
+    const QList<QByteArray> aliases = usAsciiTextCodec->aliases();
+    return std::any_of(aliases.constBegin(), aliases.constEnd(), [name](const QByteArray &aliasName) {
+        return (aliasName.compare(name, Qt::CaseInsensitive) == 0);
+    });
+}
 
 // --------------------------------------------------------------------------
 
@@ -738,9 +760,25 @@ QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
         return d->codecForNameDict.value(n);
     }
 
-    // If the name is not in the hash table, call directly QTextCodec::codecForName.
-    // We assume that QTextCodec is smarter and more maintained than this code.
-    codec = QTextCodec::codecForName(n);
+    // If the name is not in the hash table,
+    // first check ourselves if our fixed variant of a US-ASCII codec should be returned:
+    // API docs of QTextCodec do not specify the handling of custom codec instances
+    // on look-up when there are multiple codecs supporting the same name.
+    // The code of Qt 5.15 prepends custom instances to the internal list,
+    // so they would be preferred initially.
+    // But the code also has a look-up cache which does not get updated on new instances,
+    // so if somewhere a US-ASCII codec was requested by some other code before
+    // our KUsAsciiTextCodec instance gets created, the Qt-built-in will be always
+    // picked instead, at least for the used name.
+    // So we cannot rely on the internal mechanisms, but have to prefer our codec ourselves.
+    if (d->isUsAsciiTextCodecRequest(n)) {
+        codec = d->usAsciiTextCodec;
+    } else {
+        // call directly QTextCodec::codecForName.
+        // We assume that QTextCodec is smarter and more maintained than this code.
+        codec = QTextCodec::codecForName(n);
+    }
+
     if (codec) {
         d->codecForNameDict.insert(n, codec);
         return codec;

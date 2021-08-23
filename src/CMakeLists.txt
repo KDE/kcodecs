@@ -25,6 +25,7 @@ target_sources(KF5Codecs PRIVATE
     kcodecsuuencode.cpp
     kencodingprober.cpp
     kemailaddress.cpp
+    kusasciitextcodec.cpp
     probers/CharDistribution.cpp
     probers/ChineseGroupProber.cpp
     probers/JapaneseGroupProber.cpp

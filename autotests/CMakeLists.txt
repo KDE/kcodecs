@@ -17,6 +17,16 @@ ecm_add_tests(
     LINK_LIBRARIES KF5::Codecs Qt5::Test
 )
 
+ecm_add_test(
+    ${CMAKE_SOURCE_DIR}/src/kusasciitextcodec.cpp
+    kusasciitextcodectest.cpp
+    TEST_NAME kusasciitextcodectest
+    LINK_LIBRARIES Qt5::Test
+)
+target_include_directories(kusasciitextcodectest
+    PRIVATE "${CMAKE_SOURCE_DIR}/src"
+)
+
 # Benchmark, compiled, but not run automatically with ctest
 add_executable(base64benchmark base64benchmark.cpp)
 target_link_libraries(base64benchmark KF5::Codecs Qt5::Test)

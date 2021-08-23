@@ -188,6 +188,9 @@ void KCharsetsTest::testCodecForName_data()
     QTest::newRow("winsami2") << "winsami2"
                               << "winsami2"
                               << "winsami2";
+    QTest::newRow("US-ASCII") << "US-ASCII"
+                              << "US-ASCII"
+                              << "US-ASCII";
 }
 
 void KCharsetsTest::testCodecForName()
@@ -273,6 +276,90 @@ void KCharsetsTest::testEncodingNames()
         QVERIFY(!singleton->descriptionForEncoding(encodingName).isEmpty());
         QCOMPARE(singleton->encodingForName(singleton->descriptionForEncoding(encodingName)), encodingName);
     }
+}
+
+void KCharsetsTest::testUsAsciiEncoding_data()
+{
+    QTest::addColumn<QString>("codecName");
+
+    QTest::newRow("normal-name") << QStringLiteral("US-ASCII");
+    QTest::newRow("alias-name") << QStringLiteral("IBM367");
+}
+
+void KCharsetsTest::testUsAsciiEncoding()
+{
+    QFETCH(QString, codecName);
+
+    KCharsets *singleton = KCharsets::charsets();
+
+    bool ok = false;
+    QTextCodec *codec = singleton->codecForName(codecName, ok);
+    QVERIFY(ok);
+
+    // compatible text
+    const QString successUnicodeText = QStringLiteral("Testname");
+
+    QTextCodec::ConverterState successConverterState;
+
+    const QByteArray successEncoded8Bit = codec->fromUnicode(successUnicodeText.constData(), successUnicodeText.length(), &successConverterState);
+
+    const QByteArray successExpected8Bit = QByteArrayLiteral("Testname");
+    QCOMPARE(successConverterState.invalidChars, 0);
+    QCOMPARE(successEncoded8Bit, successExpected8Bit);
+
+    // incompatible text
+    const QString failUnicodeText = QStringLiteral("Testnäme");
+
+    QTextCodec::ConverterState failConverterState;
+
+    const QByteArray failEncoded8Bit = codec->fromUnicode(failUnicodeText.constData(), failUnicodeText.length(), &failConverterState);
+
+    const QByteArray failExpected8Bit = QByteArrayLiteral("Testn?me");
+    QCOMPARE(failConverterState.invalidChars, 1);
+    QCOMPARE(failEncoded8Bit, failExpected8Bit);
+}
+
+void KCharsetsTest::testUsAsciiDecoding_data()
+{
+    QTest::addColumn<QString>("codecName");
+
+    QTest::newRow("normal-name") << QStringLiteral("US-ASCII");
+    QTest::newRow("alias-name") << QStringLiteral("IBM367");
+}
+
+void KCharsetsTest::testUsAsciiDecoding()
+{
+    QFETCH(QString, codecName);
+
+    KCharsets *singleton = KCharsets::charsets();
+
+    bool ok = false;
+    QTextCodec *codec = singleton->codecForName(codecName, ok);
+    QVERIFY(ok);
+
+    // compatible text
+    const QByteArray success8BitString = QByteArrayLiteral("Testname");
+
+    QTextCodec::ConverterState successConverterState;
+
+    const QString successUnicodeString = codec->toUnicode(success8BitString.constData(), success8BitString.length(), &successConverterState);
+
+    const QString successExpectedString = QStringLiteral("Testname");
+    QCOMPARE(successConverterState.invalidChars, 0);
+    QCOMPARE(successUnicodeString, successExpectedString);
+
+    // incompatible text, with "ä" in latin1
+    /* clang-format off */
+    const QByteArray fail8BitString = QByteArrayLiteral("Testn""\xE4""me");
+    /* clang-format on */
+
+    QTextCodec::ConverterState failConverterState;
+
+    const QString failUnicodeString = codec->toUnicode(fail8BitString.constData(), fail8BitString.length(), &failConverterState);
+
+    const QString failExpectedString = QStringLiteral("Testn?me");
+    QCOMPARE(failConverterState.invalidChars, 1);
+    QCOMPARE(failUnicodeString, failExpectedString);
 }
 
 QTEST_MAIN(KCharsetsTest)
