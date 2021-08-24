@@ -12,7 +12,6 @@
 
 #include <kentities.h>
 
-#include <QCharRef>
 #include <QHash>
 #include <QTextCodec>
 
