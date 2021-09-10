@@ -62,6 +62,22 @@ QByteArray cachedCharset(const QByteArray &name)
     return charsetCache.last();
 }
 
+Q_REQUIRED_RESULT
+QByteArray updateEncodingCharset(const QByteArray &currentCharset, const QByteArray &nextCharset)
+{
+    if (!nextCharset.isEmpty()) {
+        if (currentCharset.isEmpty()) {
+            return nextCharset;
+        }
+        if (currentCharset != nextCharset) {
+            // only one charset per string supported, so change to superset charset UTF-8,
+            // which should  cover any possible chars
+            return QByteArrayLiteral("UTF-8");
+        }
+    }
+    return currentCharset;
+}
+
 } // namespace KCodecs
 
 /******************************** KCodecs ********************************/
@@ -304,7 +320,7 @@ bool parseEncodedWord(const char *&scursor,
         }
     }
     if (usedCS) {
-        *usedCS = cs;
+        *usedCS = updateEncodingCharset(*usedCS, cs);
     }
 
     if (!matchOK || !textCodec) {
@@ -358,6 +374,9 @@ QString KCodecs::decodeRFC2047String(const QByteArray &src, QByteArray *usedCS, 
     const char *scursor = src.constData();
     const char *send = scursor + src.length();
     bool onlySpacesSinceLastWord = false;
+    if (usedCS) {
+        usedCS->clear();
+    }
 
     while (scursor != send) {
         // space
@@ -400,6 +419,9 @@ QString KCodecs::decodeRFC2047String(const QByteArray &src, QByteArray *usedCS, 
     const QString tryUtf8 = QString::fromUtf8(result);
     if (tryUtf8.contains(0xFFFD)) {
         QTextCodec *codec = QTextCodec::codecForLocale();
+        if (usedCS) {
+            *usedCS = updateEncodingCharset(*usedCS, cachedCharset(codec->name()));
+        }
         return codec->toUnicode(result);
     } else {
         return tryUtf8;

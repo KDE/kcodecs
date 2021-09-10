@@ -298,7 +298,9 @@ enum CharsetOption {
  *  =?charset?[qb]?encoded?=
  *
  * @param src       source string.
- * @param usedCS    the detected charset is returned here
+ * @param usedCS    the name of any detected charset or, in case of multiple
+ *                  different ones, "UTF-8" as that of a super charset is
+ *                  returned here
  * @param defaultCS the charset to use in case the detected
  *                  one isn't known to us.
  * @param option    options for the encoder

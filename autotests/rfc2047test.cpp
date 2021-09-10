@@ -74,10 +74,13 @@ void RFC2047Test::testRFC2047decode_data()
                                << QByteArray("ISO-8859-1") << QByteArray("utf-8") << false
                                << QString::fromUtf8("Subject: Belangrijk: Verhuizing FTP server");
 
-    // mixed charsets, based on bug 125542 but pasted from above instead since I'm unable to enter those asian symbols
+    // mixed charsets, based on bug 125542
     QTest::newRow("mixed charsets") << QByteArray("Subject: =?utf-8?q?Ingo=20Kl=C3=B6cker?= unencoded words =?iso-8859-9?Q?S=2E=C7a=F0lar?=")
-                                    << QByteArray("ISO-8859-9") << QByteArray("utf-8") << false
+                                    << QByteArray("UTF-8") << QByteArray("utf-8") << false
                                     << QString::fromUtf8("Subject: Ingo Klöcker unencoded words S.Çağlar");
+    QTest::newRow("mixed charsets-125542") << QByteArray("Subject: =?koi8-r?b?5MXMz9fJINrB?= HP Pavillion =?iso-8859-5?b?KNzV3N7g2PjQIN/e4dXR3d4p?=")
+                                    << QByteArray("UTF-8") << QByteArray("us-ascii") << false
+                                    << QString::fromUtf8("Subject: Делови за HP Pavillion (меморија посебно)");
 
     // illegal characters which are already encoded in the given encoding but are not ASCII (bug 206417)
     QTest::newRow("illegal characters") << QByteArray("Subject: =?utf-8?Q?пиѿилл,=20=D0=B4=D0=BE=D0=B1=D1=80=D1=8B=D0=B9=20=D0=B4=D0=B5=D0=BD=D1=8C?=")
