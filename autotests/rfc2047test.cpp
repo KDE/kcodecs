@@ -153,11 +153,11 @@ void RFC2047Test::testRFC2047encode_data()
                               << QByteArray("bla");
     QTest::newRow("QP") << QString::fromUtf8("Ingo Klöcker <kloecker@kde.org>")
                         << QByteArray("utf-8")
-                        << QByteArray("=?utf-8?q?Ingo=20Kl=C3=B6cker?= <kloecker@kde.org>");
+                        << QByteArray("=?UTF-8?q?Ingo=20Kl=C3=B6cker?= <kloecker@kde.org>");
 
     QTest::newRow("utf-8 fallback") << QString::fromUtf8("æſðđŋħł")
                                     << QByteArray("latin1")
-                                    << QByteArray("=?utf-8?B?w6bFv8OwxJHFi8SnxYI=?=");
+                                    << QByteArray("=?UTF-8?B?w6bFv8OwxJHFi8SnxYI=?=");
     /* clang-format on */
 }
 

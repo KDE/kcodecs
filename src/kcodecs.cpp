@@ -62,6 +62,14 @@ QByteArray cachedCharset(const QByteArray &name)
     return charsetCache.last();
 }
 
+namespace CodecNames
+{
+QByteArray utf8()
+{
+    return QByteArrayLiteral("UTF-8");
+}
+}
+
 Q_REQUIRED_RESULT
 QByteArray updateEncodingCharset(const QByteArray &currentCharset, const QByteArray &nextCharset)
 {
@@ -72,7 +80,7 @@ QByteArray updateEncodingCharset(const QByteArray &currentCharset, const QByteAr
         if (currentCharset != nextCharset) {
             // only one charset per string supported, so change to superset charset UTF-8,
             // which should  cover any possible chars
-            return QByteArrayLiteral("UTF-8");
+            return CodecNames::utf8();
         }
     }
     return currentCharset;
@@ -364,7 +372,7 @@ bool parseEncodedWord(const char *&scursor,
 QString KCodecs::decodeRFC2047String(const QString &msg)
 {
     QByteArray usedCS;
-    return decodeRFC2047String(msg.toUtf8(), &usedCS, "utf-8", NoOption);
+    return decodeRFC2047String(msg.toUtf8(), &usedCS, CodecNames::utf8(), NoOption);
 }
 
 QString KCodecs::decodeRFC2047String(const QByteArray &src, QByteArray *usedCS, const QByteArray &defaultCS, CharsetOption charsetOption)
@@ -457,7 +465,7 @@ QByteArray KCodecs::encodeRFC2047String(const QString &src, const QByteArray &ch
     QTextCodec::ConverterState converterState(QTextCodec::IgnoreHeader);
     QByteArray encoded8Bit = codec->fromUnicode(src.constData(), src.length(), &converterState);
     if (converterState.invalidChars > 0) {
-        usedCS = "utf-8";
+        usedCS = CodecNames::utf8();
         codec = QTextCodec::codecForName(usedCS);
         encoded8Bit = codec->fromUnicode(src);
     }
