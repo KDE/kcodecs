@@ -483,16 +483,14 @@ KEmailAddress::EmailParseResult KEmailAddress::isValidAddressList(const QString 
     }
 
     const QStringList list = splitAddressList(aStr);
-
-    QStringList::const_iterator it = list.begin();
     EmailParseResult errorCode = AddressOk;
-    for (it = list.begin(); it != list.end(); ++it) {
-        qCDebug(KCODECS_LOG) << " *it" << (*it);
-        errorCode = isValidAddress(*it);
-        if (errorCode != AddressOk) {
-            badAddr = (*it);
-            break;
-        }
+    auto it = std::find_if(list.cbegin(), list.cend(), [&errorCode](const QString &addr) {
+        qCDebug(KCODECS_LOG) << " address" << addr;
+        errorCode = isValidAddress(addr);
+        return errorCode != AddressOk;
+    });
+    if (it != list.cend()) {
+        badAddr = *it;
     }
     return errorCode;
 }
@@ -1004,9 +1002,9 @@ QString KEmailAddress::normalizeAddressesAndDecodeIdn(const QString &str)
     QByteArray addrSpec;
     QByteArray comment;
 
-    for (QStringList::ConstIterator it = addressList.begin(); (it != addressList.end()); ++it) {
-        if (!(*it).isEmpty()) {
-            if (splitAddress((*it).toUtf8(), displayName, addrSpec, comment) == AddressOk) {
+    for (const auto &addr : addressList) {
+        if (!addr.isEmpty()) {
+            if (splitAddress(addr.toUtf8(), displayName, addrSpec, comment) == AddressOk) {
                 QByteArray cs;
                 displayName = KCodecs::decodeRFC2047String(displayName, &cs).toUtf8();
                 comment = KCodecs::decodeRFC2047String(comment, &cs).toUtf8();
@@ -1038,9 +1036,9 @@ QString KEmailAddress::normalizeAddressesAndEncodeIdn(const QString &str)
     QByteArray addrSpec;
     QByteArray comment;
 
-    for (QStringList::ConstIterator it = addressList.begin(); (it != addressList.end()); ++it) {
-        if (!(*it).isEmpty()) {
-            if (splitAddress((*it).toUtf8(), displayName, addrSpec, comment) == AddressOk) {
+    for (const auto &addr : addressList) {
+        if (!addr.isEmpty()) {
+            if (splitAddress(addr.toUtf8(), displayName, addrSpec, comment) == AddressOk) {
                 normalizedAddressList << normalizedAddress(QString::fromUtf8(displayName), toIdn(QString::fromUtf8(addrSpec)), QString::fromUtf8(comment));
             }
         }

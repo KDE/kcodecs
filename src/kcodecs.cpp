@@ -574,9 +574,7 @@ static void createCodecs()
 
 static void cleanupCodecs()
 {
-    for (auto iter = allCodecs->begin(); iter != allCodecs->end(); ++iter) {
-        delete (*iter);
-    }
+    qDeleteAll(*allCodecs);
     delete allCodecs;
     allCodecs = nullptr;
 }
