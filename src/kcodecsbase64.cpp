@@ -67,7 +67,7 @@ protected:
     }
 
 public:
-    virtual ~Base64Decoder()
+    ~Base64Decoder() override
     {
     }
 
@@ -105,7 +105,7 @@ protected:
     bool generic_finish(char *&dcursor, const char *const dend, bool withLFatEnd);
 
 public:
-    virtual ~Base64Encoder()
+    ~Base64Encoder() override
     {
     }
 

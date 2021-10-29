@@ -130,7 +130,7 @@ protected:
     void createOutputBuffer(char *&dcursor, const char *const dend);
 
 public:
-    virtual ~QuotedPrintableEncoder()
+    ~QuotedPrintableEncoder() override
     {
     }
 
@@ -182,7 +182,7 @@ protected:
     }
 
 public:
-    virtual ~QuotedPrintableDecoder()
+    ~QuotedPrintableDecoder() override
     {
     }
 
@@ -232,7 +232,7 @@ protected:
     }
 
 public:
-    virtual ~Rfc2047QEncodingEncoder()
+    ~Rfc2047QEncodingEncoder() override
     {
     }
 

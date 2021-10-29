@@ -39,7 +39,7 @@ protected:
     }
 
 public:
-    ~IdentityEnDecoder()
+    ~IdentityEnDecoder() override
     {
     }
 

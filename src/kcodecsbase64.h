@@ -140,7 +140,7 @@ public:
     /**
       Destroys the codec.
     */
-    virtual ~Rfc2047BEncodingCodec()
+    ~Rfc2047BEncodingCodec() override
     {
     }
 

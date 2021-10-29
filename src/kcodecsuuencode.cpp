@@ -55,7 +55,7 @@ protected:
     }
 
 public:
-    virtual ~UUDecoder()
+    ~UUDecoder() override
     {
     }
 
