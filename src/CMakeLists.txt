@@ -17,41 +17,71 @@ set_target_properties(KF5Codecs PROPERTIES CXX_STANDARD 14)
 
 target_sources(KF5Codecs PRIVATE
     kcharsets.cpp
-    kcodecs.cpp
+    kcharsets.h
     kcodecsbase45.cpp
     kcodecsbase64.cpp
+    kcodecsbase64.h
+    kcodecs.cpp
+    kcodecs.h
     kcodecsidentity.cpp
+    kcodecsidentity.h
+    kcodecs_p.h
     kcodecsqp.cpp
+    kcodecsqp.h
     kcodecsuuencode.cpp
-    kencodingprober.cpp
+    kcodecsuuencode.h
     kemailaddress.cpp
+    kemailaddress.h
+    kencodingprober.cpp
+    kencodingprober.h
     kusasciitextcodec.cpp
+    kusasciitextcodec.h
     probers/CharDistribution.cpp
+    probers/CharDistribution.h
     probers/ChineseGroupProber.cpp
+    probers/ChineseGroupProber.h
     probers/JapaneseGroupProber.cpp
+    probers/JapaneseGroupProber.h
     probers/JpCntx.cpp
+    probers/JpCntx.h
     probers/LangBulgarianModel.cpp
     probers/LangCyrillicModel.cpp
     probers/LangGreekModel.cpp
     probers/LangHebrewModel.cpp
     probers/LangHungarianModel.cpp
     probers/LangThaiModel.cpp
-    probers/UnicodeGroupProber.cpp
     probers/nsBig5Prober.cpp
+    probers/nsBig5Prober.h
     probers/nsCharSetProber.cpp
-    probers/nsEUCJPProber.cpp
-    probers/nsEUCKRProber.cpp
+    probers/nsCharSetProber.h
+    probers/nsCodingStateMachine.h
     probers/nsEscCharsetProber.cpp
+    probers/nsEscCharsetProber.h
     probers/nsEscSM.cpp
+    probers/nsEUCJPProber.cpp
+    probers/nsEUCJPProber.h
+    probers/nsEUCKRProber.cpp
+    probers/nsEUCKRProber.h
     probers/nsGB2312Prober.cpp
+    probers/nsGB2312Prober.h
     probers/nsHebrewProber.cpp
+    probers/nsHebrewProber.h
     probers/nsLatin1Prober.cpp
+    probers/nsLatin1Prober.h
     probers/nsMBCSGroupProber.cpp
+    probers/nsMBCSGroupProber.h
     probers/nsMBCSSM.cpp
-    probers/nsSBCSGroupProber.cpp
+    probers/nsPkgInt.h
     probers/nsSBCharSetProber.cpp
+    probers/nsSBCharSetProber.h
+    probers/nsSBCSGroupProber.cpp
+    probers/nsSBCSGroupProber.h
     probers/nsSJISProber.cpp
+    probers/nsSJISProber.h
     probers/nsUniversalDetector.cpp
+    probers/nsUniversalDetector.h
+    probers/UnicodeGroupProber.cpp
+    probers/UnicodeGroupProber.h
 )
 
 ecm_qt_declare_logging_category(KF5Codecs
