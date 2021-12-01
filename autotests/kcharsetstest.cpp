@@ -14,12 +14,9 @@
 
 static bool encodingNameHasADescription(const QString &encodingName, const QStringList &descriptions)
 {
-    for (const QString &description : descriptions) {
-        if (description.contains(encodingName)) {
-            return true;
-        }
-    }
-    return false;
+    return std::any_of(descriptions.cbegin(), descriptions.cend(), [&encodingName](const QString &description) {
+        return description.contains(encodingName);
+    });
 }
 
 void KCharsetsTest::testSingleton()

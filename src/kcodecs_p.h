@@ -14,7 +14,7 @@ namespace KCodecs
 class EncoderPrivate
 {
 public:
-    EncoderPrivate(Codec::NewlineType newline);
+    explicit EncoderPrivate(Codec::NewlineType newline);
 
     /**
       An output buffer to simplify some codecs.
@@ -29,7 +29,7 @@ public:
 class DecoderPrivate
 {
 public:
-    DecoderPrivate(Codec::NewlineType newline);
+    explicit DecoderPrivate(Codec::NewlineType newline);
 
     const Codec::NewlineType newline;
 };

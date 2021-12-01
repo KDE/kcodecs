@@ -476,7 +476,7 @@ static inline const char *kcharsets_array_search(const char *start, const int *i
 class KCharsetsPrivate
 {
 public:
-    KCharsetsPrivate(KCharsets *_kc)
+    explicit KCharsetsPrivate(KCharsets *_kc)
         : usAsciiTextCodec{new KUsAsciiTextCodec}
     {
         kc = _kc;
@@ -809,7 +809,6 @@ QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
             d->codecForNameDict.insert(n, codec);
             return codec;
         }
-        changed = false;
     }
 
     // these codecs are built into Qt, but the name given for the codec is different,

@@ -12,10 +12,8 @@ namespace kencodingprober
 {
 nsProbingState nsSingleByteCharSetProber::HandleData(const char *aBuf, unsigned int aLen)
 {
-    unsigned char order;
-
     for (unsigned int i = 0; i < aLen; i++) {
-        order = mModel->charToOrderMap[(unsigned char)aBuf[i]];
+        const unsigned char order = mModel->charToOrderMap[(unsigned char)aBuf[i]];
 
         if (order < SYMBOL_CAT_ORDER) {
             mTotalChar++;

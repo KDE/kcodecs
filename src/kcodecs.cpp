@@ -52,10 +52,11 @@ static QList<QByteArray> charsetCache;
 
 QByteArray cachedCharset(const QByteArray &name)
 {
-    for (const QByteArray &charset : qAsConst(charsetCache)) {
-        if (qstricmp(name.data(), charset.data()) == 0) {
-            return charset;
-        }
+    auto it = std::find_if(charsetCache.cbegin(), charsetCache.cend(), [&name](const QByteArray &charset) {
+        return qstricmp(name.data(), charset.data()) == 0;
+    });
+    if (it != charsetCache.cend()) {
+        return *it;
     }
 
     charsetCache.append(name.toUpper());
@@ -510,10 +511,9 @@ QByteArray KCodecs::encodeRFC2047String(const QString &src, const QByteArray &ch
         if (useQEncoding) {
             result += "?Q?";
 
-            char c;
             char hexcode; // "Q"-encoding implementation described in RFC 2047
             for (int i = start; i < end; i++) {
-                c = encoded8Bit[i];
+                const char c = encoded8Bit[i];
                 if (c == ' ') { // make the result readable with not MIME-capable readers
                     result += '_';
                 } else {

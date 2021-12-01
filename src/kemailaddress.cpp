@@ -371,7 +371,7 @@ EmailParseResult KEmailAddress::isValidAddress(const QString &aStr)
                     } else if (index == strlen - 1) {
                         return MissingDomainPart;
                     }
-                } else if (inQuotedString) {
+                } else {
                     --atCount;
                     if (atCount == 1) {
                         tooManyAtsFlag = false;

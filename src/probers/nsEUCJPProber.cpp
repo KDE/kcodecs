@@ -27,10 +27,8 @@ nsProbingState nsEUCJPProber::HandleData(const char *aBuf, unsigned int aLen)
         return mState;
     }
 
-    nsSMState codingState;
-
     for (unsigned int i = 0; i < aLen; i++) {
-        codingState = mCodingSM->NextState(aBuf[i]);
+        const nsSMState codingState = mCodingSM->NextState(aBuf[i]);
         if (codingState == eError) {
             mState = eNotMe;
             break;

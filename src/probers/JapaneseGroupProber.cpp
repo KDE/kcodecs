@@ -99,8 +99,8 @@ nsProbingState JapaneseGroupProber::HandleData(const char *aBuf, unsigned int aL
             break;
         } else if (st == eNotMe) {
             mIsActive[i] = false;
-            mActiveNum--;
-            if (mActiveNum <= 0) {
+            --mActiveNum;
+            if (mActiveNum == 0) {
                 mState = eNotMe;
                 break;
             }

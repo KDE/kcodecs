@@ -31,7 +31,7 @@ typedef struct {
 class KCODECS_NO_EXPORT nsSingleByteCharSetProber : public nsCharSetProber
 {
 public:
-    nsSingleByteCharSetProber(const SequenceModel *model)
+    explicit nsSingleByteCharSetProber(const SequenceModel *model)
         : mModel(model)
         , mReversed(false)
         , mNameProber(nullptr)

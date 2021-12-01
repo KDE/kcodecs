@@ -91,11 +91,9 @@ nsProbingState nsLatin1Prober::HandleData(const char *aBuf, unsigned int aLen)
         newLen1 = aLen;
     }
 
-    unsigned char charClass;
-    unsigned char freq;
     for (unsigned int i = 0; i < newLen1; i++) {
-        charClass = Latin1_CharToClass[(unsigned char)newBuf1[i]];
-        freq = Latin1ClassModel[mLastCharClass * CLASS_NUM + charClass];
+        const unsigned char charClass = Latin1_CharToClass[(unsigned char)newBuf1[i]];
+        const unsigned char freq = Latin1ClassModel[mLastCharClass * CLASS_NUM + charClass];
         if (freq == 0) {
             mState = eNotMe;
             break;

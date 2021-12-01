@@ -30,7 +30,7 @@ class IdentityEnDecoder : public Encoder, public Decoder
 {
 protected:
     friend class KCodecs::IdentityCodec;
-    IdentityEnDecoder(Codec::NewlineType newline)
+    explicit IdentityEnDecoder(Codec::NewlineType newline)
         : Encoder(Codec::NewlineLF)
     {
         if (newline == Codec::NewlineCRLF) {

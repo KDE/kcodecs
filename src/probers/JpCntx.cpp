@@ -348,10 +348,6 @@ const char jp2CharContext[83][83] = {
 
 void JapaneseContextAnalysis::HandleData(const char *aBuf, unsigned int aLen)
 {
-    unsigned int charLen;
-    int order;
-    unsigned int i;
-
     if (mDone) {
         return;
     }
@@ -362,8 +358,9 @@ void JapaneseContextAnalysis::HandleData(const char *aBuf, unsigned int aLen)
     // We can choose to record those bytes as well and analyze the character once it
     // is complete, but since a character will not make much difference, by simply skipping
     // this character will simply our logic and improve performance.
-    for (i = mNeedToSkipCharNum; i < aLen;) {
-        order = GetOrder(aBuf + i, &charLen);
+    for (unsigned int i = mNeedToSkipCharNum; i < aLen;) {
+        unsigned int charLen;
+        const int order = GetOrder(aBuf + i, &charLen);
         i += charLen;
         if (i > aLen) {
             mNeedToSkipCharNum = i - aLen;

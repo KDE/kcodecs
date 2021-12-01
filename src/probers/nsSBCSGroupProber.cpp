@@ -125,7 +125,7 @@ nsProbingState nsSBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
         } else if (st == eNotMe) {
             mIsActive[i] = false;
             mActiveNum--;
-            if (mActiveNum <= 0) {
+            if (mActiveNum == 0) {
                 mState = eNotMe;
                 break;
             }
