@@ -22,28 +22,28 @@ class KEncodingProberPrivate
 {
 public:
     KEncodingProberPrivate()
-        : prober(nullptr)
+        : mProber(nullptr)
         , mStart(true)
     {
     }
     ~KEncodingProberPrivate()
     {
-        delete prober;
+        delete mProber;
     }
     void setProberType(KEncodingProber::ProberType pType)
     {
-        proberType = pType;
+        mProberType = pType;
         /* handle multi-byte encodings carefully , because they're hard to detect,
          *   and have to use some Stastics methods.
          * for single-byte encodings (most western encodings), nsSBCSGroupProber is ok,
          *   because encoding state machine can detect many such encodings.
          */
 
-        delete prober;
+        delete mProber;
 
-        switch (proberType) {
+        switch (mProberType) {
         case KEncodingProber::None:
-            prober = nullptr;
+            mProber = nullptr;
             break;
         case KEncodingProber::Arabic:
         case KEncodingProber::Baltic:
@@ -57,26 +57,26 @@ public:
         case KEncodingProber::Thai:
         case KEncodingProber::Turkish:
         case KEncodingProber::WesternEuropean:
-            prober = new kencodingprober::nsSBCSGroupProber();
+            mProber = new kencodingprober::nsSBCSGroupProber();
             break;
         case KEncodingProber::ChineseSimplified:
         case KEncodingProber::ChineseTraditional:
-            prober = new kencodingprober::ChineseGroupProber();
+            mProber = new kencodingprober::ChineseGroupProber();
             break;
         case KEncodingProber::Japanese:
-            prober = new kencodingprober::JapaneseGroupProber();
+            mProber = new kencodingprober::JapaneseGroupProber();
             break;
         case KEncodingProber::Korean:
-            prober = new kencodingprober::nsMBCSGroupProber();
+            mProber = new kencodingprober::nsMBCSGroupProber();
             break;
         case KEncodingProber::Unicode:
-            prober = new kencodingprober::UnicodeGroupProber();
+            mProber = new kencodingprober::UnicodeGroupProber();
             break;
         case KEncodingProber::Universal:
-            prober = new kencodingprober::nsUniversalDetector();
+            mProber = new kencodingprober::nsUniversalDetector();
             break;
         default:
-            prober = nullptr;
+            mProber = nullptr;
         }
     }
     void unicodeTest(const char *aBuf, int aLen)
@@ -89,49 +89,49 @@ public:
                     if (('\xBB' == aBuf[1]) && ('\xBF' == aBuf[2]))
                     // EF BB BF  UTF-8 encoded BOM
                     {
-                        proberState = KEncodingProber::FoundIt;
+                        mProberState = KEncodingProber::FoundIt;
                     }
                     break;
                 case '\xFE':
                     if (('\xFF' == aBuf[1]) && ('\x00' == aBuf[2]) && ('\x00' == aBuf[3]))
                     // FE FF 00 00  UCS-4, unusual octet order BOM (3412)
                     {
-                        proberState = KEncodingProber::FoundIt;
+                        mProberState = KEncodingProber::FoundIt;
                     } else if ('\xFF' == aBuf[1])
                     // FE FF  UTF-16, big endian BOM
                     {
-                        proberState = KEncodingProber::FoundIt;
+                        mProberState = KEncodingProber::FoundIt;
                     }
                     break;
                 case '\x00':
                     if (('\x00' == aBuf[1]) && ('\xFE' == aBuf[2]) && ('\xFF' == aBuf[3]))
                     // 00 00 FE FF  UTF-32, big-endian BOM
                     {
-                        proberState = KEncodingProber::FoundIt;
+                        mProberState = KEncodingProber::FoundIt;
                     } else if (('\x00' == aBuf[1]) && ('\xFF' == aBuf[2]) && ('\xFE' == aBuf[3]))
                     // 00 00 FF FE  UCS-4, unusual octet order BOM (2143)
                     {
-                        proberState = KEncodingProber::FoundIt;
+                        mProberState = KEncodingProber::FoundIt;
                     }
                     break;
                 case '\xFF':
                     if (('\xFE' == aBuf[1]) && ('\x00' == aBuf[2]) && ('\x00' == aBuf[3]))
                     // FF FE 00 00  UTF-32, little-endian BOM
                     {
-                        proberState = KEncodingProber::FoundIt;
+                        mProberState = KEncodingProber::FoundIt;
                     } else if ('\xFE' == aBuf[1])
                     // FF FE  UTF-16, little endian BOM
                     {
-                        proberState = KEncodingProber::FoundIt;
+                        mProberState = KEncodingProber::FoundIt;
                     }
                     break;
                 } // switch
             }
         }
     }
-    KEncodingProber::ProberType proberType;
-    KEncodingProber::ProberState proberState;
-    kencodingprober::nsCharSetProber *prober;
+    KEncodingProber::ProberType mProberType;
+    KEncodingProber::ProberState mProberState;
+    kencodingprober::nsCharSetProber *mProber;
     bool mStart;
 };
 
@@ -145,7 +145,7 @@ KEncodingProber::~KEncodingProber() = default;
 
 void KEncodingProber::reset()
 {
-    d->proberState = KEncodingProber::Probing;
+    d->mProberState = KEncodingProber::Probing;
     d->mStart = true;
 }
 
@@ -156,61 +156,61 @@ KEncodingProber::ProberState KEncodingProber::feed(const QByteArray &data)
 
 KEncodingProber::ProberState KEncodingProber::feed(const char *data, int len)
 {
-    if (!d->prober) {
-        return d->proberState;
+    if (!d->mProber) {
+        return d->mProberState;
     }
-    if (d->proberState == Probing) {
+    if (d->mProberState == Probing) {
         if (d->mStart) {
             d->unicodeTest(data, len);
-            if (d->proberState == FoundIt) {
-                return d->proberState;
+            if (d->mProberState == FoundIt) {
+                return d->mProberState;
             }
         }
-        d->prober->HandleData(data, len);
-        switch (d->prober->GetState()) {
+        d->mProber->HandleData(data, len);
+        switch (d->mProber->GetState()) {
         case kencodingprober::eNotMe:
-            d->proberState = NotMe;
+            d->mProberState = NotMe;
             break;
         case kencodingprober::eFoundIt:
-            d->proberState = FoundIt;
+            d->mProberState = FoundIt;
             break;
         default:
-            d->proberState = Probing;
+            d->mProberState = Probing;
             break;
         }
     }
 #ifdef DEBUG_PROBE
-    d->prober->DumpStatus();
+    d->mProber->DumpStatus();
 #endif
-    return d->proberState;
+    return d->mProberState;
 }
 
 KEncodingProber::ProberState KEncodingProber::state() const
 {
-    return d->proberState;
+    return d->mProberState;
 }
 
 QByteArray KEncodingProber::encoding() const
 {
-    if (!d->prober) {
+    if (!d->mProber) {
         return QByteArray("UTF-8");
     }
 
-    return QByteArray(d->prober->GetCharSetName());
+    return QByteArray(d->mProber->GetCharSetName());
 }
 
 float KEncodingProber::confidence() const
 {
-    if (!d->prober) {
+    if (!d->mProber) {
         return 0.0;
     }
 
-    return d->prober->GetConfidence();
+    return d->mProber->GetConfidence();
 }
 
 KEncodingProber::ProberType KEncodingProber::proberType() const
 {
-    return d->proberType;
+    return d->mProberType;
 }
 
 void KEncodingProber::setProberType(KEncodingProber::ProberType proberType)
