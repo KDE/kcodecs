@@ -11,6 +11,7 @@
 
 #include <QCoreApplication>
 #include <QList>
+#include <QStringList>
 #include <memory>
 
 class KCharsets;
@@ -18,7 +19,6 @@ class KCharsetsPrivate;
 
 class QChar;
 class QString;
-class QStringList;
 class QTextCodec;
 
 /**

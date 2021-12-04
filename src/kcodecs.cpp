@@ -425,7 +425,7 @@ QString KCodecs::decodeRFC2047String(const QByteArray &src, QByteArray *usedCS, 
     // If there are any chars that couldn't be decoded in UTF-8,
     // fallback to local codec
     const QString tryUtf8 = QString::fromUtf8(result);
-    if (tryUtf8.contains(0xFFFD)) {
+    if (tryUtf8.contains(QChar(0xFFFD))) {
         QTextCodec *codec = QTextCodec::codecForLocale();
         if (usedCS) {
             *usedCS = updateEncodingCharset(*usedCS, cachedCharset(codec->name()));
@@ -590,7 +590,7 @@ KCodecs::Codec *KCodecs::Codec::codecForName(const char *name)
 
 KCodecs::Codec *KCodecs::Codec::codecForName(const QByteArray &name)
 {
-    QMutexLocker locker(dictLock); // protect "allCodecs"
+    QMutexLocker locker(dictLock()); // protect "allCodecs"
     if (!allCodecs) {
         allCodecs = new QHash<QByteArray, Codec *>();
         qAddPostRoutine(cleanupCodecs);

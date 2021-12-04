@@ -7,7 +7,6 @@
 #include <kusasciitextcodec.h>
 // Qt
 #include <QTest>
-#include <QTextCodec>
 
 class KUsAsciiTextCodecTest : public QObject
 {

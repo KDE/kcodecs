@@ -925,10 +925,10 @@ bool KEmailAddress::compareEmail(const QString &email1, const QString &email2, b
 // Used internally by normalizedAddress()
 QString removeBidiControlChars(const QString &input)
 {
-    const int LRO = 0x202D;
-    const int RLO = 0x202E;
-    const int LRE = 0x202A;
-    const int RLE = 0x202B;
+    constexpr QChar LRO(0x202D);
+    constexpr QChar RLO(0x202E);
+    constexpr QChar LRE(0x202A);
+    constexpr QChar RLE(0x202B);
     QString result = input;
     result.remove(LRO);
     result.remove(RLO);

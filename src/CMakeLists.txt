@@ -102,9 +102,12 @@ ecm_generate_export_header(KF5Codecs
     EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
 )
 
-target_include_directories(KF5Codecs INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/KCodecs>")
+target_include_directories(KF5Codecs INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/KCodecs>")
 
-target_link_libraries(KF5Codecs PUBLIC Qt5::Core)
+target_link_libraries(KF5Codecs PUBLIC Qt${QT_MAJOR_VERSION}::Core)
+if (TARGET Qt6::Core5Compat)
+    target_link_libraries(KF5Codecs PUBLIC Qt6::Core5Compat)  # QTextCodec
+endif()
 
 set_target_properties(KF5Codecs PROPERTIES VERSION   ${KCODECS_VERSION}
                                            SOVERSION ${KCODECS_SOVERSION}
@@ -143,7 +146,7 @@ install(TARGETS KF5Codecs EXPORT KF5CodecsTargets ${KF5_INSTALL_TARGETS_DEFAULT_
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/kcodecs_export.h
   ${KCodecs_HEADERS}
-  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/KCodecs COMPONENT Devel
+  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/KCodecs COMPONENT Devel
 )
 
 ecm_qt_install_logging_categories(
@@ -178,5 +181,5 @@ if(BUILD_QCH)
 endif()
 
 include(ECMGeneratePriFile)
-ecm_generate_pri_file(BASE_NAME KCodecs LIB_NAME KF5Codecs DEPS "core" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/KCodecs)
+ecm_generate_pri_file(BASE_NAME KCodecs LIB_NAME KF5Codecs DEPS "core" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/KCodecs)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})

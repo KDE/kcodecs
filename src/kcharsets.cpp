@@ -539,11 +539,11 @@ QChar KCharsets::fromEntity(const QString &str)
             pos++;
             // '&#x0000', hexadecimal character reference
             const QString tmp(str.mid(pos));
-            res = tmp.toInt(&ok, 16);
+            res = QChar(tmp.toInt(&ok, 16));
         } else {
             //  '&#0000', decimal character reference
             const QString tmp(str.mid(pos));
-            res = tmp.toInt(&ok, 10);
+            res = QChar(tmp.toInt(&ok, 10));
         }
         if (ok) {
             return res;
