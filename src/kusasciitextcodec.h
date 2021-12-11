@@ -9,6 +9,8 @@
 
 #include <QTextCodec>
 
+// TODO KF6, remove this class, bug seems to be fixed in Qt6
+
 // Custom variant due to Qt-built-in not reporting encoding errors, see QTBUG-83081
 // Bug seems present since Qt 5.0 when ICU-based codecs were added
 // in 88d2e92b39ffd4a6ea9446498ad5a1cb208022a6 to the qtbase repo.

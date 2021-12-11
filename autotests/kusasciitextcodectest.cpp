@@ -46,9 +46,13 @@ void KUsAsciiTextCodecTest::testBrokenBuiltinEncoding()
     QTextCodec::ConverterState failConverterState;
 
     const QByteArray failEncoded8Bit = qtCodec->fromUnicode(failUnicodeText.constData(), failUnicodeText.length(), &failConverterState);
-
+    // Bug seems fixed in Qt6
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    QCOMPARE(failConverterState.invalidChars, 1);
+#else
     // confirm the broken result 0, which rather should be 1
     QCOMPARE(failConverterState.invalidChars, 0);
+#endif
 }
 
 void KUsAsciiTextCodecTest::testEncoding()
