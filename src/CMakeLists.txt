@@ -123,24 +123,6 @@ ecm_generate_headers(KCodecs_HEADERS
   REQUIRED_HEADERS KCodecs_HEADERS
 )
 
-find_package(PythonModuleGeneration)
-
-if (PythonModuleGeneration_FOUND)
-  ecm_generate_python_binding(
-    TARGET KF5::Codecs
-    PYTHONNAMESPACE PyKF5
-    MODULENAME KCodecs
-    RULES_FILE "${CMAKE_SOURCE_DIR}/cmake/rules_PyKF5.py"
-    SIP_DEPENDS
-      QtCore/QtCoremod.sip
-    HEADERS
-      kcharsets.h
-      kcodecs.h
-      kencodingprober.h
-      kemailaddress.h
-  )
-endif()
-
 install(TARGETS KF5Codecs EXPORT KF5CodecsTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
