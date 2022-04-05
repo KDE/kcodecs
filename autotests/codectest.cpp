@@ -29,7 +29,7 @@ void CodecTest::testCodecs_data()
     QTest::addColumn<QString>("tag");
     QTest::addColumn<Mode>("mode");
 
-    QDir codecBaseDir(QFINDTESTDATA("data"));
+    QDir codecBaseDir(QFINDTESTDATA("kcodecstestdata"));
     const QStringList lst = codecBaseDir.entryList(QStringList(), QDir::Dirs | QDir::NoDotAndDotDot, QDir::NoSort);
     for (const QString &dir : lst) {
         if (dir.toLower().startsWith(QLatin1String("codec_"))) {
