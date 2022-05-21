@@ -609,8 +609,8 @@ KCodecs::Codec *KCodecs::Codec::codecForName(const QByteArray &name)
 bool KCodecs::Codec::encode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend, NewlineType newline) const
 {
     // get an encoder:
-    QScopedPointer<Encoder> enc(makeEncoder(newline));
-    if (enc.isNull()) {
+    std::unique_ptr<Encoder> enc(makeEncoder(newline));
+    if (!enc) {
         qWarning() << "makeEncoder failed for" << name();
         return false;
     }
@@ -681,8 +681,8 @@ QByteArray KCodecs::Codec::decode(const QByteArray &src, NewlineType newline) co
 bool KCodecs::Codec::decode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend, NewlineType newline) const
 {
     // get a decoder:
-    QScopedPointer<Decoder> dec(makeDecoder(newline));
-    assert(!dec.isNull());
+    std::unique_ptr<Decoder> dec(makeDecoder(newline));
+    assert(dec);
 
     // decode and check for output buffer overflow:
     while (!dec->decode(scursor, send, dcursor, dend)) {
