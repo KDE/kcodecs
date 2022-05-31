@@ -745,7 +745,7 @@ QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
     QTextCodec *codec = nullptr;
 
     if (n.isEmpty()) {
-#pragma message("KDE5 TODO: Any better ideas ?")
+        // TODO: Any better ideas ?
         // No name, assume system locale
         const QByteArray locale = "->locale<-";
         if (d->codecForNameDict.contains(locale)) {
