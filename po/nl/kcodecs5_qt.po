@@ -1,0 +1,368 @@
+# translation of kdelibs4.po to Dutch
+# Copyright (C) 2000,2001,2002,2003, 2004 KDE e.v..
+# KTranslator Generated File
+# Nederlandse vertaling van kdelibs.
+# KDE-vertaalgroep Nederlands <i18n@kde.nl>, 2000, 2001, 2002.
+# Rinse de Vries <rinsedevries@kde.nl>,2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009.
+# Wilbert Berendsen <wbsoft@xs4all.nl>, 2003, 2004.
+# Bram Schoenmakers <bramschoenmakers@kde.nl>, 2004, 2005, 2006, 2007.
+# Tom Albers <tomalbers@kde.nl>, 2004.
+# Sander Koning <sanderkoning@kde.nl>, 2005.
+# Tijmen Baarda <tijmenbaarda@kde.nl>, 2005.
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2008, 2009.
+# Kristof Bal <kristof.bal@gmail.com>, 2008, 2009.
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2009, 2010.
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2010, 2011, 2012.
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2010, 2011, 2013, 2014, 2015, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2020-06-12 12:18+0200\n"
+"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
+"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Files: kfarch.cpp kfdird.cpp kfind.cpp kfindtop.cpp kfoptions.cpp kfsave.cpp "
+"kftabdlg.cpp kftypes.cpp kfwin.cpp main.cpp mkfdird.cpp mkfind.cpp\n"
+"X-Generator: Lokalize 20.04.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Qt-Contexts: true\n"
+
+#: kcharsets.cpp:156
+msgctxt "KCharsets|@item Text character set"
+msgid "Western European"
+msgstr "West-Europees"
+
+#: kcharsets.cpp:162
+msgctxt "KCharsets|@item Text character set"
+msgid "Central European"
+msgstr "Centraal-Europees"
+
+#: kcharsets.cpp:165
+msgctxt "KCharsets|@item Text character set"
+msgid "Baltic"
+msgstr "Baltisch"
+
+#: kcharsets.cpp:168
+msgctxt "KCharsets|@item Text character set"
+msgid "South-Eastern Europe"
+msgstr "Zuidoost Europees"
+
+#: kcharsets.cpp:171
+msgctxt "KCharsets|@item Text character set"
+msgid "Turkish"
+msgstr "Turks"
+
+#: kcharsets.cpp:174
+msgctxt "KCharsets|@item Text character set"
+msgid "Cyrillic"
+msgstr "Cyrillisch"
+
+#: kcharsets.cpp:180
+msgctxt "KCharsets|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Traditioneel Chinees"
+
+#: kcharsets.cpp:183
+msgctxt "KCharsets|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Vereenvoudigd Chinees"
+
+#: kcharsets.cpp:187
+msgctxt "KCharsets|@item Text character set"
+msgid "Korean"
+msgstr "Koreaans"
+
+#: kcharsets.cpp:190
+msgctxt "KCharsets|@item Text character set"
+msgid "Japanese"
+msgstr "Japans"
+
+#: kcharsets.cpp:194
+msgctxt "KCharsets|@item Text character set"
+msgid "Greek"
+msgstr "Grieks"
+
+#: kcharsets.cpp:197
+msgctxt "KCharsets|@item Text character set"
+msgid "Arabic"
+msgstr "Arabisch"
+
+#: kcharsets.cpp:200
+msgctxt "KCharsets|@item Text character set"
+msgid "Hebrew"
+msgstr "Hebreeuws"
+
+#: kcharsets.cpp:205
+msgctxt "KCharsets|@item Text character set"
+msgid "Thai"
+msgstr "Thais"
+
+#: kcharsets.cpp:208
+msgctxt "KCharsets|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kcharsets.cpp:214
+msgctxt "KCharsets|@item Text character set"
+msgid "Northern Saami"
+msgstr "Noord-Saami"
+
+#: kcharsets.cpp:216
+msgctxt "KCharsets|@item Text character set"
+msgid "Other"
+msgstr "Overig"
+
+#: kcharsets.cpp:651
+#, qt-format
+msgctxt "KCharsets|@item %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kcharsets.cpp:653
+#, qt-format
+msgctxt "KCharsets|@item"
+msgid "Other encoding (%1)"
+msgstr "Andere codering (%1)"
+
+#: kcharsets.cpp:682
+#, qt-format
+msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
+msgid "%1 ( %2 )"
+msgstr "%1 ( %2 )"
+
+#: kemailaddress.cpp:503
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains more than one "
+"@.\n"
+"You will not create valid messages if you do not change your address."
+msgstr ""
+"Het ingevoerde e-mailadres is ongeldig omdat het meer dan één @ bevat.\n"
+"U kunt geen geldige berichten aanmaken wanneer u dit adres niet wijzigt."
+
+#: kemailaddress.cpp:509
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a @.\n"
+"You will not create valid messages if you do not change your address."
+msgstr ""
+"Het ingevoerde e-mailadres is ongeldig omdat het geen @ bevat.\n"
+"U kunt geen geldige berichten aanmaken wanneer u dit adres niet wijzigt."
+
+#: kemailaddress.cpp:515
+msgctxt "QObject|"
+msgid "You have to enter something in the email address field."
+msgstr "U dient iets in het e-mailadresveld in te vullen."
+
+#: kemailaddress.cpp:517
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"local part."
+msgstr ""
+"Het e-mailadres dat u hebt ingevoerd is ongeldig omdat het lokale gedeelte "
+"ontbreekt."
+
+#: kemailaddress.cpp:521
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"domain part."
+msgstr ""
+"Het e-mailadres dat u hebt ingevoerd is ongeldig omdat het domeingedeelte "
+"ontbreekt."
+
+#: kemailaddress.cpp:525
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains unclosed "
+"comments/brackets."
+msgstr ""
+"Het e-mailadres dat u hebt ingevuld is ongeldig omdat sommige haakjes of "
+"opmerkingen niet gesloten zijn."
+
+#: kemailaddress.cpp:529
+msgctxt "QObject|"
+msgid "The email address you entered is valid."
+msgstr "Het e-mailadres dat u hebt ingevuld is geldig."
+
+#: kemailaddress.cpp:531
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an unclosed "
+"angle bracket."
+msgstr "Het e-mailadres is ongeldig omdat het haakje niet gesloten zijn."
+
+#: kemailaddress.cpp:535
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains too many "
+"closing angle brackets."
+msgstr "Het e-mailadres is ongeldig omdat er te veel sluithaakjes zijn."
+
+#: kemailaddress.cpp:539
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"unexpected comma."
+msgstr ""
+"Het ingevoerde e-mailadres is ongeldig omdat het een onverwachte komma bevat."
+
+#: kemailaddress.cpp:543
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it ended unexpectedly.\n"
+"This probably means you have used an escaping type character like a '\\' as "
+"the last character in your email address."
+msgstr ""
+"Het e-mailadres dat u hebt ingevoerd is niet geldig omdat het vroegtijdig "
+"werd afgebroken.\n"
+"Dit houdt vermoedelijk in dat u een escape-teken, zoals '\\', als laatste in "
+"het adres hebt geplaatst."
+
+#: kemailaddress.cpp:549
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains quoted text "
+"which does not end."
+msgstr ""
+"Het e-mailadres dat u hebt ingevoerd is ongeldig omdat het aangehaalde tekst "
+"bevat dat niet wordt afgesloten."
+
+#: kemailaddress.cpp:553
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not seem to "
+"contain an actual email address, i.e. something of the form joe@example.org."
+msgstr ""
+"Het ingevoerde e-mailadres is ongeldig omdat het geen adresgedeelte bevat, "
+"iets in de vorm jan@voorbeeld.nl."
+
+#: kemailaddress.cpp:558
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it contains an illegal "
+"character."
+msgstr ""
+"Het e-mailadres dat u hebt ingevoerd hebt bevat lettertekens die niet "
+"toegestaan zijn."
+
+#: kemailaddress.cpp:562
+msgctxt "QObject|"
+msgid ""
+"The email address you have entered is not valid because it contains an "
+"invalid display name."
+msgstr ""
+"Het ingevoerde e-mailadres is ongeldig omdat het een ongeldige 'weer te "
+"geven naam' bevat."
+
+#: kemailaddress.cpp:566
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid because it does not contain a "
+"'.'.\n"
+"You will not create valid messages if you do not change your address."
+msgstr ""
+"Het ingevoerde e-mailadres is ongeldig omdat het geen '.' bevat.\n"
+"U kunt geen geldige berichten aanmaken wanneer u dit adres niet wijzigt."
+
+#: kemailaddress.cpp:572
+msgctxt "QObject|"
+msgid "Unknown problem with email address"
+msgstr "Onbekend probleem met e-mailadres"
+
+#: kemailaddress.cpp:632
+msgctxt "QObject|"
+msgid ""
+"The email address you entered is not valid.\n"
+"It does not seem to contain an actual email address, i.e. something of the "
+"form joe@example.org."
+msgstr ""
+"Het ingevoerde e-mailadres is ongeldig.\n"
+"Het lijkt geen adresgedeelte te bevatten, bijvoorbeeld iets in de vorm "
+"jan@voorbeeld.nl."
+
+#: kencodingprober.cpp:226 kencodingprober.cpp:267
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: kencodingprober.cpp:228 kencodingprober.cpp:270
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Universal"
+msgstr "Universeel"
+
+#: kencodingprober.cpp:230 kencodingprober.cpp:312
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Unicode"
+msgstr "Unicode"
+
+#: kencodingprober.cpp:232 kencodingprober.cpp:282
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Cyrillic"
+msgstr "Cyrillisch"
+
+#: kencodingprober.cpp:234 kencodingprober.cpp:297
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Western European"
+msgstr "West-Europees"
+
+#: kencodingprober.cpp:236 kencodingprober.cpp:279
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Central European"
+msgstr "Centraal-Europees"
+
+#: kencodingprober.cpp:238 kencodingprober.cpp:285
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Greek"
+msgstr "Grieks"
+
+#: kencodingprober.cpp:240 kencodingprober.cpp:288
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Hebrew"
+msgstr "Hebreeuws"
+
+#: kencodingprober.cpp:242 kencodingprober.cpp:294
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Turkish"
+msgstr "Turks"
+
+#: kencodingprober.cpp:244 kencodingprober.cpp:291
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Japanese"
+msgstr "Japans"
+
+#: kencodingprober.cpp:246 kencodingprober.cpp:276
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Baltic"
+msgstr "Baltisch"
+
+#: kencodingprober.cpp:248 kencodingprober.cpp:300
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Traditional"
+msgstr "Traditioneel Chinees"
+
+#: kencodingprober.cpp:250 kencodingprober.cpp:303
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Chinese Simplified"
+msgstr "Vereenvoudigd Chinees"
+
+#: kencodingprober.cpp:252 kencodingprober.cpp:306
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Korean"
+msgstr "Koreaans"
+
+#: kencodingprober.cpp:254 kencodingprober.cpp:309
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Thai"
+msgstr "Thai"
+
+#: kencodingprober.cpp:256 kencodingprober.cpp:273
+msgctxt "KEncodingProber|@item Text character set"
+msgid "Arabic"
+msgstr "Arabisch"
