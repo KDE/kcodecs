@@ -123,7 +123,7 @@ ecm_generate_headers(KCodecs_HEADERS
   REQUIRED_HEADERS KCodecs_HEADERS
 )
 
-install(TARGETS KF5Codecs EXPORT KF5CodecsTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF5Codecs EXPORT KF5CodecsTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/kcodecs_export.h
