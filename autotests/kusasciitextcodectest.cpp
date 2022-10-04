@@ -49,7 +49,7 @@ void KUsAsciiTextCodecTest::testBrokenBuiltinEncoding()
     qtCodec->fromUnicode(failUnicodeText.constData(), failUnicodeText.length(), &failConverterState);
 
     // Bug seems fixed in Qt6
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 7)
     // confirm the broken result 0, which rather should be 1
     QCOMPARE(failConverterState.invalidChars, 1);
 #else
