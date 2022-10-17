@@ -257,8 +257,8 @@ msgid ""
 "The email address you have entered is not valid because it contains an "
 "invalid display name."
 msgstr ""
-"L'adreça de correu que heu introduït no és vàlida perquè conté un nom que es "
-"mostrarà com a no vàlid."
+"L'adreça de correu que heu introduït no és vàlida perquè conté un nom per a "
+"mostrar no vàlid."
 
 #: kemailaddress.cpp:566
 msgctxt "QObject|"
