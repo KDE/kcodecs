@@ -46,7 +46,7 @@ class KEncodingProberPrivate;
  * prober.feed(data);
  * prober.feed(moredata);
  * if (prober.confidence() > 0.6)
- *    QString out = QTextCodec::codecForName(prober.encoding())->toUnicode(data);
+ *    encoding  = prober.encoding();
  * \endcode
  *
  * At least 256 characters are needed to change the ProberState from Probing to FoundIt.

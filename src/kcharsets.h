@@ -46,27 +46,37 @@ public:
      */
     virtual ~KCharsets();
 
+#if KCODECS_ENABLE_DEPRECATED_SINCE(5, 100)
     /**
      * Provided for compatibility.
      * @param name the name of the codec
      * @return the QTextCodec. If the desired codec could not be found,
      *         it returns a default (ISO 8859-1) codec
+     * @deprecated since 5.100 apps should use QTextCodec::codecForName in Qt5 or Qt5Compat in Qt6 or 
+     * port to QStringEncoder
      */
+KCODECS_DEPRECATED_VERSION(5, 100, "use QTextCodec codecForName or QStringEncoder")
     QTextCodec *codecForName(const QString &name) const;
+#endif
 
+#if KCODECS_ENABLE_DEPRECATED_SINCE(5, 100)
     /**
      * Tries to find a QTextCodec to convert the given encoding from and to
      * Unicode.
      *
      * If no codec could be found, the ISO 8859-1 codec will be returned an
      * and @p ok will be set to false.
+     * @deprecated apps should use QTextCodec::codecForName in Qt5 or Qt5Compat in Qt6 or 
+     * port to QStringEncoder
      *
      * @param n the name of the codec
      * @param ok true if a matching codec has been found, false if not
      * @return the QTextCodec. If the desired codec could not be found,
      *         it returns a default (ISO 8859-1) codec
      */
+KCODECS_DEPRECATED_VERSION(5, 100, "use QTextCodec codecForName or QStringEncoder")
     QTextCodec *codecForName(const QString &n, bool &ok) const;
+#endif
 
     /**
      * The global charset manager.
@@ -145,17 +155,22 @@ public:
     QString encodingForName(const QString &descriptiveName) const;
 
 private:
+#if KCODECS_ENABLE_DEPRECATED_SINCE(5, 100)
     /**
      * @brief Get the QTextCodec for the name or return NULL
      *
      * This function is similar to KCharsets::codecForName except that it
      * can return a NULL value when the name was not found.
+     * @deprecated apps should use QTextCodec::codecForName in Qt5 or Qt5Compat in Qt6 or
+     * port to QStringEncoder
      *
      * @param n name of the text codec
      * @return pointer to the QTextCodec or NULL
      * @todo Make this function public when it is clear what API is needed.
      */
+KCODECS_DEPRECATED_VERSION(5, 100, "use QTextCodec codecForName or QStringEncoder")
     QTextCodec *codecForNameOrNull(const QByteArray &n) const;
+#endif
 
 private:
     std::unique_ptr<KCharsetsPrivate> const d;
