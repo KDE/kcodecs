@@ -6,6 +6,7 @@
 
 #include "kcharsetstest.h"
 
+#include "kcharsets_p.h"
 #include <QDebug>
 #include <QString>
 #include <QTest>
@@ -204,7 +205,7 @@ void KCharsetsTest::testCodecForName()
     }
 
     QVERIFY(QTextCodec::codecForName(expectedCodecFromKDE.toLocal8Bit()) != nullptr);
-    QCOMPARE(singleton->codecForName(codec)->name(), QTextCodec::codecForName(expectedCodecFromKDE.toLocal8Bit())->name());
+    QCOMPARE(singleton->d->codecForName(codec)->name(), QTextCodec::codecForName(expectedCodecFromKDE.toLocal8Bit())->name());
 
     QVERIFY(QTextCodec::codecForName(expectedCodecFromQt.toLocal8Bit()) != nullptr);
     QCOMPARE(QTextCodec::codecForName(codec.toLocal8Bit())->name(), QTextCodec::codecForName(expectedCodecFromQt.toLocal8Bit())->name());
@@ -246,11 +247,11 @@ void KCharsetsTest::testEncodingNames()
         bool ok = false;
 
         if (encodingName == QLatin1String("ucs2") || encodingName == QLatin1String("ISO 10646-UCS-2")) {
-            singleton->codecForName(QStringLiteral("UTF-16"), ok);
+            singleton->d->codecForName(QStringLiteral("UTF-16"), ok);
         } else if (encodingName == QLatin1String("utf7")) {
             continue;
         } else {
-            singleton->codecForName(encodingName, ok);
+            singleton->d->codecForName(encodingName, ok);
         }
         // The availability of some of the charsets below depends on whether Qt was built with ICU...
         if (!ok) {
@@ -290,7 +291,7 @@ void KCharsetsTest::testUsAsciiEncoding()
     KCharsets *singleton = KCharsets::charsets();
 
     bool ok = false;
-    QTextCodec *codec = singleton->codecForName(codecName, ok);
+    QTextCodec *codec = singleton->d->codecForName(codecName, ok);
     QVERIFY(ok);
 
     // compatible text
@@ -331,7 +332,7 @@ void KCharsetsTest::testUsAsciiDecoding()
     KCharsets *singleton = KCharsets::charsets();
 
     bool ok = false;
-    QTextCodec *codec = singleton->codecForName(codecName, ok);
+    QTextCodec *codec = singleton->d->codecForName(codecName, ok);
     QVERIFY(ok);
 
     // compatible text

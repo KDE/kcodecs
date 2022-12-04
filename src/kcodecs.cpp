@@ -23,6 +23,7 @@
 
 #include "kcodecs.h"
 #include "kcharsets.h"
+#include "kcharsets_p.h"
 #include "kcodecs_debug.h"
 #include "kcodecs_p.h"
 #include "kcodecsbase64.h"
@@ -317,12 +318,12 @@ bool parseEncodedWord(const char *&scursor,
     QByteArray cs;
     QTextCodec *textCodec = nullptr;
     if (charsetOption == KCodecs::ForceDefaultCharset || maybeCharset.isEmpty()) {
-        textCodec = KCharsets::charsets()->codecForName(QLatin1String(defaultCS), matchOK);
+        textCodec = KCharsets::charsets()->d->codecForName(QLatin1String(defaultCS), matchOK);
         cs = cachedCharset(defaultCS);
     } else {
-        textCodec = KCharsets::charsets()->codecForName(QLatin1String(maybeCharset), matchOK);
+        textCodec = KCharsets::charsets()->d->codecForName(QLatin1String(maybeCharset), matchOK);
         if (!matchOK) { // no suitable codec found => use default charset
-            textCodec = KCharsets::charsets()->codecForName(QLatin1String(defaultCS), matchOK);
+            textCodec = KCharsets::charsets()->d->codecForName(QLatin1String(defaultCS), matchOK);
             cs = cachedCharset(defaultCS);
         } else {
             cs = cachedCharset(maybeCharset);
@@ -447,7 +448,7 @@ QByteArray KCodecs::encodeRFC2047String(const QString &src, const QByteArray &ch
     bool useQEncoding = false;
 
     // fromLatin1() is safe here, codecForName() uses toLatin1() internally
-    const QTextCodec *codec = KCharsets::charsets()->codecForName(QString::fromLatin1(charset), ok);
+    const QTextCodec *codec = KCharsets::charsets()->d->codecForName(QString::fromLatin1(charset), ok);
 
     QByteArray usedCS;
     if (!ok) {

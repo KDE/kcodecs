@@ -8,6 +8,7 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 #include "kcharsets.h"
+#include "kcharsets_p.h"
 #include "kcodecs_debug.h"
 
 #include "kusasciitextcodec.h"
@@ -473,31 +474,6 @@ static inline const char *kcharsets_array_search(const char *start, const int *i
     return nullptr;
 }
 
-class KCharsetsPrivate
-{
-public:
-    explicit KCharsetsPrivate(KCharsets *_kc)
-        : usAsciiTextCodec{new KUsAsciiTextCodec}
-    {
-        kc = _kc;
-        codecForNameDict.reserve(43);
-    }
-
-    bool isUsAsciiTextCodecRequest(const QByteArray &name) const;
-
-    // Hash for the encoding names (sensitive case)
-    QHash<QByteArray, QTextCodec *> codecForNameDict;
-    KCharsets *kc;
-    // Using own variant due to broken ICU-based Qt codec, see QTBUG-83081.
-    // US-ASCII being an important one, but perhaps others also need their variant here?
-    // The life-time management is handled by Qt itself by
-    // auto-registration inside the QTextCodec constructor.
-    QTextCodec *const usAsciiTextCodec;
-
-    // Cache list so QStrings can be implicitly shared
-    QList<QStringList> encodingsByScript;
-};
-
 bool KCharsetsPrivate::isUsAsciiTextCodecRequest(const QByteArray &name) const
 {
     if (usAsciiTextCodec->name().compare(name, Qt::CaseInsensitive) == 0) {
@@ -709,7 +685,14 @@ QList<QStringList> KCharsets::encodingsByScript() const
     return d->encodingsByScript;
 }
 
+#if KCODECS_BUILD_DEPRECATED_SINCE(5, 101)
 QTextCodec *KCharsets::codecForName(const QString &n) const
+{
+    return d->codecForName(n);
+}
+#endif
+
+QTextCodec *KCharsetsPrivate::codecForName(const QString &n)
 {
     if (n == QLatin1String("gb2312") || n == QLatin1String("gbk")) {
         return QTextCodec::codecForName("gb18030");
@@ -723,7 +706,14 @@ QTextCodec *KCharsets::codecForName(const QString &n) const
     }
 }
 
+#if KCODECS_BUILD_DEPRECATED_SINCE(5, 101)
 QTextCodec *KCharsets::codecForName(const QString &n, bool &ok) const
+{
+    return d->codecForName(n, ok);
+};
+#endif
+
+QTextCodec *KCharsetsPrivate::codecForName(const QString &n, bool &ok)
 {
     if (n == QLatin1String("gb2312") || n == QLatin1String("gbk")) {
         ok = true;
@@ -740,7 +730,14 @@ QTextCodec *KCharsets::codecForName(const QString &n, bool &ok) const
     }
 }
 
+#if KCODECS_BUILD_DEPRECATED_SINCE(5, 101)
 QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
+{
+    return d->codecForNameOrNull(n);
+}
+#endif
+
+QTextCodec *KCharsetsPrivate::codecForNameOrNull(const QByteArray &n)
 {
     QTextCodec *codec = nullptr;
 
@@ -748,16 +745,16 @@ QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
         // TODO: Any better ideas ?
         // No name, assume system locale
         const QByteArray locale = "->locale<-";
-        if (d->codecForNameDict.contains(locale)) {
-            return d->codecForNameDict.value(locale);
+        if (codecForNameDict.contains(locale)) {
+            return codecForNameDict.value(locale);
         }
         codec = QTextCodec::codecForLocale();
-        d->codecForNameDict.insert("->locale<-", codec);
+        codecForNameDict.insert("->locale<-", codec);
         return codec;
     }
     // For a non-empty name, lookup the "dictionary", in a case-sensitive way.
-    else if (d->codecForNameDict.contains(n)) {
-        return d->codecForNameDict.value(n);
+    else if (codecForNameDict.contains(n)) {
+        return codecForNameDict.value(n);
     }
 
     // If the name is not in the hash table,
@@ -771,8 +768,8 @@ QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
     // our KUsAsciiTextCodec instance gets created, the Qt-built-in will be always
     // picked instead, at least for the used name.
     // So we cannot rely on the internal mechanisms, but have to prefer our codec ourselves.
-    if (d->isUsAsciiTextCodecRequest(n)) {
-        codec = d->usAsciiTextCodec;
+    if (isUsAsciiTextCodecRequest(n)) {
+        codec = usAsciiTextCodec;
     } else {
         // call directly QTextCodec::codecForName.
         // We assume that QTextCodec is smarter and more maintained than this code.
@@ -780,7 +777,7 @@ QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
     }
 
     if (codec) {
-        d->codecForNameDict.insert(n, codec);
+        codecForNameDict.insert(n, codec);
         return codec;
     }
 
@@ -806,7 +803,7 @@ QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
     if (changed) {
         codec = QTextCodec::codecForName(name);
         if (codec) {
-            d->codecForNameDict.insert(n, codec);
+            codecForNameDict.insert(n, codec);
             return codec;
         }
     }
@@ -820,7 +817,7 @@ QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
     }
 
     if (codec) {
-        d->codecForNameDict.insert(n, codec);
+        codecForNameDict.insert(n, codec);
         return codec;
     }
 
@@ -831,7 +828,7 @@ QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
     if (!cname.isEmpty()) {
         codec = QTextCodec::codecForName(cname);
         if (codec) {
-            d->codecForNameDict.insert(n, codec);
+            codecForNameDict.insert(n, codec);
             return codec;
         }
     }

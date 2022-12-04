@@ -14,12 +14,20 @@
 #include <QStringList>
 #include <memory>
 
+#include "kcodecs.h"
+
 class KCharsets;
 class KCharsetsPrivate;
 
 class QChar;
 class QString;
 class QTextCodec;
+
+namespace KCodecs
+{
+bool parseEncodedWord(const char *&, const char *, QString *, QByteArray *, QByteArray *, const QByteArray &, CharsetOption);
+QByteArray encodeRFC2047String(const QString &src, const QByteArray &charset);
+};
 
 /**
  * @class KCharsets kcharsets.h KCharsets
@@ -175,6 +183,9 @@ private:
 private:
     std::unique_ptr<KCharsetsPrivate> const d;
     friend struct KCharsetsSingletonPrivate;
+    friend bool KCodecs::parseEncodedWord(const char *&, const char *, QString *, QByteArray *, QByteArray *, const QByteArray &, KCodecs::CharsetOption);
+    friend QByteArray KCodecs::encodeRFC2047String(const QString &src, const QByteArray &charset);
+    friend class KCharsetsTest;
 };
 
 #endif
