@@ -28,104 +28,104 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Qt-Contexts: true\n"
 
-#: kcharsets.cpp:156
+#: kcharsets.cpp:157
 msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
 msgstr "西歐語系"
 
-#: kcharsets.cpp:162
+#: kcharsets.cpp:163
 msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
 msgstr "中歐語系"
 
-#: kcharsets.cpp:165
+#: kcharsets.cpp:166
 msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
 msgstr "波羅的海語系"
 
-#: kcharsets.cpp:168
+#: kcharsets.cpp:169
 msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
 msgstr "東南歐語系"
 
-#: kcharsets.cpp:171
+#: kcharsets.cpp:172
 msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
 msgstr "土耳其語"
 
-#: kcharsets.cpp:174
+#: kcharsets.cpp:175
 msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "斯拉夫文"
 
-#: kcharsets.cpp:180
+#: kcharsets.cpp:181
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "正體中文"
 
-#: kcharsets.cpp:183
+#: kcharsets.cpp:184
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "簡體中文"
 
-#: kcharsets.cpp:187
+#: kcharsets.cpp:188
 msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
 msgstr "韓文"
 
-#: kcharsets.cpp:190
+#: kcharsets.cpp:191
 msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
 msgstr "日文"
 
-#: kcharsets.cpp:194
+#: kcharsets.cpp:195
 msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
 msgstr "希臘文"
 
-#: kcharsets.cpp:197
+#: kcharsets.cpp:198
 msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
 msgstr "阿拉伯文"
 
-#: kcharsets.cpp:200
+#: kcharsets.cpp:201
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
 msgstr "希伯來文"
 
-#: kcharsets.cpp:205
+#: kcharsets.cpp:206
 msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
 msgstr "泰語"
 
-#: kcharsets.cpp:208
+#: kcharsets.cpp:209
 msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
 msgstr "萬國碼"
 
-#: kcharsets.cpp:214
+#: kcharsets.cpp:215
 msgctxt "KCharsets|@item Text character set"
 msgid "Northern Saami"
 msgstr "北部沙米文"
 
-#: kcharsets.cpp:216
+#: kcharsets.cpp:217
 msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "其他"
 
-#: kcharsets.cpp:651
+#: kcharsets.cpp:627
 #, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1（%2）"
 
-#: kcharsets.cpp:653
+#: kcharsets.cpp:629
 #, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "其他編碼（%1）"
 
-#: kcharsets.cpp:682
+#: kcharsets.cpp:658
 #, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
