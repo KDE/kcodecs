@@ -73,7 +73,7 @@ GB2312
 i18n:Chinese Simplified
 EUC-KR
 i18n:Korean
-cp 949
+windows-949
 i18n:Korean
 sjis
 i18n:Japanese
@@ -186,7 +186,7 @@ static const char language_for_encoding_string[] =
     "GB2312\0"
     "EUC-KR\0"
     QT_TRANSLATE_NOOP3("KCharsets", "Korean", "@item Text character set")"\0"
-    "cp 949\0"
+    "windows-949\0"
     "sjis\0"
     QT_TRANSLATE_NOOP3("KCharsets", "Japanese", "@item Text character set")"\0"
     "jis7\0"
@@ -221,9 +221,9 @@ static const char language_for_encoding_string[] =
 
 static const int language_for_encoding_indices[] = {0,   11,  28,  11,  40,  11,  52,  11,  60,  11,  67,  78,  95,  78,  106, 117, 124, 117, 136,
                                                     148, 169, 78,  177, 185, 193, 117, 201, 208, 217, 208, 228, 208, 236, 208, 243, 208, 250, 255,
-                                                    275, 255, 286, 294, 313, 294, 317, 294, 324, 331, 338, 331, 345, 350, 359, 350, 364, 350, 371,
-                                                    382, 388, 382, 396, 407, 414, 407, 422, 433, 440, 433, 453, 433, 461, 185, 472, 479, 484, 479,
-                                                    496, 502, 510, 502, 517, 502, 522, 502, 527, 502, 543, 552, 567, 580, 586, 580, 593, 580, -1};
+                                                    275, 255, 286, 294, 313, 294, 317, 294, 324, 331, 338, 331, 350, 355, 364, 355, 369, 355, 376,
+                                                    387, 393, 387, 401, 412, 419, 412, 427, 438, 445, 438, 458, 438, 466, 185, 477, 484, 489, 484,
+                                                    501, 507, 515, 507, 522, 507, 527, 507, 532, 507, 548, 557, 572, 585, 591, 585, 598, 585, -1};
 
 /*
  * GENERATED CODE ENDS HERE
