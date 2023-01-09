@@ -19,104 +19,99 @@ msgstr ""
 "X-Generator: Lokalize 19.12.3\n"
 "X-Qt-Contexts: true\n"
 
-#: kcharsets.cpp:157
+#: kcharsets.cpp:155
 msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
 msgstr "서부 유럽"
 
-#: kcharsets.cpp:163
+#: kcharsets.cpp:161
 msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
 msgstr "중부 유럽"
 
-#: kcharsets.cpp:166
+#: kcharsets.cpp:164
 msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
 msgstr "발트"
 
-#: kcharsets.cpp:169
+#: kcharsets.cpp:167
 msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
 msgstr "남동부 유럽"
 
-#: kcharsets.cpp:172
+#: kcharsets.cpp:170
 msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
 msgstr "튀르키예"
 
-#: kcharsets.cpp:175
+#: kcharsets.cpp:173
 msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "키릴 자모"
 
-#: kcharsets.cpp:181
+#: kcharsets.cpp:179
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "중국어 번체"
 
-#: kcharsets.cpp:184
+#: kcharsets.cpp:182
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "중국어 간체"
 
-#: kcharsets.cpp:188
+#: kcharsets.cpp:186
 msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
 msgstr "한글"
 
-#: kcharsets.cpp:191
+#: kcharsets.cpp:189
 msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
 msgstr "가나"
 
-#: kcharsets.cpp:195
+#: kcharsets.cpp:193
 msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
 msgstr "그리스"
 
-#: kcharsets.cpp:198
+#: kcharsets.cpp:196
 msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
 msgstr "아라비아"
 
-#: kcharsets.cpp:201
+#: kcharsets.cpp:199
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
 msgstr "히브리"
 
-#: kcharsets.cpp:206
+#: kcharsets.cpp:204
 msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
 msgstr "태국"
 
-#: kcharsets.cpp:209
+#: kcharsets.cpp:207
 msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
 msgstr "유니코드"
 
-#: kcharsets.cpp:215
-msgctxt "KCharsets|@item Text character set"
-msgid "Northern Saami"
-msgstr "북부 사미어"
-
-#: kcharsets.cpp:217
+#: kcharsets.cpp:213
 msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "기타"
 
-#: kcharsets.cpp:627
+#: kcharsets.cpp:622
 #, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kcharsets.cpp:629
+#: kcharsets.cpp:624
 #, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "기타 인코딩 (%1)"
 
-#: kcharsets.cpp:658
+#: kcharsets.cpp:653
 #, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
@@ -347,3 +342,7 @@ msgstr "태국 문자"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "아랍 문자"
+
+#~ msgctxt "KCharsets|@item Text character set"
+#~ msgid "Northern Saami"
+#~ msgstr "북부 사미어"

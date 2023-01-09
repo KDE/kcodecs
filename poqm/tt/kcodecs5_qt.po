@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "X-Qt-Contexts: true\n"
 
-#: kcharsets.cpp:157
+#: kcharsets.cpp:155
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Western European"
@@ -26,7 +26,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
 msgstr "Көнбатыш Аурупа"
 
-#: kcharsets.cpp:163
+#: kcharsets.cpp:161
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Central European"
@@ -34,7 +34,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
 msgstr "Үзәк Аурупа"
 
-#: kcharsets.cpp:166
+#: kcharsets.cpp:164
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Baltic"
@@ -42,7 +42,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
 msgstr "Балтик"
 
-#: kcharsets.cpp:169
+#: kcharsets.cpp:167
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "South-Eastern Europe"
@@ -50,7 +50,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
 msgstr "Көньяк-көнчыгыш Аурупа"
 
-#: kcharsets.cpp:172
+#: kcharsets.cpp:170
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Turkish"
@@ -58,7 +58,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
 msgstr "Төрек"
 
-#: kcharsets.cpp:175
+#: kcharsets.cpp:173
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Cyrillic"
@@ -66,7 +66,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "Кирилл"
 
-#: kcharsets.cpp:181
+#: kcharsets.cpp:179
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Chinese Traditional"
@@ -74,7 +74,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "Кытай (гадәти)"
 
-#: kcharsets.cpp:184
+#: kcharsets.cpp:182
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Chinese Simplified"
@@ -82,7 +82,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "Кытай (җиңел)"
 
-#: kcharsets.cpp:188
+#: kcharsets.cpp:186
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Korean"
@@ -90,7 +90,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
 msgstr "Корея"
 
-#: kcharsets.cpp:191
+#: kcharsets.cpp:189
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Japanese"
@@ -98,7 +98,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
 msgstr "Япон"
 
-#: kcharsets.cpp:195
+#: kcharsets.cpp:193
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Greek"
@@ -106,7 +106,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
 msgstr "Грек"
 
-#: kcharsets.cpp:198
+#: kcharsets.cpp:196
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Arabic"
@@ -114,7 +114,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
 msgstr "Гарәп"
 
-#: kcharsets.cpp:201
+#: kcharsets.cpp:199
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Hebrew"
@@ -122,7 +122,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
 msgstr "Иврит"
 
-#: kcharsets.cpp:206
+#: kcharsets.cpp:204
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Thai"
@@ -130,7 +130,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
 msgstr "Тай"
 
-#: kcharsets.cpp:209
+#: kcharsets.cpp:207
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Unicode"
@@ -138,15 +138,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
 msgstr "Юникод"
 
-#: kcharsets.cpp:215
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Northern Saami"
-msgctxt "KCharsets|@item Text character set"
-msgid "Northern Saami"
-msgstr "Төньяк Саами"
-
-#: kcharsets.cpp:217
+#: kcharsets.cpp:213
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Other"
@@ -154,7 +146,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "Башкалар"
 
-#: kcharsets.cpp:627
+#: kcharsets.cpp:622
 #, fuzzy, qt-format
 #| msgctxt "@item %1 character set, %2 encoding"
 #| msgid "%1 ( %2 )"
@@ -162,7 +154,7 @@ msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kcharsets.cpp:629
+#: kcharsets.cpp:624
 #, fuzzy, qt-format
 #| msgctxt "@item"
 #| msgid "Other encoding (%1)"
@@ -170,7 +162,7 @@ msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "Башка кодлашу (%1)"
 
-#: kcharsets.cpp:658
+#: kcharsets.cpp:653
 #, fuzzy, qt-format
 #| msgctxt "@item %1 character set, %2 encoding"
 #| msgid "%1 ( %2 )"
@@ -432,6 +424,13 @@ msgstr "Тай"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "Гарәп"
+
+#, fuzzy
+#~| msgctxt "@item Text character set"
+#~| msgid "Northern Saami"
+#~ msgctxt "KCharsets|@item Text character set"
+#~ msgid "Northern Saami"
+#~ msgstr "Төньяк Саами"
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

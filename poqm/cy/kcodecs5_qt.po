@@ -30,125 +30,118 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Qt-Contexts: true\n"
 
-#: kcharsets.cpp:157
+#: kcharsets.cpp:155
 #, fuzzy
 #| msgid "Western European"
 msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
 msgstr "Gorllewin Ewrop"
 
-#: kcharsets.cpp:163
+#: kcharsets.cpp:161
 #, fuzzy
 #| msgid "Central European"
 msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
 msgstr "Canol Ewrop"
 
-#: kcharsets.cpp:166
+#: kcharsets.cpp:164
 #, fuzzy
 #| msgid "Baltic"
 msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
 msgstr "Baltig"
 
-#: kcharsets.cpp:169
+#: kcharsets.cpp:167
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
 msgstr "Gorllewin Ewrop"
 
-#: kcharsets.cpp:172
+#: kcharsets.cpp:170
 #, fuzzy
 #| msgid "Turkish"
 msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
 msgstr "Twrceg"
 
-#: kcharsets.cpp:175
+#: kcharsets.cpp:173
 #, fuzzy
 #| msgid "Cyrillic"
 msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "Cyrilig"
 
-#: kcharsets.cpp:181
+#: kcharsets.cpp:179
 #, fuzzy
 #| msgid "Chinese Traditional"
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "Tsieineeg Traddodiadol"
 
-#: kcharsets.cpp:184
+#: kcharsets.cpp:182
 #, fuzzy
 #| msgid "Chinese Simplified"
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "Tseineeg Syml"
 
-#: kcharsets.cpp:188
+#: kcharsets.cpp:186
 #, fuzzy
 #| msgid "Korean"
 msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
 msgstr "Coreeg"
 
-#: kcharsets.cpp:191
+#: kcharsets.cpp:189
 #, fuzzy
 #| msgid "Japanese"
 msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
 msgstr "Siapaneeg"
 
-#: kcharsets.cpp:195
+#: kcharsets.cpp:193
 #, fuzzy
 #| msgid "Greek"
 msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
 msgstr "Groeg"
 
-#: kcharsets.cpp:198
+#: kcharsets.cpp:196
 #, fuzzy
 #| msgid "Arabic"
 msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
 msgstr "Arabaidd"
 
-#: kcharsets.cpp:201
+#: kcharsets.cpp:199
 #, fuzzy
 #| msgid "Hebrew"
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
 msgstr "Hebraeg"
 
-#: kcharsets.cpp:206
+#: kcharsets.cpp:204
 #, fuzzy
 #| msgid "Thai"
 msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
 msgstr "Taieg"
 
-#: kcharsets.cpp:209
+#: kcharsets.cpp:207
 #, fuzzy
 #| msgid "Unicode"
 msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
 msgstr "Unicôd"
 
-#: kcharsets.cpp:215
-#, fuzzy
-#| msgid "Northern Saami"
-msgctxt "KCharsets|@item Text character set"
-msgid "Northern Saami"
-msgstr "Saami Gogleddol"
-
-#: kcharsets.cpp:217
+#: kcharsets.cpp:213
 #, fuzzy
 #| msgid "Other"
 msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "Eraill"
 
-#: kcharsets.cpp:627
+#: kcharsets.cpp:622
 #, fuzzy, qt-format
 #| msgctxt "Descriptive Encoding Name"
 #| msgid "%1 ( %2 )"
@@ -156,13 +149,13 @@ msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kcharsets.cpp:629
+#: kcharsets.cpp:624
 #, fuzzy, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "&Gosod Amgodiad"
 
-#: kcharsets.cpp:658
+#: kcharsets.cpp:653
 #, fuzzy, qt-format
 #| msgctxt "Descriptive Encoding Name"
 #| msgid "%1 ( %2 )"
@@ -406,6 +399,12 @@ msgstr "Taieg"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "Arabaidd"
+
+#, fuzzy
+#~| msgid "Northern Saami"
+#~ msgctxt "KCharsets|@item Text character set"
+#~ msgid "Northern Saami"
+#~ msgstr "Saami Gogleddol"
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

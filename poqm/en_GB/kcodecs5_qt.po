@@ -19,104 +19,99 @@ msgstr ""
 "X-Qt-Contexts: true\n"
 "X-Generator: Lokalize 20.04.1\n"
 
-#: kcharsets.cpp:157
+#: kcharsets.cpp:155
 msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
 msgstr "Western European"
 
-#: kcharsets.cpp:163
+#: kcharsets.cpp:161
 msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
 msgstr "Central European"
 
-#: kcharsets.cpp:166
+#: kcharsets.cpp:164
 msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
 msgstr "Baltic"
 
-#: kcharsets.cpp:169
+#: kcharsets.cpp:167
 msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
 msgstr "South-Eastern Europe"
 
-#: kcharsets.cpp:172
+#: kcharsets.cpp:170
 msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
 msgstr "Turkish"
 
-#: kcharsets.cpp:175
+#: kcharsets.cpp:173
 msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "Cyrillic"
 
-#: kcharsets.cpp:181
+#: kcharsets.cpp:179
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "Chinese Traditional"
 
-#: kcharsets.cpp:184
+#: kcharsets.cpp:182
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "Chinese Simplified"
 
-#: kcharsets.cpp:188
+#: kcharsets.cpp:186
 msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
 msgstr "Korean"
 
-#: kcharsets.cpp:191
+#: kcharsets.cpp:189
 msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
 msgstr "Japanese"
 
-#: kcharsets.cpp:195
+#: kcharsets.cpp:193
 msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
 msgstr "Greek"
 
-#: kcharsets.cpp:198
+#: kcharsets.cpp:196
 msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
 msgstr "Arabic"
 
-#: kcharsets.cpp:201
+#: kcharsets.cpp:199
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
 msgstr "Hebrew"
 
-#: kcharsets.cpp:206
+#: kcharsets.cpp:204
 msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
 msgstr "Thai"
 
-#: kcharsets.cpp:209
+#: kcharsets.cpp:207
 msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
 msgstr "Unicode"
 
-#: kcharsets.cpp:215
-msgctxt "KCharsets|@item Text character set"
-msgid "Northern Saami"
-msgstr "Northern Saami"
-
-#: kcharsets.cpp:217
+#: kcharsets.cpp:213
 msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "Other"
 
-#: kcharsets.cpp:627
+#: kcharsets.cpp:622
 #, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kcharsets.cpp:629
+#: kcharsets.cpp:624
 #, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "Other encoding (%1)"
 
-#: kcharsets.cpp:658
+#: kcharsets.cpp:653
 #, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
@@ -359,6 +354,10 @@ msgstr "Thai"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "Arabic"
+
+#~ msgctxt "KCharsets|@item Text character set"
+#~ msgid "Northern Saami"
+#~ msgstr "Northern Saami"
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"
