@@ -42,8 +42,8 @@ add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt 
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX KCODECS
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kcodecs_version.h"
-                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5CodecsConfigVersion.cmake"
-                        SOVERSION 5)
+                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6CodecsConfigVersion.cmake"
+                        SOVERSION 6)
 
 ecm_install_po_files_as_qm(poqm)
 
@@ -58,29 +58,29 @@ if (BUILD_TESTING)
 endif()
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
-set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5Codecs")
+set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6Codecs")
 
 if (BUILD_QCH)
     ecm_install_qch_export(
-        TARGETS KF5Codecs_QCH
-        FILE KF5CodecsQchTargets.cmake
+        TARGETS KF6Codecs_QCH
+        FILE KF6CodecsQchTargets.cmake
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel
     )
-    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF5CodecsQchTargets.cmake\")")
+    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF6CodecsQchTargets.cmake\")")
 endif()
 
-configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/KF5CodecsConfig.cmake.in"
-                              "${CMAKE_CURRENT_BINARY_DIR}/KF5CodecsConfig.cmake"
+configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/KF6CodecsConfig.cmake.in"
+                              "${CMAKE_CURRENT_BINARY_DIR}/KF6CodecsConfig.cmake"
                               INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
                               )
 
-install(FILES  "${CMAKE_CURRENT_BINARY_DIR}/KF5CodecsConfig.cmake"
-               "${CMAKE_CURRENT_BINARY_DIR}/KF5CodecsConfigVersion.cmake"
+install(FILES  "${CMAKE_CURRENT_BINARY_DIR}/KF6CodecsConfig.cmake"
+               "${CMAKE_CURRENT_BINARY_DIR}/KF6CodecsConfigVersion.cmake"
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel )
 
-install(EXPORT KF5CodecsTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KF5CodecsTargets.cmake NAMESPACE KF5:: )
+install(EXPORT KF6CodecsTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KF6CodecsTargets.cmake NAMESPACE KF6:: )
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/kcodecs_version.h
         DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/KCodecs COMPONENT Devel)

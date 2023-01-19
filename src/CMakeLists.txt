@@ -1,9 +1,9 @@
-add_library(KF5Codecs)
-add_library(KF5::Codecs ALIAS KF5Codecs)
+add_library(KF6Codecs)
+add_library(KF6::Codecs ALIAS KF6Codecs)
 
-ecm_create_qm_loader(KF5Codecs kcodecs5_qt)
+ecm_create_qm_loader(KF6Codecs kcodecs5_qt)
 
-ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h KF5Codecs
+ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h KF6Codecs
                    GENERATION_FLAGS "--key-positions=* -D -s 2")
 
 # gperf < 3.1 always adds a "register" keyword to function arguments,
@@ -13,9 +13,9 @@ ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h KF5Co
 # so simply set standard for the while library
 # Current version of FindGperf in ECM does not support a version check yet,
 # so for now always lower to C++14.
-set_target_properties(KF5Codecs PROPERTIES CXX_STANDARD 14)
+set_target_properties(KF6Codecs PROPERTIES CXX_STANDARD 14)
 
-target_sources(KF5Codecs PRIVATE
+target_sources(KF6Codecs PRIVATE
     kcharsets.cpp
     kcharsets.h
     kcodecsbase45.cpp
@@ -84,7 +84,7 @@ target_sources(KF5Codecs PRIVATE
     probers/UnicodeGroupProber.h
 )
 
-ecm_qt_declare_logging_category(KF5Codecs
+ecm_qt_declare_logging_category(KF6Codecs
     HEADER kcodecs_debug.h
     IDENTIFIER KCODECS_LOG
     CATEGORY_NAME kf.codecs
@@ -93,7 +93,7 @@ ecm_qt_declare_logging_category(KF5Codecs
     EXPORT KCODECS
 )
 
-ecm_generate_export_header(KF5Codecs
+ecm_generate_export_header(KF6Codecs
     BASE_NAME KCodecs
     GROUP_BASE_NAME KF
     VERSION ${KF_VERSION}
@@ -102,14 +102,14 @@ ecm_generate_export_header(KF5Codecs
     EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
 )
 
-target_include_directories(KF5Codecs INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/KCodecs>")
+target_include_directories(KF6Codecs INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/KCodecs>")
 
-target_link_libraries(KF5Codecs PUBLIC Qt${QT_MAJOR_VERSION}::Core)
+target_link_libraries(KF6Codecs PUBLIC Qt${QT_MAJOR_VERSION}::Core)
 if (TARGET Qt6::Core5Compat)
-    target_link_libraries(KF5Codecs PUBLIC Qt6::Core5Compat)  # QTextCodec
+    target_link_libraries(KF6Codecs PUBLIC Qt6::Core5Compat)  # QTextCodec
 endif()
 
-set_target_properties(KF5Codecs PROPERTIES VERSION   ${KCODECS_VERSION}
+set_target_properties(KF6Codecs PROPERTIES VERSION   ${KCODECS_VERSION}
                                            SOVERSION ${KCODECS_SOVERSION}
                                            EXPORT_NAME Codecs
 )
@@ -123,7 +123,7 @@ ecm_generate_headers(KCodecs_HEADERS
   REQUIRED_HEADERS KCodecs_HEADERS
 )
 
-install(TARGETS KF5Codecs EXPORT KF5CodecsTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF6Codecs EXPORT KF6CodecsTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/kcodecs_export.h
@@ -139,9 +139,9 @@ ecm_qt_install_logging_categories(
 
 if(BUILD_QCH)
     ecm_add_qch(
-        KF5Codecs_QCH
+        KF6Codecs_QCH
         NAME KCodecs
-        BASE_NAME KF5Codecs
+        BASE_NAME KF6Codecs
         VERSION ${KF_VERSION}
         ORG_DOMAIN org.kde
         SOURCES # using only public headers, to cover only public API
@@ -163,5 +163,5 @@ if(BUILD_QCH)
 endif()
 
 include(ECMGeneratePriFile)
-ecm_generate_pri_file(BASE_NAME KCodecs LIB_NAME KF5Codecs DEPS "core" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/KCodecs)
+ecm_generate_pri_file(BASE_NAME KCodecs LIB_NAME KF6Codecs DEPS "core" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/KCodecs)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})

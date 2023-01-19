@@ -13,8 +13,8 @@ deprecated: false
 release: true
 libraries:
  - qmake: KCodecs
-   cmake: "KF5::Codecs"
-cmakename: KF5Codecs
+   cmake: "KF6::Codecs"
+cmakename: KF6Codecs
 
 public_lib: true
 group: Frameworks

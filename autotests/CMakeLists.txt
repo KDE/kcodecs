@@ -13,7 +13,7 @@ ecm_add_tests(
     base45test.cpp
     codectest.cpp
     kemailaddresstest.cpp
-    LINK_LIBRARIES KF5::Codecs Qt${QT_MAJOR_VERSION}::Test
+    LINK_LIBRARIES KF6::Codecs Qt${QT_MAJOR_VERSION}::Test
 )
 
 if (TARGET Qt6::Core5Compat)
@@ -22,7 +22,7 @@ endif()
 
 ecm_add_test(
     kcharsetstest.cpp
-    LINK_LIBRARIES KF5::Codecs Qt${QT_MAJOR_VERSION}::Test ${_qt5_compat_libs}
+    LINK_LIBRARIES KF6::Codecs Qt${QT_MAJOR_VERSION}::Test ${_qt5_compat_libs}
 )
 
 ecm_add_test(
@@ -37,4 +37,4 @@ target_include_directories(kusasciitextcodectest
 
 # Benchmark, compiled, but not run automatically with ctest
 add_executable(base64benchmark base64benchmark.cpp)
-target_link_libraries(base64benchmark KF5::Codecs Qt${QT_MAJOR_VERSION}::Test)
+target_link_libraries(base64benchmark KF6::Codecs Qt${QT_MAJOR_VERSION}::Test)

@@ -9,5 +9,5 @@ if(TARGET Qt6::Core)
 endif()
 
 
-include("${CMAKE_CURRENT_LIST_DIR}/KF5CodecsTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/KF6CodecsTargets.cmake")
 @PACKAGE_INCLUDE_QCHTARGETS@
