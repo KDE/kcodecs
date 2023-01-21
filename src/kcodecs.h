@@ -18,13 +18,6 @@
 
 #include <memory>
 
-#if KCODECS_ENABLE_DEPRECATED_SINCE(5, 79)
-// KBase64 methods were moved to KCodecs for kdelibs 3.1
-#define KBase64 KCodecs
-#else
-#define KBase64 KBase64_is_deprecated_use_KCodecs
-#endif
-
 template<typename T, typename U>
 class QHash;
 
@@ -124,46 +117,6 @@ KCODECS_EXPORT QByteArray quotedPrintableDecode(const QByteArray &in);
  */
 KCODECS_EXPORT void quotedPrintableDecode(const QByteArray &in, QByteArray &out);
 
-#if KCODECS_ENABLE_DEPRECATED_SINCE(5, 56)
-/**
- * Encodes the given data using the uuencode algorithm.
- *
- * The output is split into lines starting with the number of
- * encoded octets in the line and ending with a newline.  No
- * line is longer than 45 octets (60 characters), excluding the
- * line terminator.
- *
- * @param in   data to be uuencoded
- * @return     uuencoded string.
- * @deprecated Not implemented, always returns an empty bytearray.
- */
-KCODECS_EXPORT
-KCODECS_DEPRECATED_VERSION(5, 56, "Not implemented")
-QByteArray uuencode(const QByteArray &in);
-#endif
-
-#if KCODECS_ENABLE_DEPRECATED_SINCE(5, 56)
-/**
- * Encodes the given data using the uuencode algorithm.
- *
- * Use this function if you want the result of the encoding
- * to be placed in another array and cut down the number of
- * copy operation that have to be performed in the process.
- * This is the preferred method for encoding binary data.
- *
- * NOTE: the output array is first reset and then resized
- * appropriately before use, hence, all data stored in the
- * output array will be lost.
- *
- * @param in   data to be uuencoded.
- * @param out  an empty byte array
- * @deprecated Not implemented, always set @p out to an empty bytearray.
- */
-KCODECS_EXPORT
-KCODECS_DEPRECATED_VERSION(5, 56, "Not implemented")
-void uuencode(const QByteArray &in, QByteArray &out);
-#endif
-
 /**
  * Decodes the given data using the uudecode algorithm.
  *
@@ -212,17 +165,6 @@ KCODECS_EXPORT void uudecode(const QByteArray &in, QByteArray &out);
  * @since 5.5
  */
 KCODECS_EXPORT QByteArray base64Encode(const QByteArray &in);
-
-#if KCODECS_ENABLE_DEPRECATED_SINCE(5, 5)
-/**
- * @copydoc
- * KCodecs::base64Encode(QByteArray)
- * @deprecated Since 5.5, use KCodecs::base64Encode(QByteArray) instead.
- */
-KCODECS_EXPORT
-KCODECS_DEPRECATED_VERSION(5, 5, "Use QByteArray base64Encode(const QByteArray &)")
-QByteArray base64Encode(const QByteArray &in, bool insertLFs);
-#endif
 
 /**
  * Encodes the given data using the base64 algorithm.
