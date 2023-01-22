@@ -48,13 +48,8 @@ void KUsAsciiTextCodecTest::testBrokenBuiltinEncoding()
     // Only interested in what failConverterState will be changed to
     qtCodec->fromUnicode(failUnicodeText.constData(), failUnicodeText.length(), &failConverterState);
 
-    // Bug seems fixed in Qt6
-#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 7)
     // confirm the broken result 0, which rather should be 1
     QCOMPARE(failConverterState.invalidChars, 1);
-#else
-    QCOMPARE(failConverterState.invalidChars, 0);
-#endif
 }
 
 void KUsAsciiTextCodecTest::testEncoding()

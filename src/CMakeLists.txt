@@ -104,7 +104,7 @@ ecm_generate_export_header(KF6Codecs
 
 target_include_directories(KF6Codecs INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/KCodecs>")
 
-target_link_libraries(KF6Codecs PUBLIC Qt${QT_MAJOR_VERSION}::Core)
+target_link_libraries(KF6Codecs PUBLIC Qt6::Core)
 if (TARGET Qt6::Core5Compat)
     target_link_libraries(KF6Codecs PUBLIC Qt6::Core5Compat)  # QTextCodec
 endif()

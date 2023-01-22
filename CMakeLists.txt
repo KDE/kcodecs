@@ -19,11 +19,8 @@ include(ECMQtDeclareLoggingCategory)
 include(ECMDeprecationSettings)
 
 set(REQUIRED_QT_VERSION 6.4.0)
-find_package(Qt${QT_MAJOR_VERSION}Core ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
-
-if (QT_MAJOR_VERSION STREQUAL "6")
-    find_package(Qt6Core5Compat ${REQUIRED_QT_VERSION} REQUIRED CONFIG) # QTextCodec
-endif()
+find_package(Qt6Core ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
+find_package(Qt6Core5Compat ${REQUIRED_QT_VERSION} REQUIRED CONFIG) # QTextCodec
 
 find_package(Gperf REQUIRED)
 
@@ -48,7 +45,7 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KCODECS
 ecm_install_po_files_as_qm(poqm)
 
 ecm_set_disabled_deprecation_versions(
-    QT 5.15.2
+    QT 6.4
 )
 
 add_subdirectory(src)
