@@ -6,6 +6,7 @@
 #include "codectest.h"
 
 #include <QTest>
+#include <QTextCodec>
 
 #include <QDir>
 
