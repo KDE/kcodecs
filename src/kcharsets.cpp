@@ -680,13 +680,6 @@ QList<QStringList> KCharsets::encodingsByScript() const
     return d->encodingsByScript;
 }
 
-#if KCODECS_BUILD_DEPRECATED_SINCE(5, 101)
-QTextCodec *KCharsets::codecForName(const QString &n) const
-{
-    return d->codecForName(n);
-}
-#endif
-
 QTextCodec *KCharsetsPrivate::codecForName(const QString &n)
 {
     if (n == QLatin1String("gb2312") || n == QLatin1String("gbk")) {
@@ -700,13 +693,6 @@ QTextCodec *KCharsetsPrivate::codecForName(const QString &n)
         return QTextCodec::codecForName("iso-8859-1");
     }
 }
-
-#if KCODECS_BUILD_DEPRECATED_SINCE(5, 101)
-QTextCodec *KCharsets::codecForName(const QString &n, bool &ok) const
-{
-    return d->codecForName(n, ok);
-};
-#endif
 
 QTextCodec *KCharsetsPrivate::codecForName(const QString &n, bool &ok)
 {
@@ -724,13 +710,6 @@ QTextCodec *KCharsetsPrivate::codecForName(const QString &n, bool &ok)
         return QTextCodec::codecForName("iso-8859-1");
     }
 }
-
-#if KCODECS_BUILD_DEPRECATED_SINCE(5, 101)
-QTextCodec *KCharsets::codecForNameOrNull(const QByteArray &n) const
-{
-    return d->codecForNameOrNull(n);
-}
-#endif
 
 QTextCodec *KCharsetsPrivate::codecForNameOrNull(const QByteArray &n)
 {
