@@ -98,3 +98,21 @@ void CodecTest::testCodecs()
     }
     QCOMPARE(result, expResult);
 }
+
+void CodecTest::testFunctionalAscii()
+{
+    // back in the days, there was a qt bug that we worked around
+    // Let's keep the test case around still
+
+    auto *qtCodec =  QTextCodec::codecForName("US-ASCII");
+
+    const QString failUnicodeText = QStringLiteral("Testnäme");
+
+    QTextCodec::ConverterState failConverterState;
+
+    // Only interested in what failConverterState will be changed to
+    qtCodec->fromUnicode(failUnicodeText.constData(), failUnicodeText.length(), &failConverterState);
+
+    // if Qt gets broken again, this should be different
+    QCOMPARE(failConverterState.invalidChars, 1);
+}

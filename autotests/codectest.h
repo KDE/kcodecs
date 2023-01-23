@@ -14,6 +14,7 @@ class CodecTest : public QObject
 private Q_SLOTS:
     void testCodecs();
     void testCodecs_data();
+    void testFunctionalAscii();
 };
 
 #endif

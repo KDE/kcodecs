@@ -34,8 +34,6 @@ target_sources(KF6Codecs PRIVATE
     kemailaddress.h
     kencodingprober.cpp
     kencodingprober.h
-    kusasciitextcodec.cpp
-    kusasciitextcodec.h
     probers/CharDistribution.cpp
     probers/CharDistribution.h
     probers/ChineseGroupProber.cpp

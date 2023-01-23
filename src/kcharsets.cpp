@@ -11,7 +11,6 @@
 #include "kcharsets_p.h"
 #include "kcodecs_debug.h"
 
-#include "kusasciitextcodec.h"
 #include <kentities.h>
 
 #include <QHash>
@@ -469,17 +468,6 @@ static inline const char *kcharsets_array_search(const char *start, const int *i
     return nullptr;
 }
 
-bool KCharsetsPrivate::isUsAsciiTextCodecRequest(const QByteArray &name) const
-{
-    if (usAsciiTextCodec->name().compare(name, Qt::CaseInsensitive) == 0) {
-        return true;
-    }
-    const QList<QByteArray> aliases = usAsciiTextCodec->aliases();
-    return std::any_of(aliases.constBegin(), aliases.constEnd(), [name](const QByteArray &aliasName) {
-        return (aliasName.compare(name, Qt::CaseInsensitive) == 0);
-    });
-}
-
 // --------------------------------------------------------------------------
 
 KCharsets::KCharsets()
@@ -752,24 +740,7 @@ QTextCodec *KCharsetsPrivate::codecForNameOrNull(const QByteArray &n)
         return codecForNameDict.value(n);
     }
 
-    // If the name is not in the hash table,
-    // first check ourselves if our fixed variant of a US-ASCII codec should be returned:
-    // API docs of QTextCodec do not specify the handling of custom codec instances
-    // on look-up when there are multiple codecs supporting the same name.
-    // The code of Qt 5.15 prepends custom instances to the internal list,
-    // so they would be preferred initially.
-    // But the code also has a look-up cache which does not get updated on new instances,
-    // so if somewhere a US-ASCII codec was requested by some other code before
-    // our KUsAsciiTextCodec instance gets created, the Qt-built-in will be always
-    // picked instead, at least for the used name.
-    // So we cannot rely on the internal mechanisms, but have to prefer our codec ourselves.
-    if (isUsAsciiTextCodecRequest(n)) {
-        codec = usAsciiTextCodec;
-    } else {
-        // call directly QTextCodec::codecForName.
-        // We assume that QTextCodec is smarter and more maintained than this code.
-        codec = QTextCodec::codecForName(n);
-    }
+    codec = QTextCodec::codecForName(n);
 
     if (codec) {
         codecForNameDict.insert(n, codec);
