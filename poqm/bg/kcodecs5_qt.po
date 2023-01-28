@@ -351,7 +351,3 @@ msgstr "Тайландски"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "Арабски"
-
-#~ msgctxt "KCharsets|@item Text character set"
-#~ msgid "Northern Saami"
-#~ msgstr "Северна Саами"
