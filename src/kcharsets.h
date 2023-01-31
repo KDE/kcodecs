@@ -21,7 +21,6 @@ class KCharsetsPrivate;
 
 class QChar;
 class QString;
-class QTextCodec;
 
 namespace KCodecs
 {

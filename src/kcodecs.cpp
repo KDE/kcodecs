@@ -41,6 +41,7 @@
 
 #include <QDebug>
 #include <QHash>
+#include <QStringDecoder>
 #include <QTextCodec>
 
 #if defined(Q_OS_WIN)
@@ -291,16 +292,15 @@ bool parseEncodedWord(const char *&scursor,
     assert(dec);
 
     // try if there's a (text)codec for the charset found:
-    bool matchOK = false;
     QByteArray cs;
-    QTextCodec *textCodec = nullptr;
+    QStringDecoder textCodec;
     if (charsetOption == KCodecs::ForceDefaultCharset || maybeCharset.isEmpty()) {
-        textCodec = KCharsets::charsets()->d->codecForName(QLatin1String(defaultCS), matchOK);
+        textCodec = QStringDecoder(defaultCS.constData());
         cs = cachedCharset(defaultCS);
     } else {
-        textCodec = KCharsets::charsets()->d->codecForName(QLatin1String(maybeCharset), matchOK);
-        if (!matchOK) { // no suitable codec found => use default charset
-            textCodec = KCharsets::charsets()->d->codecForName(QLatin1String(defaultCS), matchOK);
+        textCodec = QStringDecoder(maybeCharset.constData());
+        if (!textCodec.isValid()) { // no suitable codec found => use default charset
+            textCodec = QStringDecoder(defaultCS.constData());
             cs = cachedCharset(defaultCS);
         } else {
             cs = cachedCharset(maybeCharset);
@@ -310,7 +310,7 @@ bool parseEncodedWord(const char *&scursor,
         *usedCS = updateEncodingCharset(*usedCS, cs);
     }
 
-    if (!matchOK || !textCodec) {
+    if (!textCodec.isValid()) {
         // qCDebug(KCODECS_LOG) << "Unknown charset" << maybeCharset;
         delete dec;
         return false;
@@ -334,7 +334,7 @@ bool parseEncodedWord(const char *&scursor,
         qWarning() << codec->name() << "codec lies about its maxDecodedSizeFor(" << encodedTextLength << ")\nresult may be truncated";
     }
 
-    *result = textCodec->toUnicode(buffer.data(), bbegin - buffer.data());
+    *result = textCodec.decode(QByteArrayView(buffer.data(), bbegin - buffer.data()));
 
     // qCDebug(KCODECS_LOG) << "result now: \"" << result << "\"";
     // cleanup:
@@ -405,11 +405,11 @@ QString KCodecs::decodeRFC2047String(const QByteArray &src, QByteArray *usedCS, 
     // fallback to local codec
     const QString tryUtf8 = QString::fromUtf8(result);
     if (tryUtf8.contains(QChar(0xFFFD))) {
-        QTextCodec *codec = QTextCodec::codecForLocale();
+        QStringDecoder codec(QStringDecoder::System);
         if (usedCS) {
-            *usedCS = updateEncodingCharset(*usedCS, cachedCharset(codec->name()));
+            *usedCS = updateEncodingCharset(*usedCS, cachedCharset(codec.name()));
         }
-        return codec->toUnicode(result);
+        return codec.decode(result);
     } else {
         return tryUtf8;
     }
