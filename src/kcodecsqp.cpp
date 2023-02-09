@@ -350,7 +350,6 @@ bool QuotedPrintableDecoder::decode(const char *&scursor, const char *const send
         assert(mBadChar == 0);
 
         uchar ch = *scursor++;
-        uchar value = 255;
 
         if (mExpectLF && ch != '\n') {
             // qWarning() << "QuotedPrintableDecoder:"
@@ -363,6 +362,7 @@ bool QuotedPrintableDecoder::decode(const char *&scursor, const char *const send
         }
 
         if (mInsideHexChar) {
+            uchar value = 255;
             // next char(s) represent nibble instead of itself:
             if (ch <= '9') {
                 if (ch >= '0') {
