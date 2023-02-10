@@ -42,7 +42,7 @@
 #include <QDebug>
 #include <QHash>
 #include <QStringDecoder>
-#include <QTextCodec>
+#include <QStringEncoder>
 
 #if defined(Q_OS_WIN)
 #define strncasecmp _strnicmp
@@ -421,32 +421,29 @@ QByteArray KCodecs::encodeRFC2047String(const QString &src, const QByteArray &ch
     int start = 0;
     int end = 0;
     bool nonAscii = false;
-    bool ok = true;
     bool useQEncoding = false;
 
-    // fromLatin1() is safe here, codecForName() uses toLatin1() internally
-    const QTextCodec *codec = KCharsets::charsets()->d->codecForName(QString::fromLatin1(charset), ok);
+    QStringEncoder codec(charset.constData());
 
     QByteArray usedCS;
-    if (!ok) {
+    if (!codec.isValid()) {
         // no codec available => try local8Bit and hope the best ;-)
-        codec = QTextCodec::codecForLocale();
-        usedCS = codec->name();
+        codec = QStringEncoder(QStringEncoder::System);
+        usedCS = codec.name();
     } else {
-        Q_ASSERT(codec);
+        Q_ASSERT(codec.isValid());
         if (charset.isEmpty()) {
-            usedCS = codec->name();
+            usedCS = codec.name();
         } else {
             usedCS = charset;
         }
     }
 
-    QTextCodec::ConverterState converterState(QTextCodec::IgnoreHeader);
-    QByteArray encoded8Bit = codec->fromUnicode(src.constData(), src.length(), &converterState);
-    if (converterState.invalidChars > 0) {
+    QByteArray encoded8Bit = codec.encode(src);
+    if (codec.hasError()) {
         usedCS = CodecNames::utf8();
-        codec = QTextCodec::codecForName(usedCS);
-        encoded8Bit = codec->fromUnicode(src);
+        codec = QStringEncoder(QStringEncoder::Utf8);
+        encoded8Bit = codec.encode(src);
     }
 
     if (usedCS.contains("8859-")) { // use "B"-Encoding for non iso-8859-x charsets
