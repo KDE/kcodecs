@@ -1,6 +1,3 @@
-# translation of kdelibs4.po to Belarusian
-# translation of kdelibs4.po to
-#
 # Eugene Zelenko <greendeath@mail.ru>, 2002-2004.
 # Ihar Hrachyshka <ihar.hrachyshka@gmail.com>, 2006.
 # Darafei Praliaskouski <komzpa@licei2.com>, 2007.
@@ -12,12 +9,12 @@
 # kom <me@komzpa.net>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: kdelibs4\n"
+"Project-Id-Version: 86ff119b1606fcaa910d6b44fc14b611\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2009-09-06 15:21+0300\n"
+"PO-Revision-Date: 2023-02-08 13:40\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@gmail.com>\n"
-"Language-Team: Belarusian <i18n@mova.org>\n"
+"Language-Team: Belarusian\n"
 "Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,155 +24,106 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || n%10>=5 && n%10<=9 || n"
 "%100>=11 && n%100<=14 ? 2 : 3);\n"
 "X-Qt-Contexts: true\n"
+"X-Crowdin-Project: 86ff119b1606fcaa910d6b44fc14b611\n"
+"X-Crowdin-Project-ID: 127\n"
+"X-Crowdin-Language: be\n"
+"X-Crowdin-File: /main/be/kcodecs/kcodecs5_qt.po\n"
+"X-Crowdin-File-ID: 7785\n"
 
 #: kcharsets.cpp:155
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Western European"
 msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
-msgstr "Заходне-еўрапейскі"
+msgstr "Заходнееўрапейскае"
 
 #: kcharsets.cpp:161
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Central European"
 msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
-msgstr "Цэнтральна-еўрапейскі"
+msgstr "Цэнтральнаеўрапейскае"
 
 #: kcharsets.cpp:164
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Baltic"
 msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
-msgstr "Балцкая"
+msgstr "Балцкае"
 
 #: kcharsets.cpp:167
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "South-Eastern Europe"
 msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
-msgstr "Паўднёва-заходняя Еўропа"
+msgstr "Паўднева-ўсходняе еўрапейскае"
 
 #: kcharsets.cpp:170
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Turkish"
 msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
-msgstr "Турэцкая"
+msgstr "Турэцкае"
 
 #: kcharsets.cpp:173
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Cyrillic"
 msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "Кірыліца"
 
 #: kcharsets.cpp:179
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Chinese Traditional"
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
-msgstr "Кітайская традыцыйная"
+msgstr "Кітайскае традыцыйнае"
 
 #: kcharsets.cpp:182
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Chinese Simplified"
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
-msgstr "Кітайская спрошчаная"
+msgstr "Кітайскае спрошчанае"
 
 #: kcharsets.cpp:186
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Korean"
 msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
-msgstr "Карэйская"
+msgstr "Карэйскае"
 
 #: kcharsets.cpp:189
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Japanese"
 msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
-msgstr "Японская"
+msgstr "Японскае"
 
 #: kcharsets.cpp:193
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Greek"
 msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
-msgstr "Грэцкая"
+msgstr "Грэчаскае"
 
 #: kcharsets.cpp:196
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Arabic"
 msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
-msgstr "Арабская"
+msgstr "Арабскае"
 
 #: kcharsets.cpp:199
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Hebrew"
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
-msgstr "Габрэйская"
+msgstr "Іўрыт"
 
 #: kcharsets.cpp:204
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Thai"
 msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
-msgstr "Тайская"
+msgstr "Тайскае"
 
 #: kcharsets.cpp:207
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Unicode"
 msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
-msgstr "Unicode"
+msgstr "Юнікод"
 
 #: kcharsets.cpp:213
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Other"
 msgctxt "KCharsets|@item Text character set"
 msgid "Other"
-msgstr "Іншая"
+msgstr "Іншыя"
 
 #: kcharsets.cpp:622
-#, fuzzy, qt-format
-#| msgctxt "@item %1 character set, %2 encoding"
-#| msgid "%1 ( %2 )"
+#, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
 #: kcharsets.cpp:624
-#, fuzzy, qt-format
-#| msgctxt "@item"
-#| msgid "Other encoding (%1)"
+#, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
-msgstr "Іншы знаказбор (%1)"
+msgstr "Іншае кадаванне (%1)"
 
 #: kcharsets.cpp:653
-#, fuzzy, qt-format
-#| msgctxt "@item %1 character set, %2 encoding"
-#| msgid "%1 ( %2 )"
+#, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
@@ -187,6 +135,9 @@ msgid ""
 "@.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны, бо змяшчае больш за "
+"адзін сімвал @.\n"
+"Вы не зможаце ствараць сапраўдныя лісты, калі не зменіце свой адрас."
 
 #: kemailaddress.cpp:509
 msgctxt "QObject|"
@@ -194,11 +145,13 @@ msgid ""
 "The email address you entered is not valid because it does not contain a @.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны, бо не змяшчае сімвал @.\n"
+"Вы не зможаце ствараць сапраўдныя лісты, калі не зменіце свой адрас."
 
 #: kemailaddress.cpp:515
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
-msgstr ""
+msgstr "Вы павінны ўвесці што-небудзь у поле адраса электроннай пошты."
 
 #: kemailaddress.cpp:517
 msgctxt "QObject|"
@@ -206,6 +159,8 @@ msgid ""
 "The email address you entered is not valid because it does not contain a "
 "local part."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны, бо не змяшчае часткі з "
+"уласнай назвай."
 
 #: kemailaddress.cpp:521
 msgctxt "QObject|"
@@ -213,6 +168,8 @@ msgid ""
 "The email address you entered is not valid because it does not contain a "
 "domain part."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны, бо не змяшчае часткі з "
+"назвай дамена."
 
 #: kemailaddress.cpp:525
 msgctxt "QObject|"
@@ -220,13 +177,13 @@ msgid ""
 "The email address you entered is not valid because it contains unclosed "
 "comments/brackets."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны, бо змяшчае незакрытыя "
+"двукоссі або дужкі."
 
 #: kemailaddress.cpp:529
-#, fuzzy
-#| msgid "The email address this bug report is sent to."
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
-msgstr "Адрас электроннай пошты, на які трэба выслаць паведамленне."
+msgstr "Вы ўвялі сапраўдны адрас электроннай пошты."
 
 #: kemailaddress.cpp:531
 msgctxt "QObject|"
@@ -234,6 +191,8 @@ msgid ""
 "The email address you entered is not valid because it contains an unclosed "
 "angle bracket."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны, бо змяшчае незакрытую "
+"вуглавую дужку."
 
 #: kemailaddress.cpp:535
 msgctxt "QObject|"
@@ -241,6 +200,8 @@ msgid ""
 "The email address you entered is not valid because it contains too many "
 "closing angle brackets."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны, бо змяшчае занадта шмат "
+"вуглавых дужак."
 
 #: kemailaddress.cpp:539
 msgctxt "QObject|"
@@ -248,6 +209,8 @@ msgid ""
 "The email address you have entered is not valid because it contains an "
 "unexpected comma."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны, бо змяшчае коску, якая "
+"не чакалася."
 
 #: kemailaddress.cpp:543
 msgctxt "QObject|"
@@ -256,6 +219,10 @@ msgid ""
 "This probably means you have used an escaping type character like a '\\' as "
 "the last character in your email address."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны, бо ён нечакана "
+"скончыўся.\n"
+"Імаверна, што вы выкарыстоўвалі сімвал экранавання ( напрыклад \"\\\") як "
+"апошні сімвал у вашым адрасе электроннай пошты."
 
 #: kemailaddress.cpp:549
 msgctxt "QObject|"
@@ -263,6 +230,8 @@ msgid ""
 "The email address you entered is not valid because it contains quoted text "
 "which does not end."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны, бо змяшчае тэкст у "
+"незакрытым двукоссі."
 
 #: kemailaddress.cpp:553
 msgctxt "QObject|"
@@ -270,6 +239,8 @@ msgid ""
 "The email address you entered is not valid because it does not seem to "
 "contain an actual email address, i.e. something of the form joe@example.org."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны, бо не выглядае як адрас "
+"электроннай пошты (нешта накшталт joe@example.org)."
 
 #: kemailaddress.cpp:558
 msgctxt "QObject|"
@@ -277,6 +248,8 @@ msgid ""
 "The email address you entered is not valid because it contains an illegal "
 "character."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны, бо змяшчае забароненыя "
+"знакі."
 
 #: kemailaddress.cpp:562
 msgctxt "QObject|"
@@ -284,6 +257,7 @@ msgid ""
 "The email address you have entered is not valid because it contains an "
 "invalid display name."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны, бо змяшчае хібную назву."
 
 #: kemailaddress.cpp:566
 msgctxt "QObject|"
@@ -292,11 +266,13 @@ msgid ""
 "'.'.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны, бо не змяшчае \".\".\n"
+"Вы не зможаце ствараць сапраўдныя лісты, калі не зменіце свой адрас."
 
 #: kemailaddress.cpp:572
 msgctxt "QObject|"
 msgid "Unknown problem with email address"
-msgstr ""
+msgstr "Невядомая праблема з адрасам электроннай пошты"
 
 #: kemailaddress.cpp:632
 msgctxt "QObject|"
@@ -305,132 +281,88 @@ msgid ""
 "It does not seem to contain an actual email address, i.e. something of the "
 "form joe@example.org."
 msgstr ""
+"Адрас электроннай пошты, які вы ўвялі, несапраўдны. Ён не выглядае як адрас "
+"электроннай пошты (нешта накшталт joe@example.org)."
 
 #: kencodingprober.cpp:226 kencodingprober.cpp:267
-#, fuzzy
-#| msgid "disable XIM"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Disabled"
-msgstr "Неактыўная"
+msgstr "Адключана"
 
 #: kencodingprober.cpp:228 kencodingprober.cpp:270
-#, fuzzy
-#| msgid "Uninstall"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Universal"
-msgstr "Выдаліць"
+msgstr "Універсальнае"
 
 #: kencodingprober.cpp:230 kencodingprober.cpp:312
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Unicode"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Unicode"
-msgstr "Unicode"
+msgstr "Юнікод"
 
 #: kencodingprober.cpp:232 kencodingprober.cpp:282
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Cyrillic"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Cyrillic"
 msgstr "Кірыліца"
 
 #: kencodingprober.cpp:234 kencodingprober.cpp:297
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Western European"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Western European"
-msgstr "Заходне-еўрапейскі"
+msgstr "Заходнееўрапейскае"
 
 #: kencodingprober.cpp:236 kencodingprober.cpp:279
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Central European"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Central European"
-msgstr "Цэнтральна-еўрапейскі"
+msgstr "Цэнтральнаеўрапейскае"
 
 #: kencodingprober.cpp:238 kencodingprober.cpp:285
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Greek"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Greek"
-msgstr "Грэцкая"
+msgstr "Грэчаскае"
 
 #: kencodingprober.cpp:240 kencodingprober.cpp:288
-#, fuzzy
-#| msgctxt "@item Spelling dictionary"
-#| msgid "Hebrew"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Hebrew"
-msgstr "Габрэйская"
+msgstr "Іўрыт"
 
 #: kencodingprober.cpp:242 kencodingprober.cpp:294
-#, fuzzy
-#| msgctxt "@item Spelling dictionary"
-#| msgid "Turkish"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Turkish"
-msgstr "Турэцкая"
+msgstr "Турэцкае"
 
 #: kencodingprober.cpp:244 kencodingprober.cpp:291
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Japanese"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Japanese"
-msgstr "Японская"
+msgstr "Японскае"
 
 #: kencodingprober.cpp:246 kencodingprober.cpp:276
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Baltic"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Baltic"
-msgstr "Балцкая"
+msgstr "Балтыйскае"
 
 #: kencodingprober.cpp:248 kencodingprober.cpp:300
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Chinese Traditional"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Traditional"
-msgstr "Кітайская традыцыйная"
+msgstr "Кітайскае традыцыйнае"
 
 #: kencodingprober.cpp:250 kencodingprober.cpp:303
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Chinese Simplified"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Simplified"
-msgstr "Кітайская спрошчаная"
+msgstr "Кітайскае спрошчанае"
 
 #: kencodingprober.cpp:252 kencodingprober.cpp:306
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Korean"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Korean"
-msgstr "Карэйская"
+msgstr "Карэйскае"
 
 #: kencodingprober.cpp:254 kencodingprober.cpp:309
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Thai"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Thai"
-msgstr "Тайская"
+msgstr "Тайскае"
 
 #: kencodingprober.cpp:256 kencodingprober.cpp:273
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Arabic"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
-msgstr "Арабская"
+msgstr "Арабскае"
 
 #, fuzzy
 #~| msgctxt "@item Text character set"
