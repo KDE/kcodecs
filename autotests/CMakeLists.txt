@@ -16,23 +16,9 @@ ecm_add_tests(
     LINK_LIBRARIES KF6::Codecs Qt6::Test
 )
 
-if (TARGET Qt6::Core5Compat)
-    set(_qt5_compat_libs Qt6::Core5Compat) # QTextCodec
-endif()
-
 ecm_add_test(
     kcharsetstest.cpp
-    LINK_LIBRARIES KF6::Codecs Qt6::Test ${_qt5_compat_libs}
-)
-
-ecm_add_test(
-    ${CMAKE_SOURCE_DIR}/src/kusasciitextcodec.cpp
-    kusasciitextcodectest.cpp
-    TEST_NAME kusasciitextcodectest
-    LINK_LIBRARIES Qt6::Test ${_qt5_compat_libs}
-)
-target_include_directories(kusasciitextcodectest
-    PRIVATE "${CMAKE_SOURCE_DIR}/src"
+    LINK_LIBRARIES KF6::Codecs Qt6::Test
 )
 
 # Benchmark, compiled, but not run automatically with ctest

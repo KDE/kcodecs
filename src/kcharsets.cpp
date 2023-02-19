@@ -11,11 +11,9 @@
 #include "kcharsets_p.h"
 #include "kcodecs_debug.h"
 
-#include "kusasciitextcodec.h"
 #include <kentities.h>
 
 #include <QHash>
-#include <QTextCodec>
 
 #include <algorithm>
 #include <assert.h>
@@ -469,21 +467,10 @@ static inline const char *kcharsets_array_search(const char *start, const int *i
     return nullptr;
 }
 
-bool KCharsetsPrivate::isUsAsciiTextCodecRequest(const QByteArray &name) const
-{
-    if (usAsciiTextCodec->name().compare(name, Qt::CaseInsensitive) == 0) {
-        return true;
-    }
-    const QList<QByteArray> aliases = usAsciiTextCodec->aliases();
-    return std::any_of(aliases.constBegin(), aliases.constEnd(), [name](const QByteArray &aliasName) {
-        return (aliasName.compare(name, Qt::CaseInsensitive) == 0);
-    });
-}
-
 // --------------------------------------------------------------------------
 
 KCharsets::KCharsets()
-    : d(new KCharsetsPrivate(this))
+    : d(new KCharsetsPrivate)
 {
 }
 
@@ -678,137 +665,6 @@ QList<QStringList> KCharsets::encodingsByScript() const
         }
     }
     return d->encodingsByScript;
-}
-
-QTextCodec *KCharsetsPrivate::codecForName(const QString &n)
-{
-    if (n == QLatin1String("gb2312") || n == QLatin1String("gbk")) {
-        return QTextCodec::codecForName("gb18030");
-    }
-    const QByteArray name(n.toLatin1());
-    QTextCodec *codec = codecForNameOrNull(name);
-    if (codec) {
-        return codec;
-    } else {
-        return QTextCodec::codecForName("iso-8859-1");
-    }
-}
-
-QTextCodec *KCharsetsPrivate::codecForName(const QString &n, bool &ok)
-{
-    if (n == QLatin1String("gb2312") || n == QLatin1String("gbk")) {
-        ok = true;
-        return QTextCodec::codecForName("gb18030");
-    }
-    const QByteArray name(n.toLatin1());
-    QTextCodec *codec = codecForNameOrNull(name);
-    if (codec) {
-        ok = true;
-        return codec;
-    } else {
-        ok = false;
-        return QTextCodec::codecForName("iso-8859-1");
-    }
-}
-
-QTextCodec *KCharsetsPrivate::codecForNameOrNull(const QByteArray &n)
-{
-    QTextCodec *codec = nullptr;
-
-    if (n.isEmpty()) {
-        // TODO: Any better ideas ?
-        // No name, assume system locale
-        const QByteArray locale = "->locale<-";
-        if (codecForNameDict.contains(locale)) {
-            return codecForNameDict.value(locale);
-        }
-        codec = QTextCodec::codecForLocale();
-        codecForNameDict.insert("->locale<-", codec);
-        return codec;
-    }
-    // For a non-empty name, lookup the "dictionary", in a case-sensitive way.
-    else if (codecForNameDict.contains(n)) {
-        return codecForNameDict.value(n);
-    }
-
-    // If the name is not in the hash table,
-    // first check ourselves if our fixed variant of a US-ASCII codec should be returned:
-    // API docs of QTextCodec do not specify the handling of custom codec instances
-    // on look-up when there are multiple codecs supporting the same name.
-    // The code of Qt 5.15 prepends custom instances to the internal list,
-    // so they would be preferred initially.
-    // But the code also has a look-up cache which does not get updated on new instances,
-    // so if somewhere a US-ASCII codec was requested by some other code before
-    // our KUsAsciiTextCodec instance gets created, the Qt-built-in will be always
-    // picked instead, at least for the used name.
-    // So we cannot rely on the internal mechanisms, but have to prefer our codec ourselves.
-    if (isUsAsciiTextCodecRequest(n)) {
-        codec = usAsciiTextCodec;
-    } else {
-        // call directly QTextCodec::codecForName.
-        // We assume that QTextCodec is smarter and more maintained than this code.
-        codec = QTextCodec::codecForName(n);
-    }
-
-    if (codec) {
-        codecForNameDict.insert(n, codec);
-        return codec;
-    }
-
-    // We have had no luck with QTextCodec::codecForName, so we must now process the name, so that QTextCodec::codecForName could work with it.
-
-    QByteArray name = n.toLower();
-    bool changed = false;
-    if (name.endsWith("_charset")) { // krazy:exclude=strings
-        name.chop(8);
-        changed = true;
-    }
-    if (name.startsWith("x-")) { // krazy:exclude=strings
-        name.remove(0, 2); // remove x- at start
-        changed = true;
-    }
-
-    if (name.isEmpty()) {
-        // We have no name anymore, therefore the name is invalid.
-        return nullptr;
-    }
-
-    // We only need to check changed names.
-    if (changed) {
-        codec = QTextCodec::codecForName(name);
-        if (codec) {
-            codecForNameDict.insert(n, codec);
-            return codec;
-        }
-    }
-
-    // these codecs are built into Qt, but the name given for the codec is different,
-    // so QTextCodec did not recognize it.
-    QByteArray cname = kcharsets_array_search(builtin_string, builtin_indices, name.data());
-
-    if (!cname.isEmpty()) {
-        codec = QTextCodec::codecForName(cname);
-    }
-
-    if (codec) {
-        codecForNameDict.insert(n, codec);
-        return codec;
-    }
-
-    // this also failed, the last resort is now to take some compatibility charmap
-    // ### TODO: while emergency conversions might be useful at read, it is not sure if they should be done if the application plans to write.
-    cname = kcharsets_array_search(conversion_hints_string, conversion_hints_indices, name.data());
-
-    if (!cname.isEmpty()) {
-        codec = QTextCodec::codecForName(cname);
-        if (codec) {
-            codecForNameDict.insert(n, codec);
-            return codec;
-        }
-    }
-
-    // we could not assign a codec, therefore return NULL
-    return nullptr;
 }
 
 KCharsets *KCharsets::charsets()

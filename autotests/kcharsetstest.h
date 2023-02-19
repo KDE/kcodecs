@@ -14,16 +14,10 @@ class KCharsetsTest : public QObject
     Q_OBJECT
 private Q_SLOTS:
     void testSingleton();
-    void testCodecForName_data();
-    void testCodecForName();
     void testFromEntity();
     void testToEntity();
     void testResolveEntities();
     void testEncodingNames();
-    void testUsAsciiEncoding_data();
-    void testUsAsciiEncoding();
-    void testUsAsciiDecoding_data();
-    void testUsAsciiDecoding();
 };
 
 #endif /* KCHARSETSTEST_H */
