@@ -6,179 +6,117 @@
 # Richard Allen <ra@ra.is>, 1998-2004.
 # Pjetur G. Hjaltason <pjetur@pjetur.net>, 2003.
 # Arnar Leósson <leosson@frisurf.no>, 2003, 2005.
-# Sveinn í Felli <sveinki@nett.is>, 2007, 2008, 2009, 2010, 2011, 2012, 2013.
+# Sveinn í Felli <sveinki@nett.is>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2013-05-13 22:40+0000\n"
-"Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
-"Language-Team: Icelandic <kde-isl@molar.is>\n"
+"PO-Revision-Date: 2023-02-14 07:43+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
+"Language-Team: Icelandic\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Qt-Contexts: true\n"
 
-#: kcharsets.cpp:157
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Western European"
+#: kcharsets.cpp:153
 msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
-msgstr "Vesturevrópskt"
+msgstr "Vestur-evrópskt"
 
-#: kcharsets.cpp:163
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Central European"
+#: kcharsets.cpp:159
 msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
 msgstr "Mið-evrópskt"
 
-#: kcharsets.cpp:166
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Baltic"
+#: kcharsets.cpp:162
 msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
 msgstr "Baltneskt"
 
-#: kcharsets.cpp:169
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "South-Eastern Europe"
+#: kcharsets.cpp:165
 msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
-msgstr "Suð-austur evrópskt"
+msgstr "Suðaustur-evrópskt"
 
-#: kcharsets.cpp:172
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Turkish"
+#: kcharsets.cpp:168
 msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
 msgstr "Tyrknenskt"
 
-#: kcharsets.cpp:175
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Cyrillic"
+#: kcharsets.cpp:171
 msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "Kýrílskt"
 
-#: kcharsets.cpp:181
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Chinese Traditional"
+#: kcharsets.cpp:177
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
-msgstr "Hefðbundin kínverska"
+msgstr "Hefðbundið kínverskt"
 
-#: kcharsets.cpp:184
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Chinese Simplified"
+#: kcharsets.cpp:180
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
-msgstr "Einfölduð kínverska"
+msgstr "Einfaldað kínverskt"
 
-#: kcharsets.cpp:188
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Korean"
+#: kcharsets.cpp:184
 msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
 msgstr "Kóreskt"
 
-#: kcharsets.cpp:191
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Japanese"
+#: kcharsets.cpp:187
 msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
 msgstr "Japanskt"
 
-#: kcharsets.cpp:195
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Greek"
+#: kcharsets.cpp:191
 msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
 msgstr "Grískt"
 
-#: kcharsets.cpp:198
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Arabic"
+#: kcharsets.cpp:194
 msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
 msgstr "Arabískt"
 
-#: kcharsets.cpp:201
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Hebrew"
+#: kcharsets.cpp:197
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
 msgstr "Hebreskt"
 
-#: kcharsets.cpp:206
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Thai"
+#: kcharsets.cpp:202
 msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
 msgstr "Tælenskt"
 
-#: kcharsets.cpp:209
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Unicode"
+#: kcharsets.cpp:205
 msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
 msgstr "Unicode"
 
-#: kcharsets.cpp:215
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Northern Saami"
-msgctxt "KCharsets|@item Text character set"
-msgid "Northern Saami"
-msgstr "Norður Saami"
-
-#: kcharsets.cpp:217
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Other"
+#: kcharsets.cpp:211
 msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "Annað"
 
-#: kcharsets.cpp:627
-#, fuzzy, qt-format
-#| msgctxt "@item %1 character set, %2 encoding"
-#| msgid "%1 ( %2 )"
+#: kcharsets.cpp:609
+#, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kcharsets.cpp:629
-#, fuzzy, qt-format
-#| msgctxt "@item"
-#| msgid "Other encoding (%1)"
+#: kcharsets.cpp:611
+#, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
-msgstr "Önnur kóðun (%1)"
+msgstr "Önnur stafkóðun (%1)"
 
-#: kcharsets.cpp:658
-#, fuzzy, qt-format
-#| msgctxt "@item %1 character set, %2 encoding"
-#| msgid "%1 ( %2 )"
+#: kcharsets.cpp:640
+#, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
@@ -190,6 +128,9 @@ msgid ""
 "@.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt því það inniheldur meira en eitt "
+"@.\n"
+"Þú munt ekki geta sent skilaboð ef þú breytir þessu ekki."
 
 #: kemailaddress.cpp:509
 msgctxt "QObject|"
@@ -197,11 +138,13 @@ msgid ""
 "The email address you entered is not valid because it does not contain a @.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt því það inniheldur ekki @.\n"
+"Þú munt ekki geta sent skilaboð ef þú breytir þessu ekki."
 
 #: kemailaddress.cpp:515
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
-msgstr ""
+msgstr "Þú verður að setja eitthvað inn í reitinn fyrir tölvupóstfang."
 
 #: kemailaddress.cpp:517
 msgctxt "QObject|"
@@ -209,6 +152,8 @@ msgid ""
 "The email address you entered is not valid because it does not contain a "
 "local part."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt því það inniheldur ekki "
+"notandahluta."
 
 #: kemailaddress.cpp:521
 msgctxt "QObject|"
@@ -216,6 +161,7 @@ msgid ""
 "The email address you entered is not valid because it does not contain a "
 "domain part."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt því það inniheldur ekki lénshluta."
 
 #: kemailaddress.cpp:525
 msgctxt "QObject|"
@@ -223,14 +169,13 @@ msgid ""
 "The email address you entered is not valid because it contains unclosed "
 "comments/brackets."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt því það inniheldur ólokaða sviga/"
+"athugasemd."
 
 #: kemailaddress.cpp:529
-#, fuzzy
-#| msgctxt "@info"
-#| msgid "The date you entered is invalid"
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
-msgstr "Dagsetningin sem þú slóst inn er ógild"
+msgstr "Tölvupóstfangið sem þú settir inn er ógilt."
 
 #: kemailaddress.cpp:531
 msgctxt "QObject|"
@@ -238,6 +183,8 @@ msgid ""
 "The email address you entered is not valid because it contains an unclosed "
 "angle bracket."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt því það inniheldur ólokaða "
+"oddklofa."
 
 #: kemailaddress.cpp:535
 msgctxt "QObject|"
@@ -245,6 +192,8 @@ msgid ""
 "The email address you entered is not valid because it contains too many "
 "closing angle brackets."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt því það inniheldur of marga loka-"
+"oddklofa."
 
 #: kemailaddress.cpp:539
 msgctxt "QObject|"
@@ -252,6 +201,7 @@ msgid ""
 "The email address you have entered is not valid because it contains an "
 "unexpected comma."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt því það inniheldur óvænta kommu."
 
 #: kemailaddress.cpp:543
 msgctxt "QObject|"
@@ -260,6 +210,9 @@ msgid ""
 "This probably means you have used an escaping type character like a '\\' as "
 "the last character in your email address."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt því það endaði óvænt.\n"
+"Þetta þýðir væntanlega að þú hafir notað lausnarstaf (escaping character) "
+"eins og '\\' sem síðasta staf í tölvupóstfanginu."
 
 #: kemailaddress.cpp:549
 msgctxt "QObject|"
@@ -267,6 +220,8 @@ msgid ""
 "The email address you entered is not valid because it contains quoted text "
 "which does not end."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt því það inniheldur tilvitnaðan "
+"texta sem endar ekki."
 
 #: kemailaddress.cpp:553
 msgctxt "QObject|"
@@ -274,6 +229,9 @@ msgid ""
 "The email address you entered is not valid because it does not seem to "
 "contain an actual email address, i.e. something of the form joe@example.org."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt þar sem það virðist ekki "
+"innihalda raunverulegt tölvupóstfang, það er að segja eitthvað á forminu "
+"notandi@lén.is."
 
 #: kemailaddress.cpp:558
 msgctxt "QObject|"
@@ -281,6 +239,8 @@ msgid ""
 "The email address you entered is not valid because it contains an illegal "
 "character."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt því það inniheldur óleyfilegan "
+"staf."
 
 #: kemailaddress.cpp:562
 msgctxt "QObject|"
@@ -288,6 +248,8 @@ msgid ""
 "The email address you have entered is not valid because it contains an "
 "invalid display name."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt því það inniheldur ógilt "
+"birtingarnafn."
 
 #: kemailaddress.cpp:566
 msgctxt "QObject|"
@@ -296,11 +258,14 @@ msgid ""
 "'.'.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt því það inniheldur ekki punkt "
+"'.'.\n"
+"Þú munt ekki geta sent skilaboð ef þú breytir þessu ekki."
 
 #: kemailaddress.cpp:572
 msgctxt "QObject|"
 msgid "Unknown problem with email address"
-msgstr ""
+msgstr "Óþekkt vandamál með tölvupóstfang"
 
 #: kemailaddress.cpp:632
 msgctxt "QObject|"
@@ -309,134 +274,96 @@ msgid ""
 "It does not seem to contain an actual email address, i.e. something of the "
 "form joe@example.org."
 msgstr ""
+"Tölvupóstfangið sem þú settir inn er ógilt.\n"
+"Það virðist ekki innihalda raunverulegt tölvupóstfang, það er að segja "
+"eitthvað á forminu notandi@lén.is."
 
 #: kencodingprober.cpp:226 kencodingprober.cpp:267
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Disabled"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Disabled"
 msgstr "Óvirkt"
 
 #: kencodingprober.cpp:228 kencodingprober.cpp:270
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Universal"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Universal"
-msgstr "Alheims"
+msgstr "Alþjóðlegt"
 
 #: kencodingprober.cpp:230 kencodingprober.cpp:312
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Unicode"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Unicode"
 msgstr "Unicode"
 
 #: kencodingprober.cpp:232 kencodingprober.cpp:282
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Cyrillic"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Cyrillic"
 msgstr "Kýrílskt"
 
 #: kencodingprober.cpp:234 kencodingprober.cpp:297
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Western European"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Western European"
 msgstr "Vesturevrópskt"
 
 #: kencodingprober.cpp:236 kencodingprober.cpp:279
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Central European"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Central European"
 msgstr "Mið-evrópskt"
 
 #: kencodingprober.cpp:238 kencodingprober.cpp:285
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Greek"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Greek"
 msgstr "Grískt"
 
 #: kencodingprober.cpp:240 kencodingprober.cpp:288
-#, fuzzy
-#| msgctxt "@item Spelling dictionary"
-#| msgid "Hebrew"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Hebrew"
 msgstr "Hebreskt"
 
 #: kencodingprober.cpp:242 kencodingprober.cpp:294
-#, fuzzy
-#| msgctxt "@item Spelling dictionary"
-#| msgid "Turkish"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Turkish"
 msgstr "Tyrknenskt"
 
 #: kencodingprober.cpp:244 kencodingprober.cpp:291
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Japanese"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Japanese"
 msgstr "Japanskt"
 
 #: kencodingprober.cpp:246 kencodingprober.cpp:276
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Baltic"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Baltic"
 msgstr "Baltneskt"
 
 #: kencodingprober.cpp:248 kencodingprober.cpp:300
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Chinese Traditional"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Traditional"
-msgstr "Hefðbundin kínverska"
+msgstr "Hefðbundið kínverskt"
 
 #: kencodingprober.cpp:250 kencodingprober.cpp:303
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Chinese Simplified"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Simplified"
-msgstr "Einfölduð kínverska"
+msgstr "Einfaldað kínverskt"
 
 #: kencodingprober.cpp:252 kencodingprober.cpp:306
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Korean"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Korean"
 msgstr "Kóreskt"
 
 #: kencodingprober.cpp:254 kencodingprober.cpp:309
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Thai"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Thai"
 msgstr "Tælenskt"
 
 #: kencodingprober.cpp:256 kencodingprober.cpp:273
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Arabic"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "Arabískt"
+
+#, fuzzy
+#~| msgctxt "@item Text character set"
+#~| msgid "Northern Saami"
+#~ msgctxt "KCharsets|@item Text character set"
+#~ msgid "Northern Saami"
+#~ msgstr "Norður Saami"
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

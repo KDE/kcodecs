@@ -22,110 +22,105 @@ msgstr ""
 "X-Environment: kde\n"
 "X-Qt-Contexts: true\n"
 
-#: kcharsets.cpp:155
+#: kcharsets.cpp:153
 msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
 msgstr "zapadnoevropski"
 
-#: kcharsets.cpp:161
+#: kcharsets.cpp:159
 msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
 msgstr "srednjeevropski"
 
-#: kcharsets.cpp:164
+#: kcharsets.cpp:162
 msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
 msgstr "baltički"
 
-#: kcharsets.cpp:167
+#: kcharsets.cpp:165
 msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
 msgstr "jugoistočnoevropski"
 
-#: kcharsets.cpp:170
+#: kcharsets.cpp:168
 msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
 msgstr "turski"
 
-#: kcharsets.cpp:173
+#: kcharsets.cpp:171
 msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "ćirilički"
 
-#: kcharsets.cpp:179
+#: kcharsets.cpp:177
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "kineski tradicionalni"
 
-#: kcharsets.cpp:182
+#: kcharsets.cpp:180
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "kineski pojednostavljeni"
 
-#: kcharsets.cpp:186
+#: kcharsets.cpp:184
 msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
 msgstr "korejski"
 
-#: kcharsets.cpp:189
+#: kcharsets.cpp:187
 msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
 msgstr "japanski"
 
-#: kcharsets.cpp:193
+#: kcharsets.cpp:191
 msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
 msgstr "grčki"
 
-#: kcharsets.cpp:196
+#: kcharsets.cpp:194
 msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
 msgstr "arapski"
 
-#: kcharsets.cpp:199
+#: kcharsets.cpp:197
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
 msgstr "hebrejski"
 
-#: kcharsets.cpp:204
+#: kcharsets.cpp:202
 msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
 msgstr "tajlandski"
 
-#: kcharsets.cpp:207
+#: kcharsets.cpp:205
 msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
 msgstr "Unicode"
 
-#: kcharsets.cpp:213
-msgctxt "KCharsets|@item Text character set"
-msgid "Northern Saami"
-msgstr "sjeverni sami"
-
-#: kcharsets.cpp:215
+#: kcharsets.cpp:211
 msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "drugi"
 
-#: kcharsets.cpp:656
+#: kcharsets.cpp:609
 #, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 (%2)"
 
-#: kcharsets.cpp:659
+#: kcharsets.cpp:611
 #, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "drugo kodiranje (%1)"
 
-#: kcharsets.cpp:688
+#: kcharsets.cpp:640
 #, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 (%2)"
 
-#: kemailaddress.cpp:516
+#: kemailaddress.cpp:503
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -141,7 +136,7 @@ msgstr ""
 "Unijeta adresa e‑pošte nije pravilna zato što sadrži više od jednog @. "
 "Morate je izmijeniti da bi poruke sa njom sastavljene bile valjane."
 
-#: kemailaddress.cpp:521
+#: kemailaddress.cpp:509
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -155,26 +150,26 @@ msgstr ""
 "Unijeta adresa e‑pošte nije pravilna zato što ne sadrži nijedno @. Morate je "
 "izmijeniti da bi poruke sa njom sastavljene bile valjane."
 
-#: kemailaddress.cpp:526
+#: kemailaddress.cpp:515
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
 msgstr "Morate unijeti nešto u polje adrese e‑pošte."
 
-#: kemailaddress.cpp:528
+#: kemailaddress.cpp:517
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "local part."
 msgstr "Unijeta adresa e‑pošte nije pravilna zato što ne sadrži lokalni dio."
 
-#: kemailaddress.cpp:531
+#: kemailaddress.cpp:521
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "domain part."
 msgstr "Unijeta adresa e‑pošte nije pravilna zato što ne sadrži domenski dio."
 
-#: kemailaddress.cpp:534
+#: kemailaddress.cpp:525
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains unclosed "
@@ -183,12 +178,12 @@ msgstr ""
 "Unijeta adresa e‑pošte nije pravilna zato što sadrži nezatvoreni komentar "
 "ili zagradu."
 
-#: kemailaddress.cpp:537
+#: kemailaddress.cpp:529
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
 msgstr "Unijeli ste pravilnu adresu e‑pošte."
 
-#: kemailaddress.cpp:539
+#: kemailaddress.cpp:531
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an unclosed "
@@ -197,7 +192,7 @@ msgstr ""
 "Unijeta adresa e‑pošte nije pravilna zato što sadrži nezatvorenu uglastu "
 "zagradu."
 
-#: kemailaddress.cpp:542
+#: kemailaddress.cpp:535
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains too many "
@@ -206,7 +201,7 @@ msgstr ""
 "Unijeta adresa e‑pošte nije pravilna zato što sadrži previše zatvorenih "
 "uglastih zagrada."
 
-#: kemailaddress.cpp:545
+#: kemailaddress.cpp:539
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
@@ -214,7 +209,7 @@ msgid ""
 msgstr ""
 "Unijeta adresa e‑pošte nije pravilna zato što sadrži neočekivanu zapetu."
 
-#: kemailaddress.cpp:548
+#: kemailaddress.cpp:543
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -231,7 +226,7 @@ msgstr ""
 "Vjerovatno ste upotrijebili znak izbjegavanja (poput \\) kao posljednji znak "
 "u adresi."
 
-#: kemailaddress.cpp:553
+#: kemailaddress.cpp:549
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains quoted text "
@@ -241,7 +236,7 @@ msgstr ""
 "tekst."
 
 # skip-rule: t-form
-#: kemailaddress.cpp:556
+#: kemailaddress.cpp:553
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not seem to "
@@ -250,7 +245,7 @@ msgstr ""
 "Unijeta adresa e‑pošte nije pravilna zato što ne nalikuje nečemu što bi se "
 "očekivalo od normalne adrese, npr. nešto kao pera@primjer.org."
 
-#: kemailaddress.cpp:560
+#: kemailaddress.cpp:558
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an illegal "
@@ -258,7 +253,7 @@ msgid ""
 msgstr ""
 "Unijeta adresa e‑pošte nije pravilna zato što sadrži nedozvoljeni znak."
 
-#: kemailaddress.cpp:563
+#: kemailaddress.cpp:562
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
@@ -287,7 +282,7 @@ msgid "Unknown problem with email address"
 msgstr "Nepoznat problem sa adresom e‑pošte"
 
 # skip-rule: t-form
-#: kemailaddress.cpp:633
+#: kemailaddress.cpp:632
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -303,82 +298,86 @@ msgstr ""
 "Unijeta adresa e‑pošte nije pravilna zato što ne nalikuje nečemu što bi se "
 "očekivalo od normalne adrese, npr. nešto kao pera@primjer.org."
 
-#: kencodingprober.cpp:224 kencodingprober.cpp:265
+#: kencodingprober.cpp:226 kencodingprober.cpp:267
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Disabled"
 msgstr "isključeno"
 
-#: kencodingprober.cpp:226 kencodingprober.cpp:268
+#: kencodingprober.cpp:228 kencodingprober.cpp:270
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Universal"
 msgstr "univerzalno"
 
-#: kencodingprober.cpp:228 kencodingprober.cpp:310
+#: kencodingprober.cpp:230 kencodingprober.cpp:312
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Unicode"
 msgstr "Unicode"
 
-#: kencodingprober.cpp:230 kencodingprober.cpp:280
+#: kencodingprober.cpp:232 kencodingprober.cpp:282
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Cyrillic"
 msgstr "ćirilički"
 
-#: kencodingprober.cpp:232 kencodingprober.cpp:295
+#: kencodingprober.cpp:234 kencodingprober.cpp:297
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Western European"
 msgstr "zapadnoevropski"
 
-#: kencodingprober.cpp:234 kencodingprober.cpp:277
+#: kencodingprober.cpp:236 kencodingprober.cpp:279
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Central European"
 msgstr "srednjeevropski"
 
-#: kencodingprober.cpp:236 kencodingprober.cpp:283
+#: kencodingprober.cpp:238 kencodingprober.cpp:285
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Greek"
 msgstr "grčki"
 
-#: kencodingprober.cpp:238 kencodingprober.cpp:286
+#: kencodingprober.cpp:240 kencodingprober.cpp:288
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Hebrew"
 msgstr "hebrejski"
 
-#: kencodingprober.cpp:240 kencodingprober.cpp:292
+#: kencodingprober.cpp:242 kencodingprober.cpp:294
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Turkish"
 msgstr "turski"
 
-#: kencodingprober.cpp:242 kencodingprober.cpp:289
+#: kencodingprober.cpp:244 kencodingprober.cpp:291
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Japanese"
 msgstr "japanski"
 
-#: kencodingprober.cpp:244 kencodingprober.cpp:274
+#: kencodingprober.cpp:246 kencodingprober.cpp:276
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Baltic"
 msgstr "baltički"
 
-#: kencodingprober.cpp:246 kencodingprober.cpp:298
+#: kencodingprober.cpp:248 kencodingprober.cpp:300
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "kineski tradicionalni"
 
-#: kencodingprober.cpp:248 kencodingprober.cpp:301
+#: kencodingprober.cpp:250 kencodingprober.cpp:303
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "kineski pojednostavljeni"
 
-#: kencodingprober.cpp:250 kencodingprober.cpp:304
+#: kencodingprober.cpp:252 kencodingprober.cpp:306
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Korean"
 msgstr "korejski"
 
-#: kencodingprober.cpp:252 kencodingprober.cpp:307
+#: kencodingprober.cpp:254 kencodingprober.cpp:309
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Thai"
 msgstr "tajlandski"
 
-#: kencodingprober.cpp:254 kencodingprober.cpp:271
+#: kencodingprober.cpp:256 kencodingprober.cpp:273
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "arapski"
+
+#~ msgctxt "KCharsets|@item Text character set"
+#~ msgid "Northern Saami"
+#~ msgstr "sjeverni sami"
