@@ -359,7 +359,3 @@ msgstr "Tai"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "Àrab"
-
-#~ msgctxt "KCharsets|@item Text character set"
-#~ msgid "Northern Saami"
-#~ msgstr "Sami del nord"
