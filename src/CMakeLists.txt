@@ -1,7 +1,7 @@
 add_library(KF6Codecs)
 add_library(KF6::Codecs ALIAS KF6Codecs)
 
-ecm_create_qm_loader(KF6Codecs kcodecs5_qt)
+ecm_create_qm_loader(KF6Codecs kcodecs6_qt)
 
 ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h KF6Codecs
                    GENERATION_FLAGS "--key-positions=* -D -s 2")
