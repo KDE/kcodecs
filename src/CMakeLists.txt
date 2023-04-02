@@ -1,11 +1,10 @@
 add_library(KF6Codecs)
 add_library(KF6::Codecs ALIAS KF6Codecs)
 
-ecm_create_qm_loader(KF6Codecs kcodecs6_qt)
-
-ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h KF6Codecs
-                   GENERATION_FLAGS "--key-positions=* -D -s 2")
-
+set_target_properties(KF6Codecs PROPERTIES
+    VERSION     ${KCODECS_VERSION}
+    SOVERSION   ${KCODECS_SOVERSION}
+    EXPORT_NAME Codecs
 # gperf < 3.1 always adds a "register" keyword to function arguments,
 # which itself is removed from C++17,
 # so sources including the generated header need to use C++14 only.
@@ -13,7 +12,13 @@ ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h KF6Co
 # so simply set standard for the while library
 # Current version of FindGperf in ECM does not support a version check yet,
 # so for now always lower to C++14.
-set_target_properties(KF6Codecs PROPERTIES CXX_STANDARD 14)
+    CXX_STANDARD 14
+)
+
+ecm_create_qm_loader(KF6Codecs kcodecs6_qt)
+
+ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h KF6Codecs
+                   GENERATION_FLAGS "--key-positions=* -D -s 2")
 
 target_sources(KF6Codecs PRIVATE
     kcharsets.cpp
@@ -103,11 +108,6 @@ ecm_generate_export_header(KF6Codecs
 target_include_directories(KF6Codecs INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/KCodecs>")
 
 target_link_libraries(KF6Codecs PUBLIC Qt6::Core)
-
-set_target_properties(KF6Codecs PROPERTIES VERSION   ${KCODECS_VERSION}
-                                           SOVERSION ${KCODECS_SOVERSION}
-                                           EXPORT_NAME Codecs
-)
 
 ecm_generate_headers(KCodecs_HEADERS
   HEADER_NAMES
