@@ -1,7 +1,6 @@
 # translation of kdelibs4.po to galician
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-#
 # mvillarino <mvillarino@users.sourceforge.net>, 2007, 2008, 2009.
 # Marce Villarino <mvillarino@kde-espana.es>, 2008, 2009.
 # marce villarino <mvillarino@users.sourceforge.net>, 2009.
@@ -10,20 +9,22 @@
 # Xosé <xosecalvo@gmail.com>, 2010.
 # Marce Villarino <mvillarino@kde-espana.es>, 2011, 2012, 2013, 2014.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2023.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2017-10-17 19:46+0100\n"
+"PO-Revision-Date: 2023-04-28 17:28+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 23.04.0\n"
 "X-Qt-Contexts: true\n"
 
 #: kcharsets.cpp:155
@@ -125,12 +126,6 @@ msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
 #: kemailaddress.cpp:503
-#, fuzzy
-#| msgctxt "QObject|"
-#| msgid ""
-#| "The email address you entered is not valid because it contains more than "
-#| "one @. You will not create valid messages if you do not change your "
-#| "address."
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains more than one "
@@ -138,21 +133,18 @@ msgid ""
 "You will not create valid messages if you do not change your address."
 msgstr ""
 "O enderezo de correo electrónico que inseriu non é correcto porque contén "
-"máis dun @. Non creará mensaxes correctas se non cambia o enderezo."
+"máis dun @.\n"
+"Non creará mensaxes correctas se non cambia o enderezo."
 
 #: kemailaddress.cpp:509
-#, fuzzy
-#| msgctxt "QObject|"
-#| msgid ""
-#| "The email address you entered is not valid because it does not contain a "
-#| "@. You will not create valid messages if you do not change your address."
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a @.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
 "O enderezo de correo electrónico que inseriu non é correcto porque non "
-"contén ningún @. Non creará mensaxes correctas se non cambia o enderezo."
+"contén ningún @.\n"
+"Non creará mensaxes correctas se non cambia o enderezo."
 
 #: kemailaddress.cpp:515
 msgctxt "QObject|"
@@ -219,12 +211,6 @@ msgstr ""
 "unha coma inesperada."
 
 #: kemailaddress.cpp:543
-#, fuzzy
-#| msgctxt "QObject|"
-#| msgid ""
-#| "The email address you entered is not valid because it ended unexpectedly. "
-#| "This probably means you have used an escaping type character like a '\\' "
-#| "as the last character in your email address."
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it ended unexpectedly.\n"
@@ -232,8 +218,9 @@ msgid ""
 "the last character in your email address."
 msgstr ""
 "O enderezo de correo electrónico que inseriu non é correcto porque termina "
-"de xeito inesperado. Isto probabelmente significa que usou un carácter de "
-"escape como un «\\» como último carácter no enderezo de correo."
+"de xeito inesperado.\n"
+"Isto probabelmente significa que usou un carácter de escape como un «\\» "
+"como último carácter no enderezo de correo."
 
 #: kemailaddress.cpp:549
 msgctxt "QObject|"
@@ -273,11 +260,6 @@ msgstr ""
 "nome para mostrar incorrecto."
 
 #: kemailaddress.cpp:566
-#, fuzzy
-#| msgctxt "QObject|"
-#| msgid ""
-#| "The email address you entered is not valid because it does not contain a "
-#| "'.'. You will not create valid messages if you do not change your address."
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
@@ -285,7 +267,8 @@ msgid ""
 "You will not create valid messages if you do not change your address."
 msgstr ""
 "O enderezo de correo electrónico que inseriu non é correcto porque non "
-"contén ningún punto. Non creará mensaxes correctas se non cambia o enderezo."
+"contén ningún «.».\n"
+"Non creará mensaxes correctas se non cambia o enderezo."
 
 #: kemailaddress.cpp:572
 msgctxt "QObject|"
@@ -293,20 +276,14 @@ msgid "Unknown problem with email address"
 msgstr "Erro descoñecido no enderezo de correo"
 
 #: kemailaddress.cpp:632
-#, fuzzy
-#| msgctxt "QObject|"
-#| msgid ""
-#| "The email address you entered is not valid because it does not seem to "
-#| "contain an actual email address, i.e. something of the form joe@example."
-#| "org."
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid.\n"
 "It does not seem to contain an actual email address, i.e. something of the "
 "form joe@example.org."
 msgstr ""
-"O enderezo de correo electrónico que inseriu non é correcto porque non "
-"parece conter un enderezo de correo real, é dicir, algo do estilo "
+"O enderezo de correo electrónico que inseriu non é correcto.\n"
+"Non parece conter un enderezo de correo real, é dicir, algo do estilo "
 "marce@trasno.gal."
 
 #: kencodingprober.cpp:226 kencodingprober.cpp:267
