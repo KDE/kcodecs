@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
-"PO-Revision-Date: 2023-02-24 12:43\n"
+"PO-Revision-Date: 2023-05-22 13:58\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -12,8 +12,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-trunk/messages/kcodecs/kcodecs5_qt.pot\n"
-"X-Crowdin-File-ID: 5596\n"
+"X-Crowdin-File: /kf6-trunk/messages/kcodecs/kcodecs6_qt.pot\n"
+"X-Crowdin-File-ID: 43183\n"
 
 #: kcharsets.cpp:153
 msgctxt "KCharsets|@item Text character set"
@@ -120,7 +120,7 @@ msgid ""
 "@.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
-"您输入的电子邮件地址无效，因为它包含多个 @ 符号。请订正该电子邮件地址，否则将"
+"您输入的电子邮件地址无效，因为它包含多个 @ 字符。请改正该电子邮件地址，否则将"
 "无法创建有效的邮件。"
 
 #: kemailaddress.cpp:509
@@ -129,7 +129,7 @@ msgid ""
 "The email address you entered is not valid because it does not contain a @.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
-"您输入的电子邮件地址无效，因为它不包含 @ 符号。请订正该电子邮件地址，否则将无"
+"您输入的电子邮件地址无效，因为它不包含 @ 字符。请改正该电子邮件地址，否则将无"
 "法创建有效的邮件。"
 
 #: kemailaddress.cpp:515
@@ -161,7 +161,7 @@ msgstr "您输入的电子邮件地址无效，因为它包含未闭合的括号
 #: kemailaddress.cpp:529
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
-msgstr "您所输入的电子邮件地址有效。"
+msgstr "您输入的电子邮件地址有效。"
 
 #: kemailaddress.cpp:531
 msgctxt "QObject|"
@@ -231,7 +231,7 @@ msgid ""
 "'.'.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
-"您输入的电子邮件地址无效，因为它不包含“.”字符。请订正该电子邮件地址，否则将无"
+"您输入的电子邮件地址无效，因为它不包含“.”字符。请改正该电子邮件地址，否则将无"
 "法创建有效的邮件。"
 
 #: kemailaddress.cpp:572
