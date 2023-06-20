@@ -257,7 +257,7 @@ msgid ""
 "invalid display name."
 msgstr ""
 "O enderezo de correo electrónico que inseriu non é correcto porque contén un "
-"nome para mostrar incorrecto."
+"nome para amosar incorrecto."
 
 #: kemailaddress.cpp:566
 msgctxt "QObject|"
