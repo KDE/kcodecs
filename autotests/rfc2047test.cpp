@@ -173,3 +173,5 @@ void RFC2047Test::testRFC2047encode()
     QEXPECT_FAIL("QP", "KCodecs will choose 'B' instead of 'Q' encoding", Continue);
     QCOMPARE(result, expectedResult);
 }
+
+#include "moc_rfc2047test.cpp"

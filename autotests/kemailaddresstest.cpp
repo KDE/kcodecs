@@ -604,3 +604,5 @@ void KEmailAddressTest::testMailtoUrls_data()
     QTest::newRow("") << QStringLiteral("\"Alberto Simões\" <alberto@example.com");
     QTest::newRow("") << QStringLiteral("Alberto Simões <alberto@example.com");
 }
+
+#include "moc_kemailaddresstest.cpp"

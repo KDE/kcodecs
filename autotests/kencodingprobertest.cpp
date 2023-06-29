@@ -75,3 +75,5 @@ void KEncodingProberTest::testProbe()
 }
 
 QTEST_MAIN(KEncodingProberTest)
+
+#include "moc_kencodingprobertest.cpp"

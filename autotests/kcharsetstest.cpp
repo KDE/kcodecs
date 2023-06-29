@@ -361,3 +361,5 @@ void KCharsetsTest::testUsAsciiDecoding()
 }
 
 QTEST_MAIN(KCharsetsTest)
+
+#include "moc_kcharsetstest.cpp"
