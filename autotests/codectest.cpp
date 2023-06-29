@@ -98,3 +98,5 @@ void CodecTest::testCodecs()
     }
     QCOMPARE(result, expResult);
 }
+
+#include "moc_codectest.cpp"

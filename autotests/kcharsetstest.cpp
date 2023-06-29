@@ -65,3 +65,5 @@ void KCharsetsTest::testEncodingNames()
 }
 
 QTEST_MAIN(KCharsetsTest)
+
+#include "moc_kcharsetstest.cpp"
