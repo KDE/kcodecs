@@ -217,7 +217,7 @@ msgstr ""
 "L'adreça de correu que heu introduït no és vàlida perquè ha acabat "
 "inesperadament.\n"
 "Açò probablement significa que heu utilitzat un caràcter d'escapament (p. "
-"ex. \\) com a últim caràcter de l'adreça de correu."
+"ex., \\) com a últim caràcter de l'adreça de correu."
 
 #: kemailaddress.cpp:549
 msgctxt "QObject|"
@@ -235,7 +235,7 @@ msgid ""
 "contain an actual email address, i.e. something of the form joe@example.org."
 msgstr ""
 "L'adreça de correu que heu introduït no és vàlida perquè pareix que no conté "
-"una adreça real de correu, com p. ex. pep@exemple.org."
+"una adreça real de correu, com p. ex., pep@exemple.org."
 
 #: kemailaddress.cpp:558
 msgctxt "QObject|"
@@ -278,7 +278,7 @@ msgid ""
 "form joe@example.org."
 msgstr ""
 "L'adreça de correu que heu introduït no és vàlida.\n"
-"Pareix que no conté una adreça real de correu, com p. ex. pep@exemple.org."
+"Pareix que no conté una adreça real de correu, com p. ex., pep@exemple.org."
 
 #: kencodingprober.cpp:226 kencodingprober.cpp:267
 msgctxt "KEncodingProber|@item Text character set"
