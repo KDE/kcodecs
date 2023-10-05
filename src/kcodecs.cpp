@@ -181,7 +181,7 @@ bool parseEncodedWord(const char *&scursor,
         return false;
     }
 
-    // remember start of charset (ie. just after the initial "=?") and
+    // remember start of charset (i.e. just after the initial "=?") and
     // language (just after the first '*') fields:
     const char *charsetStart = scursor;
     const char *languageStart = nullptr;
@@ -721,7 +721,7 @@ bool KCodecs::Encoder::flushOutputBuffer(char *&dcursor, const char *const dend)
 
     // calculate the number of missing chars:
     int numCharsLeft = d->outputBufferCursor - i;
-    // push the remaining chars to the begin of the buffer:
+    // push the remaining chars to the beginning of the buffer:
     if (numCharsLeft) {
         ::memmove(d->outputBuffer, d->outputBuffer + i, numCharsLeft);
     }

@@ -529,7 +529,7 @@ protected:
   often as necessary, then call finalize (most often a single
   call suffices, but it might be that during that call the output
   buffer is filled, so you should be prepared to call finalize
-  as often as necessary, ie. until it returns @p true).
+  as often as necessary, i.e. until it returns @p true).
 
   @section Return Values
 

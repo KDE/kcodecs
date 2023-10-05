@@ -84,7 +84,7 @@ nsProbingState ChineseGroupProber::HandleData(const char *aBuf, unsigned int aLe
             *hptr++ = aBuf[i];
             keepNext = true;
         } else {
-            // if previous is highbyte, keep this even it is a ASCII
+            // if previous is highbyte, keep this even it is an ASCII
             if (keepNext) {
                 *hptr++ = aBuf[i];
                 keepNext = false;

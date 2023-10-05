@@ -314,7 +314,7 @@ bool QuotedPrintableDecoder::decode(const char *&scursor, const char *const send
 
     while (scursor != send && dcursor != dend) {
         if (mFlushing) {
-            // we have to flush chars in the aftermath of an decoding
+            // we have to flush chars in the aftermath of a decoding
             // error. The way to request a flush is to
             // - store the offending character in mBadChar and
             // - set mFlushing to true.
@@ -556,7 +556,7 @@ bool QuotedPrintableEncoder::processNextChar()
 
 // Outputs processed (verbatim or hex-encoded) chars and inserts soft
 // line breaks as necessary. Depends on processNextChar's directions
-// on whether or not to encode the current char, and whether or not
+// on whether to encode the current char, and whether
 // the current char is the last one in it's input line:
 void QuotedPrintableEncoder::createOutputBuffer(char *&dcursor, const char *const dend)
 {

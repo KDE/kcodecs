@@ -139,7 +139,7 @@ public:
     void setProberType(ProberType proberType);
 
     /**
-     * @return the ProberType for lang (eg. proberTypeForName("Chinese Simplified") will return KEncodingProber::ChineseSimplified
+     * @return the ProberType for lang (e.g. proberTypeForName("Chinese Simplified") will return KEncodingProber::ChineseSimplified
      */
     static ProberType proberTypeForName(const QString &lang);
 

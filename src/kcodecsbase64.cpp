@@ -386,7 +386,7 @@ bool Base64Encoder::generic_finish(char *&dcursor, const char *const dend, bool 
         write('=', dcursor, dend);
         Q_FALLTHROUGH();
     // fall through:
-    case 0: // completed an quartet - add CRLF
+    case 0: // completed a quartet - add CRLF
         if (withLFatEnd) {
             writeCRLF(dcursor, dend);
         }

@@ -77,7 +77,7 @@ public:
 protected:
     // we do not handle character base on its original encoding string, but
     // convert this encoding string to a number, here called order.
-    // This allow multiple encoding of a language to share one frequency table
+    // This allows multiple encodings of a language to share one frequency table
     virtual int GetOrder(const char * /* str */)
     {
         return -1;

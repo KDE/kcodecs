@@ -403,7 +403,7 @@ static const int builtin_indices[] = {0,   11,  18,  11,  30,  39,  50,  39,  58
 
 /*
  * some last resort hints in case the charmap file couldn't be found.
- * This gives at least a partial conversion and helps making things readable.
+ * This gives at least a partial conversion and helps make things readable.
  *
  * the name used as input here is already converted to the more canonical
  * name as defined in the aliases array.

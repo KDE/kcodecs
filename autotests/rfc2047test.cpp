@@ -169,7 +169,7 @@ void RFC2047Test::testRFC2047encode()
 
     const QByteArray result = KCodecs::encodeRFC2047String(input, encoding);
 
-    // expected value is probably wrong, libkmime will chose 'B' instead of 'Q' encoding
+    // expected value is probably wrong, libkmime will choose 'B' instead of 'Q' encoding
     QEXPECT_FAIL("QP", "KCodecs will choose 'B' instead of 'Q' encoding", Continue);
     QCOMPARE(result, expectedResult);
 }
