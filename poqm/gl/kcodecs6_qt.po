@@ -229,7 +229,7 @@ msgid ""
 "which does not end."
 msgstr ""
 "O enderezo de correo electrónico que inseriu non é correcto porque contén "
-"texto entre aspas que non terminan."
+"texto entre comiñas que non terminan."
 
 #: kemailaddress.cpp:553
 msgctxt "QObject|"
