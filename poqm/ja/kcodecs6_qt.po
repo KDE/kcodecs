@@ -440,7 +440,3 @@ msgstr "タイ語"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "アラビア語"
-
-#~ msgctxt "KCharsets|@item Text character set"
-#~ msgid "Northern Saami"
-#~ msgstr "北サーミ語"
