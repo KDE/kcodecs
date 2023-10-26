@@ -17,130 +17,116 @@
 # Meni Livne <livne@kde.org>, 2007.
 # tahmar1900 <tahmar1900@gmail.com>, 2008, 2009.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
+# SPDX-FileCopyrightText: 2023 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-05-16 06:49-0400\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
-"Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
+"Project-Id-Version: \n"
+"PO-Revision-Date: 2023-10-25 15:08+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Lokalize 23.08.1\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 "X-Qt-Contexts: true\n"
 
 #: kcharsets.cpp:153
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
 msgstr "מערב אירופי"
 
 #: kcharsets.cpp:159
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
 msgstr "מרכז אירופי"
 
 #: kcharsets.cpp:162
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
 msgstr "בלטי"
 
 #: kcharsets.cpp:165
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
 msgstr "דרום־מזרח אירופי"
 
 #: kcharsets.cpp:168
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
 msgstr "טורקי"
 
 #: kcharsets.cpp:171
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "קירילי"
 
 #: kcharsets.cpp:177
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "סיני מסורתי"
 
 #: kcharsets.cpp:180
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "סיני מפושט"
 
 #: kcharsets.cpp:184
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
 msgstr "קוריאני"
 
 #: kcharsets.cpp:187
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
 msgstr "יפני"
 
 #: kcharsets.cpp:191
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
 msgstr "יווני"
 
 #: kcharsets.cpp:194
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
 msgstr "ערבי"
 
 #: kcharsets.cpp:197
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
 msgstr "עברי"
 
 #: kcharsets.cpp:202
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
 msgstr "תאילנדי"
 
 #: kcharsets.cpp:205
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
 msgstr "יוניקוד"
 
 #: kcharsets.cpp:211
-#, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "אחר"
 
 #: kcharsets.cpp:609
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 (%2)"
 
 #: kcharsets.cpp:611
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "קידוד אחר (%1)"
 
 #: kcharsets.cpp:640
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 (%2)"
@@ -152,6 +138,8 @@ msgid ""
 "@.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"כתובת הדוא״ל שמילאת שגויה כיוון שיש בה יותר מ־@ אחד. \n"
+"לא תהיה אפשרות ליצור הודעה תקפה מבלי לשנות את הכתובת שלך."
 
 #: kemailaddress.cpp:509
 msgctxt "QObject|"
@@ -159,45 +147,46 @@ msgid ""
 "The email address you entered is not valid because it does not contain a @.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"כתובת הדוא״ל שמילאת שגויה כיוון שאין בה כלל @. \n"
+"לא תהיה אפשרות ליצור הודעה תקפה מבלי לשנות את הכתובת שלך."
 
 #: kemailaddress.cpp:515
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
-msgstr ""
+msgstr "יש למלא משהו בשדה כתובת הדוא״ל."
 
 #: kemailaddress.cpp:517
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "local part."
-msgstr ""
+msgstr "כתובת הדוא״ל שמילאת שגויה כי אינה מכילה חלק מקומי."
 
 #: kemailaddress.cpp:521
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "domain part."
-msgstr ""
+msgstr "כתובת הדוא״ל שמילאת שגויה כי אינה מכילה חלק שם תחום."
 
 #: kemailaddress.cpp:525
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains unclosed "
 "comments/brackets."
-msgstr ""
+msgstr "כתובת הדוא״ל שמילאת שגויה כי היא מכילה הערות תחומות/סוגריים מרובעים."
 
 #: kemailaddress.cpp:529
-#, fuzzy
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
-msgstr "התאריך שהכנסת אינו תקין"
+msgstr "כתובת הדוא״ל שמילאת תקינה."
 
 #: kemailaddress.cpp:531
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an unclosed "
 "angle bracket."
-msgstr ""
+msgstr "כתובת הדוא״ל שמילאת שגויה כי היא מכילה סוגריים משולשים פתוחים."
 
 #: kemailaddress.cpp:535
 msgctxt "QObject|"
@@ -205,13 +194,14 @@ msgid ""
 "The email address you entered is not valid because it contains too many "
 "closing angle brackets."
 msgstr ""
+"כתובת הדוא״ל שמילאת שגויה כי היא מכילה יותר מדי סוגריים משולשים סוגרים."
 
 #: kemailaddress.cpp:539
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
 "unexpected comma."
-msgstr ""
+msgstr "כתובת הדוא״ל שמילאת שגויה כי היא מכילה פסיק לא צפוי."
 
 #: kemailaddress.cpp:543
 msgctxt "QObject|"
@@ -220,13 +210,16 @@ msgid ""
 "This probably means you have used an escaping type character like a '\\' as "
 "the last character in your email address."
 msgstr ""
+"כתובת הדוא״ל שמילאת שגויה כיוון שהסתיימה במפתיע.\n"
+"כנראה שזה אומר שהשתמשת בתו בסגנון מילוט כגון ‚\\’ בתור התו האחרון בכתובת "
+"הדוא״ל שלך."
 
 #: kemailaddress.cpp:549
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains quoted text "
 "which does not end."
-msgstr ""
+msgstr "כתובת הדוא״ל שמילאת שגויה כי היא מכילה טקסט במירכאות שלא נסגרות."
 
 #: kemailaddress.cpp:553
 msgctxt "QObject|"
@@ -234,20 +227,22 @@ msgid ""
 "The email address you entered is not valid because it does not seem to "
 "contain an actual email address, i.e. something of the form joe@example.org."
 msgstr ""
+"כתובת הדוא״ל שמילאת שגויה כי נראה שאינה מכילה כתובת דוא״ל אמיתית. כלומר, "
+"בצורה joe@example.org."
 
 #: kemailaddress.cpp:558
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an illegal "
 "character."
-msgstr ""
+msgstr "כתובת הדוא״ל שמילאת שגויה כי היא מכילה תו שגוי."
 
 #: kemailaddress.cpp:562
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
 "invalid display name."
-msgstr ""
+msgstr "כתובת הדוא״ל שמילאת שגויה כי היא מכילה שם תצוגה שגוי."
 
 #: kemailaddress.cpp:566
 msgctxt "QObject|"
@@ -256,11 +251,13 @@ msgid ""
 "'.'.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"כתובת הדוא״ל שמילאת שגויה כי אינה מכילה ‚.’.\n"
+"לא תהיה אפשרות ליצור הודעות תקפות ללא שינוי כתובת הדוא״ל שלך."
 
 #: kemailaddress.cpp:572
 msgctxt "QObject|"
 msgid "Unknown problem with email address"
-msgstr ""
+msgstr "תקלה לא ידועה עם שרת הדוא״ל"
 
 #: kemailaddress.cpp:632
 msgctxt "QObject|"
@@ -269,99 +266,85 @@ msgid ""
 "It does not seem to contain an actual email address, i.e. something of the "
 "form joe@example.org."
 msgstr ""
+"כתובת הדוא״ל שמילאת שגויה.\n"
+"נראה שאינה מכילה כתובת דוא״ל בפועל, כלומר משהו בצורה joe@example.org."
 
 #: kencodingprober.cpp:226 kencodingprober.cpp:267
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Disabled"
-msgstr "מבוטל"
+msgstr "מושבת"
 
 #: kencodingprober.cpp:228 kencodingprober.cpp:270
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Universal"
 msgstr "אוניברסלי"
 
 #: kencodingprober.cpp:230 kencodingprober.cpp:312
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Unicode"
 msgstr "יוניקוד"
 
 #: kencodingprober.cpp:232 kencodingprober.cpp:282
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Cyrillic"
 msgstr "קירילי"
 
 #: kencodingprober.cpp:234 kencodingprober.cpp:297
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Western European"
 msgstr "מערב אירופי"
 
 #: kencodingprober.cpp:236 kencodingprober.cpp:279
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Central European"
 msgstr "מרכז אירופי"
 
 #: kencodingprober.cpp:238 kencodingprober.cpp:285
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Greek"
 msgstr "יווני"
 
 #: kencodingprober.cpp:240 kencodingprober.cpp:288
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Hebrew"
-msgstr "עברית"
+msgstr "עברי"
 
 #: kencodingprober.cpp:242 kencodingprober.cpp:294
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Turkish"
-msgstr "טורקית"
+msgstr "טורקי"
 
 #: kencodingprober.cpp:244 kencodingprober.cpp:291
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Japanese"
 msgstr "יפני"
 
 #: kencodingprober.cpp:246 kencodingprober.cpp:276
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Baltic"
 msgstr "בלטי"
 
 #: kencodingprober.cpp:248 kencodingprober.cpp:300
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "סיני מסורתי"
 
 #: kencodingprober.cpp:250 kencodingprober.cpp:303
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "סיני מפושט"
 
 #: kencodingprober.cpp:252 kencodingprober.cpp:306
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Korean"
 msgstr "קוריאני"
 
 #: kencodingprober.cpp:254 kencodingprober.cpp:309
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Thai"
 msgstr "תאילנדי"
 
 #: kencodingprober.cpp:256 kencodingprober.cpp:273
-#, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "ערבי"
