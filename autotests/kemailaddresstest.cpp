@@ -481,6 +481,15 @@ void KEmailAddressTest::testCheckSplitEmailAddrList_data()
                       << (QStringList() << QStringLiteral("\"Matt, Douhan\" <matt@fruitsalad.org>") << QStringLiteral("Foo Bar <foo@bar.com>"));
     QTest::newRow("") << "\"Lastname\\, Firstname\" <firstname.lastname@example.com>"
                       << (QStringList() << QStringLiteral("\"Lastname\\, Firstname\" <firstname.lastname@example.com>"));
+    QTest::newRow("") << "First Collective Last <collectivename.lastname@example.com>" // Uses non-ASCII spacing
+                      << (QStringList() << QStringLiteral("First Collective Last <collectivename.lastname@example.com>"));
+    QTest::newRow("") << "Foo Bar <foo@bar.com>, First Collective Last <collectivename.lastname@example.com>" // Uses non-ASCII spacing
+                      << (QStringList() << QStringLiteral("Foo Bar <foo@bar.com>")
+                                        << QStringLiteral("First Collective Last <collectivename.lastname@example.com>"));
+    QTest::newRow("")
+        << "Foo  Bar <foo@bar.com>,  \"   First  Collective Last  \"  <collectivename.lastname@example.com>" // Uses multiple and quoted surrounding spaces
+        << (QStringList() << QStringLiteral("Foo  Bar <foo@bar.com>")
+                          << QStringLiteral("\"   First  Collective Last  \"  <collectivename.lastname@example.com>"));
 }
 
 void KEmailAddressTest::testNormalizeAddressesAndEncodeIDNs()
@@ -508,6 +517,14 @@ void KEmailAddressTest::testNormalizeAddressesAndEncodeIDNs_data()
                       << "\"jongel,fibbel\" <matt@fruitsalad.org>";
     QTest::newRow("") << "matt@fruitsalad.org (\"jongel,fibbel\")"
                       << "\"jongel,fibbel\" <matt@fruitsalad.org>";
+
+    QTest::newRow("") << "First Collective Last <collectivename.lastname@example.com>" // Uses non-ASCII spacing
+                      << "First Collective Last <collectivename.lastname@example.com>";
+    QTest::newRow("") << "Foo Bar <foo@bar.com> , First Collective Last <collectivename.lastname@example.com>" // Uses non-ASCII spacing
+                      << "Foo Bar <foo@bar.com>, First Collective Last <collectivename.lastname@example.com>";
+    QTest::newRow("")
+        << "Foo  Bar  <foo@bar.com>,  \"   First  Collective Last  \"  <collectivename.lastname@example.com>" // Uses multiple and quoted surrounding spaces
+        << "Foo  Bar <foo@bar.com>, \"   First  Collective Last  \" <collectivename.lastname@example.com>";
 }
 
 void KEmailAddressTest::testNormalizeAddressesAndDecodeIDNs()
