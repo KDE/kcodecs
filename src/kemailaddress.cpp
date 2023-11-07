@@ -65,7 +65,7 @@ QStringList KEmailAddress::splitAddressList(const QString &aStr)
             if (!insidequote && (commentlevel == 0)) {
                 addr = aStr.mid(addrstart, index - addrstart);
                 if (!addr.isEmpty()) {
-                    list += addr.simplified();
+                    list += addr.trimmed();
                 }
                 addrstart = index + 1;
             }
@@ -76,7 +76,7 @@ QStringList KEmailAddress::splitAddressList(const QString &aStr)
     if (!insidequote && (commentlevel == 0)) {
         addr = aStr.mid(addrstart, aStr.length() - addrstart);
         if (!addr.isEmpty()) {
-            list += addr.simplified();
+            list += addr.trimmed();
         }
     }
 
