@@ -27,7 +27,6 @@
 #include "kcodecs_debug.h"
 #include "kcodecs_p.h"
 #include "kcodecsbase64.h"
-#include "kcodecsidentity.h"
 #include "kcodecsqp.h"
 #include "kcodecsuuencode.h"
 
@@ -536,15 +535,12 @@ Q_GLOBAL_STATIC(QMutex, dictLock)
 
 static void createCodecs()
 {
-    // all->insert( "7bit", new KCodecs::SevenBitCodec() );
-    // all->insert( "8bit", new KCodecs::EightBitCodec() );
     allCodecs->insert("base64", new KCodecs::Base64Codec());
     allCodecs->insert("quoted-printable", new KCodecs::QuotedPrintableCodec());
     allCodecs->insert("b", new KCodecs::Rfc2047BEncodingCodec());
     allCodecs->insert("q", new KCodecs::Rfc2047QEncodingCodec());
     allCodecs->insert("x-kmime-rfc2231", new KCodecs::Rfc2231EncodingCodec());
     allCodecs->insert("x-uuencode", new KCodecs::UUCodec());
-    // all->insert( "binary", new KCodecs::BinaryCodec() );
 }
 
 static void cleanupCodecs()

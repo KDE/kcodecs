@@ -28,8 +28,6 @@ target_sources(KF6Codecs PRIVATE
     kcodecsbase64.h
     kcodecs.cpp
     kcodecs.h
-    kcodecsidentity.cpp
-    kcodecsidentity.h
     kcodecs_p.h
     kcodecsqp.cpp
     kcodecsqp.h
