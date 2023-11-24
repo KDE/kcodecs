@@ -567,7 +567,7 @@ bool KCodecs::Codec::encode(const char *&scursor, const char *const send, char *
     return true; // successfully encoded.
 }
 
-QByteArray KCodecs::Codec::encode(const QByteArray &src, NewlineType newline) const
+QByteArray KCodecs::Codec::encode(QByteArrayView src, NewlineType newline) const
 {
     // allocate buffer for the worst case:
     QByteArray result;
@@ -590,7 +590,7 @@ QByteArray KCodecs::Codec::encode(const QByteArray &src, NewlineType newline) co
     return result;
 }
 
-QByteArray KCodecs::Codec::decode(const QByteArray &src, NewlineType newline) const
+QByteArray KCodecs::Codec::decode(QByteArrayView src, NewlineType newline) const
 {
     // allocate buffer for the worst case:
     QByteArray result;

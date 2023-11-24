@@ -459,10 +459,10 @@ public:
 
       For use with small @p src.
 
-      @param src is a QByteArray containing the data to encode.
+      @param src is the data to encode.
       @param newline whether make new lines using @ref CRLF, or @ref LF (default is @ref LF).
     */
-    virtual QByteArray encode(const QByteArray &src, NewlineType newline = NewlineLF) const;
+    QByteArray encode(QByteArrayView src, NewlineType newline = NewlineLF) const;
 
     /**
       Even more convenient, but also a bit slower and more memory
@@ -471,10 +471,10 @@ public:
 
       For use with small @p src.
 
-      @param src is a QByteArray containing the data to decode.
+      @param src is the data to decode.
       @param newline whether make new lines using @ref CRLF, or @ref LF (default is @ref LF).
     */
-    virtual QByteArray decode(const QByteArray &src, NewlineType newline = NewlineLF) const;
+    QByteArray decode(QByteArrayView src, NewlineType newline = NewlineLF) const;
 
     /**
       Returns the name of the encoding. Guaranteed to be lowercase.
