@@ -22,8 +22,7 @@
 #include "kcodecsqp.h"
 #include "kcodecsuuencode.h"
 
-#include <QMutex>
-
+#include <array>
 #include <cassert>
 #include <cstring>
 #include <stdio.h>
@@ -31,7 +30,6 @@
 #include <string.h>
 
 #include <QDebug>
-#include <QHash>
 #include <QStringDecoder>
 #include <QStringEncoder>
 
@@ -518,55 +516,29 @@ QByteArray KCodecs::encodeRFC2047String(const QString &src, const QByteArray &ch
 /******************************************************************************/
 /*                           KCodecs::Codec                                   */
 
-// global list of KCodecs::Codec's
-//@cond PRIVATE
-namespace
+KCodecs::Codec *KCodecs::Codec::codecForName(QByteArrayView name)
 {
-static QHash<QByteArray, KCodecs::Codec *> *allCodecs = nullptr;
-Q_GLOBAL_STATIC(QMutex, dictLock)
+    struct CodecEntry {
+        const char *name;
+        std::unique_ptr<KCodecs::Codec> codec;
+    };
+    // ### has to be sorted by name!
+    static const std::array<CodecEntry, 6> s_codecs{{
+        {"b", std::make_unique<KCodecs::Rfc2047BEncodingCodec>()},
+        {"base64", std::make_unique<KCodecs::Base64Codec>()},
+        {"q", std::make_unique<KCodecs::Rfc2047QEncodingCodec>()},
+        {"quoted-printable", std::make_unique<KCodecs::QuotedPrintableCodec>()},
+        {"x-kmime-rfc2231", std::make_unique<KCodecs::Rfc2231EncodingCodec>()},
+        {"x-uuencode", std::make_unique<KCodecs::UUCodec>()},
+    }};
 
-static void createCodecs()
-{
-    allCodecs->insert("base64", new KCodecs::Base64Codec());
-    allCodecs->insert("quoted-printable", new KCodecs::QuotedPrintableCodec());
-    allCodecs->insert("b", new KCodecs::Rfc2047BEncodingCodec());
-    allCodecs->insert("q", new KCodecs::Rfc2047QEncodingCodec());
-    allCodecs->insert("x-kmime-rfc2231", new KCodecs::Rfc2231EncodingCodec());
-    allCodecs->insert("x-uuencode", new KCodecs::UUCodec());
-}
-
-static void cleanupCodecs()
-{
-    qDeleteAll(*allCodecs);
-    delete allCodecs;
-    allCodecs = nullptr;
-}
-
-}
-//@endcond
-
-KCodecs::Codec *KCodecs::Codec::codecForName(const char *name)
-{
-    const QByteArray ba(name);
-    return codecForName(ba);
-}
-
-KCodecs::Codec *KCodecs::Codec::codecForName(const QByteArray &name)
-{
-    QMutexLocker locker(dictLock()); // protect "allCodecs"
-    if (!allCodecs) {
-        allCodecs = new QHash<QByteArray, Codec *>();
-        qAddPostRoutine(cleanupCodecs);
-        createCodecs();
-    }
-    QByteArray lowerName = name.toLower();
-    Codec *codec = (*allCodecs).value(lowerName);
-
-    if (!codec) {
+    const auto it = std::lower_bound(s_codecs.begin(), s_codecs.end(), name, [](const auto &lhs, auto rhs) {
+        return rhs.compare(lhs.name, Qt::CaseInsensitive) > 0;
+    });
+    if (it == s_codecs.end() || name.compare((*it).name, Qt::CaseInsensitive) != 0) {
         qWarning() << "Unknown codec \"" << name << "\" requested!";
     }
-
-    return codec;
+    return (*it).codec.get();
 }
 
 bool KCodecs::Codec::encode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend, NewlineType newline) const

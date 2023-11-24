@@ -18,9 +18,6 @@
 
 #include <memory>
 
-template<typename T, typename U>
-class QHash;
-
 class QByteArray;
 class QIODevice;
 
@@ -337,16 +334,9 @@ public:
     /**
       Returns a codec associated with the specified @p name.
 
-      @param name points to a character string containing a valid codec name.
+      @param name is a valid codec name.
     */
-    static Codec *codecForName(const char *name);
-
-    /**
-      Returns a codec associated with the specified @p name.
-
-      @param name is a QByteArray containing a valid codec name.
-    */
-    static Codec *codecForName(const QByteArray &name);
+    static Codec *codecForName(QByteArrayView name);
 
     /**
       Computes the maximum size, in characters, needed for the encoding.
