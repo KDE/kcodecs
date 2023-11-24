@@ -60,7 +60,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const override
+    qsizetype maxEncodedSizeFor(qsizetype insize, NewlineType newline = Codec::NewlineLF) const override
     {
         Q_UNUSED(newline);
         return insize; // we have no encoder!
@@ -70,14 +70,14 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const override
+    qsizetype maxDecodedSizeFor(qsizetype insize, NewlineType newline = Codec::NewlineLF) const override
     {
         // assuming all characters are part of the uuencode stream (which
         // does almost never hold due to required linebreaking; but
         // additional non-uu chars don't affect the output size), each
         // 4-tupel of them becomes a 3-tupel in the decoded octet
         // stream. So:
-        int result = ((insize + 3) / 4) * 3;
+        qsizetype result = ((insize + 3) / 4) * 3;
         // but all of them may be \n, so
         if (newline == Codec::NewlineCRLF) {
             result *= 2; // :-o

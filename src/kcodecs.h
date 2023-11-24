@@ -346,7 +346,7 @@ public:
 
       @return the maximum number of characters in the encoding.
     */
-    virtual int maxEncodedSizeFor(int insize, NewlineType newline = NewlineLF) const = 0;
+    virtual qsizetype maxEncodedSizeFor(qsizetype insize, NewlineType newline = NewlineLF) const = 0;
 
     /**
       Computes the maximum size, in characters, needed for the deccoding.
@@ -356,7 +356,7 @@ public:
 
       @return the maximum number of characters in the decoding.
     */
-    virtual int maxDecodedSizeFor(int insize, NewlineType newline = NewlineLF) const = 0;
+    virtual qsizetype maxDecodedSizeFor(qsizetype insize, NewlineType newline = NewlineLF) const = 0;
 
     /**
       Creates the encoder for the codec.

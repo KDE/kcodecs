@@ -70,10 +70,10 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const override
+    qsizetype maxEncodedSizeFor(qsizetype insize, NewlineType newline = Codec::NewlineLF) const override
     {
         // all chars encoded:
-        int result = 3 * insize;
+        qsizetype result = 3 * insize;
         // then after 25 hexchars comes a soft linebreak: =(\r)\n
         result += (newline == Codec::NewlineCRLF ? 3 : 2) * (insize / 25);
 
@@ -84,7 +84,7 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const override;
+    qsizetype maxDecodedSizeFor(qsizetype insize, NewlineType newline = Codec::NewlineLF) const override;
 
     /**
       @copydoc
@@ -135,7 +135,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const override
+    qsizetype maxEncodedSizeFor(qsizetype insize, Codec::NewlineType newline = Codec::NewlineLF) const override
     {
         Q_UNUSED(newline);
         // this one is simple: We don't do linebreaking, so all that can
@@ -147,7 +147,7 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const override;
+    qsizetype maxDecodedSizeFor(qsizetype insize, Codec::NewlineType newline = Codec::NewlineLF) const override;
 
     /**
       @copydoc
@@ -197,7 +197,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const override
+    qsizetype maxEncodedSizeFor(qsizetype insize, Codec::NewlineType newline = Codec::NewlineLF) const override
     {
         Q_UNUSED(newline);
         // same as for "q" encoding:
@@ -208,7 +208,7 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, Codec::NewlineType newline = Codec::NewlineLF) const override;
+    qsizetype maxDecodedSizeFor(qsizetype insize, Codec::NewlineType newline = Codec::NewlineLF) const override;
 
     /**
       @copydoc

@@ -76,12 +76,12 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, NewlineType newline) const override
+    qsizetype maxEncodedSizeFor(qsizetype insize, NewlineType newline) const override
     {
         // first, the total number of 4-char packets will be:
-        int totalNumPackets = (insize + 2) / 3;
+        qsizetype totalNumPackets = (insize + 2) / 3;
         // now, after every 76/4'th packet there needs to be a linebreak:
-        int numLineBreaks = totalNumPackets / (76 / 4);
+        qsizetype numLineBreaks = totalNumPackets / (76 / 4);
         // and at the very end, too:
         ++numLineBreaks;
         // putting it all together, we have:
@@ -92,14 +92,14 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const override
+    qsizetype maxDecodedSizeFor(qsizetype insize, NewlineType newline = Codec::NewlineLF) const override
     {
         // assuming all characters are part of the base64 stream (which
         // does almost never hold due to required linebreaking; but
         // additional non-base64 chars don't affect the output size), each
         // 4-tupel of them becomes a 3-tupel in the decoded octet
         // stream. So:
-        int result = ((insize + 3) / 4) * 3;
+        qsizetype result = ((insize + 3) / 4) * 3;
         // but all of them may be \n, so
         if (newline == Codec::NewlineCRLF) {
             result *= 2; // :-o
@@ -157,7 +157,7 @@ public:
       @copydoc
       Codec::maxEncodedSizeFor()
     */
-    int maxEncodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const override
+    qsizetype maxEncodedSizeFor(qsizetype insize, NewlineType newline = Codec::NewlineLF) const override
     {
         Q_UNUSED(newline);
         // Each (begun) 3-octet triple becomes a 4 char quartet, so:
@@ -168,7 +168,7 @@ public:
       @copydoc
       Codec::maxDecodedSizeFor()
     */
-    int maxDecodedSizeFor(int insize, NewlineType newline = Codec::NewlineLF) const override
+    qsizetype maxDecodedSizeFor(qsizetype insize, NewlineType newline = Codec::NewlineLF) const override
     {
         Q_UNUSED(newline);
         // Each 4-char quartet becomes a 3-octet triple, the last one

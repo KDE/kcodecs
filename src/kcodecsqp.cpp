@@ -242,10 +242,10 @@ public:
 
 // this doesn't access any member variables, so it can be defined static
 // but then we can't call it from virtual functions
-static int QuotedPrintableDecoder_maxDecodedSizeFor(int insize, Codec::NewlineType newline)
+static qsizetype QuotedPrintableDecoder_maxDecodedSizeFor(qsizetype insize, Codec::NewlineType newline)
 {
     // all chars unencoded:
-    int result = insize;
+    qsizetype result = insize;
     // but maybe all of them are \n and we need to make them \r\n :-o
     if (newline == Codec::NewlineCRLF) {
         result += insize;
@@ -267,7 +267,7 @@ Decoder *QuotedPrintableCodec::makeDecoder(Codec::NewlineType newline) const
     return new QuotedPrintableDecoder(newline);
 }
 
-int QuotedPrintableCodec::maxDecodedSizeFor(int insize, Codec::NewlineType newline) const
+qsizetype QuotedPrintableCodec::maxDecodedSizeFor(qsizetype insize, Codec::NewlineType newline) const
 {
     return QuotedPrintableDecoder_maxDecodedSizeFor(insize, newline);
 }
@@ -282,7 +282,7 @@ Decoder *Rfc2047QEncodingCodec::makeDecoder(Codec::NewlineType newline) const
     return new QuotedPrintableDecoder(newline, true);
 }
 
-int Rfc2047QEncodingCodec::maxDecodedSizeFor(int insize, Codec::NewlineType newline) const
+qsizetype Rfc2047QEncodingCodec::maxDecodedSizeFor(qsizetype insize, Codec::NewlineType newline) const
 {
     return QuotedPrintableDecoder_maxDecodedSizeFor(insize, newline);
 }
@@ -297,7 +297,7 @@ Decoder *Rfc2231EncodingCodec::makeDecoder(Codec::NewlineType newline) const
     return new QuotedPrintableDecoder(newline, true, '%');
 }
 
-int Rfc2231EncodingCodec::maxDecodedSizeFor(int insize, Codec::NewlineType newline) const
+qsizetype Rfc2231EncodingCodec::maxDecodedSizeFor(qsizetype insize, Codec::NewlineType newline) const
 {
     return QuotedPrintableDecoder_maxDecodedSizeFor(insize, newline);
 }
