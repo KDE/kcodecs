@@ -476,7 +476,7 @@ KCharsets::KCharsets()
 
 KCharsets::~KCharsets() = default;
 
-QChar KCharsets::fromEntity(const QString &str)
+QChar KCharsets::fromEntity(QStringView str)
 {
     QChar res = QChar::Null;
 
@@ -496,11 +496,11 @@ QChar KCharsets::fromEntity(const QString &str)
         if (str[pos] == QLatin1Char('x') || str[pos] == QLatin1Char('X')) {
             pos++;
             // '&#x0000', hexadecimal character reference
-            const QString tmp(str.mid(pos));
+            const auto tmp = str.mid(pos);
             res = QChar(tmp.toInt(&ok, 16));
         } else {
             //  '&#0000', decimal character reference
-            const QString tmp(str.mid(pos));
+            const auto tmp = str.mid(pos);
             res = QChar(tmp.toInt(&ok, 10));
         }
         if (ok) {
@@ -522,13 +522,13 @@ QChar KCharsets::fromEntity(const QString &str)
     return QChar(e->code);
 }
 
-QChar KCharsets::fromEntity(const QString &str, int &len)
+QChar KCharsets::fromEntity(QStringView str, int &len)
 {
     // entities are never longer than 8 chars... we start from
     // that length and work backwards...
     len = 8;
     while (len > 0) {
-        QString tmp = str.left(len);
+        const auto tmp = str.left(len);
         QChar res = fromEntity(tmp);
         if (res != QChar::Null) {
             return res;
@@ -575,7 +575,7 @@ QString KCharsets::resolveEntities(const QString &input)
             continue;
         }
 
-        const QChar entityValue = KCharsets::fromEntity(QString(entityBegin, entityLength));
+        const QChar entityValue = KCharsets::fromEntity(QStringView(entityBegin, entityLength));
         if (entityValue.isNull()) {
             continue;
         }
@@ -602,7 +602,7 @@ QStringList KCharsets::availableEncodingNames() const
     return available;
 }
 
-QString KCharsets::descriptionForEncoding(const QString &encoding) const
+QString KCharsets::descriptionForEncoding(QStringView encoding) const
 {
     const char *lang = kcharsets_array_search(language_for_encoding_string, language_for_encoding_indices, encoding.toUtf8().data());
     if (lang) {

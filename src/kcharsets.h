@@ -60,7 +60,7 @@ public:
      * @param str the entity
      * @return QChar::Null if the entity could not be decoded.
      */
-    static QChar fromEntity(const QString &str);
+    static QChar fromEntity(QStringView str);
 
     /**
      * Overloaded member function. Tries to find an entity in the
@@ -71,7 +71,7 @@ public:
      * @return a decoded entity if one could be found, QChar::null
      * otherwise
      */
-    static QChar fromEntity(const QString &str, int &len);
+    static QChar fromEntity(QStringView str, int &len);
 
     /**
      * Converts a QChar to an entity. The returned string does already
@@ -113,7 +113,7 @@ public:
      * @param encoding the encoding for the language
      * @return the long description for the encoding
      */
-    QString descriptionForEncoding(const QString &encoding) const;
+    QString descriptionForEncoding(QStringView encoding) const;
 
     /**
      * Returns the encoding for a string obtained with descriptiveEncodingNames().
