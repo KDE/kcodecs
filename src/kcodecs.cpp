@@ -82,58 +82,58 @@ QByteArray updateEncodingCharset(const QByteArray &currentCharset, const QByteAr
 
 /******************************** KCodecs ********************************/
 
-QByteArray KCodecs::quotedPrintableEncode(const QByteArray &in, bool useCRLF)
+QByteArray KCodecs::quotedPrintableEncode(QByteArrayView in, bool useCRLF)
 {
     Codec *codec = Codec::codecForName("quoted-printable");
     return codec->encode(in, useCRLF ? Codec::NewlineCRLF : Codec::NewlineLF);
 }
 
-void KCodecs::quotedPrintableEncode(const QByteArray &in, QByteArray &out, bool useCRLF)
+void KCodecs::quotedPrintableEncode(QByteArrayView in, QByteArray &out, bool useCRLF)
 {
     out = quotedPrintableEncode(in, useCRLF ? Codec::NewlineCRLF : Codec::NewlineLF);
 }
 
-QByteArray KCodecs::quotedPrintableDecode(const QByteArray &in)
+QByteArray KCodecs::quotedPrintableDecode(QByteArrayView in)
 {
     Codec *codec = Codec::codecForName("quoted-printable");
     return codec->decode(in);
 }
 
-void KCodecs::quotedPrintableDecode(const QByteArray &in, QByteArray &out)
+void KCodecs::quotedPrintableDecode(QByteArrayView in, QByteArray &out)
 {
     out = quotedPrintableDecode(in);
 }
 
-QByteArray KCodecs::base64Encode(const QByteArray &in)
+QByteArray KCodecs::base64Encode(QByteArrayView in)
 {
     Codec *codec = Codec::codecForName("base64");
     return codec->encode(in);
 }
 
-void KCodecs::base64Encode(const QByteArray &in, QByteArray &out, bool insertLFs)
+void KCodecs::base64Encode(QByteArrayView in, QByteArray &out, bool insertLFs)
 {
     Q_UNUSED(insertLFs);
     out = base64Encode(in);
 }
 
-QByteArray KCodecs::base64Decode(const QByteArray &in)
+QByteArray KCodecs::base64Decode(QByteArrayView in)
 {
     Codec *codec = Codec::codecForName("base64");
     return codec->decode(in);
 }
 
-void KCodecs::base64Decode(const QByteArray &in, QByteArray &out)
+void KCodecs::base64Decode(const QByteArrayView in, QByteArray &out)
 {
     out = base64Decode(in);
 }
 
-QByteArray KCodecs::uudecode(const QByteArray &in)
+QByteArray KCodecs::uudecode(QByteArrayView in)
 {
     Codec *codec = Codec::codecForName("x-uuencode");
     return codec->decode(in);
 }
 
-void KCodecs::uudecode(const QByteArray &in, QByteArray &out)
+void KCodecs::uudecode(QByteArrayView in, QByteArray &out)
 {
     out = uudecode(in);
 }
@@ -337,13 +337,13 @@ bool parseEncodedWord(const char *&scursor,
 
 //@endcond
 
-QString KCodecs::decodeRFC2047String(const QString &msg)
+QString KCodecs::decodeRFC2047String(QStringView msg)
 {
     QByteArray usedCS;
     return decodeRFC2047String(msg.toUtf8(), &usedCS, CodecNames::utf8(), NoOption);
 }
 
-QString KCodecs::decodeRFC2047String(const QByteArray &src, QByteArray *usedCS, const QByteArray &defaultCS, CharsetOption charsetOption)
+QString KCodecs::decodeRFC2047String(QByteArrayView src, QByteArray *usedCS, const QByteArray &defaultCS, CharsetOption charsetOption)
 {
     QByteArray result;
     QByteArray spaceBuffer;
@@ -404,7 +404,7 @@ QString KCodecs::decodeRFC2047String(const QByteArray &src, QByteArray *usedCS, 
     }
 }
 
-QByteArray KCodecs::encodeRFC2047String(const QString &src, const QByteArray &charset)
+QByteArray KCodecs::encodeRFC2047String(QStringView src, const QByteArray &charset)
 {
     QByteArray result;
     int start = 0;

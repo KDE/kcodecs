@@ -62,7 +62,7 @@ namespace KCodecs
  *                breaks, too.
  * @return        quoted-printable encoded string.
  */
-KCODECS_EXPORT QByteArray quotedPrintableEncode(const QByteArray &in, bool useCRLF = true);
+KCODECS_EXPORT QByteArray quotedPrintableEncode(QByteArrayView in, bool useCRLF = true);
 
 /**
  * Encodes the given data using the quoted-printable algorithm.
@@ -82,7 +82,7 @@ KCODECS_EXPORT QByteArray quotedPrintableEncode(const QByteArray &in, bool useCR
  *                CRLF line breaks and the output will have CRLF line
  *                breaks, too.
  */
-KCODECS_EXPORT void quotedPrintableEncode(const QByteArray &in, QByteArray &out, bool useCRLF);
+KCODECS_EXPORT void quotedPrintableEncode(QByteArrayView in, QByteArray &out, bool useCRLF);
 
 /**
  * Decodes a quoted-printable encoded data.
@@ -93,7 +93,7 @@ KCODECS_EXPORT void quotedPrintableEncode(const QByteArray &in, QByteArray &out,
  * @return    decoded string.
  * @since 5.5
  */
-KCODECS_EXPORT QByteArray quotedPrintableDecode(const QByteArray &in);
+KCODECS_EXPORT QByteArray quotedPrintableDecode(QByteArrayView in);
 
 /**
  * Decodes a quoted-printable encoded data.
@@ -112,7 +112,7 @@ KCODECS_EXPORT QByteArray quotedPrintableDecode(const QByteArray &in);
  * @param in   data to be decoded.
  * @param out  decoded data.
  */
-KCODECS_EXPORT void quotedPrintableDecode(const QByteArray &in, QByteArray &out);
+KCODECS_EXPORT void quotedPrintableDecode(QByteArrayView in, QByteArray &out);
 
 /**
  * Decodes the given data using the uudecode algorithm.
@@ -124,7 +124,7 @@ KCODECS_EXPORT void quotedPrintableDecode(const QByteArray &in, QByteArray &out)
  * @param in   data to be decoded.
  * @return     decoded string.
  */
-KCODECS_EXPORT QByteArray uudecode(const QByteArray &in);
+KCODECS_EXPORT QByteArray uudecode(QByteArrayView in);
 
 /**
  * Decodes the given data using the uudecode algorithm.
@@ -145,7 +145,7 @@ KCODECS_EXPORT QByteArray uudecode(const QByteArray &in);
  * @param in   data to be decoded.
  * @param out  uudecoded data.
  */
-KCODECS_EXPORT void uudecode(const QByteArray &in, QByteArray &out);
+KCODECS_EXPORT void uudecode(QByteArrayView in, QByteArray &out);
 
 /**
  * Encodes the given data using the base64 algorithm.
@@ -161,7 +161,7 @@ KCODECS_EXPORT void uudecode(const QByteArray &in, QByteArray &out);
  * @return           base64 encoded string.
  * @since 5.5
  */
-KCODECS_EXPORT QByteArray base64Encode(const QByteArray &in);
+KCODECS_EXPORT QByteArray base64Encode(QByteArrayView in);
 
 /**
  * Encodes the given data using the base64 algorithm.
@@ -184,7 +184,7 @@ KCODECS_EXPORT QByteArray base64Encode(const QByteArray &in);
  * @param out       encoded data.
  * @param insertLFs limit the number of characters per line.
  */
-KCODECS_EXPORT void base64Encode(const QByteArray &in, QByteArray &out, bool insertLFs = false);
+KCODECS_EXPORT void base64Encode(QByteArrayView in, QByteArray &out, bool insertLFs = false);
 
 /**
  * Decodes the given data that was encoded using the
@@ -193,7 +193,7 @@ KCODECS_EXPORT void base64Encode(const QByteArray &in, QByteArray &out, bool ins
  * @param in   data to be decoded.
  * @return     decoded string.
  */
-KCODECS_EXPORT QByteArray base64Decode(const QByteArray &in);
+KCODECS_EXPORT QByteArray base64Decode(QByteArrayView in);
 
 /**
  * Decodes the given data that was encoded with the base64
@@ -212,7 +212,7 @@ KCODECS_EXPORT QByteArray base64Decode(const QByteArray &in);
  * @param in   data to be decoded.
  * @param out  decoded data.
  */
-KCODECS_EXPORT void base64Decode(const QByteArray &in, QByteArray &out);
+KCODECS_EXPORT void base64Decode(QByteArrayView in, QByteArray &out);
 
 /**
  * Decodes string @p text according to RFC2047,
@@ -221,7 +221,7 @@ KCODECS_EXPORT void base64Decode(const QByteArray &in, QByteArray &out);
  * @param text source string
  * @returns the decoded string
  */
-KCODECS_EXPORT QString decodeRFC2047String(const QString &text);
+KCODECS_EXPORT QString decodeRFC2047String(QStringView text);
 
 /**
  * Charset options for RFC2047 encoder
@@ -247,10 +247,7 @@ enum CharsetOption {
  * @return the decoded string.
  * @since 5.5
  */
-KCODECS_EXPORT QString decodeRFC2047String(const QByteArray &src,
-                                           QByteArray *usedCS,
-                                           const QByteArray &defaultCS = QByteArray(),
-                                           CharsetOption option = NoOption);
+KCODECS_EXPORT QString decodeRFC2047String(QByteArrayView src, QByteArray *usedCS, const QByteArray &defaultCS = QByteArray(), CharsetOption option = NoOption);
 
 /**
  * Encodes string @p src according to RFC2047 using charset @p charset.
@@ -266,7 +263,7 @@ KCODECS_EXPORT QString decodeRFC2047String(const QByteArray &src,
  * @return the encoded string.
  * @since 5.5
  */
-KCODECS_EXPORT QByteArray encodeRFC2047String(const QString &src, const QByteArray &charset);
+KCODECS_EXPORT QByteArray encodeRFC2047String(QStringView src, const QByteArray &charset);
 
 /**
  * Decodes the given data that was encoded using the
@@ -277,7 +274,7 @@ KCODECS_EXPORT QByteArray encodeRFC2047String(const QString &src, const QByteArr
  * @since 5.84
  * @see https://datatracker.ietf.org/doc/draft-faltstrom-base45/
  */
-KCODECS_EXPORT QByteArray base45Decode(const QByteArray &in);
+KCODECS_EXPORT QByteArray base45Decode(QByteArrayView in);
 
 class Encoder;
 class EncoderPrivate;

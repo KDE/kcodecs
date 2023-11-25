@@ -22,12 +22,12 @@ static uint8_t base45MapFromChar(char c)
     return std::distance(std::begin(base45Table), it);
 }
 
-QByteArray KCodecs::base45Decode(const QByteArray &in)
+QByteArray KCodecs::base45Decode(QByteArrayView in)
 {
     QByteArray out;
     out.reserve(((in.size() / 3) + 1) * 2);
 
-    for (int i = 0; i + 1 < in.size(); i += 3) {
+    for (qsizetype i = 0; i + 1 < in.size(); i += 3) {
         uint32_t n = base45MapFromChar(in[i]) + base45MapFromChar(in[i + 1]) * 45;
         if (i + 2 < in.size()) {
             n += 45 * 45 * base45MapFromChar(in[i + 2]);
