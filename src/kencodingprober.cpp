@@ -149,24 +149,19 @@ void KEncodingProber::reset()
     d->mStart = true;
 }
 
-KEncodingProber::ProberState KEncodingProber::feed(const QByteArray &data)
-{
-    return feed(data.data(), data.size());
-}
-
-KEncodingProber::ProberState KEncodingProber::feed(const char *data, int len)
+KEncodingProber::ProberState KEncodingProber::feed(QByteArrayView data)
 {
     if (!d->mProber) {
         return d->mProberState;
     }
     if (d->mProberState == Probing) {
         if (d->mStart) {
-            d->unicodeTest(data, len);
+            d->unicodeTest(data.constData(), data.size());
             if (d->mProberState == FoundIt) {
                 return d->mProberState;
             }
         }
-        d->mProber->HandleData(data, len);
+        d->mProber->HandleData(data.constData(), data.size());
         switch (d->mProber->GetState()) {
         case kencodingprober::eNotMe:
             d->mProberState = NotMe;

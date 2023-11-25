@@ -111,8 +111,12 @@ public:
      *
      * @returns the ProberState after probing the fed data.
      */
-    ProberState feed(const QByteArray &data);
-    ProberState feed(const char *data, int len);
+    ProberState feed(QByteArrayView data);
+    // for API compatibility
+    inline ProberState feed(const char *data, qsizetype len)
+    {
+        return feed({data, len});
+    }
 
     /**
      * @returns the prober's current ProberState
