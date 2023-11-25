@@ -30,7 +30,7 @@ class QString;
  * QTextCodec::codecForName matches only closely-related encoded names
  * but not alternate names, e.g. found in the reality of the Internet.
  */
-class KCODECS_EXPORT KCharsets
+class KCODECS_EXPORT KCharsets final
 {
     Q_DECLARE_TR_FUNCTIONS(KCharsets)
 
@@ -44,7 +44,7 @@ public:
     /**
      * Destructor.
      */
-    virtual ~KCharsets();
+    ~KCharsets();
 
     /**
      * The global charset manager.
