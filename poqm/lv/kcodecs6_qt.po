@@ -8,14 +8,15 @@
 # Viesturs Zarins <viesturs.zarins@mii.lu.lv>, 2007, 2008, 2010.
 # Viesturs Zariņš <viesturs.zarins@mii.lu.lv>, 2009.
 # Einars Sprugis <einars8@gmail.com>, 2009.
+# SPDX-FileCopyrightText: 2024 Toms Trasūns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2011-07-06 12:57+0300\n"
-"Last-Translator: Maris Nartiss <maris.kde@gmail.com>\n"
-"Language-Team: Latvian\n"
+"PO-Revision-Date: 2024-02-09 19:29+0200\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
+"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,157 +24,103 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 "X-Launchpad-Export-Date: 2007-11-22 17:44+0000\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 23.08.4\n"
 "X-Qt-Contexts: true\n"
 
 #: kcharsets.cpp:153
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Western European"
 msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
 msgstr "Rietumeiropas"
 
 #: kcharsets.cpp:159
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Central European"
 msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
 msgstr "Centrāleiropas"
 
 #: kcharsets.cpp:162
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Baltic"
 msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
 msgstr "Baltu"
 
 #: kcharsets.cpp:165
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "South-Eastern Europe"
 msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
 msgstr "Dienvidaustrumu Eiropas"
 
 #: kcharsets.cpp:168
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Turkish"
 msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
 msgstr "Turku"
 
 #: kcharsets.cpp:171
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Cyrillic"
 msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "Kirilica"
 
 #: kcharsets.cpp:177
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Chinese Traditional"
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
-msgstr "Tradicionālais ķīniešu"
+msgstr "Tradicionālais ķīniešu raksts"
 
 #: kcharsets.cpp:180
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Chinese Simplified"
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
-msgstr "Vienkāršotais ķīniešu"
+msgstr "Vienkāršotais ķīniešu raksts"
 
 #: kcharsets.cpp:184
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Korean"
 msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
-msgstr "Korejiešu"
+msgstr "Korejiešu rakstība"
 
 #: kcharsets.cpp:187
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Japanese"
 msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
-msgstr "Japāņu"
+msgstr "Japāņu rakstība"
 
 #: kcharsets.cpp:191
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Greek"
 msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
-msgstr "Grieķu"
+msgstr "Grieķu alfabēts"
 
 #: kcharsets.cpp:194
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Arabic"
 msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
 msgstr "Arābu"
 
 #: kcharsets.cpp:197
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Hebrew"
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
-msgstr "Ebreju"
+msgstr "Ebreju raksts"
 
 #: kcharsets.cpp:202
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Thai"
 msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
-msgstr "Taizemes"
+msgstr "Taju raksts"
 
 #: kcharsets.cpp:205
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Unicode"
 msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
 msgstr "Unikods"
 
 #: kcharsets.cpp:211
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Other"
 msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "Cits"
 
 #: kcharsets.cpp:609
-#, fuzzy, qt-format
-#| msgctxt "@item %1 character set, %2 encoding"
-#| msgid "%1 ( %2 )"
+#, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
 #: kcharsets.cpp:611
-#, fuzzy, qt-format
-#| msgctxt "@item"
-#| msgid "Other encoding (%1)"
+#, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "Cits kodējums (%1)"
 
 #: kcharsets.cpp:640
-#, fuzzy, qt-format
-#| msgctxt "@item %1 character set, %2 encoding"
-#| msgid "%1 ( %2 )"
+#, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
@@ -185,6 +132,8 @@ msgid ""
 "@.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"Ievadītā e-pasta adrese nav derīga, jo satur vairāk nekā vienu @.\n"
+"Ja nenomainīsiet adresi, jums neizdosies izveidot derīgas vēstules."
 
 #: kemailaddress.cpp:509
 msgctxt "QObject|"
@@ -192,11 +141,13 @@ msgid ""
 "The email address you entered is not valid because it does not contain a @.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"Ievadītā e-pasta adrese nav derīga, jo nesatur simbolus @.\n"
+"Ja nenomainīsiet adresi, jums neizdosies izveidot derīgas vēstules."
 
 #: kemailaddress.cpp:515
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
-msgstr ""
+msgstr "E-pasta adrešu lauks nevar būt tukšs."
 
 #: kemailaddress.cpp:517
 msgctxt "QObject|"
@@ -204,13 +155,14 @@ msgid ""
 "The email address you entered is not valid because it does not contain a "
 "local part."
 msgstr ""
+"Ievadītā e-pasta adrese nav derīga, jo nesatur lokālo (sūtītāja vārda) daļu."
 
 #: kemailaddress.cpp:521
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "domain part."
-msgstr ""
+msgstr "Ievadītā e-pasta adrese nav derīga, jo nesatur domēna daļu"
 
 #: kemailaddress.cpp:525
 msgctxt "QObject|"
@@ -218,14 +170,12 @@ msgid ""
 "The email address you entered is not valid because it contains unclosed "
 "comments/brackets."
 msgstr ""
+"Ievadītā e-pasta adrese nav derīga, jo satur neaizvērtus komentārus/iekavas."
 
 #: kemailaddress.cpp:529
-#, fuzzy
-#| msgctxt "@info"
-#| msgid "The date you entered is invalid"
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
-msgstr "Ievadītais datums nav derīgs"
+msgstr "Jūsu ievadītā e-pasta adrese ir derīga."
 
 #: kemailaddress.cpp:531
 msgctxt "QObject|"
@@ -233,6 +183,8 @@ msgid ""
 "The email address you entered is not valid because it contains an unclosed "
 "angle bracket."
 msgstr ""
+"Jūsu ievadītā e-pasta adrese nav derīga, jo satur neaizvērtas skujiņu "
+"iekavas."
 
 #: kemailaddress.cpp:535
 msgctxt "QObject|"
@@ -240,13 +192,15 @@ msgid ""
 "The email address you entered is not valid because it contains too many "
 "closing angle brackets."
 msgstr ""
+"Ievadītā e-pasta adrese nav derīga, jo satur par daudz aizverošo skujiņu "
+"iekavu."
 
 #: kemailaddress.cpp:539
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
 "unexpected comma."
-msgstr ""
+msgstr "Ievadītā adrese nav derīga, jo satur negaidītu komatu."
 
 #: kemailaddress.cpp:543
 msgctxt "QObject|"
@@ -255,6 +209,9 @@ msgid ""
 "This probably means you have used an escaping type character like a '\\' as "
 "the last character in your email address."
 msgstr ""
+"Ievadītā e-pasta adrese nav derīga, jo neparedzēti beidzas.\n"
+"Tas, var nozīmēt, ka kā e-pasta pēdējo rakstzīmi izmantojat atsoļa "
+"rakstzīmi, piemēram, „\\“."
 
 #: kemailaddress.cpp:549
 msgctxt "QObject|"
@@ -262,6 +219,8 @@ msgid ""
 "The email address you entered is not valid because it contains quoted text "
 "which does not end."
 msgstr ""
+"Jūsu ievadītā e-pasta adrese nav derīga, jo satur tekstu pēdiņās bez "
+"noslēguma."
 
 #: kemailaddress.cpp:553
 msgctxt "QObject|"
@@ -269,13 +228,15 @@ msgid ""
 "The email address you entered is not valid because it does not seem to "
 "contain an actual email address, i.e. something of the form joe@example.org."
 msgstr ""
+"Jūsu ievadītā e-pasta adrese nav derīga, jo, iespējams, nesatur īstu e-pasta "
+"adresi, pēc formas „vards@domens.org“."
 
 #: kemailaddress.cpp:558
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an illegal "
 "character."
-msgstr ""
+msgstr "Jūsu ievadītā e-pasta adrese nav derīga, jo satur neatļautu rakstzīmi."
 
 #: kemailaddress.cpp:562
 msgctxt "QObject|"
@@ -283,6 +244,7 @@ msgid ""
 "The email address you have entered is not valid because it contains an "
 "invalid display name."
 msgstr ""
+"Jūsu ievadītā e-pasta adrese nav derīga, jo satur nederīgu parādāmo vārdu."
 
 #: kemailaddress.cpp:566
 msgctxt "QObject|"
@@ -291,11 +253,13 @@ msgid ""
 "'.'.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"Jūsu ievadītā e-pasta adrese nav derīga, jo nesatur „.“.\n"
+"Ja nenomainīsiet adresi, jums neizdosies izveidot derīgas vēstules."
 
 #: kemailaddress.cpp:572
 msgctxt "QObject|"
 msgid "Unknown problem with email address"
-msgstr ""
+msgstr "Neidentificēta problēma ar e-pasta adresi"
 
 #: kemailaddress.cpp:632
 msgctxt "QObject|"
@@ -304,131 +268,86 @@ msgid ""
 "It does not seem to contain an actual email address, i.e. something of the "
 "form joe@example.org."
 msgstr ""
+"Jūsu ievadītā e-pasta adrese nav derīga.\n"
+"Izskatās, ka tā nav īsta e-pasta adrese, proti, adrese pēc parauga "
+"„vards@domens.org“."
 
 #: kencodingprober.cpp:221 kencodingprober.cpp:262
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Disabled"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Disabled"
 msgstr "Izslēgts"
 
 #: kencodingprober.cpp:223 kencodingprober.cpp:265
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Universal"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Universal"
 msgstr "Universāls"
 
 #: kencodingprober.cpp:225 kencodingprober.cpp:307
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Unicode"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Unicode"
 msgstr "Unikods"
 
 #: kencodingprober.cpp:227 kencodingprober.cpp:277
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Cyrillic"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Cyrillic"
 msgstr "Kirilica"
 
 #: kencodingprober.cpp:229 kencodingprober.cpp:292
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Western European"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Western European"
 msgstr "Rietumeiropas"
 
 #: kencodingprober.cpp:231 kencodingprober.cpp:274
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Central European"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Central European"
 msgstr "Centrāleiropas"
 
 #: kencodingprober.cpp:233 kencodingprober.cpp:280
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Greek"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Greek"
-msgstr "Grieķu"
+msgstr "Grieķu alfabēts"
 
 #: kencodingprober.cpp:235 kencodingprober.cpp:283
-#, fuzzy
-#| msgctxt "@item Spelling dictionary"
-#| msgid "Hebrew"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Hebrew"
-msgstr "Ebreju"
+msgstr "Ebreju raksts"
 
 #: kencodingprober.cpp:237 kencodingprober.cpp:289
-#, fuzzy
-#| msgctxt "@item Spelling dictionary"
-#| msgid "Turkish"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Turkish"
 msgstr "Turku"
 
 #: kencodingprober.cpp:239 kencodingprober.cpp:286
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Japanese"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Japanese"
-msgstr "Japāņu"
+msgstr "Japāņu rakstība"
 
 #: kencodingprober.cpp:241 kencodingprober.cpp:271
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Baltic"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Baltic"
 msgstr "Baltu"
 
 #: kencodingprober.cpp:243 kencodingprober.cpp:295
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Chinese Traditional"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Traditional"
-msgstr "Tradicionālais ķīniešu"
+msgstr "Tradicionālais ķīniešu raksts"
 
 #: kencodingprober.cpp:245 kencodingprober.cpp:298
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Chinese Simplified"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Simplified"
-msgstr "Vienkāršotais ķīniešu"
+msgstr "Vienkāršotais ķīniešu raksts"
 
 #: kencodingprober.cpp:247 kencodingprober.cpp:301
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Korean"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Korean"
-msgstr "Korejiešu"
+msgstr "Korejiešu rakstība"
 
 #: kencodingprober.cpp:249 kencodingprober.cpp:304
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Thai"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Thai"
-msgstr "Taizemes"
+msgstr "Taju raksts"
 
 #: kencodingprober.cpp:251 kencodingprober.cpp:268
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Arabic"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "Arābu"
