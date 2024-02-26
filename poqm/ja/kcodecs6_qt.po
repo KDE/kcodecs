@@ -1,4 +1,5 @@
 # Translation of kdelibs4 into Japanese.
+# SPDX-FileCopyrightText: 2024 Tarot Osuji <tarot@sdf.org>
 # This file is distributed under the same license as the kdelibs package.
 # Taiki Komoda <kom@kde.gr.jp>, 2002, 2004, 2006, 2010.
 # Noboru Sinohara <shinobo@leo.bekkoame.ne.jp>, 2004.
@@ -14,8 +15,8 @@ msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2015-04-18 23:05-0700\n"
-"Last-Translator: Fumiaki Okushi <fumiaki.okushi@gmail.com>\n"
+"PO-Revision-Date: 2024-02-25 00:15+0900\n"
+"Last-Translator: Tarot Osuji <tarot@sdf.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: qtrich\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 23.08.4\n"
 "X-Qt-Contexts: true\n"
 
 #: kcharsets.cpp:153
@@ -108,36 +109,24 @@ msgid "Other"
 msgstr "その他"
 
 #: kcharsets.cpp:609
-#, fuzzy, qt-format
-#| msgctxt "@item %1 character set, %2 encoding"
-#| msgid "%1 ( %2 )"
+#, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
 #: kcharsets.cpp:611
-#, fuzzy, qt-format
-#| msgctxt "@item"
-#| msgid "Other encoding (%1)"
+#, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "その他のエンコーディング (%1)"
 
 #: kcharsets.cpp:640
-#, fuzzy, qt-format
-#| msgctxt "@item %1 character set, %2 encoding"
-#| msgid "%1 ( %2 )"
+#, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
 #: kemailaddress.cpp:503
-#, fuzzy
-#| msgctxt "QObject|"
-#| msgid ""
-#| "The email address you entered is not valid because it contains more than "
-#| "one @. You will not create valid messages if you do not change your "
-#| "address."
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains more than one "
@@ -145,21 +134,17 @@ msgid ""
 "You will not create valid messages if you do not change your address."
 msgstr ""
 "入力されたメールアドレスには @ が 2 つ以上含まれているため、有効ではありませ"
-"ん。有効なメッセージを作成するには、アドレスを訂正してください。"
+"ん。\n"
+"有効なメッセージを作成するには、アドレスを訂正してください。"
 
 #: kemailaddress.cpp:509
-#, fuzzy
-#| msgctxt "QObject|"
-#| msgid ""
-#| "The email address you entered is not valid because it does not contain a "
-#| "@. You will not create valid messages if you do not change your address."
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a @.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
-"入力されたメールアドレスには @ が含まれていないため、有効ではありません。有効"
-"なメッセージを作成するには、アドレスを訂正してください。"
+"入力されたメールアドレスには @ が含まれていないため、有効ではありません。\n"
+"有効なメッセージを作成するには、アドレスを訂正してください。"
 
 #: kemailaddress.cpp:515
 msgctxt "QObject|"
@@ -225,21 +210,15 @@ msgstr ""
 "せん。"
 
 #: kemailaddress.cpp:543
-#, fuzzy
-#| msgctxt "QObject|"
-#| msgid ""
-#| "The email address you entered is not valid because it ended unexpectedly. "
-#| "This probably means you have used an escaping type character like a '\\' "
-#| "as the last character in your email address."
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it ended unexpectedly.\n"
 "This probably means you have used an escaping type character like a '\\' as "
 "the last character in your email address."
 msgstr ""
-"入力されたメールアドレスは終端が予想外なため、有効ではありません。おそらく"
-"メールアドレスの最後の文字に \\ のようなエスケープ文字が使われているためで"
-"す。"
+"入力されたメールアドレスは終端が予想外なため、有効ではありません。\n"
+"おそらくメールアドレスの最後の文字に \\ のようなエスケープ文字が使われている"
+"ためです。"
 
 #: kemailaddress.cpp:549
 msgctxt "QObject|"
@@ -278,19 +257,14 @@ msgstr ""
 "ん。"
 
 #: kemailaddress.cpp:566
-#, fuzzy
-#| msgctxt "QObject|"
-#| msgid ""
-#| "The email address you entered is not valid because it does not contain a "
-#| "'.'. You will not create valid messages if you do not change your address."
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "'.'.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
-"入力されたメールアドレスには @ が含まれていないため、有効ではありません。有効"
-"なメッセージを作成するには、アドレスを訂正してください。"
+"入力されたメールアドレスには '.' が含まれていないため、有効ではありません。\n"
+"有効なメッセージを作成するには、アドレスを訂正してください。"
 
 #: kemailaddress.cpp:572
 msgctxt "QObject|"
@@ -298,25 +272,16 @@ msgid "Unknown problem with email address"
 msgstr "メールアドレスに関する未知の問題"
 
 #: kemailaddress.cpp:632
-#, fuzzy
-#| msgctxt "QObject|"
-#| msgid ""
-#| "The email address you entered is not valid because it does not seem to "
-#| "contain an actual email address, i.e. something of the form joe@example."
-#| "org."
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid.\n"
 "It does not seem to contain an actual email address, i.e. something of the "
 "form joe@example.org."
 msgstr ""
-"入力されたメールアドレスには joe@example.org のような形式の実際のメールアドレ"
-"スが含まれていないようなので、有効ではありません。"
+"入力されたメールアドレスは有効ではありません。\n"
+" joe@example.org のような形式の実際のメールアドレスが含まれていないようです。"
 
 #: kencodingprober.cpp:221 kencodingprober.cpp:262
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Disabled"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Disabled"
 msgstr "無効"
@@ -330,113 +295,71 @@ msgid "Universal"
 msgstr "ユニバーサル"
 
 #: kencodingprober.cpp:225 kencodingprober.cpp:307
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Unicode"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Unicode"
 msgstr "Unicode"
 
 #: kencodingprober.cpp:227 kencodingprober.cpp:277
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Cyrillic"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Cyrillic"
 msgstr "キリル文字"
 
 #: kencodingprober.cpp:229 kencodingprober.cpp:292
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Western European"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Western European"
 msgstr "西ヨーロッパ諸語"
 
 #: kencodingprober.cpp:231 kencodingprober.cpp:274
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Central European"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Central European"
 msgstr "中央ヨーロッパ諸語"
 
 #: kencodingprober.cpp:233 kencodingprober.cpp:280
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Greek"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Greek"
 msgstr "ギリシャ語"
 
 #: kencodingprober.cpp:235 kencodingprober.cpp:283
-#, fuzzy
-#| msgctxt "@item Spelling dictionary"
-#| msgid "Hebrew"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Hebrew"
 msgstr "ヘブライ語"
 
 #: kencodingprober.cpp:237 kencodingprober.cpp:289
-#, fuzzy
-#| msgctxt "@item Spelling dictionary"
-#| msgid "Turkish"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Turkish"
 msgstr "トルコ語"
 
 #: kencodingprober.cpp:239 kencodingprober.cpp:286
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Japanese"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Japanese"
 msgstr "日本語"
 
 #: kencodingprober.cpp:241 kencodingprober.cpp:271
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Baltic"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Baltic"
 msgstr "バルト諸語"
 
 #: kencodingprober.cpp:243 kencodingprober.cpp:295
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Chinese Traditional"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "中国語繁体字"
 
 #: kencodingprober.cpp:245 kencodingprober.cpp:298
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Chinese Simplified"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "中国語簡体字"
 
 #: kencodingprober.cpp:247 kencodingprober.cpp:301
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Korean"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Korean"
 msgstr "韓国語・朝鮮語"
 
 #: kencodingprober.cpp:249 kencodingprober.cpp:304
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Thai"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Thai"
 msgstr "タイ語"
 
 #: kencodingprober.cpp:251 kencodingprober.cpp:268
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Arabic"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "アラビア語"
