@@ -4,13 +4,13 @@
 # Sivakumar Shanmugasundaram <sshanmu@yahoo.com>, 2000.
 # Thuraiappah Vaseeharan <t_vasee@yahoo.com>, 2000-2001.
 # ம. ஸ்ரீ ராமதாஸ் | Sri Ramadoss M <amachu@yavarkkum.org>, 2007-2012.
-# Kishore G <kishore96@gmail.com>, 2023.
+# SPDX-FileCopyrightText: 2023, 2024 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2023-03-19 11:42+0530\n"
+"PO-Revision-Date: 2024-05-05 14:18+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.02.2\n"
 "X-Qt-Contexts: true\n"
 
 #: kcharsets.cpp:153
@@ -271,17 +271,14 @@ msgid "Disabled"
 msgstr "முடக்கு"
 
 #: kencodingprober.cpp:223 kencodingprober.cpp:265
-#, fuzzy
-#| msgctxt "@item Text character set"
-#| msgid "Universal"
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Universal"
-msgstr "பொதுவான"
+msgstr "பொதுவானது"
 
 #: kencodingprober.cpp:225 kencodingprober.cpp:307
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Unicode"
-msgstr "யூனிகோடுயுனிகோடு"
+msgstr "யூனிகோடு"
 
 #: kencodingprober.cpp:227 kencodingprober.cpp:277
 msgctxt "KEncodingProber|@item Text character set"
