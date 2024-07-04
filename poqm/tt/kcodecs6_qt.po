@@ -146,7 +146,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "Башкалар"
 
-#: kcharsets.cpp:609
+#: kcharsets.cpp:382
 #, fuzzy, qt-format
 #| msgctxt "@item %1 character set, %2 encoding"
 #| msgid "%1 ( %2 )"
@@ -154,7 +154,7 @@ msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kcharsets.cpp:611
+#: kcharsets.cpp:384
 #, fuzzy, qt-format
 #| msgctxt "@item"
 #| msgid "Other encoding (%1)"
@@ -162,7 +162,7 @@ msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "Башка кодлашу (%1)"
 
-#: kcharsets.cpp:640
+#: kcharsets.cpp:413
 #, fuzzy, qt-format
 #| msgctxt "@item %1 character set, %2 encoding"
 #| msgid "%1 ( %2 )"
