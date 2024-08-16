@@ -29,7 +29,10 @@ void CodecTest::testCodecs_data()
     QTest::addColumn<QString>("tag");
     QTest::addColumn<Mode>("mode");
 
-    QDir codecBaseDir(QFINDTESTDATA("data"));
+    QString dataDir = QFINDTESTDATA("data/binary_data");
+    QVERIFY(!dataDir.isEmpty());
+    dataDir.chop(QByteArrayView("binary_data").size());
+    QDir codecBaseDir(dataDir);
     const QStringList lst = codecBaseDir.entryList(QStringList(), QDir::Dirs | QDir::NoDotAndDotDot, QDir::NoSort);
     for (const QString &dir : lst) {
         if (dir.toLower().startsWith(QLatin1String("codec_"))) {

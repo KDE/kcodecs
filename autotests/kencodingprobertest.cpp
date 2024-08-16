@@ -63,8 +63,8 @@ void KEncodingProberTest::testProbe()
     ep->reset();
 
     // binary data, just make sure we do not crash (cf. crash in bug #357341)
-    const QDir dataDir(QFINDTESTDATA("data"));
-    const QString binaryFile = dataDir.filePath(QStringLiteral("binary_data"));
+    const QString binaryFile = QFINDTESTDATA("data/binary_data");
+    QVERIFY(!binaryFile.isEmpty());
     QFile file(binaryFile);
     QVERIFY(file.open(QIODevice::ReadOnly));
     QByteArray binaryData(file.readAll());
