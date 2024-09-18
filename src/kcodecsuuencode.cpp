@@ -3,16 +3,6 @@
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
-/**
-  @file
-  This file is part of the API for handling @ref MIME data and
-  defines a @ref uuencode @ref Codec class.
-
-  @brief
-  Defines the UUCodec class.
-
-  @authors Marc Mutz \<mutz@kde.org\>
-*/
 
 #include "kcodecsuuencode.h"
 
