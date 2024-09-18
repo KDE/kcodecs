@@ -23,10 +23,11 @@
 
 class KEncodingProberPrivate;
 
-/**
- * @class KEncodingProber kencodingprober.h KEncodingProber
+/*!
+ * \class KEncodingProber
+ * \inmodule KCodecs
  *
- * @short Provides encoding detection(probe) capabilities.
+ * \brief Provides encoding detection(probe) capabilities.
  *
  * Probe the encoding of raw data only.
  * In the case it can't find it, return the most possible encoding it guessed.
@@ -53,20 +54,44 @@ class KEncodingProberPrivate;
  * If you don't have so many characters to probe,
  * decide whether to accept the encoding it guessed so far according to the Confidence by yourself.
  *
- * @short Guess encoding of char array
- *
  */
 class KCODECS_EXPORT KEncodingProber
 {
     Q_DECLARE_TR_FUNCTIONS(KEncodingProber)
 
 public:
+    /*!
+     * \value FoundIt Sure find the encoding
+     * \value NotMe Sure not included in current ProberType's all supported encodings
+     * \value Probing Need more data to make a decision
+     */
     enum ProberState {
-        FoundIt, /**< Sure find the encoding */
-        NotMe, /**< Sure not included in current ProberType's all supported encodings  */
-        Probing, /**< Need more data to make a decision */
+        FoundIt,
+        NotMe,
+        Probing,
     };
 
+    /*!
+     * \value None
+     * \value Universal
+     * \value Arabic
+     * \value Baltic
+     * \value CentralEuropean
+     * \value ChineseSimplified
+     * \value ChineseTraditional
+     * \value Cyrillic
+     * \value Greek
+     * \value Hebrew
+     * \value Japanese
+     * \value Korean
+     * \value NorthernSaami
+     * \value Other
+     * \value SouthEasternEurope
+     * \value Thai
+     * \value Turkish
+     * \value Unicode
+     * \value WesternEuropean
+     */
     enum ProberType {
         None,
         Universal,
@@ -89,7 +114,7 @@ public:
         WesternEuropean,
     };
 
-    /**
+    /*!
      * Default ProberType is Universal(detect all possible encodings)
      */
     KEncodingProber(ProberType proberType = Universal);
@@ -99,17 +124,17 @@ public:
     KEncodingProber(const KEncodingProber &) = delete;
     KEncodingProber &operator=(const KEncodingProber &) = delete;
 
-    /**
+    /*!
      * reset the prober's internal state and data.
      */
     void reset();
 
-    /**
+    /*!
      * The main class method
      *
-     * feed data to the prober
+     * Feed \a data to the prober
      *
-     * @returns the ProberState after probing the fed data.
+     * Returns the ProberState after probing the fed data.
      */
     ProberState feed(QByteArrayView data);
     // for API compatibility
@@ -118,37 +143,43 @@ public:
         return feed({data, len});
     }
 
-    /**
-     * @returns the prober's current ProberState
+    /*!
+     * Returns the prober's current ProberState
      *
      */
     ProberState state() const;
 
-    /**
-     * @returns a QByteArray with the name of the best encoding it has guessed so far
-     * @since 4.2.2
+    /*!
+     * Returns a QByteArray with the name of the best encoding it has guessed so far
+     * \since 4.2.2
      */
     QByteArray encoding() const;
 
-    /**
-     * @returns the confidence(sureness) of encoding it guessed so far (0.0 ~ 0.99), not very reliable for single byte encodings
+    /*!
+     * Returns the confidence(sureness) of encoding it guessed so far (0.0 ~ 0.99), not very reliable for single byte encodings
      */
     float confidence() const;
 
     ProberType proberType() const;
 
-    /**
+    /*!
      * change current prober's ProberType and reset the prober
+     *
+     * \a proberType the new type
      */
     void setProberType(ProberType proberType);
 
-    /**
-     * @return the ProberType for lang (e.g. proberTypeForName("Chinese Simplified") will return KEncodingProber::ChineseSimplified
+    /*!
+     * Returns the ProberType for \a lang (e.g. proberTypeForName("Chinese Simplified") will return KEncodingProber::ChineseSimplified
      */
     static ProberType proberTypeForName(const QString &lang);
 
-    /**
+    /*!
      * map ProberType to language string
+     *
+     * \a proberType the proper type
+     *
+     * Returns the language string
      */
     static QString nameForProberType(ProberType proberType);
 

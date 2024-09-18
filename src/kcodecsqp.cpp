@@ -3,18 +3,6 @@
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
-/**
-  @file
-  This file is part of the API for handling @ref MIME data and
-  defines the @ref QuotedPrintable, @ref  RFC2047Q, and
-  @ref RFC2231 @ref Codec classes.
-
-  @brief
-  Defines the classes QuotedPrintableCodec, Rfc2047QEncodingCodec, and
-  Rfc2231EncodingCodec.
-
-  @authors Marc Mutz \<mutz@kde.org\>
-*/
 
 #include "kcodecsqp.h"
 #include "kcodecs_p.h"
