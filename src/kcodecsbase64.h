@@ -3,16 +3,7 @@
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
-/**
-  @file
-  This file is part of the API for handling @ref MIME data and
-  defines the @ref Base64 and @ref RFC2047B @ref Codec classes.
-
-  @brief
-  Defines the Base64Codec and Rfc2047BEncodingCodec classes.
-
-  @authors Marc Mutz \<mutz@kde.org\>
-
+/*
   @glossary @anchor Base64 @anchor base64 @b base64:
   a binary to text encoding scheme based on @ref RFC1421.
 
@@ -40,42 +31,23 @@
 
 namespace KCodecs
 {
-/**
-  @brief
-  A class representing the @ref codec for @ref Base64 as specified in
-  @ref RFC2045
-*/
 class Base64Codec : public Codec
 {
 public:
-    /**
-      Constructs a Base64 codec.
-    */
     Base64Codec()
         : Codec()
     {
     }
 
-    /**
-      Destroys the codec.
-    */
     ~Base64Codec() override
     {
     }
 
-    /**
-      @copydoc
-      Codec::name()
-    */
     const char *name() const override
     {
         return "base64";
     }
 
-    /**
-      @copydoc
-      Codec::maxEncodedSizeFor()
-    */
     qsizetype maxEncodedSizeFor(qsizetype insize, NewlineType newline) const override
     {
         // first, the total number of 4-char packets will be:
@@ -88,10 +60,6 @@ public:
         return 4 * totalNumPackets + (newline == Codec::NewlineCRLF ? 2 : 1) * numLineBreaks;
     }
 
-    /**
-      @copydoc
-      Codec::maxDecodedSizeFor()
-    */
     qsizetype maxDecodedSizeFor(qsizetype insize, NewlineType newline = Codec::NewlineLF) const override
     {
         // assuming all characters are part of the base64 stream (which
@@ -108,55 +76,28 @@ public:
         return result;
     }
 
-    /**
-      @copydoc
-      Codec::makeEncoder()
-    */
     Encoder *makeEncoder(NewlineType newline = Codec::NewlineLF) const override;
 
-    /**
-      @copydoc
-      Codec::makeDecoder()
-    */
     Decoder *makeDecoder(NewlineType newline = Codec::NewlineLF) const override;
 };
 
-/**
-  @brief
-  A class representing the @ref codec for the B encoding as specified
-  in @ref RFC2047B.
-*/
 class Rfc2047BEncodingCodec : public Base64Codec
 {
 public:
-    /**
-      Constructs a RFC2047B codec.
-    */
     Rfc2047BEncodingCodec()
         : Base64Codec()
     {
     }
 
-    /**
-      Destroys the codec.
-    */
     ~Rfc2047BEncodingCodec() override
     {
     }
 
-    /**
-      @copydoc
-      Codec::name()
-    */
     const char *name() const override
     {
         return "b";
     }
 
-    /**
-      @copydoc
-      Codec::maxEncodedSizeFor()
-    */
     qsizetype maxEncodedSizeFor(qsizetype insize, NewlineType newline = Codec::NewlineLF) const override
     {
         Q_UNUSED(newline);
@@ -164,10 +105,6 @@ public:
         return ((insize + 2) / 3) * 4;
     }
 
-    /**
-      @copydoc
-      Codec::maxDecodedSizeFor()
-    */
     qsizetype maxDecodedSizeFor(qsizetype insize, NewlineType newline = Codec::NewlineLF) const override
     {
         Q_UNUSED(newline);
@@ -176,10 +113,6 @@ public:
         return ((insize + 3) / 4) * 3;
     }
 
-    /**
-      @copydoc
-      Codec::makeEncoder()
-    */
     Encoder *makeEncoder(NewlineType newline = Codec::NewlineLF) const override;
 };
 
