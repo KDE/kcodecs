@@ -3,16 +3,6 @@
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
-/**
-  @file
-  This file is part of the API for handling @ref MIME data and
-  defines the @ref Base64 and @ref RFC2047B @ref Codec classes.
-
-  @brief
-  Defines the Base64Codec and Rfc2047BEncodingCodec classes.
-
-  @authors Marc Mutz \<mutz@kde.org\>
-*/
 
 #include "kcodecsbase64.h"
 #include "kcodecs_p.h"
