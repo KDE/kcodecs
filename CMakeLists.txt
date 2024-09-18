@@ -27,6 +27,7 @@ include(ECMGenerateExportHeader)
 include(CMakePackageConfigHelpers)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
+include(ECMGenerateQDoc)
 
 include(ECMPoQmTools)
 include(ECMAddQch)
