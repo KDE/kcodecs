@@ -537,6 +537,7 @@ KCodecs::Codec *KCodecs::Codec::codecForName(QByteArrayView name)
     });
     if (it == s_codecs.end() || name.compare((*it).name, Qt::CaseInsensitive) != 0) {
         qWarning() << "Unknown codec \"" << name << "\" requested!";
+        return nullptr;
     }
     return (*it).codec.get();
 }
