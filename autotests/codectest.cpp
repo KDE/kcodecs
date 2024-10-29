@@ -102,4 +102,10 @@ void CodecTest::testCodecs()
     QCOMPARE(result, expResult);
 }
 
+void CodecTest::testInvalidCodec()
+{
+    Codec *codec = Codec::codecForName("thiscodectotallydoesntexist");
+    QCOMPARE(codec, nullptr);
+}
+
 #include "moc_codectest.cpp"
