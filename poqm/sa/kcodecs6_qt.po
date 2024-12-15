@@ -1,4 +1,3 @@
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -14,100 +13,100 @@ msgstr ""
 #: kcharsets.cpp:153
 msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
-msgstr ""
+msgstr "पश्चिम यूरोपीय"
 
 #: kcharsets.cpp:159
 msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
-msgstr ""
+msgstr "मध्य यूरोपीय"
 
 #: kcharsets.cpp:162
 msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
-msgstr ""
+msgstr "बाल्टिक"
 
 #: kcharsets.cpp:165
 msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
-msgstr ""
+msgstr "दक्षिणपूर्वी यूरोप"
 
 #: kcharsets.cpp:168
 msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
-msgstr ""
+msgstr "तुर्की"
 
 #: kcharsets.cpp:171
 msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
-msgstr ""
+msgstr "सिरिलिक"
 
 #: kcharsets.cpp:177
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "चीनी पारम्परिक"
 
 #: kcharsets.cpp:180
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "चीनी सरलीकृत"
 
 #: kcharsets.cpp:184
 msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
-msgstr ""
+msgstr "कोरियाई"
 
 #: kcharsets.cpp:187
 msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
-msgstr ""
+msgstr "जापानी"
 
 #: kcharsets.cpp:191
 msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
-msgstr ""
+msgstr "ग्रीकभाषा"
 
 #: kcharsets.cpp:194
 msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
-msgstr ""
+msgstr "अरबी"
 
 #: kcharsets.cpp:197
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
-msgstr ""
+msgstr "हिब्रू"
 
 #: kcharsets.cpp:202
 msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
-msgstr ""
+msgstr "थाई"
 
 #: kcharsets.cpp:205
 msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
-msgstr ""
+msgstr "यूनिकोड"
 
 #: kcharsets.cpp:211
 msgctxt "KCharsets|@item Text character set"
 msgid "Other"
-msgstr ""
+msgstr "इतर"
 
 #: kcharsets.cpp:382
 #, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
-msgstr ""
+msgstr "%1 ( %2 ) ."
 
 #: kcharsets.cpp:384
 #, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
-msgstr ""
+msgstr "अन्ये एन्कोडिंग् (%1) ."
 
 #: kcharsets.cpp:413
 #, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
-msgstr ""
+msgstr "%1 ( %2 ) ."
 
 #: kemailaddress.cpp:503
 msgctxt "QObject|"
@@ -116,6 +115,8 @@ msgid ""
 "@.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"भवता प्रविष्टं ईमेल-सङ्केतं वैधं नास्ति यतः तस्मिन् एकादशाधिकं @ अस्ति ।\n"
+"यदि भवान् स्वसङ्केतं न परिवर्तयति तर्हि वैधसन्देशान् न निर्मास्यति ।"
 
 #: kemailaddress.cpp:509
 msgctxt "QObject|"
@@ -123,25 +124,27 @@ msgid ""
 "The email address you entered is not valid because it does not contain a @.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"भवता प्रविष्टं ईमेल-सङ्केतं वैधं नास्ति यतोहि तस्मिन् @ नास्ति ।\n"
+"यदि भवान् स्वसङ्केतं न परिवर्तयति तर्हि वैधसन्देशान् न निर्मास्यति ।"
 
 #: kemailaddress.cpp:515
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
-msgstr ""
+msgstr "भवद्भिः ईमेल-सङ्केत-क्षेत्रे किमपि प्रविष्टव्यम् ।"
 
 #: kemailaddress.cpp:517
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "local part."
-msgstr ""
+msgstr "भवता प्रविष्टं ईमेल-सङ्केतं वैधं नास्ति यतोहि तस्मिन् स्थानीयभागः नास्ति ।"
 
 #: kemailaddress.cpp:521
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "domain part."
-msgstr ""
+msgstr "भवता प्रविष्टं ईमेल-सङ्केतं वैधं नास्ति यतोहि तस्मिन् डोमेन-भागः नास्ति ।"
 
 #: kemailaddress.cpp:525
 msgctxt "QObject|"
@@ -149,18 +152,19 @@ msgid ""
 "The email address you entered is not valid because it contains unclosed "
 "comments/brackets."
 msgstr ""
+"भवता प्रविष्टः ईमेल-सङ्केतः वैधः नास्ति यतः तस्मिन् अनिमीलिताः टिप्पण्याः/कोष्ठकाः सन्ति ।"
 
 #: kemailaddress.cpp:529
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
-msgstr ""
+msgstr "भवता प्रविष्टं ईमेल-सङ्केतं वैधम् अस्ति ।"
 
 #: kemailaddress.cpp:531
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an unclosed "
 "angle bracket."
-msgstr ""
+msgstr "भवता प्रविष्टं ईमेल-सङ्केतं वैधं नास्ति यतोहि तस्मिन् अनिमीलितं कोणकोष्ठकं भवति ।"
 
 #: kemailaddress.cpp:535
 msgctxt "QObject|"
@@ -168,13 +172,14 @@ msgid ""
 "The email address you entered is not valid because it contains too many "
 "closing angle brackets."
 msgstr ""
+"भवता प्रविष्टं ईमेल-सङ्केतं वैधं नास्ति यतोहि तस्मिन् अत्यधिकं समापनकोणकोष्ठकाः सन्ति ।"
 
 #: kemailaddress.cpp:539
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
 "unexpected comma."
-msgstr ""
+msgstr "भवता प्रविष्टं ईमेल-सङ्केतं वैधं नास्ति यतः तस्मिन् अप्रत्याशित-अल्पविरामः अस्ति ।"
 
 #: kemailaddress.cpp:543
 msgctxt "QObject|"
@@ -183,6 +188,9 @@ msgid ""
 "This probably means you have used an escaping type character like a '\\' as "
 "the last character in your email address."
 msgstr ""
+"भवता प्रविष्टः ईमेल-सङ्केतः अप्रत्याशितरूपेण समाप्तः इति कारणतः वैधः नास्ति ।\n"
+"सम्भवतः अस्य अर्थः अस्ति यत् भवान् स्वस्य ईमेल-सङ्केते अन्तिम-वर्णरूपेण '\\' इत्यादिं पलायन-"
+"प्रकारस्य वर्णं प्रयुक्तवान् ।"
 
 #: kemailaddress.cpp:549
 msgctxt "QObject|"
@@ -190,6 +198,7 @@ msgid ""
 "The email address you entered is not valid because it contains quoted text "
 "which does not end."
 msgstr ""
+"भवता प्रविष्टः ईमेल-सङ्केतः वैधः नास्ति यतः तस्मिन् उद्धृतः पाठः अस्ति यः समाप्तः न भवति ।"
 
 #: kemailaddress.cpp:553
 msgctxt "QObject|"
@@ -197,20 +206,22 @@ msgid ""
 "The email address you entered is not valid because it does not seem to "
 "contain an actual email address, i.e. something of the form joe@example.org."
 msgstr ""
+"भवता प्रविष्टं ईमेल-सङ्केतं वैधं नास्ति यतोहि तस्मिन् वास्तविकं ईमेल-सङ्केतं न दृश्यते, अर्थात् "
+"joe@example.org इति प्रपत्रस्य किमपि ।"
 
 #: kemailaddress.cpp:558
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an illegal "
 "character."
-msgstr ""
+msgstr "भवता प्रविष्टं ईमेल-सङ्केतं वैधं नास्ति यतः तस्मिन् अवैधवर्णः अस्ति ।"
 
 #: kemailaddress.cpp:562
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
 "invalid display name."
-msgstr ""
+msgstr "भवता प्रविष्टं ईमेल-सङ्केतं वैधं नास्ति यतः तस्मिन् अमान्यं प्रदर्शननाम अस्ति ।"
 
 #: kemailaddress.cpp:566
 msgctxt "QObject|"
@@ -219,11 +230,13 @@ msgid ""
 "'.'.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
+"भवता प्रविष्टं ईमेल-सङ्केतं वैधं नास्ति यतः तस्मिन् '.' नास्ति ।\n"
+"यदि भवान् स्वसङ्केतं न परिवर्तयति तर्हि वैधसन्देशान् न निर्मास्यति ।"
 
 #: kemailaddress.cpp:572
 msgctxt "QObject|"
 msgid "Unknown problem with email address"
-msgstr ""
+msgstr "ईमेल-सङ्केतस्य अज्ञातसमस्या"
 
 #: kemailaddress.cpp:632
 msgctxt "QObject|"
@@ -232,83 +245,85 @@ msgid ""
 "It does not seem to contain an actual email address, i.e. something of the "
 "form joe@example.org."
 msgstr ""
+"भवता प्रविष्टं ईमेल-सङ्केतं वैधं नास्ति ।\n"
+"अस्मिन् वास्तविकं ईमेल-सङ्केतं अर्थात् joe@example.org इति रूपस्य किमपि न दृश्यते ।"
 
 #: kencodingprober.cpp:221 kencodingprober.cpp:262
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Disabled"
-msgstr ""
+msgstr "अक्षमित"
 
 #: kencodingprober.cpp:223 kencodingprober.cpp:265
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Universal"
-msgstr ""
+msgstr "सार्वभौमिक"
 
 #: kencodingprober.cpp:225 kencodingprober.cpp:307
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Unicode"
-msgstr ""
+msgstr "यूनिकोड"
 
 #: kencodingprober.cpp:227 kencodingprober.cpp:277
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Cyrillic"
-msgstr ""
+msgstr "सिरिलिक"
 
 #: kencodingprober.cpp:229 kencodingprober.cpp:292
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Western European"
-msgstr ""
+msgstr "पश्चिम यूरोपीय"
 
 #: kencodingprober.cpp:231 kencodingprober.cpp:274
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Central European"
-msgstr ""
+msgstr "मध्य यूरोपीय"
 
 #: kencodingprober.cpp:233 kencodingprober.cpp:280
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Greek"
-msgstr ""
+msgstr "ग्रीकभाषा"
 
 #: kencodingprober.cpp:235 kencodingprober.cpp:283
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Hebrew"
-msgstr ""
+msgstr "हिब्रू"
 
 #: kencodingprober.cpp:237 kencodingprober.cpp:289
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Turkish"
-msgstr ""
+msgstr "तुर्की"
 
 #: kencodingprober.cpp:239 kencodingprober.cpp:286
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Japanese"
-msgstr ""
+msgstr "जापानी"
 
 #: kencodingprober.cpp:241 kencodingprober.cpp:271
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Baltic"
-msgstr ""
+msgstr "बाल्टिक"
 
 #: kencodingprober.cpp:243 kencodingprober.cpp:295
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "चीनी पारम्परिक"
 
 #: kencodingprober.cpp:245 kencodingprober.cpp:298
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "चीनी सरलीकृत"
 
 #: kencodingprober.cpp:247 kencodingprober.cpp:301
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Korean"
-msgstr ""
+msgstr "कोरियाई"
 
 #: kencodingprober.cpp:249 kencodingprober.cpp:304
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Thai"
-msgstr ""
+msgstr "थाई"
 
 #: kencodingprober.cpp:251 kencodingprober.cpp:268
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
-msgstr ""
+msgstr "अरबी"
