@@ -17,13 +17,13 @@
 # Serdar SOYTETİR <tulliana@gmail.com>, 2010, 2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2014.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# SPDX-FileCopyrightText: 2022, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2022-12-11 12:35+0300\n"
+"PO-Revision-Date: 2024-12-19 21:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 25.03.70\n"
 "X-Qt-Contexts: true\n"
 
 #: kcharsets.cpp:153
@@ -221,7 +221,7 @@ msgid ""
 msgstr ""
 "Girdiğiniz e-posta adresi beklenmedik şekilde sonlandığı için geçerli "
 "değil.\n"
-"Bu, e-posta adresinizin son karakteri olarak '\\' gibi bir kaçış karakteri "
+"Bu, e-posta adresinizin son karakteri olarak “\\” gibi bir kaçış karakteri "
 "kullandığınız anlamına gelir."
 
 #: kemailaddress.cpp:549
@@ -266,7 +266,7 @@ msgid ""
 "'.'.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
-"Girdiğiniz e-posta adresi '.' karakteri içermediği için geçerli değil.\n"
+"Girdiğiniz e-posta adresi “.” karakteri içermediği için geçerli değil.\n"
 "Eğer adresinizi değiştirmezseniz geçerli ileti oluşturamazsınız."
 
 #: kemailaddress.cpp:572
