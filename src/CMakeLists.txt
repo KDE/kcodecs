@@ -5,20 +5,9 @@ set_target_properties(KF6Codecs PROPERTIES
     VERSION     ${KCODECS_VERSION}
     SOVERSION   ${KCODECS_SOVERSION}
     EXPORT_NAME Codecs
-# gperf < 3.1 always adds a "register" keyword to function arguments,
-# which itself is removed from C++17,
-# so sources including the generated header need to use C++14 only.
-# Only kcharsets.cpp is affected, but right now nothing else needs C++17,
-# so simply set standard for the while library
-# Current version of FindGperf in ECM does not support a version check yet,
-# so for now always lower to C++14.
-    CXX_STANDARD 14
 )
 
 ecm_create_qm_loader(KF6Codecs kcodecs6_qt)
-
-ecm_gperf_generate(kentities.gperf ${CMAKE_CURRENT_BINARY_DIR}/kentities.h KF6Codecs
-                   GENERATION_FLAGS "--key-positions=* -D -s 2")
 
 target_sources(KF6Codecs PRIVATE
     kcharsets.cpp
