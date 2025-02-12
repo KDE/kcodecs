@@ -12,6 +12,8 @@
 #include <QTest>
 #include <kcharsets.h>
 
+using namespace Qt::Literals;
+
 static bool encodingNameHasADescription(const QString &encodingName, const QStringList &descriptions)
 {
     return std::any_of(descriptions.cbegin(), descriptions.cend(), [&encodingName](const QString &description) {
@@ -36,6 +38,9 @@ void KCharsetsTest::testFromEntity()
     QCOMPARE(singleton->fromEntity(QString::fromLatin1("quot")), QChar::fromLatin1('"'));
     QCOMPARE(singleton->fromEntity(QString::fromLatin1("amp")), QChar::fromLatin1('&'));
     QCOMPARE(singleton->fromEntity(QString::fromLatin1("apos")), QChar::fromLatin1('\''));
+    QCOMPARE(singleton->fromEntity(u"aposgarbagesuffix"_s), QChar());
+    QCOMPARE(singleton->fromEntity(u"thetasym"_s), QChar(0x03d1));
+    QCOMPARE(singleton->fromEntity(u"thetasymgarbagesuffix"_s), QChar());
 }
 
 void KCharsetsTest::testToEntity()

@@ -248,7 +248,25 @@ KCharsets::KCharsets()
 KCharsets::~KCharsets() = default;
 
 // sorted entities list for lookup
-static const std::pair<std::string_view, int> entities[] = {
+constexpr inline auto MAX_CODE_SIZE = 8;
+
+struct Entity {
+    template<std::size_t N>
+    constexpr inline Entity(const char (&n)[N], uint32_t c)
+        : code(c)
+    {
+        for (std::size_t i = 0; i < N - 1; ++i) {
+            name[i] = n[i];
+        }
+        for (std::size_t i = N - 1; i < MAX_CODE_SIZE; ++i) {
+            name[i] = '\0';
+        }
+    }
+
+    char name[MAX_CODE_SIZE];
+    uint32_t code;
+};
+static constexpr inline const Entity entities[] = {
     {"AElig", 0x00c6},   {"Aacute", 0x00c1},  {"Acirc", 0x00c2},   {"Agrave", 0x00c0},  {"Alpha", 0x0391},    {"AMP", 38},         {"Aring", 0x00c5},
     {"Atilde", 0x00c3},  {"Auml", 0x00c4},    {"Beta", 0x0392},    {"Ccaron", 0x010c},  {"Ccedil", 0x00c7},   {"Chi", 0x03a7},     {"Dagger", 0x2021},
     {"Dcaron", 0x010e},  {"Delta", 0x0394},   {"ETH", 0x00d0},     {"Eacute", 0x00c9},  {"Ecaron", 0x011a},   {"Ecirc", 0x00ca},   {"Egrave", 0x00c8},
@@ -291,6 +309,11 @@ static const std::pair<std::string_view, int> entities[] = {
     {"xi", 0x03be},      {"yacute", 0x00fd},  {"yen", 0x00a5},     {"yuml", 0x00ff},    {"zcaron", 0x017e},   {"zeta", 0x03b6},    {"zwj", 0x200d},
     {"zwnj", 0x200c}};
 
+[[nodiscard]] static bool operator<(const Entity &lhs, const QByteArray &rhs)
+{
+    return std::strncmp(lhs.name, rhs.constData(), MAX_CODE_SIZE) < 0;
+}
+
 QChar KCharsets::fromEntity(QStringView str)
 {
     QChar res = QChar::Null;
@@ -326,15 +349,13 @@ QChar KCharsets::fromEntity(QStringView str)
     }
 
     const QByteArray raw(str.toLatin1());
-    const auto e = std::lower_bound(std::begin(entities), std::end(entities), raw, [](const auto &entry, auto value) {
-        return entry.first < value;
-    });
+    const auto e = std::lower_bound(std::begin(entities), std::end(entities), raw);
 
-    if (e == std::end(entities) || e->first != raw) {
+    if (e == std::end(entities) || raw.size() > MAX_CODE_SIZE || std::strncmp(e->name, raw.constData(), MAX_CODE_SIZE) != 0) {
         return QChar::Null;
     }
 
-    return QChar(e->second);
+    return QChar(e->code);
 }
 
 QChar KCharsets::fromEntity(QStringView str, int &len)
