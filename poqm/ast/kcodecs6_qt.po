@@ -13,99 +13,99 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 23.08.4\n"
 
-#: kcharsets.cpp:153
+#: kcharsets.cpp:151
 msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
 msgstr "Européu occidental"
 
-#: kcharsets.cpp:159
+#: kcharsets.cpp:157
 msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
 msgstr "Européu central"
 
-#: kcharsets.cpp:162
+#: kcharsets.cpp:160
 msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
 msgstr "Bálticu"
 
-#: kcharsets.cpp:165
+#: kcharsets.cpp:163
 msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
 msgstr "Européu suroccidental"
 
-#: kcharsets.cpp:168
+#: kcharsets.cpp:166
 msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
 msgstr "Turcu"
 
-#: kcharsets.cpp:171
+#: kcharsets.cpp:169
 msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "Cirílicu"
 
-#: kcharsets.cpp:177
+#: kcharsets.cpp:175
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "Chinu tradicional"
 
-#: kcharsets.cpp:180
+#: kcharsets.cpp:178
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "Chinu simplificáu"
 
-#: kcharsets.cpp:184
+#: kcharsets.cpp:182
 msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
 msgstr "Coreanu"
 
-#: kcharsets.cpp:187
+#: kcharsets.cpp:185
 msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
 msgstr "Xaponés"
 
-#: kcharsets.cpp:191
+#: kcharsets.cpp:189
 msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
 msgstr "Griegu"
 
-#: kcharsets.cpp:194
+#: kcharsets.cpp:192
 msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
 msgstr "Árabe"
 
-#: kcharsets.cpp:197
+#: kcharsets.cpp:195
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
 msgstr "Hebréu"
 
-#: kcharsets.cpp:202
+#: kcharsets.cpp:200
 msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
 msgstr "Tailandés"
 
-#: kcharsets.cpp:205
+#: kcharsets.cpp:203
 msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
 msgstr "Unicode"
 
-#: kcharsets.cpp:211
+#: kcharsets.cpp:209
 msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "Otru conxuntu"
 
-#: kcharsets.cpp:382
+#: kcharsets.cpp:445
 #, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kcharsets.cpp:384
+#: kcharsets.cpp:447
 #, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "Otra codificación (%1)"
 
-#: kcharsets.cpp:413
+#: kcharsets.cpp:476
 #, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"

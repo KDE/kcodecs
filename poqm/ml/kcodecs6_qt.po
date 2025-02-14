@@ -22,115 +22,115 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
 
-#: kcharsets.cpp:153
+#: kcharsets.cpp:151
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
 msgstr "പടിഞ്ഞാറന്‍ യൂറോപ്യന്‍"
 
-#: kcharsets.cpp:159
+#: kcharsets.cpp:157
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
 msgstr "മദ്ധ്യ യൂറോപ്യന്‍"
 
-#: kcharsets.cpp:162
+#: kcharsets.cpp:160
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
 msgstr "ബാള്‍ട്ടിക്"
 
-#: kcharsets.cpp:165
+#: kcharsets.cpp:163
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
 msgstr "തെക്ക്-കിഴക്കന്‍ യൂറോപ്"
 
-#: kcharsets.cpp:168
+#: kcharsets.cpp:166
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
 msgstr "തുര്‍ക്കിഷ്"
 
-#: kcharsets.cpp:171
+#: kcharsets.cpp:169
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "സിറിലിക്"
 
-#: kcharsets.cpp:177
+#: kcharsets.cpp:175
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "പരമ്പരാഗത ചൈനീസ്"
 
-#: kcharsets.cpp:180
+#: kcharsets.cpp:178
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "ലളിതമാക്കിയ ചൈനീസ്"
 
-#: kcharsets.cpp:184
+#: kcharsets.cpp:182
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
 msgstr "കൊറിയന്‍"
 
-#: kcharsets.cpp:187
+#: kcharsets.cpp:185
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
 msgstr "ജാപനീസ്"
 
-#: kcharsets.cpp:191
+#: kcharsets.cpp:189
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
 msgstr "ഗ്രീക്ക്"
 
-#: kcharsets.cpp:194
+#: kcharsets.cpp:192
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
 msgstr "അറബിക്"
 
-#: kcharsets.cpp:197
+#: kcharsets.cpp:195
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
 msgstr "ഹീബ്രു"
 
-#: kcharsets.cpp:202
+#: kcharsets.cpp:200
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
 msgstr "ഥായി"
 
-#: kcharsets.cpp:205
+#: kcharsets.cpp:203
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
 msgstr "യൂണികോഡ്"
 
-#: kcharsets.cpp:211
+#: kcharsets.cpp:209
 #, fuzzy
 msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "മറ്റുള്ളവ"
 
-#: kcharsets.cpp:382
+#: kcharsets.cpp:445
 #, fuzzy, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kcharsets.cpp:384
+#: kcharsets.cpp:447
 #, fuzzy, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "മറ്റുള്ള എന്‍കോഡിങ്ങ് (%1)"
 
-#: kcharsets.cpp:413
+#: kcharsets.cpp:476
 #, fuzzy, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"

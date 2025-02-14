@@ -18,99 +18,99 @@ msgstr ""
 "X-Generator: Lokalize 19.12.3\n"
 "X-Qt-Contexts: true\n"
 
-#: kcharsets.cpp:153
+#: kcharsets.cpp:151
 msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
 msgstr "European de vest"
 
-#: kcharsets.cpp:159
+#: kcharsets.cpp:157
 msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
 msgstr "European central"
 
-#: kcharsets.cpp:162
+#: kcharsets.cpp:160
 msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
 msgstr "Baltic"
 
-#: kcharsets.cpp:165
+#: kcharsets.cpp:163
 msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
 msgstr "European de sud-est"
 
-#: kcharsets.cpp:168
+#: kcharsets.cpp:166
 msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
 msgstr "Turc"
 
-#: kcharsets.cpp:171
+#: kcharsets.cpp:169
 msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "Chirilic"
 
-#: kcharsets.cpp:177
+#: kcharsets.cpp:175
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "Chineză tradițională"
 
-#: kcharsets.cpp:180
+#: kcharsets.cpp:178
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "Chineză simplificată"
 
-#: kcharsets.cpp:184
+#: kcharsets.cpp:182
 msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
 msgstr "Coreean"
 
-#: kcharsets.cpp:187
+#: kcharsets.cpp:185
 msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
 msgstr "Japonez"
 
-#: kcharsets.cpp:191
+#: kcharsets.cpp:189
 msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
 msgstr "Grec"
 
-#: kcharsets.cpp:194
+#: kcharsets.cpp:192
 msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
 msgstr "Arab"
 
-#: kcharsets.cpp:197
+#: kcharsets.cpp:195
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
 msgstr "Ebraic"
 
-#: kcharsets.cpp:202
+#: kcharsets.cpp:200
 msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
 msgstr "Tailandez"
 
-#: kcharsets.cpp:205
+#: kcharsets.cpp:203
 msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
 msgstr "Unicod"
 
-#: kcharsets.cpp:211
+#: kcharsets.cpp:209
 msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "Altul"
 
-#: kcharsets.cpp:382
+#: kcharsets.cpp:445
 #, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kcharsets.cpp:384
+#: kcharsets.cpp:447
 #, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "Altă codare (%1)"
 
-#: kcharsets.cpp:413
+#: kcharsets.cpp:476
 #, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
