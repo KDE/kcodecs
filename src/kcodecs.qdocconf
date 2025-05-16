@@ -14,6 +14,8 @@ depends += \
     qtcore \
     qtcore5compat
 
+navigation.landingpage = "KCodecs"
+
 qhp.projects            = KCodecs
 
 qhp.KCodecs.file                = kcodecs.qhp
