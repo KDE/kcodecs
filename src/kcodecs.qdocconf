@@ -29,3 +29,5 @@ qhp.KCodecs.subprojects.classes.title = C++ Classes
 qhp.KCodecs.subprojects.classes.indexTitle = KCodecs C++ Classes
 qhp.KCodecs.subprojects.classes.selectors = class fake:headerfile
 qhp.KCodecs.subprojects.classes.sortPages = true
+
+tagfile = kcodecs.tags
