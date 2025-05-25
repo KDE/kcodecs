@@ -43,10 +43,16 @@ ecm_set_disabled_deprecation_versions(
     QT 6.10.0
 )
 
+option(BUILD_FUZZERS "Build KCodecs fuzzers" OFF)
+
 add_subdirectory(src)
 
 if (BUILD_TESTING)
     add_subdirectory(autotests)
+endif()
+
+if (BUILD_FUZZERS)
+    add_subdirectory(autotests/ossfuzz)
 endif()
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
