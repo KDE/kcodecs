@@ -60,6 +60,7 @@ QStringList KEmailAddress::splitAddressList(const QString &aStr)
         case '\\': // quoted character
             index++; // ignore the quoted character
             break;
+        case '\n':
         case ',':
         case ';':
             if (!insidequote && (commentlevel == 0)) {

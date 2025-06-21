@@ -490,6 +490,10 @@ void KEmailAddressTest::testCheckSplitEmailAddrList_data()
         << "Foo  Bar <foo@bar.com>,  \"   First  Collective Last  \"  <collectivename.lastname@example.com>" // Uses multiple and quoted surrounding spaces
         << (QStringList() << QStringLiteral("Foo  Bar <foo@bar.com>")
                           << QStringLiteral("\"   First  Collective Last  \"  <collectivename.lastname@example.com>"));
+
+    QTest::newRow("") << "foo@example.com\nbar@example.com\n\"Foobar\" <foobar@example.com>"
+                      << (QStringList() << QStringLiteral("foo@example.com") << QStringLiteral("bar@example.com")
+                                        << QStringLiteral("\"Foobar\" <foobar@example.com>"));
 }
 
 void KEmailAddressTest::testNormalizeAddressesAndEncodeIDNs()
