@@ -13,6 +13,7 @@ class KEncodingProberTest : public QObject
 private Q_SLOTS:
     void testReset();
     void testProbe();
+    void testProbe_data();
 };
 
 void KEncodingProberTest::testReset()
@@ -26,41 +27,46 @@ void KEncodingProberTest::testReset()
 
 void KEncodingProberTest::testProbe()
 {
-    auto ep = std::make_unique<KEncodingProber>();
+    QFETCH(QByteArray, data);
+    QFETCH(KEncodingProber::ProberType, proberType);
+    QFETCH(QByteArray, encoding);
 
-    // utf-8
-    ep->setProberType(KEncodingProber::Universal);
-    ep->feed(QByteArray::fromHex("e998bfe5b094e58d91e696afe5b1b1e88489"));
-    QCOMPARE(ep->encoding().toLower(), QByteArray("utf-8"));
-    ep->reset();
+    KEncodingProber ep(proberType);
+    QCOMPARE(ep.proberType(), proberType);
+    ep.feed(data);
 
-    // gb18030
-    ep->setProberType(KEncodingProber::ChineseSimplified);
-    ep->feed(QByteArray::fromHex("d7d4d3c9b5c4b0d9bfc6c8abcae9"));
-    QCOMPARE(ep->encoding().toLower(), QByteArray("gb18030"));
-    ep->reset();
+    QCOMPARE(ep.encoding().toLower(), encoding);
+}
 
-    // shift_jis
-    ep->setProberType(KEncodingProber::Japanese);
-    ep->feed(QByteArray::fromHex("8374838a815b955389c88e969354"));
-    QCOMPARE(ep->encoding().toLower(), QByteArray("shift_jis"));
-    ep->reset();
+void KEncodingProberTest::testProbe_data()
+{
+    QTest::addColumn<QByteArray>("data");
+    QTest::addColumn<KEncodingProber::ProberType>("proberType");
+    QTest::addColumn<QByteArray>("encoding");
 
-    // big5
-    ep->setProberType(KEncodingProber::ChineseTraditional);
-    ep->feed(QByteArray::fromHex("aefcafc7a6caa474a141a6b3ae65a444a46a"));
-    QCOMPARE(ep->encoding().toLower(), QByteArray("big5"));
-    ep->reset();
+    QTest::addRow("utf-8") //
+        << QByteArray::fromHex("e998bfe5b094e58d91e696afe5b1b1e88489") //
+        << KEncodingProber::Universal << QByteArray("utf-8");
+
+    QTest::addRow("gb18030") //
+        << QByteArray::fromHex("d7d4d3c9b5c4b0d9bfc6c8abcae9") //
+        << KEncodingProber::ChineseSimplified << QByteArray("gb18030");
+
+    QTest::addRow("shift_jis") //
+        << QByteArray::fromHex("8374838a815b955389c88e969354") //
+        << KEncodingProber::Japanese << QByteArray("shift_jis");
+
+    QTest::addRow("big5") //
+        << QByteArray::fromHex("aefcafc7a6caa474a141a6b3ae65a444a46a") //
+        << KEncodingProber::ChineseTraditional << QByteArray("big5");
 
     // binary data, just make sure we do not crash (cf. crash in bug #357341)
     const auto binaryData = QByteArray::fromBase64( //
         "4QEAAAAOAAAAgVBYVIp1X0cQSZ67QGBARKLmgwFdRqxVgwJbyCougwNVrEZdiARNdogFmAScBkph"
         "Y2sgQXVkaW9DRIEHK4JhWg0OvPK2SjYuwNZv1ogI/xOICf8TgxUZjO5WiREAnBJIZWxsbyB2MC41"
         "MGGIE1DD");
-    ep->setProberType(KEncodingProber::Universal);
-    ep->feed(binaryData);
-    QCOMPARE(ep->encoding().toLower(), QByteArray("utf-8"));
-    ep->reset();
+    QTest::addRow("binaryData") //
+        << binaryData << KEncodingProber::Universal << QByteArray("utf-8");
 }
 
 QTEST_MAIN(KEncodingProberTest)
