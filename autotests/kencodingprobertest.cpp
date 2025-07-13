@@ -4,13 +4,22 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#include "kencodingprobertest.h"
-
 #include <QDir>
 #include <QTest>
 #include <kencodingprober.h>
 
 static KEncodingProber *ep = nullptr;
+
+class KEncodingProberTest : public QObject
+{
+    Q_OBJECT
+private Q_SLOTS:
+    void initTestCase();
+    void cleanupTestCase();
+    void cleanup();
+    void testReset();
+    void testProbe();
+};
 
 void KEncodingProberTest::initTestCase()
 {
@@ -76,4 +85,4 @@ void KEncodingProberTest::testProbe()
 
 QTEST_MAIN(KEncodingProberTest)
 
-#include "moc_kencodingprobertest.cpp"
+#include "kencodingprobertest.moc"
