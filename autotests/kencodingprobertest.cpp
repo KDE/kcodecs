@@ -8,37 +8,17 @@
 #include <QTest>
 #include <kencodingprober.h>
 
-static KEncodingProber *ep = nullptr;
-
 class KEncodingProberTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
-    void initTestCase();
-    void cleanupTestCase();
-    void cleanup();
     void testReset();
     void testProbe();
 };
 
-void KEncodingProberTest::initTestCase()
-{
-    ep = new KEncodingProber;
-}
-
-void KEncodingProberTest::cleanupTestCase()
-{
-    delete ep;
-    ep = nullptr;
-}
-
-void KEncodingProberTest::cleanup()
-{
-    ep->reset();
-}
-
 void KEncodingProberTest::testReset()
 {
+    auto ep = std::make_unique<KEncodingProber>();
     ep->feed(QByteArray("some random data @*@#&jd"));
     ep->reset();
     QCOMPARE(ep->state(), KEncodingProber::Probing);
@@ -47,6 +27,8 @@ void KEncodingProberTest::testReset()
 
 void KEncodingProberTest::testProbe()
 {
+    auto ep = std::make_unique<KEncodingProber>();
+
     // utf-8
     ep->setProberType(KEncodingProber::Universal);
     ep->feed(QByteArray::fromHex("e998bfe5b094e58d91e696afe5b1b1e88489"));
