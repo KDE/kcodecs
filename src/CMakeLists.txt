@@ -26,6 +26,7 @@ target_sources(KF6Codecs PRIVATE
     kemailaddress.h
     kencodingprober.cpp
     kencodingprober.h
+    kencodingprober_p.h
     probers/CharDistribution.cpp
     probers/CharDistribution.h
     probers/ChineseGroupProber.cpp

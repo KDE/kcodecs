@@ -8,14 +8,7 @@
 #ifndef KENCODINGPROBER_H
 #define KENCODINGPROBER_H
 
-// enable debug of private probers
-// #define DEBUG_PROBE
-
 #include <kcodecs_export.h>
-
-#ifdef DEBUG_PROBE
-#include <QDebug>
-#endif
 
 #include <QCoreApplication>
 #include <QString>

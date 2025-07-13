@@ -7,7 +7,9 @@
 #ifndef nsCharSetProber_h__
 #define nsCharSetProber_h__
 
-#include "kencodingprober.h"
+#include <kcodecs_export.h>
+
+#include "../kencodingprober_p.h"
 
 namespace kencodingprober
 {
@@ -32,7 +34,7 @@ public:
     virtual float GetConfidence(void) = 0;
 
 #ifdef DEBUG_PROBE
-    void DumpStatus() override
+    virtual void DumpStatus()
     {
     }
 #endif

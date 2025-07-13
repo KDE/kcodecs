@@ -7,6 +7,7 @@
 */
 
 #include "kencodingprober.h"
+#include "kencodingprober_p.h"
 
 #include "probers/ChineseGroupProber.h"
 #include "probers/JapaneseGroupProber.h"

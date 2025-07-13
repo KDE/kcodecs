@@ -7,7 +7,7 @@
 #ifndef nsCodingStateMachine_h__
 #define nsCodingStateMachine_h__
 
-#include "kencodingprober.h"
+#include "../kencodingprober_p.h"
 
 #include "kcodecs_export.h"
 
