@@ -4,7 +4,6 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#include <QDir>
 #include <QTest>
 #include <kencodingprober.h>
 
@@ -54,11 +53,10 @@ void KEncodingProberTest::testProbe()
     ep->reset();
 
     // binary data, just make sure we do not crash (cf. crash in bug #357341)
-    const QString binaryFile = QFINDTESTDATA("data/binary_data");
-    QVERIFY(!binaryFile.isEmpty());
-    QFile file(binaryFile);
-    QVERIFY(file.open(QIODevice::ReadOnly));
-    QByteArray binaryData(file.readAll());
+    const auto binaryData = QByteArray::fromBase64( //
+        "4QEAAAAOAAAAgVBYVIp1X0cQSZ67QGBARKLmgwFdRqxVgwJbyCougwNVrEZdiARNdogFmAScBkph"
+        "Y2sgQXVkaW9DRIEHK4JhWg0OvPK2SjYuwNZv1ogI/xOICf8TgxUZjO5WiREAnBJIZWxsbyB2MC41"
+        "MGGIE1DD");
     ep->setProberType(KEncodingProber::Universal);
     ep->feed(binaryData);
     QCOMPARE(ep->encoding().toLower(), QByteArray("utf-8"));

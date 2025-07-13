@@ -29,9 +29,9 @@ void CodecTest::testCodecs_data()
     QTest::addColumn<QString>("tag");
     QTest::addColumn<Mode>("mode");
 
-    QString dataDir = QFINDTESTDATA("data/binary_data");
+    QString dataDir = QFINDTESTDATA("data/codec_b");
     QVERIFY(!dataDir.isEmpty());
-    dataDir.chop(QByteArrayView("binary_data").size());
+    dataDir.chop(QByteArrayView("codec_b").size());
     QDir codecBaseDir(dataDir);
     const QStringList lst = codecBaseDir.entryList(QStringList(), QDir::Dirs | QDir::NoDotAndDotDot, QDir::NoSort);
     for (const QString &dir : lst) {
