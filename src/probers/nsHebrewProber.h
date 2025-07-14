@@ -35,9 +35,6 @@ public:
     {
         return (float)0.0;
     }
-    void SetOpion() override
-    {
-    }
 
     void SetModelProbers(nsCharSetProber *logicalPrb, nsCharSetProber *visualPrb)
     {

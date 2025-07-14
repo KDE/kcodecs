@@ -28,9 +28,6 @@ public:
     }
     void Reset(void) override;
     float GetConfidence(void) override;
-    void SetOpion() override
-    {
-    }
 
 #ifdef DEBUG_PROBE
     void DumpStatus() override;

@@ -30,9 +30,6 @@ public:
     void Reset(void) override;
     float GetConfidence(void) override;
     nsProbingState GetState() override;
-    void SetOpion() override
-    {
-    }
 
 protected:
     nsInputState mInputState;

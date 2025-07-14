@@ -41,9 +41,6 @@ public:
     }
     void Reset(void) override;
     float GetConfidence(void) override;
-    void SetOpion() override
-    {
-    }
 
 protected:
     nsCodingStateMachine *mCodingSM;

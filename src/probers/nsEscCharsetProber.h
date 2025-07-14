@@ -32,9 +32,6 @@ public:
     {
         return (float)0.99;
     }
-    void SetOpion() override
-    {
-    }
 
 protected:
     void GetDistribution(unsigned int aCharLen, const char *aStr);

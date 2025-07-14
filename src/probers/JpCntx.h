@@ -57,9 +57,6 @@ public:
 
     float GetConfidence();
     void Reset(void);
-    void SetOpion()
-    {
-    }
     bool GotEnoughData()
     {
         return mTotalRel > ENOUGH_REL_THRESHOLD;

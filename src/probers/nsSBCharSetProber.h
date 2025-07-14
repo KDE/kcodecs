@@ -54,9 +54,6 @@ public:
     }
     void Reset(void) override;
     float GetConfidence(void) override;
-    void SetOpion() override
-    {
-    }
 
     // This feature is not implemented yet. any current language model
     // contain this parameter as false. No one is looking at this
