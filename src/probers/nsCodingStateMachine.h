@@ -42,13 +42,13 @@ public:
     }
     nsSMState NextState(char c)
     {
-        // for each byte we get its class KCODECS_NO_EXPORT , if it is first byte, we also get byte length
+        // for each byte we get its class, if it is first byte, we also get byte length
         unsigned int byteCls = GETCLASS(c);
         if (mCurrentState == eStart) {
             mCurrentBytePos = 0;
             mCurrentCharLen = mModel->charLenTable[byteCls];
         }
-        // from byte's class KCODECS_NO_EXPORT and stateTable, we get its next state
+        // from byte's class and stateTable, we get its next state
         mCurrentState = GETFROMPCK(mCurrentState * (mModel->classFactor) + byteCls, mModel->stateTable);
         mCurrentBytePos++;
         return mCurrentState;
