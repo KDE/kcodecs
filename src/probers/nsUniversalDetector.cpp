@@ -18,10 +18,8 @@ nsUniversalDetector::nsUniversalDetector()
 {
     mDone = false;
     mBestGuess = -1; // illegal value as signal
-    mInTag = false;
     mEscCharSetProber = nullptr;
 
-    mStart = true;
     mDetectedCharset = nullptr;
     mGotData = false;
     mInputState = ePureAscii;
@@ -45,9 +43,7 @@ void nsUniversalDetector::Reset()
 {
     mDone = false;
     mBestGuess = -1; // illegal value as signal
-    mInTag = false;
 
-    mStart = true;
     mDetectedCharset = nullptr;
     mGotData = false;
     mInputState = ePureAscii;

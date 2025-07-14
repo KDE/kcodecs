@@ -34,8 +34,6 @@ public:
 protected:
     nsInputState mInputState;
     bool mDone;
-    bool mInTag;
-    bool mStart;
     bool mGotData;
     char mLastChar;
     const char *mDetectedCharset;
