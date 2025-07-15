@@ -35,6 +35,8 @@ void KEncodingProberTest::testProbe()
     QCOMPARE(ep.proberType(), proberType);
     ep.feed(data);
 
+    QEXPECT_FAIL("BOM UTF-16LE", "BOM detected but ignored", Continue);
+    QEXPECT_FAIL("BOM UTF-16BE", "BOM detected but ignored", Continue);
     QCOMPARE(ep.encoding().toLower(), encoding);
 }
 
@@ -67,6 +69,16 @@ void KEncodingProberTest::testProbe_data()
         "MGGIE1DD");
     QTest::addRow("binaryData") //
         << binaryData << KEncodingProber::Universal << QByteArray("utf-8");
+
+    QTest::addRow("BOM UTF-8") //
+        << QByteArray("\xef\xbb\xbfZ", 4) // "<UTF-8 BOM>Z"
+        << KEncodingProber::Universal << QByteArray("utf-8");
+    QTest::addRow("BOM UTF-16BE") //
+        << QByteArray("\xfe\xff\x00Z", 4) // "<UTF-16BE BOM>Z"
+        << KEncodingProber::Universal << QByteArray("utf-16be");
+    QTest::addRow("BOM UTF-16LE") //
+        << QByteArray("\xff\xfeZ\x00", 4) // "<UTF-16LE BOM>Z"
+        << KEncodingProber::Universal << QByteArray("utf-16le");
 }
 
 QTEST_MAIN(KEncodingProberTest)
