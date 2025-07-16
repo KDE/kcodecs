@@ -37,6 +37,10 @@ void KEncodingProberTest::testProbe()
 
     QEXPECT_FAIL("BOM UTF-16LE", "BOM detected but ignored", Continue);
     QEXPECT_FAIL("BOM UTF-16BE", "BOM detected but ignored", Continue);
+    QEXPECT_FAIL("UTF-16LE Unicode", "UTF-16BE preferred unless erroneous", Continue);
+    QEXPECT_FAIL("UTF-16LE Unicode definite 1", "UTF-16BE invalid surrogate ignored", Continue);
+    QEXPECT_FAIL("UTF-16BE Unicode definite 2", "UTF-16BE valid code misdetected", Continue);
+    QEXPECT_FAIL("UTF-16LE Unicode definite 2", "UTF-16LE valid code misdetected", Continue);
     QCOMPARE(ep.encoding().toLower(), encoding);
 }
 
@@ -79,6 +83,25 @@ void KEncodingProberTest::testProbe_data()
     QTest::addRow("BOM UTF-16LE") //
         << QByteArray("\xff\xfeZ\x00", 4) // "<UTF-16LE BOM>Z"
         << KEncodingProber::Universal << QByteArray("utf-16le");
+
+    QTest::addRow("UTF-16BE Unicode") //
+        << QByteArray("\x00\x0a\x00\xc4\x00\xd6", 6) // "\nÄÖ"
+        << KEncodingProber::Unicode << QByteArray("utf-16be");
+    QTest::addRow("UTF-16LE Unicode") //
+        << QByteArray("\x0a\x00\xc4\x00\xd6\x00", 6) // "\nÄÖ"
+        << KEncodingProber::Unicode << QByteArray("utf-16le");
+    QTest::addRow("UTF-16BE Unicode definite 1") //
+        << QByteArray("\x00\xdc\x00\x20", 4) // "Ü "
+        << KEncodingProber::Unicode << QByteArray("utf-16be");
+    QTest::addRow("UTF-16LE Unicode definite 1") //
+        << QByteArray("\xdc\x00\x20\x00", 4) // "Ü "
+        << KEncodingProber::Unicode << QByteArray("utf-16le");
+    QTest::addRow("UTF-16BE Unicode definite 2") //
+        << QByteArray("\xc4\x00\x2a\x00\x00\xdc", 6) // "Ä*<inv>" or "쐀⨀Ü"
+        << KEncodingProber::Unicode << QByteArray("utf-16be");
+    QTest::addRow("UTF-16LE Unicode definite 2") //
+        << QByteArray("\x00\xc4\x00\x2a\xdc\x00", 6) // "Ä*<inv>" or "쐀⨀Ü"
+        << KEncodingProber::Unicode << QByteArray("utf-16le");
 }
 
 QTEST_MAIN(KEncodingProberTest)
