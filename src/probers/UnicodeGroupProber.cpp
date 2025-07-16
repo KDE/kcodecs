@@ -41,44 +41,10 @@ void UnicodeGroupProber::Reset(void)
 nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLen)
 {
     nsSMState codingState;
-    static bool disableUTF16LE = false;
-    static bool disableUTF16BE = false;
 
     if (mActiveSM == 0 || aLen < 2) {
         mState = eNotMe;
         return mState;
-    }
-
-    if (!(disableUTF16LE || disableUTF16BE)) {
-        if (aLen % 2 != 0) {
-            disableUTF16LE = true;
-            disableUTF16BE = true;
-        }
-        const uint weight_BOM = sqrt((double)aLen) + aLen / 10.0;
-        uint counts[5] = {0, 0, 0, 0, 0};
-        for (uint i = 0; i < 5; i++) {
-            counts[i] = std::count(aBuf, aBuf + aLen, char(i));
-        }
-        const double weight_zero = (2.0 * (counts[0] + counts[1] + counts[2] + counts[3] + counts[4]) + weight_BOM) / aLen;
-        if (weight_zero < log(1.4142)) {
-            disableUTF16LE = true;
-            disableUTF16BE = true;
-        }
-        if (4 >= aBuf[1] && aBuf[1] >= 0 && QChar::isPrint(static_cast<uint>(aBuf[0]))) {
-            disableUTF16BE = true;
-        } else {
-            disableUTF16LE = true;
-        }
-        if (disableUTF16BE) {
-            mActiveSM--;
-        }
-        if (disableUTF16LE) {
-            nsCodingStateMachine *t;
-            t = mCodingSM[1];
-            mCodingSM[1] = mCodingSM[2];
-            mCodingSM[2] = t;
-            mActiveSM--;
-        }
     }
 
     for (uint i = 0; i < aLen; ++i) {
