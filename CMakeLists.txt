@@ -40,7 +40,7 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KCODECS
 ecm_install_po_files_as_qm(poqm)
 
 ecm_set_disabled_deprecation_versions(
-    QT 6.9.0
+    QT 6.10.0
 )
 
 add_subdirectory(src)
