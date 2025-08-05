@@ -89,9 +89,14 @@ KEmailAddress::EmailParseResult
 splitAddressInternal(const QByteArray &address, QByteArray &displayName, QByteArray &addrSpec, QByteArray &comment, bool allowMultipleAddresses)
 {
     //  qCDebug(KCODECS_LOG) << "address";
-    displayName = "";
-    addrSpec = "";
-    comment = "";
+    // 110 is at time of writing a step in qbytearrays growth curve, and it is
+    // unlikely that displayname nor addrSpec will be larger than that
+    // but neither addrSpec nor displayName will be larger than the input.
+    displayName.clear();
+    displayName.reserve(std::min<qsizetype>(110, address.size()));
+    addrSpec.clear();
+    addrSpec.reserve(std::min<qsizetype>(110, address.size()));
+    comment.clear(); // comments are uncommon, so no need to reserve up front
 
     if (address.isEmpty()) {
         return AddressEmpty;
@@ -227,9 +232,9 @@ splitAddressInternal(const QByteArray &address, QByteArray &displayName, QByteAr
         return UnclosedAngleAddr;
     }
 
-    displayName = displayName.trimmed();
-    comment = comment.trimmed();
-    addrSpec = addrSpec.trimmed();
+    displayName = std::move(displayName).trimmed();
+    comment = std::move(comment).trimmed();
+    addrSpec = std::move(addrSpec).trimmed();
 
     if (addrSpec.isEmpty()) {
         if (displayName.isEmpty()) {
