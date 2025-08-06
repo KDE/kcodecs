@@ -100,6 +100,7 @@ void CodecTest::testCodecs()
             qDebug() << lines[i];
             qDebug() << expLines[i];
         }
+        qDebug() << "Joined" <<  (lines.join(QByteArray()) == expLines.join(QByteArray()));
         if (lines.count() == expLines.count()) {
             QCOMPARE(result.split('\n'), expResult.split('\n'));
         }
