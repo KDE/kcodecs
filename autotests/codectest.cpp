@@ -95,7 +95,14 @@ void CodecTest::testCodecs()
     if (result != expResult) {
         const QList<QByteArray> lines = result.split('\n');
         const QList<QByteArray> expLines = expResult.split('\n');
-        QCOMPARE(result.split('\n'), expResult.split('\n'));
+        for (int i = 0; i < std::min(lines.count(), expLines.count()); i++) {
+            qDebug() << "Printing line " << i;
+            qDebug() << lines[i];
+            qDebug() << expLines[i];
+        }
+        if (lines.count() == expLines.count()) {
+            QCOMPARE(result.split('\n'), expResult.split('\n'));
+        }
     }
     QCOMPARE(result, expResult);
 }
