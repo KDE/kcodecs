@@ -79,7 +79,7 @@ class QuotedPrintableEncoder : public Encoder
         Never,
         AtBOL,
         Definitely,
-    } mAccuNeedsEncoding : 2;
+    } mAccuNeedsEncoding;
     bool mSawLineEnd : 1;
     bool mSawCR : 1;
     bool mFinishing : 1;
