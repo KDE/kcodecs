@@ -36,7 +36,7 @@ public:
     void Reset(void) final;
     float GetConfidence(void) override;
 
-    Q_DISABLE_COPY(nsEUCKRProber)
+    Q_DISABLE_COPY_MOVE(nsEUCKRProber)
 
 protected:
     void GetDistribution(unsigned int aCharLen, const char *aStr);
