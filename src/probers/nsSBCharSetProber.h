@@ -28,7 +28,7 @@ typedef struct {
     const char *charsetName;
 } SequenceModel;
 
-class KCODECS_NO_EXPORT nsSingleByteCharSetProber : public nsCharSetProber
+class KCODECS_NO_EXPORT nsSingleByteCharSetProber final : public nsCharSetProber
 {
 public:
     explicit nsSingleByteCharSetProber(const SequenceModel *model)

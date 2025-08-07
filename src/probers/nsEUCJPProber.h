@@ -18,7 +18,7 @@
 #include "nsCodingStateMachine.h"
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsEUCJPProber : public nsCharSetProber
+class KCODECS_NO_EXPORT nsEUCJPProber final : public nsCharSetProber
 {
 public:
     nsEUCJPProber(void)
@@ -41,6 +41,8 @@ public:
     }
     void Reset(void) override;
     float GetConfidence(void) override;
+
+    Q_DISABLE_COPY_MOVE(nsEUCJPProber)
 
 protected:
     nsCodingStateMachine *mCodingSM;

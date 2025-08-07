@@ -77,7 +77,7 @@ nsProbingState nsMBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
     char *highbyteBuf;
     char *hptr;
     bool keepNext = true; // assume previous is not ascii, it will do no harm except add some noise
-    hptr = highbyteBuf = (char *)malloc(aLen);
+    hptr = highbyteBuf = static_cast<char *>(malloc(aLen));
     if (!hptr) {
         return mState;
     }

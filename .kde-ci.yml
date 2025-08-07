@@ -4,5 +4,7 @@ Dependencies:
     'frameworks/extra-cmake-modules': '@same'
 
 Options:
+  cppcheck-ignore-files:
+    - autotests
  test-before-installing: True
  require-passing-tests-on: ['@all']

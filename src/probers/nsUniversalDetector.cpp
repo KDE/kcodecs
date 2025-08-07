@@ -146,12 +146,11 @@ const char *nsUniversalDetector::GetCharSetName()
     }
     switch (mInputState) {
     case eHighbyte: {
-        float proberConfidence;
         float maxProberConfidence = (float)0.0;
         int maxProber = 0;
 
         for (int i = 0; i < NUM_OF_CHARSET_PROBERS; i++) {
-            proberConfidence = mCharSetProbers[i]->GetConfidence();
+            float proberConfidence = mCharSetProbers[i]->GetConfidence();
             if (proberConfidence > maxProberConfidence) {
                 maxProberConfidence = proberConfidence;
                 maxProber = i;
@@ -183,12 +182,11 @@ float nsUniversalDetector::GetConfidence()
     }
     switch (mInputState) {
     case eHighbyte: {
-        float proberConfidence;
         float maxProberConfidence = (float)0.0;
         int maxProber = 0;
 
         for (int i = 0; i < NUM_OF_CHARSET_PROBERS; i++) {
-            proberConfidence = mCharSetProbers[i]->GetConfidence();
+            float proberConfidence = mCharSetProbers[i]->GetConfidence();
             if (proberConfidence > maxProberConfidence) {
                 maxProberConfidence = proberConfidence;
                 maxProber = i;

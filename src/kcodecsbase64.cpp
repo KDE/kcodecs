@@ -48,7 +48,7 @@ class Base64Decoder : public Decoder
 
 protected:
     friend class Base64Codec;
-    Base64Decoder(Codec::NewlineType newline = Codec::NewlineLF)
+    explicit Base64Decoder(Codec::NewlineType newline = Codec::NewlineLF)
         : Decoder(newline)
         , mStepNo(0)
         , mOutbits(0)
@@ -83,7 +83,7 @@ protected:
     friend class Rfc2047BEncodingCodec;
     friend class Rfc2047BEncodingEncoder;
     friend class Base64Codec;
-    Base64Encoder(Codec::NewlineType newline = Codec::NewlineLF)
+    explicit Base64Encoder(Codec::NewlineType newline = Codec::NewlineLF)
         : Encoder(newline)
         , mStepNo(0)
         , mWrittenPacketsOnThisLine(0)
@@ -114,7 +114,7 @@ class Rfc2047BEncodingEncoder : public Base64Encoder
 {
 protected:
     friend class Rfc2047BEncodingCodec;
-    Rfc2047BEncodingEncoder(Codec::NewlineType newline = Codec::NewlineLF)
+    explicit Rfc2047BEncodingEncoder(Codec::NewlineType newline = Codec::NewlineLF)
         : Base64Encoder(newline)
     {
     }

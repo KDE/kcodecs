@@ -35,10 +35,12 @@ typedef struct {
 class KCODECS_NO_EXPORT nsCodingStateMachine
 {
 public:
-    nsCodingStateMachine(const SMModel *sm)
+    explicit nsCodingStateMachine(const SMModel *sm)
     {
         mCurrentState = eStart;
+        mCurrentBytePos = 0;
         mModel = sm;
+        mCurrentCharLen = 0;
     }
     nsSMState NextState(char c)
     {

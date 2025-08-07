@@ -26,11 +26,6 @@ public:
     {
     }
 
-    // feed a block of data and do distribution analysis
-    void HandleData(const char * /* aBuf */, unsigned int /* aLen */)
-    {
-    }
-
     // Feed a character with known length
     void HandleOneChar(const char *aStr, unsigned int aCharLen)
     {
@@ -72,29 +67,26 @@ protected:
     // we do not handle character base on its original encoding string, but
     // convert this encoding string to a number, here called order.
     // This allows multiple encodings of a language to share one frequency table
-    virtual int GetOrder(const char * /* str */)
-    {
-        return -1;
-    }
+    virtual int GetOrder(const char * /* str */) = 0;
 
     // If this flag is set to true, detection is done and conclusion has been made
-    bool mDone;
+    bool mDone = false;
 
     // The number of characters whose frequency order is less than 512
-    unsigned int mFreqChars;
+    unsigned int mFreqChars = 0;
 
     // Total character encountered.
-    unsigned int mTotalChars;
+    unsigned int mTotalChars = 0;
 
     // Mapping table to get frequency order from char order (get from GetOrder())
-    const short *mCharToFreqOrder;
+    const short *mCharToFreqOrder = nullptr;
 
     // Size of above table
-    unsigned int mTableSize;
+    unsigned int mTableSize = 0;
 
     // This is a constant value varies from language to language, it is used in
     // calculating confidence. See my paper for further detail.
-    float mTypicalDistributionRatio;
+    float mTypicalDistributionRatio = 0;
 };
 
 class KCODECS_NO_EXPORT EUCKRDistributionAnalysis : public CharDistributionAnalysis

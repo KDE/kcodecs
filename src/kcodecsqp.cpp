@@ -89,6 +89,7 @@ protected:
     friend class QuotedPrintableCodec;
     QuotedPrintableEncoder(Codec::NewlineType newline = Codec::NewlineLF)
         : Encoder(newline)
+        , mInputBuffer("")
         , mCurrentLineLength(0)
         , mAccu(0)
         , mInputBufferReadCursor(0)
