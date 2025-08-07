@@ -4,6 +4,7 @@ Dependencies:
     'frameworks/extra-cmake-modules': '@same'
 
 Options:
+ cppcheck-arguments: '--enable=warning,style,performance --library=test-cppcheck.xml '
  cppcheck-ignore-files:
   - autotests
  test-before-installing: True

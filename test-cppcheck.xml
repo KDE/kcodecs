@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<def format="2">
+  <define name="Q_DISABLE_COPY(Class)" value="Class(Class&amp;) = delete;Class&amp; operator=(const Class&amp;) = delete;"/>
+  <define name="Q_DISABLE_COPY_MOVE(Class)" value="Class(Class&amp;) = delete;Class&amp; operator=(const Class&amp;) = delete;explicit Class(C&amp;&amp;) = delete;Class&amp; operator=(Class&amp;&amp;) = delete;"/>
+</def>
