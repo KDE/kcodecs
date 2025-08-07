@@ -14,7 +14,7 @@
 // We use gb18030 to replace gb2312, because 18030 is a superset.
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsGB18030Prober final : public nsCharSetProber
+class KCODECS_NO_EXPORT nsGB18030Prober : public nsCharSetProber
 {
 public:
     nsGB18030Prober(void)
@@ -37,8 +37,6 @@ public:
     }
     void Reset(void) override;
     float GetConfidence(void) override;
-
-    Q_DISABLE_COPY_MOVE(nsGB18030Prober)
 
 protected:
     void GetDistribution(unsigned int aCharLen, const char *aStr);

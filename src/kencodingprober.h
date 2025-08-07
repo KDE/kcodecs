@@ -117,7 +117,7 @@ public:
     /*!
      * Default ProberType is Universal(detect all possible encodings)
      */
-    explicit KEncodingProber(ProberType proberType = Universal);
+    KEncodingProber(ProberType proberType = Universal);
 
     ~KEncodingProber();
 

@@ -21,7 +21,7 @@
 
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsSJISProber final : public nsCharSetProber
+class KCODECS_NO_EXPORT nsSJISProber : public nsCharSetProber
 {
 public:
     nsSJISProber(void)
@@ -44,8 +44,6 @@ public:
     }
     void Reset(void) override;
     float GetConfidence(void) override;
-
-    Q_DISABLE_COPY_MOVE(nsSJISProber)
 
 protected:
     nsCodingStateMachine *mCodingSM;

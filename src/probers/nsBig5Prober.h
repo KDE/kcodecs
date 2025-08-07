@@ -12,7 +12,7 @@
 #include "nsCodingStateMachine.h"
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsBig5Prober final : public nsCharSetProber
+class KCODECS_NO_EXPORT nsBig5Prober : public nsCharSetProber
 {
 public:
     nsBig5Prober(void)
@@ -35,8 +35,6 @@ public:
     }
     void Reset(void) override;
     float GetConfidence(void) override;
-
-    Q_DISABLE_COPY_MOVE(nsBig5Prober)
 
 protected:
     void GetDistribution(unsigned int aCharLen, const char *aStr);

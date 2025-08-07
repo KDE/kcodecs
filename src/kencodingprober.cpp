@@ -130,7 +130,7 @@ public:
         }
     }
     KEncodingProber::ProberType mProberType;
-    KEncodingProber::ProberState mProberState = KEncodingProber::Probing;
+    KEncodingProber::ProberState mProberState;
     kencodingprober::nsCharSetProber *mProber;
     bool mStart;
 };

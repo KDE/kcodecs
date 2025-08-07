@@ -84,7 +84,7 @@ QByteArray updateEncodingCharset(const QByteArray &currentCharset, const QByteAr
 
 QByteArray KCodecs::quotedPrintableEncode(QByteArrayView in, bool useCRLF)
 {
-    const Codec *codec = Codec::codecForName("quoted-printable");
+    Codec *codec = Codec::codecForName("quoted-printable");
     return codec->encode(in, useCRLF ? Codec::NewlineCRLF : Codec::NewlineLF);
 }
 
@@ -95,7 +95,7 @@ void KCodecs::quotedPrintableEncode(QByteArrayView in, QByteArray &out, bool use
 
 QByteArray KCodecs::quotedPrintableDecode(QByteArrayView in)
 {
-    const Codec *codec = Codec::codecForName("quoted-printable");
+    Codec *codec = Codec::codecForName("quoted-printable");
     return codec->decode(in);
 }
 
@@ -641,8 +641,7 @@ bool KCodecs::Codec::decode(const char *&scursor, const char *const send, char *
 /*                          KCodecs::Encoder                                  */
 
 KCodecs::EncoderPrivate::EncoderPrivate(Codec::NewlineType newline)
-    : outputBuffer("")
-    , outputBufferCursor(0)
+    : outputBufferCursor(0)
     , newline(newline)
 {
 }

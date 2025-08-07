@@ -75,7 +75,7 @@ nsProbingState ChineseGroupProber::HandleData(const char *aBuf, unsigned int aLe
     char *highbyteBuf;
     char *hptr;
     bool keepNext = true; // assume previous is not ascii, it will do no harm except add some noise
-    hptr = highbyteBuf = static_cast<char *>(malloc(aLen));
+    hptr = highbyteBuf = (char *)malloc(aLen);
     if (!hptr) {
         return mState;
     }

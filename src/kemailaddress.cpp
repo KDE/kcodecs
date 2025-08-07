@@ -720,16 +720,17 @@ QString KEmailAddress::firstEmailAddress(const QString &addresses, QString &erro
 bool KEmailAddress::extractEmailAddressAndName(const QString &aStr, QString &mail, QString &name)
 {
     name.clear();
-    name.reserve(std::min<qsizetype>(110, aStr.size()));
     mail.clear();
-    mail.reserve(std::min<qsizetype>(110, aStr.size()));
 
     const int len = aStr.length();
     const char cQuotes = '"';
 
+    bool bInComment = false;
     bool bInQuotesOutsideOfEmail = false;
     int i = 0;
     int iAd = 0;
+    int iMailStart = 0;
+    int iMailEnd = 0;
     QChar c;
     unsigned int commentstack = 0;
 
@@ -743,7 +744,7 @@ bool KEmailAddress::extractEmailAddressAndName(const QString &aStr, QString &mai
         if (QLatin1Char(')') == c) {
             --commentstack;
         }
-        bool bInComment = commentstack != 0;
+        bInComment = commentstack != 0;
         if (QLatin1Char('"') == c && !bInComment) {
             bInQuotesOutsideOfEmail = !bInQuotesOutsideOfEmail;
         }
@@ -778,10 +779,8 @@ bool KEmailAddress::extractEmailAddressAndName(const QString &aStr, QString &mai
         // Loop backwards until we find the start of the string
         // or a ',' that is outside of a comment
         //          and outside of quoted text before the leading '<'.
-        bool bInComment = false;
+        bInComment = false;
         bInQuotesOutsideOfEmail = false;
-        int iMailStart = 0;
-        int iMailEnd = 0;
         for (i = iAd - 1; 0 <= i; --i) {
             c = aStr[i];
             if (bInComment) {
@@ -907,8 +906,8 @@ bool KEmailAddress::extractEmailAddressAndName(const QString &aStr, QString &mai
         }
     }
 
-    name = std::move(name).simplified();
-    mail = std::move(mail).simplified();
+    name = name.simplified();
+    mail = mail.simplified();
 
     return !(name.isEmpty() || mail.isEmpty());
 }

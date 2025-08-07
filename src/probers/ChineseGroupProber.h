@@ -12,7 +12,7 @@
 #define CN_NUM_OF_PROBERS 3
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT ChineseGroupProber final : public nsCharSetProber
+class KCODECS_NO_EXPORT ChineseGroupProber : public nsCharSetProber
 {
 public:
     ChineseGroupProber();

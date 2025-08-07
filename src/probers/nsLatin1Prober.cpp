@@ -87,7 +87,7 @@ nsProbingState nsLatin1Prober::HandleData(const char *aBuf, unsigned int aLen)
     unsigned int newLen1 = 0;
 
     if (!FilterWithEnglishLetters(aBuf, aLen, &newBuf1, newLen1)) {
-        newBuf1 = const_cast<char *>(aBuf);
+        newBuf1 = (char *)aBuf;
         newLen1 = aLen;
     }
 

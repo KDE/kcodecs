@@ -15,7 +15,7 @@
 #define JP_NUM_OF_PROBERS 3
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT JapaneseGroupProber final : public nsCharSetProber
+class KCODECS_NO_EXPORT JapaneseGroupProber : public nsCharSetProber
 {
 public:
     JapaneseGroupProber();
