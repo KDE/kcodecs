@@ -16,7 +16,7 @@
 
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsSBCSGroupProber : public nsCharSetProber
+class KCODECS_NO_EXPORT nsSBCSGroupProber final : public nsCharSetProber
 {
 public:
     nsSBCSGroupProber();

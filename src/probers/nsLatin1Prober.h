@@ -12,7 +12,7 @@
 #define FREQ_CAT_NUM 4
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsLatin1Prober : public nsCharSetProber
+class KCODECS_NO_EXPORT nsLatin1Prober final : public nsCharSetProber
 {
 public:
     nsLatin1Prober(void)

@@ -30,7 +30,7 @@ class UUDecoder : public Decoder
 
 protected:
     friend class UUCodec;
-    UUDecoder(Codec::NewlineType newline = Codec::NewlineLF)
+    explicit UUDecoder(Codec::NewlineType newline = Codec::NewlineLF)
         : Decoder(newline)
         , mStepNo(0)
         , mAnnouncedOctetCount(0)

@@ -70,10 +70,9 @@ float nsSingleByteCharSetProber::GetConfidence(void)
         }
     return (float)0.01;
 #else // POSITIVE_APPROACH
-    float r;
 
     if (mTotalSeqs > 0) {
-        r = ((float)1.0) * mSeqCounters[POSITIVE_CAT] / mTotalSeqs / mModel->mTypicalPositiveRatio;
+        float r = ((float)1.0) * mSeqCounters[POSITIVE_CAT] / mTotalSeqs / mModel->mTypicalPositiveRatio;
         r = r * mFreqChar / mTotalChar;
         if (r >= (float)1.00) {
             r = (float)0.99;

@@ -12,10 +12,10 @@
 #include "nsCodingStateMachine.h"
 namespace kencodingprober
 {
-class KCODECS_NO_EXPORT nsEUCKRProber : public nsCharSetProber
+class KCODECS_NO_EXPORT nsEUCKRProber final : public nsCharSetProber
 {
 public:
-    nsEUCKRProber(void)
+    explicit nsEUCKRProber(void)
     {
         mCodingSM = new nsCodingStateMachine(&EUCKRSMModel);
         Reset();
@@ -35,6 +35,8 @@ public:
     }
     void Reset(void) override;
     float GetConfidence(void) override;
+
+    Q_DISABLE_COPY_MOVE(nsEUCKRProber)
 
 protected:
     void GetDistribution(unsigned int aCharLen, const char *aStr);
