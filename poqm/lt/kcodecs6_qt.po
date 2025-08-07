@@ -122,7 +122,7 @@ msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kemailaddress.cpp:503
+#: kemailaddress.cpp:508
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -139,7 +139,7 @@ msgstr ""
 "vienas @ simbolis. Jei nepakeisite adreso, negalėsite išsiųsti tinkamų "
 "laiškų."
 
-#: kemailaddress.cpp:509
+#: kemailaddress.cpp:514
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -153,12 +153,12 @@ msgstr ""
 "El. pašto adresas, kurį įrašėte, yra neteisingas, nes jame nėra @ simbolio. "
 "Jei nepakeisite adreso, negalėsite išsiųsti tinkamų laiškų."
 
-#: kemailaddress.cpp:515
+#: kemailaddress.cpp:520
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
 msgstr "Turite kažką įrašyti el. pašto adreso lauke."
 
-#: kemailaddress.cpp:517
+#: kemailaddress.cpp:522
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
@@ -166,7 +166,7 @@ msgid ""
 msgstr ""
 "El. pašto adresas, kurį įrašėte, yra neteisingas, nes neturi vietinės dalies."
 
-#: kemailaddress.cpp:521
+#: kemailaddress.cpp:526
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
@@ -174,7 +174,7 @@ msgid ""
 msgstr ""
 "El. pašto adresas, kurį įrašėte, yra neteisingas, nes neturi srities dalies."
 
-#: kemailaddress.cpp:525
+#: kemailaddress.cpp:530
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains unclosed "
@@ -183,12 +183,12 @@ msgstr ""
 "El. pašto adresas, kurį įrašėte, yra neteisingas, nes jame yra neuždarytų "
 "komentarų/skliaustelių."
 
-#: kemailaddress.cpp:529
+#: kemailaddress.cpp:534
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
 msgstr "Įrašytas el. pašto adresas yra teisingas."
 
-#: kemailaddress.cpp:531
+#: kemailaddress.cpp:536
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an unclosed "
@@ -197,7 +197,7 @@ msgstr ""
 "El. pašto adresas, kurį įrašėte, yra neteisingas, nes turi neuždarytą "
 "kampinį skliaustą."
 
-#: kemailaddress.cpp:535
+#: kemailaddress.cpp:540
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains too many "
@@ -206,7 +206,7 @@ msgstr ""
 "El. pašto adresas, kurį įrašėte, yra neteisingas, nes turi per daug kampinių "
 "skliaustų."
 
-#: kemailaddress.cpp:539
+#: kemailaddress.cpp:544
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
@@ -214,7 +214,7 @@ msgid ""
 msgstr ""
 "El. pašto adresas, kurį įrašėte, yra neteisingas, nes jame yra kablelis."
 
-#: kemailaddress.cpp:543
+#: kemailaddress.cpp:548
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -231,7 +231,7 @@ msgstr ""
 "baigiasi; tai greičiausiai reiškia, kad panaudojote atšaukimo ženklą, pvz., "
 "„\\“ kaip paskutinį ženklą el. pašto adrese."
 
-#: kemailaddress.cpp:549
+#: kemailaddress.cpp:554
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains quoted text "
@@ -240,7 +240,7 @@ msgstr ""
 "El. pašto adresas, kurį įrašėte, yra neteisingas, nes turi atvertą ir "
 "neužvertą cituojamą tekstą."
 
-#: kemailaddress.cpp:553
+#: kemailaddress.cpp:558
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not seem to "
@@ -249,7 +249,7 @@ msgstr ""
 "El. pašto adresas, kurį įrašėte, yra neteisingas, nes neturi faktinio el. "
 "pašto adreso, t.y. kažko panašaus į jonas@example.org."
 
-#: kemailaddress.cpp:558
+#: kemailaddress.cpp:563
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an illegal "
@@ -258,7 +258,7 @@ msgstr ""
 "El. pašto adresas, kurį įrašėte, yra neteisingas, nes jame yra netinkamų "
 "ženklų."
 
-#: kemailaddress.cpp:562
+#: kemailaddress.cpp:567
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
@@ -267,7 +267,7 @@ msgstr ""
 "El. pašto adresas, kurį įrašėte, yra neteisingas, nes turi netinkamą "
 "pavadinimą."
 
-#: kemailaddress.cpp:566
+#: kemailaddress.cpp:571
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -282,12 +282,12 @@ msgstr ""
 "El. pašto adresas, kurį įrašėte, yra neteisingas, nes jame nėra simbolio "
 "'.'. Jei nepakeisite savo adreso, negalėsite išsiųsti tinkamų laiškų."
 
-#: kemailaddress.cpp:572
+#: kemailaddress.cpp:577
 msgctxt "QObject|"
 msgid "Unknown problem with email address"
 msgstr "Nežinoma problema su el. pašto adresu"
 
-#: kemailaddress.cpp:632
+#: kemailaddress.cpp:637
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""

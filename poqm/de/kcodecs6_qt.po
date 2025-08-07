@@ -122,7 +122,7 @@ msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kemailaddress.cpp:503
+#: kemailaddress.cpp:508
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains more than one "
@@ -133,7 +133,7 @@ msgstr ""
 "enthält.\n"
 "Wenn Sie Ihre Adresse nicht ändern, erzeugen Sie fehlerhafte E-Mails."
 
-#: kemailaddress.cpp:509
+#: kemailaddress.cpp:514
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a @.\n"
@@ -142,12 +142,12 @@ msgstr ""
 "Die von Ihnen eingegebene E-Mail-Adresse ist ungültig, da sie kein „@“ "
 "enthält.Wenn Sie Ihre Adresse nicht ändern, erzeugen Sie fehlerhafte E-Mails."
 
-#: kemailaddress.cpp:515
+#: kemailaddress.cpp:520
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
 msgstr "Das Adressfeld der E-Mail darf nicht leer sein."
 
-#: kemailaddress.cpp:517
+#: kemailaddress.cpp:522
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
@@ -156,7 +156,7 @@ msgstr ""
 "Die von Ihnen eingegebene E-Mail-Adresse ist ungültig, da sie keinen lokalen "
 "Teil enthält."
 
-#: kemailaddress.cpp:521
+#: kemailaddress.cpp:526
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
@@ -165,7 +165,7 @@ msgstr ""
 "Die von Ihnen eingegebene E-Mail-Adresse ist ungültig, da sie keinen Domain-"
 "Teil enthält."
 
-#: kemailaddress.cpp:525
+#: kemailaddress.cpp:530
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains unclosed "
@@ -174,12 +174,12 @@ msgstr ""
 "Die von Ihnen eingegebene E-Mail-Adresse ist ungültig, da sie nicht "
 "abgeschlossene Kommentare/Klammern enthält."
 
-#: kemailaddress.cpp:529
+#: kemailaddress.cpp:534
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
 msgstr "Die eingegebene E-Mail-Adresse ist ungültig."
 
-#: kemailaddress.cpp:531
+#: kemailaddress.cpp:536
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an unclosed "
@@ -188,7 +188,7 @@ msgstr ""
 "Die von Ihnen eingegebene E-Mail-Adresse ist ungültig, da sie eine nicht "
 "abgeschlossene spitze Klammer enthält."
 
-#: kemailaddress.cpp:535
+#: kemailaddress.cpp:540
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains too many "
@@ -197,7 +197,7 @@ msgstr ""
 "Die von Ihnen eingegebene E-Mail-Adresse ist ungültig, da sie zu viele "
 "schließende spitze Klammern enthält."
 
-#: kemailaddress.cpp:539
+#: kemailaddress.cpp:544
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
@@ -206,7 +206,7 @@ msgstr ""
 "Die von Ihnen eingegebene E-Mail-Adresse ist ungültig, da sie ein "
 "unerwartetes Komma enthält."
 
-#: kemailaddress.cpp:543
+#: kemailaddress.cpp:548
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it ended unexpectedly.\n"
@@ -218,7 +218,7 @@ msgstr ""
 "Das rührt möglicherweise daher, dass Sie am Ende der E-Mail-Adresse ein "
 "gesondert behandeltes Zeichen wie \\ benutzt haben."
 
-#: kemailaddress.cpp:549
+#: kemailaddress.cpp:554
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains quoted text "
@@ -227,7 +227,7 @@ msgstr ""
 "Die von Ihnen eingegebene E-Mail-Adresse ist ungültig, da sie geklammerten "
 "Text enthält, dessen Ende nicht gefunden werden kann."
 
-#: kemailaddress.cpp:553
+#: kemailaddress.cpp:558
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not seem to "
@@ -237,7 +237,7 @@ msgstr ""
 "echte E-Mail-Adresse in der Form wie z. B. joe@example.org zu handeln "
 "scheint."
 
-#: kemailaddress.cpp:558
+#: kemailaddress.cpp:563
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an illegal "
@@ -246,7 +246,7 @@ msgstr ""
 "Die von Ihnen eingegebene E-Mail-Adresse ist ungültig, da sie ein ungültiges "
 "Zeichen enthält."
 
-#: kemailaddress.cpp:562
+#: kemailaddress.cpp:567
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
@@ -255,7 +255,7 @@ msgstr ""
 "Die von Ihnen eingegebene E-Mail-Adresse ist ungültig, da sie einen "
 "ungültigen Klartextnamen enthält."
 
-#: kemailaddress.cpp:566
+#: kemailaddress.cpp:571
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
@@ -266,12 +266,12 @@ msgstr ""
 "enthält.\n"
 "Wenn Sie Ihre Adresse nicht ändern, erzeugen Sie fehlerhafte E-Mails."
 
-#: kemailaddress.cpp:572
+#: kemailaddress.cpp:577
 msgctxt "QObject|"
 msgid "Unknown problem with email address"
 msgstr "Nicht näher bestimmbarer Fehler in der E-Mail-Adresse"
 
-#: kemailaddress.cpp:632
+#: kemailaddress.cpp:637
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid.\n"

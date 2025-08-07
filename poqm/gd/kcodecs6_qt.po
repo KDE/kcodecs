@@ -113,7 +113,7 @@ msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kemailaddress.cpp:503
+#: kemailaddress.cpp:508
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -130,7 +130,7 @@ msgstr ""
 "'na bhroinn. Cha chruthaich thu teachdaireachdan dligheach mur atharraich "
 "thu an seòladh agad."
 
-#: kemailaddress.cpp:509
+#: kemailaddress.cpp:514
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -145,13 +145,13 @@ msgstr ""
 "eil @ 'na bhroinn. Cha chruthaich thu teachdaireachdan dligheach mur "
 "atharraich thu an seòladh agad."
 
-#: kemailaddress.cpp:515
+#: kemailaddress.cpp:520
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
 msgstr ""
 "Feumaidh tu rudeigin a chur a-steach ann an raon an t-seòlaidh puist-d."
 
-#: kemailaddress.cpp:517
+#: kemailaddress.cpp:522
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
@@ -160,7 +160,7 @@ msgstr ""
 "Chan eil an seòladh puist-d a chuir thu a-steach dligheach air sgàth 's nach "
 "eil pàirt ionadail 'na bhroinn."
 
-#: kemailaddress.cpp:521
+#: kemailaddress.cpp:526
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
@@ -169,7 +169,7 @@ msgstr ""
 "Chan eil an seòladh puist-d a chuir thu a-steach dligheach air sgàth 's nach "
 "eil pàirt àrainne 'na bhroinn."
 
-#: kemailaddress.cpp:525
+#: kemailaddress.cpp:530
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains unclosed "
@@ -178,12 +178,12 @@ msgstr ""
 "Chan eil an seòladh puist-d a chuir thu a-steach dligheach air sgàth 's gu "
 "bheil beachdan/camagan 'na bhroinn nach deach a dhùnadh."
 
-#: kemailaddress.cpp:529
+#: kemailaddress.cpp:534
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
 msgstr "Tha an seòladh puist-d a chuir thu a-steach dligheach."
 
-#: kemailaddress.cpp:531
+#: kemailaddress.cpp:536
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an unclosed "
@@ -192,7 +192,7 @@ msgstr ""
 "Chan eil an seòladh puist-d a chuir thu a-steach dligheach air sgàth 's gu "
 "bheil camag bhiorach 'na bhroinn nach deach a dhùnadh."
 
-#: kemailaddress.cpp:535
+#: kemailaddress.cpp:540
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains too many "
@@ -201,7 +201,7 @@ msgstr ""
 "Chan eil an seòladh puist-d a chuir thu a-steach dligheach air sgàth 's gu "
 "bheil cus chamagan biorach dùnaidh 'na bhroinn."
 
-#: kemailaddress.cpp:539
+#: kemailaddress.cpp:544
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
@@ -210,7 +210,7 @@ msgstr ""
 "Chan eil an seòladh puist-d a chuir thu a-steach dligheach air sgàth 's gu "
 "bheil cromag 'na bhroinn air nach eil dùil."
 
-#: kemailaddress.cpp:543
+#: kemailaddress.cpp:548
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -228,7 +228,7 @@ msgstr ""
 "caractar teichidh mar \"\\\" 'na charactar mu dheireadh san t-seòladh puist-"
 "d agad."
 
-#: kemailaddress.cpp:549
+#: kemailaddress.cpp:554
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains quoted text "
@@ -237,7 +237,7 @@ msgstr ""
 "Chan eil an seòladh puist-d a chuir thu a-steach dligheach air sgàth 's gu "
 "bheil teacsa le comharran-iomraidh 'na bhroinn nach dig gu crìoch."
 
-#: kemailaddress.cpp:553
+#: kemailaddress.cpp:558
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not seem to "
@@ -247,7 +247,7 @@ msgstr ""
 "eil coltas seòlaidh puist-d air, can rudeigin dhen chruth iain@ball-"
 "eisimpleir.org."
 
-#: kemailaddress.cpp:558
+#: kemailaddress.cpp:563
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an illegal "
@@ -256,7 +256,7 @@ msgstr ""
 "Chan eil an seòladh puist-d a chuir thu a-steach dligheach air sgàth 's gu "
 "bheil caractar mì-dhligheach 'na bhroinn."
 
-#: kemailaddress.cpp:562
+#: kemailaddress.cpp:567
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
@@ -265,7 +265,7 @@ msgstr ""
 "Chan eil an seòladh puist-d a chuir thu a-steach dligheach air sgàth 's gu "
 "bheil ainm taisbeanaidh mì-dhligheach 'na bhroinn."
 
-#: kemailaddress.cpp:566
+#: kemailaddress.cpp:571
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -281,12 +281,12 @@ msgstr ""
 "eil \".\" 'na bhroinn. Cha chruthaich thu teachdaireachdan dligheach mur "
 "atharraich thu an seòladh agad."
 
-#: kemailaddress.cpp:572
+#: kemailaddress.cpp:577
 msgctxt "QObject|"
 msgid "Unknown problem with email address"
 msgstr "Duilgheadas nach aithne dhuinn le seòladh puist-d"
 
-#: kemailaddress.cpp:632
+#: kemailaddress.cpp:637
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""

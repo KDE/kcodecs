@@ -120,7 +120,7 @@ msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kemailaddress.cpp:503
+#: kemailaddress.cpp:508
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains more than one "
@@ -131,7 +131,7 @@ msgstr ""
 "@.\n"
 "Pokud neprovede změnu, adresa nebude platná."
 
-#: kemailaddress.cpp:509
+#: kemailaddress.cpp:514
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a @.\n"
@@ -140,26 +140,26 @@ msgstr ""
 "Zadaná adresa není platná, protože neobsahuje zavináč (@).\n"
 "Pokud nezadáte platnou adresu, nebudete moci odeslat zprávu."
 
-#: kemailaddress.cpp:515
+#: kemailaddress.cpp:520
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
 msgstr "Vyplňte pole poštovní adresy."
 
-#: kemailaddress.cpp:517
+#: kemailaddress.cpp:522
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "local part."
 msgstr "Zadaná poštovní adresa není platná, protože neobsahuje lokální část."
 
-#: kemailaddress.cpp:521
+#: kemailaddress.cpp:526
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "domain part."
 msgstr "Zadaná adresa není platná, protože neobsahuje doménovou část."
 
-#: kemailaddress.cpp:525
+#: kemailaddress.cpp:530
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains unclosed "
@@ -167,19 +167,19 @@ msgid ""
 msgstr ""
 "Zadaná adresa není platná, protože obsahuje neuzavřený komentář/závorky."
 
-#: kemailaddress.cpp:529
+#: kemailaddress.cpp:534
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
 msgstr "Zadaná adresa je platná."
 
-#: kemailaddress.cpp:531
+#: kemailaddress.cpp:536
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an unclosed "
 "angle bracket."
 msgstr "Zadaná adresa není platná, protože obsahuje neuzavřené ostré závorky."
 
-#: kemailaddress.cpp:535
+#: kemailaddress.cpp:540
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains too many "
@@ -187,14 +187,14 @@ msgid ""
 msgstr ""
 "Zadaná adresa není platná, protože obsahuje příliš pravých ostrých závorek."
 
-#: kemailaddress.cpp:539
+#: kemailaddress.cpp:544
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
 "unexpected comma."
 msgstr "Zadaná adresa není platná, protože obsahuje neočekávanou čárku."
 
-#: kemailaddress.cpp:543
+#: kemailaddress.cpp:548
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it ended unexpectedly.\n"
@@ -204,7 +204,7 @@ msgstr ""
 "Zadaná adresa není platná, protože neočekávaně končí.\n"
 "Pravděpodobně jste v adrese zadali na konci znak jako např. '\\'."
 
-#: kemailaddress.cpp:549
+#: kemailaddress.cpp:554
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains quoted text "
@@ -212,7 +212,7 @@ msgid ""
 msgstr ""
 "Zadaná adresa není platná, protože obsahuje neukončený text v uvozovkách."
 
-#: kemailaddress.cpp:553
+#: kemailaddress.cpp:558
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not seem to "
@@ -221,14 +221,14 @@ msgstr ""
 "Zadaná adresa není platná, protože neobsahuje vlastní e-mailovou adresu, "
 "např. joe@example.org."
 
-#: kemailaddress.cpp:558
+#: kemailaddress.cpp:563
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an illegal "
 "character."
 msgstr "Zadaná adresa není platná, protože obsahuje nepovolené znaky."
 
-#: kemailaddress.cpp:562
+#: kemailaddress.cpp:567
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
@@ -236,7 +236,7 @@ msgid ""
 msgstr ""
 "Zadaná adresa není platná, protože obsahuje neplatné zobrazované jméno."
 
-#: kemailaddress.cpp:566
+#: kemailaddress.cpp:571
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
@@ -246,12 +246,12 @@ msgstr ""
 "Zadaná adresa není platná, protože neobsahuje '.'.\n"
 "Pokud nezadáte platnou adresu, nebudete moci odeslat zprávu."
 
-#: kemailaddress.cpp:572
+#: kemailaddress.cpp:577
 msgctxt "QObject|"
 msgid "Unknown problem with email address"
 msgstr "Neznámý problém s e-mailovou adresou"
 
-#: kemailaddress.cpp:632
+#: kemailaddress.cpp:637
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid.\n"

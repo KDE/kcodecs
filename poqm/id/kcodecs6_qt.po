@@ -117,7 +117,7 @@ msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kemailaddress.cpp:503
+#: kemailaddress.cpp:508
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -134,7 +134,7 @@ msgstr ""
 "Kamu tidak akan menciptakan pesan yang absah jika kamu tidak mengubah "
 "alamatmu."
 
-#: kemailaddress.cpp:509
+#: kemailaddress.cpp:514
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -148,12 +148,12 @@ msgstr ""
 "Alamat email yang kamu masukkan tidak absah karena tidak berisi @. Kamu "
 "tidak akan menciptakan pesan yang absah jika kamu tidak mengubah alamatmu."
 
-#: kemailaddress.cpp:515
+#: kemailaddress.cpp:520
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
 msgstr "Kamu harus memasukkan sesuatu di kolom alamat email."
 
-#: kemailaddress.cpp:517
+#: kemailaddress.cpp:522
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
@@ -162,7 +162,7 @@ msgstr ""
 "Alamat email yang kamu masukkan tidak absah karena tidak berisi sebuah "
 "bagian lokal."
 
-#: kemailaddress.cpp:521
+#: kemailaddress.cpp:526
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
@@ -171,7 +171,7 @@ msgstr ""
 "Alamat email yang kamu masukkan tidak absah karena tidak berisi sebuah "
 "bagian domain."
 
-#: kemailaddress.cpp:525
+#: kemailaddress.cpp:530
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains unclosed "
@@ -180,12 +180,12 @@ msgstr ""
 "Alamat email yang kamu masukkan tidak absah karena berisi komentar/kurung "
 "yang tidak ditutup."
 
-#: kemailaddress.cpp:529
+#: kemailaddress.cpp:534
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
 msgstr "Alamat email yang kamu masukkan tidak absah."
 
-#: kemailaddress.cpp:531
+#: kemailaddress.cpp:536
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an unclosed "
@@ -194,7 +194,7 @@ msgstr ""
 "Alamat email yang kamu masukkan tidak absah karena berisi sebuah tanda "
 "kurung sudut yang tidak ditutup."
 
-#: kemailaddress.cpp:535
+#: kemailaddress.cpp:540
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains too many "
@@ -203,7 +203,7 @@ msgstr ""
 "Alamat email yang kamu masukkan tidak absah karena berisi terlalu banyak "
 "tanda kurung sudut tutup."
 
-#: kemailaddress.cpp:539
+#: kemailaddress.cpp:544
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
@@ -212,7 +212,7 @@ msgstr ""
 "Alamat email yang kamu masukkan tidak absah karena berisi sebuah tanda koma "
 "tidak terduga."
 
-#: kemailaddress.cpp:543
+#: kemailaddress.cpp:548
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -229,7 +229,7 @@ msgstr ""
 "Ini mungkin berarti kamu telah menggunakan karakter tipe escape seperti '\\' "
 "sebagai karakter terakhir di alamat email-mu."
 
-#: kemailaddress.cpp:549
+#: kemailaddress.cpp:554
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains quoted text "
@@ -238,7 +238,7 @@ msgstr ""
 "Alamat email yang kamu masukkan tidak absah karena berisi kutipan teks yang "
 "tidak berakhir."
 
-#: kemailaddress.cpp:553
+#: kemailaddress.cpp:558
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not seem to "
@@ -248,7 +248,7 @@ msgstr ""
 "sebuah alamat email yang sebenarnya, misalkan sesuatu yang berbentuk "
 "budi@contoh.org."
 
-#: kemailaddress.cpp:558
+#: kemailaddress.cpp:563
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an illegal "
@@ -257,7 +257,7 @@ msgstr ""
 "Alamat email yang kamu masukkan tidak absah karena berisi sebuah karakter "
 "ilegal."
 
-#: kemailaddress.cpp:562
+#: kemailaddress.cpp:567
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
@@ -266,7 +266,7 @@ msgstr ""
 "Alamat email yang kamu masukkan tidak absah karena berisi sebuah nama "
 "tampilan tidak absah."
 
-#: kemailaddress.cpp:566
+#: kemailaddress.cpp:571
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -281,12 +281,12 @@ msgstr ""
 "Alamat email yang kamu masukkan tidak absah karena tidak berisi sebuah tanda "
 "'.'. Kamu tidak akan menciptakan pesan jika kamu tidak mengubah alamatmu."
 
-#: kemailaddress.cpp:572
+#: kemailaddress.cpp:577
 msgctxt "QObject|"
 msgid "Unknown problem with email address"
 msgstr "Masalah tak diketahui dengan alamat email"
 
-#: kemailaddress.cpp:632
+#: kemailaddress.cpp:637
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""

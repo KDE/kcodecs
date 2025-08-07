@@ -119,7 +119,7 @@ msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kemailaddress.cpp:503
+#: kemailaddress.cpp:508
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains more than one "
@@ -129,7 +129,7 @@ msgstr ""
 "@ எனும் குறி பலமுறை வருவதால் நீங்கள் உள்ளிட்ட மின்னஞ்சல் முகவரி செல்லுபடியாகாது.\n"
 "இம்முகவரியை திருத்தாவிடில், செல்லுபடியாகும் மின்னஞ்சல்களை உருவாக்க முடியாது."
 
-#: kemailaddress.cpp:509
+#: kemailaddress.cpp:514
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a @.\n"
@@ -138,26 +138,26 @@ msgstr ""
 "@ எனும் குறி இல்லாத‍தால் நீங்கள் உள்ளிட்ட மின்னஞ்சல் முகவரி செல்லுபடியாகாது\n"
 "இம்முகவரியை திருத்தாவிடில், செல்லுபடியாகும் மின்னஞ்சல்களை உருவாக்க முடியாது."
 
-#: kemailaddress.cpp:515
+#: kemailaddress.cpp:520
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
 msgstr "மின்னஞ்சல் முகவரிக்கான புலத்தில் எதையாவது உள்ளிட வேண்டும்."
 
-#: kemailaddress.cpp:517
+#: kemailaddress.cpp:522
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "local part."
 msgstr "பயனர்ப்பெயர் இல்லாத‍தால் நீங்கள் உள்ளிட்ட மின்னஞ்சல் முகவரி செல்லுபடியாகாது."
 
-#: kemailaddress.cpp:521
+#: kemailaddress.cpp:526
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "domain part."
 msgstr "ஆள்களப்பெயர் இல்லாத‍தால் நீங்கள் உள்ளிட்ட மின்னஞ்சல் முகவரி செல்லுபடியாகாது."
 
-#: kemailaddress.cpp:525
+#: kemailaddress.cpp:530
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains unclosed "
@@ -166,12 +166,12 @@ msgstr ""
 "முடிவடையாத விளக்கவுரையையோ அடைப்புகுறிகளையோ கொண்டுள்ளதால் நீங்கள் உள்ளிட்ட மின்னஞ்சல் "
 "முகவரி செல்லுபடியாகாது."
 
-#: kemailaddress.cpp:529
+#: kemailaddress.cpp:534
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
 msgstr "நீங்கள் உள்ளிட்ட மின்னஞ்சல் முகவரி முறையானது."
 
-#: kemailaddress.cpp:531
+#: kemailaddress.cpp:536
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an unclosed "
@@ -180,7 +180,7 @@ msgstr ""
 "முடிவடையா கோண அடைப்புக்குறியைக் கொண்டுள்ளதால் நீங்கள் உள்ளிட்ட மின்னஞ்சல் முகவரி "
 "செல்லுபடியாகாது."
 
-#: kemailaddress.cpp:535
+#: kemailaddress.cpp:540
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains too many "
@@ -189,14 +189,14 @@ msgstr ""
 "மூடும் கோண அடைப்புகுறிகளின் எண்ணிக்கை அதிகமாக உள்ளதால் நீங்கள் உள்ளிட்ட மின்னஞ்சல் முகவரி "
 "செல்லுபடியாகாது."
 
-#: kemailaddress.cpp:539
+#: kemailaddress.cpp:544
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
 "unexpected comma."
 msgstr "எதிர்பாராத காற்புள்ளி உள்ளதால் நீங்கள் உள்ளிட்ட மின்னஞ்சல் முகவரி செல்லுபடியாகாது."
 
-#: kemailaddress.cpp:543
+#: kemailaddress.cpp:548
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it ended unexpectedly.\n"
@@ -207,7 +207,7 @@ msgstr ""
 "முகவரியின் கடைசியில் '\\' போன்ற விடுவிப்புக்குறியைப் பயன்படுத்தியிருந்தால் இச்சிக்கல் "
 "நேரும்."
 
-#: kemailaddress.cpp:549
+#: kemailaddress.cpp:554
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains quoted text "
@@ -215,7 +215,7 @@ msgid ""
 msgstr ""
 "முடிவடையாத மேற்கோளுரையைக் கொண்டுள்ளதால் நீங்கள் உள்ளிட்ட மின்னஞ்சல் முகவரி செல்லுபடியாகாது."
 
-#: kemailaddress.cpp:553
+#: kemailaddress.cpp:558
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not seem to "
@@ -224,7 +224,7 @@ msgstr ""
 "செல்லுபடியாகும் மின்னஞ்சல் முகவரியை (எ.கா. joe@example.org) நீங்கள் உள்ளிட்டதுபோல் "
 "தெரியவில்லை."
 
-#: kemailaddress.cpp:558
+#: kemailaddress.cpp:563
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an illegal "
@@ -232,7 +232,7 @@ msgid ""
 msgstr ""
 "அனுமதிக்கப்படா எழுத்தைக் கொண்டுள்ளதால் நீங்கள் உள்ளிட்ட மின்னஞ்சல் முகவரி செல்லுபடியாகாது."
 
-#: kemailaddress.cpp:562
+#: kemailaddress.cpp:567
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
@@ -240,7 +240,7 @@ msgid ""
 msgstr ""
 "முறையற்ற பயனர்ப்பெயரைக் கொண்டுள்ளதால் நீங்கள் உள்ளிட்ட மின்னஞ்சல் முகவரி செல்லுபடியாகாது."
 
-#: kemailaddress.cpp:566
+#: kemailaddress.cpp:571
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
@@ -250,12 +250,12 @@ msgstr ""
 "புள்ளி ('.') இல்லாத‍தால் நீங்கள் உள்ளிட்ட மின்னஞ்சல் முகவரி செல்லுபடியாகாது\n"
 "இம்முகவரியை திருத்தாவிடில், செல்லுபடியாகும் மின்னஞ்சல்களை உருவாக்க முடியாது."
 
-#: kemailaddress.cpp:572
+#: kemailaddress.cpp:577
 msgctxt "QObject|"
 msgid "Unknown problem with email address"
 msgstr "மின்னஞ்சல் முகவரியில் தெரியாத சிக்கல்"
 
-#: kemailaddress.cpp:632
+#: kemailaddress.cpp:637
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid.\n"

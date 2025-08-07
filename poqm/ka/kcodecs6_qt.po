@@ -111,7 +111,7 @@ msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kemailaddress.cpp:503
+#: kemailaddress.cpp:508
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains more than one "
@@ -122,7 +122,7 @@ msgstr ""
 "შეიცავს.\n"
 "თუ მისამართს არ შეცვლით, თქვენი ელფოსტა არასდროს გაიგზავნება."
 
-#: kemailaddress.cpp:509
+#: kemailaddress.cpp:514
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a @.\n"
@@ -131,26 +131,26 @@ msgstr ""
 "ელფოსტის თქვენს მიერ შეყვანილი მისამართი არასწორია. ის @-ს არ შეიცავს.\n"
 "თუ მისამართს არ შეცვლით, თქვენი ელფოსტა არასდროს გაიგზავნება."
 
-#: kemailaddress.cpp:515
+#: kemailaddress.cpp:520
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
 msgstr "ელფოსტის მისამართის ველში რამე მაინც უნდა შეიყვანოთ."
 
-#: kemailaddress.cpp:517
+#: kemailaddress.cpp:522
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "local part."
 msgstr "ელფოსტის შეყვანილი მისამართი არასწორია. ის ლოკალურ ნაწილს არ შეიცავს."
 
-#: kemailaddress.cpp:521
+#: kemailaddress.cpp:526
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "domain part."
 msgstr "ელფოსტის შეყვანილი მისამართი არასწორია. ის დომენურ ნაწილს არ შეიცავს."
 
-#: kemailaddress.cpp:525
+#: kemailaddress.cpp:530
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains unclosed "
@@ -159,12 +159,12 @@ msgstr ""
 "ელფოსტის თქვენს მიერ შეყვანილი მისამართის არასწორია. ის დაუხურავ კომენტარებს/"
 "ბრჭყალებს შეიცავს."
 
-#: kemailaddress.cpp:529
+#: kemailaddress.cpp:534
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
 msgstr "ელფოსტის თქვენს მიერ შეყვანილი მისამართი სწორია."
 
-#: kemailaddress.cpp:531
+#: kemailaddress.cpp:536
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an unclosed "
@@ -173,7 +173,7 @@ msgstr ""
 "ელფოსტის თქვენს მიერ შეყვანილი მისამართის არასწორია. ის დაუხურავ კუთხოვან "
 "ფრჩხილს შეიცავს."
 
-#: kemailaddress.cpp:535
+#: kemailaddress.cpp:540
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains too many "
@@ -182,7 +182,7 @@ msgstr ""
 "ელფოსტის თქვენს მიერ შეყვანილი მისამართის არასწორია. ის მეტისმეტად ბევრ "
 "დამხურავ კუთხოვან ფრჩხილს შეიცავს."
 
-#: kemailaddress.cpp:539
+#: kemailaddress.cpp:544
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
@@ -191,7 +191,7 @@ msgstr ""
 "ელფოსტის თქვენს მიერ შეყვანილი მისამართის არასწორია. ის მოულოდნელ მძიმეს "
 "შეიცავს."
 
-#: kemailaddress.cpp:543
+#: kemailaddress.cpp:548
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it ended unexpectedly.\n"
@@ -203,7 +203,7 @@ msgstr ""
 "ეს ალბათ ნიშნავს, რომ თქვენ შეიყვანეთ სპეციალური ტიპის სიმბოლოები, მაგალითად "
 "'\\' როგორც ელფოსტის ბოლო სიმბოლო."
 
-#: kemailaddress.cpp:549
+#: kemailaddress.cpp:554
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains quoted text "
@@ -212,7 +212,7 @@ msgstr ""
 "ელფოსტის თქვენს მიერ შეყვანილი მისამართის არასწორია. ის ბრჭყალებში ჩასმულ "
 "ტექსტს შეიცავს, რომელიც არ სრულდება."
 
-#: kemailaddress.cpp:553
+#: kemailaddress.cpp:558
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not seem to "
@@ -221,7 +221,7 @@ msgstr ""
 "ელფოსტის თქვენს მიერ შეყვანილი მისამართის არასწორია. ის არ შეიცავს ელფოსტის "
 "მისამართს, ანუ რამეს ფორმატში joe@example.org."
 
-#: kemailaddress.cpp:558
+#: kemailaddress.cpp:563
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an illegal "
@@ -230,7 +230,7 @@ msgstr ""
 "ელფოსტის თქვენს მიერ შეყვანილი მისამართის არასწორია. ის არასწორ სიმბოლოს "
 "შეიცავს."
 
-#: kemailaddress.cpp:562
+#: kemailaddress.cpp:567
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
@@ -239,7 +239,7 @@ msgstr ""
 "ელფოსტის თქვენს მიერ შეყვანილი მისამართის არასწორია. ის არასწორ საჩვენებელ "
 "სახელს შეიცავს."
 
-#: kemailaddress.cpp:566
+#: kemailaddress.cpp:571
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
@@ -249,12 +249,12 @@ msgstr ""
 "ელფოსტის თქვენს მიერ შეყვანილი მისამართის არასწორია. ის არ შეიცავს '.'.\n"
 "თქვენ ვერ შექმნით სწორ შეტყობინებებს, თუ მისამართს არ შეცვლით."
 
-#: kemailaddress.cpp:572
+#: kemailaddress.cpp:577
 msgctxt "QObject|"
 msgid "Unknown problem with email address"
 msgstr "ელფოსტის მისამართის უცნობი პრობლემა"
 
-#: kemailaddress.cpp:632
+#: kemailaddress.cpp:637
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid.\n"

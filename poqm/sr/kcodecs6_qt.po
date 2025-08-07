@@ -121,7 +121,7 @@ msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 (%2)"
 
-#: kemailaddress.cpp:503
+#: kemailaddress.cpp:508
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -137,7 +137,7 @@ msgstr ""
 "Унета адреса е‑поште није правилна зато што садржи више од једног @. Морате "
 "је изменити да би поруке са њом састављене биле ваљане."
 
-#: kemailaddress.cpp:509
+#: kemailaddress.cpp:514
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -151,26 +151,26 @@ msgstr ""
 "Унета адреса е‑поште није правилна зато што не садржи ниједно @. Морате је "
 "изменити да би поруке са њом састављене биле ваљане."
 
-#: kemailaddress.cpp:515
+#: kemailaddress.cpp:520
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
 msgstr "Морате унети нешто у поље адресе е‑поште."
 
-#: kemailaddress.cpp:517
+#: kemailaddress.cpp:522
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "local part."
 msgstr "Унета адреса е‑поште није правилна зато што не садржи локални део."
 
-#: kemailaddress.cpp:521
+#: kemailaddress.cpp:526
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "domain part."
 msgstr "Унета адреса е‑поште није правилна зато што не садржи доменски део."
 
-#: kemailaddress.cpp:525
+#: kemailaddress.cpp:530
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains unclosed "
@@ -179,12 +179,12 @@ msgstr ""
 "Унета адреса е‑поште није правилна зато што садржи незатворени коментар или "
 "заграду."
 
-#: kemailaddress.cpp:529
+#: kemailaddress.cpp:534
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
 msgstr "Унели сте правилну адресу е‑поште."
 
-#: kemailaddress.cpp:531
+#: kemailaddress.cpp:536
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an unclosed "
@@ -193,7 +193,7 @@ msgstr ""
 "Унета адреса е‑поште није правилна зато што садржи незатворену угласту "
 "заграду."
 
-#: kemailaddress.cpp:535
+#: kemailaddress.cpp:540
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains too many "
@@ -202,14 +202,14 @@ msgstr ""
 "Унета адреса е‑поште није правилна зато што садржи превише затворених "
 "угластих заграда."
 
-#: kemailaddress.cpp:539
+#: kemailaddress.cpp:544
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
 "unexpected comma."
 msgstr "Унета адреса е‑поште није правилна зато што садржи неочекивану запету."
 
-#: kemailaddress.cpp:543
+#: kemailaddress.cpp:548
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -225,7 +225,7 @@ msgstr ""
 "Унета адреса е‑поште није правилна зато што се прерано завршава. Вероватно "
 "сте употребили знак избегавања (попут \\) као последњи знак у адреси."
 
-#: kemailaddress.cpp:549
+#: kemailaddress.cpp:554
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains quoted text "
@@ -234,7 +234,7 @@ msgstr ""
 "Унета адреса е‑поште није правилна зато што садржи недовршени цитирани текст."
 
 # skip-rule: t-form
-#: kemailaddress.cpp:553
+#: kemailaddress.cpp:558
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not seem to "
@@ -243,21 +243,21 @@ msgstr ""
 "Унета адреса е‑поште није правилна зато што не наликује нечему што би се "
 "очекивало од нормалне адресе, нпр. нешто као pera@primer.org."
 
-#: kemailaddress.cpp:558
+#: kemailaddress.cpp:563
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an illegal "
 "character."
 msgstr "Унета адреса е‑поште није правилна зато што садржи недозвољени знак."
 
-#: kemailaddress.cpp:562
+#: kemailaddress.cpp:567
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
 "invalid display name."
 msgstr "Унета адреса е‑поште није правилна зато што садржи лоше приказно име."
 
-#: kemailaddress.cpp:566
+#: kemailaddress.cpp:571
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
@@ -272,13 +272,13 @@ msgstr ""
 "Унета адреса е‑поште није правилна зато што не садржи ниједну тачку. Морате "
 "је изменити да би поруке са њом састављене биле ваљане."
 
-#: kemailaddress.cpp:572
+#: kemailaddress.cpp:577
 msgctxt "QObject|"
 msgid "Unknown problem with email address"
 msgstr "Непознат проблем са адресом е‑поште"
 
 # skip-rule: t-form
-#: kemailaddress.cpp:632
+#: kemailaddress.cpp:637
 #, fuzzy
 #| msgctxt "QObject|"
 #| msgid ""
