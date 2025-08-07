@@ -27,7 +27,7 @@ public:
     }
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
-    void Reset(void) override;
+    void Reset(void) final;
 
     nsProbingState GetState(void) override;
 

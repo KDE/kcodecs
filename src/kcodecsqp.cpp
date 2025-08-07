@@ -87,7 +87,7 @@ class QuotedPrintableEncoder : public Encoder
 
 protected:
     friend class QuotedPrintableCodec;
-    QuotedPrintableEncoder(Codec::NewlineType newline = Codec::NewlineLF)
+    explicit QuotedPrintableEncoder(Codec::NewlineType newline = Codec::NewlineLF)
         : Encoder(newline)
         , mInputBuffer("")
         , mCurrentLineLength(0)
@@ -156,7 +156,7 @@ protected:
     friend class QuotedPrintableCodec;
     friend class Rfc2047QEncodingCodec;
     friend class Rfc2231EncodingCodec;
-    QuotedPrintableDecoder(Codec::NewlineType newline = Codec::NewlineLF, bool aQEncoding = false, char aEscapeChar = '=')
+    explicit QuotedPrintableDecoder(Codec::NewlineType newline = Codec::NewlineLF, bool aQEncoding = false, char aEscapeChar = '=')
         : Decoder(newline)
         , mEscapeChar(aEscapeChar)
         , mBadChar(0)
@@ -189,7 +189,7 @@ class Rfc2047QEncodingEncoder : public Encoder
 protected:
     friend class Rfc2047QEncodingCodec;
     friend class Rfc2231EncodingCodec;
-    Rfc2047QEncodingEncoder(Codec::NewlineType newline = Codec::NewlineLF, char aEscapeChar = '=')
+    explicit Rfc2047QEncodingEncoder(Codec::NewlineType newline = Codec::NewlineLF, char aEscapeChar = '=')
         : Encoder(newline)
         , mAccu(0)
         , mStepNo(0)

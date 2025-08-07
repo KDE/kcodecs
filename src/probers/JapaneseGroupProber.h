@@ -26,7 +26,7 @@ public:
     {
         return mState;
     }
-    void Reset(void) override;
+    void Reset(void) final;
     float GetConfidence(void) override;
 
 #ifdef DEBUG_PROBE

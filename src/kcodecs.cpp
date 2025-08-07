@@ -106,7 +106,7 @@ void KCodecs::quotedPrintableDecode(QByteArrayView in, QByteArray &out)
 
 QByteArray KCodecs::base64Encode(QByteArrayView in)
 {
-    Codec *codec = Codec::codecForName("base64");
+    const Codec *codec = Codec::codecForName("base64");
     return codec->encode(in);
 }
 
@@ -118,7 +118,7 @@ void KCodecs::base64Encode(QByteArrayView in, QByteArray &out, bool insertLFs)
 
 QByteArray KCodecs::base64Decode(QByteArrayView in)
 {
-    Codec *codec = Codec::codecForName("base64");
+    const Codec *codec = Codec::codecForName("base64");
     return codec->decode(in);
 }
 
@@ -129,7 +129,7 @@ void KCodecs::base64Decode(const QByteArrayView in, QByteArray &out)
 
 QByteArray KCodecs::uudecode(QByteArrayView in)
 {
-    Codec *codec = Codec::codecForName("x-uuencode");
+    const Codec *codec = Codec::codecForName("x-uuencode");
     return codec->decode(in);
 }
 
@@ -270,7 +270,7 @@ bool parseEncodedWord(const char *&scursor,
     //
 
     // try if there's a codec for the encoding found:
-    Codec *codec = Codec::codecForName(maybeEncoding);
+    const Codec *codec = Codec::codecForName(maybeEncoding);
     if (!codec) {
         // qCDebug(KCODECS_LOG) << "Unknown encoding" << maybeEncoding;
         return false;
@@ -312,7 +312,7 @@ bool parseEncodedWord(const char *&scursor,
     QByteArray buffer;
     buffer.resize(codec->maxDecodedSizeFor(encodedTextLength));
     char *bbegin = buffer.data();
-    char *bend = bbegin + buffer.length();
+    const char *bend = bbegin + buffer.length();
 
     //
     // STEP 5:

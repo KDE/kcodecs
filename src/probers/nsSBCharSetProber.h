@@ -52,7 +52,7 @@ public:
     {
         return mState;
     }
-    void Reset(void) override;
+    void Reset(void) final;
     float GetConfidence(void) override;
 
     // This feature is not implemented yet. any current language model

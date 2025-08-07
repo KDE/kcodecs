@@ -22,7 +22,8 @@ class KEncodingProberPrivate
 {
 public:
     KEncodingProberPrivate()
-        : mProber(nullptr)
+        : mProberType(KEncodingProber::None)
+        , mProber(nullptr)
         , mStart(true)
     {
     }
