@@ -131,7 +131,7 @@ msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 (%2)"
 
-#: kemailaddress.cpp:503
+#: kemailaddress.cpp:508
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains more than one "
@@ -141,7 +141,7 @@ msgstr ""
 "כתובת הדוא״ל שמילאת שגויה כיוון שיש בה יותר מ־@ אחד. \n"
 "לא תהיה אפשרות ליצור הודעה תקפה מבלי לשנות את הכתובת שלך."
 
-#: kemailaddress.cpp:509
+#: kemailaddress.cpp:514
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a @.\n"
@@ -150,45 +150,45 @@ msgstr ""
 "כתובת הדוא״ל שמילאת שגויה כיוון שאין בה כלל @. \n"
 "לא תהיה אפשרות ליצור הודעה תקפה מבלי לשנות את הכתובת שלך."
 
-#: kemailaddress.cpp:515
+#: kemailaddress.cpp:520
 msgctxt "QObject|"
 msgid "You have to enter something in the email address field."
 msgstr "יש למלא משהו בשדה כתובת הדוא״ל."
 
-#: kemailaddress.cpp:517
+#: kemailaddress.cpp:522
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "local part."
 msgstr "כתובת הדוא״ל שמילאת שגויה כי אינה מכילה חלק מקומי."
 
-#: kemailaddress.cpp:521
+#: kemailaddress.cpp:526
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
 "domain part."
 msgstr "כתובת הדוא״ל שמילאת שגויה כי אינה מכילה חלק שם תחום."
 
-#: kemailaddress.cpp:525
+#: kemailaddress.cpp:530
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains unclosed "
 "comments/brackets."
 msgstr "כתובת הדוא״ל שמילאת שגויה כי היא מכילה הערות תחומות/סוגריים מרובעים."
 
-#: kemailaddress.cpp:529
+#: kemailaddress.cpp:534
 msgctxt "QObject|"
 msgid "The email address you entered is valid."
 msgstr "כתובת הדוא״ל שמילאת תקינה."
 
-#: kemailaddress.cpp:531
+#: kemailaddress.cpp:536
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an unclosed "
 "angle bracket."
 msgstr "כתובת הדוא״ל שמילאת שגויה כי היא מכילה סוגריים משולשים פתוחים."
 
-#: kemailaddress.cpp:535
+#: kemailaddress.cpp:540
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains too many "
@@ -196,14 +196,14 @@ msgid ""
 msgstr ""
 "כתובת הדוא״ל שמילאת שגויה כי היא מכילה יותר מדי סוגריים משולשים סוגרים."
 
-#: kemailaddress.cpp:539
+#: kemailaddress.cpp:544
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
 "unexpected comma."
 msgstr "כתובת הדוא״ל שמילאת שגויה כי היא מכילה פסיק לא צפוי."
 
-#: kemailaddress.cpp:543
+#: kemailaddress.cpp:548
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it ended unexpectedly.\n"
@@ -214,14 +214,14 @@ msgstr ""
 "כנראה שזה אומר שהשתמשת בתו בסגנון מילוט כגון ‚\\’ בתור התו האחרון בכתובת "
 "הדוא״ל שלך."
 
-#: kemailaddress.cpp:549
+#: kemailaddress.cpp:554
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains quoted text "
 "which does not end."
 msgstr "כתובת הדוא״ל שמילאת שגויה כי היא מכילה טקסט במירכאות שלא נסגרות."
 
-#: kemailaddress.cpp:553
+#: kemailaddress.cpp:558
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not seem to "
@@ -230,21 +230,21 @@ msgstr ""
 "כתובת הדוא״ל שמילאת שגויה כי נראה שאינה מכילה כתובת דוא״ל אמיתית. כלומר, "
 "בצורה joe@example.org."
 
-#: kemailaddress.cpp:558
+#: kemailaddress.cpp:563
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it contains an illegal "
 "character."
 msgstr "כתובת הדוא״ל שמילאת שגויה כי היא מכילה תו שגוי."
 
-#: kemailaddress.cpp:562
+#: kemailaddress.cpp:567
 msgctxt "QObject|"
 msgid ""
 "The email address you have entered is not valid because it contains an "
 "invalid display name."
 msgstr "כתובת הדוא״ל שמילאת שגויה כי היא מכילה שם תצוגה שגוי."
 
-#: kemailaddress.cpp:566
+#: kemailaddress.cpp:571
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid because it does not contain a "
@@ -254,12 +254,12 @@ msgstr ""
 "כתובת הדוא״ל שמילאת שגויה כי אינה מכילה ‚.’.\n"
 "לא תהיה אפשרות ליצור הודעות תקפות ללא שינוי כתובת הדוא״ל שלך."
 
-#: kemailaddress.cpp:572
+#: kemailaddress.cpp:577
 msgctxt "QObject|"
 msgid "Unknown problem with email address"
 msgstr "תקלה לא ידועה עם שרת הדוא״ל"
 
-#: kemailaddress.cpp:632
+#: kemailaddress.cpp:637
 msgctxt "QObject|"
 msgid ""
 "The email address you entered is not valid.\n"
