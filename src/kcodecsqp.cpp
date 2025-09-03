@@ -53,17 +53,6 @@ static inline uchar lowNibble(uchar ch)
     return ch & 0xF;
 }
 
-/**
-  Returns true if the specified value is a not Control character or
-  question mark; else true.
-  @param ch is an unsigned character containing the 8-bit input value.
-*/
-static inline bool keep(uchar ch)
-{
-    // no CTLs, except HT and not '?'
-    return !((ch < ' ' && ch != '\t') || ch == '?');
-}
-
 //
 // QuotedPrintableCodec
 //
