@@ -406,6 +406,13 @@ QString KCodecs::decodeRFC2047String(QByteArrayView src, QByteArray *usedCS, con
 
 QByteArray KCodecs::encodeRFC2047String(QStringView src, const QByteArray &charset)
 {
+    return KCodecs::encodeRFC2047String(src, charset, RFC2047EncodingOption::NoOption);
+}
+
+static constexpr const char reservedCharacters[] = "\"()<>@,.;:\\[]=";
+
+QByteArray KCodecs::encodeRFC2047String(QStringView src, QByteArrayView charset, KCodecs::RFC2047EncodingOption option)
+{
     QByteArray result;
     int start = 0;
     int end = 0;
@@ -414,7 +421,7 @@ QByteArray KCodecs::encodeRFC2047String(QStringView src, const QByteArray &chars
 
     QStringEncoder codec(charset.constData());
 
-    QByteArray usedCS;
+    QByteArrayView usedCS;
     if (!codec.isValid()) {
         // no codec available => try local8Bit and hope the best ;-)
         codec = QStringEncoder(QStringEncoder::System);
@@ -446,7 +453,8 @@ QByteArray KCodecs::encodeRFC2047String(QStringView src, const QByteArray &chars
         }
 
         // encode escape character, for japanese encodings...
-        if (((signed char)encoded8Bit[i] < 0) || (encoded8Bit[i] == '\033')) {
+        if (((signed char)encoded8Bit[i] < 0) || (encoded8Bit[i] == '\033')
+            || (option == RFC2047EncodingOption::EncodeReservedCharcters && (std::strchr(reservedCharacters, encoded8Bit[i]) != nullptr))) {
             end = start; // non us-ascii char found, now we determine where to stop encoding
             nonAscii = true;
             break;
@@ -460,7 +468,8 @@ QByteArray KCodecs::encodeRFC2047String(QStringView src, const QByteArray &chars
         }
 
         for (int x = end; x < encoded8Bit.length(); x++) {
-            if (((signed char)encoded8Bit[x] < 0) || (encoded8Bit[x] == '\033')) {
+            if (((signed char)encoded8Bit[x] < 0) || (encoded8Bit[x] == '\033')
+                || (option == RFC2047EncodingOption::EncodeReservedCharcters && (std::strchr(reservedCharacters, encoded8Bit[x]) != nullptr))) {
                 end = x; // we found another non-ascii word
 
                 while ((end < encoded8Bit.length()) && (encoded8Bit[end] != ' ')) {
