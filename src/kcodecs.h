@@ -237,7 +237,7 @@ KCODECS_EXPORT void base64Decode(QByteArrayView in, QByteArray &out);
 KCODECS_EXPORT QString decodeRFC2047String(QStringView text);
 
 /*!
- * Charset options for RFC2047 encoder
+ * Charset options for RFC2047 decoder
  * \since 5.5
  *
  * \value NoOption No special option
@@ -261,7 +261,7 @@ enum CharsetOption {
  * \a defaultCS the charset to use in case the detected
  *                  one isn't known to us.
  *
- * \a option    options for the encoder
+ * \a option    options for the decoder
  *
  * Returns the decoded string.
  * \since 5.5
@@ -276,7 +276,6 @@ KCODECS_EXPORT QString decodeRFC2047String(QByteArrayView src, QByteArray *usedC
  * i.e. the opening and closing quote mark would be part of the encoded word.
  * Therefore don't use this function for input strings that contain semantically meaningful characters,
  * like the quoting marks in this example.
- *
  * \a src           source string.
  *
  * \a charset       charset to use. If it can't encode the string, UTF-8 will be used instead.
@@ -284,7 +283,40 @@ KCODECS_EXPORT QString decodeRFC2047String(QByteArrayView src, QByteArray *usedC
  * Returns the encoded string.
  * \since 5.5
  */
+// TODO KF7 merge with the below overload, with option = RFC2047EncodingOption::NoOption
 KCODECS_EXPORT QByteArray encodeRFC2047String(QStringView src, const QByteArray &charset);
+
+/*!
+ * Options for RFC2047 encoder
+ * \since 6.20
+ *
+ * \value NoOption No special option
+ * \value EncodeReservedCharcters Also encode all characeters that are reserved in the context
+ * of certain MIME headers, as specified in RFC 2047 §5.
+ */
+enum class RFC2047EncodingOption {
+    NoOption = 0,
+    EncodeReservedCharcters = 1,
+};
+
+/*!
+ * Encodes string \a src according to RFC2047 using charset \a charset.
+ *
+ * This function also makes commas, quotes and other characters part of the encoded name, for example
+ * the string "Jöhn Döe" <john@example.com"> would be encoded as <encoded word for "Jöhn Döe"> <john@example.com>,
+ * i.e. the opening and closing quote mark would be part of the encoded word.
+ * Therefore don't use this function for input strings that contain semantically meaningful characters,
+ * like the quoting marks in this example.
+ * \a src           source string.
+ *
+ * \a charset       charset to use. If it can't encode the string, UTF-8 will be used instead.
+ *
+ * \a option        encoding options.
+ *
+ * Returns the encoded string.
+ * \since 6.20
+ */
+KCODECS_EXPORT QByteArray encodeRFC2047String(QStringView src, QByteArrayView charset, RFC2047EncodingOption option);
 
 /*!
  * Decodes the given data that was encoded using the

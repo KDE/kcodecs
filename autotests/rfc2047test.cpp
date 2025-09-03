@@ -10,6 +10,7 @@
 
 #include "../src/kcodecs.h"
 
+using namespace Qt::Literals;
 using namespace KCodecs;
 
 QTEST_MAIN(RFC2047Test)
@@ -143,22 +144,19 @@ void RFC2047Test::testRFC2047encode_data()
     QTest::addColumn<QString>("input");
     QTest::addColumn<QByteArray>("encoding");
     QTest::addColumn<QByteArray>("expectedResult");
+    QTest::addColumn<KCodecs::RFC2047EncodingOption>("option");
 
-    /* clang-format off */
-    QTest::newRow("empty") << QString()
-                           << QByteArray("utf-8")
-                           << QByteArray();
-    QTest::newRow("identity") << QString::fromUtf8("bla")
-                              << QByteArray("utf-8")
-                              << QByteArray("bla");
-    QTest::newRow("QP") << QString::fromUtf8("Ingo Klöcker <kloecker@kde.org>")
-                        << QByteArray("utf-8")
-                        << QByteArray("=?UTF-8?q?Ingo=20Kl=C3=B6cker?= <kloecker@kde.org>");
-
-    QTest::newRow("utf-8 fallback") << QString::fromUtf8("æſðđŋħł")
-                                    << QByteArray("latin1")
-                                    << QByteArray("=?UTF-8?B?w6bFv8OwxJHFi8SnxYI=?=");
-    /* clang-format on */
+    QTest::newRow("empty") << QString() << "utf-8"_ba << QByteArray() << KCodecs::RFC2047EncodingOption::NoOption;
+    QTest::newRow("identity") << u"bla"_s << "utf-8"_ba << "bla"_ba << KCodecs::RFC2047EncodingOption::NoOption;
+    QTest::newRow("QP") << u"Ingo Klöcker <kloecker@kde.org>"_s << "utf-8"_ba << "=?UTF-8?q?Ingo=20Kl=C3=B6cker?= <kloecker@kde.org>"_ba
+                        << KCodecs::RFC2047EncodingOption::NoOption;
+    QTest::newRow("working-QP") << u"Ingo Klöcker <kloecker@kde.org>"_s << "ISO-8859-15"_ba << "Ingo =?ISO-8859-15?Q?Kl=F6cker?= <kloecker@kde.org>"_ba
+                                << KCodecs::RFC2047EncodingOption::NoOption;
+    QTest::newRow("working-QP") << u"Ingo Klöcker <kloecker@kde.org>"_s << "ISO-8859-15"_ba << "Ingo =?ISO-8859-15?Q?Kl=F6cker_=3Ckloecker=40kde=2Eorg=3E?="_ba
+                                << KCodecs::RFC2047EncodingOption::EncodeReservedCharcters;
+    QTest::newRow("utf-8 fallback") << u"æſðđŋħł"_s << "latin1"_ba << "=?UTF-8?B?w6bFv8OwxJHFi8SnxYI=?="_ba << KCodecs::RFC2047EncodingOption::NoOption;
+    QTest::newRow("reserved-chars-1") << u"\"n@o\""_s << "utf-8"_ba << "\"n@o\""_ba << KCodecs::RFC2047EncodingOption::NoOption;
+    QTest::newRow("reserved-chars-2") << u"\"n@o\""_s << "utf-8"_ba << "=?utf-8?B?Im5AbyI=?="_ba << KCodecs::RFC2047EncodingOption::EncodeReservedCharcters;
 }
 
 void RFC2047Test::testRFC2047encode()
@@ -166,12 +164,15 @@ void RFC2047Test::testRFC2047encode()
     QFETCH(QString, input);
     QFETCH(QByteArray, encoding);
     QFETCH(QByteArray, expectedResult);
+    QFETCH(KCodecs::RFC2047EncodingOption, option);
 
-    const QByteArray result = KCodecs::encodeRFC2047String(input, encoding);
+    const QByteArray result = KCodecs::encodeRFC2047String(input, encoding, option);
 
     // expected value is probably wrong, libkmime will choose 'B' instead of 'Q' encoding
     QEXPECT_FAIL("QP", "KCodecs will choose 'B' instead of 'Q' encoding", Continue);
     QCOMPARE(result, expectedResult);
+
+    QCOMPARE(input, KCodecs::decodeRFC2047String(input));
 }
 
 #include "moc_rfc2047test.cpp"
