@@ -79,6 +79,15 @@ ecm_qt_declare_logging_category(KF6Codecs
     EXPORT KCODECS
 )
 
+ecm_qt_declare_logging_category(KF6Codecs
+    HEADER kcodecs_prober_debug.h
+    IDENTIFIER KCODECSPROBER
+    CATEGORY_NAME kf.codecs.prober
+    DEFAULT_SEVERITY Warning
+    DESCRIPTION "KCodecs Encoding Prober"
+    EXPORT KCODECS
+)
+
 ecm_generate_export_header(KF6Codecs
     BASE_NAME KCodecs
     GROUP_BASE_NAME KF
