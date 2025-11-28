@@ -32,10 +32,6 @@ void KEncodingProberUnitTest::testUtf8()
     nsCodingStateMachine stateMachine{&UTF8SMModel};
     nsSMState state = eStart;
 
-    QEXPECT_FAIL("UTF-8 SMP Symbols", "valid codepoint rejected", Abort);
-    QEXPECT_FAIL("UTF-8 len 4 invalid range", "invalid codepoint accepted", Abort);
-    QEXPECT_FAIL("UTF-8 len 5 invalid", "len 5 sequence accepted", Abort);
-    QEXPECT_FAIL("UTF-8 len 6 invalid", "len 6 sequence accepted", Abort);
     for (auto b : data) {
         state = stateMachine.NextState(b);
     }
