@@ -87,7 +87,33 @@ void KEncodingProberUnitTest::testUtf8_data()
     QTest::addRow("UTF-8 len 5 invalid") << "\xF8\x90\x90\x90\x90 "_ba << false;
     QTest::addRow("UTF-8 len 6 invalid") << "\xFC\x90\x90\x90\x90\x90 "_ba << false;
 
-    QTest::addRow("UTF-8 other invalid") << "\xFE "_ba << false;
+    QTest::addRow("UTF-8 0xFE invalid") << "\xFE "_ba << false;
+    QTest::addRow("UTF-8 0xFF invalid") << "\xFF "_ba << false;
+
+    // continuation without leading 2/3/4 byte start byte
+    QTest::addRow("UTF-8 invalid isolate high 0x80") << "\x80 "_ba << false;
+    QTest::addRow("UTF-8 invalid isolate high 0x92") << "\x92 "_ba << false;
+    QTest::addRow("UTF-8 invalid isolate high 0xAA") << "\xAA "_ba << false;
+    QTest::addRow("UTF-8 invalid isolate high 0xBF") << "\xBF "_ba << false;
+
+    // Either Windows-1252/-1254/-1255 (binary identical)
+    // "One pound, i.e. ½ a kilogramm of butter costs 2 £."
+    QTest::addRow("Windows-125x English") << "One pound, i.e. \xAF a kilogramm of butter costs 2 \xA3."_ba << false;
+    // Example texts with Windows-125x encoding which are definitely not UTF-8 -- see Wikipedia "Pangram"
+    // "Příliš žluťoučký kůň úpěl ďábelské ódy" - "A horse that was too yellow moaned devilish odes"
+    QTest::addRow("Windows-1250 Czech") << //
+        "P\xf8\xedli\x9a \x9elu\x9dou\xe8k\xfd k\xf9\xf2 \xfap\xecl \xef\xe1\x62\x65lsk\xe9 \xf3\x64y."_ba << false;
+    // "Под южно дърво, цъфтящо в синьо, бягаше малко пухкаво зайче" - "Under a southern tree, blooming in blue, ran a little fluffy bunny"
+    QTest::addRow("Windows-1251 Bulgarian") << QByteArray::fromHex( //
+        "cfeee420fee6edee20e4faf0e2ee2c20f6faf4f2fff9ee20"
+        "e220f1e8edfcee2c20e1ffe3e0f8e520ece0ebeaee20eff3"
+        "f5eae0e2ee20e7e0e9f7e5") << false;
+    // "Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich." - "Victor chases twelve boxers across the Great Levee of Sylt"
+    QTest::addRow("Windows-1252 German") << //
+        "Victor jagt zw\xf6lf Boxk\xe4mpfer quer \xfc\x62\x65r den gro\xdf\x65n Sylter Deich."_ba << false;
+    // "שפן אכל קצת גזר בטעם חסה, ודי" - "A bunny ate some lettuce-flavored carrots, and he had enough"
+    QTest::addRow("Windows-1255 Hebrew") //
+        << QByteArray::fromHex("f9f4ef20e0ebec20f7f6fa20e2e6f820e1e8f2ed20e7f1e42c20e5e3e9") << false;
 }
 
 void KEncodingProberUnitTest::testUtf16BE()
