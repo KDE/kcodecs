@@ -49,7 +49,7 @@ static const unsigned char Latin1_CharToClass[] = {
     ACV, ACV, ACV, ACV, ACV, ACV, ACO, ACO, // C0 - C7
     ACV, ACV, ACV, ACV, ACV, ACV, ACV, ACV, // C8 - CF
     ACO, ACO, ACV, ACV, ACV, ACV, ACV, OTH, // D0 - D7
-    ACV, ACV, ACV, ACV, ACV, ACO, ACO, ACO, // D8 - DF
+    ACV, ACV, ACV, ACV, ACV, ACO, ACO, ASO, // D8 - DF
     ASV, ASV, ASV, ASV, ASV, ASV, ASO, ASO, // E0 - E7
     ASV, ASV, ASV, ASV, ASV, ASV, ASV, ASV, // E8 - EF
     ASO, ASO, ASV, ASV, ASV, ASV, ASV, OTH, // F0 - F7
@@ -62,15 +62,17 @@ static const unsigned char Latin1_CharToClass[] = {
    3 : very likely
 */
 static const unsigned char Latin1ClassModel[] = {
+    // clang-format off
     /*      UDF OTH ASC ASS ACV ACO ASV ASO  */
-    /*UDF*/ 0, 0, 0, 0, 0, 0, 0, 0,
-    /*OTH*/ 0, 3, 3, 3, 3, 3, 3, 3,
-    /*ASC*/ 0, 3, 3, 3, 3, 3, 3, 3,
-    /*ASS*/ 0, 3, 3, 3, 1, 1, 3, 3,
-    /*ACV*/ 0, 3, 3, 3, 1, 2, 1, 2,
-    /*ACO*/ 0, 3, 3, 3, 3, 3, 3, 3,
-    /*ASV*/ 0, 3, 1, 3, 1, 1, 1, 3,
-    /*ASO*/ 0, 3, 1, 3, 1, 1, 3, 3,
+    /*UDF*/   0,  0,  0,  0,  0,  0,  0,  0,
+    /*OTH*/   0,  3,  3,  3,  3,  3,  3,  3,
+    /*ASC*/   0,  3,  3,  3,  3,  3,  3,  3,
+    /*ASS*/   0,  3,  3,  3,  1,  1,  3,  3,
+    /*ACV*/   0,  3,  3,  3,  1,  2,  1,  2,
+    /*ACO*/   0,  3,  3,  3,  3,  3,  3,  3,
+    /*ASV*/   0,  3,  1,  3,  1,  1,  1,  3,
+    /*ASO*/   0,  3,  1,  3,  1,  1,  3,  3,
+    // clang-format on
 };
 
 nsLatin1Prober::nsLatin1Prober()
