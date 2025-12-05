@@ -36,11 +36,7 @@ void KEncodingProberUnitTest::testUtf8()
         state = stateMachine.NextState(b);
     }
 
-    if (utf8Valid) {
-        QVERIFY(state != eError);
-    } else {
-        QVERIFY(state == eError);
-    }
+    QCOMPARE((state != eError), utf8Valid);
 }
 
 void KEncodingProberUnitTest::testUtf8_data()
@@ -133,11 +129,7 @@ void KEncodingProberUnitTest::testUtf16BE()
         state = stateMachine.NextState(b);
     }
 
-    if (utf16BEValid) {
-        QVERIFY(state != eError);
-    } else {
-        QVERIFY(state == eError);
-    }
+    QCOMPARE((state != eError), utf16BEValid);
 }
 
 void KEncodingProberUnitTest::testUtf16LE()
@@ -157,11 +149,7 @@ void KEncodingProberUnitTest::testUtf16LE()
         state = stateMachine.NextState(b);
     }
 
-    if (utf16LEValid) {
-        QVERIFY(state != eError);
-    } else {
-        QVERIFY(state == eError);
-    }
+    QCOMPARE((state != eError), utf16LEValid);
 }
 
 void KEncodingProberUnitTest::testUtf16_common_data()
