@@ -67,6 +67,7 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("UTF-16LE Unicode definite 1", "UTF-16BE invalid surrogate ignored", Abort);
     QEXPECT_FAIL("UTF-16BE Unicode definite 2", "UTF-16BE valid code misdetected", Abort);
     QEXPECT_FAIL("UTF-16LE Unicode definite 2", "UTF-16LE valid code misdetected", Abort);
+    QEXPECT_FAIL("utf-8 Hebrew", "UTF-8 zero confidence", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
 
     QEXPECT_FAIL("UTF-16BE Unicode", "UTF-16 no confidence", Abort);
@@ -95,6 +96,18 @@ void KEncodingProberTest::testProbe_data()
     QTest::addRow("big5") //
         << QByteArray::fromHex("aefcafc7a6caa474a141a6b3ae65a444a46a") //
         << KEncodingProber::ChineseTraditional << QByteArray("big5");
+
+    // "שפן אכל קצת גזר בטעם חסה, ודי" - "A bunny ate some lettuce-flavored carrots, and he had enough"
+    QTest::addRow("windows-1255 Hebrew") //
+        << QByteArray::fromHex("f9f4ef20e0ebec20f7f6fa20e2e6f820e1e8f2ed20e7f1e42c20e5e3e9") //
+        << KEncodingProber::Universal << QByteArray("windows-1255");
+
+    // Same "שפן אכל קצת גזר בטעם חסה, ודי", but using UTF-8
+    QTest::addRow("utf-8 Hebrew") << QByteArray::fromHex( //
+        "d7a9d7a4d79f20d790d79bd79c20d7a7d7a6d7aa20d792d7"
+        "96d7a820d791d798d7a2d79d20d797d7a1d7942c20d795d7"
+        "93d799") << //
+        KEncodingProber::Universal << QByteArray("utf-8");
 
     // binary data, just make sure we do not crash (cf. crash in bug #357341)
     const auto binaryData = QByteArray::fromBase64( //

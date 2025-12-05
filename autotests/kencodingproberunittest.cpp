@@ -7,6 +7,7 @@
 #include <QTest>
 
 #include "../src/probers/nsCodingStateMachine.h"
+#include "../src/probers/nsSBCharSetProber.h"
 
 class KEncodingProberUnitTest : public QObject
 {
@@ -20,6 +21,8 @@ private Q_SLOTS:
     void testUtf16LE();
     void testUtf16LE_data();
     void testUtf16_common_data();
+    void testWindows1255();
+    void testWindows1255_data();
 };
 
 void KEncodingProberUnitTest::testUtf8()
@@ -207,6 +210,52 @@ void KEncodingProberUnitTest::testUtf16BE_data()
 void KEncodingProberUnitTest::testUtf16LE_data()
 {
     testUtf16_common_data();
+}
+
+void KEncodingProberUnitTest::testWindows1255()
+{
+    using namespace kencodingprober;
+
+    QFETCH(QByteArray, data);
+    QFETCH(bool, win1255Valid);
+
+    nsSingleByteCharSetProber win1255Prober(&Win1255Model, false, nullptr); // Logical Hebrew
+
+    if (QByteArray(QTest::currentDataTag(), -1).startsWith("Undefined 0x")) {
+        QEXPECT_FAIL("", "Invalid value accepted", Abort);
+    }
+    QEXPECT_FAIL("UTF-8 Hebrew", "Invalid 0x9f accepted", Abort);
+
+    auto state = win1255Prober.HandleData(data.constData(), data.size());
+
+    QCOMPARE(win1255Valid, (state != eNotMe));
+}
+
+void KEncodingProberUnitTest::testWindows1255_data()
+{
+    using namespace Qt::StringLiterals;
+
+    QTest::addColumn<QByteArray>("data");
+    QTest::addColumn<bool>("win1255Valid");
+
+    // Verify "undefined" codes in CP1255 are rejected
+    // https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WINDOWS/CP1255.TXT
+    for (auto c : std::array<unsigned char, 23>{
+             0x81, 0x8A, 0x8C, 0x8D, 0x8E, 0x8F, 0x90, 0x9A, 0x9C, 0x9D, 0x9E, 0x9F, //
+             0xCA, 0xD9, 0xDA, 0xDB, 0xDC, 0xDD, 0xDE, 0xDF, 0xFB, 0xFC, 0xFF,
+         }) {
+        QTest::addRow("Undefined 0x%x", c) << QByteArray(1, c) + " "_ba << false;
+    }
+
+    // "שפן אכל קצת גזר בטעם חסה, ודי" - "A bunny ate some lettuce-flavored carrots, and he had enough"
+    QTest::addRow("Windows-1255 Hebrew") //
+        << QByteArray::fromHex("f9f4ef20e0ebec20f7f6fa20e2e6f820e1e8f2ed20e7f1e42c20e5e3e9") << true;
+
+    // Same "שפן אכל קצת גזר בטעם חסה, ודי", but using UTF-8
+    QTest::addRow("UTF-8 Hebrew") << QByteArray::fromHex( //
+        "d7a9d7a4d79f20d790d79bd79c20d7a7d7a6d7aa20d792d7"
+        "96d7a820d791d798d7a2d79d20d797d7a1d7942c20d795d7"
+        "93d799") << false;
 }
 
 QTEST_MAIN(KEncodingProberUnitTest)

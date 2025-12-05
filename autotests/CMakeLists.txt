@@ -25,6 +25,8 @@ ecm_add_test(
     TEST_NAME kencodingproberunittest
     kencodingproberunittest.cpp
     ../src/probers/nsMBCSSM.cpp
+    ../src/probers/nsSBCharSetProber.cpp
+    ../src/probers/LangHebrewModel.cpp
     LINK_LIBRARIES Qt6::Test
 )
 target_include_directories(kencodingproberunittest PRIVATE ${CMAKE_BINARY_DIR}/src)

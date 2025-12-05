@@ -7,7 +7,7 @@
 #ifndef nsHebrewProber_h__
 #define nsHebrewProber_h__
 
-#include "nsSBCharSetProber.h"
+#include "nsCharSetProber.h"
 namespace kencodingprober
 {
 // This prober doesn't actually recognize a language or a charset.
