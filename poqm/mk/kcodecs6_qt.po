@@ -307,7 +307,7 @@ msgid ""
 "form joe@example.org."
 msgstr ""
 
-#: kencodingprober.cpp:221 kencodingprober.cpp:262
+#: kencodingprober.cpp:222 kencodingprober.cpp:263
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Disabled"
@@ -315,7 +315,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Disabled"
 msgstr "Оневозможено"
 
-#: kencodingprober.cpp:223 kencodingprober.cpp:265
+#: kencodingprober.cpp:224 kencodingprober.cpp:266
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Universal"
@@ -323,7 +323,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Universal"
 msgstr "Универзално"
 
-#: kencodingprober.cpp:225 kencodingprober.cpp:307
+#: kencodingprober.cpp:226 kencodingprober.cpp:308
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Unicode"
@@ -331,7 +331,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Unicode"
 msgstr "Уникод"
 
-#: kencodingprober.cpp:227 kencodingprober.cpp:277
+#: kencodingprober.cpp:228 kencodingprober.cpp:278
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Cyrillic"
@@ -339,7 +339,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Cyrillic"
 msgstr "Кириличен"
 
-#: kencodingprober.cpp:229 kencodingprober.cpp:292
+#: kencodingprober.cpp:230 kencodingprober.cpp:293
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Western European"
@@ -347,7 +347,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Western European"
 msgstr "Западноевропски"
 
-#: kencodingprober.cpp:231 kencodingprober.cpp:274
+#: kencodingprober.cpp:232 kencodingprober.cpp:275
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Central European"
@@ -355,7 +355,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Central European"
 msgstr "Централноевропски"
 
-#: kencodingprober.cpp:233 kencodingprober.cpp:280
+#: kencodingprober.cpp:234 kencodingprober.cpp:281
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Greek"
@@ -363,7 +363,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Greek"
 msgstr "Грчки"
 
-#: kencodingprober.cpp:235 kencodingprober.cpp:283
+#: kencodingprober.cpp:236 kencodingprober.cpp:284
 #, fuzzy
 #| msgctxt "@item Spelling dictionary"
 #| msgid "Hebrew"
@@ -371,7 +371,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Hebrew"
 msgstr "Еврејски"
 
-#: kencodingprober.cpp:237 kencodingprober.cpp:289
+#: kencodingprober.cpp:238 kencodingprober.cpp:290
 #, fuzzy
 #| msgctxt "@item Spelling dictionary"
 #| msgid "Turkish"
@@ -379,7 +379,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Turkish"
 msgstr "Турски"
 
-#: kencodingprober.cpp:239 kencodingprober.cpp:286
+#: kencodingprober.cpp:240 kencodingprober.cpp:287
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Japanese"
@@ -387,7 +387,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Japanese"
 msgstr "Јапонски"
 
-#: kencodingprober.cpp:241 kencodingprober.cpp:271
+#: kencodingprober.cpp:242 kencodingprober.cpp:272
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Baltic"
@@ -395,7 +395,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Baltic"
 msgstr "Балтички"
 
-#: kencodingprober.cpp:243 kencodingprober.cpp:295
+#: kencodingprober.cpp:244 kencodingprober.cpp:296
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Chinese Traditional"
@@ -403,7 +403,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "Традиционален кинески"
 
-#: kencodingprober.cpp:245 kencodingprober.cpp:298
+#: kencodingprober.cpp:246 kencodingprober.cpp:299
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Chinese Simplified"
@@ -411,7 +411,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "Поедноставен кинески"
 
-#: kencodingprober.cpp:247 kencodingprober.cpp:301
+#: kencodingprober.cpp:248 kencodingprober.cpp:302
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Korean"
@@ -419,7 +419,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Korean"
 msgstr "Корејски"
 
-#: kencodingprober.cpp:249 kencodingprober.cpp:304
+#: kencodingprober.cpp:250 kencodingprober.cpp:305
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Thai"
@@ -427,7 +427,7 @@ msgctxt "KEncodingProber|@item Text character set"
 msgid "Thai"
 msgstr "Тајландски"
 
-#: kencodingprober.cpp:251 kencodingprober.cpp:268
+#: kencodingprober.cpp:252 kencodingprober.cpp:269
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Arabic"
