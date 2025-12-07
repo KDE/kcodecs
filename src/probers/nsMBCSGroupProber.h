@@ -15,7 +15,17 @@ namespace kencodingprober
 class KCODECS_NO_EXPORT nsMBCSGroupProber : public nsCharSetProber
 {
 public:
+    enum class Prober : uint8_t {
+        Unicode = 0,
+        SJIS = 1,
+        EUCJP = 2,
+        GB18030 = 3,
+        EUCKR = 4,
+        Big5 = 5,
+    };
+
     nsMBCSGroupProber();
+    explicit nsMBCSGroupProber(std::span<const Prober> selected);
     ~nsMBCSGroupProber() override;
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
@@ -34,6 +44,7 @@ protected:
     nsProbingState mState;
     nsCharSetProber *mProbers[NUM_OF_PROBERS];
     bool mIsActive[NUM_OF_PROBERS];
+    const std::array<bool, NUM_OF_PROBERS> mIsSelected = {true};
     int mBestGuess;
     unsigned int mActiveNum;
 };

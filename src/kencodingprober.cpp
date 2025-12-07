@@ -19,6 +19,21 @@
 
 #include <string.h>
 
+namespace
+{
+using Prober = kencodingprober::nsMBCSGroupProber::Prober;
+static const std::array ChineseMSBCProbers{
+    Prober::Unicode,
+    Prober::GB18030,
+    Prober::Big5,
+};
+static const std::array JapaneseMSBCProbers{
+    Prober::Unicode,
+    Prober::SJIS,
+    Prober::EUCJP,
+};
+} // namespace <anonymous>
+
 class KEncodingProberPrivate
 {
 public:
@@ -62,10 +77,10 @@ public:
             break;
         case KEncodingProber::ChineseSimplified:
         case KEncodingProber::ChineseTraditional:
-            mProber = new kencodingprober::ChineseGroupProber();
+            mProber = new kencodingprober::nsMBCSGroupProber(ChineseMSBCProbers);
             break;
         case KEncodingProber::Japanese:
-            mProber = new kencodingprober::JapaneseGroupProber();
+            mProber = new kencodingprober::nsMBCSGroupProber(JapaneseMSBCProbers);
             break;
         case KEncodingProber::Korean:
             mProber = new kencodingprober::nsMBCSGroupProber();

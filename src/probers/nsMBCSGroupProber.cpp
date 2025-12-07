@@ -30,7 +30,36 @@ static const char *const ProberName[] = {
 
 #endif
 
-nsMBCSGroupProber::nsMBCSGroupProber()
+namespace
+{
+using Prober = nsMBCSGroupProber::Prober;
+constexpr std::array<bool, 6> fromSelectedList(std::span<const Prober> selected)
+{
+    std::array<bool, 6> isSelected{false};
+    for (auto p : selected) {
+        const auto i = static_cast<std::underlying_type_t<Prober>>(p);
+        if (i >= NUM_OF_PROBERS) {
+            continue;
+        }
+        isSelected[i] = true;
+    }
+    return isSelected;
+}
+static_assert(fromSelectedList({})[0] == false);
+static_assert(fromSelectedList({})[5] == false);
+static_assert(fromSelectedList(std::array{Prober::Unicode})[0] == true);
+static_assert(fromSelectedList(std::array{Prober::Unicode})[5] == false);
+static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[0] == false);
+static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[1] == true);
+static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[2] == false);
+static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[3] == false);
+static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[4] == false);
+static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[5] == true);
+
+} // namespace <anonymous>
+
+nsMBCSGroupProber::nsMBCSGroupProber(std::span<const Prober> selected)
+    : mIsSelected(fromSelectedList(selected))
 {
     mProbers[0] = new UnicodeGroupProber();
     mProbers[1] = new nsSJISProber();
@@ -39,6 +68,18 @@ nsMBCSGroupProber::nsMBCSGroupProber()
     mProbers[4] = new nsEUCKRProber();
     mProbers[5] = new nsBig5Prober();
     Reset();
+}
+
+nsMBCSGroupProber::nsMBCSGroupProber()
+    : nsMBCSGroupProber(std::array{
+          Prober::Unicode,
+          Prober::SJIS,
+          Prober::EUCJP,
+          Prober::GB18030,
+          Prober::EUCKR,
+          Prober::Big5,
+      })
+{
 }
 
 nsMBCSGroupProber::~nsMBCSGroupProber()
@@ -63,7 +104,7 @@ void nsMBCSGroupProber::Reset(void)
 {
     mActiveNum = 0;
     for (unsigned int i = 0; i < NUM_OF_PROBERS; i++) {
-        if (mProbers[i]) {
+        if (mProbers[i] && mIsSelected[i]) {
             mProbers[i]->Reset();
             mIsActive[i] = true;
             ++mActiveNum;
@@ -159,11 +200,14 @@ void nsMBCSGroupProber::DumpStatus()
 
     GetConfidence();
     for (i = 0; i < NUM_OF_PROBERS; i++) {
-        if (!mIsActive[i]) {
-            printf("  MBCS inactive: [%s] (confidence is too low).\r\n", ProberName[i]);
+        if (!mIsSelected[i]) {
+            printf("  MBCS deselected: [%s][%s]\r\n", ProberName[i], mProbers[i]->GetCharSetName());
+        } else if (!mIsActive[i]) {
+            printf("  MBCS inactive: [%s][%s] (confidence is too low).\r\n", ProberName[i], mProbers[i]->GetCharSetName());
         } else {
             cf = mProbers[i]->GetConfidence();
-            printf("  MBCS %1.3f: [%s]\r\n", cf, ProberName[i]);
+            printf("  MBCS %1.3f: [%s][%s]\r\n", cf, ProberName[i], mProbers[i]->GetCharSetName());
+            mProbers[i]->DumpStatus();
         }
     }
 }
