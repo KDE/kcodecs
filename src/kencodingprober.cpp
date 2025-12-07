@@ -9,8 +9,6 @@
 #include "kencodingprober.h"
 #include "kencodingprober_p.h"
 
-#include "probers/ChineseGroupProber.h"
-#include "probers/JapaneseGroupProber.h"
 #include "probers/UnicodeGroupProber.h"
 #include "probers/nsCharSetProber.h"
 #include "probers/nsMBCSGroupProber.h"

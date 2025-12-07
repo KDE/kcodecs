@@ -9,6 +9,10 @@
 
 #include "nsCharSetProber.h"
 
+#include <array>
+#include <cstdint>
+#include <span>
+
 #define NUM_OF_PROBERS 6
 namespace kencodingprober
 {

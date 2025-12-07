@@ -29,10 +29,6 @@ target_sources(KF6Codecs PRIVATE
     kencodingprober_p.h
     probers/CharDistribution.cpp
     probers/CharDistribution.h
-    probers/ChineseGroupProber.cpp
-    probers/ChineseGroupProber.h
-    probers/JapaneseGroupProber.cpp
-    probers/JapaneseGroupProber.h
     probers/JpCntx.cpp
     probers/JpCntx.h
     probers/LangBulgarianModel.cpp
