@@ -6,6 +6,13 @@
 
 #include "nsMBCSGroupProber.h"
 
+#include "UnicodeGroupProber.h"
+#include "nsBig5Prober.h"
+#include "nsEUCJPProber.h"
+#include "nsEUCKRProber.h"
+#include "nsGB2312Prober.h"
+#include "nsSJISProber.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 

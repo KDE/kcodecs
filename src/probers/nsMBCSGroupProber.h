@@ -7,12 +7,7 @@
 #ifndef nsMBCSGroupProber_h__
 #define nsMBCSGroupProber_h__
 
-#include "UnicodeGroupProber.h"
-#include "nsBig5Prober.h"
-#include "nsEUCJPProber.h"
-#include "nsEUCKRProber.h"
-#include "nsGB2312Prober.h"
-#include "nsSJISProber.h"
+#include "nsCharSetProber.h"
 
 #define NUM_OF_PROBERS 6
 namespace kencodingprober
