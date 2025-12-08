@@ -37,11 +37,15 @@ void KEncodingProberTest::testProbe()
 
     QEXPECT_FAIL("BOM UTF-16LE", "BOM detected but ignored", Continue);
     QEXPECT_FAIL("BOM UTF-16BE", "BOM detected but ignored", Continue);
-    QEXPECT_FAIL("UTF-16LE Unicode", "UTF-16BE preferred unless erroneous", Continue);
-    QEXPECT_FAIL("UTF-16LE Unicode definite 1", "UTF-16BE invalid surrogate ignored", Continue);
-    QEXPECT_FAIL("UTF-16BE Unicode definite 2", "UTF-16BE valid code misdetected", Continue);
-    QEXPECT_FAIL("UTF-16LE Unicode definite 2", "UTF-16LE valid code misdetected", Continue);
+    QEXPECT_FAIL("UTF-16LE Unicode", "UTF-16BE preferred unless erroneous", Abort);
+    QEXPECT_FAIL("UTF-16LE Unicode definite 1", "UTF-16BE invalid surrogate ignored", Abort);
+    QEXPECT_FAIL("UTF-16BE Unicode definite 2", "UTF-16BE valid code misdetected", Abort);
+    QEXPECT_FAIL("UTF-16LE Unicode definite 2", "UTF-16LE valid code misdetected", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
+
+    QEXPECT_FAIL("UTF-16BE Unicode", "UTF-16 no confidence", Abort);
+    QEXPECT_FAIL("UTF-16BE Unicode definite 1", "UTF-16LE invalid surrogate ignored, no confidence", Abort);
+    QCOMPARE_GE(ep.confidence(), 0.2);
 }
 
 void KEncodingProberTest::testProbe_data()
