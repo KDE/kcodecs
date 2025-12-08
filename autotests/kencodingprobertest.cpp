@@ -35,8 +35,6 @@ void KEncodingProberTest::testProbe()
     QCOMPARE(ep.proberType(), proberType);
     ep.feed(data);
 
-    QEXPECT_FAIL("BOM UTF-16LE", "BOM detected but ignored", Continue);
-    QEXPECT_FAIL("BOM UTF-16BE", "BOM detected but ignored", Continue);
     QEXPECT_FAIL("UTF-16LE Unicode", "UTF-16BE preferred unless erroneous", Abort);
     QEXPECT_FAIL("UTF-16LE Unicode definite 1", "UTF-16BE invalid surrogate ignored", Abort);
     QEXPECT_FAIL("UTF-16BE Unicode definite 2", "UTF-16BE valid code misdetected", Abort);
