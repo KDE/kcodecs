@@ -21,10 +21,8 @@ public:
     {
         Reset();
     }
+    ~nsHebrewProber() override = default;
 
-    ~nsHebrewProber(void) override
-    {
-    }
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
     void Reset(void) override;
@@ -47,13 +45,12 @@ public:
 #endif
 
 protected:
-    static bool isFinal(char c);
-    static bool isNonFinal(char c);
-
-    int mFinalCharLogicalScore, mFinalCharVisualScore;
+    int mFinalCharLogicalScore = 0;
+    int mFinalCharVisualScore = 0;
 
     // The two last characters seen in the previous buffer.
-    char mPrev, mBeforePrev;
+    char mPrev = ' ';
+    char mBeforePrev = ' ';
 
     // These probers are owned by the group prober.
     nsCharSetProber *mLogicalProb, *mVisualProb;

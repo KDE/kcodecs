@@ -30,14 +30,14 @@
 #define VISUAL_HEBREW_NAME ("ISO-8859-8")
 #define LOGICAL_HEBREW_NAME ("windows-1255")
 
-namespace kencodingprober
+namespace
 {
-bool nsHebrewProber::isFinal(char c)
+bool isFinal(char c)
 {
     return ((c == FINAL_KAF) || (c == FINAL_MEM) || (c == FINAL_NUN) || (c == FINAL_PE) || (c == FINAL_TSADI));
 }
 
-bool nsHebrewProber::isNonFinal(char c)
+bool isNonFinal(char c)
 {
     return ((c == NORMAL_KAF) || (c == NORMAL_MEM) || (c == NORMAL_NUN) || (c == NORMAL_PE));
     // The normal Tsadi is not a good Non-Final letter due to words like
@@ -51,7 +51,10 @@ bool nsHebrewProber::isNonFinal(char c)
     // these letters as Non-Final letters outweighs the damage since these words
     // are quite rare.
 }
+} // namespace <anonymous>
 
+namespace kencodingprober
+{
 /** HandleData
  * Final letter analysis for logical-visual decision.
  * Look for evidence that the received buffer is either logical Hebrew or
@@ -87,7 +90,7 @@ nsProbingState nsHebrewProber::HandleData(const char *aBuf, unsigned int aLen)
     const char *curPtr;
     const char *endPtr = aBuf + aLen;
 
-    for (curPtr = (char *)aBuf; curPtr < endPtr; ++curPtr) {
+    for (curPtr = aBuf; curPtr < endPtr; ++curPtr) {
         char cur = *curPtr;
         if (cur == ' ') { // We stand on a space - a word just ended
             if (mBeforePrev != ' ') { // *(curPtr-2) was not a space so prev is not a 1 letter word
