@@ -63,12 +63,10 @@ const char *nsSBCSGroupProber::GetCharSetName()
 
 void nsSBCSGroupProber::Reset(void)
 {
-    mActiveNum = 0;
     for (unsigned int i = 0; i < NUM_OF_SBCS_PROBERS; i++) {
         if (mProbers[i]) { // not null
             mProbers[i]->Reset();
             mIsActive[i] = true;
-            ++mActiveNum;
         } else {
             mIsActive[i] = false;
         }
@@ -79,10 +77,24 @@ void nsSBCSGroupProber::Reset(void)
 
 nsProbingState nsSBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen)
 {
-    nsProbingState st;
-    unsigned int i;
     char *newBuf1 = nullptr;
     unsigned int newLen1 = 0;
+
+    int activeNum = NUM_OF_SBCS_PROBERS - 1;
+
+    // The UnicodeGroupProber (specifically the UTF16 subprobers) need unmangled data
+    if (mIsActive[NUM_OF_SBCS_PROBERS - 1]) {
+        if (const auto st = mProbers[NUM_OF_SBCS_PROBERS - 1]->HandleData(aBuf, aLen); st == eFoundIt) {
+            mBestGuess = NUM_OF_SBCS_PROBERS - 1;
+            mState = eFoundIt;
+            return mState;
+        } else if (st == eNotMe) {
+            mIsActive[NUM_OF_SBCS_PROBERS - 1] = false;
+            activeNum--;
+        }
+    } else {
+        activeNum--;
+    }
 
     // apply filter to original buffer, and we got new buffer back
     // depend on what script it is, we will feed them the new buffer
@@ -98,23 +110,24 @@ nsProbingState nsSBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
         goto done; // Nothing to see here, move on.
     }
 
-    for (i = 0; i < NUM_OF_SBCS_PROBERS; ++i) {
+    for (unsigned int i = 0; i < NUM_OF_SBCS_PROBERS - 1; ++i) {
         if (!mIsActive[i]) {
+            activeNum--;
             continue;
         }
-        st = mProbers[i]->HandleData(newBuf1, newLen1);
+        auto st = mProbers[i]->HandleData(newBuf1, newLen1);
         if (st == eFoundIt) {
             mBestGuess = i;
             mState = eFoundIt;
             break;
         } else if (st == eNotMe) {
             mIsActive[i] = false;
-            mActiveNum--;
-            if (mActiveNum == 0) {
-                mState = eNotMe;
-                break;
-            }
+            activeNum--;
         }
+    }
+
+    if (activeNum == 0) {
+        mState = eNotMe;
     }
 
 done:
