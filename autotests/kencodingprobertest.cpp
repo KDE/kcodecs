@@ -128,6 +128,22 @@ void KEncodingProberTest::testProbe_data()
         "93d799") << //
         KEncodingProber::Universal << QByteArray("utf-8");
 
+    // "Από χθες βαδίζω μαγικά ξύπνιε ψηλέ φωστήρα." - "Since yesterday I have been magically walking up finely."
+    QTest::addRow("windows-1253 Greek") //
+        << QByteArray::fromHex( //
+               "c1f0fc20f7e8e5f220e2e1e4dfe6f920ece1e3e9eadc20ee"
+               "fdf0ede9e520f8e7ebdd20f6f9f3f4def1e12e") //
+        // both iso8859-7 and windows-1253 are fine, as the input is identical for both
+        << KEncodingProber::Universal << QByteArray("iso-8859-7");
+
+    QTest::addRow("utf-8 Greek") //
+        << QByteArray::fromHex( //
+               "ce91cf80cf8c20cf87ceb8ceb5cf8220ceb2ceb1ceb4ceaf"
+               "ceb6cf8920cebcceb1ceb3ceb9cebaceac20cebecf8dcf80"
+               "cebdceb9ceb520cf88ceb7cebbcead20cf86cf89cf83cf84"
+               "ceaecf81ceb12e") //
+        << KEncodingProber::Universal << QByteArray("utf-8");
+
     // binary data, just make sure we do not crash (cf. crash in bug #357341)
     const auto binaryData = QByteArray::fromBase64( //
         "4QEAAAAOAAAAgVBYVIp1X0cQSZ67QGBARKLmgwFdRqxVgwJbyCougwNVrEZdiARNdogFmAScBkph"
