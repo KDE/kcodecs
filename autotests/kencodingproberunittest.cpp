@@ -7,8 +7,8 @@
 #include <QTest>
 
 #include "../src/probers/nsCodingStateMachine.h"
+#include "../src/probers/nsHebrewProber.h"
 #include "../src/probers/nsLatin1Prober.h"
-#include "../src/probers/nsSBCharSetProber.h"
 
 class KEncodingProberUnitTest : public QObject
 {
@@ -288,7 +288,7 @@ void KEncodingProberUnitTest::testWindows1255()
     QFETCH(QByteArray, data);
     QFETCH(bool, win1255Valid);
 
-    nsSingleByteCharSetProber win1255Prober(&Win1255Model, false, nullptr); // Logical Hebrew
+    nsHebrewProber win1255Prober{};
 
     if (QByteArray(QTest::currentDataTag(), -1).startsWith("Undefined 0x")) {
         QEXPECT_FAIL("", "Invalid value accepted", Abort);

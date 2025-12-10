@@ -26,6 +26,7 @@ ecm_add_test(
     kencodingproberunittest.cpp
     ../src/probers/nsCharSetProber.cpp
     ../src/probers/nsLatin1Prober.cpp
+    ../src/probers/nsHebrewProber.cpp
     ../src/probers/nsMBCSSM.cpp
     ../src/probers/nsSBCharSetProber.cpp
     ../src/probers/LangHebrewModel.cpp

@@ -10,7 +10,11 @@
 
 namespace kencodingprober
 {
-nsProbingState nsSingleByteCharSetProber::HandleData(const char *aBuf, unsigned int aLen)
+template class nsSingleByteCharSetProber<false>;
+template class nsSingleByteCharSetProber<true>;
+
+template<bool Reversed>
+nsProbingState nsSingleByteCharSetProber<Reversed>::HandleData(const char *aBuf, unsigned int aLen)
 {
     for (unsigned int i = 0; i < aLen; i++) {
         const unsigned char order = mModel->charToOrderMap[(unsigned char)aBuf[i]];
@@ -23,11 +27,8 @@ nsProbingState nsSingleByteCharSetProber::HandleData(const char *aBuf, unsigned 
 
             if (mLastOrder < SAMPLE_SIZE) {
                 mTotalSeqs++;
-                if (!mReversed) {
-                    ++(mSeqCounters[(int)mModel->precedenceMatrix[mLastOrder * SAMPLE_SIZE + order]]);
-                } else { // reverse the order of the letters in the lookup
-                    ++(mSeqCounters[(int)mModel->precedenceMatrix[order * SAMPLE_SIZE + mLastOrder]]);
-                }
+                unsigned int index = Reversed ? mLastOrder + (SAMPLE_SIZE * order) : (mLastOrder * SAMPLE_SIZE) + order;
+                ++(mSeqCounters[(int)mModel->precedenceMatrix[index]]);
             }
         }
         mLastOrder = order;
@@ -47,7 +48,8 @@ nsProbingState nsSingleByteCharSetProber::HandleData(const char *aBuf, unsigned 
     return mState;
 }
 
-void nsSingleByteCharSetProber::Reset(void)
+template<bool Reversed>
+void nsSingleByteCharSetProber<Reversed>::Reset(void)
 {
     mState = eDetecting;
     mLastOrder = 255;
@@ -61,7 +63,8 @@ void nsSingleByteCharSetProber::Reset(void)
 
 //#define NEGATIVE_APPROACH 1
 
-float nsSingleByteCharSetProber::GetConfidence(void)
+template<bool Reversed>
+float nsSingleByteCharSetProber<Reversed>::GetConfidence(void)
 {
 #ifdef NEGATIVE_APPROACH
     if (mTotalSeqs > 0)
@@ -83,16 +86,15 @@ float nsSingleByteCharSetProber::GetConfidence(void)
 #endif
 }
 
-const char *nsSingleByteCharSetProber::GetCharSetName()
+template<bool Reversed>
+const char *nsSingleByteCharSetProber<Reversed>::GetCharSetName()
 {
-    if (!mNameProber) {
-        return mModel->charsetName;
-    }
-    return mNameProber->GetCharSetName();
+    return mModel->charsetName;
 }
 
 #ifdef DEBUG_PROBE
-void nsSingleByteCharSetProber::DumpStatus()
+template<bool Reversed>
+void nsSingleByteCharSetProber<Reversed>::DumpStatus()
 {
     printf("  SBCS: %1.3f [%s]\r\n", GetConfidence(), GetCharSetName());
 }

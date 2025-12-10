@@ -8,6 +8,9 @@
 #define nsHebrewProber_h__
 
 #include "nsCharSetProber.h"
+
+#include <memory>
+
 namespace kencodingprober
 {
 // This prober doesn't actually recognize a language or a charset.
@@ -15,12 +18,8 @@ namespace kencodingprober
 class KCODECS_NO_EXPORT nsHebrewProber : public nsCharSetProber
 {
 public:
-    nsHebrewProber(void)
-        : mLogicalProb(nullptr)
-        , mVisualProb(nullptr)
-    {
-        Reset();
-    }
+    nsHebrewProber();
+
     ~nsHebrewProber() override = default;
 
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
@@ -29,16 +28,7 @@ public:
 
     nsProbingState GetState(void) override;
 
-    float GetConfidence(void) override
-    {
-        return (float)0.0;
-    }
-
-    void SetModelProbers(nsCharSetProber *logicalPrb, nsCharSetProber *visualPrb)
-    {
-        mLogicalProb = logicalPrb;
-        mVisualProb = visualPrb;
-    }
+    float GetConfidence(void) override;
 
 #ifdef DEBUG_PROBE
     void DumpStatus() override;
@@ -52,8 +42,8 @@ protected:
     char mPrev = ' ';
     char mBeforePrev = ' ';
 
-    // These probers are owned by the group prober.
-    nsCharSetProber *mLogicalProb, *mVisualProb;
+    std::unique_ptr<nsCharSetProber> mLogicalProb;
+    std::unique_ptr<nsCharSetProber> mVisualProb;
 };
 }
 

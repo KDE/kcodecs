@@ -5,6 +5,7 @@
 */
 
 #include "nsHebrewProber.h"
+#include "nsSBCharSetProber.h"
 #include <stdio.h>
 
 // windows-1255 / ISO-8859-8 code points of interest
@@ -55,6 +56,11 @@ bool isNonFinal(char c)
 
 namespace kencodingprober
 {
+nsHebrewProber::nsHebrewProber()
+    : mLogicalProb(new nsSingleByteCharSetProber<false>(&Win1255Model))
+    , mVisualProb(new nsSingleByteCharSetProber<true>(&Win1255Model))
+{
+}
 /** HandleData
  * Final letter analysis for logical-visual decision.
  * Look for evidence that the received buffer is either logical Hebrew or
@@ -82,6 +88,9 @@ namespace kencodingprober
  */
 nsProbingState nsHebrewProber::HandleData(const char *aBuf, unsigned int aLen)
 {
+    mLogicalProb->HandleData(aBuf, aLen);
+    mVisualProb->HandleData(aBuf, aLen);
+
     // Both model probers say it's not them. No reason to continue.
     if (GetState() == eNotMe) {
         return eNotMe;
@@ -111,6 +120,25 @@ nsProbingState nsHebrewProber::HandleData(const char *aBuf, unsigned int aLen)
 
     // Forever detecting, till the end or until both model probers return eNotMe (handled above).
     return eDetecting;
+}
+
+float nsHebrewProber::GetConfidence()
+{
+    if (GetState() == eNotMe) {
+        return 0.01f;
+    }
+
+    int finalsub = mFinalCharLogicalScore - mFinalCharVisualScore;
+    auto logicalConfidence = mLogicalProb->GetConfidence();
+    auto visualConfidence = mVisualProb->GetConfidence();
+
+    if ((logicalConfidence - 0.1 > visualConfidence) && (finalsub >= 0)) {
+        return logicalConfidence;
+    } else if ((visualConfidence - 0.1 > logicalConfidence) && (finalsub <= 0)) {
+        return visualConfidence;
+    } else {
+        return 0.01f;
+    }
 }
 
 // Make the decision: is it Logical or Visual?
@@ -166,7 +194,9 @@ nsProbingState nsHebrewProber::GetState(void)
 #ifdef DEBUG_PROBE
 void nsHebrewProber::DumpStatus()
 {
-    printf("  HEB: %d - %d [Logical-Visual score]\r\n", mFinalCharLogicalScore, mFinalCharVisualScore);
+    printf("  HEB: [%.3f] %d - %d [Logical-Visual score]:\r\n", GetConfidence(), mFinalCharLogicalScore, mFinalCharVisualScore);
+    mLogicalProb->DumpStatus();
+    mVisualProb->DumpStatus();
 }
 #endif
 }

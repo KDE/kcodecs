@@ -12,7 +12,9 @@
 
 #include "nsCharSetProber.h"
 
-#define NUM_OF_SBCS_PROBERS 14
+#include <array>
+
+#define NUM_OF_SBCS_PROBERS 12
 
 namespace kencodingprober
 {
@@ -36,8 +38,8 @@ public:
 
 protected:
     nsProbingState mState;
-    nsCharSetProber *mProbers[NUM_OF_SBCS_PROBERS];
-    bool mIsActive[NUM_OF_SBCS_PROBERS];
+    std::array<nsCharSetProber *, NUM_OF_SBCS_PROBERS> mProbers = {nullptr};
+    std::array<bool, NUM_OF_SBCS_PROBERS> mIsActive = {false};
     int mBestGuess;
     unsigned int mActiveNum;
 };

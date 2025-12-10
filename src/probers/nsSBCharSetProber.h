@@ -25,20 +25,12 @@ typedef struct {
     const char *charsetName;
 } SequenceModel;
 
+template<bool Reversed = false>
 class KCODECS_NO_EXPORT nsSingleByteCharSetProber : public nsCharSetProber
 {
 public:
     explicit nsSingleByteCharSetProber(const SequenceModel *model)
         : mModel(model)
-        , mReversed(false)
-        , mNameProber(nullptr)
-    {
-        Reset();
-    }
-    nsSingleByteCharSetProber(const SequenceModel *model, bool reversed, nsCharSetProber *nameProber)
-        : mModel(model)
-        , mReversed(reversed)
-        , mNameProber(nameProber)
     {
         Reset();
     }
@@ -59,7 +51,6 @@ public:
 protected:
     nsProbingState mState;
     const SequenceModel *mModel;
-    const bool mReversed; // true if we need to reverse every pair in the model lookup
 
     // char order of last character
     unsigned char mLastOrder;
@@ -70,9 +61,6 @@ protected:
     unsigned int mTotalChar;
     // characters that fall in our sampling range
     unsigned int mFreqChar;
-
-    // Optional auxiliary prober for name decision. created and destroyed by the GroupProber
-    nsCharSetProber *mNameProber;
 };
 
 extern const SequenceModel Koi8rModel;
