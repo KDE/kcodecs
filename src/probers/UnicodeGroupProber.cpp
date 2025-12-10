@@ -47,8 +47,8 @@ nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLe
         return mState;
     }
 
-    for (uint i = 0; i < aLen; ++i) {
-        for (int j = mActiveSM - 1; j >= 0; --j) {
+    for (int j = mActiveSM - 1; j >= 0; --j) {
+        for (uint i = 0; i < aLen; ++i) {
             // byte is feed to all active state machine
             codingState = mCodingSM[j]->NextState(aBuf[i]);
             if (codingState == eError) {
@@ -63,15 +63,15 @@ nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLe
                     mCodingSM[mActiveSM] = mCodingSM[j];
                     mCodingSM[j] = t;
                 }
+                break;
             } else if (codingState == eItsMe) {
                 mState = eFoundIt;
                 mDetectedCharset = mCodingSM[j]->GetCodingStateMachine();
                 return mState;
-            } else if (mState == eDetecting) {
-                mDetectedCharset = mCodingSM[j]->GetCodingStateMachine();
-            };
+            }
         }
     }
+    mDetectedCharset = mCodingSM[0]->GetCodingStateMachine();
     return mState;
 }
 
