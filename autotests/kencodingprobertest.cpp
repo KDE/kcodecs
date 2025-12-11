@@ -68,6 +68,7 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("UTF-16BE Unicode definite 2", "UTF-16BE valid code misdetected", Abort);
     QEXPECT_FAIL("UTF-16LE Unicode definite 2", "UTF-16LE valid code misdetected", Abort);
     QEXPECT_FAIL("utf-8 Hebrew", "UTF-8 zero confidence", Abort);
+    QEXPECT_FAIL("windows-1252 Latin1 short", "Defaulting to invalid UTF-8", Continue);
     QCOMPARE(ep.encoding().toLower(), encoding);
 
     QEXPECT_FAIL("UTF-16BE Unicode", "UTF-16 no confidence", Abort);
@@ -77,12 +78,30 @@ void KEncodingProberTest::testProbe()
 
 void KEncodingProberTest::testProbe_data()
 {
+    using namespace Qt::StringLiterals;
+
     QTest::addColumn<QByteArray>("data");
     QTest::addColumn<KEncodingProber::ProberType>("proberType");
     QTest::addColumn<QByteArray>("encoding");
 
-    QTest::addRow("utf-8") //
-        << QByteArray::fromHex("e998bfe5b094e58d91e696afe5b1b1e88489") //
+    QTest::addRow("utf-8 CJK") //
+        << QByteArray::fromHex("e998bfe5b094e58d91e696afe5b1b1e88489") // 阿尔卑斯山脉
+        << KEncodingProber::Universal << QByteArray("utf-8");
+
+    QTest::addRow("windows-1252 Latin1 short") //
+        << "Latin1 Text h\xE4lt h\xF6rt f\xFChrt lie\xDF"_ba // "Latin1 Text hält hört führt ließ"
+        << KEncodingProber::Universal << QByteArray("windows-1252");
+
+    QTest::addRow("windows-1252 German") //
+        << "Victor jagt zw\xf6lf Boxk\xe4mpfer quer \xfc\x62\x65r den gro\xdf\x65n Sylter Deich."_ba //
+        << KEncodingProber::Universal << QByteArray("windows-1252");
+
+    QTest::addRow("utf-8 Latin1 Supplement") //
+        << "Latin1 Text h\xC3\xA4lt h\xC3\xB6rt f\xC3\xBChrt lie\xC3\x9F"_ba // "Latin1 Text hält hört führt ließ"
+        << KEncodingProber::Universal << QByteArray("utf-8");
+
+    QTest::addRow("utf-8 German") //
+        << "Victor jagt zw\xc3\xb6lf Boxk\xc3\xa4mpfer quer \xc3\xbc\x62\x65r den gro\xc3\x9f\x65n Sylter Deich."_ba //
         << KEncodingProber::Universal << QByteArray("utf-8");
 
     QTest::addRow("gb18030") //

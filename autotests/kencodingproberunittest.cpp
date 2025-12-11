@@ -7,6 +7,7 @@
 #include <QTest>
 
 #include "../src/probers/nsCodingStateMachine.h"
+#include "../src/probers/nsLatin1Prober.h"
 #include "../src/probers/nsSBCharSetProber.h"
 
 class KEncodingProberUnitTest : public QObject
@@ -21,6 +22,8 @@ private Q_SLOTS:
     void testUtf16LE();
     void testUtf16LE_data();
     void testUtf16_common_data();
+    void testWindows1252();
+    void testWindows1252_data();
     void testWindows1255();
     void testWindows1255_data();
 };
@@ -210,6 +213,72 @@ void KEncodingProberUnitTest::testUtf16BE_data()
 void KEncodingProberUnitTest::testUtf16LE_data()
 {
     testUtf16_common_data();
+}
+
+void KEncodingProberUnitTest::testWindows1252()
+{
+    using namespace kencodingprober;
+
+    QFETCH(QByteArray, data);
+    QFETCH(bool, win1252Valid);
+    QFETCH(double, minConfidence);
+
+    nsLatin1Prober win1252Prober{};
+
+    auto state = win1252Prober.HandleData(data.constData(), data.size());
+
+    QCOMPARE(win1252Valid, (state != eNotMe));
+
+    QEXPECT_FAIL("Windows-1252 German", "Valid vowel + sharp s considered unlikely", Abort);
+    QEXPECT_FAIL("Windows-1252 French", "Accented vowel pair considered unlikely", Abort);
+    QEXPECT_FAIL("Windows-1252 Spanish", "Accented vowel pair considered unlikely", Abort);
+    if (win1252Valid) {
+        QCOMPARE_GE(win1252Prober.GetConfidence(), minConfidence);
+    }
+}
+
+void KEncodingProberUnitTest::testWindows1252_data()
+{
+    using namespace Qt::StringLiterals;
+
+    QTest::addColumn<QByteArray>("data");
+    QTest::addColumn<bool>("win1252Valid");
+    QTest::addColumn<double>("minConfidence");
+
+    // Verify "undefined" codes in CP1252 are rejected
+    // https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WINDOWS/CP1252.TXT
+    for (auto c : std::array<unsigned char, 5>{0x81, 0x8D, 0x8F, 0x90, 0x9D}) {
+        QTest::addRow("Undefined 0x%x", c) << QByteArray(1, c) + " "_ba << false << 0.0;
+    }
+
+    // "Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich." - "Victor chases twelve boxers across the Great Levee of Sylt"
+    QTest::addRow("Windows-1252 German") << //
+        "Victor jagt zw\xf6lf Boxk\xe4mpfer quer \xfc\x62\x65r den gro\xdf\x65n Sylter Deich."_ba << true << 0.45;
+
+    // Same "Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich.", but using UTF-8
+    // Unfortunately, these are all valid codepoints for Windows-1252, but the confidence should be lower than for UTF-8,
+    // as it contains UTF-8 multibyte sequences, and several capital characters following small characters for Windows-1252.
+    QTest::addRow("UTF-8 German") << //
+        "Victor jagt zw\xc3\xb6lf Boxk\xc3\xa4mpfer quer \xc3\xbc\x62\x65r den gro\xc3\x9f\x65n Sylter Deich."_ba << true << 0.0;
+
+    // "L'ergothérapeute effectue des prestations de rééducation et de réadaptation."
+    // - "The occupational therapist provides rehabilitation and re-adaptation services."
+    QTest::addRow("Windows-1252 French") << //
+        "L'ergoth\xe9rapeute effectue des prestations de r\xe9\xe9\x64ucation et de r\xe9\x61\x64\x61ptation."_ba << true << 0.45;
+
+    // "La sociolingüística sincrónica se centra en la estructura sociolingüística y en las variaciones lingüísticas."
+    // - "Synchronic sociolinguistics focuses on sociolinguistic structure and linguistic variations."
+    QTest::addRow("Windows-1252 Spanish") << //
+        "La socioling\xfc\xedstica sincr\xf3nica se centra en la estructura socioling\xfc\xedstica y en las variaciones ling\xfc\xedsticas."_ba << true << 0.45;
+
+    // "שפן אכל קצת גזר בטעם חסה, ודי" - "A bunny ate some lettuce-flavored carrots, and he had enough"
+    QTest::addRow("Windows-1255 Hebrew") //
+        << QByteArray::fromHex("f9f4ef20e0ebec20f7f6fa20e2e6f820e1e8f2ed20e7f1e42c20e5e3e9") << true << 0.0;
+    // "שפן אכל קצת גזר בטעם חסה, ודי", but using UTF-8
+    QTest::addRow("UTF-8 Hebrew") << QByteArray::fromHex( //
+        "d7a9d7a4d79f20d790d79bd79c20d7a7d7a6d7aa20d792d7"
+        "96d7a820d791d798d7a2d79d20d797d7a1d7942c20d795d7"
+        "93d799") << false << 0.0;
 }
 
 void KEncodingProberUnitTest::testWindows1255()
