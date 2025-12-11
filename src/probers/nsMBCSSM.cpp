@@ -371,28 +371,37 @@ static const unsigned int UCS2BE_cls[256 / 8] = {
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // c0 - c7
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // c8 - cf
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // d0 - d7
-    PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // d8 - df
+    PCK4BITS(6, 6, 6, 6, 7, 7, 7, 7), // d8 - df
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // e0 - e7
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // e8 - ef
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // f0 - f7
     PCK4BITS(0, 0, 0, 0, 0, 0, 4, 5) // f8 - ff
 };
 
-static const unsigned int UCS2BE_st[7] = {
-    PCK4BITS(5, 7, 7, eError, 4, 3, eError, eError), // 00-07
-    PCK4BITS(eError, eError, eError, eError, eItsMe, eItsMe, eItsMe, eItsMe), // 08-0f
-    PCK4BITS(eItsMe, eItsMe, 6, 6, 6, 6, eError, eError), // 10-17
-    PCK4BITS(6, 6, 6, 6, 6, eItsMe, 6, 6), // 18-1f
-    PCK4BITS(6, 6, 6, 6, 5, 7, 7, eError), // 20-27
-    PCK4BITS(5, 8, 6, 6, eError, 6, 6, 6), // 28-2f
-    PCK4BITS(6, 6, 6, 6, eError, eError, eStart, eStart) // 30-37
+// eStart and "6" are MSB states, "5" and "7" are LSB
+// 9 is High Surrogate low byte
+// 10 is Low Surrogate high byte
+static const unsigned int UCS2BE_st[11] = {
+    // clang-format off
+    PCK4BITS(     5,      7,      7, eError,      4,      3,      9, eError), // 0
+    PCK4BITS(eError, eError, eError, eError, eError, eError, eError, eError), // 1
+    PCK4BITS(eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe), // 2
+    PCK4BITS(     6,      6,      6,      6, eError, eError,      9,      6), // 3
+    PCK4BITS(     6,      6,      6,      6,      6, eItsMe,      6,      6), // 4
+    PCK4BITS(     6,      6,      6,      6,      6,      6,      6,      6), // 5
+    PCK4BITS(     5,      7,      7, eError,      5,      8,      9, eError), // 6
+    PCK4BITS(     6,      6, eError,      6,      6,      6,      9,      6), // 7
+    PCK4BITS(     6,      6,      6,      6, eError, eError,      9,      6), // 8
+    PCK4BITS(    10,     10,     10,     10,     10,     10,     10,     10), // 9
+    PCK4BITS(eError, eError, eError, eError, eError, eError, eError,      6), // 10
+    // clang-format on
 };
 
-static const unsigned int UCS2BECharLenTable[] = {2, 2, 2, 0, 2, 2};
+static const unsigned int UCS2BECharLenTable[] = {2, 2, 2, 0, 2, 2, 4, 4};
 
 const SMModel UCS2BESMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2BE_cls},
-    6,
+    8,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2BE_st},
     UCS2BECharLenTable,
     "UTF-16BE",
@@ -426,28 +435,37 @@ static const unsigned int UCS2LE_cls[256 / 8] = {
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // c0 - c7
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // c8 - cf
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // d0 - d7
-    PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // d8 - df
+    PCK4BITS(6, 6, 6, 6, 7, 7, 7, 7), // d8 - df
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // e0 - e7
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // e8 - ef
     PCK4BITS(0, 0, 0, 0, 0, 0, 0, 0), // f0 - f7
     PCK4BITS(0, 0, 0, 0, 0, 0, 4, 5) // f8 - ff
 };
 
-static const unsigned int UCS2LE_st[7] = {
-    PCK4BITS(6, 6, 7, 6, 4, 3, eError, eError), // 00-07
-    PCK4BITS(eError, eError, eError, eError, eItsMe, eItsMe, eItsMe, eItsMe), // 08-0f
-    PCK4BITS(eItsMe, eItsMe, 5, 5, 5, eError, eItsMe, eError), // 10-17
-    PCK4BITS(5, 5, 5, eError, 5, eError, 6, 6), // 18-1f
-    PCK4BITS(7, 6, 8, 8, 5, 5, 5, eError), // 20-27
-    PCK4BITS(5, 5, 5, eError, eError, eError, 5, 5), // 28-2f
-    PCK4BITS(5, 5, 5, eError, 5, eError, eStart, eStart) // 30-37
+// eStart and "5" are LSB states, "3", "4", "6", "7" and "8" are MSB
+// 9 is Low Surrogate LSB
+// 10 is Low Surrogate MSB
+static const unsigned int UCS2LE_st[11] = {
+    // clang-format off
+    PCK4BITS(     6,      6,      7,      6,      4,      3,      6,      6), // 0
+    PCK4BITS(eError, eError, eError, eError, eError, eError, eError, eError), // 1
+    PCK4BITS(eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe), // 2
+    PCK4BITS(     5,      5,      5, eError, eItsMe, eError,      9, eError), // 3
+    PCK4BITS(     5,      5,      5, eError,      5, eError,      9, eError), // 4
+    PCK4BITS(     6,      6,      7,      6,      8,      8,      6,      6), // 5
+    PCK4BITS(     5,      5,      5, eError,      5,      5,      9, eError), // 6
+    PCK4BITS(     5, eError, eError, eError,      5,      5,      9, eError), // 7
+    PCK4BITS(     5,      5,      5, eError,      5, eError,      9, eError), // 8
+    PCK4BITS(    10,     10,     10,     10,     10,     10,     10,     10), // 9
+    PCK4BITS(eError, eError, eError, eError, eError, eError, eError,      5), // 10
+    // clang-format on
 };
 
-static const unsigned int UCS2LECharLenTable[] = {2, 2, 2, 2, 2, 2};
+static const unsigned int UCS2LECharLenTable[] = {2, 2, 2, 2, 2, 2, 4, 4};
 
 const SMModel UCS2LESMModel = {
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2LE_cls},
-    6,
+    8,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2LE_st},
     UCS2LECharLenTable,
     "UTF-16LE",

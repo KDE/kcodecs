@@ -165,8 +165,15 @@ void KEncodingProberUnitTest::testUtf16_common_data()
     QTest::addRow("BE BOM") << QByteArray("\xFE\xFF") << true << false;
     QTest::addRow("LE BOM") << QByteArray("\xFF\xFE") << false << true;
     // swapped endianess does not cause an error, as the codepoint is still valid
-    QTest::addRow("BE HS+LS") << QByteArray("\xDC\x00\xD8\x00") << true << true;
-    QTest::addRow("LE HS+LS") << QByteArray("\x00\xDC\x00\xD8") << true << true;
+    QTest::addRow("BE HS+LS") << QByteArray("\x01\x01\xD8\x00\xDC\x00", 6) << true << true;
+    QTest::addRow("LE HS+LS") << QByteArray("\x01\x01\x00\xD8\x00\xDC", 6) << true << true;
+    QTest::addRow("BE HS+LS at start") << QByteArray("\xD8\x00\xDC\x00", 4) << true << true;
+    QTest::addRow("LE HS+LS at start") << QByteArray("\x00\xD8\x00\xDC", 4) << true << true;
+    // if swapped endianess results in a low surrogate, the input is invalid
+    QTest::addRow("BE LS") << QByteArray("\x01\x01\xDC\x00", 4) << false << true;
+    QTest::addRow("LE LS") << QByteArray("\x01\x01\x00\xDC", 4) << true << false;
+    QTest::addRow("BE LS at start") << QByteArray("\xDC\x00", 2) << false << true;
+    QTest::addRow("LE LS at start") << QByteArray("\x00\xDC", 2) << true << false;
 
     struct Utf16TestData {
         const char *name;
