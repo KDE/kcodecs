@@ -128,8 +128,6 @@ void KEncodingProberUnitTest::testUtf16BE()
     nsCodingStateMachine stateMachine{&UCS2BESMModel};
     nsSMState state = eStart;
 
-    QEXPECT_FAIL("UTF16 Interpunctuation little", "valid codepoint rejected", Abort);
-    QEXPECT_FAIL("UTF16 Math supplement big", "valid codepoint rejected", Abort);
     QEXPECT_FAIL("UTF16 ZWNBSP little", "zero width no-break space rejected", Abort);
     for (auto b : data) {
         state = stateMachine.NextState(b);
@@ -148,8 +146,6 @@ void KEncodingProberUnitTest::testUtf16LE()
     nsCodingStateMachine stateMachine{&UCS2LESMModel};
     nsSMState state = eStart;
 
-    QEXPECT_FAIL("UTF16 Interpunctuation big", "valid codepoint rejected", Abort);
-    QEXPECT_FAIL("UTF16 Math supplement little", "valid codepoint rejected", Abort);
     QEXPECT_FAIL("UTF16 ZWNBSP big", "zero width no-break space rejected", Abort);
     for (auto b : data) {
         state = stateMachine.NextState(b);

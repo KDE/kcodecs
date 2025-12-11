@@ -65,7 +65,6 @@ void KEncodingProberTest::testProbe()
 
     QEXPECT_FAIL("UTF-16LE Unicode", "UTF-16BE preferred unless erroneous", Abort);
     QEXPECT_FAIL("UTF-16LE Unicode definite 1", "UTF-16BE invalid surrogate ignored", Abort);
-    QEXPECT_FAIL("UTF-16BE Unicode definite 2", "UTF-16BE valid code misdetected", Abort);
     QEXPECT_FAIL("UTF-16LE Unicode definite 2", "UTF-16LE valid code misdetected", Abort);
     QEXPECT_FAIL("utf-8 Hebrew", "UTF-8 zero confidence", Abort);
     QEXPECT_FAIL("windows-1252 Latin1 short", "Defaulting to invalid UTF-8", Continue);
@@ -73,6 +72,7 @@ void KEncodingProberTest::testProbe()
 
     QEXPECT_FAIL("UTF-16BE Unicode", "UTF-16 no confidence", Abort);
     QEXPECT_FAIL("UTF-16BE Unicode definite 1", "UTF-16LE invalid surrogate ignored, no confidence", Abort);
+    QEXPECT_FAIL("UTF-16BE Unicode definite 2", "UTF-16 zero confidence", Abort);
     QCOMPARE_GE(ep.confidence(), 0.2);
 }
 
