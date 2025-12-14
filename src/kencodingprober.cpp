@@ -15,6 +15,7 @@
 #include "probers/nsSBCSGroupProber.h"
 #include "probers/nsUniversalDetector.h"
 
+#include <span>
 #include <string.h>
 
 namespace
@@ -30,6 +31,43 @@ static const std::array JapaneseMSBCProbers{
     Prober::SJIS,
     Prober::EUCJP,
 };
+constexpr const char *checkBom(std::span<const char, 4> buf)
+{
+    switch (buf[0]) {
+    case '\xEF':
+        if (('\xBB' == buf[1]) && ('\xBF' == buf[2])) {
+            // EF BB BF  UTF-8 encoded BOM
+            return "UTF-8";
+        }
+        break;
+    case '\xFE':
+        if ('\xFF' == buf[1]) {
+            // FE FF  UTF-16, big endian BOM
+            return "UTF-16BE";
+        }
+        break;
+    case '\x00':
+        if (('\x00' == buf[1]) && ('\xFE' == buf[2]) && ('\xFF' == buf[3])) {
+            // 00 00 FE FF  UTF-32, big-endian BOM
+            return "UTF-32BE";
+        }
+        break;
+    case '\xFF':
+        if (('\xFE' == buf[1]) && ('\x00' == buf[2]) && ('\x00' == buf[3])) {
+            // FF FE 00 00  UTF-32, little-endian BOM
+            return "UTF-32LE";
+        } else if ('\xFE' == buf[1]) {
+            // FF FE  UTF-16, little endian BOM
+            return "UTF-16LE";
+        }
+        break;
+    } // switch
+    return "";
+}
+static_assert(checkBom(std::array{'\0', '\0', '\0', '\0'})[0] == '\0');
+static_assert(checkBom(std::array{'\xEF', '\xBB', '\xBF', '\0'})[4] == '8'); // UTF-8
+static_assert(checkBom(std::array{'\xFF', '\xFE', ' ', ' '})[4] == '1'); // UTF-16LE
+static_assert(checkBom(std::array{'\xFF', '\xFE', '\0', '\0'})[4] == '3'); // UTF-32LE
 } // namespace <anonymous>
 
 class KEncodingProberPrivate
@@ -37,7 +75,6 @@ class KEncodingProberPrivate
 public:
     KEncodingProberPrivate()
         : mProber(nullptr)
-        , mStart(true)
     {
     }
     ~KEncodingProberPrivate()
@@ -93,60 +130,11 @@ public:
             mProber = nullptr;
         }
     }
-    void unicodeTest(const char *aBuf, int aLen)
-    {
-        if (mStart) {
-            mStart = false;
-            if (aLen > 3) {
-                switch (aBuf[0]) {
-                case '\xEF':
-                    if (('\xBB' == aBuf[1]) && ('\xBF' == aBuf[2]))
-                    // EF BB BF  UTF-8 encoded BOM
-                    {
-                        mProberState = KEncodingProber::FoundIt;
-                    }
-                    break;
-                case '\xFE':
-                    if (('\xFF' == aBuf[1]) && ('\x00' == aBuf[2]) && ('\x00' == aBuf[3]))
-                    // FE FF 00 00  UCS-4, unusual octet order BOM (3412)
-                    {
-                        mProberState = KEncodingProber::FoundIt;
-                    } else if ('\xFF' == aBuf[1])
-                    // FE FF  UTF-16, big endian BOM
-                    {
-                        mProberState = KEncodingProber::FoundIt;
-                    }
-                    break;
-                case '\x00':
-                    if (('\x00' == aBuf[1]) && ('\xFE' == aBuf[2]) && ('\xFF' == aBuf[3]))
-                    // 00 00 FE FF  UTF-32, big-endian BOM
-                    {
-                        mProberState = KEncodingProber::FoundIt;
-                    } else if (('\x00' == aBuf[1]) && ('\xFF' == aBuf[2]) && ('\xFE' == aBuf[3]))
-                    // 00 00 FF FE  UCS-4, unusual octet order BOM (2143)
-                    {
-                        mProberState = KEncodingProber::FoundIt;
-                    }
-                    break;
-                case '\xFF':
-                    if (('\xFE' == aBuf[1]) && ('\x00' == aBuf[2]) && ('\x00' == aBuf[3]))
-                    // FF FE 00 00  UTF-32, little-endian BOM
-                    {
-                        mProberState = KEncodingProber::FoundIt;
-                    } else if ('\xFE' == aBuf[1])
-                    // FF FE  UTF-16, little endian BOM
-                    {
-                        mProberState = KEncodingProber::FoundIt;
-                    }
-                    break;
-                } // switch
-            }
-        }
-    }
     KEncodingProber::ProberType mProberType;
     KEncodingProber::ProberState mProberState;
     kencodingprober::nsCharSetProber *mProber;
-    bool mStart;
+    char mBom[4] = {0};
+    unsigned int mBomLen = 0;
 };
 
 KEncodingProber::KEncodingProber(KEncodingProber::ProberType proberType)
@@ -160,7 +148,7 @@ KEncodingProber::~KEncodingProber() = default;
 void KEncodingProber::reset()
 {
     d->mProberState = KEncodingProber::Probing;
-    d->mStart = true;
+    d->mBomLen = 0;
 }
 
 KEncodingProber::ProberState KEncodingProber::feed(QByteArrayView data)
@@ -169,9 +157,12 @@ KEncodingProber::ProberState KEncodingProber::feed(QByteArrayView data)
         return d->mProberState;
     }
     if (d->mProberState == Probing) {
-        if (d->mStart) {
-            d->unicodeTest(data.constData(), data.size());
-            if (d->mProberState == FoundIt) {
+        if (d->mBomLen < 4) {
+            auto remainder = std::min<unsigned int>((4 - d->mBomLen), data.size());
+            memcpy(&d->mBom[d->mBomLen], data.constData(), remainder);
+            d->mBomLen += remainder;
+            if ((d->mBomLen == 4) && (checkBom(d->mBom)[0] != '\0')) {
+                d->mProberState = FoundIt;
                 return d->mProberState;
             }
         }
@@ -181,6 +172,7 @@ KEncodingProber::ProberState KEncodingProber::feed(QByteArrayView data)
             d->mProberState = NotMe;
             break;
         case kencodingprober::eFoundIt:
+            d->mBomLen = 0;
             d->mProberState = FoundIt;
             break;
         default:
@@ -204,6 +196,11 @@ QByteArray KEncodingProber::encoding() const
     if (!d->mProber) {
         return QByteArray("UTF-8");
     }
+    if ((d->mProberState == FoundIt) && (d->mBomLen == 4)) {
+        if (auto bomResult = checkBom(d->mBom); bomResult[0] != '\0') {
+            return {bomResult};
+        }
+    }
 
     return QByteArray(d->mProber->GetCharSetName());
 }
@@ -212,6 +209,11 @@ float KEncodingProber::confidence() const
 {
     if (!d->mProber) {
         return 0.0;
+    }
+    if ((d->mProberState == FoundIt) && (d->mBomLen == 4)) {
+        if (auto bomResult = checkBom(d->mBom); bomResult[0] != '\0') {
+            return 0.99;
+        }
     }
 
     return d->mProber->GetConfidence();
