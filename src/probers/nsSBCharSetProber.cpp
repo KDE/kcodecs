@@ -34,11 +34,11 @@ nsProbingState nsSingleByteCharSetProber::HandleData(const char *aBuf, unsigned 
     }
 
     if (mState == eDetecting) {
-        if (mTotalSeqs > SB_ENOUGH_REL_THRESHOLD) {
+        if (mTotalSeqs > 1024) {
             float cf = GetConfidence();
-            if (cf > POSITIVE_SHORTCUT_THRESHOLD) {
+            if (cf > 0.95f) {
                 mState = eFoundIt;
-            } else if (cf < NEGATIVE_SHORTCUT_THRESHOLD) {
+            } else if (cf < 0.05) {
                 mState = eNotMe;
             }
         }
@@ -66,21 +66,20 @@ float nsSingleByteCharSetProber::GetConfidence(void)
 #ifdef NEGATIVE_APPROACH
     if (mTotalSeqs > 0)
         if (mTotalSeqs > mSeqCounters[NEGATIVE_CAT] * 10) {
-            return ((float)(mTotalSeqs - mSeqCounters[NEGATIVE_CAT] * 10)) / mTotalSeqs * mFreqChar / mTotalChar;
+            return (mTotalSeqs - mSeqCounters[NEGATIVE_CAT] * 10.f) / mTotalSeqs * mFreqChar / mTotalChar;
         }
-    return (float)0.01;
+    return 0.01f;
 #else // POSITIVE_APPROACH
-    float r;
 
     if (mTotalSeqs > 0) {
-        r = ((float)1.0) * mSeqCounters[POSITIVE_CAT] / mTotalSeqs / mModel->mTypicalPositiveRatio;
+        float r = 1.0f * mSeqCounters[POSITIVE_CAT] / mTotalSeqs / mModel->mTypicalPositiveRatio;
         r = r * mFreqChar / mTotalChar;
-        if (r >= (float)1.00) {
-            r = (float)0.99;
+        if (r >= 0.99f) {
+            r = 0.99f;
         }
         return r;
     }
-    return (float)0.01;
+    return 0.01f;
 #endif
 }
 

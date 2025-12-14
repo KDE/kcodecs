@@ -10,9 +10,6 @@
 #include "nsCharSetProber.h"
 
 #define SAMPLE_SIZE 64
-#define SB_ENOUGH_REL_THRESHOLD 1024
-#define POSITIVE_SHORTCUT_THRESHOLD (float)0.95
-#define NEGATIVE_SHORTCUT_THRESHOLD (float)0.05
 #define SYMBOL_CAT_ORDER 250
 #define NUMBER_OF_SEQ_CAT 4
 #define POSITIVE_CAT (NUMBER_OF_SEQ_CAT - 1)
@@ -54,17 +51,6 @@ public:
     }
     void Reset(void) override;
     float GetConfidence(void) override;
-
-    // This feature is not implemented yet. any current language model
-    // contain this parameter as false. No one is looking at this
-    // parameter or calling this method.
-    // Moreover, the nsSBCSGroupProber which calls the HandleData of this
-    // prober has a hard-coded call to FilterWithoutEnglishLetters which gets rid
-    // of the English letters.
-    bool KeepEnglishLetters()
-    {
-        return mModel->keepEnglishLetter;
-    } // (not implemented)
 
 #ifdef DEBUG_PROBE
     void DumpStatus() override;
