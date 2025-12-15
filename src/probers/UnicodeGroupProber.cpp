@@ -42,7 +42,7 @@ nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLe
 {
     nsSMState codingState;
 
-    if (mActiveSM == 0 || aLen < 2) {
+    if (mActiveSM == 0) {
         mState = eNotMe;
         return mState;
     }

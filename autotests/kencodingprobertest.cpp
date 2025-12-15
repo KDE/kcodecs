@@ -1,5 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2012 Ni Hui <shuizhuyuanluo@126.com>
+    SPDX-FileCopyrightText: 2025 Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
@@ -12,6 +13,8 @@ class KEncodingProberTest : public QObject
     Q_OBJECT
 private Q_SLOTS:
     void testReset();
+    void testShort();
+    void testShort_data();
     void testProbe();
     void testProbe_data();
 };
@@ -23,6 +26,31 @@ void KEncodingProberTest::testReset()
     ep->reset();
     QCOMPARE(ep->state(), KEncodingProber::Probing);
     QCOMPARE(ep->encoding().toLower(), QByteArray("utf-8"));
+}
+
+void KEncodingProberTest::testShort()
+{
+    QFETCH(QByteArray, data);
+
+    KEncodingProber ep(KEncodingProber::Universal);
+    ep.feed(data);
+}
+
+void KEncodingProberTest::testShort_data()
+{
+    using namespace Qt::StringLiterals;
+
+    QTest::addColumn<QByteArray>("data");
+
+    QTest::addRow("empty") << QByteArray();
+    QTest::addRow("Len1") << "a"_ba;
+    QTest::addRow("Len2") << "ab"_ba;
+    QTest::addRow("Len3") << "abc"_ba;
+    QTest::addRow("Len4") << "ab d"_ba;
+    QTest::addRow("Len5") << "ab de"_ba;
+
+    QTest::addRow("Short BOM UTF-8") << QByteArray("\xef\xbb", 2);
+    QTest::addRow("Short BOM UTF-16BE") << QByteArray("\xfe\xff", 2);
 }
 
 void KEncodingProberTest::testProbe()
