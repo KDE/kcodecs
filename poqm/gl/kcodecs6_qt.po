@@ -286,82 +286,82 @@ msgstr ""
 "Non parece conter un enderezo de correo real, é dicir, algo do estilo "
 "marce@trasno.gal."
 
-#: kencodingprober.cpp:222 kencodingprober.cpp:263
+#: kencodingprober.cpp:237 kencodingprober.cpp:278
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Disabled"
 msgstr "Desactivado"
 
-#: kencodingprober.cpp:224 kencodingprober.cpp:266
+#: kencodingprober.cpp:239 kencodingprober.cpp:281
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Universal"
 msgstr "Universal"
 
-#: kencodingprober.cpp:226 kencodingprober.cpp:308
+#: kencodingprober.cpp:241 kencodingprober.cpp:323
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Unicode"
 msgstr "Unicode"
 
-#: kencodingprober.cpp:228 kencodingprober.cpp:278
+#: kencodingprober.cpp:243 kencodingprober.cpp:293
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Cyrillic"
 msgstr "Cirílico"
 
-#: kencodingprober.cpp:230 kencodingprober.cpp:293
+#: kencodingprober.cpp:245 kencodingprober.cpp:308
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Western European"
 msgstr "Europeo occidental"
 
-#: kencodingprober.cpp:232 kencodingprober.cpp:275
+#: kencodingprober.cpp:247 kencodingprober.cpp:290
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Central European"
 msgstr "Centroeuropeo"
 
-#: kencodingprober.cpp:234 kencodingprober.cpp:281
+#: kencodingprober.cpp:249 kencodingprober.cpp:296
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Greek"
 msgstr "Grego"
 
-#: kencodingprober.cpp:236 kencodingprober.cpp:284
+#: kencodingprober.cpp:251 kencodingprober.cpp:299
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Hebrew"
 msgstr "Hebreo"
 
-#: kencodingprober.cpp:238 kencodingprober.cpp:290
+#: kencodingprober.cpp:253 kencodingprober.cpp:305
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Turkish"
 msgstr "Turco"
 
-#: kencodingprober.cpp:240 kencodingprober.cpp:287
+#: kencodingprober.cpp:255 kencodingprober.cpp:302
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Japanese"
 msgstr "Xaponés"
 
-#: kencodingprober.cpp:242 kencodingprober.cpp:272
+#: kencodingprober.cpp:257 kencodingprober.cpp:287
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Baltic"
 msgstr "Báltico"
 
-#: kencodingprober.cpp:244 kencodingprober.cpp:296
+#: kencodingprober.cpp:259 kencodingprober.cpp:311
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "Chinés tradicional"
 
-#: kencodingprober.cpp:246 kencodingprober.cpp:299
+#: kencodingprober.cpp:261 kencodingprober.cpp:314
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "Chinés simplificado"
 
-#: kencodingprober.cpp:248 kencodingprober.cpp:302
+#: kencodingprober.cpp:263 kencodingprober.cpp:317
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Korean"
 msgstr "Coreano"
 
-#: kencodingprober.cpp:250 kencodingprober.cpp:305
+#: kencodingprober.cpp:265 kencodingprober.cpp:320
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Thai"
 msgstr "Tailandés"
 
-#: kencodingprober.cpp:252 kencodingprober.cpp:269
+#: kencodingprober.cpp:267 kencodingprober.cpp:284
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "Árabe"
