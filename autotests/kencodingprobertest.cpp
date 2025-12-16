@@ -17,6 +17,9 @@ private Q_SLOTS:
     void testShort_data();
     void testProbe();
     void testProbe_data();
+
+    void benchmarkProber();
+    void benchmarkProber_data();
 };
 
 void KEncodingProberTest::testReset()
@@ -180,6 +183,49 @@ void KEncodingProberTest::testProbe_data()
     QTest::addRow("UTF-16LE Unicode definite 2") //
         << QByteArray("\x00\xc4\x00\x2a\xdc\x00", 6) // "Ä*<inv>" or "쐀⨀Ü"
         << KEncodingProber::Unicode << QByteArray("utf-16le");
+}
+
+void KEncodingProberTest::benchmarkProber()
+{
+    QFETCH(QByteArray, data);
+    QFETCH(int, numBlocks);
+    QFETCH(int, totalLength);
+
+    QByteArray dataBlock;
+    while (dataBlock.size() < totalLength / numBlocks) {
+        dataBlock += data;
+    }
+    QCOMPARE_GE(dataBlock.size() * numBlocks, totalLength);
+
+    QBENCHMARK {
+        KEncodingProber ep(KEncodingProber::Universal);
+        for (int i = 0; i < numBlocks; i++) {
+            ep.feed(dataBlock);
+        }
+    }
+}
+
+void KEncodingProberTest::benchmarkProber_data()
+{
+    using namespace Qt::StringLiterals;
+
+    QTest::addColumn<QByteArray>("data");
+    QTest::addColumn<int>("numBlocks");
+    QTest::addColumn<int>("totalLength");
+
+    auto plainAscii = "The quick brown fox jumps over the lazy dog. "_ba;
+    auto win1252German = "Victor jagt zw\xf6lf Boxk\xe4mpfer quer \xfc\x62\x65r den gro\xdf\x65n Sylter Deich. "_ba;
+    auto utf8CJK = QByteArray::fromHex("e998bfe5b094e58d91e696afe5b1b1e88489"); // 阿尔卑斯山脉
+    auto big5 = QByteArray::fromHex("aefcafc7a6caa474a141a6b3ae65a444a46a");
+
+    for (int len : {10000, 100000}) {
+        for (int blocks : {1, 5, 10}) {
+            QTest::addRow("Ascii %i/%i", len, blocks) << plainAscii << blocks << len;
+            QTest::addRow("Windows-1252 German %i/%i", len, blocks) << win1252German << blocks << len;
+            QTest::addRow("utf-8 CJK %i/%i", len, blocks) << utf8CJK << blocks << len;
+            QTest::addRow("big5 %i/%i", len, blocks) << big5 << blocks << len;
+        }
+    }
 }
 
 QTEST_MAIN(KEncodingProberTest)

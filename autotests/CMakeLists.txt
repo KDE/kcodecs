@@ -8,7 +8,6 @@ if(NOT TARGET Qt6::Test)
 endif()
 
 ecm_add_tests(
-    kencodingprobertest.cpp
     rfc2047test.cpp
     base45test.cpp
     codectest.cpp
@@ -33,6 +32,18 @@ ecm_add_test(
     LINK_LIBRARIES Qt6::Test
 )
 target_include_directories(kencodingproberunittest PRIVATE ${CMAKE_BINARY_DIR}/src)
+
+add_executable(kencodingprobertest_bin
+    kencodingprobertest.cpp
+)
+target_link_libraries(kencodingprobertest_bin
+    Qt6::Test
+    KF6::Codecs
+)
+ecm_mark_as_test(kencodingprobertest_bin)
+ecm_mark_nongui_executable(kencodingprobertest_bin)
+# Run the benchmarks with just 1 iteration, so we known it works
+add_test(NAME kencodingprobertest COMMAND kencodingprobertest_bin "-iterations" "1")
 
 # Benchmark, compiled, but not run automatically with ctest
 add_executable(base64benchmark base64benchmark.cpp)
