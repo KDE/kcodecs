@@ -7,6 +7,9 @@
 #ifndef nsPkgInt_h__
 #define nsPkgInt_h__
 
+#include <concepts>
+#include <cstdint>
+
 namespace kencodingprober
 {
 typedef enum {
@@ -42,13 +45,43 @@ typedef struct nsPkgInt {
 } nsPkgInt;
 }
 
-#define PCK16BITS(a, b) ((unsigned int)(((b) << 16) | (a)))
+constexpr uint32_t PCK4BITS(std::convertible_to<uint8_t> auto... il)
+{
+    uint32_t val = 0;
 
-#define PCK8BITS(a, b, c, d) PCK16BITS(((unsigned int)(((b) << 8) | (a))), ((unsigned int)(((d) << 8) | (c))))
+    int pos = 0;
+    for (auto i : {uint8_t(il)...}) {
+        val |= (i << (4 * pos));
+        pos++;
+    }
+    return val;
+}
+static_assert(PCK4BITS(1, 2, 3, 4, 5, 6, 7, 8) == 0x87654321);
+static_assert(PCK4BITS(8, 7, 6, 5, 4, 3, 2, 1) == 0x12345678);
 
-#define PCK4BITS(a, b, c, d, e, f, g, h)                                                                                                                       \
-    PCK8BITS(((unsigned int)(((b) << 4) | (a))), ((unsigned int)(((d) << 4) | (c))), ((unsigned int)(((f) << 4) | (e))), ((unsigned int)(((h) << 4) | (g))))
+constexpr unsigned int GETFROMPCK(int index, const kencodingprober::nsPkgInt &table)
+{
+    const auto high = index >> table.idxsft;
+    const auto low = (index & table.sftmsk) << table.bitsft;
 
-#define GETFROMPCK(i, c) (((((c).data)[(i) >> (c).idxsft]) >> (((i) & (c).sftmsk) << (c).bitsft)) & (c).unitmsk)
+    uint32_t data = table.data[high] >> low;
+    return data & table.unitmsk;
+}
+
+namespace
+{
+using namespace kencodingprober;
+constexpr std::array data{
+    // clang-format off
+    PCKXBITS(1, 2, 3, 4, 5, 6, 7, 8,
+             15, 14, 13, 12, 11, 10, 9, 8),
+    // clang-format on
+};
+constexpr nsPkgInt table{eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, data.data()};
+
+static_assert(GETFROMPCK(0, table) == 1);
+static_assert(GETFROMPCK(9, table) == 14);
+static_assert(GETFROMPCK(15, table) == 8);
+}
 
 #endif /* nsPkgInt_h__ */
