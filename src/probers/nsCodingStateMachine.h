@@ -36,21 +36,18 @@ class KCODECS_NO_EXPORT nsCodingStateMachine
 {
 public:
     nsCodingStateMachine(const SMModel *sm)
+        : mModel(sm)
     {
-        mCurrentState = eStart;
-        mModel = sm;
     }
     nsSMState NextState(char c)
     {
         // for each byte we get its class, if it is first byte, we also get byte length
         unsigned int byteCls = GETCLASS(c);
         if (mCurrentState == eStart) {
-            mCurrentBytePos = 0;
             mCurrentCharLen = mModel->charLenTable[byteCls];
         }
         // from byte's class and stateTable, we get its next state
         mCurrentState = GETFROMPCK(mCurrentState * (mModel->classFactor) + byteCls, mModel->stateTable);
-        mCurrentBytePos++;
         return mCurrentState;
     }
     unsigned int GetCurrentCharLen(void)
@@ -82,11 +79,10 @@ public:
 #endif
 
 protected:
-    int mCurrentState;
-    unsigned int mCurrentCharLen;
-    unsigned int mCurrentBytePos;
+    int mCurrentState = eStart;
+    unsigned int mCurrentCharLen = 0;
 
-    const SMModel *mModel;
+    const SMModel *mModel = nullptr;
 };
 
 extern KCODECS_NO_EXPORT const SMModel UTF8SMModel;
