@@ -10,40 +10,11 @@
 #include <array>
 #include <concepts>
 #include <cstdint>
+#include <span>
 
 namespace kencodingprober
 {
-typedef enum {
-    eIdxSft4bits = 3,
-    eIdxSft8bits = 2,
-    eIdxSft16bits = 1,
-} nsIdxSft;
-
-typedef enum {
-    eSftMsk4bits = 7,
-    eSftMsk8bits = 3,
-    eSftMsk16bits = 1,
-} nsSftMsk;
-
-typedef enum {
-    eBitSft4bits = 2,
-    eBitSft8bits = 3,
-    eBitSft16bits = 4,
-} nsBitSft;
-
-typedef enum {
-    eUnitMsk4bits = 0x0000000FL,
-    eUnitMsk8bits = 0x000000FFL,
-    eUnitMsk16bits = 0x0000FFFFL,
-} nsUnitMsk;
-
-typedef struct nsPkgInt {
-    nsIdxSft idxsft;
-    nsSftMsk sftmsk;
-    nsBitSft bitsft;
-    nsUnitMsk unitmsk;
-    const unsigned int *data;
-} nsPkgInt;
+using nsPackedTable = std::span<const uint32_t>;
 }
 
 constexpr auto PCKXBITS(std::convertible_to<uint8_t> auto... il)
@@ -64,13 +35,13 @@ static_assert(PCKXBITS(1, 0, 0, 0, 0, 0, 0, 0) == std::array<uint32_t, 1>{0x0000
 static_assert(PCKXBITS(1, 2, 3, 4, 5, 6, 7, 8) == std::array<uint32_t, 1>{0x87654321});
 static_assert(PCKXBITS(8, 7, 6, 5, 4, 3, 2, 1) == std::array<uint32_t, 1>{0x12345678});
 
-constexpr unsigned int GETFROMPCK(int index, const kencodingprober::nsPkgInt &table)
+constexpr unsigned int GETFROMPCK(int index, const kencodingprober::nsPackedTable model)
 {
-    const auto high = index >> table.idxsft;
-    const auto low = (index & table.sftmsk) << table.bitsft;
+    const auto high = index >> 3;
+    const auto low = (index & 0x7) << 2;
 
-    uint32_t data = table.data[high] >> low;
-    return data & table.unitmsk;
+    uint32_t data = model[high] >> low;
+    return data & 0xf;
 }
 
 namespace
@@ -82,7 +53,7 @@ constexpr std::array data{
              15, 14, 13, 12, 11, 10, 9, 8),
     // clang-format on
 };
-constexpr nsPkgInt table{eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, data.data()};
+constexpr nsPackedTable table{data};
 
 static_assert(GETFROMPCK(0, table) == 1);
 static_assert(GETFROMPCK(9, table) == 14);

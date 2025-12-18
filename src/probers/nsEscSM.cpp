@@ -62,9 +62,9 @@ constexpr std::array<unsigned int, 6> HZ_st = PCKXBITS(
 static const unsigned int HZCharLenTable[] = {0, 0, 0, 0, 0, 0};
 
 const SMModel HZSMModel = {
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, HZ_cls.data()},
+    HZ_cls,
     6,
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, HZ_st.data()},
+    HZ_st,
     HZCharLenTable,
     "HZ-GB-2312",
 };
@@ -124,9 +124,9 @@ constexpr std::array<unsigned int, 9> ISO2022JP_st = PCKXBITS(
 static const unsigned int ISO2022JPCharLenTable[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 const SMModel ISO2022JPSMModel = {
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, ISO2022JP_cls.data()},
+    ISO2022JP_cls,
     10,
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, ISO2022JP_st.data()},
+    ISO2022JP_st,
     ISO2022JPCharLenTable,
     "ISO-2022-JP",
 };

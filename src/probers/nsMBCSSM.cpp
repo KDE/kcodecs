@@ -67,9 +67,9 @@ constexpr std::array<unsigned int, 3> BIG5_st = PCKXBITS(
 static const unsigned int Big5CharLenTable[] = {0, 1, 1, 2, 0};
 
 const SMModel Big5SMModel = {
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, BIG5_cls.data()},
+    BIG5_cls,
     5,
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, BIG5_st.data()},
+    BIG5_st,
     Big5CharLenTable,
     "Big5",
 };
@@ -127,9 +127,9 @@ constexpr std::array<unsigned int, 5> EUCJP_st = PCKXBITS(
 static const unsigned int EUCJPCharLenTable[] = {2, 2, 2, 3, 1, 0};
 
 const SMModel EUCJPSMModel = {
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, EUCJP_cls.data()},
+    EUCJP_cls,
     6,
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, EUCJP_st.data()},
+    EUCJP_st,
     EUCJPCharLenTable,
     "EUC-JP",
 };
@@ -184,9 +184,9 @@ constexpr std::array<unsigned int, 2> EUCKR_st = PCKXBITS(
 static const unsigned int EUCKRCharLenTable[] = {0, 1, 2, 0};
 
 const SMModel EUCKRSMModel = {
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, EUCKR_cls.data()},
+    EUCKR_cls,
     4,
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, EUCKR_st.data()},
+    EUCKR_st,
     EUCKRCharLenTable,
     "EUC-KR",
 };
@@ -250,9 +250,9 @@ constexpr std::array<unsigned int, 6> GB18030_st = PCKXBITS(
 static const unsigned int GB18030CharLenTable[] = {0, 1, 1, 1, 1, 1, 2};
 
 const SMModel GB18030SMModel = {
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, GB18030_cls.data()},
+    GB18030_cls,
     7,
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, GB18030_st.data()},
+    GB18030_st,
     GB18030CharLenTable,
     "GB18030",
 };
@@ -311,9 +311,9 @@ constexpr std::array<unsigned int, 3> SJIS_st = PCKXBITS(
 static const unsigned int SJISCharLenTable[] = {0, 1, 1, 2, 0, 0};
 
 const SMModel SJISSMModel = {
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, SJIS_cls.data()},
+    SJIS_cls,
     6,
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, SJIS_st.data()},
+    SJIS_st,
     SJISCharLenTable,
     "Shift_JIS",
 };
@@ -378,9 +378,9 @@ constexpr std::array<unsigned int, 11> UCS2BE_st = PCKXBITS(
 static const unsigned int UCS2BECharLenTable[] = {2, 2, 2, 0, 2, 2, 4, 4};
 
 const SMModel UCS2BESMModel = {
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2_cls.data()},
+    UCS2_cls,
     8,
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2BE_st.data()},
+    UCS2BE_st,
     UCS2BECharLenTable,
     "UTF-16BE",
 };
@@ -408,9 +408,9 @@ constexpr std::array<unsigned int, 11> UCS2LE_st = PCKXBITS(
 static const unsigned int UCS2LECharLenTable[] = {2, 2, 2, 2, 2, 2, 4, 4};
 
 const SMModel UCS2LESMModel = {
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2_cls.data()},
+    UCS2_cls,
     8,
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2LE_st.data()},
+    UCS2LE_st,
     UCS2LECharLenTable,
     "UTF-16LE",
 };
@@ -473,9 +473,9 @@ constexpr std::array<unsigned int, 10 * 12 / 8> UTF8_st = PCKXBITS(
 static const unsigned int UTF8CharLenTable[] = {0, 1, 1, 1, 1, 1, 2, 3, 3, 3, 4, 4};
 
 const SMModel UTF8SMModel = {
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UTF8_cls.data()},
+    UTF8_cls,
     12,
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UTF8_st.data()},
+    UTF8_st,
     UTF8CharLenTable,
     "UTF-8",
 };

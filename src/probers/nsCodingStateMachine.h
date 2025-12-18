@@ -21,13 +21,11 @@ enum {
 };
 using nsSMState = int;
 
-#define GETCLASS(c) GETFROMPCK(((unsigned char)(c)), mModel->classTable)
-
 // state machine model
 typedef struct {
-    nsPkgInt classTable;
+    nsPackedTable classTable;
     unsigned int classFactor;
-    nsPkgInt stateTable;
+    nsPackedTable stateTable;
     const unsigned int *charLenTable;
     const char *name;
 } SMModel;
@@ -42,7 +40,7 @@ public:
     nsSMState NextState(char c)
     {
         // for each byte we get its class, if it is first byte, we also get byte length
-        unsigned int byteCls = GETCLASS(c);
+        unsigned int byteCls = GETFROMPCK(static_cast<uint8_t>(c), mModel->classTable);
         if (mCurrentState == eStart) {
             mCurrentCharLen = mModel->charLenTable[byteCls];
         }
