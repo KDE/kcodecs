@@ -22,6 +22,9 @@
 rm -rf $WORK/*
 
 export PATH="$WORK/bin:$PATH"
+if [[ $FUZZING_ENGINE == "afl" ]]; then
+    export LDFLAGS="-fuse-ld=lld"
+fi
 
 cd $SRC/extra-cmake-modules
 cmake . -G Ninja \
