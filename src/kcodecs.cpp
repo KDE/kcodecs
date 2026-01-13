@@ -435,12 +435,15 @@ QByteArray KCodecs::encodeRFC2047String(QStringView src, QByteArrayView charset,
         }
     }
 
-    QByteArray encoded8Bit = codec.encode(src);
-    if (codec.hasError()) {
-        usedCS = CodecNames::utf8();
-        codec = QStringEncoder(QStringEncoder::Utf8);
-        encoded8Bit = codec.encode(src);
-    }
+    const QByteArray encoded8Bit = [&] { // encoded8Bit must be const to not detach below!
+        QByteArray encoded8Bit = codec.encode(src);
+        if (codec.hasError()) {
+            usedCS = CodecNames::utf8();
+            codec = QStringEncoder(QStringEncoder::Utf8);
+            encoded8Bit = codec.encode(src);
+        }
+        return encoded8Bit;
+    }();
 
     if (usedCS.contains("8859-")) { // use "B"-Encoding for non iso-8859-x charsets
         useQEncoding = true;
