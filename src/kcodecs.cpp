@@ -482,7 +482,7 @@ QByteArray KCodecs::encodeRFC2047String(QStringView src, QByteArrayView charset,
             }
         }
 
-        result = encoded8Bit.left(start) + "=?" + usedCS;
+        result = QByteArrayView(encoded8Bit).left(start) + "=?" + usedCS;
 
         if (useQEncoding) {
             result += "?Q?";
@@ -517,7 +517,7 @@ QByteArray KCodecs::encodeRFC2047String(QStringView src, QByteArrayView charset,
         }
 
         result += "?=";
-        result += encoded8Bit.right(encoded8Bit.length() - end);
+        result += QByteArrayView(encoded8Bit).right(encoded8Bit.length() - end);
     } else {
         result = encoded8Bit;
     }
