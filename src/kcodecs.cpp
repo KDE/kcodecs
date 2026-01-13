@@ -479,6 +479,7 @@ QByteArray KCodecs::encodeRFC2047String(QStringView src, QByteArrayView charset,
                     // we encode complete words
                     end++;
                 }
+                x = end;
             }
         }
 
