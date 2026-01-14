@@ -318,7 +318,8 @@ const SMModel SJISSMModel = {
     "Shift_JIS",
 };
 
-constexpr std::array<unsigned int, 256 / 8> UCS2BE_cls = PCKXBITS(
+// Class table shared by UCS2LE and UCS2BE
+constexpr std::array<unsigned int, 256 / 8> UCS2_cls = PCKXBITS(
     // clang-format off
     0, 0, 0, 0, 0, 0, 0, 0, // 00 - 07
     0, 0, 1, 0, 0, 2, 0, 0, // 08 - 0f
@@ -377,47 +378,12 @@ constexpr std::array<unsigned int, 11> UCS2BE_st = PCKXBITS(
 static const unsigned int UCS2BECharLenTable[] = {2, 2, 2, 0, 2, 2, 4, 4};
 
 const SMModel UCS2BESMModel = {
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2BE_cls.data()},
+    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2_cls.data()},
     8,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2BE_st.data()},
     UCS2BECharLenTable,
     "UTF-16BE",
 };
-
-constexpr std::array<unsigned int, 256 / 8> UCS2LE_cls = PCKXBITS(
-    0, 0, 0, 0, 0, 0, 0, 0, // 00 - 07
-    0, 0, 1, 0, 0, 2, 0, 0, // 08 - 0f
-    0, 0, 0, 0, 0, 0, 0, 0, // 10 - 17
-    0, 0, 0, 0, 0, 0, 0, 0, // 18 - 1f
-    0, 0, 0, 0, 0, 0, 0, 0, // 20 - 27
-    0, 0, 0, 0, 0, 0, 0, 0, // 28 - 2f
-    0, 0, 0, 0, 0, 0, 0, 0, // 30 - 37
-    0, 0, 0, 0, 0, 0, 0, 0, // 38 - 3f
-    0, 0, 0, 0, 0, 0, 0, 0, // 40 - 47
-    0, 0, 0, 0, 0, 0, 0, 0, // 48 - 4f
-    0, 0, 0, 0, 0, 0, 0, 0, // 50 - 57
-    0, 0, 0, 0, 0, 0, 0, 0, // 58 - 5f
-    0, 0, 0, 0, 0, 0, 0, 0, // 60 - 67
-    0, 0, 0, 0, 0, 0, 0, 0, // 68 - 6f
-    0, 0, 0, 0, 0, 0, 0, 0, // 70 - 77
-    0, 0, 0, 0, 0, 0, 0, 0, // 78 - 7f
-    0, 0, 0, 0, 0, 0, 0, 0, // 80 - 87
-    0, 0, 0, 0, 0, 0, 0, 0, // 88 - 8f
-    0, 0, 0, 0, 0, 0, 0, 0, // 90 - 97
-    0, 0, 0, 0, 0, 0, 0, 0, // 98 - 9f
-    0, 0, 0, 0, 0, 0, 0, 0, // a0 - a7
-    0, 0, 0, 0, 0, 0, 0, 0, // a8 - af
-    0, 0, 0, 0, 0, 0, 0, 0, // b0 - b7
-    0, 0, 0, 0, 0, 0, 0, 0, // b8 - bf
-    0, 0, 0, 0, 0, 0, 0, 0, // c0 - c7
-    0, 0, 0, 0, 0, 0, 0, 0, // c8 - cf
-    0, 0, 0, 0, 0, 0, 0, 0, // d0 - d7
-    6, 6, 6, 6, 7, 7, 7, 7, // d8 - df
-    0, 0, 0, 0, 0, 0, 0, 0, // e0 - e7
-    0, 0, 0, 0, 0, 0, 0, 0, // e8 - ef
-    0, 0, 0, 0, 0, 0, 0, 0, // f0 - f7
-    0, 0, 0, 0, 0, 0, 4, 5 // f8 - ff
-);
 
 // eStart and "5" are LSB states, "3", "4", "6", "7" and "8" are MSB
 // 9 is Low Surrogate LSB
@@ -442,7 +408,7 @@ constexpr std::array<unsigned int, 11> UCS2LE_st = PCKXBITS(
 static const unsigned int UCS2LECharLenTable[] = {2, 2, 2, 2, 2, 2, 4, 4};
 
 const SMModel UCS2LESMModel = {
-    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2LE_cls.data()},
+    {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2_cls.data()},
     8,
     {eIdxSft4bits, eSftMsk4bits, eBitSft4bits, eUnitMsk4bits, UCS2LE_st.data()},
     UCS2LECharLenTable,
