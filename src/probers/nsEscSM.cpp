@@ -8,7 +8,7 @@
 
 namespace kencodingprober
 {
-constexpr std::array<unsigned int, 256 / 8> HZ_cls = PCKXBITS(
+static constexpr std::array<const unsigned char, 256> HZ_cls{
     // clang-format off
     1, 0, 0, 0, 0, 0, 0, 0, // 00 - 07
     0, 0, 0, 0, 0, 0, 0, 0, // 08 - 0f
@@ -43,9 +43,9 @@ constexpr std::array<unsigned int, 256 / 8> HZ_cls = PCKXBITS(
     1, 1, 1, 1, 1, 1, 1, 1, // f0 - f7
     1, 1, 1, 1, 1, 1, 1, 1  // f8 - ff
     // clang-format on
-);
+};
 
-constexpr std::array<unsigned int, 6> HZ_st = PCKXBITS(
+static constexpr std::array<const unsigned char, 42> HZ_st{
     // clang-format off
     //       <INV>       ~     <?>       {       }
     eStart, eError,      3, eStart, eStart, eStart, // eStart
@@ -55,13 +55,12 @@ constexpr std::array<unsigned int, 6> HZ_st = PCKXBITS(
     5,      eError,      6, eError,      5,      5, // 4 '~ { [ <Z> <R> ]*'
     4,      eError,      4, eError,      4,      4, // 5 '~ { <Z> [ <R> <Z> ]*'
     4,      eError,      4, eError,      4, eItsMe, // 6
-    eStart, eStart, eStart, eStart, eStart, eStart // Padding
     // clang-format on
-);
+};
 
 static const unsigned int HZCharLenTable[] = {0, 0, 0, 0, 0, 0};
 
-const SMModel HZSMModel = {
+constexpr SMModel HZSMModel{
     HZ_cls,
     6,
     HZ_st,
@@ -69,7 +68,7 @@ const SMModel HZSMModel = {
     "HZ-GB-2312",
 };
 
-constexpr std::array<unsigned int, 256 / 8> ISO2022JP_cls = PCKXBITS(
+static constexpr std::array<const unsigned char, 256> ISO2022JP_cls{
     // clang-format off
     2, 0, 0, 0, 0, 0, 0, 0, // 00 - 07
     0, 0, 0, 0, 0, 0, 2, 2, // 08 - 0f
@@ -104,10 +103,10 @@ constexpr std::array<unsigned int, 256 / 8> ISO2022JP_cls = PCKXBITS(
     2, 2, 2, 2, 2, 2, 2, 2, // f0 - f7
     2, 2, 2, 2, 2, 2, 2, 2 // f8 - ff
     // clang-format on
-);
+};
 
 // ISO-2022-JP-1 / RFC 2237
-constexpr std::array<unsigned int, 9> ISO2022JP_st = PCKXBITS(
+static constexpr std::array<const unsigned char, 70> ISO2022JP_st{
     // clang-format off
     //       <ESC>   <INV>       (       B       J       @       $       D       I
     eStart,      3, eError, eStart, eStart, eStart, eStart, eStart, eStart, eStart, // eStart
@@ -117,13 +116,12 @@ constexpr std::array<unsigned int, 9> ISO2022JP_st = PCKXBITS(
     eError, eError, eError,      6, eItsMe, eError, eItsMe, eError, eError, eError, // 4 'ESC $'
     eError, eError, eError, eError, eItsMe, eItsMe, eError, eError, eError, eItsMe, // 5 'ESC ('
     eError, eError, eError, eError, eError, eError, eError, eError, eItsMe, eError, // 6 'ESC $ ('
-    eStart, eStart // Padding
     // clang-format on
-);
+};
 
 static const unsigned int ISO2022JPCharLenTable[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-const SMModel ISO2022JPSMModel = {
+constexpr SMModel ISO2022JPSMModel = {
     ISO2022JP_cls,
     10,
     ISO2022JP_st,

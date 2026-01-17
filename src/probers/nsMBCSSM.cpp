@@ -16,7 +16,7 @@ Modification from frank tang's original work:
 
 namespace kencodingprober
 {
-constexpr std::array<unsigned int, 256 / 8> BIG5_cls = PCKXBITS(
+static constexpr std::array<const unsigned char, 256> BIG5_cls{
     // clang-format off
     // 0,1,1,1,1,1,1,1,  // 00 - 07
     1, 1, 1, 1, 1, 1, 1, 1, // 00 - 07    //allow 0x00 as legal value
@@ -52,9 +52,9 @@ constexpr std::array<unsigned int, 256 / 8> BIG5_cls = PCKXBITS(
     3, 3, 3, 3, 3, 3, 3, 3, // f0 - f7
     3, 3, 3, 3, 3, 3, 3, 0 // f8 - ff
     // clang-format on
-);
+};
 
-constexpr std::array<unsigned int, 3> BIG5_st = PCKXBITS(
+static constexpr std::array<const unsigned char, 24> BIG5_st{
     // clang-format off
     eError, eStart, eStart,      3, eError, // eStart
     eError, eError, eError, eError, eError, // eError
@@ -62,11 +62,11 @@ constexpr std::array<unsigned int, 3> BIG5_st = PCKXBITS(
     eError, eError, eStart, eStart, eStart, // 3
     eStart, eStart, eStart, eStart // Padding
     // clang-format on
-);
+};
 
 static const unsigned int Big5CharLenTable[] = {0, 1, 1, 2, 0};
 
-const SMModel Big5SMModel = {
+constexpr SMModel Big5SMModel{
     BIG5_cls,
     5,
     BIG5_st,
@@ -74,7 +74,7 @@ const SMModel Big5SMModel = {
     "Big5",
 };
 
-constexpr std::array<unsigned int, 256 / 8> EUCJP_cls = PCKXBITS(
+static constexpr std::array<const unsigned char, 256> EUCJP_cls{
     // clang-format off
     // 5,4,4,4,4,4,4,4,  // 00 - 07
     4, 4, 4, 4, 4, 4, 4, 4, // 00 - 07
@@ -110,9 +110,9 @@ constexpr std::array<unsigned int, 256 / 8> EUCJP_cls = PCKXBITS(
     0, 0, 0, 0, 0, 0, 0, 0, // f0 - f7
     0, 0, 0, 0, 0, 0, 0, 5  // f8 - ff
     // clang-format on
-);
+};
 
-constexpr std::array<unsigned int, 5> EUCJP_st = PCKXBITS(
+static constexpr std::array<const unsigned char, 40> EUCJP_st{
     // clang-format off
          3,      4,      3,      5, eStart, eError, // eStart
     eError, eError, eError, eError, eError, eError, // eError
@@ -122,11 +122,11 @@ constexpr std::array<unsigned int, 5> EUCJP_st = PCKXBITS(
          3, eError,      3, eError, eError, eError, // 5
     eStart, eStart, eStart, eStart // Padding
     // clang-format on
-);
+};
 
 static const unsigned int EUCJPCharLenTable[] = {2, 2, 2, 3, 1, 0};
 
-const SMModel EUCJPSMModel = {
+constexpr SMModel EUCJPSMModel{
     EUCJP_cls,
     6,
     EUCJP_st,
@@ -134,7 +134,7 @@ const SMModel EUCJPSMModel = {
     "EUC-JP",
 };
 
-constexpr std::array<unsigned int, 256 / 8> EUCKR_cls = PCKXBITS(
+static constexpr std::array<const unsigned char, 256> EUCKR_cls{
     // clang-format off
     // 0,1,1,1,1,1,1,1,  // 00 - 07
     1, 1, 1, 1, 1, 1, 1, 1, // 00 - 07
@@ -170,20 +170,20 @@ constexpr std::array<unsigned int, 256 / 8> EUCKR_cls = PCKXBITS(
     2, 2, 2, 2, 2, 2, 2, 2, // f0 - f7
     2, 2, 2, 2, 2, 2, 2, 0  // f8 - ff
     // clang-format on
-);
+};
 
-constexpr std::array<unsigned int, 2> EUCKR_st = PCKXBITS(
+static constexpr std::array<const unsigned char, 16> EUCKR_st{
     // clang-format off
     eError, eStart,      3, eError, // eStart
     eError, eError, eError, eError, // eError
     eItsMe, eItsMe, eItsMe, eItsMe, // eItsMe
     eError, eError, eStart, eStart  // 3
     // clang-format on
-);
+};
 
 static const unsigned int EUCKRCharLenTable[] = {0, 1, 2, 0};
 
-const SMModel EUCKRSMModel = {
+constexpr SMModel EUCKRSMModel{
     EUCKR_cls,
     4,
     EUCKR_st,
@@ -193,7 +193,7 @@ const SMModel EUCKRSMModel = {
 
 // the following state machine data was created by perl script in
 // intl/chardet/tools. It should be the same as in PSM detector.
-constexpr std::array<unsigned int, 256 / 8> GB18030_cls = PCKXBITS(
+static constexpr std::array<const unsigned char, 256> GB18030_cls{
     // clang-format off
     1, 1, 1, 1, 1, 1, 1, 1, // 00 - 07
     1, 1, 1, 1, 1, 1, 0, 0, // 08 - 0f
@@ -228,9 +228,9 @@ constexpr std::array<unsigned int, 256 / 8> GB18030_cls = PCKXBITS(
     6, 6, 6, 6, 6, 6, 6, 6, // f0 - f7
     6, 6, 6, 6, 6, 6, 6, 0  // f8 - ff
     // clang-format on
-);
+};
 
-constexpr std::array<unsigned int, 6> GB18030_st = PCKXBITS(
+static constexpr std::array<const unsigned char, 48> GB18030_st{
     // clang-format off
     eError, eStart, eStart, eStart, eStart, eStart,      3, // eStart
     eError, eError, eError, eError, eError, eError, eError, // eError
@@ -240,7 +240,7 @@ constexpr std::array<unsigned int, 6> GB18030_st = PCKXBITS(
     eError, eError, eError, eItsMe, eError, eError, eError, // 5
     eStart, eStart, eStart, eStart, eStart, eStart // Padding
     // clang-format on
-);
+};
 
 // To be accurate, the length of class 6 can be either 2 or 4.
 // But it is not necessary to discriminate between the two since
@@ -249,7 +249,7 @@ constexpr std::array<unsigned int, 6> GB18030_st = PCKXBITS(
 // 2 here.
 static const unsigned int GB18030CharLenTable[] = {0, 1, 1, 1, 1, 1, 2};
 
-const SMModel GB18030SMModel = {
+constexpr SMModel GB18030SMModel{
     GB18030_cls,
     7,
     GB18030_st,
@@ -259,7 +259,7 @@ const SMModel GB18030SMModel = {
 
 // sjis
 
-constexpr std::array<unsigned int, 256 / 8> SJIS_cls = PCKXBITS(
+static constexpr std::array<const unsigned char, 256> SJIS_cls{
     // clang-format off
     // 0,1,1,1,1,1,1,1,  // 00 - 07
     1, 1, 1, 1, 1, 1, 1, 1, // 00 - 07
@@ -297,20 +297,20 @@ constexpr std::array<unsigned int, 256 / 8> SJIS_cls = PCKXBITS(
     4, 4, 4, 4, 4, 4, 4, 4, // f0 - f7
     4, 4, 4, 4, 4, 0, 0, 0  // f8 - ff
     // clang-format on
-);
+};
 
-constexpr std::array<unsigned int, 3> SJIS_st = PCKXBITS(
+static constexpr std::array<const unsigned char, 24> SJIS_st{
     // clang-format off
     eError, eStart, eStart,      3, eError, eError, // eStart
     eError, eError, eError, eError, eError, eError, // eError
     eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, // eItsMe
     eError, eError, eStart, eStart, eStart, eStart  // 3
     // clang-format on
-);
+};
 
 static const unsigned int SJISCharLenTable[] = {0, 1, 1, 2, 0, 0};
 
-const SMModel SJISSMModel = {
+constexpr SMModel SJISSMModel{
     SJIS_cls,
     6,
     SJIS_st,
@@ -319,7 +319,7 @@ const SMModel SJISSMModel = {
 };
 
 // Class table shared by UCS2LE and UCS2BE
-constexpr std::array<unsigned int, 256 / 8> UCS2_cls = PCKXBITS(
+static constexpr std::array<const unsigned char, 256> UCS2_cls{
     // clang-format off
     0, 0, 0, 0, 0, 0, 0, 0, // 00 - 07
     0, 0, 1, 0, 0, 2, 0, 0, // 08 - 0f
@@ -354,12 +354,12 @@ constexpr std::array<unsigned int, 256 / 8> UCS2_cls = PCKXBITS(
     0, 0, 0, 0, 0, 0, 0, 0, // f0 - f7
     0, 0, 0, 0, 0, 0, 4, 5 // f8 - ff
     // clang-format on
-);
+};
 
 // eStart and "6" are MSB states, "5" and "7" are LSB
 // 9 is High Surrogate low byte
 // 10 is Low Surrogate high byte
-constexpr std::array<unsigned int, 11> UCS2BE_st = PCKXBITS(
+static constexpr std::array<const unsigned char, 88> UCS2BE_st{
     // clang-format off
          5,      7,      7, eError,      4,      3,      9, eError, // 0
     eError, eError, eError, eError, eError, eError, eError, eError, // 1
@@ -373,11 +373,11 @@ constexpr std::array<unsigned int, 11> UCS2BE_st = PCKXBITS(
         10,     10,     10,     10,     10,     10,     10,     10, // 9
     eError, eError, eError, eError, eError, eError, eError,      6 // 10
     // clang-format on
-);
+};
 
 static const unsigned int UCS2BECharLenTable[] = {2, 2, 2, 0, 2, 2, 4, 4};
 
-const SMModel UCS2BESMModel = {
+constexpr SMModel UCS2BESMModel{
     UCS2_cls,
     8,
     UCS2BE_st,
@@ -388,7 +388,7 @@ const SMModel UCS2BESMModel = {
 // eStart and "5" are LSB states, "3", "4", "6", "7" and "8" are MSB
 // 9 is Low Surrogate LSB
 // 10 is Low Surrogate MSB
-constexpr std::array<unsigned int, 11> UCS2LE_st = PCKXBITS(
+static constexpr std::array<const unsigned char, 88> UCS2LE_st{
     // clang-format off
          6,      6,      7,      6,      4,      3,      6,      6, // 0
     eError, eError, eError, eError, eError, eError, eError, eError, // 1
@@ -402,12 +402,11 @@ constexpr std::array<unsigned int, 11> UCS2LE_st = PCKXBITS(
         10,     10,     10,     10,     10,     10,     10,     10, // 9
     eError, eError, eError, eError, eError, eError, eError,      5 // 10
     // clang-format on
-);
-
+};
 
 static const unsigned int UCS2LECharLenTable[] = {2, 2, 2, 2, 2, 2, 4, 4};
 
-const SMModel UCS2LESMModel = {
+constexpr SMModel UCS2LESMModel{
     UCS2_cls,
     8,
     UCS2LE_st,
@@ -415,7 +414,7 @@ const SMModel UCS2LESMModel = {
     "UTF-16LE",
 };
 
-constexpr std::array<unsigned int, 256 / 8> UTF8_cls = PCKXBITS(
+static constexpr std::array<const unsigned char, 256> UTF8_cls{
     // clang-format off
     // 0,1,1,1,1,1,1,1,  // 00 - 07
     1, 1, 1, 1, 1, 1, 1, 1, // 00 - 07  //allow 0x00 as a legal value
@@ -451,9 +450,9 @@ constexpr std::array<unsigned int, 256 / 8> UTF8_cls = PCKXBITS(
     9, 10, 10, 10, 11, 0, 0, 0, // f0 - f7
     0, 0, 0, 0, 0, 0, 0, 0 // f8 - ff
     // clang-format on
-);
+};
 
-constexpr std::array<unsigned int, 10 * 12 / 8> UTF8_st = PCKXBITS(
+static constexpr std::array<const unsigned char, 10 * 12> UTF8_st{
     // clang-format off
     // byteclass:
     //   0       1       2       3       4       5       6       7       8       9      10      11
@@ -468,11 +467,11 @@ constexpr std::array<unsigned int, 10 * 12 / 8> UTF8_st = PCKXBITS(
     eError, eError,      5,      5,      5, eError, eError, eError, eError, eError, eError, eError, // 8
     eError, eError,      5, eError, eError, eError, eError, eError, eError, eError, eError, eError  // 9
     // clang-format on
-);
+};
 
 static const unsigned int UTF8CharLenTable[] = {0, 1, 1, 1, 1, 1, 2, 3, 3, 3, 4, 4};
 
-const SMModel UTF8SMModel = {
+constexpr SMModel UTF8SMModel{
     UTF8_cls,
     12,
     UTF8_st,

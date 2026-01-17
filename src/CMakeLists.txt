@@ -58,7 +58,6 @@ target_sources(KF6Codecs PRIVATE
     probers/nsMBCSGroupProber.cpp
     probers/nsMBCSGroupProber.h
     probers/nsMBCSSM.cpp
-    probers/nsPkgInt.h
     probers/nsSBCharSetProber.cpp
     probers/nsSBCharSetProber.h
     probers/nsSBCSGroupProber.cpp

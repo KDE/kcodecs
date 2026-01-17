@@ -11,7 +11,10 @@
 
 #include "kcodecs_export.h"
 
-#include "nsPkgInt.h"
+#include <array>
+#include <cstdint>
+#include <span>
+
 namespace kencodingprober
 {
 enum {
@@ -21,11 +24,14 @@ enum {
 };
 using nsSMState = int;
 
+using nsClassTable = const std::array<const uint8_t, 256> &;
+using nsStateTable = std::span<const uint8_t>;
+
 // state machine model
 typedef struct {
-    nsPackedTable classTable;
+    nsClassTable classTable;
     unsigned int classFactor;
-    nsPackedTable stateTable;
+    nsStateTable stateTable;
     const unsigned int *charLenTable;
     const char *name;
 } SMModel;
@@ -40,12 +46,13 @@ public:
     nsSMState NextState(char c)
     {
         // for each byte we get its class, if it is first byte, we also get byte length
-        unsigned int byteCls = GETFROMPCK(static_cast<uint8_t>(c), mModel->classTable);
+        const uint8_t index = static_cast<uint8_t>(c);
+        unsigned int byteCls = mModel->classTable[index];
         if (mCurrentState == eStart) {
             mCurrentCharLen = mModel->charLenTable[byteCls];
         }
         // from byte's class and stateTable, we get its next state
-        mCurrentState = GETFROMPCK(mCurrentState * (mModel->classFactor) + byteCls, mModel->stateTable);
+        mCurrentState = mModel->stateTable[mCurrentState * mModel->classFactor + byteCls];
         return mCurrentState;
     }
     unsigned int GetCurrentCharLen(void)
