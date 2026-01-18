@@ -7,10 +7,12 @@
 #ifndef nsEscCharSetProber_h__
 #define nsEscCharSetProber_h__
 
+#include <array>
+#include <memory>
+
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
 
-#define NUM_OF_ESC_CHARSETS 4
 namespace kencodingprober
 {
 class KCODECS_NO_EXPORT nsEscCharSetProber : public nsCharSetProber
@@ -34,12 +36,9 @@ public:
     }
 
 protected:
-    void GetDistribution(unsigned int aCharLen, const char *aStr);
-
-    nsCodingStateMachine *mCodingSM[NUM_OF_ESC_CHARSETS];
-    unsigned int mActiveSM;
-    nsProbingState mState;
-    const char *mDetectedCharset;
+    std::array<std::unique_ptr<nsCodingStateMachine>, 2> mCodingSM;
+    nsProbingState mState = eDetecting;
+    const char *mDetectedCharset = nullptr;
 };
 }
 #endif /* nsEscCharSetProber_h__ */

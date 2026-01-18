@@ -10,57 +10,43 @@ namespace kencodingprober
 {
 nsEscCharSetProber::nsEscCharSetProber(void)
 {
-    mCodingSM[0] = new nsCodingStateMachine(&HZSMModel);
-    mCodingSM[1] = new nsCodingStateMachine(&ISO2022CNSMModel);
-    mCodingSM[2] = new nsCodingStateMachine(&ISO2022JPSMModel);
-    mCodingSM[3] = new nsCodingStateMachine(&ISO2022KRSMModel);
-    mActiveSM = NUM_OF_ESC_CHARSETS;
-    mState = eDetecting;
-    mDetectedCharset = nullptr;
+    mCodingSM[0] = std::make_unique<nsCodingStateMachine>(&ISO2022JPSMModel);
+    mCodingSM[1] = std::make_unique<nsCodingStateMachine>(&HZSMModel);
 }
 
-nsEscCharSetProber::~nsEscCharSetProber(void)
-{
-    for (unsigned int i = 0; i < NUM_OF_ESC_CHARSETS; i++) {
-        delete mCodingSM[i];
-    }
-}
+nsEscCharSetProber::~nsEscCharSetProber(void) = default;
 
 void nsEscCharSetProber::Reset(void)
 {
     mState = eDetecting;
-    for (unsigned int i = 0; i < NUM_OF_ESC_CHARSETS; i++) {
-        mCodingSM[i]->Reset();
+    for (auto &codingSM : mCodingSM) {
+        codingSM->Reset();
     }
-    mActiveSM = NUM_OF_ESC_CHARSETS;
     mDetectedCharset = nullptr;
 }
 
 nsProbingState nsEscCharSetProber::HandleData(const char *aBuf, unsigned int aLen)
 {
-    nsSMState codingState;
-    int j;
-    unsigned int i;
+    if (mState != eDetecting) {
+        return mState;
+    }
 
-    for (i = 0; i < aLen && mState == eDetecting; i++) {
-        for (j = mActiveSM - 1; j >= 0; j--) {
+    int activeSM = mCodingSM.size();
+
+    for (auto &codingSM : mCodingSM) {
+        for (unsigned int i = 0; i < aLen; i++) {
             // byte is feed to all active state machine
-            codingState = mCodingSM[j]->NextState(aBuf[i]);
+            auto codingState = codingSM->NextState(aBuf[i]);
             if (codingState == eError) {
                 // got negative answer for this state machine, make it inactive
-                mActiveSM--;
-                if (mActiveSM == 0) {
+                activeSM--;
+                if (activeSM == 0) {
                     mState = eNotMe;
                     return mState;
-                } else if (j != (int)mActiveSM) {
-                    nsCodingStateMachine *t;
-                    t = mCodingSM[mActiveSM];
-                    mCodingSM[mActiveSM] = mCodingSM[j];
-                    mCodingSM[j] = t;
                 }
             } else if (codingState == eItsMe) {
                 mState = eFoundIt;
-                mDetectedCharset = mCodingSM[j]->GetCodingStateMachine();
+                mDetectedCharset = codingSM->GetCodingStateMachine();
                 return mState;
             }
         }

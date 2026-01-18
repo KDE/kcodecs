@@ -95,8 +95,6 @@ extern KCODECS_NO_EXPORT const SMModel UCS2LESMModel;
 extern KCODECS_NO_EXPORT const SMModel UCS2BESMModel;
 
 extern KCODECS_NO_EXPORT const SMModel HZSMModel;
-extern KCODECS_NO_EXPORT const SMModel ISO2022CNSMModel;
 extern KCODECS_NO_EXPORT const SMModel ISO2022JPSMModel;
-extern KCODECS_NO_EXPORT const SMModel ISO2022KRSMModel;
 }
 #endif /* nsCodingStateMachine_h__ */
