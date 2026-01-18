@@ -26,6 +26,11 @@ private Q_SLOTS:
     void testWindows1252_data();
     void testWindows1255();
     void testWindows1255_data();
+    void testEsc_common_data();
+    void testHzCharset();
+    void testHzCharset_data();
+    void testIso2022JPCharset();
+    void testIso2022JPCharset_data();
 };
 
 void KEncodingProberUnitTest::testUtf8()
@@ -328,6 +333,87 @@ void KEncodingProberUnitTest::testWindows1255_data()
         "d7a9d7a4d79f20d790d79bd79c20d7a7d7a6d7aa20d792d7"
         "96d7a820d791d798d7a2d79d20d797d7a1d7942c20d795d7"
         "93d799") << false;
+}
+
+void KEncodingProberUnitTest::testHzCharset()
+{
+    QFETCH(QByteArray, data);
+    QFETCH(bool, hzValid);
+
+    using namespace kencodingprober;
+
+    nsCodingStateMachine stateMachine{&HZSMModel};
+
+    nsSMState state = eStart;
+
+    QEXPECT_FAIL("HZ odd", "0x7d '}' accepted as lead byte", Abort);
+    for (auto b : data) {
+        state = stateMachine.NextState(b);
+    }
+
+    QCOMPARE((state != eError), hzValid);
+}
+
+void KEncodingProberUnitTest::testIso2022JPCharset()
+{
+    QFETCH(QByteArray, data);
+    QFETCH(bool, iso2022JPValid);
+
+    using namespace kencodingprober;
+
+    nsCodingStateMachine stateMachine{&ISO2022JPSMModel};
+
+    nsSMState state = eStart;
+
+    for (auto b : data) {
+        state = stateMachine.NextState(b);
+    }
+
+    qDebug() << data;
+    QCOMPARE((state != eError), iso2022JPValid);
+}
+
+void KEncodingProberUnitTest::testEsc_common_data()
+{
+    using namespace Qt::StringLiterals;
+
+    QTest::addColumn<QByteArray>("data");
+    QTest::addColumn<bool>("hzValid");
+    QTest::addColumn<bool>("iso2022JPValid");
+
+    // ASCII without escape sequence is always valid
+    QTest::addRow("empty") << QByteArray() << true << true;
+    QTest::addRow("Latin1") << "abcdxyzABCDXYZ 0129;,"_ba << true << true;
+
+    // All codes >= 0x80 are invalid
+    QTest::addRow("UTF-8 BOM") << "\xef\xbb\xbfZ"_ba << false << false; // "<UTF-8 BOM>Z"
+    QTest::addRow("UTF-16BE BOM") << "\xFE\xFF"_ba << false << false;
+    QTest::addRow("UTF-16LE BOM") << "\xFF\xFE"_ba << false << false;
+    QTest::addRow("UTF-8 Latin1 Supplement") //
+        << "Latin1 Text \xC3\xA4\xC3\xB6\xC3\xBC\xC3\x9F"_ba // "Latin1 Text äöüß"
+        << false << false;
+
+    // HZ encoding is (a subset of) plain ASCII, i.e. also valid ISO-2022
+    QTest::addRow("HZ empty") << "~{~}"_ba << true << true;
+    QTest::addRow("HZ odd") << "~{R~}"_ba << false << true;
+    QTest::addRow("HZ valid") << "~{R;~}"_ba << true << true; // "一" (one)
+    QTest::addRow("HZ valid with ASCII") << "R~{R;~}R"_ba << true << true; // "R一R"
+
+    // "こんにちは" / "Kon'nichiwa" - "Hello"
+    // ESC $ B <JIS X 208-1983 Double Byte> ESC ( B
+    QTest::addRow("ISO-2022-JP") << QByteArray::fromHex( //
+        "1b 24 42 24 33 24 73 24  4b 24 41 24 4f 1b 28 42"
+        "") << false << true;
+}
+
+void KEncodingProberUnitTest::testHzCharset_data()
+{
+    testEsc_common_data();
+}
+
+void KEncodingProberUnitTest::testIso2022JPCharset_data()
+{
+    testEsc_common_data();
 }
 
 QTEST_MAIN(KEncodingProberUnitTest)
