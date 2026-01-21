@@ -39,8 +39,6 @@ public:
     float GetConfidence(void) override;
 
 protected:
-    void GetDistribution(unsigned int aCharLen, const char *aStr);
-
     nsCodingStateMachine *mCodingSM;
     nsProbingState mState;
 

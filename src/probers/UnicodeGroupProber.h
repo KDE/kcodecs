@@ -34,8 +34,6 @@ public:
 #endif
 
 protected:
-    void GetDistribution(unsigned int aCharLen, const char *aStr);
-
     nsCodingStateMachine *mCodingSM[NUM_OF_UNICODE_CHARSETS];
     unsigned int mActiveSM;
     nsProbingState mState;
