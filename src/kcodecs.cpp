@@ -15,7 +15,6 @@
 
 #include "kcodecs.h"
 #include "kcharsets.h"
-#include "kcharsets_p.h"
 #include "kcodecs_debug.h"
 #include "kcodecs_p.h"
 #include "kcodecsbase64.h"
@@ -51,6 +50,19 @@ QByteArray cachedCharset(const QByteArray &name)
     }
 
     charsetCache.append(name.toUpper());
+    return charsetCache.last();
+}
+
+QByteArray cachedCharset(QByteArrayView name)
+{
+    auto it = std::find_if(charsetCache.cbegin(), charsetCache.cend(), [&name](const QByteArray &charset) {
+        return qstricmp(name.data(), charset.data()) == 0;
+    });
+    if (it != charsetCache.cend()) {
+        return *it;
+    }
+
+    charsetCache.append(name.toByteArray().toUpper());
     return charsetCache.last();
 }
 
@@ -146,13 +158,11 @@ namespace KCodecs
 bool parseEncodedWord(const char *&scursor,
                       const char *const send,
                       QString *result,
-                      QByteArray *language,
                       QByteArray *usedCS,
                       const QByteArray &defaultCS,
                       CharsetOption charsetOption)
 {
     assert(result);
-    assert(language);
 
     // make sure the caller already did a bit of the work.
     assert(*(scursor - 1) == '=');
@@ -192,12 +202,9 @@ bool parseEncodedWord(const char *&scursor,
         return false;
     }
 
-    // extract the language information, if any (if languageStart is 0,
-    // language will be null, too):
-    QByteArray maybeLanguage(languageStart, scursor - languageStart);
     // extract charset information (keep in mind: the size given to the
     // ctor is one off due to the \0 terminator):
-    QByteArray maybeCharset(charsetStart, (languageStart ? languageStart - 1 : scursor) - charsetStart);
+    QByteArrayView maybeCharset(charsetStart, (languageStart ? languageStart - 1 : scursor) - charsetStart);
 
     //
     // STEP 2:
@@ -223,7 +230,7 @@ bool parseEncodedWord(const char *&scursor,
     }
 
     // extract the encoding information:
-    QByteArray maybeEncoding(encodingStart, scursor - encodingStart);
+    QByteArrayView maybeEncoding(encodingStart, scursor - encodingStart);
 
     // qCDebug(KCODECS_LOG) << "parseEncodedWord: found charset == \"" << maybeCharset
     //         << "\"; language == \"" << maybeLanguage
@@ -284,12 +291,12 @@ bool parseEncodedWord(const char *&scursor,
     QByteArray cs;
     QStringDecoder textCodec;
     if (charsetOption == KCodecs::ForceDefaultCharset || maybeCharset.isEmpty()) {
-        textCodec = QStringDecoder(defaultCS.constData());
+        textCodec = QStringDecoder(defaultCS);
         cs = cachedCharset(defaultCS);
     } else {
-        textCodec = QStringDecoder(maybeCharset.constData());
+        textCodec = QStringDecoder(maybeCharset);
         if (!textCodec.isValid()) { // no suitable codec found => use default charset
-            textCodec = QStringDecoder(defaultCS.constData());
+            textCodec = QStringDecoder(defaultCS);
             cs = cachedCharset(defaultCS);
         } else {
             cs = cachedCharset(maybeCharset);
@@ -328,7 +335,6 @@ bool parseEncodedWord(const char *&scursor,
     // qCDebug(KCODECS_LOG) << "result now: \"" << result << "\"";
     // cleanup:
     delete dec;
-    *language = maybeLanguage;
 
     return true;
 }
@@ -363,11 +369,10 @@ QString KCodecs::decodeRFC2047String(QByteArrayView src, QByteArray *usedCS, con
 
         // possible start of an encoded word
         if (*scursor == '=') {
-            QByteArray language;
             QString decoded;
             ++scursor;
             const char *start = scursor;
-            if (parseEncodedWord(scursor, send, &decoded, &language, usedCS, defaultCS, charsetOption)) {
+            if (parseEncodedWord(scursor, send, &decoded, usedCS, defaultCS, charsetOption)) {
                 result += decoded.toUtf8();
                 onlySpacesSinceLastWord = true;
                 spaceBuffer.clear();
@@ -396,7 +401,7 @@ QString KCodecs::decodeRFC2047String(QByteArrayView src, QByteArray *usedCS, con
     if (tryUtf8.contains(QChar(0xFFFD))) {
         QStringDecoder codec(QStringDecoder::System);
         if (usedCS) {
-            *usedCS = updateEncodingCharset(*usedCS, cachedCharset(codec.name()));
+            *usedCS = updateEncodingCharset(*usedCS, cachedCharset(QByteArrayView(codec.name())));
         }
         return codec.decode(result);
     } else {
