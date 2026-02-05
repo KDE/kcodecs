@@ -96,6 +96,9 @@ void RFC2047Test::testRFC2047decode_data()
     QTest::newRow("small data") << QByteArray("=?iso-8859-1?Q?c?=")
                                 << QByteArray("ISO-8859-1") << QByteArray("utf-8") << false
                                 << QString::fromUtf8("c");
+
+    QTest::newRow("empty content") << QByteArray(":=?utf32?q??=") << QByteArray("UTF32") << QByteArray("utf-8") << false << u":"_s;
+    QTest::newRow("charset nullbyte") << QByteArray(":=?utf32\0?q??=", 14) << QByteArray("UTF32") << QByteArray("utf-8") << false << u":"_s;
     /* clang-format on */
 }
 

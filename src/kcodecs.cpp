@@ -204,7 +204,7 @@ bool parseEncodedWord(const char *&scursor,
 
     // extract charset information (keep in mind: the size given to the
     // ctor is one off due to the \0 terminator):
-    QByteArrayView maybeCharset(charsetStart, (languageStart ? languageStart - 1 : scursor) - charsetStart);
+    QByteArrayView maybeCharset(charsetStart, std::min<qsizetype>((languageStart ? languageStart - 1 : scursor) - charsetStart, std::strlen(charsetStart)));
 
     //
     // STEP 2:
