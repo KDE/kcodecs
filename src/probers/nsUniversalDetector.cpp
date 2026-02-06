@@ -17,7 +17,6 @@ namespace kencodingprober
 nsUniversalDetector::nsUniversalDetector()
 {
     mDone = false;
-    mBestGuess = -1; // illegal value as signal
     mEscCharSetProber = nullptr;
 
     mDetectedCharset = nullptr;
@@ -42,7 +41,6 @@ nsUniversalDetector::~nsUniversalDetector()
 void nsUniversalDetector::Reset()
 {
     mDone = false;
-    mBestGuess = -1; // illegal value as signal
 
     mDetectedCharset = nullptr;
     mGotData = false;

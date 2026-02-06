@@ -37,7 +37,6 @@ protected:
     bool mGotData;
     char mLastChar;
     const char *mDetectedCharset;
-    int mBestGuess;
 
     nsCharSetProber *mCharSetProbers[NUM_OF_CHARSET_PROBERS];
     nsCharSetProber *mEscCharSetProber;
