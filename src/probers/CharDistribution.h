@@ -24,11 +24,6 @@ public:
     {
     }
 
-    // feed a block of data and do distribution analysis
-    void HandleData(const char * /* aBuf */, unsigned int /* aLen */)
-    {
-    }
-
     // Feed a character with known length
     void HandleOneChar(const char *aStr, unsigned int aCharLen)
     {
@@ -54,7 +49,6 @@ public:
     // Reset analyser, clear any state
     void Reset(void)
     {
-        mDone = false;
         mTotalChars = 0;
         mFreqChars = 0;
     }
@@ -74,9 +68,6 @@ protected:
     {
         return -1;
     }
-
-    // If this flag is set to true, detection is done and conclusion has been made
-    bool mDone;
 
     // The number of characters whose frequency order is less than 512
     unsigned int mFreqChars;

@@ -29,8 +29,6 @@ public:
     {
     }
 
-    void HandleData(const char *aBuf, unsigned int aLen);
-
     void HandleOneChar(const char *aStr, unsigned int aCharLen)
     {
         int order;
@@ -61,7 +59,6 @@ public:
     }
 
 protected:
-    virtual int GetOrder(const char *str, unsigned int *charLen) = 0;
     virtual int GetOrder(const char *str) = 0;
 
     // category counters, each integer counts sequence in its category
@@ -73,10 +70,6 @@ protected:
     // The order of previous char
     int mLastCharOrder;
 
-    // if last byte in current buffer is not the last byte of a character, we
-    // need to know how many byte to skip in next buffer.
-    unsigned int mNeedToSkipCharNum;
-
     // If this flag is set to true, detection is done and conclusion has been made
     bool mDone;
 };
@@ -85,8 +78,6 @@ class KCODECS_NO_EXPORT SJISContextAnalysis : public JapaneseContextAnalysis
 {
     // SJISContextAnalysis(){};
 protected:
-    int GetOrder(const char *str, unsigned int *charLen) override;
-
     int GetOrder(const char *str) override
     {
         // We only interested in Hiragana, so first byte is '\202'
@@ -100,7 +91,6 @@ protected:
 class KCODECS_NO_EXPORT EUCJPContextAnalysis : public JapaneseContextAnalysis
 {
 protected:
-    int GetOrder(const char *str, unsigned int *charLen) override;
     int GetOrder(const char *str) override
     // We only interested in Hiragana, so first byte is '\244'
     {
