@@ -21,13 +21,8 @@ extern const char jp2CharContext[83][83];
 class KCODECS_NO_EXPORT JapaneseContextAnalysis
 {
 public:
-    JapaneseContextAnalysis()
-    {
-        Reset();
-    }
-    virtual ~JapaneseContextAnalysis()
-    {
-    }
+    JapaneseContextAnalysis() = default;
+    virtual ~JapaneseContextAnalysis() = default;
 
     void HandleOneChar(const char *aStr, unsigned int aCharLen)
     {
@@ -62,21 +57,20 @@ protected:
     virtual int GetOrder(const char *str) = 0;
 
     // category counters, each integer counts sequence in its category
-    unsigned int mRelSample[NUM_OF_CATEGORY];
+    unsigned int mRelSample[NUM_OF_CATEGORY] = {0};
 
     // total sequence received
-    unsigned int mTotalRel;
+    unsigned int mTotalRel = 0;
 
     // The order of previous char
-    int mLastCharOrder;
+    int mLastCharOrder = -1;
 
     // If this flag is set to true, detection is done and conclusion has been made
-    bool mDone;
+    bool mDone = false;
 };
 
 class KCODECS_NO_EXPORT SJISContextAnalysis : public JapaneseContextAnalysis
 {
-    // SJISContextAnalysis(){};
 protected:
     int GetOrder(const char *str) override
     {

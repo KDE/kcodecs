@@ -16,13 +16,8 @@ namespace kencodingprober
 class KCODECS_NO_EXPORT CharDistributionAnalysis
 {
 public:
-    CharDistributionAnalysis()
-    {
-        Reset();
-    }
-    virtual ~CharDistributionAnalysis()
-    {
-    }
+    CharDistributionAnalysis() = default;
+    virtual ~CharDistributionAnalysis() = default;
 
     // Feed a character with known length
     void HandleOneChar(const char *aStr, unsigned int aCharLen)
@@ -70,20 +65,20 @@ protected:
     }
 
     // The number of characters whose frequency order is less than 512
-    unsigned int mFreqChars;
+    unsigned int mFreqChars = 0;
 
     // Total character encountered.
-    unsigned int mTotalChars;
+    unsigned int mTotalChars = 0;
 
     // Mapping table to get frequency order from char order (get from GetOrder())
-    const short *mCharToFreqOrder;
+    const short *mCharToFreqOrder = nullptr;
 
     // Size of above table
-    unsigned int mTableSize;
+    unsigned int mTableSize = 0;
 
     // This is a constant value varies from language to language, it is used in
     // calculating confidence. See my paper for further detail.
-    float mTypicalDistributionRatio;
+    float mTypicalDistributionRatio = 0.0f;
 };
 
 class KCODECS_NO_EXPORT EUCKRDistributionAnalysis : public CharDistributionAnalysis
