@@ -9,8 +9,6 @@
 
 #include "kcodecs_export.h"
 
-#include <qcompilerdetection.h>
-
 #define ENOUGH_DATA_THRESHOLD 256
 
 namespace kencodingprober

@@ -9,8 +9,6 @@
 
 #include "kcodecs_export.h"
 
-#include <qglobal.h>
-
 #define NUM_OF_CATEGORY 6
 
 #define ENOUGH_REL_THRESHOLD 100
