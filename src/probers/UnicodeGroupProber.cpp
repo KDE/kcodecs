@@ -40,8 +40,6 @@ void UnicodeGroupProber::Reset(void)
 
 nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLen)
 {
-    nsSMState codingState;
-
     if (mActiveSM == 0) {
         mState = eNotMe;
         return mState;
@@ -50,7 +48,7 @@ nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLe
     for (int j = mActiveSM - 1; j >= 0; --j) {
         for (uint i = 0; i < aLen; ++i) {
             // byte is feed to all active state machine
-            codingState = mCodingSM[j]->NextState(aBuf[i]);
+            nsSMState codingState = mCodingSM[j]->NextState(aBuf[i]);
             if (codingState == eError) {
                 // got negative answer for this state machine, make it inactive
                 mActiveSM--;

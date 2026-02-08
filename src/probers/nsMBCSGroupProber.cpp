@@ -118,9 +118,6 @@ void nsMBCSGroupProber::Reset(void)
 
 nsProbingState nsMBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen)
 {
-    nsProbingState st;
-    unsigned int i;
-
     // do filtering to reduce load to probers
     char *highbyteBuf;
     char *hptr;
@@ -129,7 +126,7 @@ nsProbingState nsMBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
     if (!hptr) {
         return mState;
     }
-    for (i = 0; i < aLen; ++i) {
+    for (unsigned int i = 0; i < aLen; ++i) {
         if (aBuf[i] & 0x80) {
             *hptr++ = aBuf[i];
             keepNext = true;
@@ -142,11 +139,11 @@ nsProbingState nsMBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
         }
     }
 
-    for (i = 0; i < NUM_OF_PROBERS; ++i) {
+    for (unsigned int i = 0; i < NUM_OF_PROBERS; ++i) {
         if (!mIsActive[i]) {
             continue;
         }
-        st = mProbers[i]->HandleData(highbyteBuf, hptr - highbyteBuf);
+        nsProbingState st = mProbers[i]->HandleData(highbyteBuf, hptr - highbyteBuf);
         if (st == eFoundIt) {
             mBestGuess = i;
             mState = eFoundIt;
@@ -168,21 +165,19 @@ nsProbingState nsMBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
 
 float nsMBCSGroupProber::GetConfidence(void)
 {
-    unsigned int i;
     float bestConf = 0.0;
-    float cf;
 
     switch (mState) {
     case eFoundIt:
-        return (float)0.99;
+        return 0.99f;
     case eNotMe:
-        return (float)0.01;
+        return 0.01f;
     default:
-        for (i = 0; i < NUM_OF_PROBERS; ++i) {
+        for (unsigned int i = 0; i < NUM_OF_PROBERS; ++i) {
             if (!mIsActive[i]) {
                 continue;
             }
-            cf = mProbers[i]->GetConfidence();
+            float cf = mProbers[i]->GetConfidence();
             if (bestConf < cf) {
                 bestConf = cf;
                 mBestGuess = i;

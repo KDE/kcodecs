@@ -138,21 +138,19 @@ done:
 
 float nsSBCSGroupProber::GetConfidence(void)
 {
-    unsigned int i;
     float bestConf = 0.0;
-    float cf;
 
     switch (mState) {
     case eFoundIt:
-        return (float)0.99; // sure yes
+        return 0.99f; // sure yes
     case eNotMe:
-        return (float)0.01; // sure no
+        return 0.01f; // sure no
     default:
-        for (i = 0; i < NUM_OF_SBCS_PROBERS; ++i) {
+        for (unsigned int i = 0; i < NUM_OF_SBCS_PROBERS; ++i) {
             if (!mIsActive[i]) {
                 continue;
             }
-            cf = mProbers[i]->GetConfidence();
+            float cf = mProbers[i]->GetConfidence();
             if (bestConf < cf) {
                 bestConf = cf;
                 mBestGuess = i;
