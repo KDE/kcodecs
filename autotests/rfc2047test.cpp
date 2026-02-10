@@ -99,6 +99,17 @@ void RFC2047Test::testRFC2047decode_data()
 
     QTest::newRow("empty content") << QByteArray(":=?utf32?q??=") << QByteArray("UTF32") << QByteArray("utf-8") << false << u":"_s;
     QTest::newRow("charset nullbyte") << QByteArray(":=?utf32\0?q??=", 14) << QByteArray("UTF32") << QByteArray("utf-8") << false << u":"_s;
+
+    QTest::newRow("invalid-1") << QByteArray("=?utf8?q?hello") << QByteArray() << QByteArray("utf-8") << false << u"=?utf8?q?hello"_s;
+    QTest::newRow("invalid-2") << QByteArray("=?utf8?qhello?=") << QByteArray() << QByteArray("utf-8") << false << u"=?utf8?qhello?="_s;
+    QTest::newRow("partial-1") << QByteArray("=?=?utf8?q?hello?=") << QByteArray("UTF8") << QByteArray("utf-8") << false << u"=?hello"_s;
+
+    QByteArray data;
+    for (auto i = 0; i < 100'000; ++i) {
+        data.append("=?*");
+    }
+    QTest::newRow("quadratic") << data << QByteArray() <<QByteArray("utf-8") << false << QString::fromLatin1(data);
+
     /* clang-format on */
 }
 

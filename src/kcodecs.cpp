@@ -155,12 +155,16 @@ void KCodecs::uudecode(QByteArrayView in, QByteArray &out)
 namespace KCodecs
 {
 // parse the encoded-word (scursor points to after the initial '=')
+// retry point is the next position at which a failed parsing of an encoded word
+// should be retried from. This is an optimization to avoid quadratic behavior on
+// (intentionally) corrupted input
 bool parseEncodedWord(const char *&scursor,
                       const char *const send,
                       QString *result,
                       QByteArray *usedCS,
                       const QByteArray &defaultCS,
-                      CharsetOption charsetOption)
+                      CharsetOption charsetOption,
+                      const char *&retryPoint)
 {
     assert(result);
 
@@ -172,6 +176,7 @@ bool parseEncodedWord(const char *&scursor,
     // scan for the charset/language portion of the encoded-word
     //
 
+    retryPoint = nullptr;
     char ch = *scursor++;
 
     if (ch != '?') {
@@ -251,6 +256,9 @@ bool parseEncodedWord(const char *&scursor,
             if (scursor + 1 != send) {
                 if (*(scursor + 1) != '=') { // We expect a '=' after the '?', but we got something else; ignore
                     // qCDebug(KCODECS_LOG) << "Stray '?' in q-encoded word, ignoring this.";
+                    if (*(scursor - 1) == '=') {
+                        retryPoint = scursor - 1;
+                    }
                     continue;
                 } else { // yep, found a '?=' sequence
                     scursor += 2;
@@ -265,6 +273,9 @@ bool parseEncodedWord(const char *&scursor,
 
     if (*(scursor - 2) != '?' || *(scursor - 1) != '=' || scursor < encodedTextStart + 2) {
         // qCDebug(KCODECS_LOG) << "Premature end of encoded word";
+        if (!retryPoint) {
+            retryPoint = scursor;
+        }
         return false;
     }
 
@@ -360,6 +371,7 @@ QString KCodecs::decodeRFC2047String(QByteArrayView src, QByteArray *usedCS, con
         usedCS->clear();
     }
 
+    const char *retryPoint = nullptr;
     while (scursor != send) {
         // space
         if (isspace(*scursor) && onlySpacesSinceLastWord) {
@@ -368,11 +380,11 @@ QString KCodecs::decodeRFC2047String(QByteArrayView src, QByteArray *usedCS, con
         }
 
         // possible start of an encoded word
-        if (*scursor == '=') {
+        if (*scursor == '=' && (!retryPoint || retryPoint <= scursor)) {
             QString decoded;
             ++scursor;
             const char *start = scursor;
-            if (parseEncodedWord(scursor, send, &decoded, usedCS, defaultCS, charsetOption)) {
+            if (parseEncodedWord(scursor, send, &decoded, usedCS, defaultCS, charsetOption, retryPoint)) {
                 result += decoded.toUtf8();
                 onlySpacesSinceLastWord = true;
                 spaceBuffer.clear();
