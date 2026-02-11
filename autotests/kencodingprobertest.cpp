@@ -24,11 +24,33 @@ private Q_SLOTS:
 
 void KEncodingProberTest::testReset()
 {
-    auto ep = std::make_unique<KEncodingProber>();
-    ep->feed(QByteArray("some random data @*@#&jd"));
-    ep->reset();
-    QCOMPARE(ep->state(), KEncodingProber::Probing);
-    QCOMPARE(ep->encoding().toLower(), QByteArray("utf-8"));
+    using namespace Qt::StringLiterals;
+
+    auto data = QByteArray::fromHex("d7d4d3c9b5c4b0d9bfc6c8abcae9");
+    auto encoding = "gb18030"_ba;
+
+    KEncodingProber ep(KEncodingProber::Universal);
+    QCOMPARE(ep.state(), KEncodingProber::Probing);
+
+    ep.feed(data);
+
+    QCOMPARE(ep.state(), KEncodingProber::Probing);
+    QCOMPARE(ep.encoding().toLower(), encoding);
+
+    const auto garbage = QByteArray::fromHex("ff ff ff ff 00 80 90 00");
+    ep.feed(garbage);
+    QCOMPARE_NE(ep.encoding().toLower(), encoding);
+
+    ep.reset();
+
+    QCOMPARE(ep.proberType(), KEncodingProber::Universal);
+    QCOMPARE(ep.state(), KEncodingProber::Probing);
+
+    ep.feed(data);
+
+    QCOMPARE(ep.state(), KEncodingProber::Probing);
+    QEXPECT_FAIL("", "Reset does not reset", Abort);
+    QCOMPARE(ep.encoding().toLower(), encoding);
 }
 
 void KEncodingProberTest::testShort()
