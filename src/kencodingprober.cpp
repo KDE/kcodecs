@@ -90,6 +90,9 @@ public:
          *   because encoding state machine can detect many such encodings.
          */
 
+        mProberState = KEncodingProber::Probing;
+        mBomLen = 0;
+
         delete mProber;
 
         switch (mProberType) {
@@ -147,8 +150,7 @@ KEncodingProber::~KEncodingProber() = default;
 
 void KEncodingProber::reset()
 {
-    d->mProberState = KEncodingProber::Probing;
-    d->mBomLen = 0;
+    d->setProberType(d->mProberType);
 }
 
 KEncodingProber::ProberState KEncodingProber::feed(QByteArrayView data)
@@ -227,7 +229,6 @@ KEncodingProber::ProberType KEncodingProber::proberType() const
 void KEncodingProber::setProberType(KEncodingProber::ProberType proberType)
 {
     d->setProberType(proberType);
-    reset();
 }
 
 KEncodingProber::ProberType KEncodingProber::proberTypeForName(const QString &lang)

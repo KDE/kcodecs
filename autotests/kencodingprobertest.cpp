@@ -49,7 +49,6 @@ void KEncodingProberTest::testReset()
     ep.feed(data);
 
     QCOMPARE(ep.state(), KEncodingProber::Probing);
-    QEXPECT_FAIL("", "Reset does not reset", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
 }
 
