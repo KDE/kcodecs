@@ -6,9 +6,6 @@
 
 #include "UnicodeGroupProber.h"
 
-#include <QChar>
-#include <math.h>
-
 namespace kencodingprober
 {
 UnicodeGroupProber::UnicodeGroupProber(void)
@@ -46,7 +43,7 @@ nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLe
     }
 
     for (int j = mActiveSM - 1; j >= 0; --j) {
-        for (uint i = 0; i < aLen; ++i) {
+        for (unsigned int i = 0; i < aLen; ++i) {
             // byte is feed to all active state machine
             nsSMState codingState = mCodingSM[j]->NextState(aBuf[i]);
             if (codingState == eError) {
