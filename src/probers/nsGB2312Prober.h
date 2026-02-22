@@ -11,21 +11,17 @@
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
 
+#include <memory>
+
 // We use gb18030 to replace gb2312, because 18030 is a superset.
 namespace kencodingprober
 {
 class KCODECS_NO_EXPORT nsGB18030Prober : public nsCharSetProber
 {
 public:
-    nsGB18030Prober(void)
-    {
-        mCodingSM = new nsCodingStateMachine(&GB18030SMModel);
-        Reset();
-    }
-    ~nsGB18030Prober(void) override
-    {
-        delete mCodingSM;
-    }
+    nsGB18030Prober();
+    ~nsGB18030Prober() override = default;
+
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override
     {
@@ -39,7 +35,7 @@ public:
     float GetConfidence(void) override;
 
 protected:
-    nsCodingStateMachine *mCodingSM;
+    std::unique_ptr<nsCodingStateMachine> mCodingSM;
     nsProbingState mState;
 
     // GB2312ContextAnalysis mContextAnalyser;

@@ -8,6 +8,12 @@
 
 namespace kencodingprober
 {
+nsEUCKRProber::nsEUCKRProber()
+    : mCodingSM{std::make_unique<nsCodingStateMachine>(&EUCKRSMModel)}
+{
+    Reset();
+}
+
 void nsEUCKRProber::Reset(void)
 {
     mCodingSM->Reset();

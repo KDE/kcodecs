@@ -10,20 +10,17 @@
 #include "CharDistribution.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
+
+#include <memory>
+
 namespace kencodingprober
 {
 class KCODECS_NO_EXPORT nsBig5Prober : public nsCharSetProber
 {
 public:
-    nsBig5Prober(void)
-    {
-        mCodingSM = new nsCodingStateMachine(&Big5SMModel);
-        Reset();
-    }
-    ~nsBig5Prober() override
-    {
-        delete mCodingSM;
-    }
+    nsBig5Prober();
+    ~nsBig5Prober() override = default;
+
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override
     {
@@ -37,7 +34,7 @@ public:
     float GetConfidence(void) override;
 
 protected:
-    nsCodingStateMachine *mCodingSM;
+    std::unique_ptr<nsCodingStateMachine> mCodingSM;
     nsProbingState mState;
 
     // Big5ContextAnalysis mContextAnalyser;

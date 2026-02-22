@@ -16,20 +16,17 @@
 #include "JpCntx.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
+
+#include <memory>
+
 namespace kencodingprober
 {
 class KCODECS_NO_EXPORT nsEUCJPProber : public nsCharSetProber
 {
 public:
-    nsEUCJPProber(void)
-    {
-        mCodingSM = new nsCodingStateMachine(&EUCJPSMModel);
-        Reset();
-    }
-    ~nsEUCJPProber(void) override
-    {
-        delete mCodingSM;
-    }
+    nsEUCJPProber();
+    ~nsEUCJPProber() override = default;
+
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override
     {
@@ -43,7 +40,7 @@ public:
     float GetConfidence(void) override;
 
 protected:
-    nsCodingStateMachine *mCodingSM;
+    std::unique_ptr<nsCodingStateMachine> mCodingSM;
     nsProbingState mState;
 
     EUCJPContextAnalysis mContextAnalyser;

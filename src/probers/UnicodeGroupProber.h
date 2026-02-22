@@ -10,14 +10,17 @@
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
 
+#include <memory>
+
 #define NUM_OF_UNICODE_CHARSETS 3
 namespace kencodingprober
 {
 class KCODECS_NO_EXPORT UnicodeGroupProber : public nsCharSetProber
 {
 public:
-    UnicodeGroupProber(void);
-    ~UnicodeGroupProber(void) override;
+    UnicodeGroupProber();
+    ~UnicodeGroupProber() override = default;
+
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override
     {
@@ -34,7 +37,7 @@ public:
 #endif
 
 protected:
-    nsCodingStateMachine *mCodingSM[NUM_OF_UNICODE_CHARSETS];
+    std::unique_ptr<nsCodingStateMachine> mCodingSM[NUM_OF_UNICODE_CHARSETS];
     unsigned int mActiveSM;
     nsProbingState mState;
     const char *mDetectedCharset;

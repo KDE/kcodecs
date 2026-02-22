@@ -10,20 +10,17 @@
 #include "CharDistribution.h"
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
+
+#include <memory>
+
 namespace kencodingprober
 {
 class KCODECS_NO_EXPORT nsEUCKRProber : public nsCharSetProber
 {
 public:
-    nsEUCKRProber(void)
-    {
-        mCodingSM = new nsCodingStateMachine(&EUCKRSMModel);
-        Reset();
-    }
-    ~nsEUCKRProber(void) override
-    {
-        delete mCodingSM;
-    }
+    nsEUCKRProber();
+    ~nsEUCKRProber() override = default;
+
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override
     {
@@ -37,7 +34,7 @@ public:
     float GetConfidence(void) override;
 
 protected:
-    nsCodingStateMachine *mCodingSM;
+    std::unique_ptr<nsCodingStateMachine> mCodingSM;
     nsProbingState mState;
 
     // EUCKRContextAnalysis mContextAnalyser;

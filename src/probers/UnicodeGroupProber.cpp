@@ -8,21 +8,16 @@
 
 namespace kencodingprober
 {
-UnicodeGroupProber::UnicodeGroupProber(void)
+UnicodeGroupProber::UnicodeGroupProber()
+    : mCodingSM{
+          std::make_unique<nsCodingStateMachine>(&UTF8SMModel),
+          std::make_unique<nsCodingStateMachine>(&UCS2LESMModel),
+          std::make_unique<nsCodingStateMachine>(&UCS2BESMModel),
+      }
 {
-    mCodingSM[0] = new nsCodingStateMachine(&UTF8SMModel);
-    mCodingSM[1] = new nsCodingStateMachine(&UCS2LESMModel);
-    mCodingSM[2] = new nsCodingStateMachine(&UCS2BESMModel);
     mActiveSM = NUM_OF_UNICODE_CHARSETS;
     mState = eDetecting;
     mDetectedCharset = "UTF-8";
-}
-
-UnicodeGroupProber::~UnicodeGroupProber(void)
-{
-    for (unsigned int i = 0; i < NUM_OF_UNICODE_CHARSETS; i++) {
-        delete mCodingSM[i];
-    }
 }
 
 void UnicodeGroupProber::Reset(void)
@@ -53,10 +48,7 @@ nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLe
                     mState = eNotMe;
                     return mState;
                 } else if (j != (int)mActiveSM) {
-                    nsCodingStateMachine *t;
-                    t = mCodingSM[mActiveSM];
-                    mCodingSM[mActiveSM] = mCodingSM[j];
-                    mCodingSM[j] = t;
+                    std::swap(mCodingSM[mActiveSM], mCodingSM[j]);
                 }
                 break;
             } else if (codingState == eItsMe) {

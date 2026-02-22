@@ -13,6 +13,12 @@
 
 namespace kencodingprober
 {
+nsEUCJPProber::nsEUCJPProber()
+    : mCodingSM{std::make_unique<nsCodingStateMachine>(&EUCJPSMModel)}
+{
+    Reset();
+}
+
 void nsEUCJPProber::Reset(void)
 {
     mCodingSM->Reset();

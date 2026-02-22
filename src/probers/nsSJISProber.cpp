@@ -13,6 +13,12 @@
 
 namespace kencodingprober
 {
+nsSJISProber::nsSJISProber()
+    : mCodingSM{std::make_unique<nsCodingStateMachine>(&SJISSMModel)}
+{
+    Reset();
+}
+
 void nsSJISProber::Reset(void)
 {
     mCodingSM->Reset();
