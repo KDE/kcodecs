@@ -376,7 +376,7 @@ QChar KCharsets::fromEntity(QStringView str, int &len)
 
 QString KCharsets::toEntity(const QChar &ch)
 {
-    return QString::asprintf("&#0x%x;", ch.unicode());
+    return QString::asprintf("&#x%x;", ch.unicode());
 }
 
 QString KCharsets::resolveEntities(const QString &input)

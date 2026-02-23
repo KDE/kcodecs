@@ -55,7 +55,11 @@ void KCharsetsTest::testFromEntity()
 
 void KCharsetsTest::testToEntity()
 {
-    QSKIP("KCharsets::toEntity test not implemented.");
+    KCharsets *singleton = KCharsets::charsets();
+
+    // Character entity references are not implemented,
+    // numeric character references are used in all cases
+    QCOMPARE(singleton->toEntity(QChar(0x1234)), QString::fromLatin1("&#x1234;"));
 }
 
 void KCharsetsTest::testResolveEntities()
