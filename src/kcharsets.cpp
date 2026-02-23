@@ -14,7 +14,10 @@
 #include <QHash>
 
 #include <algorithm>
+#include <array>
 #include <assert.h>
+#include <span>
+#include <string_view>
 
 /*
  * The encoding names (like "ISO 8859-1") in this list are user-visible,
@@ -248,24 +251,30 @@ KCharsets::KCharsets()
 KCharsets::~KCharsets() = default;
 
 // sorted entities list for lookup
-constexpr inline auto MAX_CODE_SIZE = 8;
-
 struct Entity {
-    template<std::size_t N>
-    constexpr inline Entity(const char (&n)[N], uint32_t c)
-        : code(c)
+    static constexpr auto MAX_ENTITY_LEN = 8;
+    using PaddedName = std::array<char, MAX_ENTITY_LEN>;
+    static constexpr PaddedName buildName(std::string_view n)
     {
-        for (std::size_t i = 0; i < N - 1; ++i) {
-            name[i] = n[i];
+        PaddedName padded = {0};
+        for (std::size_t i = 0; i < n.size(); ++i) {
+            padded[i] = n[i];
         }
-        for (std::size_t i = N - 1; i < MAX_CODE_SIZE; ++i) {
-            name[i] = '\0';
-        }
+        return padded;
     }
 
-    char name[MAX_CODE_SIZE];
+    constexpr inline Entity(std::string_view n, uint32_t c)
+        : name(buildName(n))
+        , code(c)
+    {
+    }
+
+    PaddedName name;
     uint32_t code;
 };
+static_assert(Entity::buildName("thetasym") == std::array{'t', 'h', 'e', 't', 'a', 's', 'y', 'm'});
+static_assert(Entity::buildName("lt") == std::array{'l', 't', '\0', '\0', '\0', '\0', '\0', '\0'});
+
 static constexpr inline const Entity entities[] = {
     {"AElig", 0x00c6},   {"AMP", 38},         {"Aacute", 0x00c1},  {"Acirc", 0x00c2},   {"Agrave", 0x00c0},   {"Alpha", 0x0391},   {"Aring", 0x00c5},
     {"Atilde", 0x00c3},  {"Auml", 0x00c4},    {"Beta", 0x0392},    {"Ccaron", 0x010c},  {"Ccedil", 0x00c7},   {"Chi", 0x03a7},     {"Dagger", 0x2021},
@@ -309,10 +318,22 @@ static constexpr inline const Entity entities[] = {
     {"xi", 0x03be},      {"yacute", 0x00fd},  {"yen", 0x00a5},     {"yuml", 0x00ff},    {"zcaron", 0x017e},   {"zeta", 0x03b6},    {"zwj", 0x200d},
     {"zwnj", 0x200c}};
 
-[[nodiscard]] static bool operator<(const Entity &lhs, const QByteArray &rhs)
+[[nodiscard]] static constexpr auto operator<=>(const Entity &lhs, std::span<const char, Entity::MAX_ENTITY_LEN> rhs)
 {
-    return std::strncmp(lhs.name, rhs.constData(), MAX_CODE_SIZE) < 0;
+    return std::string_view{lhs.name.data(), lhs.name.size()} <=> std::string_view{rhs.data(), rhs.size()};
 }
+static_assert(entities[0] < entities[1].name);
+static_assert((entities[0] < entities[0].name) == false);
+static_assert([] {
+    for (size_t i = 1; (std::begin(entities) + i) < std::end(entities); i++) {
+        if (entities[i] < entities[i - 1].name)
+            return false;
+    }
+    return true;
+}());
+static_assert(std::is_eq(Entity{"lt", 0} <=> Entity::buildName("lt")));
+static_assert(std::is_eq(Entity{"thetasym", 0} <=> Entity::buildName("thetasym")));
+static_assert(std::is_neq(Entity{"thetasym", 0} <=> Entity::buildName("thetasy")));
 
 QChar KCharsets::fromEntity(QStringView str)
 {
@@ -349,9 +370,14 @@ QChar KCharsets::fromEntity(QStringView str)
     }
 
     const QByteArray raw(str.toLatin1());
-    const auto e = std::lower_bound(std::begin(entities), std::end(entities), raw);
+    if (raw.size() > 8) {
+        return QChar::Null;
+    }
+    const auto paddedRaw = Entity::buildName({raw.constData(), static_cast<size_t>(raw.size())});
 
-    if (e == std::end(entities) || raw.size() > MAX_CODE_SIZE || std::strncmp(e->name, raw.constData(), MAX_CODE_SIZE) != 0) {
+    const auto e = std::lower_bound(std::begin(entities), std::end(entities), paddedRaw);
+
+    if (e == std::end(entities) || std::is_neq(*e <=> paddedRaw)) {
         return QChar::Null;
     }
 
