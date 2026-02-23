@@ -24,10 +24,8 @@ ecm_add_test(
     TEST_NAME kencodingproberunittest
     kencodingproberunittest.cpp
     ../src/probers/nsCharSetProber.cpp
-    ../src/probers/nsEscSM.cpp
     ../src/probers/nsLatin1Prober.cpp
     ../src/probers/nsHebrewProber.cpp
-    ../src/probers/nsMBCSSM.cpp
     ../src/probers/nsSBCharSetProber.cpp
     ../src/probers/LangHebrewModel.cpp
     LINK_LIBRARIES Qt6::Test

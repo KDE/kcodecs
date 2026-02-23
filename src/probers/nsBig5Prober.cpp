@@ -5,6 +5,7 @@
 */
 
 #include "nsBig5Prober.h"
+#include "nsMBCSSM.h"
 
 namespace kencodingprober
 {

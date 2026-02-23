@@ -5,6 +5,7 @@
 */
 
 #include "nsEUCKRProber.h"
+#include "nsMBCSSM.h"
 
 namespace kencodingprober
 {

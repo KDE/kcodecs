@@ -6,6 +6,9 @@
 
 #include <QTest>
 
+#include "../src/probers/nsEscSM.h"
+#include "../src/probers/nsMBCSSM.h"
+
 #include "../src/probers/nsCodingStateMachine.h"
 #include "../src/probers/nsHebrewProber.h"
 #include "../src/probers/nsLatin1Prober.h"

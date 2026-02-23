@@ -5,6 +5,7 @@
 */
 
 #include "nsEscCharsetProber.h"
+#include "nsEscSM.h"
 
 namespace kencodingprober
 {

@@ -5,6 +5,7 @@
 */
 
 #include "UnicodeGroupProber.h"
+#include "nsMBCSSM.h"
 
 namespace kencodingprober
 {

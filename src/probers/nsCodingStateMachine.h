@@ -89,17 +89,5 @@ protected:
 
     const SMModel *mModel = nullptr;
 };
-
-extern KCODECS_NO_EXPORT const SMModel UTF8SMModel;
-extern KCODECS_NO_EXPORT const SMModel Big5SMModel;
-extern KCODECS_NO_EXPORT const SMModel EUCJPSMModel;
-extern KCODECS_NO_EXPORT const SMModel EUCKRSMModel;
-extern KCODECS_NO_EXPORT const SMModel GB18030SMModel;
-extern KCODECS_NO_EXPORT const SMModel SJISSMModel;
-extern KCODECS_NO_EXPORT const SMModel UCS2LESMModel;
-extern KCODECS_NO_EXPORT const SMModel UCS2BESMModel;
-
-extern KCODECS_NO_EXPORT const SMModel HZSMModel;
-extern KCODECS_NO_EXPORT const SMModel ISO2022JPSMModel;
 }
 #endif /* nsCodingStateMachine_h__ */

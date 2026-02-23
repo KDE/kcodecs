@@ -4,6 +4,9 @@
     SPDX-License-Identifier: MIT
 */
 
+#ifndef nsEscSM_h__
+#define nsEscSM_h__
+
 #include "nsCodingStateMachine.h"
 
 namespace kencodingprober
@@ -60,7 +63,7 @@ static constexpr std::array<const unsigned char, 42> HZ_st{
 
 static const unsigned int HZCharLenTable[] = {0, 0, 0, 0, 0, 0};
 
-constexpr SMModel HZSMModel{
+static constexpr SMModel HZSMModel{
     HZ_cls,
     6,
     HZ_st,
@@ -121,7 +124,7 @@ static constexpr std::array<const unsigned char, 70> ISO2022JP_st{
 
 static const unsigned int ISO2022JPCharLenTable[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-constexpr SMModel ISO2022JPSMModel = {
+static constexpr SMModel ISO2022JPSMModel = {
     ISO2022JP_cls,
     10,
     ISO2022JP_st,
@@ -129,3 +132,4 @@ constexpr SMModel ISO2022JPSMModel = {
     "ISO-2022-JP",
 };
 }
+#endif // nsEscSM_h__

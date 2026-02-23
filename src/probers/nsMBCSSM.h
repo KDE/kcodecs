@@ -4,6 +4,9 @@
     SPDX-License-Identifier: MIT
 */
 
+#ifndef nsMBCSSM_h__
+#define nsMBCSSM_h__
+
 #include "nsCodingStateMachine.h"
 
 /*
@@ -66,7 +69,7 @@ static constexpr std::array<const unsigned char, 24> BIG5_st{
 
 static const unsigned int Big5CharLenTable[] = {0, 1, 1, 2, 0};
 
-constexpr SMModel Big5SMModel{
+static constexpr SMModel Big5SMModel{
     BIG5_cls,
     5,
     BIG5_st,
@@ -126,7 +129,7 @@ static constexpr std::array<const unsigned char, 40> EUCJP_st{
 
 static const unsigned int EUCJPCharLenTable[] = {2, 2, 2, 3, 1, 0};
 
-constexpr SMModel EUCJPSMModel{
+static constexpr SMModel EUCJPSMModel{
     EUCJP_cls,
     6,
     EUCJP_st,
@@ -183,7 +186,7 @@ static constexpr std::array<const unsigned char, 16> EUCKR_st{
 
 static const unsigned int EUCKRCharLenTable[] = {0, 1, 2, 0};
 
-constexpr SMModel EUCKRSMModel{
+static constexpr SMModel EUCKRSMModel{
     EUCKR_cls,
     4,
     EUCKR_st,
@@ -249,7 +252,7 @@ static constexpr std::array<const unsigned char, 48> GB18030_st{
 // 2 here.
 static const unsigned int GB18030CharLenTable[] = {0, 1, 1, 1, 1, 1, 2};
 
-constexpr SMModel GB18030SMModel{
+static constexpr SMModel GB18030SMModel{
     GB18030_cls,
     7,
     GB18030_st,
@@ -310,7 +313,7 @@ static constexpr std::array<const unsigned char, 24> SJIS_st{
 
 static const unsigned int SJISCharLenTable[] = {0, 1, 1, 2, 0, 0};
 
-constexpr SMModel SJISSMModel{
+static constexpr SMModel SJISSMModel{
     SJIS_cls,
     6,
     SJIS_st,
@@ -377,7 +380,7 @@ static constexpr std::array<const unsigned char, 88> UCS2BE_st{
 
 static const unsigned int UCS2BECharLenTable[] = {2, 2, 2, 0, 2, 2, 4, 4};
 
-constexpr SMModel UCS2BESMModel{
+static constexpr SMModel UCS2BESMModel{
     UCS2_cls,
     8,
     UCS2BE_st,
@@ -406,7 +409,7 @@ static constexpr std::array<const unsigned char, 88> UCS2LE_st{
 
 static const unsigned int UCS2LECharLenTable[] = {2, 2, 2, 2, 2, 2, 4, 4};
 
-constexpr SMModel UCS2LESMModel{
+static constexpr SMModel UCS2LESMModel{
     UCS2_cls,
     8,
     UCS2LE_st,
@@ -471,7 +474,7 @@ static constexpr std::array<const unsigned char, 10 * 12> UTF8_st{
 
 static const unsigned int UTF8CharLenTable[] = {0, 1, 1, 1, 1, 1, 2, 3, 3, 3, 4, 4};
 
-constexpr SMModel UTF8SMModel{
+static constexpr SMModel UTF8SMModel{
     UTF8_cls,
     12,
     UTF8_st,
@@ -479,3 +482,4 @@ constexpr SMModel UTF8SMModel{
     "UTF-8",
 };
 }
+#endif // nsMBCSSM_h__

@@ -10,6 +10,7 @@
 // 3, certain combination of kana is never used in japanese language
 
 #include "nsEUCJPProber.h"
+#include "nsMBCSSM.h"
 
 namespace kencodingprober
 {

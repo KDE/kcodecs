@@ -44,7 +44,7 @@ target_sources(KF6Codecs PRIVATE
     probers/nsCodingStateMachine.h
     probers/nsEscCharsetProber.cpp
     probers/nsEscCharsetProber.h
-    probers/nsEscSM.cpp
+    probers/nsEscSM.h
     probers/nsEUCJPProber.cpp
     probers/nsEUCJPProber.h
     probers/nsEUCKRProber.cpp
@@ -57,7 +57,7 @@ target_sources(KF6Codecs PRIVATE
     probers/nsLatin1Prober.h
     probers/nsMBCSGroupProber.cpp
     probers/nsMBCSGroupProber.h
-    probers/nsMBCSSM.cpp
+    probers/nsMBCSSM.h
     probers/nsSBCharSetProber.cpp
     probers/nsSBCharSetProber.h
     probers/nsSBCSGroupProber.cpp
