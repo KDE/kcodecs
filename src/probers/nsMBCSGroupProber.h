@@ -11,6 +11,7 @@
 
 #include <array>
 #include <cstdint>
+#include <memory>
 #include <span>
 
 #define NUM_OF_PROBERS 6
@@ -30,7 +31,8 @@ public:
 
     nsMBCSGroupProber();
     explicit nsMBCSGroupProber(std::span<const Prober> selected);
-    ~nsMBCSGroupProber() override;
+    ~nsMBCSGroupProber() override = default;
+
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
     nsProbingState GetState(void) override
@@ -46,7 +48,7 @@ public:
 
 protected:
     nsProbingState mState;
-    nsCharSetProber *mProbers[NUM_OF_PROBERS];
+    std::array<std::unique_ptr<nsCharSetProber>, NUM_OF_PROBERS> mProbers;
     bool mIsActive[NUM_OF_PROBERS];
     const std::array<bool, NUM_OF_PROBERS> mIsSelected = {true};
     int mBestGuess;

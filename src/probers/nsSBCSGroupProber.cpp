@@ -16,34 +16,27 @@
 namespace kencodingprober
 {
 nsSBCSGroupProber::nsSBCSGroupProber()
+    : mProbers{
+          std::make_unique<nsSingleByteCharSetProber<false>>(&Win1251Model),
+          std::make_unique<nsSingleByteCharSetProber<false>>(&Koi8rModel),
+          std::make_unique<nsSingleByteCharSetProber<false>>(&Latin5Model),
+          std::make_unique<nsSingleByteCharSetProber<false>>(&MacCyrillicModel),
+          std::make_unique<nsSingleByteCharSetProber<false>>(&Ibm866Model),
+          std::make_unique<nsSingleByteCharSetProber<false>>(&Ibm855Model),
+          std::make_unique<nsSingleByteCharSetProber<false>>(&Latin7Model),
+          std::make_unique<nsSingleByteCharSetProber<false>>(&Win1253Model),
+          std::make_unique<nsSingleByteCharSetProber<false>>(&Latin5BulgarianModel),
+          std::make_unique<nsSingleByteCharSetProber<false>>(&Win1251BulgarianModel),
+          std::make_unique<nsHebrewProber>(),
+          std::make_unique<UnicodeGroupProber>(),
+      }
 {
-    mProbers[0] = new nsSingleByteCharSetProber(&Win1251Model);
-    mProbers[1] = new nsSingleByteCharSetProber(&Koi8rModel);
-    mProbers[2] = new nsSingleByteCharSetProber(&Latin5Model);
-    mProbers[3] = new nsSingleByteCharSetProber(&MacCyrillicModel);
-    mProbers[4] = new nsSingleByteCharSetProber(&Ibm866Model);
-    mProbers[5] = new nsSingleByteCharSetProber(&Ibm855Model);
-    mProbers[6] = new nsSingleByteCharSetProber(&Latin7Model);
-    mProbers[7] = new nsSingleByteCharSetProber(&Win1253Model);
-    mProbers[8] = new nsSingleByteCharSetProber(&Latin5BulgarianModel);
-    mProbers[9] = new nsSingleByteCharSetProber(&Win1251BulgarianModel);
-
-    mProbers[10] = new nsHebrewProber();
-    mProbers[11] = new UnicodeGroupProber();
-
-    // disable latin2 before latin1 is available, otherwise all latin1
+    // disable latin2 before latin1/windows-1252 is available, otherwise all latin1
     // will be detected as latin2 because of their similarity.
-    // mProbers[10] = new nsSingleByteCharSetProber(&Latin2HungarianModel);
-    // mProbers[11] = new nsSingleByteCharSetProber(&Win1250HungarianModel);
+    // mProbers[12] = std::make_unique<nsSingleByteCharSetProber<false>>(&Latin2HungarianModel);
+    // mProbers[13] = std::make_unique<nsSingleByteCharSetProber<false>>(&Win1250HungarianModel);
 
     Reset();
-}
-
-nsSBCSGroupProber::~nsSBCSGroupProber()
-{
-    for (unsigned int i = 0; i < NUM_OF_SBCS_PROBERS; i++) {
-        delete mProbers[i];
-    }
 }
 
 const char *nsSBCSGroupProber::GetCharSetName()

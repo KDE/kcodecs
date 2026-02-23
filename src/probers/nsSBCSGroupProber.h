@@ -13,6 +13,7 @@
 #include "nsCharSetProber.h"
 
 #include <array>
+#include <memory>
 
 #define NUM_OF_SBCS_PROBERS 12
 
@@ -22,7 +23,8 @@ class KCODECS_NO_EXPORT nsSBCSGroupProber : public nsCharSetProber
 {
 public:
     nsSBCSGroupProber();
-    ~nsSBCSGroupProber() override;
+    ~nsSBCSGroupProber() override = default;
+
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
     nsProbingState GetState(void) override
@@ -38,7 +40,7 @@ public:
 
 protected:
     nsProbingState mState;
-    std::array<nsCharSetProber *, NUM_OF_SBCS_PROBERS> mProbers = {nullptr};
+    std::array<std::unique_ptr<nsCharSetProber>, NUM_OF_SBCS_PROBERS> mProbers = {nullptr};
     std::array<bool, NUM_OF_SBCS_PROBERS> mIsActive = {false};
     int mBestGuess;
 };

@@ -59,14 +59,15 @@ static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[5] == tru
 } // namespace <anonymous>
 
 nsMBCSGroupProber::nsMBCSGroupProber(std::span<const Prober> selected)
-    : mIsSelected(fromSelectedList(selected))
+    : mProbers{std::make_unique<UnicodeGroupProber>(),
+               std::make_unique<nsSJISProber>(),
+               std::make_unique<nsEUCJPProber>(),
+               std::make_unique<nsGB18030Prober>(),
+               std::make_unique<nsEUCKRProber>(),
+               std::make_unique<nsBig5Prober>(),
+    }
+    , mIsSelected(fromSelectedList(selected))
 {
-    mProbers[0] = new UnicodeGroupProber();
-    mProbers[1] = new nsSJISProber();
-    mProbers[2] = new nsEUCJPProber();
-    mProbers[3] = new nsGB18030Prober();
-    mProbers[4] = new nsEUCKRProber();
-    mProbers[5] = new nsBig5Prober();
     Reset();
 }
 
@@ -80,13 +81,6 @@ nsMBCSGroupProber::nsMBCSGroupProber()
           Prober::Big5,
       })
 {
-}
-
-nsMBCSGroupProber::~nsMBCSGroupProber()
-{
-    for (unsigned int i = 0; i < NUM_OF_PROBERS; i++) {
-        delete mProbers[i];
-    }
 }
 
 const char *nsMBCSGroupProber::GetCharSetName()

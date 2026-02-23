@@ -17,25 +17,11 @@ namespace kencodingprober
 nsUniversalDetector::nsUniversalDetector()
 {
     mDone = false;
-    mEscCharSetProber = nullptr;
 
     mDetectedCharset = nullptr;
     mGotData = false;
     mInputState = ePureAscii;
     mLastChar = '\0';
-
-    unsigned int i;
-    for (i = 0; i < NUM_OF_CHARSET_PROBERS; i++) {
-        mCharSetProbers[i] = nullptr;
-    }
-}
-
-nsUniversalDetector::~nsUniversalDetector()
-{
-    for (int i = 0; i < NUM_OF_CHARSET_PROBERS; i++) {
-        delete mCharSetProbers[i];
-    }
-    delete mEscCharSetProber;
 }
 
 void nsUniversalDetector::Reset()
@@ -83,18 +69,17 @@ nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aL
                 mInputState = eHighbyte;
 
                 // kill mEscCharSetProber if it is active
-                delete mEscCharSetProber;
                 mEscCharSetProber = nullptr;
 
                 // start multibyte and singlebyte charset prober
                 if (nullptr == mCharSetProbers[0]) {
-                    mCharSetProbers[0] = new nsMBCSGroupProber;
+                    mCharSetProbers[0] = std::make_unique<nsMBCSGroupProber>();
                 }
                 if (nullptr == mCharSetProbers[1]) {
-                    mCharSetProbers[1] = new nsSBCSGroupProber;
+                    mCharSetProbers[1] = std::make_unique<nsSBCSGroupProber>();
                 }
                 if (nullptr == mCharSetProbers[2]) {
-                    mCharSetProbers[2] = new nsLatin1Prober;
+                    mCharSetProbers[2] = std::make_unique<nsLatin1Prober>();
                 }
             }
         } else {
@@ -112,7 +97,7 @@ nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aL
     switch (mInputState) {
     case eEscAscii:
         if (nullptr == mEscCharSetProber) {
-            mEscCharSetProber = new nsEscCharSetProber;
+            mEscCharSetProber = std::make_unique<nsEscCharSetProber>();
         }
         st = mEscCharSetProber->HandleData(aBuf, aLen);
         if (st == eFoundIt) {
