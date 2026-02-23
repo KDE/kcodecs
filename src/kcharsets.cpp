@@ -267,11 +267,11 @@ struct Entity {
     uint32_t code;
 };
 static constexpr inline const Entity entities[] = {
-    {"AElig", 0x00c6},   {"Aacute", 0x00c1},  {"Acirc", 0x00c2},   {"Agrave", 0x00c0},  {"Alpha", 0x0391},    {"AMP", 38},         {"Aring", 0x00c5},
+    {"AElig", 0x00c6},   {"AMP", 38},         {"Aacute", 0x00c1},  {"Acirc", 0x00c2},   {"Agrave", 0x00c0},   {"Alpha", 0x0391},   {"Aring", 0x00c5},
     {"Atilde", 0x00c3},  {"Auml", 0x00c4},    {"Beta", 0x0392},    {"Ccaron", 0x010c},  {"Ccedil", 0x00c7},   {"Chi", 0x03a7},     {"Dagger", 0x2021},
-    {"Dcaron", 0x010e},  {"Delta", 0x0394},   {"ETH", 0x00d0},     {"Eacute", 0x00c9},  {"Ecaron", 0x011a},   {"Ecirc", 0x00ca},   {"Egrave", 0x00c8},
-    {"Eague", 0x00c9},   {"Epsilon", 0x0395}, {"Eta", 0x0397},     {"Euml", 0x00cb},    {"Gamma", 0x0393},    {"GT", 62},          {"Iacute", 0x00cd},
-    {"Icirc", 0x00ce},   {"Igrave", 0x00cc},  {"Iota", 0x0399},    {"Iuml", 0x00cf},    {"Kappa", 0x039a},    {"Lambda", 0x039b},  {"LT", 60},
+    {"Dcaron", 0x010e},  {"Delta", 0x0394},   {"ETH", 0x00d0},     {"Eacute", 0x00c9},  {"Eague", 0x00c9},    {"Ecaron", 0x011a},  {"Ecirc", 0x00ca},
+    {"Egrave", 0x00c8},  {"Epsilon", 0x0395}, {"Eta", 0x0397},     {"Euml", 0x00cb},    {"GT", 62},           {"Gamma", 0x0393},   {"Iacute", 0x00cd},
+    {"Icirc", 0x00ce},   {"Igrave", 0x00cc},  {"Iota", 0x0399},    {"Iuml", 0x00cf},    {"Kappa", 0x039a},    {"LT", 60},          {"Lambda", 0x039b},
     {"Mu", 0x039c},      {"Ncaron", 0x0147},  {"Ntilde", 0x00d1},  {"Nu", 0x039d},      {"OElig", 0x0152},    {"Oacute", 0x00d3},  {"Ocirc", 0x00d4},
     {"Ograve", 0x00d2},  {"Omega", 0x03a9},   {"Omicron", 0x039f}, {"Oslash", 0x00d8},  {"Otilde", 0x00d5},   {"Ouml", 0x00d6},    {"Phi", 0x03a6},
     {"Pi", 0x03a0},      {"Prime", 0x2033},   {"Psi", 0x03a8},     {"QUOT", 34},        {"Rcaron", 0x0158},   {"Rho", 0x03a1},     {"Scaron", 0x0160},
@@ -283,7 +283,7 @@ static constexpr inline const Entity entities[] = {
     {"cap", 0x2229},     {"ccaron", 0x010d},  {"ccedil", 0x00e7},  {"cedil", 0x00b8},   {"cent", 0x00a2},     {"chi", 0x03c7},     {"circ", 0x02c6},
     {"clubs", 0x2663},   {"cong", 0x2245},    {"copy", 0x00a9},    {"crarr", 0x21b5},   {"cup", 0x222a},      {"curren", 0x00a4},  {"dArr", 0x21d3},
     {"dagger", 0x2020},  {"darr", 0x2193},    {"dcaron", 0x10f},   {"deg", 0x00b0},     {"delta", 0x03b4},    {"diams", 0x2666},   {"divide", 0x00f7},
-    {"dol", 0x0024},     {"dollar", 0x0024},  {"eacute", 0x00e9},  {"ecaron", 0x011b},  {"eague", 0x00e9},    {"ecirc", 0x00ea},   {"egrave", 0x00e8},
+    {"dol", 0x0024},     {"dollar", 0x0024},  {"eacute", 0x00e9},  {"eague", 0x00e9},   {"ecaron", 0x011b},   {"ecirc", 0x00ea},   {"egrave", 0x00e8},
     {"emdash", 0x2014},  {"empty", 0x2205},   {"emsp", 0x2003},    {"endash", 0x2013},  {"ensp", 0x2002},     {"epsilon", 0x03b5}, {"equiv", 0x2261},
     {"eta", 0x03b7},     {"eth", 0x00f0},     {"euml", 0x00eb},    {"euro", 0x20ac},    {"exist", 0x2203},    {"fnof", 0x0192},    {"forall", 0x2200},
     {"frac12", 0x00bd},  {"frac14", 0x00bc},  {"frac34", 0x00be},  {"frasl", 0x2044},   {"gamma", 0x03b3},    {"ge", 0x2265},      {"gt", 62},
@@ -302,7 +302,7 @@ static constexpr inline const Entity entities[] = {
     {"rceil", 0x2309},   {"rdquo", 0x201d},   {"real", 0x211c},    {"reg", 0x00ae},     {"rfloor", 0x230b},   {"rho", 0x03c1},     {"rlm", 0x200f},
     {"rsaquo", 0x203a},  {"rsquo", 0x2019},   {"sbquo", 0x201a},   {"scaron", 0x0161},  {"sdot", 0x22c5},     {"sect", 0x00a7},    {"shy", 0x00ad},
     {"sigma", 0x03c3},   {"sigmaf", 0x03c2},  {"sim", 0x223c},     {"spades", 0x2660},  {"sub", 0x2282},      {"sube", 0x2286},    {"sum", 0x2211},
-    {"sup1", 0x00b9},    {"supl", 0x00b9},    {"sup2", 0x00b2},    {"sup3", 0x00b3},    {"sup", 0x2283},      {"supe", 0x2287},    {"szlig", 0x00df},
+    {"sup", 0x2283},     {"sup1", 0x00b9},    {"sup2", 0x00b2},    {"sup3", 0x00b3},    {"supe", 0x2287},     {"supl", 0x00b9},    {"szlig", 0x00df},
     {"tau", 0x03c4},     {"tcaron", 0x0165},  {"there4", 0x2234},  {"theta", 0x03b8},   {"thetasym", 0x03d1}, {"thinsp", 0x2009},  {"thorn", 0x00fe},
     {"tilde", 0x02dc},   {"times", 0x00d7},   {"trade", 0x2122},   {"uArr", 0x21d1},    {"uacute", 0x00fa},   {"uarr", 0x2191},    {"ucirc", 0x00fb},
     {"ugrave", 0x00f9},  {"uml", 0x00a8},     {"upsih", 0x03d2},   {"upsilon", 0x03c5}, {"uring", 0x016f},    {"uuml", 0x00fc},    {"weierp", 0x2118},
