@@ -43,6 +43,7 @@ void KCharsetsTest::testFromEntity()
 
     QCOMPARE(singleton->fromEntity(QString::fromLatin1("&#1234")), QChar(1234));
     QCOMPARE(singleton->fromEntity(QString::fromLatin1("&#x1234")), QChar(0x1234));
+    QCOMPARE(singleton->fromEntity(QString::fromLatin1("#x1234")), QChar(0x1234));
     QCOMPARE(singleton->fromEntity(QString::fromLatin1("lt")), QChar::fromLatin1('<'));
     QCOMPARE(singleton->fromEntity(QString::fromLatin1("gt")), QChar::fromLatin1('>'));
     QCOMPARE(singleton->fromEntity(QString::fromLatin1("quot")), QChar::fromLatin1('"'));

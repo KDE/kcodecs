@@ -53,8 +53,9 @@ public:
     /*!
      * Converts an entity to a character.
      *
-     * The string must contain only the
-     * entity without the trailing ';'.
+     * The string must contain only the entity \e {without}
+     * the trailing ';'. For numeric character references, the
+     * leading '&' \e {may} be included.
      *
      * \a str the entity
      *
