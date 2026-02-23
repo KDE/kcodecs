@@ -36,7 +36,11 @@ nsSBCSGroupProber::nsSBCSGroupProber()
     // mProbers[12] = std::make_unique<nsSingleByteCharSetProber<false>>(&Latin2HungarianModel);
     // mProbers[13] = std::make_unique<nsSingleByteCharSetProber<false>>(&Win1250HungarianModel);
 
-    Reset();
+    for (unsigned int i = 0; i < NUM_OF_SBCS_PROBERS; i++) {
+        if (mProbers[i]) { // not null
+            mIsActive[i] = true;
+        }
+    }
 }
 
 const char *nsSBCSGroupProber::GetCharSetName()

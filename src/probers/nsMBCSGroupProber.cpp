@@ -68,7 +68,12 @@ nsMBCSGroupProber::nsMBCSGroupProber(std::span<const Prober> selected)
     }
     , mIsSelected(fromSelectedList(selected))
 {
-    Reset();
+    for (unsigned int i = 0; i < NUM_OF_PROBERS; i++) {
+        if (mProbers[i] && mIsSelected[i]) {
+            mIsActive[i] = true;
+            ++mActiveNum;
+        }
+    }
 }
 
 nsMBCSGroupProber::nsMBCSGroupProber()

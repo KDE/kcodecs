@@ -9,11 +9,10 @@
 
 #include "nsCharSetProber.h"
 
+#include <array>
+
 #define SAMPLE_SIZE 64
 #define SYMBOL_CAT_ORDER 250
-#define NUMBER_OF_SEQ_CAT 4
-#define POSITIVE_CAT (NUMBER_OF_SEQ_CAT - 1)
-#define NEGATIVE_CAT 0
 
 namespace kencodingprober
 {
@@ -32,7 +31,6 @@ public:
     explicit nsSingleByteCharSetProber(const SequenceModel *model)
         : mModel(model)
     {
-        Reset();
     }
 
     const char *GetCharSetName() override;
@@ -49,18 +47,18 @@ public:
 #endif
 
 protected:
-    nsProbingState mState;
-    const SequenceModel *mModel;
+    nsProbingState mState = eDetecting;
+    const SequenceModel *mModel = nullptr;
 
     // char order of last character
-    unsigned char mLastOrder;
+    unsigned char mLastOrder = 255;
 
-    unsigned int mTotalSeqs;
-    unsigned int mSeqCounters[NUMBER_OF_SEQ_CAT];
+    unsigned int mTotalSeqs = 0;
+    std::array<unsigned int, 4> mSeqCounters = {0};
 
-    unsigned int mTotalChar;
+    unsigned int mTotalChar = 0;
     // characters that fall in our sampling range
-    unsigned int mFreqChar;
+    unsigned int mFreqChar = 0;
 };
 
 extern const SequenceModel Koi8rModel;

@@ -24,9 +24,7 @@ typedef enum {
 class KCODECS_NO_EXPORT nsCharSetProber
 {
 public:
-    virtual ~nsCharSetProber()
-    {
-    }
+    virtual ~nsCharSetProber() = default;
     virtual const char *GetCharSetName() = 0;
     virtual nsProbingState HandleData(const char *aBuf, unsigned int aLen) = 0;
     virtual nsProbingState GetState(void) = 0;

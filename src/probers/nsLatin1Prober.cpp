@@ -5,6 +5,7 @@
 */
 
 #include "nsLatin1Prober.h"
+#include <numeric>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -72,12 +73,17 @@ static const unsigned char Latin1ClassModel[] = {
     /*ASO*/ 0, 3, 1, 3, 1, 1, 3, 3,
 };
 
+nsLatin1Prober::nsLatin1Prober()
+    : mLastCharClass(OTH)
+{
+}
+
 void nsLatin1Prober::Reset(void)
 {
     mState = eDetecting;
     mLastCharClass = OTH;
-    for (int i = 0; i < FREQ_CAT_NUM; i++) {
-        mFreqCounter[i] = 0;
+    for (auto &counter : mFreqCounter) {
+        counter = 0;
     }
 }
 
@@ -116,10 +122,7 @@ float nsLatin1Prober::GetConfidence(void)
     }
 
     float confidence;
-    unsigned int total = 0;
-    for (int i = 0; i < FREQ_CAT_NUM; i++) {
-        total += mFreqCounter[i];
-    }
+    const auto total = std::accumulate(mFreqCounter.begin(), mFreqCounter.end(), 0ul);
 
     if (!total) {
         confidence = 0.0f;

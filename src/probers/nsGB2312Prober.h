@@ -36,11 +36,12 @@ public:
 
 protected:
     std::unique_ptr<nsCodingStateMachine> mCodingSM;
-    nsProbingState mState;
+    nsProbingState mState = eDetecting;
 
     // GB2312ContextAnalysis mContextAnalyser;
     GB2312DistributionAnalysis mDistributionAnalyser;
-    char mLastChar[2];
+
+    char mLastChar[2] = {0};
 };
 }
 

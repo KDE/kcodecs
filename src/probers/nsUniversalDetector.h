@@ -10,6 +10,7 @@
 
 #include "nsCharSetProber.h"
 
+#include <array>
 #include <memory>
 
 #define NUM_OF_CHARSET_PROBERS 3
@@ -25,7 +26,7 @@ typedef enum {
 class KCODECS_NO_EXPORT nsUniversalDetector : public nsCharSetProber
 {
 public:
-    nsUniversalDetector();
+    nsUniversalDetector() = default;
     ~nsUniversalDetector() override = default;
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
@@ -34,13 +35,13 @@ public:
     nsProbingState GetState() override;
 
 protected:
-    nsInputState mInputState;
-    bool mDone;
-    bool mGotData;
-    char mLastChar;
-    const char *mDetectedCharset;
+    nsInputState mInputState = ePureAscii;
+    bool mDone = false;
+    bool mGotData = false;
+    char mLastChar = '\0';
+    const char *mDetectedCharset = nullptr;
 
-    std::unique_ptr<nsCharSetProber> mCharSetProbers[NUM_OF_CHARSET_PROBERS];
+    std::array<std::unique_ptr<nsCharSetProber>, NUM_OF_CHARSET_PROBERS> mCharSetProbers = {};
     std::unique_ptr<nsCharSetProber> mEscCharSetProber;
 };
 }

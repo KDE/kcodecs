@@ -9,19 +9,15 @@
 
 #include "nsCharSetProber.h"
 
-#define FREQ_CAT_NUM 4
+#include <array>
+
 namespace kencodingprober
 {
 class KCODECS_NO_EXPORT nsLatin1Prober : public nsCharSetProber
 {
 public:
-    nsLatin1Prober(void)
-    {
-        Reset();
-    }
-    ~nsLatin1Prober(void) override
-    {
-    }
+    nsLatin1Prober(void);
+    ~nsLatin1Prober(void) override = default;
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override
     {
@@ -39,9 +35,9 @@ public:
 #endif
 
 protected:
-    nsProbingState mState;
+    nsProbingState mState = eDetecting;
     char mLastCharClass;
-    unsigned int mFreqCounter[FREQ_CAT_NUM];
+    std::array<unsigned int, 4> mFreqCounter = {0};
 };
 }
 

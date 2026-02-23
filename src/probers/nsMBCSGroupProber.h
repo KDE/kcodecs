@@ -47,12 +47,12 @@ public:
 #endif
 
 protected:
-    nsProbingState mState;
+    nsProbingState mState = eDetecting;
     std::array<std::unique_ptr<nsCharSetProber>, NUM_OF_PROBERS> mProbers;
-    bool mIsActive[NUM_OF_PROBERS];
+    std::array<bool, NUM_OF_PROBERS> mIsActive = {false};
     const std::array<bool, NUM_OF_PROBERS> mIsSelected = {true};
-    int mBestGuess;
-    unsigned int mActiveNum;
+    int mBestGuess = -1;
+    unsigned int mActiveNum = 0;
 };
 }
 

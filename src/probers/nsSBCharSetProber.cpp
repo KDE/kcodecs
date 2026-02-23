@@ -53,8 +53,8 @@ void nsSingleByteCharSetProber<Reversed>::Reset(void)
 {
     mState = eDetecting;
     mLastOrder = 255;
-    for (unsigned int i = 0; i < NUMBER_OF_SEQ_CAT; i++) {
-        mSeqCounters[i] = 0;
+    for (auto &counter : mSeqCounters) {
+        counter = 0;
     }
     mTotalSeqs = 0;
     mTotalChar = 0;
@@ -68,14 +68,14 @@ float nsSingleByteCharSetProber<Reversed>::GetConfidence(void)
 {
 #ifdef NEGATIVE_APPROACH
     if (mTotalSeqs > 0)
-        if (mTotalSeqs > mSeqCounters[NEGATIVE_CAT] * 10) {
-            return (mTotalSeqs - mSeqCounters[NEGATIVE_CAT] * 10.f) / mTotalSeqs * mFreqChar / mTotalChar;
+        if (mTotalSeqs > mSeqCounters.front() * 10) {
+            return (mTotalSeqs - mSeqCounters.front() * 10.f) / mTotalSeqs * mFreqChar / mTotalChar;
         }
     return 0.01f;
 #else // POSITIVE_APPROACH
 
     if (mTotalSeqs > 0) {
-        float r = 1.0f * mSeqCounters[POSITIVE_CAT] / mTotalSeqs / mModel->mTypicalPositiveRatio;
+        float r = 1.0f * mSeqCounters.back() / mTotalSeqs / mModel->mTypicalPositiveRatio;
         r = r * mFreqChar / mTotalChar;
         if (r >= 0.99f) {
             r = 0.99f;

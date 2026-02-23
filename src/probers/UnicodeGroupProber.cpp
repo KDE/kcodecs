@@ -16,9 +16,6 @@ UnicodeGroupProber::UnicodeGroupProber()
           std::make_unique<nsCodingStateMachine>(&UCS2BESMModel),
       }
 {
-    mActiveSM = NUM_OF_UNICODE_CHARSETS;
-    mState = eDetecting;
-    mDetectedCharset = "UTF-8";
 }
 
 void UnicodeGroupProber::Reset(void)

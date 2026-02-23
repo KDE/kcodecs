@@ -38,9 +38,9 @@ public:
 
 protected:
     std::unique_ptr<nsCodingStateMachine> mCodingSM[NUM_OF_UNICODE_CHARSETS];
-    unsigned int mActiveSM;
-    nsProbingState mState;
-    const char *mDetectedCharset;
+    unsigned int mActiveSM = NUM_OF_UNICODE_CHARSETS;
+    nsProbingState mState = eDetecting;
+    const char *mDetectedCharset = "UTF-8";
 };
 }
 #endif /* UNICODEGROUPPROBER_H */

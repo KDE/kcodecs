@@ -43,12 +43,12 @@ public:
 
 protected:
     std::unique_ptr<nsCodingStateMachine> mCodingSM;
-    nsProbingState mState;
+    nsProbingState mState = eDetecting;
 
     SJISContextAnalysis mContextAnalyser;
     SJISDistributionAnalysis mDistributionAnalyser;
 
-    char mLastChar[2];
+    char mLastChar[2] = {0};
 };
 }
 

@@ -35,11 +35,12 @@ public:
 
 protected:
     std::unique_ptr<nsCodingStateMachine> mCodingSM;
-    nsProbingState mState;
+    nsProbingState mState = eDetecting;
 
     // Big5ContextAnalysis mContextAnalyser;
     Big5DistributionAnalysis mDistributionAnalyser;
-    char mLastChar[2];
+
+    char mLastChar[2] = {0};
 };
 }
 

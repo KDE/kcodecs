@@ -14,16 +14,6 @@
 
 namespace kencodingprober
 {
-nsUniversalDetector::nsUniversalDetector()
-{
-    mDone = false;
-
-    mDetectedCharset = nullptr;
-    mGotData = false;
-    mInputState = ePureAscii;
-    mLastChar = '\0';
-}
-
 void nsUniversalDetector::Reset()
 {
     mDone = false;
