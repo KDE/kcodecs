@@ -29,6 +29,7 @@ private Q_SLOTS:
     void testToEntity();
     void testResolveEntities();
     void testEncodingNames();
+    void benchmarkFromEntity();
 };
 
 void KCharsetsTest::testSingleton()
@@ -81,6 +82,19 @@ void KCharsetsTest::testEncodingNames()
         QVERIFY(encodingNameHasADescription(encodingName, singleton->descriptiveEncodingNames()));
         QVERIFY(!singleton->descriptionForEncoding(encodingName).isEmpty());
         QCOMPARE(singleton->encodingForName(singleton->descriptionForEncoding(encodingName)), encodingName);
+    }
+}
+
+void KCharsetsTest::benchmarkFromEntity()
+{
+    KCharsets *singleton = KCharsets::charsets();
+
+    QCOMPARE(singleton->fromEntity(u"AElig"_s), QChar(0x00c6));
+    QCOMPARE(singleton->fromEntity(u"zwj"_s), QChar(0x200d));
+
+    QBENCHMARK {
+        singleton->fromEntity(u"AElig"_s);
+        singleton->fromEntity(u"zwj"_s);
     }
 }
 
