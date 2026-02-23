@@ -4,10 +4,9 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#include "kcharsetstest.h"
-
 #include "kcharsets_p.h"
 #include <QDebug>
+#include <QObject>
 #include <QString>
 #include <QTest>
 #include <kcharsets.h>
@@ -20,6 +19,17 @@ static bool encodingNameHasADescription(const QString &encodingName, const QStri
         return description.contains(encodingName);
     });
 }
+
+class KCharsetsTest : public QObject
+{
+    Q_OBJECT
+private Q_SLOTS:
+    void testSingleton();
+    void testFromEntity();
+    void testToEntity();
+    void testResolveEntities();
+    void testEncodingNames();
+};
 
 void KCharsetsTest::testSingleton()
 {
@@ -71,4 +81,4 @@ void KCharsetsTest::testEncodingNames()
 
 QTEST_MAIN(KCharsetsTest)
 
-#include "moc_kcharsetstest.cpp"
+#include "kcharsetstest.moc"
