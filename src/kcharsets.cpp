@@ -11,8 +11,6 @@
 #include "kcharsets_p.h"
 #include "kcodecs_debug.h"
 
-#include <QHash>
-
 #include <algorithm>
 #include <array>
 #include <assert.h>
