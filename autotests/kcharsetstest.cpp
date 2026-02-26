@@ -76,12 +76,18 @@ void KCharsetsTest::testEncodingNames()
 {
     KCharsets *singleton = KCharsets::charsets();
 
-    QCOMPARE(singleton->availableEncodingNames().count(), singleton->descriptiveEncodingNames().count());
+    const auto descriptiveEncodingNames = singleton->descriptiveEncodingNames();
+    const auto availableEncodingNames = singleton->availableEncodingNames();
+    const auto encodingsByScript = singleton->encodingsByScript();
 
-    for (const QString &encodingName : singleton->availableEncodingNames()) {
-        QVERIFY(encodingNameHasADescription(encodingName, singleton->descriptiveEncodingNames()));
-        QVERIFY(!singleton->descriptionForEncoding(encodingName).isEmpty());
-        QCOMPARE(singleton->encodingForName(singleton->descriptionForEncoding(encodingName)), encodingName);
+    QCOMPARE(descriptiveEncodingNames.count(), availableEncodingNames.count());
+
+    for (const QString &encodingName : availableEncodingNames) {
+        QVERIFY(encodingNameHasADescription(encodingName, descriptiveEncodingNames));
+
+        auto description = singleton->descriptionForEncoding(encodingName);
+        QVERIFY(!description.isEmpty());
+        QCOMPARE(singleton->encodingForName(description), encodingName);
     }
 }
 
