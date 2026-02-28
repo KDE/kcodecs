@@ -17,15 +17,6 @@ nsEscCharSetProber::nsEscCharSetProber(void)
 
 nsEscCharSetProber::~nsEscCharSetProber(void) = default;
 
-void nsEscCharSetProber::Reset(void)
-{
-    mState = eDetecting;
-    for (auto &codingSM : mCodingSM) {
-        codingSM->Reset();
-    }
-    mDetectedCharset = nullptr;
-}
-
 nsProbingState nsEscCharSetProber::HandleData(const char *aBuf, unsigned int aLen)
 {
     if (mState != eDetecting) {

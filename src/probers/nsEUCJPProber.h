@@ -36,7 +36,6 @@ public:
     {
         return mState;
     }
-    void Reset(void) override;
     float GetConfidence(void) override;
 
 protected:

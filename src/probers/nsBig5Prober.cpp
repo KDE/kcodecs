@@ -14,13 +14,6 @@ nsBig5Prober::nsBig5Prober()
 {
 }
 
-void nsBig5Prober::Reset(void)
-{
-    mCodingSM->Reset();
-    mState = eDetecting;
-    mDistributionAnalyser.Reset();
-}
-
 nsProbingState nsBig5Prober::HandleData(const char *aBuf, unsigned int aLen)
 {
     if (aLen == 0) {

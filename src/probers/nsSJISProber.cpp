@@ -19,14 +19,6 @@ nsSJISProber::nsSJISProber()
 {
 }
 
-void nsSJISProber::Reset(void)
-{
-    mCodingSM->Reset();
-    mState = eDetecting;
-    mContextAnalyser.Reset();
-    mDistributionAnalyser.Reset();
-}
-
 nsProbingState nsSJISProber::HandleData(const char *aBuf, unsigned int aLen)
 {
     if (aLen == 0) {

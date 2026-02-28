@@ -99,22 +99,6 @@ const char *nsMBCSGroupProber::GetCharSetName()
     return mProbers[mBestGuess]->GetCharSetName();
 }
 
-void nsMBCSGroupProber::Reset(void)
-{
-    mActiveNum = 0;
-    for (unsigned int i = 0; i < NUM_OF_PROBERS; i++) {
-        if (mProbers[i] && mIsSelected[i]) {
-            mProbers[i]->Reset();
-            mIsActive[i] = true;
-            ++mActiveNum;
-        } else {
-            mIsActive[i] = false;
-        }
-    }
-    mBestGuess = -1;
-    mState = eDetecting;
-}
-
 nsProbingState nsMBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen)
 {
     // do filtering to reduce load to probers

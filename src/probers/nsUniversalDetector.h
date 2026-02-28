@@ -30,7 +30,6 @@ public:
     ~nsUniversalDetector() override = default;
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
-    void Reset(void) override;
     float GetConfidence(void) override;
     nsProbingState GetState() override;
 

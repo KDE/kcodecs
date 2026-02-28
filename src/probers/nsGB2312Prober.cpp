@@ -19,14 +19,6 @@ nsGB18030Prober::nsGB18030Prober()
 {
 }
 
-void nsGB18030Prober::Reset(void)
-{
-    mCodingSM->Reset();
-    mState = eDetecting;
-    mDistributionAnalyser.Reset();
-    // mContextAnalyser.Reset();
-}
-
 nsProbingState nsGB18030Prober::HandleData(const char *aBuf, unsigned int aLen)
 {
     if (aLen == 0) {

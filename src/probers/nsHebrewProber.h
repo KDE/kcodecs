@@ -24,7 +24,6 @@ public:
 
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
-    void Reset(void) override;
 
     nsProbingState GetState(void) override;
 
@@ -38,7 +37,8 @@ protected:
     int mFinalCharLogicalScore = 0;
     int mFinalCharVisualScore = 0;
 
-    // The two last characters seen in the previous buffer.
+    // mPrev and mBeforePrev are initialized to space in order to
+    // simulate a word // delimiter at the beginning of the data
     char mPrev = ' ';
     char mBeforePrev = ' ';
 

@@ -41,13 +41,6 @@ public:
     // return confidence base on existing data
     float GetConfidence();
 
-    // Reset analyser, clear any state
-    void Reset(void)
-    {
-        mTotalChars = 0;
-        mFreqChars = 0;
-    }
-
     // It is not necessary to receive all data to draw conclusion. For charset detection,
     // certain amount of data is enough
     bool GotEnoughData()

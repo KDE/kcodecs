@@ -19,14 +19,6 @@ nsEUCJPProber::nsEUCJPProber()
 {
 }
 
-void nsEUCJPProber::Reset(void)
-{
-    mCodingSM->Reset();
-    mState = eDetecting;
-    mContextAnalyser.Reset();
-    mDistributionAnalyser.Reset();
-}
-
 nsProbingState nsEUCJPProber::HandleData(const char *aBuf, unsigned int aLen)
 {
     if (aLen == 0) {

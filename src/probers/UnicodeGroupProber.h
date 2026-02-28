@@ -30,7 +30,6 @@ public:
     {
         return mState;
     }
-    void Reset(void) override;
     float GetConfidence() override;
 #ifdef DEBUG_PROBE
     void DumpStatus() override;

@@ -48,19 +48,6 @@ nsProbingState nsSingleByteCharSetProber<Reversed>::HandleData(const char *aBuf,
     return mState;
 }
 
-template<bool Reversed>
-void nsSingleByteCharSetProber<Reversed>::Reset(void)
-{
-    mState = eDetecting;
-    mLastOrder = 255;
-    for (auto &counter : mSeqCounters) {
-        counter = 0;
-    }
-    mTotalSeqs = 0;
-    mTotalChar = 0;
-    mFreqChar = 0;
-}
-
 //#define NEGATIVE_APPROACH 1
 
 template<bool Reversed>

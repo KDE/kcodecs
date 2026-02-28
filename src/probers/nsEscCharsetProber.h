@@ -29,7 +29,6 @@ public:
     {
         return mState;
     }
-    void Reset(void) override;
     float GetConfidence(void) override
     {
         return (float)0.99;

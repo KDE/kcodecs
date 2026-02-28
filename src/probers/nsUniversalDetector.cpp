@@ -14,27 +14,6 @@
 
 namespace kencodingprober
 {
-void nsUniversalDetector::Reset()
-{
-    mDone = false;
-
-    mDetectedCharset = nullptr;
-    mGotData = false;
-    mInputState = ePureAscii;
-    mLastChar = '\0';
-
-    if (mEscCharSetProber) {
-        mEscCharSetProber->Reset();
-    }
-
-    unsigned int i;
-    for (i = 0; i < NUM_OF_CHARSET_PROBERS; i++) {
-        if (mCharSetProbers[i]) {
-            mCharSetProbers[i]->Reset();
-        }
-    }
-}
-
 //---------------------------------------------------------------------
 #define SHORTCUT_THRESHOLD (float)0.95
 #define MINIMUM_THRESHOLD (float)0.20

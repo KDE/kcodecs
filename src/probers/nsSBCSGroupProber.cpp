@@ -58,20 +58,6 @@ const char *nsSBCSGroupProber::GetCharSetName()
     return mProbers[mBestGuess]->GetCharSetName();
 }
 
-void nsSBCSGroupProber::Reset(void)
-{
-    for (unsigned int i = 0; i < NUM_OF_SBCS_PROBERS; i++) {
-        if (mProbers[i]) { // not null
-            mProbers[i]->Reset();
-            mIsActive[i] = true;
-        } else {
-            mIsActive[i] = false;
-        }
-    }
-    mBestGuess = -1;
-    mState = eDetecting;
-}
-
 nsProbingState nsSBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen)
 {
     char *newBuf1 = nullptr;

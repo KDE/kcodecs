@@ -14,14 +14,6 @@ nsEUCKRProber::nsEUCKRProber()
 {
 }
 
-void nsEUCKRProber::Reset(void)
-{
-    mCodingSM->Reset();
-    mState = eDetecting;
-    mDistributionAnalyser.Reset();
-    // mContextAnalyser.Reset();
-}
-
 nsProbingState nsEUCKRProber::HandleData(const char *aBuf, unsigned int aLen)
 {
     if (aLen == 0) {

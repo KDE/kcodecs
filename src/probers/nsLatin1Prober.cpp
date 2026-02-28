@@ -78,15 +78,6 @@ nsLatin1Prober::nsLatin1Prober()
 {
 }
 
-void nsLatin1Prober::Reset(void)
-{
-    mState = eDetecting;
-    mLastCharClass = OTH;
-    for (auto &counter : mFreqCounter) {
-        counter = 0;
-    }
-}
-
 nsProbingState nsLatin1Prober::HandleData(const char *aBuf, unsigned int aLen)
 {
     char *newBuf1 = nullptr;
