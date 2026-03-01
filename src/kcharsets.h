@@ -14,8 +14,6 @@
 #include <QStringList>
 #include <memory>
 
-#include "kcodecs.h"
-
 class KCharsetsPrivate;
 
 class QChar;
