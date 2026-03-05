@@ -505,26 +505,27 @@ QStringList KCharsets::descriptiveEncodingNames() const
 
 QList<QStringList> KCharsets::encodingsByScript() const
 {
-    if (!d->encodingsByScript.isEmpty()) {
-        return d->encodingsByScript;
-    }
-    int i;
-    for (const int *p = language_for_encoding_indices; *p != -1; p += 2) {
-        const QString name = QString::fromUtf8(language_for_encoding_string + p[0]);
-        const QString description = tr(language_for_encoding_string + p[1], "@item Text character set");
+    static auto encodings = []() {
+        QList<QStringList> encodings;
 
-        for (i = 0; i < d->encodingsByScript.size(); ++i) {
-            if (d->encodingsByScript.at(i).at(0) == description) {
-                d->encodingsByScript[i].append(name);
-                break;
+        for (const int *p = language_for_encoding_indices; *p != -1; p += 2) {
+            const QString encoding = QString::fromUtf8(language_for_encoding_string + p[0]);
+            const QString script = tr(language_for_encoding_string + p[1], "@item Text character set");
+
+            auto match = std::find_if(encodings.begin(), encodings.end(), [&script](auto &e) {
+                return e.at(0) == script;
+            });
+
+            if (match == encodings.end()) {
+                encodings.append(QStringList{script, encoding});
+            } else {
+                match->append(encoding);
             }
         }
+        return encodings;
+    }();
 
-        if (i == d->encodingsByScript.size()) {
-            d->encodingsByScript.append(QStringList() << description << name);
-        }
-    }
-    return d->encodingsByScript;
+    return encodings;
 }
 
 KCharsets *KCharsets::charsets()
