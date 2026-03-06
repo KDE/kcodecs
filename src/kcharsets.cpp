@@ -494,11 +494,15 @@ QString KCharsets::encodingForName(const QString &descriptiveName) const
 QStringList KCharsets::descriptiveEncodingNames() const
 {
     QStringList encodings;
-    for (const int *p = language_for_encoding_indices; *p != -1; p += 2) {
-        const QString name = QString::fromUtf8(language_for_encoding_string + p[0]);
-        const QString description = tr(language_for_encoding_string + p[1], "@item Text character set");
-        encodings.append(tr("%1 ( %2 )", "@item Text encoding: %1 character set, %2 encoding").arg(description, name));
+
+    for (const auto scriptsAndEncodings = encodingsByScript(); const auto &encodingList : scriptsAndEncodings) {
+        const auto script = encodingList[0];
+        for (qsizetype i = 1; i < encodingList.size(); i++) {
+            const auto encoding = encodingList[i];
+            encodings.append(tr("%1 ( %2 )", "@item Text encoding: %1 character set, %2 encoding").arg(script, encoding));
+        }
     }
+
     encodings.sort();
     return encodings;
 }
