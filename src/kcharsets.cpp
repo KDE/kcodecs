@@ -8,7 +8,6 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 #include "kcharsets.h"
-#include "kcharsets_p.h"
 #include "kcodecs_debug.h"
 
 #include <algorithm>
@@ -221,12 +220,6 @@ static const int language_for_encoding_indices[] = {
  * GENERATED CODE ENDS HERE
  */
 
-struct KCharsetsSingletonPrivate {
-    KCharsets instance;
-};
-
-Q_GLOBAL_STATIC(KCharsetsSingletonPrivate, globalCharsets)
-
 // search an array of items index/data, find first matching index
 // and return data, or return 0
 static inline const char *kcharsets_array_search(const char *start, const int *indices, const char *entry)
@@ -239,14 +232,21 @@ static inline const char *kcharsets_array_search(const char *start, const int *i
     return nullptr;
 }
 
+class KCharsetsPrivate
+{
+    // empty class required for binary compatibility
+};
+
 // --------------------------------------------------------------------------
 
-KCharsets::KCharsets()
-    : d(new KCharsetsPrivate)
-{
-}
+constexpr KCharsets::KCharsets() = default;
 
 KCharsets::~KCharsets() = default;
+
+struct KCharsetsSingletonPrivate {
+    static constinit KCharsets instance;
+};
+constinit KCharsets KCharsetsSingletonPrivate::instance{};
 
 // sorted entities list for lookup
 struct Entity {
@@ -534,5 +534,5 @@ QList<QStringList> KCharsets::encodingsByScript() const
 
 KCharsets *KCharsets::charsets()
 {
-    return &globalCharsets()->instance;
+    return &KCharsetsSingletonPrivate::instance;
 }
