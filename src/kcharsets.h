@@ -38,7 +38,7 @@ protected:
      * Protected constructor. If you need the kcharsets object, use
      * KCharsets::charsets() instead.
      */
-    KCharsets();
+    constexpr KCharsets();
 
 public:
     ~KCharsets();
