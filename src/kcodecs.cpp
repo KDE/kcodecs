@@ -552,7 +552,6 @@ KCodecs::Codec *KCodecs::Codec::codecForName(QByteArrayView name)
         const char *name;
         std::unique_ptr<KCodecs::Codec> codec;
     };
-    // ### has to be sorted by name!
     static const std::array<CodecEntry, 6> s_codecs{{
         {"b", std::make_unique<KCodecs::Rfc2047BEncodingCodec>()},
         {"base64", std::make_unique<KCodecs::Base64Codec>()},
@@ -562,14 +561,13 @@ KCodecs::Codec *KCodecs::Codec::codecForName(QByteArrayView name)
         {"x-uuencode", std::make_unique<KCodecs::UUCodec>()},
     }};
 
-    const auto it = std::lower_bound(s_codecs.begin(), s_codecs.end(), name, [](const auto &lhs, auto rhs) {
-        return rhs.compare(lhs.name, Qt::CaseInsensitive) > 0;
-    });
-    if (it == s_codecs.end() || name.compare((*it).name, Qt::CaseInsensitive) != 0) {
-        qWarning() << "Unknown codec" << name << "requested!";
-        return nullptr;
+    for (auto &entry : s_codecs) {
+        if (name.compare(entry.name, Qt::CaseInsensitive) == 0) {
+            return entry.codec.get();
+        }
     }
-    return (*it).codec.get();
+    qWarning() << "Unknown codec" << name << "requested!";
+    return nullptr;
 }
 
 bool KCodecs::Codec::encode(const char *&scursor, const char *const send, char *&dcursor, const char *const dend, NewlineType newline) const
