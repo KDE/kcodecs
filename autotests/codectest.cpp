@@ -19,6 +19,8 @@ private Q_SLOTS:
     void testCodecs();
     void testCodecs_data();
     void testInvalidCodec();
+    void benchmarkCodecForName();
+    void benchmarkCodecForName_data();
 };
 
 QTEST_MAIN(CodecTest)
@@ -115,6 +117,41 @@ void CodecTest::testInvalidCodec()
     QTest::ignoreMessage(QtWarningMsg, "Unknown codec \"thiscodectotallydoesntexist\" requested!");
     Codec *codec = Codec::codecForName("thiscodectotallydoesntexist");
     QCOMPARE(codec, nullptr);
+}
+
+void CodecTest::benchmarkCodecForName()
+{
+    QFETCH(QList<QByteArray>, names);
+
+    for (const auto &codecName : names) {
+        Codec *codec = Codec::codecForName(codecName);
+        QVERIFY(codec);
+    }
+
+    QBENCHMARK {
+        for (const auto &codecName : names) {
+            Codec *codec = Codec::codecForName(codecName);
+            QVERIFY(codec);
+        }
+    }
+}
+
+void CodecTest::benchmarkCodecForName_data()
+{
+    QTest::addColumn<QList<QByteArray>>("names");
+
+    QTest::addRow("q") << QList<QByteArray>{"q"};
+    QTest::addRow("b") << QList<QByteArray>{"b"};
+    QTest::addRow("rfc2231") << QList<QByteArray>{"x-kmime-rfc2231"};
+    QTest::addRow("uuencode") << QList<QByteArray>{"x-uuencode"};
+    QTest::addRow("all") << QList<QByteArray>{
+        "b",
+        "base64",
+        "q",
+        "quoted-printable",
+        "x-kmime-rfc2231",
+        "x-uuencode",
+    };
 }
 
 #include "codectest.moc"
