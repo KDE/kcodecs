@@ -34,16 +34,11 @@ namespace KCodecs
 class Base64Codec : public Codec
 {
 public:
-    Base64Codec()
-        : Codec()
-    {
-    }
+    constexpr Base64Codec() = default;
 
-    ~Base64Codec() override
-    {
-    }
+    constexpr ~Base64Codec() override = default;
 
-    const char *name() const override
+    constexpr const char *name() const override
     {
         return "base64";
     }
@@ -84,16 +79,11 @@ public:
 class Rfc2047BEncodingCodec : public Base64Codec
 {
 public:
-    Rfc2047BEncodingCodec()
-        : Base64Codec()
-    {
-    }
+    constexpr Rfc2047BEncodingCodec() = default;
 
-    ~Rfc2047BEncodingCodec() override
-    {
-    }
+    constexpr ~Rfc2047BEncodingCodec() override = default;
 
-    const char *name() const override
+    constexpr const char *name() const override
     {
         return "b";
     }
