@@ -3,7 +3,6 @@
 
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
-#include "codectest.h"
 
 #include <QTest>
 
@@ -12,6 +11,15 @@
 #include "../src/kcodecs.h"
 
 using namespace KCodecs;
+
+class CodecTest : public QObject
+{
+    Q_OBJECT
+private Q_SLOTS:
+    void testCodecs();
+    void testCodecs_data();
+    void testInvalidCodec();
+};
 
 QTEST_MAIN(CodecTest)
 
@@ -109,4 +117,4 @@ void CodecTest::testInvalidCodec()
     QCOMPARE(codec, nullptr);
 }
 
-#include "moc_codectest.cpp"
+#include "codectest.moc"
