@@ -18,16 +18,11 @@ namespace KCodecs
 class QuotedPrintableCodec : public Codec
 {
 public:
-    QuotedPrintableCodec()
-        : Codec()
-    {
-    }
+    constexpr QuotedPrintableCodec() = default;
 
-    ~QuotedPrintableCodec() override
-    {
-    }
+    constexpr ~QuotedPrintableCodec() override = default;
 
-    const char *name() const override
+    constexpr const char *name() const override
     {
         return "quoted-printable";
     }
@@ -56,16 +51,11 @@ public:
 class Rfc2047QEncodingCodec : public Codec
 {
 public:
-    Rfc2047QEncodingCodec()
-        : Codec()
-    {
-    }
+    constexpr Rfc2047QEncodingCodec() = default;
 
-    ~Rfc2047QEncodingCodec() override
-    {
-    }
+    constexpr ~Rfc2047QEncodingCodec() override = default;
 
-    const char *name() const override
+    constexpr const char *name() const override
     {
         return "q";
     }
@@ -91,16 +81,11 @@ public:
 class Rfc2231EncodingCodec : public Codec
 {
 public:
-    Rfc2231EncodingCodec()
-        : Codec()
-    {
-    }
+    constexpr Rfc2231EncodingCodec() = default;
 
-    ~Rfc2231EncodingCodec() override
-    {
-    }
+    constexpr ~Rfc2231EncodingCodec() override = default;
 
-    const char *name() const override
+    constexpr const char *name() const override
     {
         return "x-kmime-rfc2231";
     }

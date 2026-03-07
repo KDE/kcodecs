@@ -17,16 +17,11 @@ namespace KCodecs
 class UUCodec : public Codec
 {
 public:
-    UUCodec()
-        : Codec()
-    {
-    }
+    constexpr UUCodec() = default;
 
-    ~UUCodec() override
-    {
-    }
+    constexpr ~UUCodec() override = default;
 
-    const char *name() const override
+    constexpr const char *name() const override
     {
         return "x-uuencode";
     }
