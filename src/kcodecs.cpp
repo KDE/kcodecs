@@ -546,24 +546,51 @@ QByteArray KCodecs::encodeRFC2047String(QStringView src, QByteArrayView charset,
 /******************************************************************************/
 /*                           KCodecs::Codec                                   */
 
+namespace
+{
+using CodecVariant = std::variant< //
+    KCodecs::Rfc2047BEncodingCodec,
+    KCodecs::Base64Codec,
+    KCodecs::Rfc2047QEncodingCodec,
+    KCodecs::QuotedPrintableCodec,
+    KCodecs::Rfc2231EncodingCodec,
+    KCodecs::UUCodec>;
+
+struct CodecEntry {
+    constexpr CodecEntry(CodecVariant &&o)
+        : codec(o)
+        , ptr(std::visit(
+              [](auto &&arg) -> KCodecs::Codec * {
+                  return &arg;
+              },
+              codec))
+        , name(std::visit(
+              [](auto &&arg) -> const char * {
+                  return arg.name();
+              },
+              codec))
+    {
+    }
+    CodecVariant codec;
+    KCodecs::Codec *ptr;
+    QByteArrayView name;
+};
+static constexpr std::array<CodecEntry, 6> s_codecs{{
+    {KCodecs::Rfc2047BEncodingCodec{}},
+    {KCodecs::Base64Codec{}},
+    {KCodecs::Rfc2047QEncodingCodec{}},
+    {KCodecs::QuotedPrintableCodec{}},
+    {KCodecs::Rfc2231EncodingCodec{}},
+    {KCodecs::UUCodec{}},
+}};
+} // namespace
+
 KCodecs::Codec *KCodecs::Codec::codecForName(QByteArrayView name)
 {
-    struct CodecEntry {
-        const char *name;
-        std::unique_ptr<KCodecs::Codec> codec;
-    };
-    static const std::array<CodecEntry, 6> s_codecs{{
-        {"b", std::make_unique<KCodecs::Rfc2047BEncodingCodec>()},
-        {"base64", std::make_unique<KCodecs::Base64Codec>()},
-        {"q", std::make_unique<KCodecs::Rfc2047QEncodingCodec>()},
-        {"quoted-printable", std::make_unique<KCodecs::QuotedPrintableCodec>()},
-        {"x-kmime-rfc2231", std::make_unique<KCodecs::Rfc2231EncodingCodec>()},
-        {"x-uuencode", std::make_unique<KCodecs::UUCodec>()},
-    }};
-
     for (auto &entry : s_codecs) {
-        if (name.compare(entry.name, Qt::CaseInsensitive) == 0) {
-            return entry.codec.get();
+        if ((name.size() == entry.name.size()) //
+            && (name.compare(entry.name, Qt::CaseInsensitive) == 0)) {
+            return entry.ptr;
         }
     }
     qWarning() << "Unknown codec" << name << "requested!";
