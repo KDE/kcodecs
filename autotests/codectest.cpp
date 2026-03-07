@@ -104,6 +104,7 @@ void CodecTest::testCodecs()
 
 void CodecTest::testInvalidCodec()
 {
+    QTest::ignoreMessage(QtWarningMsg, "Unknown codec \"thiscodectotallydoesntexist\" requested!");
     Codec *codec = Codec::codecForName("thiscodectotallydoesntexist");
     QCOMPARE(codec, nullptr);
 }
