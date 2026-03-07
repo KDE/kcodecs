@@ -552,16 +552,12 @@ public:
     /*!
       Returns the name of the encoding. Guaranteed to be lowercase.
     */
-    virtual const char *name() const = 0;
+    constexpr virtual const char *name() const = 0;
 
-    virtual ~Codec()
-    {
-    }
+    constexpr virtual ~Codec() = default;
 
 protected:
-    Codec()
-    {
-    }
+    constexpr Codec() = default;
 };
 
 /*!
