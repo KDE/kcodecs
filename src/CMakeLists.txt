@@ -90,7 +90,7 @@ ecm_generate_export_header(KF6Codecs
 )
 
 target_include_directories(KF6Codecs INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/KCodecs>")
-
+target_compile_features(KF6Codecs PUBLIC cxx_std_20)
 target_link_libraries(KF6Codecs PUBLIC Qt6::Core)
 
 ecm_generate_headers(KCodecs_HEADERS
