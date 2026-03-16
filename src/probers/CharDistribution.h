@@ -50,10 +50,7 @@ protected:
     // we do not handle character base on its original encoding string, but
     // convert this encoding string to a number, here called order.
     // This allows multiple encodings of a language to share one frequency table
-    virtual int GetOrder(const char * /* str */)
-    {
-        return -1;
-    }
+    virtual int GetOrder(const char * /* str */) = 0;
 
     // The number of characters whose frequency order is less than 512
     unsigned int mFreqChars = 0;
