@@ -26,8 +26,6 @@ public:
 
     void HandleOneChar(const char *aStr, unsigned int aCharLen)
     {
-        int order;
-
         // if we received enough data, stop here
         if (mTotalRel > MAX_REL_THRESHOLD) {
             mDone = true;
@@ -37,7 +35,7 @@ public:
         }
 
         // Only 2-bytes characters are of our interest
-        order = (aCharLen == 2) ? GetOrder(aStr) : -1;
+        int order = (aCharLen == 2) ? GetOrder(aStr) : -1;
         if (order != -1 && mLastCharOrder != -1) {
             mTotalRel++;
             // count this sequence to its category counter

@@ -146,12 +146,9 @@ float nsSBCSGroupProber::GetConfidence(void)
 #ifdef DEBUG_PROBE
 void nsSBCSGroupProber::DumpStatus()
 {
-    unsigned int i;
-    float cf;
-
-    cf = GetConfidence();
+    float cf = GetConfidence();
     printf(" SBCS Group Prober --------begin status \r\n");
-    for (i = 0; i < NUM_OF_SBCS_PROBERS; i++) {
+    for (size_t i = 0; i < NUM_OF_SBCS_PROBERS; i++) {
         if (!mIsActive[i]) {
             printf("  inactive: [%s] (i.e. confidence is too low).\r\n", mProbers[i]->GetCharSetName());
         } else {

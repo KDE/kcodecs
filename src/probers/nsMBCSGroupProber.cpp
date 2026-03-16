@@ -173,17 +173,14 @@ float nsMBCSGroupProber::GetConfidence(void)
 #ifdef DEBUG_PROBE
 void nsMBCSGroupProber::DumpStatus()
 {
-    unsigned int i;
-    float cf;
-
     GetConfidence();
-    for (i = 0; i < NUM_OF_PROBERS; i++) {
+    for (size_t i = 0; i < NUM_OF_PROBERS; i++) {
         if (!mIsSelected[i]) {
             printf("  MBCS deselected: [%s][%s]\r\n", ProberName[i], mProbers[i]->GetCharSetName());
         } else if (!mIsActive[i]) {
             printf("  MBCS inactive: [%s][%s] (confidence is too low).\r\n", ProberName[i], mProbers[i]->GetCharSetName());
         } else {
-            cf = mProbers[i]->GetConfidence();
+            float cf = mProbers[i]->GetConfidence();
             printf("  MBCS %1.3f: [%s][%s]\r\n", cf, ProberName[i], mProbers[i]->GetCharSetName());
             mProbers[i]->DumpStatus();
         }

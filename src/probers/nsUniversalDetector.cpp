@@ -28,8 +28,7 @@ nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aL
         mGotData = true;
     }
 
-    unsigned int i;
-    for (i = 0; i < aLen; i++) {
+    for (unsigned int i = 0; i < aLen; i++) {
         // other than 0xa0, if every other character is ascii, the page is ascii
         if (aBuf[i] & '\x80' && aBuf[i] != '\xA0') { // Since many Ascii only page contains NBSP
             // we got a non-ascii byte (high-byte)
@@ -75,7 +74,7 @@ nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aL
         }
         break;
     case eHighbyte:
-        for (i = 0; i < NUM_OF_CHARSET_PROBERS; ++i) {
+        for (size_t i = 0; i < NUM_OF_CHARSET_PROBERS; ++i) {
             st = mCharSetProbers[i]->HandleData(aBuf, aLen);
             if (st == eFoundIt) {
                 mDone = true;

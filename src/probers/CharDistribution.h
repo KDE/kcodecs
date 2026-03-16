@@ -22,10 +22,8 @@ public:
     // Feed a character with known length
     void HandleOneChar(const char *aStr, unsigned int aCharLen)
     {
-        int order;
-
         // we only care about 2-bytes character in our distribution analysis
-        order = (aCharLen == 2) ? GetOrder(aStr) : -1;
+        int order = (aCharLen == 2) ? GetOrder(aStr) : -1;
 
         if (order >= 0) {
             mTotalChars++;
