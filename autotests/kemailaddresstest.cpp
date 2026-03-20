@@ -518,12 +518,10 @@ void KEmailAddressTest::testNormalizeAddressesAndEncodeIDNs_data()
     QTest::newRow("") << "matt@fruitsalad.org (\"jongel,fibbel\")"
                       << "\"jongel,fibbel\" <matt@fruitsalad.org>";
 
-#if QT_VERSION >= 0x060300
     // Test using IDNA-2008 domain name, before Qt 6.3 this incorrectly encodes
     // the email address to matt@strasse.de (IDNA-2003) instead
     QTest::newRow("") << "Matt Douhan <matt@straße.de>"
                       << "Matt Douhan <matt@xn--strae-oqa.de>";
-#endif
 
     QTest::newRow("") << "First Collective Last <collectivename.lastname@example.com>" // Uses non-ASCII spacing
                       << "First Collective Last <collectivename.lastname@example.com>";
