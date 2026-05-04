@@ -345,6 +345,9 @@ QChar KCharsets::fromEntity(QStringView str)
     if (str[pos] == QLatin1Char('&')) {
         pos++;
     }
+    if (pos >= str.length()) {
+        return QChar::Null;
+    }
 
     // Check for '&#000' or '&#x0000' sequence
     if (str[pos] == QLatin1Char('#') && str.length() - pos > 1) {
@@ -354,17 +357,19 @@ QChar KCharsets::fromEntity(QStringView str)
             pos++;
             // '&#x0000', hexadecimal character reference
             const auto tmp = str.mid(pos);
-            res = QChar(tmp.toInt(&ok, 16));
-        } else {
-            //  '&#0000', decimal character reference
-            const auto tmp = str.mid(pos);
-            res = QChar(tmp.toInt(&ok, 10));
-        }
-        if (ok) {
-            return res;
-        } else {
+            const uint v = tmp.toUInt(&ok, 16);
+            if (ok && v <= 0xFFFF) {
+                return QChar(v);
+            }
             return QChar::Null;
         }
+        //  '&#0000', decimal character reference
+        const auto tmp = str.mid(pos);
+        const uint v = tmp.toUInt(&ok, 10);
+        if (ok && v <= 0xFFFF) {
+            return QChar(v);
+        }
+        return QChar::Null;
     }
 
     const QByteArray raw(str.toLatin1());

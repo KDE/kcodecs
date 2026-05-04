@@ -52,6 +52,22 @@ void KCharsetsTest::testFromEntity()
     QCOMPARE(singleton->fromEntity(u"aposgarbagesuffix"_s), QChar());
     QCOMPARE(singleton->fromEntity(u"thetasym"_s), QChar(0x03d1));
     QCOMPARE(singleton->fromEntity(u"thetasymgarbagesuffix"_s), QChar());
+
+    // Regression: lone "&" must not read past end of view (bug 519720).
+    // The 1-arg overload returns Null directly; the 2-arg overload
+    // slices through prefix lengths 8..1 and ends up calling the 1-arg
+    // overload with str == "&", which previously aborted.
+    QCOMPARE(singleton->fromEntity(u"&"_s), QChar());
+    int len = 0;
+    QCOMPARE(singleton->fromEntity(u"&"_s, len), QChar());
+
+    // Regression: numeric character reference exceeding U+FFFF must
+    // return Null instead of asserting in QChar(int) (bug 519719).
+    QCOMPARE(singleton->fromEntity(u"#x10000"_s), QChar());
+    QCOMPARE(singleton->fromEntity(u"#x110000"_s), QChar());
+    QCOMPARE(singleton->fromEntity(u"#65536"_s), QChar());
+    QCOMPARE(singleton->fromEntity(u"#1114111"_s), QChar());
+    QCOMPARE(singleton->fromEntity(u"&#x10000;"_s), QChar());
 }
 
 void KCharsetsTest::testToEntity()
