@@ -627,4 +627,14 @@ void KEmailAddressTest::testMailtoUrls_data()
     QTest::newRow("") << QStringLiteral("Alberto Simões <alberto@example.com");
 }
 
+void KEmailAddressTest::testDecodeMailtoUrlNonMailto()
+{
+    // Regression for bug 519721: decodeMailtoUrl used to Q_ASSERT on
+    // any URL whose scheme was not "mailto"; it must now return an
+    // empty string instead.
+    QCOMPARE(decodeMailtoUrl(QUrl(QStringLiteral("http://example.org/"))), QString());
+    QCOMPARE(decodeMailtoUrl(QUrl(QStringLiteral("ftp://example.org/foo"))), QString());
+    QCOMPARE(decodeMailtoUrl(QUrl()), QString());
+}
+
 #include "moc_kemailaddresstest.cpp"

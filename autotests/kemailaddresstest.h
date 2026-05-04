@@ -35,6 +35,7 @@ private Q_SLOTS:
     void testQuoteIfNecessary_data();
     void testMailtoUrls();
     void testMailtoUrls_data();
+    void testDecodeMailtoUrlNonMailto();
 };
 
 #endif

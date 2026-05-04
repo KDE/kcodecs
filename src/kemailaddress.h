@@ -455,6 +455,7 @@ QUrl encodeMailtoUrl(const QString &mailbox);
  * \a mailtoUrl the URL with the mailto protocol, which contains the mailbox to be extracted
  *
  * Returns the mailbox, which means the display name and the address specification.
+ * An empty string is returned if \a mailtoUrl does not use the "mailto" scheme.
  */
 KCODECS_EXPORT
 QString decodeMailtoUrl(const QUrl &mailtoUrl);

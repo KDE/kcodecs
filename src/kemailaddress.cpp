@@ -1119,6 +1119,8 @@ QUrl KEmailAddress::encodeMailtoUrl(const QString &mailbox)
 
 QString KEmailAddress::decodeMailtoUrl(const QUrl &mailtoUrl)
 {
-    Q_ASSERT(mailtoUrl.scheme() == QLatin1String("mailto"));
+    if (mailtoUrl.scheme() != QLatin1String("mailto")) {
+        return {};
+    }
     return KCodecs::decodeRFC2047String(mailtoUrl.path());
 }
