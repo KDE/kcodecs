@@ -56,7 +56,7 @@ QByteArray cachedCharset(const QByteArray &name)
 QByteArray cachedCharset(QByteArrayView name)
 {
     auto it = std::find_if(charsetCache.cbegin(), charsetCache.cend(), [&name](const QByteArray &charset) {
-        return qstricmp(name.data(), charset.data()) == 0;
+        return name.compare(charset, Qt::CaseInsensitive) == 0;
     });
     if (it != charsetCache.cend()) {
         return *it;

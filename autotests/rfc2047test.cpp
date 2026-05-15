@@ -110,6 +110,12 @@ void RFC2047Test::testRFC2047decode_data()
     }
     QTest::newRow("quadratic") << data << QByteArray() <<QByteArray("utf-8") << false << QString::fromLatin1(data);
 
+    // SendGrid-style tracking headers with many consecutive us-ascii QP encoded-words (bug: cachedCharset cache pollution)
+    QTest::newRow("consecutive-us-ascii-qp")
+        << QByteArray("=?us-ascii?Q?SdBcvi+Evd=2FbQef8eZF3BpTL9?= =?us-ascii?Q?1ATvmluwmR9HdI4yARZTqcdxk87?= =?us-ascii?Q?8bjbLjf8MhncGZZxwyF53ovJ7rf?=")
+        << QByteArray("US-ASCII") << QByteArray("utf-8") << false
+        << QString::fromLatin1("SdBcvi+Evd/bQef8eZF3BpTL91ATvmluwmR9HdI4yARZTqcdxk878bjbLjf8MhncGZZxwyF53ovJ7rf");
+
     /* clang-format on */
 }
 
