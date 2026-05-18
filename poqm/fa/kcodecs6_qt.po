@@ -151,7 +151,7 @@ msgid "Other"
 msgstr "غیره"
 
 # %1 ( %2 )
-#: kcharsets.cpp:469
+#: kcharsets.cpp:474
 #, fuzzy, qt-format
 #| msgctxt "@item %1 character set, %2 encoding"
 #| msgid "%1 ( %2 )"
@@ -159,7 +159,7 @@ msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kcharsets.cpp:471
+#: kcharsets.cpp:476
 #, fuzzy, qt-format
 #| msgctxt "@item"
 #| msgid "Other encoding (%1)"
@@ -168,7 +168,7 @@ msgid "Other encoding (%1)"
 msgstr "کدبندی دیگر )%1("
 
 # %1 ( %2 )
-#: kcharsets.cpp:502
+#: kcharsets.cpp:507
 #, fuzzy, qt-format
 #| msgctxt "@item %1 character set, %2 encoding"
 #| msgid "%1 ( %2 )"
