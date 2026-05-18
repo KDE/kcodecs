@@ -335,8 +335,6 @@ static_assert(std::is_neq(Entity{"thetasym", 0} <=> Entity::buildName("thetasy")
 
 QChar KCharsets::fromEntity(QStringView str)
 {
-    QChar res = QChar::Null;
-
     if (str.isEmpty()) {
         return QChar::Null;
     }

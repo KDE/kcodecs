@@ -24,17 +24,12 @@
 #include <array>
 #include <cassert>
 #include <cstring>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include <QDebug>
 #include <QStringDecoder>
 #include <QStringEncoder>
-
-#if defined(Q_OS_WIN)
-#define strncasecmp _strnicmp
-#endif
 
 namespace KCodecs
 {
