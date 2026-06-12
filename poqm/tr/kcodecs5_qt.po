@@ -17,13 +17,13 @@
 # Serdar SOYTETİR <tulliana@gmail.com>, 2010, 2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2014.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022-2023, 2026 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2023-12-03 13:07+0300\n"
+"PO-Revision-Date: 2026-06-11 21:12+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 26.04.0\n"
 "X-Qt-Contexts: true\n"
 
 #: kcharsets.cpp:155
@@ -97,7 +97,7 @@ msgstr "Arapça"
 #: kcharsets.cpp:199
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
-msgstr "İbranice"
+msgstr "İbrânîce"
 
 #: kcharsets.cpp:204
 msgctxt "KCharsets|@item Text character set"
@@ -323,7 +323,7 @@ msgstr "Yunanca"
 #: kencodingprober.cpp:240 kencodingprober.cpp:288
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Hebrew"
-msgstr "İbranice"
+msgstr "İbrânîce"
 
 #: kencodingprober.cpp:242 kencodingprober.cpp:294
 msgctxt "KEncodingProber|@item Text character set"
