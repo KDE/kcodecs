@@ -45,7 +45,6 @@ public:
     }
 
     float GetConfidence();
-    void Reset(void);
     bool GotEnoughData()
     {
         return mTotalRel > ENOUGH_REL_THRESHOLD;

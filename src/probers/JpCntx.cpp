@@ -346,15 +346,6 @@ const char jp2CharContext[83][83] = {
 
 #define MINIMUM_DATA_THRESHOLD 4
 
-void JapaneseContextAnalysis::Reset(void)
-{
-    mTotalRel = 0;
-    for (unsigned int i = 0; i < NUM_OF_CATEGORY; i++) {
-        mRelSample[i] = 0;
-    }
-    mLastCharOrder = -1;
-    mDone = false;
-}
 #define DONT_KNOW (float)-1
 
 float JapaneseContextAnalysis::GetConfidence()

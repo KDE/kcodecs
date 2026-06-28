@@ -59,10 +59,6 @@ public:
     {
         return mCurrentCharLen;
     }
-    void Reset(void)
-    {
-        mCurrentState = eStart;
-    }
     const char *GetCodingStateMachine()
     {
         return mModel->name;
