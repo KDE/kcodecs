@@ -65,6 +65,8 @@ target_sources(KF6Codecs PRIVATE
     probers/nsSJISProber.h
     probers/nsUniversalDetector.cpp
     probers/nsUniversalDetector.h
+    probers/nsUtfProber.cpp
+    probers/nsUtfProber.h
     probers/UnicodeGroupProber.cpp
     probers/UnicodeGroupProber.h
 )

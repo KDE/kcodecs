@@ -15,7 +15,7 @@
 #include <array>
 #include <memory>
 
-#define NUM_OF_SBCS_PROBERS 12
+#define NUM_OF_SBCS_PROBERS 14
 
 namespace kencodingprober
 {

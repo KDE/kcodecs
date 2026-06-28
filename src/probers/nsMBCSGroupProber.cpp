@@ -6,23 +6,24 @@
 
 #include "nsMBCSGroupProber.h"
 
-#include "UnicodeGroupProber.h"
 #include "nsBig5Prober.h"
 #include "nsEUCJPProber.h"
 #include "nsEUCKRProber.h"
 #include "nsGB2312Prober.h"
 #include "nsSJISProber.h"
+#include "nsUtfProber.h"
 
 #include <format>
 
 namespace kencodingprober
 {
+
 namespace
 {
 using Prober = nsMBCSGroupProber::Prober;
-constexpr std::array<bool, 6> fromSelectedList(std::span<const Prober> selected)
+constexpr std::array<bool, NUM_OF_PROBERS> fromSelectedList(std::span<const Prober> selected)
 {
-    std::array<bool, 6> isSelected{false};
+    std::array<bool, NUM_OF_PROBERS> isSelected{false};
     for (auto p : selected) {
         const auto i = static_cast<std::underlying_type_t<Prober>>(p);
         if (i >= NUM_OF_PROBERS) {
@@ -34,8 +35,10 @@ constexpr std::array<bool, 6> fromSelectedList(std::span<const Prober> selected)
 }
 static_assert(fromSelectedList({})[0] == false);
 static_assert(fromSelectedList({})[5] == false);
-static_assert(fromSelectedList(std::array{Prober::Unicode})[0] == true);
-static_assert(fromSelectedList(std::array{Prober::Unicode})[5] == false);
+static_assert(fromSelectedList(std::array{Prober::Utf8})[0] == true);
+static_assert(fromSelectedList(std::array{Prober::Utf8})[5] == false);
+static_assert(fromSelectedList(std::array{Prober::Utf16LE})[6] == true);
+static_assert(fromSelectedList(std::array{Prober::Utf16BE})[7] == true);
 static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[0] == false);
 static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[1] == true);
 static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[2] == false);
@@ -46,13 +49,16 @@ static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[5] == tru
 } // namespace <anonymous>
 
 nsMBCSGroupProber::nsMBCSGroupProber(std::span<const Prober> selected)
-    : mProbers{std::make_unique<UnicodeGroupProber>(),
-               std::make_unique<nsSJISProber>(),
-               std::make_unique<nsEUCJPProber>(),
-               std::make_unique<nsGB18030Prober>(),
-               std::make_unique<nsEUCKRProber>(),
-               std::make_unique<nsBig5Prober>(),
-    }
+    : mProbers{
+          std::make_unique<nsUtf8Prober>(),
+          std::make_unique<nsSJISProber>(),
+          std::make_unique<nsEUCJPProber>(),
+          std::make_unique<nsGB18030Prober>(),
+          std::make_unique<nsEUCKRProber>(),
+          std::make_unique<nsBig5Prober>(),
+          std::make_unique<nsUtf16LEProber>(),
+          std::make_unique<nsUtf16BEProber>(),
+      }
     , mIsSelected(fromSelectedList(selected))
 {
     for (unsigned int i = 0; i < NUM_OF_PROBERS; i++) {
@@ -65,12 +71,14 @@ nsMBCSGroupProber::nsMBCSGroupProber(std::span<const Prober> selected)
 
 nsMBCSGroupProber::nsMBCSGroupProber()
     : nsMBCSGroupProber(std::array{
-          Prober::Unicode,
+          Prober::Utf8,
           Prober::SJIS,
           Prober::EUCJP,
           Prober::GB18030,
           Prober::EUCKR,
           Prober::Big5,
+          Prober::Utf16LE,
+          Prober::Utf16BE,
       })
 {
 }

@@ -21,14 +21,18 @@ namespace
 {
 using Prober = kencodingprober::nsMBCSGroupProber::Prober;
 static const std::array ChineseMSBCProbers{
-    Prober::Unicode,
+    Prober::Utf8,
     Prober::GB18030,
     Prober::Big5,
+    Prober::Utf16LE,
+    Prober::Utf16BE,
 };
 static const std::array JapaneseMSBCProbers{
-    Prober::Unicode,
+    Prober::Utf8,
     Prober::SJIS,
     Prober::EUCJP,
+    Prober::Utf16LE,
+    Prober::Utf16BE,
 };
 constexpr const char *checkBom(std::span<const char, 4> buf)
 {

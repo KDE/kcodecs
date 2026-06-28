@@ -14,19 +14,21 @@
 #include <memory>
 #include <span>
 
-#define NUM_OF_PROBERS 6
+#define NUM_OF_PROBERS 8
 namespace kencodingprober
 {
 class KCODECS_NO_EXPORT nsMBCSGroupProber : public nsCharSetProber
 {
 public:
     enum class Prober : uint8_t {
-        Unicode = 0,
+        Utf8 = 0,
         SJIS = 1,
         EUCJP = 2,
         GB18030 = 3,
         EUCKR = 4,
         Big5 = 5,
+        Utf16LE = 6,
+        Utf16BE = 7,
     };
 
     nsMBCSGroupProber();
