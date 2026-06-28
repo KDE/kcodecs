@@ -29,9 +29,7 @@ public:
     }
     float GetConfidence(void) override;
 
-#ifdef DEBUG_PROBE
-    void DumpStatus() override;
-#endif
+    std::string StatusOutput(uint8_t indent) override;
 
 protected:
     nsProbingState mState = eDetecting;

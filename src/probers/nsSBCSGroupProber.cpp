@@ -10,8 +10,7 @@
 #include "nsHebrewProber.h"
 #include "nsSBCharSetProber.h"
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <format>
 
 namespace kencodingprober
 {
@@ -143,19 +142,17 @@ float nsSBCSGroupProber::GetConfidence(void)
     return bestConf;
 }
 
-#ifdef DEBUG_PROBE
-void nsSBCSGroupProber::DumpStatus()
+std::string nsSBCSGroupProber::StatusOutput(uint8_t indent)
 {
-    float cf = GetConfidence();
-    printf(" SBCS Group Prober --------begin status \r\n");
-    for (size_t i = 0; i < NUM_OF_SBCS_PROBERS; i++) {
-        if (!mIsActive[i]) {
-            printf("  inactive: [%s] (i.e. confidence is too low).\r\n", mProbers[i]->GetCharSetName());
-        } else {
-            mProbers[i]->DumpStatus();
-        }
+    indent += 2;
+    std::string output{"  SBCS Group Prober ----"};
+    GetConfidence();
+    for (int i = 0; i < NUM_OF_SBCS_PROBERS; i++) {
+        char state = !mIsActive[i] ? '-' : (i == mBestGuess) ? '*' : ' ';
+        output += '\n' + std::string(indent, ' ');
+        output += std::format("{} #{:02}  SBCS: ", state, i);
+        output += mProbers[i]->StatusOutput(indent);
     }
-    printf(" SBCS Group found best match [%s] confidence %f.\r\n", mProbers[mBestGuess]->GetCharSetName(), cf);
+    return output;
 }
-#endif
 }

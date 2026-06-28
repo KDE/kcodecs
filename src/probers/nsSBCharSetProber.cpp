@@ -6,7 +6,7 @@
 
 #include "nsSBCharSetProber.h"
 
-#include <stdio.h>
+#include <format>
 
 namespace kencodingprober
 {
@@ -79,11 +79,19 @@ const char *nsSingleByteCharSetProber<Reversed>::GetCharSetName()
     return mModel->charsetName;
 }
 
-#ifdef DEBUG_PROBE
 template<bool Reversed>
-void nsSingleByteCharSetProber<Reversed>::DumpStatus()
+std::string nsSingleByteCharSetProber<Reversed>::StatusOutput(uint8_t /* indent */)
 {
-    printf("  SBCS: %1.3f [%s]\r\n", GetConfidence(), GetCharSetName());
+    return std::format( //
+        "{:1.3f} [{}] [{} {} {} {} | {}] [{} / {}]",
+        GetConfidence(),
+        GetCharSetName(),
+        mSeqCounters[0],
+        mSeqCounters[1],
+        mSeqCounters[2],
+        mSeqCounters[3],
+        mTotalSeqs,
+        mFreqChar,
+        mTotalChar);
 }
-#endif
 }

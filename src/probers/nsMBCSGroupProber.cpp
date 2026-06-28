@@ -13,23 +13,10 @@
 #include "nsGB2312Prober.h"
 #include "nsSJISProber.h"
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <format>
 
 namespace kencodingprober
 {
-#ifdef DEBUG_PROBE
-static const char *const ProberName[] = {
-    "Unicode",
-    "SJIS",
-    "EUCJP",
-    "GB18030",
-    "EUCKR",
-    "Big5",
-};
-
-#endif
-
 namespace
 {
 using Prober = nsMBCSGroupProber::Prober;
@@ -170,21 +157,17 @@ float nsMBCSGroupProber::GetConfidence(void)
     return bestConf;
 }
 
-#ifdef DEBUG_PROBE
-void nsMBCSGroupProber::DumpStatus()
+std::string nsMBCSGroupProber::StatusOutput(uint8_t indent)
 {
+    indent += 2;
+    std::string output{"  MBCS Group Prober ----"};
     GetConfidence();
-    for (size_t i = 0; i < NUM_OF_PROBERS; i++) {
-        if (!mIsSelected[i]) {
-            printf("  MBCS deselected: [%s][%s]\r\n", ProberName[i], mProbers[i]->GetCharSetName());
-        } else if (!mIsActive[i]) {
-            printf("  MBCS inactive: [%s][%s] (confidence is too low).\r\n", ProberName[i], mProbers[i]->GetCharSetName());
-        } else {
-            float cf = mProbers[i]->GetConfidence();
-            printf("  MBCS %1.3f: [%s][%s]\r\n", cf, ProberName[i], mProbers[i]->GetCharSetName());
-            mProbers[i]->DumpStatus();
-        }
+    for (int i = 0; i < NUM_OF_PROBERS; i++) {
+        char state = !mIsSelected[i] ? '.' : !mIsActive[i] ? '-' : (i == mBestGuess) ? '*' : ' ';
+        output += '\n' + std::string(indent, ' ');
+        output += std::format("{} #{:02}  MBCS: ", state, i);
+        output += mProbers[i]->StatusOutput(indent);
     }
+    return output;
 }
-#endif
 }

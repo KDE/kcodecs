@@ -31,9 +31,8 @@ public:
         return mState;
     }
     float GetConfidence() override;
-#ifdef DEBUG_PROBE
-    void DumpStatus() override;
-#endif
+
+    std::string StatusOutput(uint8_t indent) override;
 
 protected:
     std::unique_ptr<nsCodingStateMachine> mCodingSM[NUM_OF_UNICODE_CHARSETS];

@@ -7,7 +7,6 @@
 */
 
 #include "kencodingprober.h"
-#include "kencodingprober_p.h"
 
 #include "probers/UnicodeGroupProber.h"
 #include "probers/nsCharSetProber.h"
@@ -182,9 +181,7 @@ KEncodingProber::ProberState KEncodingProber::feed(QByteArrayView data)
             break;
         }
     }
-#ifdef DEBUG_PROBE
     d->mProber->DumpStatus();
-#endif
     return d->mProberState;
 }
 

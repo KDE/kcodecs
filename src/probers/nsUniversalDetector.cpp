@@ -12,6 +12,8 @@
 #include "nsMBCSGroupProber.h"
 #include "nsSBCSGroupProber.h"
 
+#include <format>
+
 namespace kencodingprober
 {
 //---------------------------------------------------------------------
@@ -163,5 +165,19 @@ nsProbingState nsUniversalDetector::GetState()
     } else {
         return eDetecting;
     }
+}
+
+std::string nsUniversalDetector::StatusOutput(uint8_t indent)
+{
+    indent += 2;
+    std::string output{"  Universal Prober ----"};
+    for (unsigned int i = 0; i < NUM_OF_CHARSET_PROBERS; i++) {
+        if (!mCharSetProbers[i]) {
+            continue;
+        }
+        output += '\n' + std::string(indent, ' ');
+        output += mCharSetProbers[i]->StatusOutput(indent);
+    }
+    return output;
 }
 }

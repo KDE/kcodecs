@@ -9,7 +9,8 @@
 
 #include <kcodecs_export.h>
 
-#include "../kencodingprober_p.h"
+#include <cstdint>
+#include <string>
 
 namespace kencodingprober
 {
@@ -30,11 +31,8 @@ public:
     virtual nsProbingState GetState(void) = 0;
     virtual float GetConfidence(void) = 0;
 
-#ifdef DEBUG_PROBE
-    virtual void DumpStatus()
-    {
-    }
-#endif
+    void DumpStatus();
+    virtual std::string StatusOutput(uint8_t indent);
 
     // Helper functions used in the Latin1 and Group probers.
     // both functions Allocate a new buffer for newBuf. This buffer should be

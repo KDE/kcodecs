@@ -7,6 +7,8 @@
 #include "UnicodeGroupProber.h"
 #include "nsMBCSSM.h"
 
+#include <format>
+
 namespace kencodingprober
 {
 UnicodeGroupProber::UnicodeGroupProber()
@@ -59,14 +61,17 @@ float UnicodeGroupProber::GetConfidence()
     }
 }
 
-#ifdef DEBUG_PROBE
-void UnicodeGroupProber::DumpStatus()
+std::string UnicodeGroupProber::StatusOutput(uint8_t indent)
 {
+    indent += 2;
     GetConfidence();
-    for (uint i = 0; i < mActiveSM; i++) {
-        qDebug() << "Unicode group" << mCodingSM[i]->DumpCurrentState() << mCodingSM[i]->GetCodingStateMachine();
+    std::string output{"  Unicode Group Prober ----"};
+    for (unsigned int i = 0; i < mActiveSM; i++) {
+        output += '\n' + std::string(indent, ' ');
+        output += std::format("  [{}] {}", //
+                              mCodingSM[i]->GetCodingStateMachine(),
+                              mCodingSM[i]->DumpCurrentState());
     }
+    return output;
 }
-#endif
-
 }

@@ -6,7 +6,9 @@
 
 #include "nsCharSetProber.h"
 
-#include <stdlib.h>
+#include <kcodecs_prober_debug.h>
+
+#include <format>
 
 namespace kencodingprober
 {
@@ -101,5 +103,15 @@ bool nsCharSetProber::FilterWithEnglishLetters(const char *aBuf, unsigned int aL
     newLen = newptr - *newBuf;
 
     return true;
+}
+
+void nsCharSetProber::DumpStatus()
+{
+    qCInfo(KCODECSPROBER).noquote().nospace() << "\n" << StatusOutput(0);
+}
+
+std::string nsCharSetProber::StatusOutput(uint8_t /* indent */)
+{
+    return std::format("{:1.3f} [{}]", GetConfidence(), GetCharSetName());
 }
 }

@@ -5,9 +5,9 @@
 */
 
 #include "nsLatin1Prober.h"
+
+#include <format>
 #include <numeric>
-#include <stdio.h>
-#include <stdlib.h>
 
 #define UDF 0 // undefined
 #define OTH 1 // other
@@ -133,10 +133,15 @@ float nsLatin1Prober::GetConfidence(void)
     return confidence;
 }
 
-#ifdef DEBUG_PROBE
-void nsLatin1Prober::DumpStatus()
+std::string nsLatin1Prober::StatusOutput(uint8_t /* indent */)
 {
-    printf(" Latin1Prober: %1.3f [%s]\r\n", GetConfidence(), GetCharSetName());
+    return std::format( //
+        "{:1.3f} [{}] [{} {} {} {}]",
+        GetConfidence(),
+        GetCharSetName(),
+        mFreqCounter[0],
+        mFreqCounter[1],
+        mFreqCounter[2],
+        mFreqCounter[3]);
 }
-#endif
 }

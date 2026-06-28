@@ -6,7 +6,8 @@
 
 #include "nsHebrewProber.h"
 #include "nsSBCharSetProber.h"
-#include <stdio.h>
+
+#include <format>
 
 // windows-1255 / ISO-8859-8 code points of interest
 #define FINAL_KAF ('\xea')
@@ -179,12 +180,14 @@ nsProbingState nsHebrewProber::GetState(void)
     return eDetecting;
 }
 
-#ifdef DEBUG_PROBE
-void nsHebrewProber::DumpStatus()
+std::string nsHebrewProber::StatusOutput(uint8_t indent)
 {
-    printf("  HEB: [%.3f] %d - %d [Logical-Visual score]:\r\n", GetConfidence(), mFinalCharLogicalScore, mFinalCharVisualScore);
-    mLogicalProb->DumpStatus();
-    mVisualProb->DumpStatus();
+    indent += 2;
+    auto output = std::format("{:1.3f} [HEB] {} -- {}", GetConfidence(), mFinalCharLogicalScore, mFinalCharVisualScore);
+    output += '\n' + std::string(indent, ' ') + "  Log: ";
+    output += mLogicalProb->StatusOutput(indent);
+    output += '\n' + std::string(indent, ' ') + "  Vis: ";
+    output += mVisualProb->StatusOutput(indent);
+    return output;
 }
-#endif
 }

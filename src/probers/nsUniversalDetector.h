@@ -33,6 +33,8 @@ public:
     float GetConfidence(void) override;
     nsProbingState GetState() override;
 
+    std::string StatusOutput(uint8_t indent) override;
+
 protected:
     nsInputState mInputState = ePureAscii;
     bool mDone = false;

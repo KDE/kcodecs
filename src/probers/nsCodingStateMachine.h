@@ -7,8 +7,6 @@
 #ifndef nsCodingStateMachine_h__
 #define nsCodingStateMachine_h__
 
-#include "../kencodingprober_p.h"
-
 #include "kcodecs_export.h"
 
 #include <array>
@@ -63,7 +61,6 @@ public:
     {
         return mModel->name;
     }
-#ifdef DEBUG_PROBE
     const char *DumpCurrentState()
     {
         switch (mCurrentState) {
@@ -77,7 +74,6 @@ public:
             return "OK";
         }
     }
-#endif
 
 protected:
     int mCurrentState = eStart;
