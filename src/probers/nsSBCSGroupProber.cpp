@@ -6,9 +6,9 @@
 
 #include "nsSBCSGroupProber.h"
 
-#include "UnicodeGroupProber.h"
 #include "nsHebrewProber.h"
 #include "nsSBCharSetProber.h"
+#include "nsUtfProber.h"
 
 #include <format>
 
@@ -27,13 +27,15 @@ nsSBCSGroupProber::nsSBCSGroupProber()
           std::make_unique<nsSingleByteCharSetProber<false>>(&Latin5BulgarianModel),
           std::make_unique<nsSingleByteCharSetProber<false>>(&Win1251BulgarianModel),
           std::make_unique<nsHebrewProber>(),
-          std::make_unique<UnicodeGroupProber>(),
+          std::make_unique<nsUtf8Prober>(),
+          std::make_unique<nsUtf16BEProber>(),
+          std::make_unique<nsUtf16LEProber>(),
       }
 {
     // disable latin2 before latin1/windows-1252 is available, otherwise all latin1
     // will be detected as latin2 because of their similarity.
-    // mProbers[12] = std::make_unique<nsSingleByteCharSetProber<false>>(&Latin2HungarianModel);
-    // mProbers[13] = std::make_unique<nsSingleByteCharSetProber<false>>(&Win1250HungarianModel);
+    // mProbers[14] = std::make_unique<nsSingleByteCharSetProber<false>>(&Latin2HungarianModel);
+    // mProbers[15] = std::make_unique<nsSingleByteCharSetProber<false>>(&Win1250HungarianModel);
 
     for (unsigned int i = 0; i < NUM_OF_SBCS_PROBERS; i++) {
         if (mProbers[i]) { // not null
@@ -62,20 +64,22 @@ nsProbingState nsSBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
     char *newBuf1 = nullptr;
     unsigned int newLen1 = 0;
 
-    int activeNum = NUM_OF_SBCS_PROBERS - 1;
+    int activeNum = NUM_OF_SBCS_PROBERS;
 
-    // The UnicodeGroupProber (specifically the UTF16 subprobers) need unmangled data
-    if (mIsActive[NUM_OF_SBCS_PROBERS - 1]) {
-        if (const auto st = mProbers[NUM_OF_SBCS_PROBERS - 1]->HandleData(aBuf, aLen); st == eFoundIt) {
-            mBestGuess = NUM_OF_SBCS_PROBERS - 1;
+    // The UTF16 probers need unmangled data
+    for (unsigned int i = NUM_OF_SBCS_PROBERS - 2; i < NUM_OF_SBCS_PROBERS; ++i) {
+        if (!mIsActive[i]) {
+            activeNum--;
+            continue;
+        }
+        if (const auto st = mProbers[i]->HandleData(aBuf, aLen); st == eFoundIt) {
+            mBestGuess = i;
             mState = eFoundIt;
             return mState;
         } else if (st == eNotMe) {
-            mIsActive[NUM_OF_SBCS_PROBERS - 1] = false;
+            mIsActive[i] = false;
             activeNum--;
         }
-    } else {
-        activeNum--;
     }
 
     // apply filter to original buffer, and we got new buffer back
@@ -92,7 +96,7 @@ nsProbingState nsSBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
         goto done; // Nothing to see here, move on.
     }
 
-    for (unsigned int i = 0; i < NUM_OF_SBCS_PROBERS - 1; ++i) {
+    for (unsigned int i = 0; i < NUM_OF_SBCS_PROBERS - 2; ++i) {
         if (!mIsActive[i]) {
             activeNum--;
             continue;
