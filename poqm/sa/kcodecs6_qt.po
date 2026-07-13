@@ -249,82 +249,82 @@ msgstr ""
 "भवता प्रविष्टं ईमेल-सङ्केतं वैधं नास्ति ।\n"
 "अस्मिन् वास्तविकं ईमेल-सङ्केतं अर्थात् joe@example.org इति रूपस्य किमपि न दृश्यते ।"
 
-#: kencodingprober.cpp:238 kencodingprober.cpp:279
+#: kencodingprober.cpp:235 kencodingprober.cpp:276
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Disabled"
 msgstr "अक्षमित"
 
-#: kencodingprober.cpp:240 kencodingprober.cpp:282
+#: kencodingprober.cpp:237 kencodingprober.cpp:279
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Universal"
 msgstr "सार्वभौमिक"
 
-#: kencodingprober.cpp:242 kencodingprober.cpp:324
+#: kencodingprober.cpp:239 kencodingprober.cpp:321
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Unicode"
 msgstr "यूनिकोड"
 
-#: kencodingprober.cpp:244 kencodingprober.cpp:294
+#: kencodingprober.cpp:241 kencodingprober.cpp:291
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Cyrillic"
 msgstr "सिरिलिक"
 
-#: kencodingprober.cpp:246 kencodingprober.cpp:309
+#: kencodingprober.cpp:243 kencodingprober.cpp:306
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Western European"
 msgstr "पश्चिम यूरोपीय"
 
-#: kencodingprober.cpp:248 kencodingprober.cpp:291
+#: kencodingprober.cpp:245 kencodingprober.cpp:288
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Central European"
 msgstr "मध्य यूरोपीय"
 
-#: kencodingprober.cpp:250 kencodingprober.cpp:297
+#: kencodingprober.cpp:247 kencodingprober.cpp:294
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Greek"
 msgstr "ग्रीकभाषा"
 
-#: kencodingprober.cpp:252 kencodingprober.cpp:300
+#: kencodingprober.cpp:249 kencodingprober.cpp:297
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Hebrew"
 msgstr "हिब्रू"
 
-#: kencodingprober.cpp:254 kencodingprober.cpp:306
+#: kencodingprober.cpp:251 kencodingprober.cpp:303
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Turkish"
 msgstr "तुर्की"
 
-#: kencodingprober.cpp:256 kencodingprober.cpp:303
+#: kencodingprober.cpp:253 kencodingprober.cpp:300
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Japanese"
 msgstr "जापानी"
 
-#: kencodingprober.cpp:258 kencodingprober.cpp:288
+#: kencodingprober.cpp:255 kencodingprober.cpp:285
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Baltic"
 msgstr "बाल्टिक"
 
-#: kencodingprober.cpp:260 kencodingprober.cpp:312
+#: kencodingprober.cpp:257 kencodingprober.cpp:309
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "चीनी पारम्परिक"
 
-#: kencodingprober.cpp:262 kencodingprober.cpp:315
+#: kencodingprober.cpp:259 kencodingprober.cpp:312
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "चीनी सरलीकृत"
 
-#: kencodingprober.cpp:264 kencodingprober.cpp:318
+#: kencodingprober.cpp:261 kencodingprober.cpp:315
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Korean"
 msgstr "कोरियाई"
 
-#: kencodingprober.cpp:266 kencodingprober.cpp:321
+#: kencodingprober.cpp:263 kencodingprober.cpp:318
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Thai"
 msgstr "थाई"
 
-#: kencodingprober.cpp:268 kencodingprober.cpp:285
+#: kencodingprober.cpp:265 kencodingprober.cpp:282
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "अरबी"
