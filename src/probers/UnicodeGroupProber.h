@@ -8,11 +8,12 @@
 #define UNICODEGROUPPROBER_H
 
 #include "nsCharSetProber.h"
-#include "nsCodingStateMachine.h"
 
+#include <array>
 #include <memory>
 
-#define NUM_OF_UNICODE_CHARSETS 3
+#define NUM_OF_UTF_PROBERS 3
+
 namespace kencodingprober
 {
 class KCODECS_NO_EXPORT UnicodeGroupProber : public nsCharSetProber
@@ -22,10 +23,7 @@ public:
     ~UnicodeGroupProber() override = default;
 
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
-    const char *GetCharSetName() override
-    {
-        return mDetectedCharset;
-    }
+    const char *GetCharSetName() override;
     nsProbingState GetState(void) override
     {
         return mState;
@@ -35,10 +33,10 @@ public:
     std::string StatusOutput(uint8_t indent) override;
 
 protected:
-    std::unique_ptr<nsCodingStateMachine> mCodingSM[NUM_OF_UNICODE_CHARSETS];
-    unsigned int mActiveSM = NUM_OF_UNICODE_CHARSETS;
     nsProbingState mState = eDetecting;
-    const char *mDetectedCharset = "UTF-8";
+    std::array<std::unique_ptr<nsCharSetProber>, NUM_OF_UTF_PROBERS> mProbers = {nullptr};
+    std::array<bool, NUM_OF_UTF_PROBERS> mIsActive = {false};
+    int mBestGuess = -1;
 };
 }
 #endif /* UNICODEGROUPPROBER_H */
