@@ -96,6 +96,10 @@ const char *nsMBCSGroupProber::GetCharSetName()
 
 nsProbingState nsMBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen)
 {
+    if (mState != eDetecting) {
+        return mState;
+    }
+
     // do filtering to reduce load to probers
     char *highbyteBuf;
     char *hptr;

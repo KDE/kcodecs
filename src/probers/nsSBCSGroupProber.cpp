@@ -61,6 +61,10 @@ const char *nsSBCSGroupProber::GetCharSetName()
 
 nsProbingState nsSBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen)
 {
+    if (mState != eDetecting) {
+        return mState;
+    }
+
     char *newBuf1 = nullptr;
     unsigned int newLen1 = 0;
 
