@@ -23,13 +23,13 @@ public:
     void HandleOneChar(const char *aStr, unsigned int aCharLen)
     {
         // we only care about 2-bytes character in our distribution analysis
-        int order = (aCharLen == 2) ? GetOrder(aStr) : -1;
+        const int code = (aCharLen == 2) ? GetCode(aStr) : -1;
 
-        if (order >= 0) {
+        if (code >= 0) {
             mTotalChars++;
-            // order is valid
-            if ((unsigned int)order < mTableSize) {
-                if (512 > mCharToFreqOrder[order]) {
+            // code is valid
+            if ((unsigned int)code < mTableSize) {
+                if (mCharToFreqOrder[code] < 512) {
                     mFreqChars++;
                 }
             }
@@ -47,10 +47,12 @@ public:
     }
 
 protected:
-    // we do not handle character base on its original encoding string, but
-    // convert this encoding string to a number, here called order.
-    // This allows multiple encodings of a language to share one frequency table
-    virtual int GetOrder(const char * /* str */) = 0;
+    // Characters are not handled based on its original encoded value, but
+    // converted to an encoding specific unique code.
+    // This allows multiple encoding formats (e.g. SJIS and EUCJP) of an
+    // encoding (like JIS X 213) to share one frequency table, mapping this
+    // code to its frequency.
+    virtual int GetCode(const char * /* str */) = 0;
 
     // The number of characters whose frequency order is less than 512
     unsigned int mFreqChars = 0;
@@ -58,7 +60,7 @@ protected:
     // Total character encountered.
     unsigned int mTotalChars = 0;
 
-    // Mapping table to get frequency order from char order (get from GetOrder())
+    // Mapping table to get frequency order from code (from GetCode())
     const short *mCharToFreqOrder = nullptr;
 
     // Size of above table
@@ -79,7 +81,7 @@ protected:
     //  first  byte range: 0xb0 -- 0xfe
     //  second byte range: 0xa1 -- 0xfe
     // no validation needed here. State machine has done that
-    int GetOrder(const char *str) override
+    int GetCode(const char *str) override
     {
         if ((unsigned char)*str >= (unsigned char)0xb0) {
             return 94 * ((unsigned char)str[0] - (unsigned char)0xb0) + (unsigned char)str[1] - (unsigned char)0xa1;
@@ -99,7 +101,7 @@ protected:
     //  first  byte range: 0xb0 -- 0xfe
     //  second byte range: 0xa1 -- 0xfe
     // no validation needed here. State machine has done that
-    int GetOrder(const char *str) override
+    int GetCode(const char *str) override
     {
         if ((unsigned char)*str >= (unsigned char)0xb0 && (unsigned char)str[1] >= (unsigned char)0xa1) {
             return 94 * ((unsigned char)str[0] - (unsigned char)0xb0) + (unsigned char)str[1] - (unsigned char)0xa1;
@@ -119,7 +121,7 @@ protected:
     //  first  byte range: 0xa4 -- 0xfe
     //  second byte range: 0x40 -- 0x7e , 0xa1 -- 0xfe
     // no validation needed here. State machine has done that
-    int GetOrder(const char *str) override
+    int GetCode(const char *str) override
     {
         if ((unsigned char)*str >= (unsigned char)0xa4)
             if ((unsigned char)str[1] >= (unsigned char)0xa1) {
@@ -143,21 +145,21 @@ protected:
     //  first  byte range: 0x81 -- 0x9f , 0xe0 -- 0xfe
     //  second byte range: 0x40 -- 0x7e,  0x81 -- oxfe
     // no validation needed here. State machine has done that
-    int GetOrder(const char *str) override
+    int GetCode(const char *str) override
     {
-        int order;
+        int code;
         if ((unsigned char)*str >= (unsigned char)0x81 && (unsigned char)*str <= (unsigned char)0x9f) {
-            order = 188 * ((unsigned char)str[0] - (unsigned char)0x81);
+            code = 188 * ((unsigned char)str[0] - (unsigned char)0x81);
         } else if ((unsigned char)*str >= (unsigned char)0xe0 && (unsigned char)*str <= (unsigned char)0xef) {
-            order = 188 * ((unsigned char)str[0] - (unsigned char)0xe0 + 31);
+            code = 188 * ((unsigned char)str[0] - (unsigned char)0xe0 + 31);
         } else {
             return -1;
         }
-        order += (unsigned char)*(str + 1) - 0x40;
+        code += (unsigned char)*(str + 1) - 0x40;
         if ((unsigned char)str[1] > (unsigned char)0x7f) {
-            order--;
+            code--;
         }
-        return order;
+        return code;
     }
 };
 
@@ -171,7 +173,7 @@ protected:
     //  first  byte range: 0xa0 -- 0xfe
     //  second byte range: 0xa1 -- 0xfe
     // no validation needed here. State machine has done that
-    int GetOrder(const char *str) override
+    int GetCode(const char *str) override
     {
         if ((unsigned char)*str >= (unsigned char)0xa0) {
             return 94 * ((unsigned char)str[0] - (unsigned char)0xa1) + (unsigned char)str[1] - (unsigned char)0xa1;

@@ -35,13 +35,13 @@ public:
         }
 
         // Only 2-bytes characters are of our interest
-        int order = (aCharLen == 2) ? GetOrder(aStr) : -1;
-        if (order != -1 && mLastCharOrder != -1) {
+        const int code = (aCharLen == 2) ? GetCode(aStr) : -1;
+        if (code != -1 && mLastCharCode != -1) {
             mTotalRel++;
             // count this sequence to its category counter
-            mRelSample[(int)jp2CharContext[mLastCharOrder][order]]++;
+            mRelSample[(int)jp2CharContext[mLastCharCode][code]]++;
         }
-        mLastCharOrder = order;
+        mLastCharCode = code;
     }
 
     float GetConfidence();
@@ -51,7 +51,8 @@ public:
     }
 
 protected:
-    virtual int GetOrder(const char *str) = 0;
+    // Get cell code in Hiragana row, or -1 for non-Hiragana
+    virtual int GetCode(const char *str) = 0;
 
     // category counters, each integer counts sequence in its category
     unsigned int mRelSample[NUM_OF_CATEGORY] = {0};
@@ -59,8 +60,8 @@ protected:
     // total sequence received
     unsigned int mTotalRel = 0;
 
-    // The order of previous char
-    int mLastCharOrder = -1;
+    // The code of previous char
+    int mLastCharCode = -1;
 
     // If this flag is set to true, detection is done and conclusion has been made
     bool mDone = false;
@@ -69,7 +70,7 @@ protected:
 class KCODECS_NO_EXPORT SJISContextAnalysis : public JapaneseContextAnalysis
 {
 protected:
-    int GetOrder(const char *str) override
+    int GetCode(const char *str) override
     {
         // We only interested in Hiragana, so first byte is '\202'
         if (*str == '\202' && (unsigned char)*(str + 1) >= (unsigned char)0x9f && (unsigned char)*(str + 1) <= (unsigned char)0xf1) {
@@ -82,7 +83,7 @@ protected:
 class KCODECS_NO_EXPORT EUCJPContextAnalysis : public JapaneseContextAnalysis
 {
 protected:
-    int GetOrder(const char *str) override
+    int GetCode(const char *str) override
     // We only interested in Hiragana, so first byte is '\244'
     {
         if (*str == '\244' //
