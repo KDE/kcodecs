@@ -109,7 +109,15 @@ nsProbingState nsMBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
         }
     }
 
-    for (unsigned int i = 0; i < NUM_OF_PROBERS; ++i) {
+    // The UnicodeGroupProber (specifically the UTF16 subprobers) need unmangled data
+    if (mIsActive[0]) {
+        if (const auto st = mProbers[0]->HandleData(aBuf, aLen); st == eNotMe) {
+            mIsActive[0] = false;
+            mActiveNum--;
+        }
+    }
+
+    for (unsigned int i = 1; i < NUM_OF_PROBERS; ++i) {
         if (!mIsActive[i]) {
             continue;
         }
@@ -121,11 +129,11 @@ nsProbingState nsMBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
         } else if (st == eNotMe) {
             mIsActive[i] = false;
             mActiveNum--;
-            if (mActiveNum == 0) {
-                mState = eNotMe;
-                break;
-            }
         }
+    }
+
+    if (mActiveNum == 0) {
+        mState = eNotMe;
     }
 
     free(highbyteBuf);
