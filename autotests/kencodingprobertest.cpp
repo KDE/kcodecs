@@ -8,6 +8,34 @@
 #include <QTest>
 #include <kencodingprober.h>
 
+namespace
+{
+template<size_t M>
+constexpr std::array<uint8_t, 2 * (M - 1)> asU16LEArray(const char16_t (&in)[M])
+{
+    std::array<uint8_t, 2 * (M - 1)> out;
+    for (size_t i = 0; i < (M - 1); i++) {
+        out[i * 2] = in[i] & 0xff;
+        out[i * 2 + 1] = (in[i] >> 8) & 0xff;
+    }
+    return out;
+}
+template<size_t M>
+constexpr std::array<uint8_t, 2 * (M - 1)> asU16BEArray(const char16_t (&in)[M])
+{
+    std::array<uint8_t, 2 * (M - 1)> out;
+    for (size_t i = 0; i < (M - 1); i++) {
+        out[i * 2] = (in[i] >> 8) & 0xff;
+        out[i * 2 + 1] = in[i] & 0xff;
+    }
+    return out;
+}
+static_assert(asU16LEArray(u"a") == std::array<uint8_t, 2>{0x61, 0x00});
+static_assert(asU16BEArray(u"a") == std::array<uint8_t, 2>{0x00, 0x61});
+static_assert(asU16LEArray(u"δΔ") == std::array<uint8_t, 4>{0xb4, 0x03, 0x94, 0x03});
+static_assert(asU16BEArray(u"δΔ") == std::array<uint8_t, 4>{0x03, 0xb4, 0x03, 0x94});
+}
+
 class KEncodingProberTest : public QObject
 {
     Q_OBJECT
@@ -90,6 +118,15 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("UTF-16LE Unicode", "UTF-16BE preferred unless erroneous", Abort);
     QEXPECT_FAIL("utf-8 Hebrew", "UTF-8 zero confidence", Abort);
     QEXPECT_FAIL("windows-1252 Latin1 short", "Defaulting to invalid UTF-8", Continue);
+    QEXPECT_FAIL("iso-2022-jp", "ISO-2022 not included in Japanese prober set", Abort);
+    QEXPECT_FAIL("utf-8 Japanese", "Too low UTF-8 confidence", Abort);
+    QEXPECT_FAIL("utf-8 Japanese Universal", "Too low UTF-8 confidence, too high Win-1252", Abort);
+    QEXPECT_FAIL("Konnichiwa UTF-16LE", "Too low UTF-16LE confidence, too high Win-1252", Abort);
+    QEXPECT_FAIL("Konnichiwa UTF-16BE", "Too low UTF-16BE confidence, too high Win-1252", Abort);
+    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16LE Universal", "GB18030 false positive", Abort);
+    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16LE", "GB18030 false positive", Abort);
+    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16BE Universal", "GB18030 false positive", Abort);
+    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16BE", "GB18030 false positive", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
 
     QEXPECT_FAIL("UTF-16BE Unicode", "UTF-16 no confidence", Abort);
@@ -97,6 +134,7 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("UTF-16LE Unicode definite 1", "UTF-16 zero confidence", Abort);
     QEXPECT_FAIL("UTF-16BE Unicode definite 2", "UTF-16 zero confidence", Abort);
     QEXPECT_FAIL("UTF-16LE Unicode definite 2", "UTF-16 zero confidence", Abort);
+    QEXPECT_FAIL("utf-8 Japanese", "Too low UTF-8 confidence", Abort);
     QCOMPARE_GE(ep.confidence(), 0.2);
 }
 
@@ -108,8 +146,8 @@ void KEncodingProberTest::testProbe_data()
     QTest::addColumn<KEncodingProber::ProberType>("proberType");
     QTest::addColumn<QByteArray>("encoding");
 
-    QTest::addRow("utf-8 CJK") //
-        << QByteArray::fromHex("e998bfe5b094e58d91e696afe5b1b1e88489") // 阿尔卑斯山脉
+    QTest::addRow("utf-8 Simplified Chinese") // "阿尔卑斯山脉" - "The Alps"
+        << QByteArray::fromHex("e998bfe5b094e58d91e696afe5b1b1e88489") //
         << KEncodingProber::Universal << QByteArray("utf-8");
 
     QTest::addRow("windows-1252 Latin1 short") //
@@ -128,13 +166,33 @@ void KEncodingProberTest::testProbe_data()
         << "Victor jagt zw\xc3\xb6lf Boxk\xc3\xa4mpfer quer \xc3\xbc\x62\x65r den gro\xc3\x9f\x65n Sylter Deich."_ba //
         << KEncodingProber::Universal << QByteArray("utf-8");
 
-    QTest::addRow("gb18030") //
+    QTest::addRow("gb18030") // "自由的百科全书" - "The free encyclopedia" (from Wikipedia start page)
         << QByteArray::fromHex("d7d4d3c9b5c4b0d9bfc6c8abcae9") //
         << KEncodingProber::ChineseSimplified << QByteArray("gb18030");
 
-    QTest::addRow("shift_jis") //
+    QTest::addRow("shift_jis") // "フリー百科事典" - "Free encyclopedia" (from Wikipedia start page)
         << QByteArray::fromHex("8374838a815b955389c88e969354") //
         << KEncodingProber::Japanese << QByteArray("shift_jis");
+
+    QTest::addRow("eucjp") // "フリー百科事典" - "Free encyclopedia" (from Wikipedia start page)
+        << QByteArray::fromHex("a5d5a5eaa1bcc9b4b2cabbf6c5b5") //
+        << KEncodingProber::Japanese << QByteArray("euc-jp");
+
+    QTest::addRow("iso-2022-jp") // "フリー百科事典" - "Free encyclopedia" (from Wikipedia start page)
+        << "\x1b$B%U%j!<I42J;vE5\x1b(B"_ba //
+        << KEncodingProber::Japanese << QByteArray("iso-2022-jp");
+
+    QTest::addRow("iso-2022-jp Universal") // "フリー百科事典" - "Free encyclopedia" (from Wikipedia start page)
+        << "\x1b$B%U%j!<I42J;vE5\x1b(B"_ba //
+        << KEncodingProber::Universal << QByteArray("iso-2022-jp");
+
+    QTest::addRow("utf-8 Japanese") // "フリー百科事典" - "Free encyclopedia" (from Wikipedia start page)
+        << QByteArray::fromHex("e38395e383aae383bce799bee7a791e4ba8be585b8") //
+        << KEncodingProber::Japanese << QByteArray("utf-8");
+
+    QTest::addRow("utf-8 Japanese Universal") // "フリー百科事典" - "Free encyclopedia" (from Wikipedia start page)
+        << QByteArray::fromHex("e38395e383aae383bce799bee7a791e4ba8be585b8") //
+        << KEncodingProber::Universal << QByteArray("utf-8");
 
     QTest::addRow("big5") //
         << QByteArray::fromHex("aefcafc7a6caa474a141a6b3ae65a444a46a") //
@@ -204,6 +262,47 @@ void KEncodingProberTest::testProbe_data()
     QTest::addRow("UTF-16LE Unicode definite 2") //
         << QByteArray("\x00\xc4\x00\x2a\xdc\x00", 6) // "Ä*<inv>" or "쐀⨀Ü"
         << KEncodingProber::Unicode << QByteArray("utf-16le");
+
+    QTest::addRow("Konnichiwa UTF-8") //
+        << QStringLiteral(u"こんにちは").toUtf8() //
+        << KEncodingProber::Universal << QByteArray("utf-8");
+    QTest::addRow("Konnichiwa UTF-16LE") //
+        << QByteArray(asU16LEArray(u"こんにちは")) //
+        << KEncodingProber::Universal << QByteArray("utf-16le");
+    QTest::addRow("Konnichiwa UTF-16BE") //
+        << QByteArray(asU16BEArray(u"こんにちは")) //
+        << KEncodingProber::Universal << QByteArray("utf-16be");
+    QTest::addRow("Konnichiwa ISO-2022-JP") //
+        << QByteArray("\x1b$B$3$s$K$A$O\x1b(B") //
+        << KEncodingProber::Universal << QByteArray("iso-2022-jp");
+
+    // From kde.org: "Explore the Internet with Plasma. Connect with colleagues, "
+    //   "friends and family. Manage your files. Enjoy music and videos."
+    constexpr char16_t plasmaJPText[] =
+        u"Plasma を使ってインターネットを探索しましょう。同僚や友人、"
+        "家族とつながりましょう。ファイルを管理しましょう。音楽や動画を楽しみましょう。";
+    QTest::addRow("EnjoyPlasma Japanese UTF-8 Universal") //
+        << QString(plasmaJPText).toUtf8() //
+        << KEncodingProber::Universal << QByteArray("utf-8");
+    QTest::addRow("EnjoyPlasma Japanese UTF-16LE Universal") //
+        << QByteArray(asU16LEArray(plasmaJPText)) //
+        << KEncodingProber::Universal << QByteArray("utf-16le");
+    QTest::addRow("EnjoyPlasma Japanese UTF-16LE") //
+        << QByteArray(asU16LEArray(plasmaJPText)) //
+        << KEncodingProber::Korean << QByteArray("utf-16le");
+    QTest::addRow("EnjoyPlasma Japanese UTF-16BE Universal") //
+        << QByteArray(asU16BEArray(plasmaJPText)) //
+        << KEncodingProber::Universal << QByteArray("utf-16be");
+    QTest::addRow("EnjoyPlasma Japanese UTF-16BE") //
+        << QByteArray(asU16BEArray(plasmaJPText)) //
+        << KEncodingProber::Korean << QByteArray("utf-16be");
+    auto plasmaJPTextIso2022 =
+        "Plasma \x1b$B$r;H$C$F%$%s%?!<%M%C%H$rC5:w$7$^$7$g$&!#F"
+        "1N=$dM'?M!\"2HB2$H$D$J$,$j$^$7$g$&!#%U%!%$%k$r4IM}$7$^"
+        "$7$g$&!#2;3Z$dF02h$r3Z$7$_$^$7$g$&!#\x1b(B"_ba;
+    QTest::addRow("EnjoyPlasma ISO-2022-JP") //
+        << plasmaJPTextIso2022 //
+        << KEncodingProber::Universal << QByteArray("iso-2022-jp");
 }
 
 void KEncodingProberTest::benchmarkProber()
