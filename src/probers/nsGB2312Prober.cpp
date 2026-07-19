@@ -31,10 +31,6 @@ nsProbingState nsGB18030Prober::HandleData(const char *aBuf, unsigned int aLen)
             mState = eNotMe;
             break;
         }
-        if (codingState == eItsMe) {
-            mState = eFoundIt;
-            break;
-        }
         if (codingState == eStart) {
             unsigned int charLen = mCodingSM->GetCurrentCharLen();
 

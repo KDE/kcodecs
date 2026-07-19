@@ -123,10 +123,9 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("utf-8 Japanese Universal", "Too low UTF-8 confidence, too high Win-1252", Abort);
     QEXPECT_FAIL("Konnichiwa UTF-16LE", "Too low UTF-16LE confidence, too high Win-1252", Abort);
     QEXPECT_FAIL("Konnichiwa UTF-16BE", "Too low UTF-16BE confidence, too high Win-1252", Abort);
-    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16LE Universal", "GB18030 false positive", Abort);
-    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16LE", "GB18030 false positive", Abort);
-    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16BE Universal", "GB18030 false positive", Abort);
-    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16BE", "GB18030 false positive", Abort);
+    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16LE Universal", "Too low UTF-16LE confidence, too high Win-1252", Abort);
+    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16LE", "MBCS filter broken", Abort);
+    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16BE Universal", "Too low UTF-16BE confidence, too high Win-1252", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
 
     QEXPECT_FAIL("UTF-16BE Unicode", "UTF-16 no confidence", Abort);
@@ -135,6 +134,7 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("UTF-16BE Unicode definite 2", "UTF-16 zero confidence", Abort);
     QEXPECT_FAIL("UTF-16LE Unicode definite 2", "UTF-16 zero confidence", Abort);
     QEXPECT_FAIL("utf-8 Japanese", "Too low UTF-8 confidence", Abort);
+    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16BE", "UTF-16 zero confidence", Abort);
     QCOMPARE_GE(ep.confidence(), 0.2);
 }
 

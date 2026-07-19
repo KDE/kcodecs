@@ -240,7 +240,7 @@ static constexpr std::array<const unsigned char, 48> GB18030_st{
     eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, // eItsMe
     eError, eError, eStart,      4, eError, eStart, eStart, // 3
     eError, eError, eError, eError, eError, eError,      5, // 4
-    eError, eError, eError, eItsMe, eError, eError, eError, // 5
+    eError, eError, eError, eStart, eError, eError, eError, // 5
     eStart, eStart, eStart, eStart, eStart, eStart // Padding
     // clang-format on
 };
