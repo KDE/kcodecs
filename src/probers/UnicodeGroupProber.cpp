@@ -5,72 +5,101 @@
 */
 
 #include "UnicodeGroupProber.h"
-#include "nsMBCSSM.h"
+#include "nsUtfProber.h"
 
 #include <format>
 
 namespace kencodingprober
 {
 UnicodeGroupProber::UnicodeGroupProber()
-    : mCodingSM{
-          std::make_unique<nsCodingStateMachine>(&UTF8SMModel),
-          std::make_unique<nsCodingStateMachine>(&UCS2LESMModel),
-          std::make_unique<nsCodingStateMachine>(&UCS2BESMModel),
+    : mProbers{
+          std::make_unique<nsUtf8Prober>(),
+          std::make_unique<nsUtf16BEProber>(),
+          std::make_unique<nsUtf16LEProber>(),
       }
 {
+    for (size_t i = 0; i < NUM_OF_UTF_PROBERS; i++) {
+        if (mProbers[i]) { // not null
+            mIsActive[i] = true;
+        }
+    }
+}
+
+const char *UnicodeGroupProber::GetCharSetName()
+{
+    if (mBestGuess == -1) {
+        GetConfidence();
+        if (mBestGuess == -1) {
+            // Default to UTF-8
+            mBestGuess = 0;
+        }
+    }
+    return mProbers[mBestGuess]->GetCharSetName();
 }
 
 nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLen)
 {
-    if (mActiveSM == 0) {
-        mState = eNotMe;
+    if (mState != eDetecting) {
         return mState;
     }
 
-    for (int j = mActiveSM - 1; j >= 0; --j) {
-        for (unsigned int i = 0; i < aLen; ++i) {
-            // byte is feed to all active state machine
-            nsSMState codingState = mCodingSM[j]->NextState(aBuf[i]);
-            if (codingState == eError) {
-                // got negative answer for this state machine, make it inactive
-                mActiveSM--;
-                if (mActiveSM == 0) {
-                    mState = eNotMe;
-                    return mState;
-                } else if (j != (int)mActiveSM) {
-                    std::swap(mCodingSM[mActiveSM], mCodingSM[j]);
-                }
-                break;
-            } else if (codingState == eItsMe) {
-                mState = eFoundIt;
-                mDetectedCharset = mCodingSM[j]->GetCodingStateMachine();
-                return mState;
-            }
+    int activeNum = NUM_OF_UTF_PROBERS;
+
+    for (unsigned int i = 0; i < NUM_OF_UTF_PROBERS; ++i) {
+        if (!mIsActive[i]) {
+            continue;
+        }
+        if (const auto st = mProbers[i]->HandleData(aBuf, aLen); st == eFoundIt) {
+            mBestGuess = i;
+            mState = eFoundIt;
+            break;
+        } else if (st == eNotMe) {
+            mIsActive[i] = false;
+            activeNum--;
         }
     }
-    mDetectedCharset = mCodingSM[0]->GetCodingStateMachine();
+
+    if (activeNum == 0) {
+        mState = eNotMe;
+    }
+
     return mState;
 }
 
 float UnicodeGroupProber::GetConfidence()
 {
-    if (mState == eFoundIt) {
-        return 0.99f;
-    } else {
-        return 0.0f;
+    float bestConf = 0.0;
+
+    switch (mState) {
+    case eFoundIt:
+        return 0.99f; // sure yes
+    case eNotMe:
+        return 0.00f; // sure no
+    default:
+        for (unsigned int i = 0; i < NUM_OF_UTF_PROBERS; ++i) {
+            if (!mIsActive[i]) {
+                continue;
+            }
+            float cf = mProbers[i]->GetConfidence();
+            if (bestConf < cf) {
+                bestConf = cf;
+                mBestGuess = i;
+            }
+        }
     }
+    return bestConf;
 }
 
 std::string UnicodeGroupProber::StatusOutput(uint8_t indent)
 {
     indent += 2;
-    GetConfidence();
     std::string output{"  Unicode Group Prober ----"};
-    for (unsigned int i = 0; i < mActiveSM; i++) {
+    GetConfidence();
+    for (int i = 0; i < NUM_OF_UTF_PROBERS; i++) {
+        char state = !mIsActive[i] ? '-' : (i == mBestGuess) ? '*' : ' ';
         output += '\n' + std::string(indent, ' ');
-        output += std::format("  [{}] {}", //
-                              mCodingSM[i]->GetCodingStateMachine(),
-                              mCodingSM[i]->DumpCurrentState());
+        output += std::format("{} #{:02}   UTF: ", state, i);
+        output += mProbers[i]->StatusOutput(indent);
     }
     return output;
 }
