@@ -57,13 +57,12 @@ static constexpr std::array<const unsigned char, 256> BIG5_cls{
     // clang-format on
 };
 
-static constexpr std::array<const unsigned char, 24> BIG5_st{
+static constexpr std::array<const unsigned char, 20> BIG5_st{
     // clang-format off
     eError, eStart, eStart,      3, eError, // eStart
     eError, eError, eError, eError, eError, // eError
     eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, // eItsMe
     eError, eError, eStart, eStart, eStart, // 3
-    eStart, eStart, eStart, eStart // Padding
     // clang-format on
 };
 
@@ -115,7 +114,7 @@ static constexpr std::array<const unsigned char, 256> EUCJP_cls{
     // clang-format on
 };
 
-static constexpr std::array<const unsigned char, 40> EUCJP_st{
+static constexpr std::array<const unsigned char, 36> EUCJP_st{
     // clang-format off
          3,      4,      3,      5, eStart, eError, // eStart
     eError, eError, eError, eError, eError, eError, // eError
@@ -123,7 +122,6 @@ static constexpr std::array<const unsigned char, 40> EUCJP_st{
     eStart, eError, eStart, eError, eError, eError, // 3
     eError, eError, eStart, eError, eError, eError, // 4
          3, eError,      3, eError, eError, eError, // 5
-    eStart, eStart, eStart, eStart // Padding
     // clang-format on
 };
 
@@ -233,7 +231,7 @@ static constexpr std::array<const unsigned char, 256> GB18030_cls{
     // clang-format on
 };
 
-static constexpr std::array<const unsigned char, 48> GB18030_st{
+static constexpr std::array<const unsigned char, 42> GB18030_st{
     // clang-format off
     eError, eStart, eStart, eStart, eStart, eStart,      3, // eStart
     eError, eError, eError, eError, eError, eError, eError, // eError
@@ -241,7 +239,6 @@ static constexpr std::array<const unsigned char, 48> GB18030_st{
     eError, eError, eStart,      4, eError, eStart, eStart, // 3
     eError, eError, eError, eError, eError, eError,      5, // 4
     eError, eError, eError, eItsMe, eError, eError, eError, // 5
-    eStart, eStart, eStart, eStart, eStart, eStart // Padding
     // clang-format on
 };
 
