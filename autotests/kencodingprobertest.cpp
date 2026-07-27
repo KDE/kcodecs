@@ -124,6 +124,10 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("Konnichiwa UTF-16BE", "Too low UTF-16BE confidence, too high Win-1252", Abort);
     QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16LE Universal", "Too low UTF-16LE confidence, too high Win-1252", Abort);
     QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16BE Universal", "Too low UTF-16BE confidence, too high Win-1252", Abort);
+    QEXPECT_FAIL("ASCII codepoints UTF-16LE", "UTF-16 low confidence", Abort);
+    QEXPECT_FAIL("ASCII codepoints UTF-16LE Universal", "UTF-16 with values <= 0x7f not checked", Abort);
+    QEXPECT_FAIL("ASCII codepoints UTF-16BE", "UTF-16 low confidence", Abort);
+    QEXPECT_FAIL("ASCII codepoints UTF-16BE Universal", "UTF-16 with values <= 0x7f not checked", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
 
     QEXPECT_FAIL("UTF-16BE Unicode", "UTF-16 no confidence", Abort);
@@ -302,6 +306,25 @@ void KEncodingProberTest::testProbe_data()
     QTest::addRow("EnjoyPlasma ISO-2022-JP") //
         << plasmaJPTextIso2022 //
         << KEncodingProber::Universal << QByteArray("iso-2022-jp");
+
+    constexpr char16_t plasmaENText[] =
+        u"Explore the Internet with Plasma. Connect with colleagues, "
+        "friends and family. Manage your files. Enjoy music and videos.";
+    QTest::addRow("ASCII codepoints UTF-8 Universal") //
+        << QString(plasmaENText).toUtf8() //
+        << KEncodingProber::Universal << QByteArray("utf-8");
+    QTest::addRow("ASCII codepoints UTF-16LE") //
+        << QByteArray(asU16LEArray(plasmaENText)) //
+        << KEncodingProber::Unicode << QByteArray("utf-16le");
+    QTest::addRow("ASCII codepoints UTF-16LE Universal") //
+        << QByteArray(asU16LEArray(plasmaENText)) //
+        << KEncodingProber::Universal << QByteArray("utf-16le");
+    QTest::addRow("ASCII codepoints UTF-16BE") //
+        << QByteArray(asU16BEArray(plasmaENText)) //
+        << KEncodingProber::Unicode << QByteArray("utf-16be");
+    QTest::addRow("ASCII codepoints UTF-16BE Universal") //
+        << QByteArray(asU16BEArray(plasmaENText)) //
+        << KEncodingProber::Universal << QByteArray("utf-16be");
 }
 
 void KEncodingProberTest::benchmarkProber()
