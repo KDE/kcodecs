@@ -279,82 +279,82 @@ msgstr ""
 "Вона не містить самої адреси, тобто не є в формі fr.ivan@ukrainian-orthodox."
 "org."
 
-#: kencodingprober.cpp:235 kencodingprober.cpp:276
+#: kencodingprober.cpp:239 kencodingprober.cpp:280
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Disabled"
 msgstr "Вимкнено"
 
-#: kencodingprober.cpp:237 kencodingprober.cpp:279
+#: kencodingprober.cpp:241 kencodingprober.cpp:283
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Universal"
 msgstr "універсальне"
 
-#: kencodingprober.cpp:239 kencodingprober.cpp:321
+#: kencodingprober.cpp:243 kencodingprober.cpp:325
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Unicode"
 msgstr "Unicode"
 
-#: kencodingprober.cpp:241 kencodingprober.cpp:291
+#: kencodingprober.cpp:245 kencodingprober.cpp:295
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Cyrillic"
 msgstr "кирилиця"
 
-#: kencodingprober.cpp:243 kencodingprober.cpp:306
+#: kencodingprober.cpp:247 kencodingprober.cpp:310
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Western European"
 msgstr "західноєвропейське"
 
-#: kencodingprober.cpp:245 kencodingprober.cpp:288
+#: kencodingprober.cpp:249 kencodingprober.cpp:292
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Central European"
 msgstr "центральноєвропейське"
 
-#: kencodingprober.cpp:247 kencodingprober.cpp:294
+#: kencodingprober.cpp:251 kencodingprober.cpp:298
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Greek"
 msgstr "грецьке"
 
-#: kencodingprober.cpp:249 kencodingprober.cpp:297
+#: kencodingprober.cpp:253 kencodingprober.cpp:301
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Hebrew"
 msgstr "іврит"
 
-#: kencodingprober.cpp:251 kencodingprober.cpp:303
+#: kencodingprober.cpp:255 kencodingprober.cpp:307
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Turkish"
 msgstr "Турецький"
 
-#: kencodingprober.cpp:253 kencodingprober.cpp:300
+#: kencodingprober.cpp:257 kencodingprober.cpp:304
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Japanese"
 msgstr "японське"
 
-#: kencodingprober.cpp:255 kencodingprober.cpp:285
+#: kencodingprober.cpp:259 kencodingprober.cpp:289
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Baltic"
 msgstr "балтійське"
 
-#: kencodingprober.cpp:257 kencodingprober.cpp:309
+#: kencodingprober.cpp:261 kencodingprober.cpp:313
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "китайське (традиційне)"
 
-#: kencodingprober.cpp:259 kencodingprober.cpp:312
+#: kencodingprober.cpp:263 kencodingprober.cpp:316
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "китайське (спрощене)"
 
-#: kencodingprober.cpp:261 kencodingprober.cpp:315
+#: kencodingprober.cpp:265 kencodingprober.cpp:319
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Korean"
 msgstr "корейське"
 
-#: kencodingprober.cpp:263 kencodingprober.cpp:318
+#: kencodingprober.cpp:267 kencodingprober.cpp:322
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Thai"
 msgstr "тайське"
 
-#: kencodingprober.cpp:265 kencodingprober.cpp:282
+#: kencodingprober.cpp:269 kencodingprober.cpp:286
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "арабське"
