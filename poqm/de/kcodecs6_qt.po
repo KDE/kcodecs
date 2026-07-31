@@ -216,7 +216,7 @@ msgstr ""
 "Die von Ihnen eingegebene E-Mail-Adresse ist ungültig, da sie unerwartet "
 "endet.\n"
 "Das rührt möglicherweise daher, dass Sie am Ende der E-Mail-Adresse ein "
-"gesondert behandeltes Zeichen wie \\ benutzt haben."
+"gesondert behandeltes Zeichen wie \\ verwendet haben."
 
 #: kemailaddress.cpp:554
 msgctxt "QObject|"
@@ -234,7 +234,7 @@ msgid ""
 "contain an actual email address, i.e. something of the form joe@example.org."
 msgstr ""
 "Die von Ihnen eingegebene E-Mail-Adresse ist ungültig, da es sich um keine "
-"echte E-Mail-Adresse in der Form wie z. B. joe@example.org zu handeln "
+"echte E-Mail-Adresse in der Form wie z. B. joe@example.org zu handeln "
 "scheint."
 
 #: kemailaddress.cpp:563
@@ -279,7 +279,7 @@ msgid ""
 "form joe@example.org."
 msgstr ""
 "Die von Ihnen eingegebene E-Mail-Adresse ist ungültig.\n"
-"Es handelt sich um keine echte E-Mail-Adresse in der Form wie z. B. "
+"Es handelt sich um keine echte E-Mail-Adresse in der Form wie z. B. "
 "joe@example.org."
 
 #: kencodingprober.cpp:239 kencodingprober.cpp:280
