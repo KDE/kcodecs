@@ -128,6 +128,8 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("ASCII codepoints UTF-16LE Universal", "UTF-16 with values <= 0x7f not checked", Abort);
     QEXPECT_FAIL("ASCII codepoints UTF-16BE", "UTF-16 low confidence", Abort);
     QEXPECT_FAIL("ASCII codepoints UTF-16BE Universal", "UTF-16 with values <= 0x7f not checked", Abort);
+    QEXPECT_FAIL("Plasma Ukrainian UTF-16LE", "UTF-16 low confidence", Abort);
+    QEXPECT_FAIL("Plasma Ukrainian UTF-16BE", "UTF-16 low confidence", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
 
     QEXPECT_FAIL("UTF-16BE Unicode", "UTF-16 no confidence", Abort);
@@ -325,6 +327,28 @@ void KEncodingProberTest::testProbe_data()
     QTest::addRow("ASCII codepoints UTF-16BE Universal") //
         << QByteArray(asU16BEArray(plasmaENText)) //
         << KEncodingProber::Universal << QByteArray("utf-16be");
+
+    constexpr char16_t plasmaUAText[] =
+        u"Програмне забезпечення KDE працює у NASA, CERN, електромобілях "
+        "Mercedes, Steam Deck, вашому улюбленому YouTube, а також школах, "
+        "урядах та офісах по всьому світу.";
+    QTest::addRow("Plasma Ukrainian UTF-8") //
+        << QString(plasmaUAText).toUtf8() //
+        << KEncodingProber::Universal << QByteArray("utf-8");
+    QTest::addRow("Plasma Ukrainian UTF-16LE") //
+        << QByteArray(asU16LEArray(plasmaUAText)) //
+        << KEncodingProber::Universal << QByteArray("utf-16le");
+    QTest::addRow("Plasma Ukrainian UTF-16BE") //
+        << QByteArray(asU16BEArray(plasmaUAText)) //
+        << KEncodingProber::Universal << QByteArray("utf-16be");
+    QTest::addRow("Plasma Ukrainian Windows-1251") << QByteArray::fromHex( //
+        "cff0eee3f0e0ecede520e7e0e1e5e7efe5f7e5ededff204b444520eff0e0"
+        "f6feba20f3204e4153412c204345524e2c20e5ebe5eaf2f0eeeceee1b3eb"
+        "fff5204d657263656465732c20537465616d204465636b2c20e2e0f8eeec"
+        "f320f3ebfee1ebe5edeeecf320596f75547562652c20e020f2e0eaeee620"
+        "f8eaeeebe0f52c20f3f0ffe4e0f520f2e020eef4b3f1e0f520efee20e2f1"
+        "fceeecf320f1e2b3f2f32e0a") << //
+        KEncodingProber::Universal << QByteArray("windows-1251");
 }
 
 void KEncodingProberTest::benchmarkProber()
