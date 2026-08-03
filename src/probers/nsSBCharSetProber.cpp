@@ -7,6 +7,7 @@
 #include "nsSBCharSetProber.h"
 
 #include <format>
+#include <numeric>
 
 namespace kencodingprober
 {
@@ -26,7 +27,6 @@ nsProbingState nsSingleByteCharSetProber<Reversed>::HandleData(const char *aBuf,
             mFreqChar++;
 
             if (mLastOrder < SAMPLE_SIZE) {
-                mTotalSeqs++;
                 unsigned int index = Reversed ? mLastOrder + (SAMPLE_SIZE * order) : (mLastOrder * SAMPLE_SIZE) + order;
                 ++(mSeqCounters[(int)mModel->precedenceMatrix[index]]);
             }
@@ -34,6 +34,7 @@ nsProbingState nsSingleByteCharSetProber<Reversed>::HandleData(const char *aBuf,
         mLastOrder = order;
     }
 
+    mTotalSeqs = std::accumulate(mSeqCounters.begin(), mSeqCounters.end(), 0);
     if (mState == eDetecting) {
         if (mTotalSeqs > 1024) {
             float cf = GetConfidence();
