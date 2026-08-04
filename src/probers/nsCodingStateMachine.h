@@ -37,7 +37,7 @@ typedef struct {
 class KCODECS_NO_EXPORT nsCodingStateMachine
 {
 public:
-    nsCodingStateMachine(const SMModel *sm)
+    explicit nsCodingStateMachine(const SMModel &sm)
         : mModel(sm)
     {
     }
@@ -45,12 +45,12 @@ public:
     {
         // for each byte we get its class, if it is first byte, we also get byte length
         const uint8_t index = static_cast<uint8_t>(c);
-        unsigned int byteCls = mModel->classTable[index];
+        unsigned int byteCls = mModel.classTable[index];
         if (mCurrentState == eStart) {
-            mCurrentCharLen = mModel->charLenTable[byteCls];
+            mCurrentCharLen = mModel.charLenTable[byteCls];
         }
         // from byte's class and stateTable, we get its next state
-        mCurrentState = mModel->stateTable[mCurrentState * mModel->classFactor + byteCls];
+        mCurrentState = mModel.stateTable[mCurrentState * mModel.classFactor + byteCls];
         return mCurrentState;
     }
     unsigned int GetCurrentCharLen(void)
@@ -59,7 +59,7 @@ public:
     }
     const char *GetCodingStateMachine()
     {
-        return mModel->name;
+        return mModel.name;
     }
     const char *DumpCurrentState()
     {
@@ -79,7 +79,7 @@ protected:
     int mCurrentState = eStart;
     unsigned int mCurrentCharLen = 0;
 
-    const SMModel *mModel = nullptr;
+    const SMModel &mModel;
 };
 }
 #endif /* nsCodingStateMachine_h__ */

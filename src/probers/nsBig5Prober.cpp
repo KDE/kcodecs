@@ -10,7 +10,7 @@
 namespace kencodingprober
 {
 nsBig5Prober::nsBig5Prober()
-    : mCodingSM{std::make_unique<nsCodingStateMachine>(&Big5SMModel)}
+    : mCodingSM{std::make_unique<nsCodingStateMachine>(Big5SMModel)}
 {
 }
 

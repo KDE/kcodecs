@@ -15,7 +15,7 @@
 namespace kencodingprober
 {
 nsEUCJPProber::nsEUCJPProber()
-    : mCodingSM{std::make_unique<nsCodingStateMachine>(&EUCJPSMModel)}
+    : mCodingSM{std::make_unique<nsCodingStateMachine>(EUCJPSMModel)}
 {
 }
 

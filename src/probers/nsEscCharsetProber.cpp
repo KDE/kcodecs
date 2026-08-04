@@ -11,8 +11,8 @@ namespace kencodingprober
 {
 nsEscCharSetProber::nsEscCharSetProber(void)
 {
-    mCodingSM[0] = std::make_unique<nsCodingStateMachine>(&ISO2022JPSMModel);
-    mCodingSM[1] = std::make_unique<nsCodingStateMachine>(&HZSMModel);
+    mCodingSM[0] = std::make_unique<nsCodingStateMachine>(ISO2022JPSMModel);
+    mCodingSM[1] = std::make_unique<nsCodingStateMachine>(HZSMModel);
 }
 
 nsEscCharSetProber::~nsEscCharSetProber(void) = default;

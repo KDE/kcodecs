@@ -10,7 +10,7 @@
 namespace kencodingprober
 {
 nsEUCKRProber::nsEUCKRProber()
-    : mCodingSM{std::make_unique<nsCodingStateMachine>(&EUCKRSMModel)}
+    : mCodingSM{std::make_unique<nsCodingStateMachine>(EUCKRSMModel)}
 {
 }
 

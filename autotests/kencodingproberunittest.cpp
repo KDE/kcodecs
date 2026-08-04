@@ -43,7 +43,7 @@ void KEncodingProberUnitTest::testUtf8()
 
     using namespace kencodingprober;
 
-    nsCodingStateMachine stateMachine{&UTF8SMModel};
+    nsCodingStateMachine stateMachine{UTF8SMModel};
     nsSMState state = eStart;
 
     for (auto b : data) {
@@ -133,7 +133,7 @@ void KEncodingProberUnitTest::testUtf16BE()
 
     using namespace kencodingprober;
 
-    nsCodingStateMachine stateMachine{&UCS2BESMModel};
+    nsCodingStateMachine stateMachine{UCS2BESMModel};
     nsSMState state = eStart;
 
     QEXPECT_FAIL("UTF16 ZWNBSP little", "zero width no-break space rejected", Abort);
@@ -151,7 +151,7 @@ void KEncodingProberUnitTest::testUtf16LE()
 
     using namespace kencodingprober;
 
-    nsCodingStateMachine stateMachine{&UCS2LESMModel};
+    nsCodingStateMachine stateMachine{UCS2LESMModel};
     nsSMState state = eStart;
 
     QEXPECT_FAIL("UTF16 ZWNBSP big", "zero width no-break space rejected", Abort);
@@ -345,7 +345,7 @@ void KEncodingProberUnitTest::testHzCharset()
 
     using namespace kencodingprober;
 
-    nsCodingStateMachine stateMachine{&HZSMModel};
+    nsCodingStateMachine stateMachine{HZSMModel};
 
     nsSMState state = eStart;
 
@@ -364,7 +364,7 @@ void KEncodingProberUnitTest::testIso2022JPCharset()
 
     using namespace kencodingprober;
 
-    nsCodingStateMachine stateMachine{&ISO2022JPSMModel};
+    nsCodingStateMachine stateMachine{ISO2022JPSMModel};
 
     nsSMState state = eStart;
 

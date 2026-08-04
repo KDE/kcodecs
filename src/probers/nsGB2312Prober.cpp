@@ -15,7 +15,7 @@
 namespace kencodingprober
 {
 nsGB18030Prober::nsGB18030Prober()
-    : mCodingSM{std::make_unique<nsCodingStateMachine>(&GB18030SMModel)}
+    : mCodingSM{std::make_unique<nsCodingStateMachine>(GB18030SMModel)}
 {
 }
 

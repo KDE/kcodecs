@@ -15,7 +15,7 @@
 namespace kencodingprober
 {
 nsSJISProber::nsSJISProber()
-    : mCodingSM{std::make_unique<nsCodingStateMachine>(&SJISSMModel)}
+    : mCodingSM{std::make_unique<nsCodingStateMachine>(SJISSMModel)}
 {
 }
 
