@@ -16,8 +16,8 @@ namespace kencodingprober
 bool nsCharSetProber::FilterWithoutEnglishLetters(const char *aBuf, unsigned int aLen, char **newBuf, unsigned int &newLen)
 {
     char *newptr;
-    char *prevPtr;
-    char *curPtr;
+    const char *prevPtr;
+    const char *curPtr;
 
     bool meetMSB = false;
     newptr = *newBuf = (char *)malloc(aLen);
@@ -25,7 +25,7 @@ bool nsCharSetProber::FilterWithoutEnglishLetters(const char *aBuf, unsigned int
         return false;
     }
 
-    for (curPtr = prevPtr = (char *)aBuf; curPtr < aBuf + aLen; ++curPtr) {
+    for (curPtr = prevPtr = aBuf; curPtr < aBuf + aLen; ++curPtr) {
         if (*curPtr & 0x80) {
             meetMSB = true;
         } else if (*curPtr < 'A' || (*curPtr > 'Z' && *curPtr < 'a') || *curPtr > 'z') {
@@ -60,8 +60,8 @@ bool nsCharSetProber::FilterWithEnglishLetters(const char *aBuf, unsigned int aL
 {
     // do filtering to reduce load to probers
     char *newptr;
-    char *prevPtr;
-    char *curPtr;
+    const char *prevPtr;
+    const char *curPtr;
     bool isInTag = false;
 
     newptr = *newBuf = (char *)malloc(aLen);
@@ -69,7 +69,7 @@ bool nsCharSetProber::FilterWithEnglishLetters(const char *aBuf, unsigned int aL
         return false;
     }
 
-    for (curPtr = prevPtr = (char *)aBuf; curPtr < aBuf + aLen; ++curPtr) {
+    for (curPtr = prevPtr = aBuf; curPtr < aBuf + aLen; ++curPtr) {
         if (*curPtr == '>') {
             isInTag = false;
         } else if (*curPtr == '<') {
