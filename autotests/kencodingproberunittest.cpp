@@ -184,10 +184,10 @@ void KEncodingProberUnitTest::testUtf16_common_data()
     QTest::addRow("LE LS at start") << QByteArray("\x00\xDC", 2) << true << false;
 
     struct Utf16TestData {
-        const char *name;
+        const char *name = nullptr;
         const std::span<const char16_t> data;
-        bool validBig;
-        bool validLittle;
+        bool validBig = false;
+        bool validLittle = false;
     };
     using namespace std::string_view_literals;
     constexpr std::array<Utf16TestData, 7> utf16TestData = {

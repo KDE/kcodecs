@@ -26,13 +26,13 @@ using nsClassTable = const std::array<const uint8_t, 256> &;
 using nsStateTable = std::span<const uint8_t>;
 
 // state machine model
-typedef struct {
-    nsClassTable classTable;
-    unsigned int classFactor;
-    nsStateTable stateTable;
-    const unsigned int *charLenTable;
-    const char *name;
-} SMModel;
+struct SMModel {
+    nsClassTable classTable = {};
+    unsigned int classFactor = {};
+    nsStateTable stateTable = {};
+    const unsigned int *charLenTable = nullptr;
+    const char *name = nullptr;
+};
 
 class KCODECS_NO_EXPORT nsCodingStateMachine
 {
