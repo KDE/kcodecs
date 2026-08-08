@@ -18,7 +18,7 @@ template<bool Reversed>
 nsProbingState nsSingleByteCharSetProber<Reversed>::HandleData(const char *aBuf, unsigned int aLen)
 {
     for (unsigned int i = 0; i < aLen; i++) {
-        const unsigned char order = mModel->charToOrderMap[(unsigned char)aBuf[i]];
+        const unsigned char order = mModel.charToOrderMap[(unsigned char)aBuf[i]];
 
         if (order < SYMBOL_CAT_ORDER) {
             mTotalChar++;
@@ -28,7 +28,7 @@ nsProbingState nsSingleByteCharSetProber<Reversed>::HandleData(const char *aBuf,
 
             if (mLastOrder < SAMPLE_SIZE) {
                 unsigned int index = Reversed ? mLastOrder + (SAMPLE_SIZE * order) : (mLastOrder * SAMPLE_SIZE) + order;
-                ++(mSeqCounters[mModel->precedenceMatrix[index]]);
+                ++(mSeqCounters[mModel.precedenceMatrix[index]]);
             }
         }
         mLastOrder = order;
@@ -63,7 +63,7 @@ float nsSingleByteCharSetProber<Reversed>::GetConfidence(void)
 #else // POSITIVE_APPROACH
 
     if (mTotalSeqs > 0) {
-        float r = 1.0f * mSeqCounters.back() / mTotalSeqs / mModel->mTypicalPositiveRatio;
+        float r = 1.0f * mSeqCounters.back() / mTotalSeqs / mModel.mTypicalPositiveRatio;
         r = r * mFreqChar / mTotalChar;
         if (r >= 0.99f) {
             r = 0.99f;
@@ -77,7 +77,7 @@ float nsSingleByteCharSetProber<Reversed>::GetConfidence(void)
 template<bool Reversed>
 const char *nsSingleByteCharSetProber<Reversed>::GetCharSetName()
 {
-    return mModel->charsetName;
+    return mModel.charsetName;
 }
 
 template<bool Reversed>

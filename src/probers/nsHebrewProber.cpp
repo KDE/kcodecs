@@ -58,8 +58,8 @@ bool isNonFinal(char c)
 namespace kencodingprober
 {
 nsHebrewProber::nsHebrewProber()
-    : mLogicalProb(new nsSingleByteCharSetProber<false>(&Win1255Model))
-    , mVisualProb(new nsSingleByteCharSetProber<true>(&Win1255Model))
+    : mLogicalProb(new nsSingleByteCharSetProber<false>(Win1255Model))
+    , mVisualProb(new nsSingleByteCharSetProber<true>(Win1255Model))
 {
 }
 /** HandleData

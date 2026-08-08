@@ -29,7 +29,7 @@ template<bool Reversed = false>
 class KCODECS_NO_EXPORT nsSingleByteCharSetProber : public nsCharSetProber
 {
 public:
-    explicit nsSingleByteCharSetProber(const SequenceModel *model)
+    explicit nsSingleByteCharSetProber(const SequenceModel &model)
         : mModel(model)
     {
     }
@@ -46,7 +46,7 @@ public:
 
 protected:
     nsProbingState mState = eDetecting;
-    const SequenceModel *mModel = nullptr;
+    const SequenceModel &mModel;
 
     // char order of last character
     unsigned char mLastOrder = 255;
