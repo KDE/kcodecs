@@ -10,6 +10,7 @@
 #include "nsCharSetProber.h"
 
 #include <array>
+#include <span>
 
 #define SAMPLE_SIZE 64
 #define SYMBOL_CAT_ORDER 250
@@ -18,7 +19,7 @@ namespace kencodingprober
 {
 typedef struct {
     const unsigned char *charToOrderMap; // [256] table use to find a char's order
-    const char *precedenceMatrix; // [SAMPLE_SIZE][SAMPLE_SIZE]; table to find a 2-char sequence's frequency
+    const std::span<const uint8_t, 64 * 64> precedenceMatrix; // [SAMPLE_SIZE][SAMPLE_SIZE]; table to find a 2-char sequence's frequency
     float mTypicalPositiveRatio; // = freqSeqs / totalSeqs
     bool keepEnglishLetter; // says if this script contains English characters (not implemented)
     const char *charsetName;

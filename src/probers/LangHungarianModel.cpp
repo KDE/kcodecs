@@ -50,7 +50,7 @@ const unsigned char win1250HungarianCharToOrderMap[] = {
 // first 1024 sequences:5.2623%
 // rest  sequences:     0.8894%
 // negative sequences:  0.0009%
-const char HungarianLangModel[] = {
+constexpr std::array<const uint8_t, 64 * 64> HungarianLangModel = {
     0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 2,
     2, 3, 3, 1, 1, 2, 2, 2, 2, 2, 1, 2, 3, 2, 2, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 1, 2, 3, 3, 3, 3, 2, 3, 3, 1, 1, 3, 3, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 3, 2, 1, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 3, 1, 1, 2, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 2,
@@ -132,7 +132,7 @@ const char HungarianLangModel[] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
 
-const SequenceModel Latin2HungarianModel = {Latin2_HungarianCharToOrderMap, HungarianLangModel, (float)0.947368, true, "ISO-8859-2"};
+constexpr SequenceModel Latin2HungarianModel = {Latin2_HungarianCharToOrderMap, HungarianLangModel, 0.947368f, true, "ISO-8859-2"};
 
-const SequenceModel Win1250HungarianModel = {win1250HungarianCharToOrderMap, HungarianLangModel, (float)0.947368, true, "windows-1250"};
+constexpr SequenceModel Win1250HungarianModel = {win1250HungarianCharToOrderMap, HungarianLangModel, 0.947368f, true, "windows-1250"};
 }

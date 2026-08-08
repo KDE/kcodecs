@@ -115,7 +115,7 @@ const unsigned char IBM866_CharToOrderMap[] = {
 // first 1024 sequences: 2.3389%
 // rest  sequences:      0.1237%
 // negative sequences:   0.0009%
-const char RussianLangModel[] = {
+constexpr std::array<const uint8_t, 64 * 64> RussianLangModel = {
     0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 1, 3, 3, 3, 2, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
     3, 3, 0, 3, 2, 2, 2, 2, 2, 0, 0, 2, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 2,
@@ -197,15 +197,15 @@ const char RussianLangModel[] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
 };
 
-const SequenceModel Koi8rModel = {KOI8R_CharToOrderMap, RussianLangModel, (float)0.976601, false, "KOI8-R"};
+constexpr SequenceModel Koi8rModel = {KOI8R_CharToOrderMap, RussianLangModel, 0.976601f, false, "KOI8-R"};
 
-const SequenceModel Win1251Model = {win1251_CharToOrderMap, RussianLangModel, (float)0.976601, false, "windows-1251"};
+constexpr SequenceModel Win1251Model = {win1251_CharToOrderMap, RussianLangModel, 0.976601f, false, "windows-1251"};
 
-const SequenceModel Latin5Model = {latin5_CharToOrderMap, RussianLangModel, (float)0.976601, false, "ISO-8859-5"};
+constexpr SequenceModel Latin5Model = {latin5_CharToOrderMap, RussianLangModel, 0.976601f, false, "ISO-8859-5"};
 
-const SequenceModel MacCyrillicModel = {macCyrillic_CharToOrderMap, RussianLangModel, (float)0.976601, false, "x-mac-cyrillic"};
+constexpr SequenceModel MacCyrillicModel = {macCyrillic_CharToOrderMap, RussianLangModel, 0.976601f, false, "x-mac-cyrillic"};
 
-const SequenceModel Ibm866Model = {IBM866_CharToOrderMap, RussianLangModel, (float)0.976601, false, "IBM866"};
+constexpr SequenceModel Ibm866Model = {IBM866_CharToOrderMap, RussianLangModel, 0.976601f, false, "IBM866"};
 
-const SequenceModel Ibm855Model = {IBM855_CharToOrderMap, RussianLangModel, (float)0.976601, false, "IBM855"};
+constexpr SequenceModel Ibm855Model = {IBM855_CharToOrderMap, RussianLangModel, 0.976601f, false, "IBM855"};
 }

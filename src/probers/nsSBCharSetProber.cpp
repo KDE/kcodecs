@@ -28,7 +28,7 @@ nsProbingState nsSingleByteCharSetProber<Reversed>::HandleData(const char *aBuf,
 
             if (mLastOrder < SAMPLE_SIZE) {
                 unsigned int index = Reversed ? mLastOrder + (SAMPLE_SIZE * order) : (mLastOrder * SAMPLE_SIZE) + order;
-                ++(mSeqCounters[(int)mModel->precedenceMatrix[index]]);
+                ++(mSeqCounters[mModel->precedenceMatrix[index]]);
             }
         }
         mLastOrder = order;

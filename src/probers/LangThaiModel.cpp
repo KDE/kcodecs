@@ -41,7 +41,7 @@ const unsigned char TIS620CharToOrderMap[] = {
 // first 1024 sequences:7.3177%
 // rest  sequences:     1.0230%
 // negative sequences:  0.0436%
-const char ThaiLangModel[] = {
+constexpr std::array<const uint8_t, 64 * 64> ThaiLangModel = {
     0, 1, 3, 3, 3, 3, 0, 0, 3, 3, 0, 3, 3, 0, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 3, 3, 3, 0, 3, 3, 3, 3, 0, 3, 3, 0, 0, 0, 1, 3, 0, 3, 3, 2, 3, 3, 0, 1, 2, 3, 3, 3,
     3, 0, 2, 0, 2, 0, 0, 3, 2, 1, 2, 2, 3, 0, 3, 3, 2, 3, 0, 0, 3, 3, 0, 3, 3, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 3, 2, 3, 0, 2, 2, 2, 3, 0, 2, 3, 0, 0, 0, 0, 1,
     0, 1, 2, 3, 1, 1, 3, 2, 2, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 3, 3, 2, 3, 2, 3,
@@ -123,5 +123,5 @@ const char ThaiLangModel[] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
 
-const SequenceModel TIS620ThaiModel = {TIS620CharToOrderMap, ThaiLangModel, (float)0.926386, false, "TIS-620"};
+constexpr SequenceModel TIS620ThaiModel = {TIS620CharToOrderMap, ThaiLangModel, 0.926386f, false, "TIS-620"};
 }

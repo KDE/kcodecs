@@ -60,7 +60,7 @@ const unsigned char win1253_CharToOrderMap[] = {
 // first 1024 sequences:1.7001%
 // rest  sequences:     0.0359%
 // negative sequences:  0.0148%
-const char GreekLangModel[] = {
+constexpr std::array<const uint8_t, 64 * 64> GreekLangModel = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 0, 2, 2, 3, 3, 0, 3, 0, 3, 2, 0, 3, 3, 3, 0, 3, 0, 0, 0, 2, 0, 0, 0,
     0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 3, 3, 0, 3, 2, 3, 3, 0, 3, 2, 3, 3, 3, 0, 0, 3, 0, 3, 0, 3, 3,
@@ -142,7 +142,7 @@ const char GreekLangModel[] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
 
-const SequenceModel Latin7Model = {Latin7_CharToOrderMap, GreekLangModel, (float)0.982851, false, "ISO-8859-7"};
+constexpr SequenceModel Latin7Model = {Latin7_CharToOrderMap, GreekLangModel, 0.982851f, false, "ISO-8859-7"};
 
-const SequenceModel Win1253Model = {win1253_CharToOrderMap, GreekLangModel, (float)0.982851, false, "windows-1253"};
+constexpr SequenceModel Win1253Model = {win1253_CharToOrderMap, GreekLangModel, 0.982851f, false, "windows-1253"};
 }
