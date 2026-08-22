@@ -61,19 +61,6 @@ public:
     {
         return mModel.name;
     }
-    const char *DumpCurrentState()
-    {
-        switch (mCurrentState) {
-        case eStart:
-            return "eStart";
-        case eError:
-            return "eError";
-        case eItsMe:
-            return "eItsMe";
-        default:
-            return "OK";
-        }
-    }
 
 protected:
     int mCurrentState = eStart;
