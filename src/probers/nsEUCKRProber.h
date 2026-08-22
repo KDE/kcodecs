@@ -40,6 +40,7 @@ protected:
     EUCKRDistributionAnalysis mDistributionAnalyser;
 
     char mLastChar[2] = {0};
+    int64_t mLastStart = -1;
 };
 }
 

@@ -46,16 +46,9 @@ public:
         // for each byte we get its class, if it is first byte, we also get byte length
         const uint8_t index = static_cast<uint8_t>(c);
         unsigned int byteCls = mModel.classTable[index];
-        if (mCurrentState == eStart) {
-            mCurrentCharLen = mModel.charLenTable[byteCls];
-        }
         // from byte's class and stateTable, we get its next state
         mCurrentState = mModel.stateTable[mCurrentState * mModel.classFactor + byteCls];
         return mCurrentState;
-    }
-    unsigned int GetCurrentCharLen(void)
-    {
-        return mCurrentCharLen;
     }
     const char *GetCodingStateMachine()
     {
@@ -64,7 +57,6 @@ public:
 
 protected:
     int mCurrentState = eStart;
-    unsigned int mCurrentCharLen = 0;
 
     const SMModel &mModel;
 };

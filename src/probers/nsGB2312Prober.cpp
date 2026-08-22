@@ -27,7 +27,7 @@ nsProbingState nsGB18030Prober::HandleData(const char *aBuf, unsigned int aLen)
             break;
         }
         if (codingState == eStart) {
-            unsigned int charLen = mCodingSM->GetCurrentCharLen();
+            const int64_t charLen = i - mLastStart;
 
             if (i == 0) {
                 mLastChar[1] = aBuf[0];
@@ -35,10 +35,12 @@ nsProbingState nsGB18030Prober::HandleData(const char *aBuf, unsigned int aLen)
             } else {
                 mDistributionAnalyser.HandleOneChar(aBuf + i - 1, charLen);
             }
+            mLastStart = i;
         }
     }
 
     mLastChar[0] = aBuf[aLen - 1];
+    mLastStart -= aLen;
 
     if (mState == eDetecting) {
         if (mDistributionAnalyser.GotEnoughData() && GetConfidence() > SHORTCUT_THRESHOLD) {

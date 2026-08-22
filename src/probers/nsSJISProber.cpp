@@ -36,7 +36,8 @@ nsProbingState nsSJISProber::HandleData(const char *aBuf, unsigned int aLen)
             break;
         }
         if (codingState == eStart) {
-            unsigned int charLen = mCodingSM->GetCurrentCharLen();
+            const int64_t charLen = i - mLastStart;
+
             if (i == 0) {
                 mLastChar[1] = aBuf[0];
                 mContextAnalyser.HandleOneChar(mLastChar + 2 - charLen, charLen);
@@ -45,10 +46,12 @@ nsProbingState nsSJISProber::HandleData(const char *aBuf, unsigned int aLen)
                 mContextAnalyser.HandleOneChar(aBuf + i + 1 - charLen, charLen);
                 mDistributionAnalyser.HandleOneChar(aBuf + i - 1, charLen);
             }
+            mLastStart = i;
         }
     }
 
     mLastChar[0] = aBuf[aLen - 1];
+    mLastStart -= aLen;
 
     if (mState == eDetecting) {
         if (mContextAnalyser.GotEnoughData() && GetConfidence() > SHORTCUT_THRESHOLD) {
