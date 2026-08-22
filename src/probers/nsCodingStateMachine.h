@@ -30,7 +30,6 @@ struct SMModel {
     nsClassTable classTable = {};
     unsigned int classFactor = {};
     nsStateTable stateTable = {};
-    const unsigned int *charLenTable = nullptr;
     const char *name = nullptr;
 };
 

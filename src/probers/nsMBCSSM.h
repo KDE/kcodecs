@@ -66,13 +66,10 @@ static constexpr std::array<const unsigned char, 20> BIG5_st{
     // clang-format on
 };
 
-static const unsigned int Big5CharLenTable[] = {0, 1, 1, 2, 0};
-
 static constexpr SMModel Big5SMModel{
     BIG5_cls,
     5,
     BIG5_st,
-    Big5CharLenTable,
     "Big5",
 };
 
@@ -125,13 +122,10 @@ static constexpr std::array<const unsigned char, 36> EUCJP_st{
     // clang-format on
 };
 
-static const unsigned int EUCJPCharLenTable[] = {2, 2, 2, 3, 1, 0};
-
 static constexpr SMModel EUCJPSMModel{
     EUCJP_cls,
     6,
     EUCJP_st,
-    EUCJPCharLenTable,
     "EUC-JP",
 };
 
@@ -182,13 +176,10 @@ static constexpr std::array<const unsigned char, 16> EUCKR_st{
     // clang-format on
 };
 
-static const unsigned int EUCKRCharLenTable[] = {0, 1, 2, 0};
-
 static constexpr SMModel EUCKRSMModel{
     EUCKR_cls,
     4,
     EUCKR_st,
-    EUCKRCharLenTable,
     "EUC-KR",
 };
 
@@ -242,18 +233,10 @@ static constexpr std::array<const unsigned char, 42> GB18030_st{
     // clang-format on
 };
 
-// To be accurate, the length of class 6 can be either 2 or 4.
-// But it is not necessary to discriminate between the two since
-// it is used for frequency analysis only, and we are validating
-// each code range there as well. So it is safe to set it to be
-// 2 here.
-static const unsigned int GB18030CharLenTable[] = {0, 1, 1, 1, 1, 1, 2};
-
 static constexpr SMModel GB18030SMModel{
     GB18030_cls,
     7,
     GB18030_st,
-    GB18030CharLenTable,
     "GB18030",
 };
 
@@ -308,13 +291,10 @@ static constexpr std::array<const unsigned char, 24> SJIS_st{
     // clang-format on
 };
 
-static const unsigned int SJISCharLenTable[] = {0, 1, 1, 2, 0, 0};
-
 static constexpr SMModel SJISSMModel{
     SJIS_cls,
     6,
     SJIS_st,
-    SJISCharLenTable,
     "Shift_JIS",
 };
 
@@ -375,13 +355,10 @@ static constexpr std::array<const unsigned char, 88> UCS2BE_st{
     // clang-format on
 };
 
-static const unsigned int UCS2BECharLenTable[] = {2, 2, 2, 0, 2, 2, 4, 4};
-
 static constexpr SMModel UCS2BESMModel{
     UCS2_cls,
     8,
     UCS2BE_st,
-    UCS2BECharLenTable,
     "UTF-16BE",
 };
 
@@ -404,13 +381,10 @@ static constexpr std::array<const unsigned char, 88> UCS2LE_st{
     // clang-format on
 };
 
-static const unsigned int UCS2LECharLenTable[] = {2, 2, 2, 2, 2, 2, 4, 4};
-
 static constexpr SMModel UCS2LESMModel{
     UCS2_cls,
     8,
     UCS2LE_st,
-    UCS2LECharLenTable,
     "UTF-16LE",
 };
 
@@ -469,13 +443,10 @@ static constexpr std::array<const unsigned char, 10 * 12> UTF8_st{
     // clang-format on
 };
 
-static const unsigned int UTF8CharLenTable[] = {0, 1, 1, 1, 1, 1, 2, 3, 3, 3, 4, 4};
-
 static constexpr SMModel UTF8SMModel{
     UTF8_cls,
     12,
     UTF8_st,
-    UTF8CharLenTable,
     "UTF-8",
 };
 }

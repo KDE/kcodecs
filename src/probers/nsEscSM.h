@@ -61,13 +61,10 @@ static constexpr std::array<const unsigned char, 42> HZ_st{
     // clang-format on
 };
 
-static const unsigned int HZCharLenTable[] = {0, 0, 0, 0, 0, 0};
-
 static constexpr SMModel HZSMModel{
     HZ_cls,
     6,
     HZ_st,
-    HZCharLenTable,
     "HZ-GB-2312",
 };
 
@@ -122,13 +119,10 @@ static constexpr std::array<const unsigned char, 70> ISO2022JP_st{
     // clang-format on
 };
 
-static const unsigned int ISO2022JPCharLenTable[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
 static constexpr SMModel ISO2022JPSMModel = {
     ISO2022JP_cls,
     10,
     ISO2022JP_st,
-    ISO2022JPCharLenTable,
     "ISO-2022-JP",
 };
 }
