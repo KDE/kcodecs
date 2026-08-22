@@ -6,12 +6,12 @@
 
 #include "nsMBCSGroupProber.h"
 
+#include "StateMachineProber.h"
 #include "nsBig5Prober.h"
 #include "nsEUCJPProber.h"
 #include "nsEUCKRProber.h"
 #include "nsGB2312Prober.h"
 #include "nsSJISProber.h"
-#include "nsUtfProber.h"
 
 #include <format>
 
