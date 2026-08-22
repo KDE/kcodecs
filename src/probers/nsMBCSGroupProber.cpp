@@ -164,7 +164,7 @@ float nsMBCSGroupProber::GetConfidence(void)
     case eFoundIt:
         return 0.99f;
     case eNotMe:
-        return 0.01f;
+        return 0.0f;
     default:
         for (unsigned int i = 0; i < NUM_OF_PROBERS; ++i) {
             if (!mIsActive[i]) {

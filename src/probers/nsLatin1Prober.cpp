@@ -109,7 +109,7 @@ nsProbingState nsLatin1Prober::HandleData(const char *aBuf, unsigned int aLen)
 float nsLatin1Prober::GetConfidence(void)
 {
     if (mState == eNotMe) {
-        return 0.01f;
+        return 0.0f;
     }
 
     float confidence;

@@ -134,7 +134,7 @@ float nsSBCSGroupProber::GetConfidence(void)
     case eFoundIt:
         return 0.99f; // sure yes
     case eNotMe:
-        return 0.01f; // sure no
+        return 0.0f; // sure no
     default:
         for (unsigned int i = 0; i < NUM_OF_SBCS_PROBERS; ++i) {
             if (!mIsActive[i]) {

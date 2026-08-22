@@ -125,7 +125,7 @@ nsProbingState nsHebrewProber::HandleData(const char *aBuf, unsigned int aLen)
 float nsHebrewProber::GetConfidence()
 {
     if (GetState() == eNotMe) {
-        return 0.01f;
+        return 0.0f;
     }
 
     int finalsub = mFinalCharLogicalScore - mFinalCharVisualScore;
