@@ -4,26 +4,29 @@
     SPDX-License-Identifier: MIT
 */
 
-#ifndef NSUTFPROBER_H
-#define NSUTFPROBER_H
+#ifndef nsStateMachineProber_h
+#define nsStateMachineProber_h
 
 #include "nsCharSetProber.h"
 #include "nsCodingStateMachine.h"
 
-enum UtfProberType : uint8_t {
+namespace kencodingprober
+{
+enum class SMProberType : uint8_t {
     Utf8 = 0,
     Utf16LE = 1,
     Utf16BE = 2,
 };
 
-namespace kencodingprober
-{
-template<UtfProberType MODEL>
-class KCODECS_NO_EXPORT nsUtfProber : public nsCharSetProber
+template<SMProberType MODEL>
+constexpr const SMModel &modelForProber();
+
+template<SMProberType MODEL>
+class KCODECS_NO_EXPORT StateMachineProber : public nsCharSetProber
 {
 public:
-    nsUtfProber() = default;
-    ~nsUtfProber() override = default;
+    StateMachineProber() = default;
+    ~StateMachineProber() override = default;
 
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
 
@@ -41,10 +44,10 @@ protected:
     nsSMState mCodingState = 0;
 };
 
-using nsUtf8Prober = nsUtfProber<UtfProberType::Utf8>;
-using nsUtf16LEProber = nsUtfProber<UtfProberType::Utf16LE>;
-using nsUtf16BEProber = nsUtfProber<UtfProberType::Utf16BE>;
+using nsUtf8Prober = StateMachineProber<SMProberType::Utf8>;
+using nsUtf16LEProber = StateMachineProber<SMProberType::Utf16LE>;
+using nsUtf16BEProber = StateMachineProber<SMProberType::Utf16BE>;
 
 } // namespace kencodingprober
 
-#endif // NSUTFPROBER_H
+#endif // nsStateMachineProber_h
