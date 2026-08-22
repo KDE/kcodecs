@@ -59,6 +59,6 @@ float nsBig5Prober::GetConfidence(void)
 {
     float distribCf = mDistributionAnalyser.GetConfidence();
 
-    return (float)distribCf;
+    return distribCf;
 }
 }

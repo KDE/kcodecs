@@ -17,8 +17,7 @@
 namespace kencodingprober
 {
 //---------------------------------------------------------------------
-#define SHORTCUT_THRESHOLD (float)0.95
-#define MINIMUM_THRESHOLD (float)0.20
+#define MINIMUM_THRESHOLD 0.20f
 
 nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aLen)
 {
@@ -99,7 +98,7 @@ const char *nsUniversalDetector::GetCharSetName()
     }
     switch (mInputState) {
     case eHighbyte: {
-        float maxProberConfidence = (float)0.0;
+        float maxProberConfidence = 0.0f;
         int maxProber = 0;
 
         for (int i = 0; i < NUM_OF_CHARSET_PROBERS; i++) {
@@ -135,7 +134,7 @@ float nsUniversalDetector::GetConfidence()
     }
     switch (mInputState) {
     case eHighbyte: {
-        float maxProberConfidence = (float)0.0;
+        float maxProberConfidence = 0.0f;
         int maxProber = 0;
 
         for (int i = 0; i < NUM_OF_CHARSET_PROBERS; i++) {

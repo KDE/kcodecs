@@ -346,15 +346,13 @@ const char jp2CharContext[83][83] = {
 
 #define MINIMUM_DATA_THRESHOLD 4
 
-#define DONT_KNOW (float)-1
-
 float JapaneseContextAnalysis::GetConfidence()
 {
     // This is just one way to calculate confidence. It works well for me.
     if (mTotalRel > MINIMUM_DATA_THRESHOLD) {
-        return ((float)(mTotalRel - mRelSample[0])) / mTotalRel;
+        return static_cast<float>(mTotalRel - mRelSample[0]) / mTotalRel;
     } else {
-        return (float)DONT_KNOW;
+        return 0.0f;
     }
 }
 }

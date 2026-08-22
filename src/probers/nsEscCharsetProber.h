@@ -31,7 +31,7 @@ public:
     }
     float GetConfidence(void) override
     {
-        return (float)0.99;
+        return 0.99f;
     }
 
 protected:

@@ -20,7 +20,7 @@ typedef enum {
     eNotMe = 2, // Negative answer
 } nsProbingState;
 
-#define SHORTCUT_THRESHOLD (float)0.95
+#define SHORTCUT_THRESHOLD 0.95f
 
 class KCODECS_NO_EXPORT nsCharSetProber
 {

@@ -57,6 +57,6 @@ float nsGB18030Prober::GetConfidence(void)
 {
     float distribCf = mDistributionAnalyser.GetConfidence();
 
-    return (float)distribCf;
+    return distribCf;
 }
 }
