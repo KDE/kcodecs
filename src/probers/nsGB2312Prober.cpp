@@ -4,11 +4,6 @@
     SPDX-License-Identifier: MIT
 */
 
-// for S-JIS encoding, observe characteristic:
-// 1, kana character (or hankaku?) often have high frequency of appearance
-// 2, kana character often exist in group
-// 3, certain combination of kana is never used in japanese language
-
 #include "nsGB2312Prober.h"
 #include "nsMBCSSM.h"
 
