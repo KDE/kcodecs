@@ -5,7 +5,7 @@
 */
 
 #include "UnicodeGroupProber.h"
-#include "nsUtfProber.h"
+#include "StateMachineProber.h"
 
 #include <format>
 
