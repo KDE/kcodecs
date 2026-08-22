@@ -47,12 +47,11 @@ nsSBCSGroupProber::nsSBCSGroupProber()
 const char *nsSBCSGroupProber::GetCharSetName()
 {
     // if we have no answer yet
-    if (mBestGuess == -1) {
+    if (mBestGuess >= mProbers.size()) {
         GetConfidence();
         // no charset seems positive
-        if (mBestGuess == -1)
-        // we will use default.
-        {
+        if (mBestGuess >= mProbers.size()) {
+            // we will use default.
             mBestGuess = 0;
         }
     }
@@ -68,10 +67,10 @@ nsProbingState nsSBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
     char *newBuf1 = nullptr;
     unsigned int newLen1 = 0;
 
-    int activeNum = NUM_OF_SBCS_PROBERS;
+    int activeNum = mProbers.size();
 
     // The UTF16 probers need unmangled data
-    for (unsigned int i = NUM_OF_SBCS_PROBERS - 2; i < NUM_OF_SBCS_PROBERS; ++i) {
+    for (size_t i = mProbers.size() - 2; i < mProbers.size(); i++) {
         if (!mIsActive[i]) {
             activeNum--;
             continue;
@@ -100,7 +99,7 @@ nsProbingState nsSBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
         goto done; // Nothing to see here, move on.
     }
 
-    for (unsigned int i = 0; i < NUM_OF_SBCS_PROBERS - 2; ++i) {
+    for (size_t i = 0; i < mProbers.size() - 2; i++) {
         if (!mIsActive[i]) {
             activeNum--;
             continue;
@@ -136,7 +135,7 @@ float nsSBCSGroupProber::GetConfidence(void)
     case eNotMe:
         return 0.0f; // sure no
     default:
-        for (unsigned int i = 0; i < NUM_OF_SBCS_PROBERS; ++i) {
+        for (size_t i = 0; i < mProbers.size(); i++) {
             if (!mIsActive[i]) {
                 continue;
             }
@@ -155,7 +154,7 @@ std::string nsSBCSGroupProber::StatusOutput(uint8_t indent)
     indent += 2;
     std::string output{"  SBCS Group Prober ----"};
     GetConfidence();
-    for (int i = 0; i < NUM_OF_SBCS_PROBERS; i++) {
+    for (size_t i = 0; i < mProbers.size(); i++) {
         char state = !mIsActive[i] ? '-' : (i == mBestGuess) ? '*' : ' ';
         output += '\n' + std::string(indent, ' ');
         output += std::format("{} #{:02}  SBCS: ", state, i);

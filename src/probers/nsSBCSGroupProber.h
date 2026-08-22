@@ -39,7 +39,7 @@ protected:
     nsProbingState mState = eDetecting;
     std::array<std::unique_ptr<nsCharSetProber>, NUM_OF_SBCS_PROBERS> mProbers = {nullptr};
     std::array<bool, NUM_OF_SBCS_PROBERS> mIsActive = {false};
-    int mBestGuess = -1;
+    size_t mBestGuess = mProbers.size();
 };
 }
 

@@ -27,9 +27,9 @@ UnicodeGroupProber::UnicodeGroupProber()
 
 const char *UnicodeGroupProber::GetCharSetName()
 {
-    if (mBestGuess == -1) {
+    if (mBestGuess >= mProbers.size()) {
         GetConfidence();
-        if (mBestGuess == -1) {
+        if (mBestGuess >= mProbers.size()) {
             // Default to UTF-8
             mBestGuess = 0;
         }
@@ -43,9 +43,9 @@ nsProbingState UnicodeGroupProber::HandleData(const char *aBuf, unsigned int aLe
         return mState;
     }
 
-    int activeNum = NUM_OF_UTF_PROBERS;
+    int activeNum = mProbers.size();
 
-    for (unsigned int i = 0; i < NUM_OF_UTF_PROBERS; ++i) {
+    for (size_t i = 0; i < mProbers.size(); i++) {
         if (!mIsActive[i]) {
             continue;
         }
@@ -76,7 +76,7 @@ float UnicodeGroupProber::GetConfidence()
     case eNotMe:
         return 0.00f; // sure no
     default:
-        for (unsigned int i = 0; i < NUM_OF_UTF_PROBERS; ++i) {
+        for (size_t i = 0; i < mProbers.size(); i++) {
             if (!mIsActive[i]) {
                 continue;
             }
@@ -95,7 +95,7 @@ std::string UnicodeGroupProber::StatusOutput(uint8_t indent)
     indent += 2;
     std::string output{"  Unicode Group Prober ----"};
     GetConfidence();
-    for (int i = 0; i < NUM_OF_UTF_PROBERS; i++) {
+    for (size_t i = 0; i < mProbers.size(); i++) {
         char state = !mIsActive[i] ? '-' : (i == mBestGuess) ? '*' : ' ';
         output += '\n' + std::string(indent, ' ');
         output += std::format("{} #{:02}   UTF: ", state, i);

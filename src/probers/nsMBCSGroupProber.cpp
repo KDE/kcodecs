@@ -85,9 +85,9 @@ nsMBCSGroupProber::nsMBCSGroupProber()
 
 const char *nsMBCSGroupProber::GetCharSetName()
 {
-    if (mBestGuess == -1) {
+    if (mBestGuess >= mProbers.size()) {
         GetConfidence();
-        if (mBestGuess == -1) {
+        if (mBestGuess >= mProbers.size()) {
             mBestGuess = 0;
         }
     }
@@ -122,7 +122,7 @@ nsProbingState nsMBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
     }
 
     // The UTF16 probers need unmangled data
-    for (unsigned int i = NUM_OF_PROBERS - 2; i < NUM_OF_PROBERS; ++i) {
+    for (size_t i = mProbers.size() - 2; i < mProbers.size(); i++) {
         if (!mIsActive[i]) {
             continue;
         }
@@ -132,7 +132,7 @@ nsProbingState nsMBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
         }
     }
 
-    for (unsigned int i = 0; i < NUM_OF_PROBERS - 2; ++i) {
+    for (size_t i = 0; i < mProbers.size() - 2; i++) {
         if (!mIsActive[i]) {
             continue;
         }
@@ -166,7 +166,7 @@ float nsMBCSGroupProber::GetConfidence(void)
     case eNotMe:
         return 0.0f;
     default:
-        for (unsigned int i = 0; i < NUM_OF_PROBERS; ++i) {
+        for (size_t i = 0; i < mProbers.size(); i++) {
             if (!mIsActive[i]) {
                 continue;
             }
@@ -185,7 +185,7 @@ std::string nsMBCSGroupProber::StatusOutput(uint8_t indent)
     indent += 2;
     std::string output{"  MBCS Group Prober ----"};
     GetConfidence();
-    for (int i = 0; i < NUM_OF_PROBERS; i++) {
+    for (size_t i = 0; i < mProbers.size(); i++) {
         char state = !mIsSelected[i] ? '.' : !mIsActive[i] ? '-' : (i == mBestGuess) ? '*' : ' ';
         output += '\n' + std::string(indent, ' ');
         output += std::format("{} #{:02}  MBCS: ", state, i);

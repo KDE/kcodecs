@@ -50,8 +50,8 @@ protected:
     std::array<std::unique_ptr<nsCharSetProber>, NUM_OF_PROBERS> mProbers;
     std::array<bool, NUM_OF_PROBERS> mIsActive = {false};
     const std::array<bool, NUM_OF_PROBERS> mIsSelected = {true};
-    int mBestGuess = -1;
     unsigned int mActiveNum = 0;
+    size_t mBestGuess = mProbers.size();
 };
 }
 
