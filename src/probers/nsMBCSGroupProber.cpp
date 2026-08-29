@@ -20,32 +20,39 @@ namespace kencodingprober
 
 namespace
 {
-using Prober = nsMBCSGroupProber::Prober;
+using Prober = nsCharSetProber::Prober;
+constexpr std::array<Prober, NUM_OF_PROBERS> allProbers{{
+    Prober::Utf8,
+    Prober::SJIS,
+    Prober::EUCJP,
+    Prober::GB18030,
+    Prober::EUCKR,
+    Prober::Big5,
+    Prober::Utf16LE,
+    Prober::Utf16BE,
+}};
 constexpr std::array<bool, NUM_OF_PROBERS> fromSelectedList(std::span<const Prober> selected)
 {
     std::array<bool, NUM_OF_PROBERS> isSelected{false};
     for (auto p : selected) {
-        const auto i = static_cast<std::underlying_type_t<Prober>>(p);
-        if (i >= NUM_OF_PROBERS) {
-            continue;
+        for (uint8_t index = 0; index < allProbers.size(); index++) {
+            if (allProbers[index] != p) {
+                continue;
+            }
+            isSelected[index] = true;
+            break;
         }
-        isSelected[i] = true;
     }
     return isSelected;
 }
-static_assert(fromSelectedList({})[0] == false);
-static_assert(fromSelectedList({})[5] == false);
-static_assert(fromSelectedList(std::array{Prober::Utf8})[0] == true);
-static_assert(fromSelectedList(std::array{Prober::Utf8})[5] == false);
+static_assert(fromSelectedList({}) == std::array<bool, NUM_OF_PROBERS>{false});
+static_assert(fromSelectedList(allProbers) == std::array<bool, NUM_OF_PROBERS>{true, true, true, true, true, true, true, true});
+static_assert(fromSelectedList(std::array{Prober::Utf8}) == std::array<bool, NUM_OF_PROBERS>{true, false});
+static_assert(fromSelectedList(std::array{Prober::HZ}) == std::array<bool, NUM_OF_PROBERS>{false});
+static_assert(fromSelectedList(std::array{Prober::KOI8_R}) == std::array<bool, NUM_OF_PROBERS>{false});
+static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5}) == std::array<bool, NUM_OF_PROBERS>{false, true, false, false, false, true, false});
 static_assert(fromSelectedList(std::array{Prober::Utf16LE})[6] == true);
 static_assert(fromSelectedList(std::array{Prober::Utf16BE})[7] == true);
-static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[0] == false);
-static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[1] == true);
-static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[2] == false);
-static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[3] == false);
-static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[4] == false);
-static_assert(fromSelectedList(std::array{Prober::SJIS, Prober::Big5})[5] == true);
-
 } // namespace <anonymous>
 
 nsMBCSGroupProber::nsMBCSGroupProber(std::span<const Prober> selected)
@@ -70,16 +77,7 @@ nsMBCSGroupProber::nsMBCSGroupProber(std::span<const Prober> selected)
 }
 
 nsMBCSGroupProber::nsMBCSGroupProber()
-    : nsMBCSGroupProber(std::array{
-          Prober::Utf8,
-          Prober::SJIS,
-          Prober::EUCJP,
-          Prober::GB18030,
-          Prober::EUCKR,
-          Prober::Big5,
-          Prober::Utf16LE,
-          Prober::Utf16BE,
-      })
+    : nsMBCSGroupProber(allProbers)
 {
 }
 
