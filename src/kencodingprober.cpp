@@ -19,7 +19,7 @@
 
 namespace
 {
-using Prober = kencodingprober::nsMBCSGroupProber::Prober;
+using Prober = kencodingprober::nsCharSetProber::Prober;
 static const std::array ChineseMSBCProbers{
     Prober::Utf8,
     Prober::GB18030,
