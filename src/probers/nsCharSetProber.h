@@ -25,6 +25,17 @@ typedef enum {
 class KCODECS_NO_EXPORT nsCharSetProber
 {
 public:
+    enum class Prober : uint8_t {
+        Utf8 = 0,
+        SJIS = 1,
+        EUCJP = 2,
+        GB18030 = 3,
+        EUCKR = 4,
+        Big5 = 5,
+        Utf16LE = 6,
+        Utf16BE = 7,
+    };
+
     virtual ~nsCharSetProber() = default;
     virtual const char *GetCharSetName() = 0;
     virtual nsProbingState HandleData(const char *aBuf, unsigned int aLen) = 0;
