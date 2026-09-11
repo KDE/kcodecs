@@ -13,14 +13,12 @@
 #include <array>
 #include <memory>
 
-#define NUM_OF_CHARSET_PROBERS 5
-
 namespace kencodingprober
 {
 class KCODECS_NO_EXPORT nsUniversalDetector : public nsCharSetProber
 {
 public:
-    nsUniversalDetector() = default;
+    nsUniversalDetector();
     ~nsUniversalDetector() override = default;
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
     const char *GetCharSetName() override;
@@ -36,7 +34,7 @@ protected:
     char mLastChar = '\0';
     const char *mDetectedCharset = nullptr;
 
-    std::array<std::unique_ptr<nsCharSetProber>, NUM_OF_CHARSET_PROBERS> mCharSetProbers = {};
+    std::array<std::unique_ptr<nsCharSetProber>, 8> mCharSetProbers = {};
 };
 }
 
