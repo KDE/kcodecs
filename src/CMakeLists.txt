@@ -103,7 +103,7 @@ target_include_directories(KF6Codecs INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTAL
 target_compile_features(KF6Codecs PUBLIC cxx_std_20)
 target_link_libraries(KF6Codecs PUBLIC Qt6::Core)
 
-ecm_generate_headers(KCodecs_HEADERS
+ecm_generate_headers(KCodecs_CamelCase_HEADERS
   HEADER_NAMES
   KCharsets
   KCodecs
@@ -117,6 +117,7 @@ install(TARGETS KF6Codecs EXPORT KF6CodecsTargets ${KF_INSTALL_TARGETS_DEFAULT_A
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/kcodecs_export.h
   ${KCodecs_HEADERS}
+  ${KCodecs_CamelCase_HEADERS}
   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/KCodecs COMPONENT Devel
 )
 
@@ -127,3 +128,16 @@ ecm_qt_install_logging_categories(
 )
 
 ecm_generate_qdoc(KF6Codecs kcodecs.qdocconf)
+
+ecm_add_installed_library_check(KF6Codecs
+    PACKAGE_NAME "KF6Codecs"
+    PACKAGE_TARGET_NAMESPACE "KF6::"
+)
+
+ecm_installed_library_check_include_strings(KF6Codecs
+    HEADERS ${KCodecs_CamelCase_HEADERS}
+)
+
+ecm_installed_library_check_version_preprocessor_macros(KF6Codecs
+    PREFIX KCODECS
+)

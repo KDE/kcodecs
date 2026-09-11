@@ -26,6 +26,7 @@ include(CMakePackageConfigHelpers)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 include(ECMGenerateQDoc)
+include(ECMInstalledLibraryCheck)
 
 include(ECMPoQmTools)
 
