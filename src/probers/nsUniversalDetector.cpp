@@ -39,26 +39,109 @@ constexpr std::array allMBCSProbers{
     nsCharSetProber::Prober::EUCKR,
     nsCharSetProber::Prober::Big5,
 };
+
+constexpr auto fromSelectedList(std::span<const nsCharSetProber::Prober> selected)
+{
+    std::array<bool, 8> isSelected{false};
+    for (auto p : selected) {
+        if (p == nsCharSetProber::Prober::Utf8) {
+            isSelected[0] = true;
+        } else if (auto it = std::find(allMBCSProbers.begin(), allMBCSProbers.end(), p); it != allMBCSProbers.end()) {
+            isSelected[1] = true;
+        } else if (auto it2 = std::find(allSBCSProbers.begin(), allSBCSProbers.end(), p); it2 != allSBCSProbers.end()) {
+            isSelected[2] = true;
+        } else if (p == nsCharSetProber::Prober::Windows1252_Latin1) {
+            isSelected[3] = true;
+        } else if (p == nsCharSetProber::Prober::ISO2022_JP) {
+            isSelected[4] = true;
+        } else if (p == nsCharSetProber::Prober::HZ) {
+            isSelected[5] = true;
+        } else if (p == nsCharSetProber::Prober::Utf16BE) {
+            isSelected[6] = true;
+        } else if (p == nsCharSetProber::Prober::Utf16LE) {
+            isSelected[7] = true;
+        }
+    }
+    return isSelected;
+}
 } // namespace <anonymous>
+
+class ProberState
+{
+    struct Entry {
+        const bool selected = true;
+        bool active = true;
+        std::unique_ptr<nsCharSetProber> prober = nullptr;
+    };
+
+    // Initialization helper
+    static const auto createStateList(std::span<const nsCharSetProber::Prober> selected)
+    {
+        auto isSelected = fromSelectedList(selected);
+        std::array<Entry, 8> states{
+            Entry{isSelected[0], false, std::make_unique<nsUtf8Prober>()},
+            Entry{isSelected[1], false, std::make_unique<nsMBCSGroupProber>(selected)},
+            Entry{isSelected[2], false, std::make_unique<nsSBCSGroupProber>(selected)},
+            Entry{isSelected[3], false, std::make_unique<nsLatin1Prober>()},
+            Entry{isSelected[4], false, std::make_unique<StateMachineProber<SMProberType::ISO2022_JP>>()},
+            Entry{isSelected[5], false, std::make_unique<StateMachineProber<SMProberType::HZ>>()},
+            Entry{isSelected[6], true, std::make_unique<nsUtf16BEProber>()},
+            Entry{isSelected[7], true, std::make_unique<nsUtf16LEProber>()},
+        };
+        return states;
+    }
+
+public:
+    explicit ProberState(std::span<const nsCharSetProber::Prober> selected)
+        : mStates{createStateList(selected)}
+    {
+    }
+
+    ProberState()
+        : mStates{
+              Entry{true, false, std::make_unique<nsUtf8Prober>()},
+              Entry{true, false, std::make_unique<nsMBCSGroupProber>(allMBCSProbers)},
+              Entry{true, false, std::make_unique<nsSBCSGroupProber>(allSBCSProbers)},
+              Entry{true, false, std::make_unique<nsLatin1Prober>()},
+              Entry{true, false, std::make_unique<StateMachineProber<SMProberType::ISO2022_JP>>()},
+              Entry{true, false, std::make_unique<StateMachineProber<SMProberType::HZ>>()},
+              Entry{true, true, std::make_unique<nsUtf16BEProber>()},
+              Entry{true, true, std::make_unique<nsUtf16LEProber>()},
+          }
+    {
+    }
+
+    nsProbingState ProcessInput(const char *aBuf, unsigned int aLen);
+    const char *GetCharSetName();
+    float GetConfidence(void);
+
+    std::array<Entry, 8> mStates;
+    bool mDone = false;
+    bool mGotData = false;
+    bool mHas8Bit = false;
+    char mLastChar = '\0';
+    const char *mDetectedCharset = nullptr;
+};
 
 //---------------------------------------------------------------------
 #define MINIMUM_THRESHOLD 0.20f
 
+nsUniversalDetector::nsUniversalDetector(std::span<const nsCharSetProber::Prober> selected)
+    : mProberState{std::make_unique<ProberState>(selected)}
+{
+}
+
 nsUniversalDetector::nsUniversalDetector()
-    : mCharSetProbers{
-          nullptr, // UTF-8
-          nullptr, // MBCS
-          nullptr, // SBCS
-          nullptr, // Latin1
-          nullptr, // ISO-2022-JP
-          nullptr, // HZ
-          std::make_unique<nsUtf16BEProber>(),
-          std::make_unique<nsUtf16LEProber>(),
-      }
+    : mProberState{std::make_unique<ProberState>()}
 {
 }
 
 nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aLen)
+{
+    return mProberState->ProcessInput(aBuf, aLen);
+}
+
+nsProbingState ProberState::ProcessInput(const char *aBuf, unsigned int aLen)
 {
     if (mDone) {
         return eFoundIt;
@@ -87,29 +170,31 @@ nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aL
 
         if (mHas8Bit) {
             // kill mEscCharSetProber if it is active
-            mCharSetProbers[4] = nullptr;
-            mCharSetProbers[5] = nullptr;
+            mStates[4].active = false;
+            mStates[5].active = false;
 
             // start multibyte and singlebyte charset prober
-            mCharSetProbers[0] = std::make_unique<nsUtf8Prober>();
-            mCharSetProbers[1] = std::make_unique<nsMBCSGroupProber>(allMBCSProbers);
-            mCharSetProbers[2] = std::make_unique<nsSBCSGroupProber>(allSBCSProbers);
-            mCharSetProbers[3] = std::make_unique<nsLatin1Prober>();
+            mStates[0].active = mStates[0].selected;
+            mStates[1].active = mStates[1].selected;
+            mStates[2].active = mStates[2].selected;
+            mStates[3].active = mStates[3].selected;
         } else {
-            if (hasEsc && !mCharSetProbers[4]) {
-                mCharSetProbers[4] = std::make_unique<StateMachineProber<SMProberType::ISO2022_JP>>();
+            if (hasEsc) {
+                mStates[4].active = mStates[4].selected;
             }
-            if (hasHZ && !mCharSetProbers[5]) {
-                mCharSetProbers[5] = std::make_unique<StateMachineProber<SMProberType::HZ>>();
+            if (hasHZ) {
+                mStates[5].active = mStates[5].selected;
             }
         }
     }
 
-    for (auto &prober : mCharSetProbers) {
-        if (prober) {
-            if (const auto st = prober->HandleData(aBuf, aLen); st == eFoundIt) {
+    for (auto &state : mStates) {
+        if (state.active) {
+            if (const auto st = state.prober->HandleData(aBuf, aLen); st == eFoundIt) {
                 mDone = true;
-                mDetectedCharset = prober->GetCharSetName();
+                mDetectedCharset = state.prober->GetCharSetName();
+            } else if (st == eNotMe) {
+                state.active = false;
             }
         }
     }
@@ -120,6 +205,11 @@ nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aL
 //---------------------------------------------------------------------
 const char *nsUniversalDetector::GetCharSetName()
 {
+    return mProberState->GetCharSetName();
+}
+
+const char *ProberState::GetCharSetName()
+{
     if (mDetectedCharset) {
         return mDetectedCharset;
     } else if (!mHas8Bit) {
@@ -128,27 +218,32 @@ const char *nsUniversalDetector::GetCharSetName()
 
     const char *bestCharSet = nullptr;
     float maxProberConfidence = 0.0f;
-    for (const auto &prober : mCharSetProbers) {
-        if (prober) {
-            float proberConfidence = prober->GetConfidence();
+    for (const auto &state : mStates) {
+        if (state.active) {
+            float proberConfidence = state.prober->GetConfidence();
             if (proberConfidence > maxProberConfidence) {
                 maxProberConfidence = proberConfidence;
-                bestCharSet = prober->GetCharSetName();
+                bestCharSet = state.prober->GetCharSetName();
             }
         }
     }
     // do not report anything because we are not confident of it, that's in fact a negative answer
     if (maxProberConfidence > MINIMUM_THRESHOLD) {
         return bestCharSet;
-    } else if (mCharSetProbers[0] && mCharSetProbers[0]->GetState() != eNotMe) {
+    } else if (mStates[0].prober && mStates[0].prober->GetState() != eNotMe) {
         // Default to UTF-8, but only if valid
-        return mCharSetProbers[0]->GetCharSetName();
+        return mStates[0].prober->GetCharSetName();
     }
     return bestCharSet;
 }
 
 //---------------------------------------------------------------------
 float nsUniversalDetector::GetConfidence()
+{
+    return mProberState->GetConfidence();
+}
+
+float ProberState::GetConfidence()
 {
     if (!mGotData) {
         // we haven't got any data yet, return immediately
@@ -162,9 +257,9 @@ float nsUniversalDetector::GetConfidence()
     }
 
     float maxProberConfidence = 0.0f;
-    for (const auto &prober : mCharSetProbers) {
-        if (prober) {
-            float proberConfidence = prober->GetConfidence();
+    for (const auto &state : mStates) {
+        if (state.active) {
+            float proberConfidence = state.prober->GetConfidence();
             if (proberConfidence > maxProberConfidence) {
                 maxProberConfidence = proberConfidence;
             }
@@ -179,7 +274,7 @@ float nsUniversalDetector::GetConfidence()
 
 nsProbingState nsUniversalDetector::GetState()
 {
-    if (mDone) {
+    if (mProberState->mDone) {
         return eFoundIt;
     } else {
         return eDetecting;
@@ -189,13 +284,12 @@ nsProbingState nsUniversalDetector::GetState()
 std::string nsUniversalDetector::StatusOutput(uint8_t indent)
 {
     indent += 2;
-    std::string output{"  Universal Prober ----"};
-    for (const auto &prober : mCharSetProbers) {
-        if (!prober) {
-            continue;
-        }
+    std::string output = std::format("  Universal Prober ---- (7Bit: {})", mProberState->mHas8Bit ? "0" : "1");
+    for (const auto &prober : (*mProberState).mStates) {
+        char state = !prober.selected ? '.' : !prober.active ? '-' : ' ';
         output += '\n' + std::string(indent, ' ');
-        output += prober->StatusOutput(indent);
+        output += std::format("{} ", state);
+        output += prober.prober->StatusOutput(indent);
     }
     return output;
 }
