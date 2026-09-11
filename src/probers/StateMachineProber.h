@@ -16,6 +16,8 @@ enum class SMProberType : uint8_t {
     Utf8 = 0,
     Utf16LE = 1,
     Utf16BE = 2,
+    ISO2022_JP = 3,
+    HZ = 4,
 };
 
 template<SMProberType MODEL>

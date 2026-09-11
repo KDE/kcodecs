@@ -13,7 +13,7 @@
 #include <array>
 #include <memory>
 
-#define NUM_OF_CHARSET_PROBERS 3
+#define NUM_OF_CHARSET_PROBERS 5
 
 namespace kencodingprober
 {
@@ -37,7 +37,6 @@ protected:
     const char *mDetectedCharset = nullptr;
 
     std::array<std::unique_ptr<nsCharSetProber>, NUM_OF_CHARSET_PROBERS> mCharSetProbers = {};
-    std::unique_ptr<nsCharSetProber> mEscCharSetProber;
 };
 }
 
