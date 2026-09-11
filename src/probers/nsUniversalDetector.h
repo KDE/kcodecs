@@ -17,12 +17,6 @@
 
 namespace kencodingprober
 {
-typedef enum {
-    ePureAscii = 0,
-    eEscAscii = 1,
-    eHighbyte = 2,
-} nsInputState;
-
 class KCODECS_NO_EXPORT nsUniversalDetector : public nsCharSetProber
 {
 public:
@@ -36,9 +30,9 @@ public:
     std::string StatusOutput(uint8_t indent) override;
 
 protected:
-    nsInputState mInputState = ePureAscii;
     bool mDone = false;
     bool mGotData = false;
+    bool mHas8Bit = false;
     char mLastChar = '\0';
     const char *mDetectedCharset = nullptr;
 

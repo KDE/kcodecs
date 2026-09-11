@@ -25,68 +25,60 @@ nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aL
         return eFoundIt;
     }
 
-    if (aLen > 0) {
-        mGotData = true;
+    if (aLen == 0) {
+        return eDetecting;
     }
+    mGotData = true;
 
-    for (unsigned int i = 0; i < aLen; i++) {
-        // other than 0xa0, if every other character is ascii, the page is ascii
-        if (aBuf[i] & '\x80' && aBuf[i] != '\xA0') { // Since many Ascii only page contains NBSP
-            // we got a non-ascii byte (high-byte)
-            if (mInputState != eHighbyte) {
-                // adjust state
-                mInputState = eHighbyte;
+    if (!mHas8Bit) {
+        bool hasEsc{false}; // ASCII 0x1b "ESCAPE
+        bool hasHZ{false}; // HZ "~{" sequence
 
-                // kill mEscCharSetProber if it is active
-                mEscCharSetProber = nullptr;
-
-                // start multibyte and singlebyte charset prober
-                if (nullptr == mCharSetProbers[0]) {
-                    mCharSetProbers[0] = std::make_unique<nsMBCSGroupProber>();
-                }
-                if (nullptr == mCharSetProbers[1]) {
-                    mCharSetProbers[1] = std::make_unique<nsSBCSGroupProber>();
-                }
-                if (nullptr == mCharSetProbers[2]) {
-                    mCharSetProbers[2] = std::make_unique<nsLatin1Prober>();
-                }
+        for (unsigned int i = 0; i < aLen; i++) {
+            if (aBuf[i] & '\x80') {
+                mHas8Bit = true;
+                break;
+            } else if (aBuf[i] == '\x1b') {
+                hasEsc = true;
+            } else if ((aBuf[i] == '{') && (mLastChar == '~')) {
+                hasHZ = true;
             }
-        } else {
-            // ok, just pure ascii so far
-            if (ePureAscii == mInputState && (aBuf[i] == '\033' || (aBuf[i] == '{' && mLastChar == '~'))) {
-                // found escape character or HZ "~{"
-                mInputState = eEscAscii;
-            }
-
             mLastChar = aBuf[i];
+        }
+
+        if (mHas8Bit) {
+            // kill mEscCharSetProber if it is active
+            mEscCharSetProber = nullptr;
+
+            // start multibyte and singlebyte charset prober
+            mCharSetProbers[0] = std::make_unique<nsMBCSGroupProber>();
+            mCharSetProbers[1] = std::make_unique<nsSBCSGroupProber>();
+            mCharSetProbers[2] = std::make_unique<nsLatin1Prober>();
+        } else {
+            if ((hasEsc || hasHZ) && !mEscCharSetProber) {
+                mEscCharSetProber = std::make_unique<nsEscCharSetProber>();
+            }
         }
     }
 
     nsProbingState st = eDetecting;
-    switch (mInputState) {
-    case eEscAscii:
-        if (nullptr == mEscCharSetProber) {
-            mEscCharSetProber = std::make_unique<nsEscCharSetProber>();
-        }
+    if (mEscCharSetProber) {
         st = mEscCharSetProber->HandleData(aBuf, aLen);
         if (st == eFoundIt) {
             mDone = true;
             mDetectedCharset = mEscCharSetProber->GetCharSetName();
         }
-        break;
-    case eHighbyte:
-        for (size_t i = 0; i < NUM_OF_CHARSET_PROBERS; ++i) {
+    }
+    for (size_t i = 0; i < NUM_OF_CHARSET_PROBERS; ++i) {
+        if (mCharSetProbers[i]) {
             st = mCharSetProbers[i]->HandleData(aBuf, aLen);
             if (st == eFoundIt) {
                 mDone = true;
                 mDetectedCharset = mCharSetProbers[i]->GetCharSetName();
             }
         }
-        break;
-
-    default: // pure ascii
-        mDetectedCharset = "UTF-8";
     }
+
     return st;
 }
 
@@ -95,28 +87,24 @@ const char *nsUniversalDetector::GetCharSetName()
 {
     if (mDetectedCharset) {
         return mDetectedCharset;
+    } else if (!mHas8Bit) {
+        return "UTF-8";
     }
-    switch (mInputState) {
-    case eHighbyte: {
-        float maxProberConfidence = 0.0f;
-        int maxProber = 0;
 
-        for (int i = 0; i < NUM_OF_CHARSET_PROBERS; i++) {
+    float maxProberConfidence = 0.0f;
+    int maxProber = 0;
+    for (int i = 0; i < NUM_OF_CHARSET_PROBERS; i++) {
+        if (mCharSetProbers[i]) {
             float proberConfidence = mCharSetProbers[i]->GetConfidence();
             if (proberConfidence > maxProberConfidence) {
                 maxProberConfidence = proberConfidence;
                 maxProber = i;
             }
         }
-        // do not report anything because we are not confident of it, that's in fact a negative answer
-        if (maxProberConfidence > MINIMUM_THRESHOLD) {
-            return mCharSetProbers[maxProber]->GetCharSetName();
-        }
     }
-    case eEscAscii:
-        break;
-    default: // pure ascii
-             ;
+    // do not report anything because we are not confident of it, that's in fact a negative answer
+    if (maxProberConfidence > MINIMUM_THRESHOLD) {
+        return mCharSetProbers[maxProber]->GetCharSetName();
     }
     return "UTF-8";
 }
@@ -131,28 +119,24 @@ float nsUniversalDetector::GetConfidence()
     }
     if (mDetectedCharset) {
         return 0.99f;
+    } else if (!mHas8Bit) {
+        return 0.99f;
     }
-    switch (mInputState) {
-    case eHighbyte: {
-        float maxProberConfidence = 0.0f;
-        int maxProber = 0;
 
-        for (int i = 0; i < NUM_OF_CHARSET_PROBERS; i++) {
+    float maxProberConfidence = 0.0f;
+    int maxProber = 0;
+    for (int i = 0; i < NUM_OF_CHARSET_PROBERS; i++) {
+        if (mCharSetProbers[i]) {
             float proberConfidence = mCharSetProbers[i]->GetConfidence();
             if (proberConfidence > maxProberConfidence) {
                 maxProberConfidence = proberConfidence;
                 maxProber = i;
             }
         }
-        // do not report anything because we are not confident of it, that's in fact a negative answer
-        if (maxProberConfidence > MINIMUM_THRESHOLD) {
-            return mCharSetProbers[maxProber]->GetConfidence();
-        }
     }
-    case eEscAscii:
-        break;
-    default: // pure ascii
-             ;
+    // do not report anything because we are not confident of it, that's in fact a negative answer
+    if (maxProberConfidence > MINIMUM_THRESHOLD) {
+        return mCharSetProbers[maxProber]->GetConfidence();
     }
     return MINIMUM_THRESHOLD;
 }
