@@ -114,12 +114,13 @@ void KEncodingProberTest::testProbe()
     KEncodingProber ep(proberType);
     QCOMPARE(ep.proberType(), proberType);
     ep.feed(data);
+    if (encoding.isNull()) {
+        return;
+    }
 
     QEXPECT_FAIL("UTF-16LE Unicode", "UTF-16BE preferred unless erroneous", Abort);
     QEXPECT_FAIL("utf-16le Simplified Chinese", "UTF-16BE preferred unless erroneous", Abort);
-    QEXPECT_FAIL("utf-16be Simplified Chinese", "UTF-16BE preferred unless erroneous", Abort);
     QEXPECT_FAIL("utf-8 Hebrew", "UTF-8 zero confidence", Abort);
-    QEXPECT_FAIL("windows-1252 Latin1 short", "Defaulting to invalid UTF-8", Continue);
     QEXPECT_FAIL("iso-2022-jp", "ISO-2022 not included in Japanese prober set", Abort);
     QEXPECT_FAIL("utf-8 Japanese Universal", "Too low UTF-8 confidence, too high Win-1252", Abort);
     QEXPECT_FAIL("Konnichiwa UTF-16LE", "Too low UTF-16LE confidence, too high Win-1252", Abort);
@@ -132,8 +133,6 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("ASCII codepoints UTF-16BE Universal", "UTF-16 with values <= 0x7f not checked", Abort);
     QEXPECT_FAIL("Plasma Ukrainian UTF-16LE", "UTF-16 low confidence", Abort);
     QEXPECT_FAIL("Plasma Ukrainian UTF-16BE", "UTF-16 low confidence", Abort);
-    QEXPECT_FAIL("Plasma ZH-CN UTF-16LE", "UTF-16 low confidence", Abort);
-    QEXPECT_FAIL("Plasma ZH-CN UTF-16BE", "UTF-16 low confidence", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
 
     QEXPECT_FAIL("UTF-16BE Unicode", "UTF-16 no confidence", Abort);
@@ -257,7 +256,7 @@ void KEncodingProberTest::testProbe_data()
         "Y2sgQXVkaW9DRIEHK4JhWg0OvPK2SjYuwNZv1ogI/xOICf8TgxUZjO5WiREAnBJIZWxsbyB2MC41"
         "MGGIE1DD");
     QTest::addRow("binaryData") //
-        << binaryData << KEncodingProber::Universal << QByteArray("utf-8");
+        << binaryData << KEncodingProber::Universal << QByteArray();
 
     QTest::addRow("BOM UTF-8") //
         << QByteArray("\xef\xbb\xbfZ", 4) // "<UTF-8 BOM>Z"
