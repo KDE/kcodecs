@@ -29,9 +29,6 @@ constexpr std::array<Prober, NUM_OF_SBCS_PROBERS> allProbers{{
     Prober::ISO8859_5_Bulgarian,
     Prober::Windows1251_Bulgarian,
     Prober::ISO8859_8_HebrewVisual,
-    Prober::Utf8,
-    Prober::Utf16LE,
-    Prober::Utf16BE,
 }};
 constexpr std::array<bool, NUM_OF_SBCS_PROBERS> fromSelectedList(std::span<const Prober> selected)
 {
@@ -48,17 +45,13 @@ constexpr std::array<bool, NUM_OF_SBCS_PROBERS> fromSelectedList(std::span<const
     return isSelected;
 }
 static_assert(fromSelectedList({}) == std::array<bool, NUM_OF_SBCS_PROBERS>{false});
-static_assert(fromSelectedList(allProbers)
-              == std::array<bool, NUM_OF_SBCS_PROBERS>{true, true, true, true, true, true, true, true, true, true, true, true, true, true});
+static_assert(fromSelectedList(allProbers) == std::array<bool, NUM_OF_SBCS_PROBERS>{true, true, true, true, true, true, true, true, true, true, true});
 static_assert(fromSelectedList(std::array{Prober::Windows1251}) == std::array<bool, NUM_OF_SBCS_PROBERS>{true, false});
 static_assert(fromSelectedList(std::array{Prober::HZ}) == std::array<bool, NUM_OF_SBCS_PROBERS>{false});
 static_assert(fromSelectedList(std::array{Prober::Big5}) == std::array<bool, NUM_OF_SBCS_PROBERS>{false});
 static_assert(fromSelectedList(std::array{Prober::KOI8_R, Prober::IBM855})
               == std::array<bool, NUM_OF_SBCS_PROBERS>{false, true, false, false, false, true, false});
 static_assert(fromSelectedList(std::array{Prober::ISO8859_8_HebrewVisual})[10] == true);
-static_assert(fromSelectedList(std::array{Prober::Utf8})[11] == true);
-static_assert(fromSelectedList(std::array{Prober::Utf16LE})[12] == true);
-static_assert(fromSelectedList(std::array{Prober::Utf16BE})[13] == true);
 } // namespace <anonymous>
 
 nsSBCSGroupProber::nsSBCSGroupProber()
@@ -79,9 +72,6 @@ nsSBCSGroupProber::nsSBCSGroupProber(std::span<const Prober> selected)
           std::make_unique<nsSingleByteCharSetProber<false>>(Latin5BulgarianModel),
           std::make_unique<nsSingleByteCharSetProber<false>>(Win1251BulgarianModel),
           std::make_unique<nsHebrewProber>(),
-          std::make_unique<nsUtf8Prober>(),
-          std::make_unique<nsUtf16BEProber>(),
-          std::make_unique<nsUtf16LEProber>(),
       }
     , mIsSelected(fromSelectedList(selected))
 {
@@ -122,22 +112,6 @@ nsProbingState nsSBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
 
     int activeNum = mProbers.size();
 
-    // The UTF16 probers need unmangled data
-    for (size_t i = mProbers.size() - 2; i < mProbers.size(); i++) {
-        if (!mIsActive[i]) {
-            activeNum--;
-            continue;
-        }
-        if (const auto st = mProbers[i]->HandleData(aBuf, aLen); st == eFoundIt) {
-            mBestGuess = i;
-            mState = eFoundIt;
-            return mState;
-        } else if (st == eNotMe) {
-            mIsActive[i] = false;
-            activeNum--;
-        }
-    }
-
     // apply filter to original buffer, and we got new buffer back
     // depend on what script it is, we will feed them the new buffer
     // we got after applying proper filter
@@ -152,7 +126,7 @@ nsProbingState nsSBCSGroupProber::HandleData(const char *aBuf, unsigned int aLen
         goto done; // Nothing to see here, move on.
     }
 
-    for (size_t i = 0; i < mProbers.size() - 2; i++) {
+    for (size_t i = 0; i < mProbers.size(); i++) {
         if (!mIsActive[i]) {
             activeNum--;
             continue;
