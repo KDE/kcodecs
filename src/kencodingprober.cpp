@@ -9,7 +9,6 @@
 #include "kencodingprober.h"
 
 #include "probers/nsCharSetProber.h"
-#include "probers/nsSBCSGroupProber.h"
 #include "probers/nsUniversalDetector.h"
 
 #include <span>
@@ -44,6 +43,22 @@ static const std::array KoreanProbers{
     Prober::Utf16BE,
 };
 static const std::array UnicodeProbers{
+    Prober::Utf8,
+    Prober::Utf16LE,
+    Prober::Utf16BE,
+};
+static const std::array SBCSProbers{
+    Prober::Windows1251,
+    Prober::KOI8_R,
+    Prober::ISO8859_5,
+    Prober::MAC_Cyrillic,
+    Prober::IBM866,
+    Prober::IBM855,
+    Prober::Latin7_Greek,
+    Prober::Windows1253_Greek,
+    Prober::ISO8859_5_Bulgarian,
+    Prober::Windows1251_Bulgarian,
+    Prober::ISO8859_8_HebrewVisual,
     Prober::Utf8,
     Prober::Utf16LE,
     Prober::Utf16BE,
@@ -128,7 +143,7 @@ public:
         case KEncodingProber::Thai:
         case KEncodingProber::Turkish:
         case KEncodingProber::WesternEuropean:
-            mProber = new kencodingprober::nsSBCSGroupProber();
+            mProber = new kencodingprober::nsUniversalDetector(SBCSProbers);
             break;
         case KEncodingProber::ChineseSimplified:
         case KEncodingProber::ChineseTraditional:
