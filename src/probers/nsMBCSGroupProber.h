@@ -14,7 +14,7 @@
 #include <memory>
 #include <span>
 
-#define NUM_OF_PROBERS 8
+#define NUM_OF_PROBERS 5
 namespace kencodingprober
 {
 class KCODECS_NO_EXPORT nsMBCSGroupProber : public nsCharSetProber
