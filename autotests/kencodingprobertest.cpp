@@ -133,8 +133,6 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("Plasma Ukrainian UTF-16BE", "UTF-16 low confidence", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
 
-    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16LE", "UTF-16 zero confidence", Abort);
-    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16BE", "UTF-16 zero confidence", Abort);
     QCOMPARE_GE(ep.confidence(), 0.2);
 }
 
