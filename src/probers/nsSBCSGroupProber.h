@@ -14,6 +14,7 @@
 
 #include <array>
 #include <memory>
+#include <span>
 
 #define NUM_OF_SBCS_PROBERS 14
 
@@ -23,6 +24,7 @@ class KCODECS_NO_EXPORT nsSBCSGroupProber : public nsCharSetProber
 {
 public:
     nsSBCSGroupProber();
+    explicit nsSBCSGroupProber(std::span<const Prober> selected);
     ~nsSBCSGroupProber() override = default;
 
     nsProbingState HandleData(const char *aBuf, unsigned int aLen) override;
@@ -39,6 +41,7 @@ protected:
     nsProbingState mState = eDetecting;
     std::array<std::unique_ptr<nsCharSetProber>, NUM_OF_SBCS_PROBERS> mProbers = {nullptr};
     std::array<bool, NUM_OF_SBCS_PROBERS> mIsActive = {false};
+    const std::array<bool, NUM_OF_SBCS_PROBERS> mIsSelected = {true};
     size_t mBestGuess = mProbers.size();
 };
 }
