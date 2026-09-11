@@ -9,7 +9,6 @@
 #include "kencodingprober.h"
 
 #include "probers/nsCharSetProber.h"
-#include "probers/nsMBCSGroupProber.h"
 #include "probers/nsSBCSGroupProber.h"
 #include "probers/nsUniversalDetector.h"
 
@@ -19,7 +18,7 @@
 namespace
 {
 using Prober = kencodingprober::nsCharSetProber::Prober;
-static const std::array ChineseMSBCProbers{
+static const std::array ChineseProbers{
     Prober::Utf8,
     Prober::GB18030,
     Prober::Big5,
@@ -31,6 +30,16 @@ static const std::array JapaneseProbers{
     Prober::SJIS,
     Prober::EUCJP,
     Prober::ISO2022_JP,
+    Prober::Utf16LE,
+    Prober::Utf16BE,
+};
+static const std::array KoreanProbers{
+    Prober::Utf8,
+    Prober::SJIS,
+    Prober::EUCJP,
+    Prober::ISO2022_JP,
+    Prober::GB18030,
+    Prober::Big5,
     Prober::Utf16LE,
     Prober::Utf16BE,
 };
@@ -123,13 +132,13 @@ public:
             break;
         case KEncodingProber::ChineseSimplified:
         case KEncodingProber::ChineseTraditional:
-            mProber = new kencodingprober::nsMBCSGroupProber(ChineseMSBCProbers);
+            mProber = new kencodingprober::nsUniversalDetector(ChineseProbers);
             break;
         case KEncodingProber::Japanese:
             mProber = new kencodingprober::nsUniversalDetector(JapaneseProbers);
             break;
         case KEncodingProber::Korean:
-            mProber = new kencodingprober::nsMBCSGroupProber();
+            mProber = new kencodingprober::nsUniversalDetector(KoreanProbers);
             break;
         case KEncodingProber::Unicode:
             mProber = new kencodingprober::nsUniversalDetector(UnicodeProbers);
