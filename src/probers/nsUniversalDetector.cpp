@@ -7,7 +7,7 @@
 
 #include "nsUniversalDetector.h"
 
-#include "nsEscCharsetProber.h"
+#include "StateMachineProber.h"
 #include "nsLatin1Prober.h"
 #include "nsMBCSGroupProber.h"
 #include "nsSBCSGroupProber.h"
@@ -48,38 +48,33 @@ nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aL
 
         if (mHas8Bit) {
             // kill mEscCharSetProber if it is active
-            mEscCharSetProber = nullptr;
+            mCharSetProbers[3] = nullptr;
+            mCharSetProbers[4] = nullptr;
 
             // start multibyte and singlebyte charset prober
             mCharSetProbers[0] = std::make_unique<nsMBCSGroupProber>();
             mCharSetProbers[1] = std::make_unique<nsSBCSGroupProber>();
             mCharSetProbers[2] = std::make_unique<nsLatin1Prober>();
         } else {
-            if ((hasEsc || hasHZ) && !mEscCharSetProber) {
-                mEscCharSetProber = std::make_unique<nsEscCharSetProber>();
+            if (hasEsc && !mCharSetProbers[3]) {
+                mCharSetProbers[3] = std::make_unique<StateMachineProber<SMProberType::ISO2022_JP>>();
+            }
+            if (hasHZ && !mCharSetProbers[4]) {
+                mCharSetProbers[4] = std::make_unique<StateMachineProber<SMProberType::HZ>>();
             }
         }
     }
 
-    nsProbingState st = eDetecting;
-    if (mEscCharSetProber) {
-        st = mEscCharSetProber->HandleData(aBuf, aLen);
-        if (st == eFoundIt) {
-            mDone = true;
-            mDetectedCharset = mEscCharSetProber->GetCharSetName();
-        }
-    }
-    for (size_t i = 0; i < NUM_OF_CHARSET_PROBERS; ++i) {
-        if (mCharSetProbers[i]) {
-            st = mCharSetProbers[i]->HandleData(aBuf, aLen);
-            if (st == eFoundIt) {
+    for (auto &prober : mCharSetProbers) {
+        if (prober) {
+            if (const auto st = prober->HandleData(aBuf, aLen); st == eFoundIt) {
                 mDone = true;
-                mDetectedCharset = mCharSetProbers[i]->GetCharSetName();
+                mDetectedCharset = prober->GetCharSetName();
             }
         }
     }
 
-    return st;
+    return eDetecting;
 }
 
 //---------------------------------------------------------------------

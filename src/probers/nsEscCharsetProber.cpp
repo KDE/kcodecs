@@ -1,49 +1,27 @@
 /*  -*- C++ -*-
-    SPDX-FileCopyrightText: 1998 Netscape Communications Corporation <developer@mozilla.org>
+    SPDX-FileCopyrightText: 2026 Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
     SPDX-License-Identifier: MIT
 */
 
-#include "nsEscCharsetProber.h"
+#include "StateMachineProber.inl"
 #include "nsEscSM.h"
 
 namespace kencodingprober
 {
-nsEscCharSetProber::nsEscCharSetProber(void)
+template<>
+constexpr const SMModel &modelForProber<SMProberType::ISO2022_JP>()
 {
-    mCodingSM[0] = std::make_unique<nsCodingStateMachine>(ISO2022JPSMModel);
-    mCodingSM[1] = std::make_unique<nsCodingStateMachine>(HZSMModel);
+    return kencodingprober::ISO2022JPSMModel;
 }
 
-nsEscCharSetProber::~nsEscCharSetProber(void) = default;
-
-nsProbingState nsEscCharSetProber::HandleData(const char *aBuf, unsigned int aLen)
+template<>
+constexpr const SMModel &modelForProber<SMProberType::HZ>()
 {
-    if (mState != eDetecting) {
-        return mState;
-    }
-
-    int activeSM = mCodingSM.size();
-
-    for (auto &codingSM : mCodingSM) {
-        for (unsigned int i = 0; i < aLen; i++) {
-            // byte is feed to all active state machine
-            auto codingState = codingSM->NextState(aBuf[i]);
-            if (codingState == eError) {
-                // got negative answer for this state machine, make it inactive
-                activeSM--;
-                if (activeSM == 0) {
-                    mState = eNotMe;
-                    return mState;
-                }
-            } else if (codingState == eItsMe) {
-                mState = eFoundIt;
-                mDetectedCharset = codingSM->GetCodingStateMachine();
-                return mState;
-            }
-        }
-    }
-
-    return mState;
+    return kencodingprober::HZSMModel;
 }
-}
+
+template class StateMachineProber<SMProberType::ISO2022_JP>;
+template class StateMachineProber<SMProberType::HZ>;
+
+} // namespace kencodingprober
