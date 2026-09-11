@@ -140,8 +140,11 @@ const char *nsUniversalDetector::GetCharSetName()
     // do not report anything because we are not confident of it, that's in fact a negative answer
     if (maxProberConfidence > MINIMUM_THRESHOLD) {
         return bestCharSet;
+    } else if (mCharSetProbers[0] && mCharSetProbers[0]->GetState() != eNotMe) {
+        // Default to UTF-8, but only if valid
+        return mCharSetProbers[0]->GetCharSetName();
     }
-    return "UTF-8";
+    return bestCharSet;
 }
 
 //---------------------------------------------------------------------
