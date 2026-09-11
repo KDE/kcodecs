@@ -142,6 +142,8 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("utf-8 Japanese", "Too low UTF-8 confidence", Abort);
     QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16LE", "UTF-16 zero confidence", Abort);
     QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16BE", "UTF-16 zero confidence", Abort);
+    QEXPECT_FAIL("Konnichiwa UTF-8 Unicode", "Too low UTF-8 confidence", Abort);
+    QEXPECT_FAIL("Konnichiwa UTF-8 Japanese", "Too low UTF-8 confidence", Abort);
     QCOMPARE_GE(ep.confidence(), 0.2);
 }
 
@@ -282,6 +284,12 @@ void KEncodingProberTest::testProbe_data()
     QTest::addRow("Konnichiwa ISO-2022-JP") //
         << QByteArray("\x1b$B$3$s$K$A$O\x1b(B") //
         << KEncodingProber::Universal << QByteArray("iso-2022-jp");
+    QTest::addRow("Konnichiwa UTF-8 Unicode") //
+        << QStringLiteral(u"こんにちは").toUtf8() //
+        << KEncodingProber::Unicode << QByteArray("utf-8");
+    QTest::addRow("Konnichiwa UTF-8 Japanese") //
+        << QStringLiteral(u"こんにちは").toUtf8() //
+        << KEncodingProber::Japanese << QByteArray("utf-8");
 
     // From kde.org: "Explore the Internet with Plasma. Connect with colleagues, "
     //   "friends and family. Manage your files. Enjoy music and videos."
