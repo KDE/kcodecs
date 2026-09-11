@@ -42,7 +42,6 @@ target_sources(KF6Codecs PRIVATE
     probers/nsCharSetProber.h
     probers/nsCodingStateMachine.h
     probers/nsEscCharsetProber.cpp
-    probers/nsEscCharsetProber.h
     probers/nsEscSM.h
     probers/nsEUCJPProber.cpp
     probers/nsEUCJPProber.h
