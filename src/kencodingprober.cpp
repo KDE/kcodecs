@@ -26,10 +26,11 @@ static const std::array ChineseMSBCProbers{
     Prober::Utf16LE,
     Prober::Utf16BE,
 };
-static const std::array JapaneseMSBCProbers{
+static const std::array JapaneseProbers{
     Prober::Utf8,
     Prober::SJIS,
     Prober::EUCJP,
+    Prober::ISO2022_JP,
     Prober::Utf16LE,
     Prober::Utf16BE,
 };
@@ -125,7 +126,7 @@ public:
             mProber = new kencodingprober::nsMBCSGroupProber(ChineseMSBCProbers);
             break;
         case KEncodingProber::Japanese:
-            mProber = new kencodingprober::nsMBCSGroupProber(JapaneseMSBCProbers);
+            mProber = new kencodingprober::nsUniversalDetector(JapaneseProbers);
             break;
         case KEncodingProber::Korean:
             mProber = new kencodingprober::nsMBCSGroupProber();
