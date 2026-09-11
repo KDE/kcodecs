@@ -39,22 +39,103 @@ constexpr std::array allMBCSProbers{
     nsCharSetProber::Prober::EUCKR,
     nsCharSetProber::Prober::Big5,
 };
+
+constexpr auto fromSelectedList(std::span<const nsCharSetProber::Prober> selected)
+{
+    std::array<bool, 8> isSelected{false};
+    for (auto p : selected) {
+        if (p == nsCharSetProber::Prober::Utf8) {
+            isSelected[0] = true;
+        } else if (auto it = std::find(allMBCSProbers.begin(), allMBCSProbers.end(), p); it != allMBCSProbers.end()) {
+            isSelected[1] = true;
+        } else if (auto it = std::find(allSBCSProbers.begin(), allSBCSProbers.end(), p); it != allSBCSProbers.end()) {
+            isSelected[2] = true;
+        } else if (p == nsCharSetProber::Prober::Windows1252_Latin1) {
+            isSelected[3] = true;
+        } else if (p == nsCharSetProber::Prober::ISO2022_JP) {
+            isSelected[4] = true;
+        } else if (p == nsCharSetProber::Prober::HZ) {
+            isSelected[5] = true;
+        } else if (p == nsCharSetProber::Prober::Utf16BE) {
+            isSelected[6] = true;
+        } else if (p == nsCharSetProber::Prober::Utf16LE) {
+            isSelected[7] = true;
+        }
+    }
+    return isSelected;
+}
 } // namespace <anonymous>
+
+class ProberState
+{
+    struct Entry {
+        const bool selected = true;
+        bool active = true;
+        std::unique_ptr<nsCharSetProber> prober = nullptr;
+    };
+
+    static const auto createStateList(std::span<const nsCharSetProber::Prober> selected)
+    {
+        auto isSelected = fromSelectedList(selected);
+        std::array<Entry, 8> states{
+            Entry{isSelected[0], false, std::make_unique<nsUtf8Prober>()},
+            Entry{isSelected[1], false, std::make_unique<nsMBCSGroupProber>(selected)},
+            Entry{isSelected[2], false, std::make_unique<nsSBCSGroupProber>(selected)},
+            Entry{isSelected[3], false, std::make_unique<nsLatin1Prober>()},
+            Entry{isSelected[4], false, std::make_unique<StateMachineProber<SMProberType::ISO2022_JP>>()},
+            Entry{isSelected[5], false, std::make_unique<StateMachineProber<SMProberType::HZ>>()},
+            Entry{isSelected[6], true, std::make_unique<nsUtf16BEProber>()},
+            Entry{isSelected[7], true, std::make_unique<nsUtf16LEProber>()},
+        };
+        return states;
+    }
+
+    std::array<Entry, 8> mStates;
+
+public:
+    ProberState(std::span<const nsCharSetProber::Prober> selected)
+        : mStates{createStateList(selected)}
+    {
+    }
+
+    ProberState()
+        : mStates{
+              Entry{true, false, std::make_unique<nsUtf8Prober>()},
+              Entry{true, false, std::make_unique<nsMBCSGroupProber>(allMBCSProbers)},
+              Entry{true, false, std::make_unique<nsSBCSGroupProber>(allSBCSProbers)},
+              Entry{true, false, std::make_unique<nsLatin1Prober>()},
+              Entry{true, false, std::make_unique<StateMachineProber<SMProberType::ISO2022_JP>>()},
+              Entry{true, false, std::make_unique<StateMachineProber<SMProberType::HZ>>()},
+              Entry{true, true, std::make_unique<nsUtf16BEProber>()},
+              Entry{true, true, std::make_unique<nsUtf16LEProber>()},
+          }
+    {
+    }
+
+    auto &operator[](size_t i)
+    {
+        return mStates[i];
+    }
+    auto begin()
+    {
+        return mStates.begin();
+    }
+    auto end()
+    {
+        return mStates.end();
+    }
+};
 
 //---------------------------------------------------------------------
 #define MINIMUM_THRESHOLD 0.20f
 
+nsUniversalDetector::nsUniversalDetector(std::span<const nsCharSetProber::Prober> selected)
+    : mProberState{std::make_unique<ProberState>(selected)}
+{
+}
+
 nsUniversalDetector::nsUniversalDetector()
-    : mCharSetProbers{
-          nullptr, // UTF-8
-          nullptr, // MBCS
-          nullptr, // SBCS
-          nullptr, // Latin1
-          nullptr, // ISO-2022-JP
-          nullptr, // HZ
-          std::make_unique<nsUtf16BEProber>(),
-          std::make_unique<nsUtf16LEProber>(),
-      }
+    : mProberState{std::make_unique<ProberState>()}
 {
 }
 
@@ -87,29 +168,31 @@ nsProbingState nsUniversalDetector::HandleData(const char *aBuf, unsigned int aL
 
         if (mHas8Bit) {
             // kill mEscCharSetProber if it is active
-            mCharSetProbers[4] = nullptr;
-            mCharSetProbers[5] = nullptr;
+            (*mProberState)[4].active = false;
+            (*mProberState)[5].active = false;
 
             // start multibyte and singlebyte charset prober
-            mCharSetProbers[0] = std::make_unique<nsUtf8Prober>();
-            mCharSetProbers[1] = std::make_unique<nsMBCSGroupProber>(allMBCSProbers);
-            mCharSetProbers[2] = std::make_unique<nsSBCSGroupProber>(allSBCSProbers);
-            mCharSetProbers[3] = std::make_unique<nsLatin1Prober>();
+            (*mProberState)[0].active = (*mProberState)[0].selected;
+            (*mProberState)[1].active = (*mProberState)[1].selected;
+            (*mProberState)[2].active = (*mProberState)[2].selected;
+            (*mProberState)[3].active = (*mProberState)[3].selected;
         } else {
-            if (hasEsc && !mCharSetProbers[4]) {
-                mCharSetProbers[4] = std::make_unique<StateMachineProber<SMProberType::ISO2022_JP>>();
+            if (hasEsc) {
+                (*mProberState)[4].active = (*mProberState)[4].selected;
             }
-            if (hasHZ && !mCharSetProbers[5]) {
-                mCharSetProbers[5] = std::make_unique<StateMachineProber<SMProberType::HZ>>();
+            if (hasHZ) {
+                (*mProberState)[5].active = (*mProberState)[5].selected;
             }
         }
     }
 
-    for (auto &prober : mCharSetProbers) {
-        if (prober) {
-            if (const auto st = prober->HandleData(aBuf, aLen); st == eFoundIt) {
+    for (auto &state : (*mProberState)) {
+        if (state.active) {
+            if (const auto st = state.prober->HandleData(aBuf, aLen); st == eFoundIt) {
                 mDone = true;
-                mDetectedCharset = prober->GetCharSetName();
+                mDetectedCharset = state.prober->GetCharSetName();
+            } else if (st == eNotMe) {
+                state.active = false;
             }
         }
     }
@@ -128,21 +211,21 @@ const char *nsUniversalDetector::GetCharSetName()
 
     const char *bestCharSet = nullptr;
     float maxProberConfidence = 0.0f;
-    for (const auto &prober : mCharSetProbers) {
-        if (prober) {
-            float proberConfidence = prober->GetConfidence();
+    for (const auto &state : *mProberState) {
+        if (state.active) {
+            float proberConfidence = state.prober->GetConfidence();
             if (proberConfidence > maxProberConfidence) {
                 maxProberConfidence = proberConfidence;
-                bestCharSet = prober->GetCharSetName();
+                bestCharSet = state.prober->GetCharSetName();
             }
         }
     }
     // do not report anything because we are not confident of it, that's in fact a negative answer
     if (maxProberConfidence > MINIMUM_THRESHOLD) {
         return bestCharSet;
-    } else if (mCharSetProbers[0] && mCharSetProbers[0]->GetState() != eNotMe) {
+    } else if ((*mProberState)[0].prober && (*mProberState)[0].prober->GetState() != eNotMe) {
         // Default to UTF-8, but only if valid
-        return mCharSetProbers[0]->GetCharSetName();
+        return (*mProberState)[0].prober->GetCharSetName();
     }
     return bestCharSet;
 }
@@ -162,9 +245,9 @@ float nsUniversalDetector::GetConfidence()
     }
 
     float maxProberConfidence = 0.0f;
-    for (const auto &prober : mCharSetProbers) {
-        if (prober) {
-            float proberConfidence = prober->GetConfidence();
+    for (const auto &state : *mProberState) {
+        if (state.active) {
+            float proberConfidence = state.prober->GetConfidence();
             if (proberConfidence > maxProberConfidence) {
                 maxProberConfidence = proberConfidence;
             }
@@ -190,12 +273,11 @@ std::string nsUniversalDetector::StatusOutput(uint8_t indent)
 {
     indent += 2;
     std::string output{"  Universal Prober ----"};
-    for (const auto &prober : mCharSetProbers) {
-        if (!prober) {
-            continue;
-        }
+    for (const auto &prober : *mProberState) {
+        char state = !prober.selected ? '.' : !prober.active ? '-' : ' ';
         output += '\n' + std::string(indent, ' ');
-        output += prober->StatusOutput(indent);
+        output += std::format("{} ", state);
+        output += prober.prober->StatusOutput(indent);
     }
     return output;
 }
