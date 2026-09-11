@@ -120,7 +120,6 @@ void KEncodingProberTest::testProbe()
 
     QEXPECT_FAIL("UTF-16LE Unicode", "UTF-16BE preferred unless erroneous", Abort);
     QEXPECT_FAIL("utf-8 Hebrew", "UTF-8 zero confidence", Abort);
-    QEXPECT_FAIL("iso-2022-jp", "ISO-2022 not included in Japanese prober set", Abort);
     QEXPECT_FAIL("utf-8 Japanese Universal", "Too low UTF-8 confidence, too high Win-1252", Abort);
     QEXPECT_FAIL("Konnichiwa UTF-16LE", "Too low UTF-16LE confidence, too high Win-1252", Abort);
     QEXPECT_FAIL("Konnichiwa UTF-16BE", "Too low UTF-16BE confidence, too high Win-1252", Abort);
@@ -134,10 +133,8 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("Plasma Ukrainian UTF-16BE", "UTF-16 low confidence", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
 
-    QEXPECT_FAIL("utf-8 Japanese", "Too low UTF-8 confidence", Abort);
     QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16LE", "UTF-16 zero confidence", Abort);
     QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16BE", "UTF-16 zero confidence", Abort);
-    QEXPECT_FAIL("Konnichiwa UTF-8 Japanese", "Too low UTF-8 confidence", Abort);
     QCOMPARE_GE(ep.confidence(), 0.2);
 }
 
