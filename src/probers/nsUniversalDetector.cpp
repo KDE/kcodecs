@@ -223,7 +223,7 @@ const char *nsUniversalDetector::GetCharSetName()
     // do not report anything because we are not confident of it, that's in fact a negative answer
     if (maxProberConfidence > MINIMUM_THRESHOLD) {
         return bestCharSet;
-    } else if ((*mProberState)[0].prober && (*mProberState)[0].prober->GetState() != eNotMe) {
+    } else if ((*mProberState)[0].active) {
         // Default to UTF-8, but only if valid
         return (*mProberState)[0].prober->GetCharSetName();
     }
@@ -272,7 +272,7 @@ nsProbingState nsUniversalDetector::GetState()
 std::string nsUniversalDetector::StatusOutput(uint8_t indent)
 {
     indent += 2;
-    std::string output{"  Universal Prober ----"};
+    std::string output = std::format("  Universal Prober ---- (7Bit: {})", mHas8Bit ? "0" : "1");
     for (const auto &prober : *mProberState) {
         char state = !prober.selected ? '.' : !prober.active ? '-' : ' ';
         output += '\n' + std::string(indent, ' ');
