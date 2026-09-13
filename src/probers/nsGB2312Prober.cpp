@@ -7,6 +7,8 @@
 #include "nsGB2312Prober.h"
 #include "nsMBCSSM.h"
 
+#include <format>
+
 namespace kencodingprober
 {
 nsGB18030Prober::nsGB18030Prober()
@@ -58,5 +60,14 @@ float nsGB18030Prober::GetConfidence(void)
     float distribCf = mDistributionAnalyser.GetConfidence();
 
     return distribCf;
+}
+
+std::string nsGB18030Prober::StatusOutput(uint8_t /* indent */)
+{
+    return std::format( //
+        "{:1.3f} [{}]  {}",
+        GetConfidence(),
+        GetCharSetName(),
+        mDistributionAnalyser.StatusOutput());
 }
 }

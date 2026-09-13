@@ -11,6 +11,8 @@
 #include "tables/GB2312Freq.tab"
 #include "tables/JISFreq.tab"
 
+#include <format>
+
 #define SURE_YES 0.99f
 #define SURE_NO 0.01f
 
@@ -33,6 +35,15 @@ float CharDistributionAnalysis::GetConfidence()
     }
     // normalize confidence, (we don't want to be 100% sure)
     return SURE_YES;
+}
+
+std::string CharDistributionAnalysis::StatusOutput()
+{
+    return std::format( //
+        "{:1.3f} [Dist] [{} / {}]",
+        GetConfidence(),
+        mFreqChars,
+        mTotalChars);
 }
 
 EUCKRDistributionAnalysis::EUCKRDistributionAnalysis()

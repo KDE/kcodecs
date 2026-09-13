@@ -9,6 +9,8 @@
 
 #include "kcodecs_export.h"
 
+#include <string>
+
 #define ENOUGH_DATA_THRESHOLD 256
 
 namespace kencodingprober
@@ -38,6 +40,8 @@ public:
 
     // return confidence base on existing data
     float GetConfidence();
+
+    std::string StatusOutput();
 
     // It is not necessary to receive all data to draw conclusion. For charset detection,
     // certain amount of data is enough

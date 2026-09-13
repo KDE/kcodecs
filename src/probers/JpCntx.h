@@ -9,6 +9,8 @@
 
 #include "kcodecs_export.h"
 
+#include <string>
+
 #define NUM_OF_CATEGORY 6
 
 #define ENOUGH_REL_THRESHOLD 100
@@ -45,6 +47,9 @@ public:
     }
 
     float GetConfidence();
+
+    std::string StatusOutput();
+
     bool GotEnoughData()
     {
         return mTotalRel > ENOUGH_REL_THRESHOLD;

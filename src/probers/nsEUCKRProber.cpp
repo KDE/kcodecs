@@ -7,6 +7,8 @@
 #include "nsEUCKRProber.h"
 #include "nsMBCSSM.h"
 
+#include <format>
+
 namespace kencodingprober
 {
 nsEUCKRProber::nsEUCKRProber()
@@ -62,5 +64,14 @@ float nsEUCKRProber::GetConfidence(void)
     float distribCf = mDistributionAnalyser.GetConfidence();
 
     return distribCf;
+}
+
+std::string nsEUCKRProber::StatusOutput(uint8_t /* indent */)
+{
+    return std::format( //
+        "{:1.3f} [{}]  {}",
+        GetConfidence(),
+        GetCharSetName(),
+        mDistributionAnalyser.StatusOutput());
 }
 }

@@ -7,6 +7,8 @@
 #include "nsBig5Prober.h"
 #include "nsMBCSSM.h"
 
+#include <format>
+
 namespace kencodingprober
 {
 nsBig5Prober::nsBig5Prober()
@@ -60,5 +62,14 @@ float nsBig5Prober::GetConfidence(void)
     float distribCf = mDistributionAnalyser.GetConfidence();
 
     return distribCf;
+}
+
+std::string nsBig5Prober::StatusOutput(uint8_t /* indent */)
+{
+    return std::format( //
+        "{:1.3f} [{}]  {}",
+        GetConfidence(),
+        GetCharSetName(),
+        mDistributionAnalyser.StatusOutput());
 }
 }

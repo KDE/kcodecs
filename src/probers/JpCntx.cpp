@@ -6,6 +6,8 @@
 
 #include "JpCntx.h"
 
+#include <format>
+
 namespace kencodingprober
 {
 // This is hiragana 2-char sequence table, the number in each cell represents its frequency category
@@ -354,5 +356,19 @@ float JapaneseContextAnalysis::GetConfidence()
     } else {
         return 0.0f;
     }
+}
+
+std::string JapaneseContextAnalysis::StatusOutput()
+{
+    return std::format( //
+        "{:1.3f} [Ctx] [{} {} {} {} {} {} | {}]",
+        GetConfidence(),
+        mRelSample[0],
+        mRelSample[1],
+        mRelSample[2],
+        mRelSample[3],
+        mRelSample[4],
+        mRelSample[5],
+        mTotalRel);
 }
 }

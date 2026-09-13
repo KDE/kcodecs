@@ -33,6 +33,8 @@ public:
     }
     float GetConfidence(void) override;
 
+    std::string StatusOutput(uint8_t indent) override;
+
 protected:
     std::unique_ptr<nsCodingStateMachine> mCodingSM;
     nsProbingState mState = eDetecting;

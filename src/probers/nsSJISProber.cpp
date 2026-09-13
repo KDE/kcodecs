@@ -12,6 +12,8 @@
 #include "nsSJISProber.h"
 #include "nsMBCSSM.h"
 
+#include <format>
+
 namespace kencodingprober
 {
 nsSJISProber::nsSJISProber()
@@ -68,5 +70,15 @@ float nsSJISProber::GetConfidence(void)
     float distribCf = mDistributionAnalyser.GetConfidence();
 
     return (contxtCf > distribCf ? contxtCf : distribCf);
+}
+
+std::string nsSJISProber::StatusOutput(uint8_t /* indent */)
+{
+    return std::format( //
+        "{:1.3f} [{}]  {}  {}",
+        GetConfidence(),
+        GetCharSetName(),
+        mDistributionAnalyser.StatusOutput(),
+        mContextAnalyser.StatusOutput());
 }
 }
