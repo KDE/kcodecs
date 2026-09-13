@@ -8,7 +8,6 @@
 
 #include "kencodingprober.h"
 
-#include "probers/UnicodeGroupProber.h"
 #include "probers/nsCharSetProber.h"
 #include "probers/nsMBCSGroupProber.h"
 #include "probers/nsSBCSGroupProber.h"
@@ -31,6 +30,11 @@ static const std::array JapaneseMSBCProbers{
     Prober::Utf8,
     Prober::SJIS,
     Prober::EUCJP,
+    Prober::Utf16LE,
+    Prober::Utf16BE,
+};
+static const std::array UnicodeProbers{
+    Prober::Utf8,
     Prober::Utf16LE,
     Prober::Utf16BE,
 };
@@ -127,7 +131,7 @@ public:
             mProber = new kencodingprober::nsMBCSGroupProber();
             break;
         case KEncodingProber::Unicode:
-            mProber = new kencodingprober::UnicodeGroupProber();
+            mProber = new kencodingprober::nsUniversalDetector(UnicodeProbers);
             break;
         case KEncodingProber::Universal:
             mProber = new kencodingprober::nsUniversalDetector();
