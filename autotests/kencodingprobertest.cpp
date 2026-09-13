@@ -163,6 +163,10 @@ void KEncodingProberTest::testProbe_data()
         << "Victor jagt zw\xf6lf Boxk\xe4mpfer quer \xfc\x62\x65r den gro\xdf\x65n Sylter Deich."_ba //
         << KEncodingProber::Universal << QByteArray("windows-1252");
 
+    QTest::addRow("windows-1252 German WesternEuropean") //
+        << "Victor jagt zw\xf6lf Boxk\xe4mpfer quer \xfc\x62\x65r den gro\xdf\x65n Sylter Deich."_ba //
+        << KEncodingProber::WesternEuropean << QByteArray("windows-1252");
+
     QTest::addRow("utf-8 Latin1 Supplement") //
         << "Latin1 Text h\xC3\xA4lt h\xC3\xB6rt f\xC3\xBChrt lie\xC3\x9F"_ba // "Latin1 Text hält hört führt ließ"
         << KEncodingProber::Universal << QByteArray("utf-8");
