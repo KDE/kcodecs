@@ -59,6 +59,7 @@ static const std::array SBCSProbers{
     Prober::ISO8859_5_Bulgarian,
     Prober::Windows1251_Bulgarian,
     Prober::ISO8859_8_HebrewVisual,
+    Prober::Windows1252_Latin1,
     Prober::Utf8,
     Prober::Utf16LE,
     Prober::Utf16BE,
