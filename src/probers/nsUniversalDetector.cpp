@@ -7,6 +7,7 @@
 
 #include "nsUniversalDetector.h"
 
+#include "CharacterStatistics.h"
 #include "StateMachineProber.h"
 #include "nsLatin1Prober.h"
 #include "nsMBCSGroupProber.h"
@@ -116,10 +117,11 @@ public:
     std::pair<const char *, float> GetBestProber() const;
 
     std::array<Entry, 8> mStates;
+
+    CharacterStats mCharacterStats = {};
+
     bool mDone = false;
-    bool mGotData = false;
     bool mHas8Bit = false;
-    char mLastChar = '\0';
     const char *mDetectedCharset = nullptr;
 };
 
@@ -150,25 +152,12 @@ nsProbingState ProberState::ProcessInput(const char *aBuf, unsigned int aLen)
     if (aLen == 0) {
         return eDetecting;
     }
-    mGotData = true;
+
+    mCharacterStats.collectInput({reinterpret_cast<const uint8_t *>(aBuf), aLen});
 
     if (!mHas8Bit) {
-        bool hasEsc{false}; // ASCII 0x1b "ESCAPE
-        bool hasHZ{false}; // HZ "~{" sequence
-
-        for (unsigned int i = 0; i < aLen; i++) {
-            if (aBuf[i] & '\x80') {
-                mHas8Bit = true;
-                break;
-            } else if (aBuf[i] == '\x1b') {
-                hasEsc = true;
-            } else if ((aBuf[i] == '{') && (mLastChar == '~')) {
-                hasHZ = true;
-            }
-            mLastChar = aBuf[i];
-        }
-
-        if (mHas8Bit) {
+        if (mCharacterStats.max() >= 0x80) {
+            mHas8Bit = true;
             // kill mEscCharSetProber if it is active
             mStates[4].active = false;
             mStates[5].active = false;
@@ -179,6 +168,8 @@ nsProbingState ProberState::ProcessInput(const char *aBuf, unsigned int aLen)
             mStates[2].active = mStates[2].selected;
             mStates[3].active = mStates[3].selected;
         } else {
+            bool hasEsc = (mCharacterStats.count(0x1b) > 0);
+            bool hasHZ = (mCharacterStats.count(0x7e) > 0);
             if (hasEsc) {
                 mStates[4].active = mStates[4].selected;
             }
@@ -211,26 +202,46 @@ const char *nsUniversalDetector::GetCharSetName()
 
 std::pair<const char *, float> ProberState::GetBestProber() const
 {
-    if (!mGotData) {
+    if (mCharacterStats.totalCount == 0) {
         return {"", MINIMUM_THRESHOLD};
     }
 
     if (mDetectedCharset) {
         return {mDetectedCharset, 0.99f};
-    } else if (!mHas8Bit) {
+    }
+
+    const float isBE16 = mCharacterStats.isBigEndian16();
+    if (!mHas8Bit) {
+        if (isBE16 > 0.2f) {
+            return {"UTF-16BE", isBE16};
+        } else if (isBE16 < -0.2f) {
+            return {"UTF-16LE", -isBE16};
+        }
         return {"UTF-8", 0.99f};
+    }
+
+    std::array<float, mStates.size()> bias{};
+    bias[0] = 0.9 * mCharacterStats.isUtf8();
+    bias[6] = std::max(0.9f * isBE16, 0.0f);
+    bias[7] = std::max(-0.9f * isBE16, 0.0f);
+    if (auto mbcsConf = mStates[1].active ? mStates[1].prober->GetConfidence() : 0.0f; mbcsConf > 0.0f) {
+        // MBCS often looks like UTF-16
+        bias[6] *= bias[6] / (bias[6] + mbcsConf);
+        bias[7] *= bias[7] / (bias[7] + mbcsConf);
     }
 
     const char *bestCharSet = nullptr;
     float maxProberConfidence = 0.0f;
-    for (const auto &state : mStates) {
+    for (size_t i = 0; const auto &state : mStates) {
         if (state.active) {
             float proberConfidence = state.prober->GetConfidence();
+            proberConfidence += bias[i];
             if (proberConfidence > maxProberConfidence) {
                 maxProberConfidence = proberConfidence;
                 bestCharSet = state.prober->GetCharSetName();
             }
         }
+        i++;
     }
     // do not report anything because we are not confident of it, that's in fact a negative answer
     if (maxProberConfidence > MINIMUM_THRESHOLD) {

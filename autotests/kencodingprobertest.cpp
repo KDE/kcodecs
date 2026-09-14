@@ -118,16 +118,6 @@ void KEncodingProberTest::testProbe()
         return;
     }
 
-    QEXPECT_FAIL("UTF-16LE Unicode", "UTF-16BE preferred unless erroneous", Abort);
-    QEXPECT_FAIL("utf-16le Simplified Chinese", "UTF-16BE preferred unless erroneous", Abort);
-    QEXPECT_FAIL("utf-8 Hebrew", "UTF-8 zero confidence", Abort);
-    QEXPECT_FAIL("Konnichiwa UTF-16LE", "UTF-16BE preferred unless erroneous", Abort);
-    QEXPECT_FAIL("ASCII codepoints UTF-16LE", "UTF-16 low confidence", Abort);
-    QEXPECT_FAIL("ASCII codepoints UTF-16LE Universal", "UTF-16 with values <= 0x7f not checked", Abort);
-    QEXPECT_FAIL("ASCII codepoints UTF-16BE", "UTF-16 low confidence", Abort);
-    QEXPECT_FAIL("ASCII codepoints UTF-16BE Universal", "UTF-16 with values <= 0x7f not checked", Abort);
-    QEXPECT_FAIL("Plasma Ukrainian UTF-16LE", "UTF-16 low confidence", Abort);
-    QEXPECT_FAIL("Plasma Ukrainian UTF-16BE", "UTF-16 low confidence", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
 
     QCOMPARE_GE(ep.confidence(), 0.2);

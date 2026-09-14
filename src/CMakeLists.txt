@@ -66,6 +66,8 @@ target_sources(KF6Codecs PRIVATE
     probers/nsUniversalDetector.h
     probers/nsUtfProber.cpp
     probers/StateMachineProber.h
+    probers/CharacterStatistics.cpp
+    probers/CharacterStatistics.h
 )
 
 ecm_qt_declare_logging_category(KF6Codecs
