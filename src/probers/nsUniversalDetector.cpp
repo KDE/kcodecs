@@ -112,8 +112,7 @@ public:
     }
 
     nsProbingState ProcessInput(const char *aBuf, unsigned int aLen);
-    const char *GetCharSetName();
-    float GetConfidence(void);
+    std::pair<const char *, float> GetBestProber() const;
 
     std::array<Entry, 8> mStates;
     bool mDone = false;
@@ -205,15 +204,20 @@ nsProbingState ProberState::ProcessInput(const char *aBuf, unsigned int aLen)
 //---------------------------------------------------------------------
 const char *nsUniversalDetector::GetCharSetName()
 {
-    return mProberState->GetCharSetName();
+    auto [name, confidence] = mProberState->GetBestProber();
+    return name;
 }
 
-const char *ProberState::GetCharSetName()
+std::pair<const char *, float> ProberState::GetBestProber() const
 {
+    if (!mGotData) {
+        return {"", MINIMUM_THRESHOLD};
+    }
+
     if (mDetectedCharset) {
-        return mDetectedCharset;
+        return {mDetectedCharset, 0.99f};
     } else if (!mHas8Bit) {
-        return "UTF-8";
+        return {"UTF-8", 0.99f};
     }
 
     const char *bestCharSet = nullptr;
@@ -229,47 +233,19 @@ const char *ProberState::GetCharSetName()
     }
     // do not report anything because we are not confident of it, that's in fact a negative answer
     if (maxProberConfidence > MINIMUM_THRESHOLD) {
-        return bestCharSet;
+        return {bestCharSet, maxProberConfidence};
     } else if (mStates[0].active) {
         // Default to UTF-8, but only if valid
-        return mStates[0].prober->GetCharSetName();
+        return {"UTF-8", MINIMUM_THRESHOLD};
     }
-    return bestCharSet;
+    return {bestCharSet, MINIMUM_THRESHOLD};
 }
 
 //---------------------------------------------------------------------
 float nsUniversalDetector::GetConfidence()
 {
-    return mProberState->GetConfidence();
-}
-
-float ProberState::GetConfidence()
-{
-    if (!mGotData) {
-        // we haven't got any data yet, return immediately
-        // caller program sometimes call DataEnd before anything has been sent to detector
-        return MINIMUM_THRESHOLD;
-    }
-    if (mDetectedCharset) {
-        return 0.99f;
-    } else if (!mHas8Bit) {
-        return 0.99f;
-    }
-
-    float maxProberConfidence = 0.0f;
-    for (const auto &state : mStates) {
-        if (state.active) {
-            float proberConfidence = state.prober->GetConfidence();
-            if (proberConfidence > maxProberConfidence) {
-                maxProberConfidence = proberConfidence;
-            }
-        }
-    }
-    // do not report anything because we are not confident of it, that's in fact a negative answer
-    if (maxProberConfidence > MINIMUM_THRESHOLD) {
-        return maxProberConfidence;
-    }
-    return MINIMUM_THRESHOLD;
+    auto [name, confidence] = mProberState->GetBestProber();
+    return confidence;
 }
 
 nsProbingState nsUniversalDetector::GetState()
