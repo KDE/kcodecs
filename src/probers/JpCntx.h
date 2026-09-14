@@ -28,10 +28,6 @@ public:
 
     void HandleOneChar(const char *aStr, unsigned int aCharLen)
     {
-        // if we received enough data, stop here
-        if (mTotalRel > MAX_REL_THRESHOLD) {
-            mDone = true;
-        }
         if (mDone) {
             return;
         }
@@ -42,6 +38,11 @@ public:
             mTotalRel++;
             // count this sequence to its category counter
             mRelSample[(int)jp2CharContext[mLastCharCode][code]]++;
+
+            // if we received enough data, stop here
+            if (mTotalRel > MAX_REL_THRESHOLD) {
+                mDone = true;
+            }
         }
         mLastCharCode = code;
     }
