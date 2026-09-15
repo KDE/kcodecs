@@ -31,10 +31,12 @@ public:
 
     std::string StatusOutput(uint8_t indent) override;
 
+    static constexpr uint8_t CLASS_COUNT = 8;
+
 protected:
     nsProbingState mState = eDetecting;
     char mLastCharClass;
-    std::array<unsigned int, 4> mFreqCounter = {0};
+    std::array<uint32_t, CLASS_COUNT * CLASS_COUNT> mSeqCounter = {0};
 };
 }
 
