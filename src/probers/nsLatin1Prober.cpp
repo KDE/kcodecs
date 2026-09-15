@@ -8,20 +8,26 @@
 
 #include <format>
 #include <numeric>
-
-#define UDF 0 // undefined
-#define OTH 1 // other
-#define ASC 2 // ascii capital letter
-#define ASS 3 // ascii small letter
-#define ACV 4 // accent capital vowel
-#define ACO 5 // accent capital other
-#define ASV 6 // accent small vowel
-#define ASO 7 // accent small other
-#define CLASS_NUM 8 // total classes
+#include <span>
 
 namespace kencodingprober
 {
-static const unsigned char Latin1_CharToClass[] = {
+namespace
+{
+constexpr auto CLASS_COUNT = nsLatin1Prober::CLASS_COUNT;
+
+enum Latin1Class : uint8_t {
+    UDF = 0, // undefined
+    OTH = 1, // other
+    ASC = 2, // ascii capital letter
+    ASS = 3, // ascii small letter
+    ACV = 4, // accent capital vowel
+    ACO = 5, // accent capital other
+    ASV = 6, // accent small vowel
+    ASO = 7, // accent small other
+};
+
+static constexpr std::array<uint8_t, 256> Latin1_CharToClass{
     OTH, OTH, OTH, OTH, OTH, OTH, OTH, OTH, // 00 - 07
     OTH, OTH, OTH, OTH, OTH, OTH, OTH, OTH, // 08 - 0F
     OTH, OTH, OTH, OTH, OTH, OTH, OTH, OTH, // 10 - 17
@@ -61,7 +67,7 @@ static const unsigned char Latin1_CharToClass[] = {
    2 : normal
    3 : very likely
 */
-static const unsigned char Latin1ClassModel[] = {
+static constexpr std::array<uint8_t, CLASS_COUNT * CLASS_COUNT> Latin1ClassModel{
     // clang-format off
     /*      UDF OTH ASC ASS ACV ACO ASV ASO  */
     /*UDF*/   0,  0,  0,  0,  0,  0,  0,  0,
@@ -74,6 +80,17 @@ static const unsigned char Latin1ClassModel[] = {
     /*ASO*/   0,  3,  1,  3,  1,  1,  3,  3,
     // clang-format on
 };
+
+auto calculateFrequencies(const std::array<uint32_t, CLASS_COUNT * CLASS_COUNT> &seqCount)
+{
+    std::array<uint64_t, 4> freq{};
+    for (size_t i = 0; const auto seq : seqCount) {
+        const uint8_t seqQuality = Latin1ClassModel[i++];
+        freq[seqQuality] += seq;
+    }
+    return freq;
+}
+} // namespace <anonymous>
 
 nsLatin1Prober::nsLatin1Prober()
     : mLastCharClass(OTH)
@@ -90,16 +107,19 @@ nsProbingState nsLatin1Prober::HandleData(const char *aBuf, unsigned int aLen)
         newLen1 = aLen;
     }
 
-    for (unsigned int i = 0; i < newLen1; i++) {
-        const unsigned char charClass = Latin1_CharToClass[(unsigned char)newBuf1[i]];
-        const unsigned char freq = Latin1ClassModel[mLastCharClass * CLASS_NUM + charClass];
-        if (freq == 0) {
+    std::span<const uint8_t> buf{reinterpret_cast<uint8_t *>(newBuf1), newLen1};
+    auto lastCharClass = mLastCharClass;
+
+    for (const auto c : buf) {
+        const uint8_t charClass = Latin1_CharToClass[c];
+        if (charClass == UDF) {
             mState = eNotMe;
             break;
         }
-        mFreqCounter[freq]++;
-        mLastCharClass = charClass;
+        mSeqCounter[lastCharClass * CLASS_COUNT + charClass]++;
+        lastCharClass = charClass;
     }
+    mLastCharClass = lastCharClass;
 
     if (newBuf1 != aBuf) {
         free(newBuf1);
@@ -115,13 +135,14 @@ float nsLatin1Prober::GetConfidence(void)
     }
 
     float confidence;
-    const auto total = std::accumulate(mFreqCounter.begin(), mFreqCounter.end(), 0ul);
+    const auto freqCounter = calculateFrequencies(mSeqCounter);
+    const auto total = std::accumulate(freqCounter.begin(), freqCounter.end(), 0ull);
 
     if (!total) {
         confidence = 0.0f;
     } else {
-        confidence = mFreqCounter[3] * 1.0f / total;
-        confidence -= mFreqCounter[1] * 20.0f / total;
+        confidence = freqCounter[3] * 1.0f / total;
+        confidence -= freqCounter[1] * 20.0f / total;
     }
 
     if (confidence < 0.0f) {
@@ -137,13 +158,13 @@ float nsLatin1Prober::GetConfidence(void)
 
 std::string nsLatin1Prober::StatusOutput(uint8_t /* indent */)
 {
+    const auto freqCounter = calculateFrequencies(mSeqCounter);
     return std::format( //
-        "{:1.3f} [{}] [{} {} {} {}]",
+        "{:1.3f} [{}] [{} {} {}]",
         GetConfidence(),
         GetCharSetName(),
-        mFreqCounter[0],
-        mFreqCounter[1],
-        mFreqCounter[2],
-        mFreqCounter[3]);
+        freqCounter[1],
+        freqCounter[2],
+        freqCounter[3]);
 }
 }
