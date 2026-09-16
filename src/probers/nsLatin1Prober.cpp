@@ -124,15 +124,7 @@ nsLatin1Prober::nsLatin1Prober()
 
 nsProbingState nsLatin1Prober::HandleData(const char *aBuf, unsigned int aLen)
 {
-    char *newBuf1 = nullptr;
-    unsigned int newLen1 = 0;
-
-    if (!FilterWithEnglishLetters(aBuf, aLen, &newBuf1, newLen1)) {
-        newBuf1 = (char *)aBuf;
-        newLen1 = aLen;
-    }
-
-    std::span<const uint8_t> buf{reinterpret_cast<uint8_t *>(newBuf1), newLen1};
+    std::span<const uint8_t> buf{reinterpret_cast<const uint8_t *>(aBuf), aLen};
     auto lastCharClass = mLastCharClass;
 
     for (const auto c : buf) {
@@ -145,10 +137,6 @@ nsProbingState nsLatin1Prober::HandleData(const char *aBuf, unsigned int aLen)
         lastCharClass = charClass;
     }
     mLastCharClass = lastCharClass;
-
-    if (newBuf1 != aBuf) {
-        free(newBuf1);
-    }
 
     return mState;
 }
