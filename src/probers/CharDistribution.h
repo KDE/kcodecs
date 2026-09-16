@@ -9,6 +9,7 @@
 
 #include "kcodecs_export.h"
 
+#include <cstdint>
 #include <string>
 
 #define ENOUGH_DATA_THRESHOLD 256
@@ -25,7 +26,7 @@ public:
     void HandleOneChar(const char *aStr, unsigned int aCharLen)
     {
         // we only care about 2-bytes character in our distribution analysis
-        const int code = (aCharLen == 2) ? GetCode(aStr) : -1;
+        const int code = (aCharLen == 2) ? GetCode(reinterpret_cast<const uint8_t *>(aStr)) : -1;
 
         if (code >= 0) {
             mTotalChars++;
@@ -56,7 +57,7 @@ protected:
     // This allows multiple encoding formats (e.g. SJIS and EUCJP) of an
     // encoding (like JIS X 213) to share one frequency table, mapping this
     // code to its frequency.
-    virtual int GetCode(const char * /* str */) = 0;
+    virtual int GetCode(const uint8_t str[2]) = 0;
 
     // The number of characters whose frequency order is less than 512
     unsigned int mFreqChars = 0;
@@ -85,10 +86,10 @@ protected:
     //  first  byte range: 0xb0 -- 0xfe
     //  second byte range: 0xa1 -- 0xfe
     // no validation needed here. State machine has done that
-    int GetCode(const char *str) override
+    int GetCode(const uint8_t str[2]) override
     {
-        if ((unsigned char)*str >= (unsigned char)0xb0) {
-            return 94 * ((unsigned char)str[0] - (unsigned char)0xb0) + (unsigned char)str[1] - (unsigned char)0xa1;
+        if (str[0] >= 0xb0) {
+            return 94 * (str[0] - 0xb0) + str[1] - 0xa1;
         } else {
             return -1;
         }
@@ -105,10 +106,10 @@ protected:
     //  first  byte range: 0xb0 -- 0xfe
     //  second byte range: 0xa1 -- 0xfe
     // no validation needed here. State machine has done that
-    int GetCode(const char *str) override
+    int GetCode(const uint8_t str[2]) override
     {
-        if ((unsigned char)*str >= (unsigned char)0xb0 && (unsigned char)str[1] >= (unsigned char)0xa1) {
-            return 94 * ((unsigned char)str[0] - (unsigned char)0xb0) + (unsigned char)str[1] - (unsigned char)0xa1;
+        if (str[0] >= 0xb0 && str[1] >= 0xa1) {
+            return 94 * (str[0] - 0xb0) + str[1] - 0xa1;
         } else {
             return -1;
         }
@@ -125,13 +126,13 @@ protected:
     //  first  byte range: 0xa4 -- 0xfe
     //  second byte range: 0x40 -- 0x7e , 0xa1 -- 0xfe
     // no validation needed here. State machine has done that
-    int GetCode(const char *str) override
+    int GetCode(const uint8_t str[2]) override
     {
-        if ((unsigned char)*str >= (unsigned char)0xa4)
-            if ((unsigned char)str[1] >= (unsigned char)0xa1) {
-                return 157 * ((unsigned char)str[0] - (unsigned char)0xa4) + (unsigned char)str[1] - (unsigned char)0xa1 + 63;
+        if (str[0] >= 0xa4)
+            if (str[1] >= 0xa1) {
+                return 157 * (str[0] - 0xa4) + str[1] - 0xa1 + 63;
             } else {
-                return 157 * ((unsigned char)str[0] - (unsigned char)0xa4) + (unsigned char)str[1] - (unsigned char)0x40;
+                return 157 * (str[0] - 0xa4) + str[1] - 0x40;
             }
         else {
             return -1;
@@ -149,18 +150,18 @@ protected:
     //  first  byte range: 0x81 -- 0x9f , 0xe0 -- 0xfe
     //  second byte range: 0x40 -- 0x7e,  0x81 -- oxfe
     // no validation needed here. State machine has done that
-    int GetCode(const char *str) override
+    int GetCode(const uint8_t str[2]) override
     {
         int code;
-        if ((unsigned char)*str >= (unsigned char)0x81 && (unsigned char)*str <= (unsigned char)0x9f) {
-            code = 188 * ((unsigned char)str[0] - (unsigned char)0x81);
-        } else if ((unsigned char)*str >= (unsigned char)0xe0 && (unsigned char)*str <= (unsigned char)0xef) {
-            code = 188 * ((unsigned char)str[0] - (unsigned char)0xe0 + 31);
+        if (str[0] >= 0x81 && *str <= 0x9f) {
+            code = 188 * (str[0] - 0x81);
+        } else if (str[0] >= 0xe0 && str[0] <= 0xef) {
+            code = 188 * (str[0] - 0xe0 + 31);
         } else {
             return -1;
         }
-        code += (unsigned char)*(str + 1) - 0x40;
-        if ((unsigned char)str[1] > (unsigned char)0x7f) {
+        code += str[1] - 0x40;
+        if (str[1] > 0x7f) {
             code--;
         }
         return code;
@@ -177,10 +178,10 @@ protected:
     //  first  byte range: 0xa0 -- 0xfe
     //  second byte range: 0xa1 -- 0xfe
     // no validation needed here. State machine has done that
-    int GetCode(const char *str) override
+    int GetCode(const uint8_t str[2]) override
     {
-        if ((unsigned char)*str >= (unsigned char)0xa0) {
-            return 94 * ((unsigned char)str[0] - (unsigned char)0xa1) + (unsigned char)str[1] - (unsigned char)0xa1;
+        if (str[0] >= 0xa0) {
+            return 94 * (str[0] - 0xa1) + str[1] - 0xa1;
         } else {
             return -1;
         }
