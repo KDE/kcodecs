@@ -73,7 +73,6 @@ public:
     // freed by the caller using PR_FREEIF.
     // Both functions return false in case of memory allocation failure.
     static bool FilterWithoutEnglishLetters(const char *aBuf, unsigned int aLen, char **newBuf, unsigned int &newLen);
-    static bool FilterWithEnglishLetters(const char *aBuf, unsigned int aLen, char **newBuf, unsigned int &newLen);
 };
 }
 #endif /* nsCharSetProber_h__ */
