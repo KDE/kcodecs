@@ -38,7 +38,7 @@ static const unsigned char Latin1_CharToClass[] = {
     ASS, ASS, ASS, ASS, ASS, ASS, ASS, ASS, // 68 - 6F
     ASS, ASS, ASS, ASS, ASS, ASS, ASS, ASS, // 70 - 77
     ASS, ASS, ASS, OTH, OTH, OTH, OTH, OTH, // 78 - 7F
-    OTH, UDF, OTH, ASO, OTH, OTH, OTH, OTH, // 80 - 87
+    OTH, UDF, OTH, OTH, OTH, OTH, OTH, OTH, // 80 - 87
     OTH, OTH, ACO, OTH, ACO, UDF, ACO, UDF, // 88 - 8F
     UDF, OTH, OTH, OTH, OTH, OTH, OTH, OTH, // 90 - 97
     OTH, OTH, ASO, OTH, ASO, UDF, ASO, ACO, // 98 - 9F
@@ -46,14 +46,14 @@ static const unsigned char Latin1_CharToClass[] = {
     OTH, OTH, OTH, OTH, OTH, OTH, OTH, OTH, // A8 - AF
     OTH, OTH, OTH, OTH, OTH, OTH, OTH, OTH, // B0 - B7
     OTH, OTH, OTH, OTH, OTH, OTH, OTH, OTH, // B8 - BF
-    ACV, ACV, ACV, ACV, ACV, ACV, ACO, ACO, // C0 - C7
+    ACV, ACV, ACV, ACV, ACV, ACV, ACV, ACO, // C0 - C7
     ACV, ACV, ACV, ACV, ACV, ACV, ACV, ACV, // C8 - CF
     ACO, ACO, ACV, ACV, ACV, ACV, ACV, OTH, // D0 - D7
     ACV, ACV, ACV, ACV, ACV, ACO, ACO, ASO, // D8 - DF
     ASV, ASV, ASV, ASV, ASV, ASV, ASO, ASO, // E0 - E7
     ASV, ASV, ASV, ASV, ASV, ASV, ASV, ASV, // E8 - EF
     ASO, ASO, ASV, ASV, ASV, ASV, ASV, OTH, // F0 - F7
-    ASV, ASV, ASV, ASV, ASV, ASO, ASO, ASO, // F8 - FF
+    ASV, ASV, ASV, ASV, ASV, ASO, ASO, ASV, // F8 - FF
 };
 
 /* 0 : illegal
