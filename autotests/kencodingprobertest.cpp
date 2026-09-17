@@ -121,11 +121,7 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("UTF-16LE Unicode", "UTF-16BE preferred unless erroneous", Abort);
     QEXPECT_FAIL("utf-16le Simplified Chinese", "UTF-16BE preferred unless erroneous", Abort);
     QEXPECT_FAIL("utf-8 Hebrew", "UTF-8 zero confidence", Abort);
-    QEXPECT_FAIL("utf-8 Japanese Universal", "Too low UTF-8 confidence, too high Win-1252", Abort);
-    QEXPECT_FAIL("Konnichiwa UTF-16LE", "Too low UTF-16LE confidence, too high Win-1252", Abort);
-    QEXPECT_FAIL("Konnichiwa UTF-16BE", "Too low UTF-16BE confidence, too high Win-1252", Abort);
-    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16LE Universal", "Too low UTF-16LE confidence, too high Win-1252", Abort);
-    QEXPECT_FAIL("EnjoyPlasma Japanese UTF-16BE Universal", "Too low UTF-16BE confidence, too high Win-1252", Abort);
+    QEXPECT_FAIL("Konnichiwa UTF-16LE", "UTF-16BE preferred unless erroneous", Abort);
     QEXPECT_FAIL("ASCII codepoints UTF-16LE", "UTF-16 low confidence", Abort);
     QEXPECT_FAIL("ASCII codepoints UTF-16LE Universal", "UTF-16 with values <= 0x7f not checked", Abort);
     QEXPECT_FAIL("ASCII codepoints UTF-16BE", "UTF-16 low confidence", Abort);

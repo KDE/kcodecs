@@ -261,7 +261,7 @@ void KEncodingProberUnitTest::testWindows1252_data()
 
     // "Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich." - "Victor chases twelve boxers across the Great Levee of Sylt"
     QTest::addRow("Windows-1252 German") << //
-        "Victor jagt zw\xf6lf Boxk\xe4mpfer quer \xfc\x62\x65r den gro\xdf\x65n Sylter Deich."_ba << true << 0.45;
+        "Victor jagt zw\xf6lf Boxk\xe4mpfer quer \xfc\x62\x65r den gro\xdf\x65n Sylter Deich."_ba << true << 0.8;
 
     // Same "Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich.", but using UTF-8
     // Unfortunately, these are all valid codepoints for Windows-1252, but the confidence should be lower than for UTF-8,
@@ -272,12 +272,12 @@ void KEncodingProberUnitTest::testWindows1252_data()
     // "L'ergothérapeute effectue des prestations de rééducation et de réadaptation."
     // - "The occupational therapist provides rehabilitation and re-adaptation services."
     QTest::addRow("Windows-1252 French") << //
-        "L'ergoth\xe9rapeute effectue des prestations de r\xe9\xe9\x64ucation et de r\xe9\x61\x64\x61ptation."_ba << true << 0.45;
+        "L'ergoth\xe9rapeute effectue des prestations de r\xe9\xe9\x64ucation et de r\xe9\x61\x64\x61ptation."_ba << true << 0.8;
 
     // "La sociolingüística sincrónica se centra en la estructura sociolingüística y en las variaciones lingüísticas."
     // - "Synchronic sociolinguistics focuses on sociolinguistic structure and linguistic variations."
     QTest::addRow("Windows-1252 Spanish") << //
-        "La socioling\xfc\xedstica sincr\xf3nica se centra en la estructura socioling\xfc\xedstica y en las variaciones ling\xfc\xedsticas."_ba << true << 0.45;
+        "La socioling\xfc\xedstica sincr\xf3nica se centra en la estructura socioling\xfc\xedstica y en las variaciones ling\xfc\xedsticas."_ba << true << 0.8;
 
     // "שפן אכל קצת גזר בטעם חסה, ודי" - "A bunny ate some lettuce-flavored carrots, and he had enough"
     QTest::addRow("Windows-1255 Hebrew") //
