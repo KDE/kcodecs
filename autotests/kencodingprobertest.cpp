@@ -132,6 +132,7 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("ASCII codepoints UTF-16BE Universal", "UTF-16 with values <= 0x7f not checked", Abort);
     QEXPECT_FAIL("Plasma Ukrainian UTF-16LE", "UTF-16 low confidence", Abort);
     QEXPECT_FAIL("Plasma Ukrainian UTF-16BE", "UTF-16 low confidence", Abort);
+    QEXPECT_FAIL("Windows-1252 Spanish", "Low confidence Win-1252 taken for cyrillic", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
 
     QCOMPARE_GE(ep.confidence(), 0.2);
@@ -166,6 +167,15 @@ void KEncodingProberTest::testProbe_data()
     QTest::addRow("windows-1252 German WesternEuropean") //
         << "Victor jagt zw\xf6lf Boxk\xe4mpfer quer \xfc\x62\x65r den gro\xdf\x65n Sylter Deich."_ba //
         << KEncodingProber::WesternEuropean << QByteArray("windows-1252");
+
+    QTest::addRow("Windows-1252 French") //
+        << "L'ergoth\xe9rapeute effectue des prestations de r\xe9\xe9\x64ucation et de r\xe9\x61\x64\x61ptation."_ba //
+        << KEncodingProber::Universal << QByteArray("windows-1252");
+
+    QTest::addRow("Windows-1252 Spanish") //
+        << "La socioling\xfc\xedstica sincr\xf3nica se centra en la estructura socioling\xfc\xedstica " //
+           "y en las variaciones ling\xfc\xedsticas."_ba //
+        << KEncodingProber::Universal << QByteArray("windows-1252");
 
     QTest::addRow("utf-8 Latin1 Supplement") //
         << "Latin1 Text h\xC3\xA4lt h\xC3\xB6rt f\xC3\xBChrt lie\xC3\x9F"_ba // "Latin1 Text hält hört führt ließ"
