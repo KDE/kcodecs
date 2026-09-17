@@ -261,97 +261,97 @@ msgid ""
 "form joe@example.org."
 msgstr ""
 
-#: kencodingprober.cpp:239 kencodingprober.cpp:280
+#: kencodingprober.cpp:269 kencodingprober.cpp:310
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Disabled"
 msgstr "പ്രവര്‍ത്തന രഹിതമാക്കിയിരിയ്ക്കുന്നു"
 
-#: kencodingprober.cpp:241 kencodingprober.cpp:283
+#: kencodingprober.cpp:271 kencodingprober.cpp:313
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Universal"
 msgstr "സാര്‍വ്വജനികം"
 
-#: kencodingprober.cpp:243 kencodingprober.cpp:325
+#: kencodingprober.cpp:273 kencodingprober.cpp:355
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Unicode"
 msgstr "യൂണികോഡ്"
 
-#: kencodingprober.cpp:245 kencodingprober.cpp:295
+#: kencodingprober.cpp:275 kencodingprober.cpp:325
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Cyrillic"
 msgstr "സിറിലിക്"
 
-#: kencodingprober.cpp:247 kencodingprober.cpp:310
+#: kencodingprober.cpp:277 kencodingprober.cpp:340
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Western European"
 msgstr "പടിഞ്ഞാറന്‍ യൂറോപ്യന്‍"
 
-#: kencodingprober.cpp:249 kencodingprober.cpp:292
+#: kencodingprober.cpp:279 kencodingprober.cpp:322
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Central European"
 msgstr "മദ്ധ്യ യൂറോപ്യന്‍"
 
-#: kencodingprober.cpp:251 kencodingprober.cpp:298
+#: kencodingprober.cpp:281 kencodingprober.cpp:328
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Greek"
 msgstr "ഗ്രീക്ക്"
 
-#: kencodingprober.cpp:253 kencodingprober.cpp:301
+#: kencodingprober.cpp:283 kencodingprober.cpp:331
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Hebrew"
 msgstr "ഹീബ്രു"
 
-#: kencodingprober.cpp:255 kencodingprober.cpp:307
+#: kencodingprober.cpp:285 kencodingprober.cpp:337
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Turkish"
 msgstr "തുര്‍ക്കിഷ്"
 
-#: kencodingprober.cpp:257 kencodingprober.cpp:304
+#: kencodingprober.cpp:287 kencodingprober.cpp:334
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Japanese"
 msgstr "ജാപനീസ്"
 
-#: kencodingprober.cpp:259 kencodingprober.cpp:289
+#: kencodingprober.cpp:289 kencodingprober.cpp:319
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Baltic"
 msgstr "ബാള്‍ട്ടിക്"
 
-#: kencodingprober.cpp:261 kencodingprober.cpp:313
+#: kencodingprober.cpp:291 kencodingprober.cpp:343
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "പരമ്പരാഗത ചൈനീസ്"
 
-#: kencodingprober.cpp:263 kencodingprober.cpp:316
+#: kencodingprober.cpp:293 kencodingprober.cpp:346
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "ലളിതമാക്കിയ ചൈനീസ്"
 
-#: kencodingprober.cpp:265 kencodingprober.cpp:319
+#: kencodingprober.cpp:295 kencodingprober.cpp:349
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Korean"
 msgstr "കൊറിയന്‍"
 
-#: kencodingprober.cpp:267 kencodingprober.cpp:322
+#: kencodingprober.cpp:297 kencodingprober.cpp:352
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Thai"
 msgstr "ഥായി"
 
-#: kencodingprober.cpp:269 kencodingprober.cpp:286
+#: kencodingprober.cpp:299 kencodingprober.cpp:316
 #, fuzzy
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"

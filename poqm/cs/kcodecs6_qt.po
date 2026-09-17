@@ -261,82 +261,82 @@ msgstr ""
 "Zadaná adresa není platná.\n"
 "Neobsahuje skutečnou e-mailovou adresu, např. joe@example.org."
 
-#: kencodingprober.cpp:239 kencodingprober.cpp:280
+#: kencodingprober.cpp:269 kencodingprober.cpp:310
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Disabled"
 msgstr "Zakázáno"
 
-#: kencodingprober.cpp:241 kencodingprober.cpp:283
+#: kencodingprober.cpp:271 kencodingprober.cpp:313
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Universal"
 msgstr "Univerzální"
 
-#: kencodingprober.cpp:243 kencodingprober.cpp:325
+#: kencodingprober.cpp:273 kencodingprober.cpp:355
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Unicode"
 msgstr "Unicode"
 
-#: kencodingprober.cpp:245 kencodingprober.cpp:295
+#: kencodingprober.cpp:275 kencodingprober.cpp:325
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Cyrillic"
 msgstr "Cyrilice"
 
-#: kencodingprober.cpp:247 kencodingprober.cpp:310
+#: kencodingprober.cpp:277 kencodingprober.cpp:340
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Western European"
 msgstr "Západní Evropa"
 
-#: kencodingprober.cpp:249 kencodingprober.cpp:292
+#: kencodingprober.cpp:279 kencodingprober.cpp:322
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Central European"
 msgstr "Střední Evropa"
 
-#: kencodingprober.cpp:251 kencodingprober.cpp:298
+#: kencodingprober.cpp:281 kencodingprober.cpp:328
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Greek"
 msgstr "Řečtina"
 
-#: kencodingprober.cpp:253 kencodingprober.cpp:301
+#: kencodingprober.cpp:283 kencodingprober.cpp:331
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Hebrew"
 msgstr "Hebrejština"
 
-#: kencodingprober.cpp:255 kencodingprober.cpp:307
+#: kencodingprober.cpp:285 kencodingprober.cpp:337
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Turkish"
 msgstr "Turečtina"
 
-#: kencodingprober.cpp:257 kencodingprober.cpp:304
+#: kencodingprober.cpp:287 kencodingprober.cpp:334
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Japanese"
 msgstr "Japonština"
 
-#: kencodingprober.cpp:259 kencodingprober.cpp:289
+#: kencodingprober.cpp:289 kencodingprober.cpp:319
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Baltic"
 msgstr "Pobaltí"
 
-#: kencodingprober.cpp:261 kencodingprober.cpp:313
+#: kencodingprober.cpp:291 kencodingprober.cpp:343
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "Tradiční čínština"
 
-#: kencodingprober.cpp:263 kencodingprober.cpp:316
+#: kencodingprober.cpp:293 kencodingprober.cpp:346
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "Zjednodušená čínština"
 
-#: kencodingprober.cpp:265 kencodingprober.cpp:319
+#: kencodingprober.cpp:295 kencodingprober.cpp:349
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Korean"
 msgstr "Korejština"
 
-#: kencodingprober.cpp:267 kencodingprober.cpp:322
+#: kencodingprober.cpp:297 kencodingprober.cpp:352
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Thai"
 msgstr "Thajština"
 
-#: kencodingprober.cpp:269 kencodingprober.cpp:286
+#: kencodingprober.cpp:299 kencodingprober.cpp:316
 msgctxt "KEncodingProber|@item Text character set"
 msgid "Arabic"
 msgstr "Arabština"
