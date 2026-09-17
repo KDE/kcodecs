@@ -240,8 +240,6 @@ void KEncodingProberUnitTest::testWindows1252()
 
     QCOMPARE(win1252Valid, (state != eNotMe));
 
-    QEXPECT_FAIL("Windows-1252 French", "Accented vowel pair considered unlikely", Abort);
-    QEXPECT_FAIL("Windows-1252 Spanish", "Accented vowel pair considered unlikely", Abort);
     if (win1252Valid) {
         QCOMPARE_GE(win1252Prober.GetConfidence(), minConfidence);
     }

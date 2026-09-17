@@ -132,7 +132,6 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("ASCII codepoints UTF-16BE Universal", "UTF-16 with values <= 0x7f not checked", Abort);
     QEXPECT_FAIL("Plasma Ukrainian UTF-16LE", "UTF-16 low confidence", Abort);
     QEXPECT_FAIL("Plasma Ukrainian UTF-16BE", "UTF-16 low confidence", Abort);
-    QEXPECT_FAIL("Windows-1252 Spanish", "Low confidence Win-1252 taken for cyrillic", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
 
     QCOMPARE_GE(ep.confidence(), 0.2);
