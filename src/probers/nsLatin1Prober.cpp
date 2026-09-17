@@ -74,9 +74,9 @@ static constexpr std::array<uint8_t, CLASS_COUNT * CLASS_COUNT> Latin1ClassModel
     /*OTH*/   0,  3,  3,  3,  3,  3,  3,  3,
     /*ASC*/   0,  3,  3,  3,  3,  3,  3,  3,
     /*ASS*/   0,  3,  3,  3,  1,  1,  3,  3,
-    /*ACV*/   0,  3,  3,  3,  1,  2,  1,  2,
+    /*ACV*/   0,  3,  3,  3,  2,  2,  2,  2,
     /*ACO*/   0,  3,  3,  3,  3,  3,  3,  3,
-    /*ASV*/   0,  3,  1,  3,  1,  1,  1,  3,
+    /*ASV*/   0,  3,  1,  3,  1,  1,  2,  3,
     /*ASO*/   0,  3,  1,  3,  1,  1,  3,  3,
     // clang-format on
 };
