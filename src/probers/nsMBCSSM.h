@@ -15,10 +15,23 @@ Modification from frank tang's original work:
   text stream.
 */
 
-// BIG5
-
 namespace kencodingprober
 {
+/* Ranges for Big5 and extensions, e.g. ETEN and HKCS
+ * See IBM C-H 3-3220-131 1999-04, Figure 1
+ * 1st byte: 0x81 ... 0x8C (0) -> (3)
+ *           0x8D ... 0xF1 (0) -> (4)
+ *           0xF2          (0) -> (5)
+ *           0xF3 ... 0xF9 (0) -> (3)
+ *           0xFA ... 0xFE (0) -> (4)
+ * 2nd byte: 0x40 ... 0x7E (3), (4), (5) -> (0), (1)
+ *           0x81 ... 0x85 (3)           -> (0), (1)
+ *           0x86 ... 0xA0 (3), (5)      -> (0), (1)
+ *           0xA1 ... 0xFE (3), (4), (5) -> (0), (1)
+ *  (4) IBM Area 9, 1st byte: 0x81 ... 0x8C
+ *  (5) IBM Area 5, 1st byte: 0xF2
+ *  (5) IBM Area 5, 1st byte: 0xF3 ... 0xF9
+ */
 static constexpr std::array<const unsigned char, 256> BIG5_cls{
     // clang-format off
     // 0,1,1,1,1,1,1,1,  // 00 - 07
@@ -38,8 +51,8 @@ static constexpr std::array<const unsigned char, 256> BIG5_cls{
     2, 2, 2, 2, 2, 2, 2, 2, // 68 - 6f
     2, 2, 2, 2, 2, 2, 2, 2, // 70 - 77
     2, 2, 2, 2, 2, 2, 2, 1, // 78 - 7f
-    4, 4, 4, 4, 4, 4, 4, 4, // 80 - 87
-    4, 4, 4, 4, 4, 4, 4, 4, // 88 - 8f
+    0, 5, 5, 5, 5, 5, 6, 6, // 80 - 87
+    6, 6, 6, 6, 6, 4, 4, 4, // 88 - 8f
     4, 4, 4, 4, 4, 4, 4, 4, // 90 - 97
     4, 4, 4, 4, 4, 4, 4, 4, // 98 - 9f
     4, 3, 3, 3, 3, 3, 3, 3, // a0 - a7
@@ -52,23 +65,26 @@ static constexpr std::array<const unsigned char, 256> BIG5_cls{
     3, 3, 3, 3, 3, 3, 3, 3, // d8 - df
     3, 3, 3, 3, 3, 3, 3, 3, // e0 - e7
     3, 3, 3, 3, 3, 3, 3, 3, // e8 - ef
-    3, 3, 3, 3, 3, 3, 3, 3, // f0 - f7
-    3, 3, 3, 3, 3, 3, 3, 0 // f8 - ff
+    3, 3, 7, 8, 8, 8, 8, 8, // f0 - f7
+    8, 8, 3, 3, 3, 3, 3, 0 // f8 - ff
     // clang-format on
 };
 
-static constexpr std::array<const unsigned char, 20> BIG5_st{
+static constexpr std::array<const unsigned char, 6 * 9> BIG5_st{
     // clang-format off
-    eError, eStart, eStart,      3, eError, // eStart
-    eError, eError, eError, eError, eError, // eError
-    eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, // eItsMe
-    eError, eError, eStart, eStart, eStart, // 3
+    //   0       1       2       3       4       5       6       7       8
+    eError, eStart, eStart,      4,      4,      3,      3,      5,      3, // eStart
+    eError, eError, eError, eError, eError, eError, eError, eError, eError, // eError
+    eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, eItsMe, // eItsMe
+    eError, eError, eStart, eStart, eStart, eStart, eStart, eStart, eStart, // 3
+    eError, eError, eStart, eStart, eError, eError, eError, eStart, eStart, // 4
+    eError, eError, eStart, eStart, eStart, eError, eStart, eStart, eStart, // 5
     // clang-format on
 };
 
 static constexpr SMModel Big5SMModel{
     BIG5_cls,
-    5,
+    9,
     BIG5_st,
     "Big5",
 };

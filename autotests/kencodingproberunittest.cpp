@@ -433,9 +433,6 @@ void KEncodingProberUnitTest::testBig5Charset()
 
     auto state = big5Prober.HandleData(data.constData(), data.size());
 
-    QEXPECT_FAIL("Big5 HKSCS Cantonese", "HKSCS UDC rejected", Abort);
-    QEXPECT_FAIL("UTF-8", "0x80...0xA0 accepted for 2nd byte", Abort);
-
     QCOMPARE((state != eNotMe), big5Valid);
 }
 
