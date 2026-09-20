@@ -9,6 +9,7 @@
 #include "../src/probers/nsEscSM.h"
 #include "../src/probers/nsMBCSSM.h"
 
+#include "../src/probers/nsBig5Prober.h"
 #include "../src/probers/nsCodingStateMachine.h"
 #include "../src/probers/nsHebrewProber.h"
 #include "../src/probers/nsLatin1Prober.h"
@@ -34,6 +35,8 @@ private Q_SLOTS:
     void testHzCharset_data();
     void testIso2022JPCharset();
     void testIso2022JPCharset_data();
+    void testBig5Charset();
+    void testBig5Charset_data();
 };
 
 void KEncodingProberUnitTest::testUtf8()
@@ -417,6 +420,42 @@ void KEncodingProberUnitTest::testHzCharset_data()
 void KEncodingProberUnitTest::testIso2022JPCharset_data()
 {
     testEsc_common_data();
+}
+
+void KEncodingProberUnitTest::testBig5Charset()
+{
+    QFETCH(QByteArray, data);
+    QFETCH(bool, big5Valid);
+
+    using namespace kencodingprober;
+
+    nsBig5Prober big5Prober{};
+
+    auto state = big5Prober.HandleData(data.constData(), data.size());
+
+    QEXPECT_FAIL("Big5 HKSCS Cantonese", "HKSCS UDC rejected", Abort);
+    QEXPECT_FAIL("UTF-8", "0x80...0xA0 accepted for 2nd byte", Abort);
+
+    QCOMPARE((state != eNotMe), big5Valid);
+}
+
+void KEncodingProberUnitTest::testBig5Charset_data()
+{
+    using namespace Qt::StringLiterals;
+
+    QTest::addColumn<QByteArray>("data");
+    QTest::addColumn<bool>("big5Valid");
+
+    // ASCII without escape sequence is always valid
+    QTest::addRow("empty") << QByteArray() << true;
+
+    // "維基百科係正嘢嚟㗎" - "Wikipedia is awesome"
+    QTest::addRow("Big5 HKSCS Cantonese") //
+        << QByteArray::fromHex("bafbb0f2a6caacecab59a5bf9dcf91c19dee") //
+        << true;
+
+    // "10 × 10 = 100"
+    QTest::addRow("UTF-8") << "10 \xc3\x97 10 = 100"_ba << false;
 }
 
 QTEST_MAIN(KEncodingProberUnitTest)

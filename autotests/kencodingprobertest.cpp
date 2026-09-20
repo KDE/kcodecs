@@ -132,6 +132,7 @@ void KEncodingProberTest::testProbe()
     QEXPECT_FAIL("ASCII codepoints UTF-16BE Universal", "UTF-16 with values <= 0x7f not checked", Abort);
     QEXPECT_FAIL("Plasma Ukrainian UTF-16LE", "UTF-16 low confidence", Abort);
     QEXPECT_FAIL("Plasma Ukrainian UTF-16BE", "UTF-16 low confidence", Abort);
+    QEXPECT_FAIL("Big5 HKSCS Cantonese", "HKSCS UDC rejected", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
 
     QCOMPARE_GE(ep.confidence(), 0.2);
@@ -214,6 +215,10 @@ void KEncodingProberTest::testProbe_data()
     QTest::addRow("big5") //
         << QByteArray::fromHex("aefcafc7a6caa474a141a6b3ae65a444a46a") //
         << KEncodingProber::ChineseTraditional << QByteArray("big5");
+
+    QTest::addRow("Big5 HKSCS Cantonese") // "維基百科係正嘢嚟㗎" - "Wikipedia is awesome"
+        << QByteArray::fromHex("bafbb0f2a6caacecab59a5bf9dcf91c19dee") //
+        << KEncodingProber::Universal << QByteArray("big5");
 
     // "שפן אכל קצת גזר בטעם חסה, ודי" - "A bunny ate some lettuce-flavored carrots, and he had enough"
     QTest::addRow("windows-1255 Hebrew") //
