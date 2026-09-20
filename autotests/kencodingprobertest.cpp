@@ -383,6 +383,15 @@ void KEncodingProberTest::testProbe_data()
         "fceeecf320f1e2b3f2f32e0a") << //
         KEncodingProber::Universal << QByteArray("windows-1251");
 
+    // "<html><body>Это html файл и он имеет кодировку windows-1251/Latin1.</body></html>" --
+    // "<html><body>This is an HTML file and it uses the Windows-1251/Latin1 encoding.</html>"
+    QTest::addRow("KFileMetadata HTML Windows-1251") //
+        << QByteArray::fromHex( //
+               "3c68746d6c3e0a3c626f64793e0addf2ee2068746d6c20f4e0e9eb0ae820"
+               "eeed20e8ece5e5f220eaeee4e8f0eee2eaf32077696e646f77732d313235"
+               "312f4c6174696e312e0a3c2f626f64793e0a3c2f68746d6c3e0a")
+        << KEncodingProber::Universal << QByteArray("windows-1251");
+
     constexpr char16_t plasmaZH_CNText[] =
         u"KDE 软件为 NASA、CERN、奔驰电动汽车、Steam Deck、网络主播、"
         "世界各地的学校、政府部门和企业办公室赋能。";

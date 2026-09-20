@@ -93,7 +93,7 @@ auto calculateFrequencies(const std::array<uint32_t, CLASS_COUNT * CLASS_COUNT> 
     }
     const uint64_t total = std::accumulate(freq.begin(), freq.end(), 0ull);
 
-    // Number of non-letters : * -> OTH transitions
+    // Number of non-letters : * -> OTH transitions (2nd col)
     // Number of letters: * -> Letter transitions
     // total = letters + non-letters
     const uint64_t nonLetters = [&] {
@@ -104,7 +104,7 @@ auto calculateFrequencies(const std::array<uint32_t, CLASS_COUNT * CLASS_COUNT> 
         return count;
     }();
     const uint64_t letters = total - nonLetters;
-    // Number of words: OTH -> Letter transitions
+    // Number of words: OTH -> Letter transitions (2nd row w/o OTH/OTH)
     const uint64_t words = [&] {
         uint64_t count = 0;
         for (size_t i = 1 * CLASS_COUNT + 2; i < 2 * CLASS_COUNT; i++) {
@@ -113,7 +113,27 @@ auto calculateFrequencies(const std::array<uint32_t, CLASS_COUNT * CLASS_COUNT> 
         return count;
     }();
 
-    return std::array{freq[0], freq[1], freq[2], freq[3], freq[4], freq[5], total, nonLetters, letters, words};
+    const uint64_t letterLetter = total - nonLetters - words;
+    // Accented/Accented pairs
+    const uint64_t accentedPair = [&] {
+        uint64_t count = 0;
+        for (size_t i = 4; i < CLASS_COUNT; i++) {
+            for (size_t j = 4; j < CLASS_COUNT; j++) {
+                count += seqCount[i * CLASS_COUNT + j];
+            }
+        }
+        return count;
+    }();
+    // ASCII/ASCII pairs
+    const uint64_t asciiPair = //
+        seqCount[2 * CLASS_COUNT + 2] + seqCount[2 * CLASS_COUNT + 3] + //
+        seqCount[3 * CLASS_COUNT + 2] + seqCount[3 * CLASS_COUNT + 3];
+    const uint64_t asciiAccented = letterLetter - accentedPair - asciiPair;
+
+    // clang-format off
+    return std::array{freq[0], freq[1], freq[2], freq[3], freq[4], freq[5], //
+        total, nonLetters, letters, words, accentedPair, asciiAccented};
+    // clang-format on
 }
 } // namespace <anonymous>
 
@@ -164,7 +184,7 @@ float nsLatin1Prober::GetConfidence(void)
      * -   Unlikely pairs, e.g. lower case consonant followed by upper
      *     case consonant. See Latin1ClassModel above.
      * -   High normal to likely ratio
-     * -   High accented/accented to accented/unaccented ration (TBI)
+     * -   High accented/accented to accented/unaccented ratio
      *
      * Adjust low counts for short inputs.
      */
@@ -181,6 +201,11 @@ float nsLatin1Prober::GetConfidence(void)
     confidence = std::clamp(confidence, 0.0f, 1.0f);
     // 1.0 for 2/5 normal/likely, 0.5 for 14/5 normal/likely
     confidence *= (1.0f + likely * 1.2f) / (1.0f + likely + 0.5f * normal);
+    confidence = std::clamp(confidence, 0.0f, 1.0f);
+
+    const auto accentedPair = frequencies[10];
+    const auto asciiAccented = frequencies[11];
+    confidence *= (1.0f + 4.0f * asciiAccented) / (1.0f + accentedPair + 3.0f * asciiAccented);
 
     return std::clamp(confidence, 0.0f, 1.0f);
 }
@@ -189,7 +214,7 @@ std::string nsLatin1Prober::StatusOutput(uint8_t /* indent */)
 {
     const auto freqCounter = calculateFrequencies(mSeqCounter);
     return std::format( //
-        "{:1.3f} [{}] [{} {} {} {} {} {} | {}] [{} : {} : {}]",
+        "{:1.3f} [{}] [{} {} {} {} {} {} | {}] [{} : {} : {} : {} : {}]",
         GetConfidence(),
         GetCharSetName(),
         freqCounter[0],
@@ -201,6 +226,8 @@ std::string nsLatin1Prober::StatusOutput(uint8_t /* indent */)
         freqCounter[6], // total
         freqCounter[7],
         freqCounter[8],
-        freqCounter[9]);
+        freqCounter[9],
+        freqCounter[10],
+        freqCounter[11]);
 }
 }
