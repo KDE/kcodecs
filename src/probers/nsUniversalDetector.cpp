@@ -115,6 +115,7 @@ public:
 
     nsProbingState ProcessInput(const char *aBuf, unsigned int aLen);
     std::pair<const char *, float> GetBestProber() const;
+    std::array<float, 8> CalculateBias() const;
 
     std::array<Entry, 8> mStates;
 
@@ -200,6 +201,22 @@ const char *nsUniversalDetector::GetCharSetName()
     return name;
 }
 
+std::array<float, 8> ProberState::CalculateBias() const
+{
+    const float isBE16 = mCharacterStats.isBigEndian16();
+
+    std::array<float, 8> bias{};
+    bias[0] = 0.9 * mCharacterStats.isUtf8();
+    bias[6] = std::max(0.9f * isBE16, 0.0f);
+    bias[7] = std::max(-0.9f * isBE16, 0.0f);
+    if (auto mbcsConf = mStates[1].active ? mStates[1].prober->GetConfidence() : 0.0f; mbcsConf > 0.0f) {
+        // MBCS often looks like UTF-16
+        bias[6] *= bias[6] / (bias[6] + mbcsConf);
+        bias[7] *= bias[7] / (bias[7] + mbcsConf);
+    }
+    return bias;
+}
+
 std::pair<const char *, float> ProberState::GetBestProber() const
 {
     if (mCharacterStats.totalCount == 0) {
@@ -220,15 +237,7 @@ std::pair<const char *, float> ProberState::GetBestProber() const
         return {"UTF-8", 0.99f};
     }
 
-    std::array<float, mStates.size()> bias{};
-    bias[0] = 0.9 * mCharacterStats.isUtf8();
-    bias[6] = std::max(0.9f * isBE16, 0.0f);
-    bias[7] = std::max(-0.9f * isBE16, 0.0f);
-    if (auto mbcsConf = mStates[1].active ? mStates[1].prober->GetConfidence() : 0.0f; mbcsConf > 0.0f) {
-        // MBCS often looks like UTF-16
-        bias[6] *= bias[6] / (bias[6] + mbcsConf);
-        bias[7] *= bias[7] / (bias[7] + mbcsConf);
-    }
+    const auto bias = CalculateBias();
 
     const char *bestCharSet = nullptr;
     float maxProberConfidence = 0.0f;
@@ -271,12 +280,13 @@ nsProbingState nsUniversalDetector::GetState()
 
 std::string nsUniversalDetector::StatusOutput(uint8_t indent)
 {
+    const auto bias = (*mProberState).CalculateBias();
     indent += 2;
     std::string output = std::format("  Universal Prober ---- (7Bit: {})", mProberState->mHas8Bit ? "0" : "1");
-    for (const auto &prober : (*mProberState).mStates) {
+    for (size_t i = 0; const auto &prober : (*mProberState).mStates) {
         char state = !prober.selected ? '.' : !prober.active ? '-' : ' ';
         output += '\n' + std::string(indent, ' ');
-        output += std::format("{} ", state);
+        output += std::format("{} {:1.3f} ", state, bias[i++] + prober.prober->GetConfidence());
         output += prober.prober->StatusOutput(indent);
     }
     return output;
