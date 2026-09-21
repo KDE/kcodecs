@@ -12,6 +12,7 @@
 #include "nsMBCSGroupProber.h"
 #include "nsSBCSGroupProber.h"
 
+#include <algorithm>
 #include <format>
 
 namespace kencodingprober
