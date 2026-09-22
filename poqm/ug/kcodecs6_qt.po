@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2026-05-30 17:09-0400\n"
+"PO-Revision-Date: 2026-09-22 18:03+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
-"Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
+"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -103,7 +103,7 @@ msgstr "باشقا"
 #, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
-msgstr "%1 ( %2 )"
+msgstr ""
 
 #: kcharsets.cpp:474
 #, qt-format
@@ -115,7 +115,7 @@ msgstr "باشقا كودلاش (%1)"
 #, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
-msgstr "%1 ( %2 )"
+msgstr ""
 
 #: kemailaddress.cpp:508
 msgctxt "QObject|"
@@ -124,8 +124,6 @@ msgid ""
 "@.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
-"كىرگۈزگەن ئېلخەت ئادرېسىڭىز ئىناۋەتسىز چۈنكى ئۇنىڭدا بىردىن ئارتۇق @ بەلگىسى "
-"بار. ئەگەر ئادرېسنى ئۆزگەرتمىسىڭىز ئىناۋەتلىك ئۇچۇر قۇرالمايسىز."
 
 #: kemailaddress.cpp:514
 msgctxt "QObject|"
@@ -133,8 +131,6 @@ msgid ""
 "The email address you entered is not valid because it does not contain a @.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
-"كىرگۈزگەن ئېلخەت ئادرېسىڭىز ئىناۋەتسىز چۈنكى ئۇنىڭدا @ بەلگىسى يوق. ئەگەر "
-"ئادرېسنى ئۆزگەرتمىسىڭىز ئىناۋەتلىك ئۇچۇر قۇرالمايسىز."
 
 #: kemailaddress.cpp:520
 msgctxt "QObject|"
@@ -202,9 +198,6 @@ msgid ""
 "This probably means you have used an escaping type character like a '\\' as "
 "the last character in your email address."
 msgstr ""
-"كىرگۈزگەن ئېلخەت ئادرېسى ئىناۋەتسىز چۈنكى ئۇ كۈتۈلمىگەن ھالدا ئاخىرلاشقان. "
-"بەلكىم ئېلخەت ئادرېسىنىڭ ئاخىرىغا ئاتلاش بەلگىسى «\\» گە ئوخشاش ھەرپ "
-"كىرگۈزگەن بولۇشىڭىز مۇمكىن."
 
 #: kemailaddress.cpp:554
 msgctxt "QObject|"
@@ -246,8 +239,6 @@ msgid ""
 "'.'.\n"
 "You will not create valid messages if you do not change your address."
 msgstr ""
-"كىرگۈزگەن ئېلخەت ئادرېسىڭىز ئىناۋەتسىز چۈنكى ئۇنىڭدا «.» چېكىت يوق. ئەگەر "
-"ئادرېسنى ئۆزگەرتمىسىڭىز ئىناۋەتلىك ئۇچۇر قۇرالمايسىز."
 
 #: kemailaddress.cpp:577
 msgctxt "QObject|"
@@ -261,8 +252,6 @@ msgid ""
 "It does not seem to contain an actual email address, i.e. something of the "
 "form joe@example.org."
 msgstr ""
-"كىرگۈزگەن ئېلخەت ئادرېسى ئىناۋەتسىز چۈنكى ئۇ ھەقىقىي ئېلخەت ئادرېسى ئەمەستەك "
-"قىلىدۇ. مەسىلەن، joe@example.org."
 
 #: kencodingprober.cpp:269 kencodingprober.cpp:310
 msgctxt "KEncodingProber|@item Text character set"
