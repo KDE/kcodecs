@@ -20,7 +20,8 @@
 #
 ################################################################################
 
-apt-get update && apt-get install --yes cmake ninja-build
+apt-get update && apt-get install --yes python3-pip
+pip3 install cmake ninja
 
 git clone --depth 1 --branch=dev git://code.qt.io/qt/qtbase.git
 git clone --depth 1 -b master https://invent.kde.org/frameworks/extra-cmake-modules.git
