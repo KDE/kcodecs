@@ -8,7 +8,6 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 #include "kcharsets.h"
-#include "kcodecs_debug.h"
 
 #include <algorithm>
 #include <array>

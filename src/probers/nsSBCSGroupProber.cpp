@@ -6,7 +6,6 @@
 
 #include "nsSBCSGroupProber.h"
 
-#include "StateMachineProber.h"
 #include "nsHebrewProber.h"
 #include "nsSBCharSetProber.h"
 
