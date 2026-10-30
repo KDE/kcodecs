@@ -15,7 +15,6 @@
 
 #include "kcodecs.h"
 #include "kcharsets.h"
-#include "kcodecs_debug.h"
 #include "kcodecs_p.h"
 #include "kcodecsbase64.h"
 #include "kcodecsqp.h"
