@@ -13,6 +13,7 @@
 #include "../src/probers/nsCodingStateMachine.h"
 #include "../src/probers/nsHebrewProber.h"
 #include "../src/probers/nsLatin1Prober.h"
+#include "../src/probers/nsSBCharSetProber.h"
 
 class KEncodingProberUnitTest : public QObject
 {
@@ -37,6 +38,8 @@ private Q_SLOTS:
     void testIso2022JPCharset_data();
     void testBig5Charset();
     void testBig5Charset_data();
+    void testIbm866();
+    void testIbm866_data();
 };
 
 void KEncodingProberUnitTest::testUtf8()
@@ -450,6 +453,67 @@ void KEncodingProberUnitTest::testBig5Charset_data()
 
     // "10 × 10 = 100"
     QTest::addRow("UTF-8") << "10 \xc3\x97 10 = 100"_ba << false;
+}
+
+void KEncodingProberUnitTest::testIbm866()
+{
+    QFETCH(QByteArray, data);
+    QFETCH(bool, ibm866Valid);
+    QFETCH(double, confidence);
+
+    using namespace kencodingprober;
+
+    nsSingleByteCharSetProber ibm866Prober(Ibm866Model);
+
+    auto state = ibm866Prober.HandleData(data.constData(), data.size());
+
+    if (ibm866Valid) {
+        QVERIFY(state != eNotMe);
+        QCOMPARE_GE(ibm866Prober.GetConfidence(), confidence);
+    } else {
+        QCOMPARE_LE(ibm866Prober.GetConfidence(), confidence);
+    }
+}
+
+void KEncodingProberUnitTest::testIbm866_data()
+{
+    using namespace Qt::StringLiterals;
+
+    QTest::addColumn<QByteArray>("data");
+    QTest::addColumn<bool>("ibm866Valid");
+    QTest::addColumn<double>("confidence");
+
+    // "Свободная энциклопедия" - "Free encyclopedia" (from Wikipedia start page)
+    QTest::addRow("IBM866 cyrillic") //
+        << QByteArray::fromHex("91a2aea1aea4ada0ef20edade6a8aaabaeafa5a4a8ef") //
+        << true << 0.8;
+
+    // "Поэзия - Есенин" - "Poetry - Yesenin"
+    QTest::addRow("IBM866 intersecting with Big5 UDC") //
+        << QByteArray::fromHex("8faeeda7a8ef202d2085e1a5ada8ad") << true << 0.8;
+
+    // UTF-8 - "Свободная энциклопедия" - "Free encyclopedia"
+    QTest::addRow("UTF-8 Cyrillic") //
+        << QByteArray::fromHex("d0a1d0b2d0bed0b1d0bed0b4d0bdd0b0d18f20d18dd0bdd186d0b8d0bad0bbd0bed0bfd0b5d0b4d0b8d18f") //
+        << false << 0.3;
+
+    // Windows-1251 - "Свободная энциклопедия" - "Free encyclopedia"
+    QTest::addRow("Windows-1251 Cyrillic") //
+        << QByteArray::fromHex("d1e2eee1eee4ede0ff20fdedf6e8eaebeeefe5e4e8ff") //
+        << false << 0.3;
+
+    // KOI8-R - "Свободная энциклопедия" - "Free encyclopedia"
+    QTest::addRow("KOI8-R Cyrillic") //
+        << QByteArray::fromHex("f3d7cfc2cfc4cec1d120dccec3c9cbcccfd0c5c4c9d1") //
+        << false << 0.3;
+
+    // 0xB0–0xDF range is pseudographics
+    QTest::addRow("IBM866 pseudographics only") //
+        << QByteArray::fromHex(
+               "b0b1b2b3b4b5b6b7b8b9babbbcbdbebf"
+               "c0c1c2c3c4c5c6c7c8c9cacbcccdcecf"
+               "d0d1d2d3d4d5d6d7d8d9dadbdcdddedf")
+        << false << 0.3;
 }
 
 QTEST_MAIN(KEncodingProberUnitTest)

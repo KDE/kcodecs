@@ -118,6 +118,7 @@ void KEncodingProberTest::testProbe()
         return;
     }
 
+    QEXPECT_FAIL("IBM866 intersecting with Big5 UDC", "IBM866 wrongly rejected in favor of Big5", Abort);
     QCOMPARE(ep.encoding().toLower(), encoding);
 
     QCOMPARE_GE(ep.confidence(), 0.2);
@@ -205,6 +206,14 @@ void KEncodingProberTest::testProbe_data()
     QTest::addRow("utf-8 Japanese Universal") // "フリー百科事典" - "Free encyclopedia" (from Wikipedia start page)
         << QByteArray::fromHex("e38395e383aae383bce799bee7a791e4ba8be585b8") //
         << KEncodingProber::Universal << QByteArray("utf-8");
+
+    QTest::addRow("IBM866") // "Свободная энциклопедия" - "Free encyclopedia" (from Wikipedia start page)
+        << QByteArray::fromHex("91a2aea1aea4ada0ef20edade6a8aaabaeafa5a4a8ef") //
+        << KEncodingProber::Universal << QByteArray("ibm866");
+
+    QTest::addRow("IBM866 intersecting with Big5 UDC") // "Поэзия - Есенин" - "Poetry - Yesenin"
+        << QByteArray::fromHex("8faeeda7a8ef202d2085e1a5ada8ad") //
+        << KEncodingProber::Universal << QByteArray("ibm866");
 
     QTest::addRow("big5") //
         << QByteArray::fromHex("aefcafc7a6caa474a141a6b3ae65a444a46a") //
