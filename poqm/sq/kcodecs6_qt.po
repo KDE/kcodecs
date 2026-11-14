@@ -16,7 +16,7 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "X-Qt-Contexts: true\n"
 
-#: kcharsets.cpp:151
+#: kcharsets.cpp:150
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Western European"
@@ -24,7 +24,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
 msgstr "Europiane Perëndimore"
 
-#: kcharsets.cpp:157
+#: kcharsets.cpp:156
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Central European"
@@ -32,7 +32,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
 msgstr "Europiane Qendrore"
 
-#: kcharsets.cpp:160
+#: kcharsets.cpp:159
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Baltic"
@@ -40,7 +40,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
 msgstr "Balltike"
 
-#: kcharsets.cpp:163
+#: kcharsets.cpp:162
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "South-Eastern Europe"
@@ -48,7 +48,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
 msgstr "Europa Jug-Lindore"
 
-#: kcharsets.cpp:166
+#: kcharsets.cpp:165
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Turkish"
@@ -56,7 +56,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
 msgstr "Turke"
 
-#: kcharsets.cpp:169
+#: kcharsets.cpp:168
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Cyrillic"
@@ -64,7 +64,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "Cirilike"
 
-#: kcharsets.cpp:175
+#: kcharsets.cpp:174
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Chinese Traditional"
@@ -72,7 +72,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "Kineze Tradicionale"
 
-#: kcharsets.cpp:178
+#: kcharsets.cpp:177
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Chinese Simplified"
@@ -80,7 +80,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "Kineze e Thjeshtëzuar"
 
-#: kcharsets.cpp:182
+#: kcharsets.cpp:181
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Korean"
@@ -88,7 +88,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
 msgstr "Koreane"
 
-#: kcharsets.cpp:185
+#: kcharsets.cpp:184
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Japanese"
@@ -96,7 +96,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
 msgstr "Japoneze"
 
-#: kcharsets.cpp:189
+#: kcharsets.cpp:188
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Greek"
@@ -104,7 +104,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
 msgstr "Greke"
 
-#: kcharsets.cpp:192
+#: kcharsets.cpp:191
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Arabic"
@@ -112,7 +112,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
 msgstr "Arabe"
 
-#: kcharsets.cpp:195
+#: kcharsets.cpp:194
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Hebrew"
@@ -120,7 +120,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
 msgstr "Hebraishte"
 
-#: kcharsets.cpp:200
+#: kcharsets.cpp:199
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Thai"
@@ -128,7 +128,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
 msgstr "Tailandeze"
 
-#: kcharsets.cpp:203
+#: kcharsets.cpp:202
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Unicode"
@@ -136,7 +136,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
 msgstr "Unikod"
 
-#: kcharsets.cpp:209
+#: kcharsets.cpp:208
 #, fuzzy
 #| msgctxt "@item Text character set"
 #| msgid "Other"
@@ -144,7 +144,7 @@ msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "Tjetër"
 
-#: kcharsets.cpp:472
+#: kcharsets.cpp:471
 #, fuzzy, qt-format
 #| msgctxt "@item %1 character set, %2 encoding"
 #| msgid "%1 ( %2 )"
@@ -152,7 +152,7 @@ msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kcharsets.cpp:474
+#: kcharsets.cpp:473
 #, fuzzy, qt-format
 #| msgctxt "@item"
 #| msgid "Other encoding (%1)"
@@ -160,7 +160,7 @@ msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "Kodim tjetër (%1)"
 
-#: kcharsets.cpp:505
+#: kcharsets.cpp:504
 #, fuzzy, qt-format
 #| msgctxt "@item %1 character set, %2 encoding"
 #| msgid "%1 ( %2 )"

@@ -31,99 +31,99 @@ msgstr ""
 "po\n"
 "X-Crowdin-File-ID: 9932\n"
 
-#: kcharsets.cpp:151
+#: kcharsets.cpp:150
 msgctxt "KCharsets|@item Text character set"
 msgid "Western European"
 msgstr "Заходнееўрапейскае"
 
-#: kcharsets.cpp:157
+#: kcharsets.cpp:156
 msgctxt "KCharsets|@item Text character set"
 msgid "Central European"
 msgstr "Цэнтральнаеўрапейскае"
 
-#: kcharsets.cpp:160
+#: kcharsets.cpp:159
 msgctxt "KCharsets|@item Text character set"
 msgid "Baltic"
 msgstr "Балцкае"
 
-#: kcharsets.cpp:163
+#: kcharsets.cpp:162
 msgctxt "KCharsets|@item Text character set"
 msgid "South-Eastern Europe"
 msgstr "Паўднева-ўсходняе еўрапейскае"
 
-#: kcharsets.cpp:166
+#: kcharsets.cpp:165
 msgctxt "KCharsets|@item Text character set"
 msgid "Turkish"
 msgstr "Турэцкае"
 
-#: kcharsets.cpp:169
+#: kcharsets.cpp:168
 msgctxt "KCharsets|@item Text character set"
 msgid "Cyrillic"
 msgstr "Кірыліца"
 
-#: kcharsets.cpp:175
+#: kcharsets.cpp:174
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Traditional"
 msgstr "Кітайскае традыцыйнае"
 
-#: kcharsets.cpp:178
+#: kcharsets.cpp:177
 msgctxt "KCharsets|@item Text character set"
 msgid "Chinese Simplified"
 msgstr "Кітайскае спрошчанае"
 
-#: kcharsets.cpp:182
+#: kcharsets.cpp:181
 msgctxt "KCharsets|@item Text character set"
 msgid "Korean"
 msgstr "Карэйскае"
 
-#: kcharsets.cpp:185
+#: kcharsets.cpp:184
 msgctxt "KCharsets|@item Text character set"
 msgid "Japanese"
 msgstr "Японскае"
 
-#: kcharsets.cpp:189
+#: kcharsets.cpp:188
 msgctxt "KCharsets|@item Text character set"
 msgid "Greek"
 msgstr "Грэчаскае"
 
-#: kcharsets.cpp:192
+#: kcharsets.cpp:191
 msgctxt "KCharsets|@item Text character set"
 msgid "Arabic"
 msgstr "Арабскае"
 
-#: kcharsets.cpp:195
+#: kcharsets.cpp:194
 msgctxt "KCharsets|@item Text character set"
 msgid "Hebrew"
 msgstr "Іўрыт"
 
-#: kcharsets.cpp:200
+#: kcharsets.cpp:199
 msgctxt "KCharsets|@item Text character set"
 msgid "Thai"
 msgstr "Тайскае"
 
-#: kcharsets.cpp:203
+#: kcharsets.cpp:202
 msgctxt "KCharsets|@item Text character set"
 msgid "Unicode"
 msgstr "Юнікод"
 
-#: kcharsets.cpp:209
+#: kcharsets.cpp:208
 msgctxt "KCharsets|@item Text character set"
 msgid "Other"
 msgstr "Іншыя"
 
-#: kcharsets.cpp:472
+#: kcharsets.cpp:471
 #, qt-format
 msgctxt "KCharsets|@item %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kcharsets.cpp:474
+#: kcharsets.cpp:473
 #, qt-format
 msgctxt "KCharsets|@item"
 msgid "Other encoding (%1)"
 msgstr "Іншае кадаванне (%1)"
 
-#: kcharsets.cpp:505
+#: kcharsets.cpp:504
 #, qt-format
 msgctxt "KCharsets|@item Text encoding: %1 character set, %2 encoding"
 msgid "%1 ( %2 )"
